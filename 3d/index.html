@@ -16,8 +16,10 @@ html,body{margin:0px;height:100%;width:100%; font-family:sans-serif;}
 let markerColors = ['#48a1c2','#419869','#f4bd76','#e4e1d6','#88cf78'];
 let markerColor = markerColors[4];
 let lineColor = markerColor;//'#888';
-let startPitch = 60;
+let startPitch = 45;
 let startZoom = 3;
+let altitudeScale = 0.25;
+let map = null;
 
 let maps = {
   // data taken from the MapWorld* nodes
@@ -46,23 +48,18 @@ let maps = {
   },
 };
 
-var map;
-
 function loadMap(mapId) {
   location.hash = mapId;
 
   document.querySelector('#map').style.backgroundColor = mapId=='siu' ? '#141414' : '#000';
-  var mapSize = {width: 8192, height: 8192}
-  var tileSize   = {x: 512, y: 512};
-  var tileMaxSet = 4;
-  var mapMinResolution = Math.pow(2, tileMaxSet);
 
   if (map) {
     map.remove();
   }
 
-  var p = maps[mapId];
-  var scale = p.MapWorldSize / mapSize.width;
+  let p = maps[mapId];
+  let mapSize = {width: 8192, height: 8192}
+  let scale = p.MapWorldSize / mapSize.width;
   let [left,top,right,bottom] = [p.MapWorldUpperLeft.X, p.MapWorldUpperLeft.Y, p.MapWorldLowerRight.X, p.MapWorldLowerRight.Y];
   let extent = new maptalks.Extent(left, top, right, bottom);
 
@@ -72,9 +69,13 @@ function loadMap(mapId) {
     center: [p.MapWorldCenter.X, p.MapWorldCenter.Y],
     spatialReference : {
       projection : 'identity',
-      resolutions : [
-        32*scale, 16*scale, 8*scale, 4*scale, 2*scale, 1*scale, 0.5*scale, 0.25*scale,
-      ],
+      resolutions : (function() {
+        const res = [];
+        for (let i=32; i>0.125; i/=2) {
+          res.push(i*scale);
+        }
+        return res;
+      })(),
       fullExtent : {
         top:  top,
         left: left,
@@ -100,15 +101,21 @@ function loadMap(mapId) {
     },
   });
 
-  markerLayer = new maptalks.VectorLayer('vector', {
-    enableAltitude: true,        // enable altitude
-    defaultIconSize: [100,100], // does not work ?
-    //debug: true,
+  let shadowLayer = new maptalks.VectorLayer('shadow', {
+    enableAltitude: true,
+  }).addTo(map);
+
+  let pinLayer = new maptalks.VectorLayer('vector', {
+    enableAltitude: true,
     drawAltitude : {
-      lineWidth : 2,
+      lineWidth : 1.5,
       lineColor : lineColor,
-      //lineDasharray : [10, 5, 5],
-    }
+      //lineDasharray : [2, 2],
+    },
+  }).addTo(map);
+
+  let iconLayer = new maptalks.VectorLayer('icons', {
+    enableAltitude: true,
   }).addTo(map);
 
   fetch('../data/markers.'+mapId+'.json')
@@ -119,43 +126,54 @@ function loadMap(mapId) {
           continue;
         }
         if (o.type.endsWith('Chest_C')) {
-          var marker = new maptalks.Marker([o.lng, o.lat, o.alt*0.25],{
-            id : o.area+':'+o.name,
-            'symbol' : [
-              {
-                //'markerFile'  : 'foo.png',
-                markerWidth: 77,
-                markerHeight: 75,
-                markerFill: markerColor,
-                //markerLineColor: 'white',
-                markerType: 'pin', //ellipse cross x diamond bar square triangle pin pie
-              },
-              {
-                markerFile: '../img/chest.png',
-                markerWidth  : 32,
-                markerHeight : 32,
-                markerDy: -22,
-              }
-            ],
 
-            ltitude: false,
+          /*
+          // add shadow pin without altitude
+          let shadow = new maptalks.Marker([o.lng, o.lat],{
+            symbol: {
+              markerWidth: 4,
+              markerHeight: 4,
+              markerFill: markerColor,
+              markerLineColor: markerColor,
+              markerType: 'ellipse', //ellipse cross x diamond bar square triangle pin pie
+            } 
+          }).addTo(shadowLayer);
+          */
 
-            properties : {
-                name : o.name,
+          // add pin symbol with altitude
+          let pin = new maptalks.Marker([o.lng, o.lat, o.alt * altitudeScale],{
+            symbol: {
+              markerWidth: 77,
+              markerHeight: 75,
+              markerFill: markerColor,
+              //markerLineColor: 'white',
+              markerType: 'pin', //ellipse cross x diamond bar square triangle pin pie
+            } 
+          }).addTo(pinLayer);
+
+          // add icon on top of the pin
+          let marker = new maptalks.Marker([o.lng, o.lat, o.alt * altitudeScale],{
+            id: o.area+':'+o.name,
+            properties: {
+                name: o.name,
             },
-          });
+            symbol: {
+              markerFile: '../img/chest.png',
+              markerWidth  : 32,
+              markerHeight : 32,
+              markerDy: -22,
+            }
+          }).addTo(iconLayer);
 
           let text = JSON.stringify(o, null, 2).replaceAll('\n','<br>').replaceAll(' ','&nbsp;');
 
           const tooltip = new maptalks.ui.ToolTip(o.name, {
               content: 'hello',
-              //showTimeout: 0
           }).addTo(marker);
 
           marker.setInfoWindow({
             title     : o.name,
             content   : text,
-
             // 'autoPan': true,
             // 'width': 300,
             // 'minHeight': 120,
@@ -163,7 +181,6 @@ function loadMap(mapId) {
             //'autoOpenOn' : 'click',  //set to null if not to open when clicking on marker
             autoCloseOn : 'click',
           });
-          marker.addTo(markerLayer);
         }
       }
    });
