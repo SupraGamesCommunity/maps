@@ -1,6 +1,6 @@
 # Supraland
 
-Live map: https://github.com/SupraGamesCommunity/SupraMaps
+Live map: https://supragamescommunity.github.io/SupraMaps/
 
 ## Features
 
