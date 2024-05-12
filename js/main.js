@@ -92,7 +92,7 @@ function loadMap(mapId) {
       nativeZooms: [0, 1, 2, 3, 4],
       edgeBufferTiles: 2,
       bounds: mapBounds,
-      attribution: '<a href="https://github.com/SupraGamesCommunity/Joric-Fork-Test" target="_blank">Supra Games Community</a>',
+      attribution: '<a href="https://github.com/SupraGamesCommunity" target="_blank">Supra Games Community</a>',
   };
 
   let layerControl = L.control.layers({}, {}, {

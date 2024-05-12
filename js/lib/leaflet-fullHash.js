@@ -112,7 +112,7 @@
         location.replace(hash);
         this.lastHash = hash;
 
-        // update local storage settings -- Joric
+        // update local storage settings
         name = 'leaflet-fullHash';
         let settings = JSON.parse(localStorage.getItem(name)) || {};
         var parsed = this.parseHash(hash);
