@@ -1,6 +1,6 @@
 # Supraland
 
-Live map: https://supragamescommunity.github.io/Joric-Fork-Test/
+Live map: https://github.com/SupraGamesCommunity/SupraMaps
 
 ## Features
 
