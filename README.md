@@ -1,4 +1,4 @@
-# Supraland
+# SupraMaps
 
 Live map: https://supragamescommunity.github.io/SupraMaps/
 
