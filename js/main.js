@@ -231,8 +231,10 @@ function loadMap(mapId) {
     }
   }
 
+/*
+  // No longer used
   function loadMarkersLegacy() {
-    chestIconBig = L.icon({iconUrl: 'img/chest.png', iconSize: [64,64], iconAnchor: [32,32]});
+    chestIconBig = L.icon({iconUrl: 'img/markers/chest.png', iconSize: [64,64], iconAnchor: [32,32]});
     filename = 'data/legacy/' + mapId + '/chests.csv';
     var loadedCsv = Papa.parse(filename, { download: true, header: true, complete: function(results, filename) {
       var chests = 0;
@@ -247,6 +249,7 @@ function loadMap(mapId) {
       }
     }});
   }
+*/
 
   function onPopupOpen(e) {
     let x = e.popup._source._latlng.lng;
@@ -453,7 +456,7 @@ function getIcon(icon) {
   if (!iconObj) {
     let s = getIconSize(map.getZoom());
     let c = s >> 1;
-    iconObj = L.icon({iconUrl: 'img/'+icon+'.png', iconSize: [s,s], iconAnchor: [c,c]});
+    iconObj = L.icon({iconUrl: 'img/markers/'+icon+'.png', iconSize: [s,s], iconAnchor: [c,c]});
     icons[icon] = iconObj;
   }
   return iconObj;
