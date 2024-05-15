@@ -1,6 +1,6 @@
 var map = null;
 var mapId = '';
-var localDataName = 'jorics_supraland';
+var localDataName = 'supgragamescommunity_maps';
 var localData = JSON.parse(localStorage.getItem(localDataName)) || {};
 var layers = {};
 var classes = {};
