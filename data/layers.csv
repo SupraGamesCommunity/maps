@@ -1,8 +1,11 @@
 id,name,background,defaultActive
+pipes,Pipes,,x
+pads,Pads,,x
 closedChest,Chests,,x
 shop,Shop,,x
 collectable,Collectables,,x
 upgrades,Upgrades,,
 misc,Miscellaneous,,
+graves,Graves,,
 jumppads,Jump Pads,,
 coin,Coins,,

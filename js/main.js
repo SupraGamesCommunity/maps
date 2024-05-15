@@ -1,9 +1,12 @@
 var map = null;
 var mapId = '';
-var markedItems = JSON.parse(localStorage.getItem('markedItems')) || {'sl':{},'slc':{},'siu':{}};
+var localDataName = 'jorics_supraland';
+var localData = JSON.parse(localStorage.getItem(localDataName)) || {};
 var layers = {};
 var classes = {};
 var icons = {};
+var playerStart;
+var playerMarker;
 
 var maps = {
   // data taken from the MapWorld* nodes
@@ -34,11 +37,32 @@ var maps = {
 
 window.onload = function(event) {
   mapId = Object.keys(maps).find(id=>location.hash.endsWith(id)) || localStorage.getItem('mapId') || 'sl';
-  loadMap(mapId);
+  loadMap();
 };
 
-function loadMap(mapId) {
+function saveSettings() {
+  localStorage.setItem(localDataName, JSON.stringify(localData));
+}
+
+function loadMap() {
   localStorage.setItem('mapId', mapId);
+
+  for (id in maps) {
+    var title = maps[id].title;
+    if (!localData[id]) {
+      localData[id] = {};
+    }
+    if (!localData[id].markedItems) {
+      localData[id].markedItems = {};
+    }
+    if (!localData[id].activeLayers) {
+      localData[id].activeLayers = {'closedChest':true, 'shop':true, 'collectable':true};
+      if (id=='sl') {
+        localData[id].activeLayers['pads']=true;
+        localData[id].activeLayers['pipes']=true;
+      }
+    }
+  }
 
   var mapSize = {width: 8192, height: 8192}
   var tileSize   = {x: 512, y: 512};
@@ -105,14 +129,35 @@ function loadMap(mapId) {
     location.hash = '';
     map.off();
     map.remove();
-    loadMap(e.layer.mapId);
+    playerMarker = null;
+    mapId = e.layer.mapId;
+    loadMap();
   });
+
+  function updateSearch() {
+    let searchLayers = [];
+    for (id of Object.keys(localData[mapId].markedItems)) {
+      searchLayers.push(layers[id]);
+    }
+    searchControl.setLayer(L.featureGroup(searchLayers));
+  }
 
   map.on('overlayadd', function(e) {
     resizeIcons();
-    for (id of Object.keys(markedItems[mapId])) {
+    for (id of Object.keys(localData[mapId].markedItems)) {
       window.markItemFound(id);
     }
+    localData[mapId].activeLayers[e.layer.id] = true;
+    //console.log(localData[mapId].activeLayers);
+    //updateSearch();
+    saveSettings();
+  });
+
+  map.on('overlayremove', function(e) {
+    delete localData[mapId].activeLayers[e.layer.id];
+    //console.log(localData[mapId].activeLayers);
+    //updateSearch();
+    saveSettings();
   });
 
   map.on('zoomend', function(e) {
@@ -133,7 +178,13 @@ function loadMap(mapId) {
 
   if (mapId == 'sl') {
     for (const [id, title] of Object.entries({'pipes':'Pipes', 'pads':'Pads'})) {
-      var layer = L.tileLayer.canvas(tilesDir+'/'+id+'/{z}/{x}/{y}.png', layerOptions).addTo(map);
+      var layer = L.tileLayer.canvas(tilesDir+'/'+id+'/{z}/{x}/{y}.png', layerOptions);//.addTo(map);
+      layer.id = id;
+
+      if (localData[mapId].activeLayers[id]) {
+        layer.addTo(map);
+      }
+
       layerControl.addOverlay(layer, title);
     }
   }
@@ -207,7 +258,7 @@ function loadMap(mapId) {
   }
 
   actions = []
-  actions.push(newAction({icon:'&#x1F4C1;', tooltip:'Upload Save File', actions:{'Instructions':'copy-path', 'Load File':'upload-save', 'Unmark All': 'unmark-items' }}));
+  actions.push(newAction({icon:'&#x1F4C1;', tooltip:'Upload Save File', actions:{'Instructions':'copy-path', 'Load Game':'upload-save', 'Unmark All': 'unmark-items' }}));
   let toolbar = new L.Toolbar2.Control({actions: actions, position: 'bottomleft'}).addTo(map);
 
   document.querySelector('.copy-path').onclick = function(e) {
@@ -227,7 +278,7 @@ function loadMap(mapId) {
   document.querySelector('.unmark-items').onclick = function(e) {
     if (confirm('Are you sure to unmark all items?')) {
       unmarkItems();
-      localStorage.setItem('markedItems', JSON.stringify(markedItems));
+      saveSettings();
     }
   }
 
@@ -251,6 +302,13 @@ function loadMap(mapId) {
   }
 */
 
+  function onContextMenu(e) {
+    let markerId = e.target.options.alt;
+    let found = localData[mapId].markedItems[markerId]==true;
+    markItemFound(markerId, !found);
+    e.target.closePopup();
+  }
+
   function onPopupOpen(e) {
     let x = e.popup._source._latlng.lng;
     let y = e.popup._source._latlng.lat;
@@ -262,7 +320,7 @@ function loadMap(mapId) {
 
     let text = JSON.stringify(e.popup._source.options.o, null, 2).replaceAll('\n','<br>').replaceAll(' ','&nbsp;');
 
-    let found = markedItems[mapId][markerId]==true
+    let found = localData[mapId].markedItems[markerId]==true
 
     let value = found ? 'checked' : '';
 
@@ -330,6 +388,7 @@ function loadMap(mapId) {
               L.marker([o.lat, o.lng], {icon: getIcon(icon), title: title, type: 'chests', o:o, zIndexOffset: 100, alt: markerId }).addTo(layers[layer])
               .bindPopup(text)
               .on('popupopen', onPopupOpen)
+              .on('contextmenu',onContextMenu)
               ;
             }
 
@@ -339,8 +398,10 @@ function loadMap(mapId) {
               L.marker([o.lat, o.lng], {icon: getIcon(icon), title: title, type: 'shops', o:o, zIndexOffset: 100, alt: markerId }).addTo(layers[layer])
               .bindPopup(text)
               .on('popupopen', onPopupOpen)
+              .on('contextmenu',onContextMenu)
               ;
             }
+
 
             icon = c.icon;
             layer = c.layer;
@@ -361,40 +422,81 @@ function loadMap(mapId) {
               layer = 'misc';
             }
 
+            if (o.type == 'PlayerStart' && !playerMarker) {
+              playerStart = [o.lat, o.lng, o.alt];
+              playerMarker = L.marker([o.lat, o.lng], {zIndexOffset: 10000, draggable: true, title: Math.round(o.lat)+', '+Math.round(o.lng) })
+              .bindPopup()
+              .on('moveend', function(e) {
+                let marker = e.target;
+                let t = marker.getLatLng();
+                localData[mapId].playerPosition = [t.lat, t.lng, 0];
+                saveSettings();
+                console.log(e);
+                e.target._icon.title = Math.round(t.lat)+', '+Math.round(t.lng)
+              })
+              .on('popupopen', function(e) {
+                  let marker = e.target;
+                  let t = marker.getLatLng();
+                  t = {name:'playerPosition', lat:Math.round(t.lat), lng:Math.round(t.lng)};
+                  marker.setPopupContent(JSON.stringify(t, null, 2).replaceAll('\n','<br>').replaceAll(' ','&nbsp;'));
+                  marker.openPopup();
+              }).addTo(map)
+            }
+
             L.marker([o.lat, o.lng], {icon: getIcon(icon), title: title, type: 'collectables', o:o, zIndexOffset: 100, alt: markerId }).addTo(layers[layer])
             .bindPopup(text)
             .on('popupopen', onPopupOpen)
+            .on('contextmenu',onContextMenu)
             //.bindTooltip(function (e) { return String(e.options.title);}, {permanent: true, opacity: 1.0})
             ;
           }
         } // end of loop
 
+        let p = localData[mapId].playerPosition;
+        if (p && playerMarker) {
+          var latlng = new L.LatLng(p[0], p[1]);
+          //console.log('setting player position from storage', mapId, latlng);
+          playerMarker.setLatLng(latlng);
+        }
+
         resizeIcons();
     });
   }
 
-  searchLayers = [];
-
   function loadLayers() {
+      playerMarker = null;
       filename = 'data/layers.csv';
+
+      let searchLayers = [];
+      let inactiveLayers = [];
 
       var loadedCsv = Papa.parse(filename, { download: true, header: true, complete: function(results, filename) {
         for (o of results.data) {
           if (!o.id) {
             continue;
           }
-          let layerObj = L.layerGroup();
-          if (o.defaultActive) {
-            layerObj.addTo(map);
+          if (o.id=='pipes' || o.id=='pads') {
+            continue;
           }
+          if (o.id=='graves' && mapId!='sl') {
+            continue;
+          }
+
+          let layerObj = L.layerGroup();
+          layerObj.id = o.id;
+
+          if (localData[mapId].activeLayers[o.id]) {
+            layerObj.addTo(map);
+          } else {
+            inactiveLayers.push(layerObj);
+          }
+
           layers[o.id] = layerObj;
           layerControl.addOverlay(layerObj, o.name);
 
           searchLayers.push(layerObj);
         }
 
-
-        //console.log(layers);
 
         searchControl = new L.Control.Search({
             //layer: L.featureGroup(searchLayers),
@@ -403,12 +505,17 @@ function loadMap(mapId) {
             marker: false, // no red circle
             initial: false, // search any substring
             firstTipSubmit: true,
-            layer: L.featureGroup( [ layers['closedChest'], layers['shop'], layers['collectable'] ]),
-
+            layer: L.featureGroup( searchLayers ),
         }).addTo(map);
+
+        for (layer of inactiveLayers) { layer.remove(); }
+
+        //console.log(layers);
 
         searchControl.on("search:locationfound", function (e) {
             if (e.layer._popup) e.layer.openPopup();
+            //console.log(e.target._leaflet_id);
+            //TODO: show layer by marker
         });
 
 
@@ -443,7 +550,6 @@ function loadMap(mapId) {
       }
     }
   });
-
 } // end of loadmap
 
 function getIconSize(zoom) {
@@ -467,11 +573,13 @@ function resizeIcons() {
       if (layer instanceof L.Marker) {
         //let icon = layer.getIcon(); // undefined in 1.3
         let icon = layer.options.icon;
-        let s = getIconSize(map.getZoom());
-        let c = s >> 1;
-        icon.options.iconSize = [s,s];
-        icon.options.iconAnchor = [c,c];
-        layer.setIcon(icon);
+        if (icon.options.iconUrl!='marker-icon.png') {
+          let s = getIconSize(map.getZoom());
+          let c = s >> 1;
+          icon.options.iconSize = [s,s];
+          icon.options.iconAnchor = [c,c];
+          layer.setIcon(icon);
+        }
       }
    });
 
@@ -490,18 +598,18 @@ window.markItemFound = function (id, found=true, save=true) {
   });
 
   if (found) {
-    markedItems[mapId][id] = true;
+    localData[mapId].markedItems[id] = true;
   } else {
-    delete markedItems[mapId][id];
+    delete localData[mapId].markedItems[id];
   }
 
   if (save) {
-    localStorage.setItem('markedItems', JSON.stringify(markedItems));
+    saveSettings();
   }
 }
 
 function markItems() {
-  for (const[id,value] of Object.entries(markedItems[mapId])) {
+  for (const[id,value] of Object.entries(localData[mapId].markedItems)) {
     var divs = document.querySelectorAll('img[alt="' + id + '"]');
     [].forEach.call(divs, function(div) {
       div.classList.add('found');
@@ -510,13 +618,17 @@ function markItems() {
 }
 
 function unmarkItems() {
-  for (const[id,value] of Object.entries(markedItems[mapId])) {
+  for (const[id,value] of Object.entries(localData[mapId].markedItems)) {
     var divs = document.querySelectorAll('img[alt="' + id + '"]');
     [].forEach.call(divs, function(div) {
       div.classList.remove('found');
     });
   }
-  markedItems[mapId]={};
+  localData[mapId].markedItems={};
+  localData[mapId].playerPosition = playerStart;
+  if (playerMarker) {
+    playerMarker.setLatLng(new L.LatLng(playerStart[0], playerStart[1]));
+  }
 }
 
 window.loadSaveFile = function () {
@@ -543,7 +655,7 @@ window.loadSaveFile = function () {
 
     let loadedSave = new UESaveObject(evt.target.result);
 
-    console.log(loadedSave);
+    //console.log(loadedSave);
     //unmarkItems();
 
     for (let section of ["ThingsToRemove", "ThingsToActivate", "ThingsToOpenForever"]) {
@@ -562,9 +674,28 @@ window.loadSaveFile = function () {
       }
     }
 
-    alert('Marked ' + Object.keys(markedItems[mapId]).length + ' items');
+    for (o of loadedSave.Properties) {
+      if (o.name == 'Player Position' && playerMarker) {
+        let c = [0,0,0]
+        let p = o.value;
+        if (o.value.type=='Vector' || o.value.type=='Transform') {
+          if (o.value.translation) {
+            p = o.value.translation;
+          }
+          var latlng = new L.LatLng(p.y, p.x);
+          //console.log('setting player position from file', mapId, latlng);
+          playerMarker.setLatLng(latlng);
+          localData[mapId].playerPosition = [p.y, p.x, p.z];
+        } else {
+          console.log('cannot load player position from', JSON.stringify(o));
+        }
+      }
+    }
 
-    localStorage.setItem('markedItems', JSON.stringify(markedItems));
+    //alert('Marked ' + Object.keys(localData[mapId].markedItems).length + ' items');
+    console.log('Marked ' + Object.keys(localData[mapId].markedItems).length + ' items');
+
+    saveSettings();
 
     ready = true;
   };
@@ -578,10 +709,9 @@ window.putSavefileLocationOnClipboard = function() {
   let location = '%LocalAppData%\\Supraland'+(map.mapId=='siu' ? 'SIU':'')+'\\Saved\\SaveGames';
 
   let text = 
-  'You can import the game save file (latest .sav) to mark the collected items automatically. '+
+  'This map allows you to import the game save file (latest .sav) to mark the collected items automatically. '+
   'On Windows, the default save path for this game is "'+location+'". '+
-  'Paste it into the file selection dialog and press Enter to navigate directly to the save folder. '+
-  'Click OK to copy the path to your clipboard. '
+  'Click OK to copy the path to your clipboard.'
   ;
 
   if (confirm(text)) {
