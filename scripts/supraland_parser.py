@@ -13,7 +13,7 @@ import logging, gc, json, gc, os, sys, csv, argparse, tempfile
 
 config = {
     'sl': {
-        'path': 'E:/Games/Supraland/Supraland/Content/Paks',
+        'path': 'C:/Program Files (x86)/Steam/steamapps/common/Supraland/Supraland/Content/Paks/',
         'prefix': 'Supraland/Content/FirstPersonBP/Maps/',
         'maps': [
             'Map'
@@ -26,7 +26,7 @@ config = {
         ],
     },
     'slc': {
-        'path': 'E:/Games/Supraland/Supraland/Content/Paks',
+        'path': 'C:/Program Files (x86)/Steam/steamapps/common/Supraland/Supraland/Content/Paks/',
         'prefix': 'Supraland/Content/FirstPersonBP/Maps/',
         'maps': [
             'Crash'
@@ -35,7 +35,7 @@ config = {
         ],
     },
     'siu': {
-        'path': 'E:/Games/Supraland - Six Inches Under/SupralandSIU/Content/Paks',
+        'path': 'C:/Program Files (x86)/Steam/steamapps/common/Supraland Six Inches Under/SupralandSIU/Content/Paks/',
         'prefix': 'SupralandSIU/Content/FirstPersonBP/Maps/',
         'maps': [
             'DLC2_Complete',
@@ -90,8 +90,9 @@ marker_types = {
   'HealingStation_C','MatchBox_C','EnemySpawn1_C','EnemySpawn2_C','EnemySpawn3_C'
 }
 
+
 def export_levels(game, cache_dir):
-    path = config[game]['path']
+    path = os.environ.get(game+'dir',config[game]['path'])
     prefix = config[game]['prefix']
     logging.getLogger("UE4Parse").setLevel(logging.INFO)
     aeskeys = { FGuid(0,0,0,0): FAESKey('0x'+'0'*64), }
@@ -181,7 +182,7 @@ def export_markers(game, cache_dir, marker_types=marker_types, marker_names=[]):
     json.dump(data, open(json_file,'w'), indent=2)
 
 def export_textures(game, cache_dir):
-    path = config[game]['path']
+    path = os.environ.get(game+'dir',config[game]['path'])
     prefix = config[game]['prefix']
     logging.getLogger("UE4Parse").setLevel(logging.INFO)
     aeskeys = { FGuid(0,0,0,0): FAESKey('0x'+'0'*64), }
@@ -204,6 +205,8 @@ def export_textures(game, cache_dir):
             image.save(filename, "png")
 
 def main():
+    # Looks for environment variable {game}dir ie %SLDIR% for the path where the game data is stored 
+
     parser = argparse.ArgumentParser()
     parser.add_argument('-g', '--game', default='siu', help='game name (sl, slc, siu)')
     parser.add_argument('-d', '--cache_dir', default=tempfile.gettempdir(), help='cache directory for temporary files')

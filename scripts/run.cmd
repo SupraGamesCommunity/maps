@@ -1,5 +1,12 @@
 @echo off
 
+where /q py.exe
+if ERRORLEVEL 1 ( 
+set PYTHON=python.exe
+) else (
+set PYTHON=py.exe
+)
+
 set choice=3
 
 echo 1) Supraland
@@ -28,9 +35,9 @@ if '%choice%'=='2' set option=-t
 if '%choice%'=='3' set option=-m
 if '%choice%'=='4' goto tiles
 
-py supraland_parser.py -g %game% %option%
+%python% supraland_parser.py -g %game% %option%
 
-exit
+exit /b
 
 :tiles
 
@@ -38,4 +45,4 @@ echo generating tiles for %game%
 
 # need map.jpg, 8192x8192, you can make it from exported textures
 
-py gentiles.py -t jpg -w 512 map.jpg 0-4 tiles_dir
+%python% gentiles.py -t jpg -w 512 map.jpg 0-4 tiles_dir
