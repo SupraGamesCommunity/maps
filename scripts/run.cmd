@@ -25,7 +25,7 @@ set choice=3
 echo 1) Export levels
 echo 2) Export textures
 echo 3) Export markers (needs levels)
-echo 4) Generate tiles (needs map.jpg)
+echo 4) Generate tiles (needs {game}map.jpg)
 
 set /p choice=Enter your choice. Enter - default (%choice%): 
 
@@ -45,4 +45,4 @@ echo generating tiles for %game%
 
 # need map.jpg, 8192x8192, you can make it from exported textures
 
-%python% gentiles.py -t jpg -w 512 map.jpg 0-4 tiles_dir
+%python% gentiles.py -t jpg -w 512 %game%map.jpg 0-4 tiles_dir
