@@ -445,7 +445,7 @@ function loadMap() {
           objects[o.area + ':' + o.name] = o;
 
         } // end of loop
-
+        /*
         // 2-nd pass (pads and pipes)
         for (name of Object.keys(objects)) {
           o = objects[name];
@@ -509,7 +509,7 @@ function loadMap() {
           }
 
         } // end of 2-nd pass
-
+        */
         resizeIcons();
     });
 

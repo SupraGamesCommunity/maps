@@ -159,6 +159,10 @@ be used to display it and the layer it should be displayed on. If icon is
 not specified ? icon will be used. If layer is not specified 'misc' will be
 used.
 
+'community-markers.{game}.json' are files which custom markers can be added using the
+same format as the extracted data. Custom classes could be added with unique icons
+such as for the coins stashes from SIU.
+
 The legacy files are assumed to be one for each layer, named from the layers.csv id.
 So when displaying a marker of id, shops, the map will search shops.csv for an
 object with the same position as the marker it is displaying. If found it will
