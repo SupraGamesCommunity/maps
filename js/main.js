@@ -347,7 +347,7 @@ function loadMap() {
   }
 
   function loadMarkers() {
-    for (const fname of ['markers','community-markers'])
+    for (const fname of ['markers','custom-markers'])
     fetch('data/'+fname+'.'+mapId+'.json')
       .then((response) => response.json())
       .then((j) => {
