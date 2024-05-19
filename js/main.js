@@ -178,7 +178,7 @@ function loadMap() {
   }
 
   if (mapId == 'sl') {
-    for (const [id, title] of Object.entries({'pipes':'Pipes', 'pads':'Pads'})) {
+    for (const [id, title] of Object.entries({'pipes':'Pipe Lines Map', 'pads':'Pad Lines Map'})) {
       var layer = L.tileLayer.canvas(tilesDir+'/'+id+'/{z}/{x}/{y}.png', layerOptions);
       layer.id = id;
       if (localData[mapId].activeLayers[id]) {
