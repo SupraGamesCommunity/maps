@@ -20,7 +20,7 @@ BP_PurchaseHealth+1_C,health,upgrades
 BP_PurchaseJumpHeightPlus_C,double_jump,upgrades
 BP_PurchaseSpeedx2_C,speed,upgrades
 BP_Purchase_Crouch_C,,upgrades
-BP_Purchase_FasterPickaxe_C,,
+BP_Purchase_FasterPickaxe_C,boomeraxe_range,upgrades
 BP_Purchase_Pickaxe_Range+_C,boomeraxe_range,upgrades
 BP_Purchase_TranslocatorCooldown_C,translocator_cooldown,upgrades
 BP_TrophyDetector_C,,upgrades
@@ -59,7 +59,7 @@ BuyGunComboDamage+25_C,gun_damage,upgrades
 BuyGunCriticalDamageChance_C,gun_damage,upgrades
 BuyGunCriticalDamage_C,gun_damage,upgrades
 BuyGunDamage+15_C,gun_damage,upgrades
-BuyGunDamage+1_C,gun_damage,
+BuyGunDamage+1_C,gun_damage,upgrades
 BuyGunDamage+5_C,gun_damage,upgrades
 BuyGunHoly1_C,gun_upgrade,upgrades
 BuyGunHoly2_C,gun_upgrade,upgrades
@@ -142,7 +142,7 @@ LotsOfCoins50_C,coinStash,coin
 LotsOfCoins5_C,coinStash,coin
 LotsofCoins200_C,coinStash,coin
 MinecraftBrick_C,brick,misc
-MoonTake_C,moon_green,collectible
+MoonTake_C,moon_green,collectable
 PlayerStart,awesome,misc
 Plumbus_C,,misc
 Purchase_DiamondPickaxe_C,pickaxe_diamond,upgrades
@@ -164,3 +164,9 @@ MatchBox_C,gun_upgrade,misc
 EnemySpawn1_C,grave_wood,graves
 EnemySpawn2_C,grave_stone,graves
 EnemySpawn3_C,grave_volcano,graves
+Lift1_C,question_mark,misc
+PipeCap_C,pipe_red,pipesys
+PipesystemNew_C,pipe_green,pipesys
+PipesystemNewDLC_C,pipe_blue,pipesys
+Shell_C,shell,collectable
+_JumppadTarget_C,,jumppads

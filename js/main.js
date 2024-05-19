@@ -88,7 +88,6 @@ function loadMap() {
   var mapScale   = {x: 1.0/m, y: 1.0/m};
   var mapOrigin  = {x: -w.MapWorldUpperLeft.X * mapScale.x, y: -w.MapWorldUpperLeft.Y * mapScale.y};
 
-
   // Create a coordinate system for the map
   var crs = L.CRS.Simple;
   crs.transformation = new L.Transformation(mapScale.x, mapOrigin.x, mapScale.y, mapOrigin.y);
@@ -116,7 +115,7 @@ function loadMap() {
       nativeZooms: [0, 1, 2, 3, 4],
       edgeBufferTiles: 2,
       bounds: mapBounds,
-      attribution: '<a href="https://github.com/SupraGamesCommunity" target="_blank">SupraGames Community</a>',
+      attribution: '<a href="https://github.com/SupraGamesCommunity/SupraMaps" target="_blank">SupraGames Community</a>',
   };
 
   let layerControl = L.control.layers({}, {}, {
@@ -136,8 +135,10 @@ function loadMap() {
 
   function updateSearch() {
     let searchLayers = [];
-    for (id of Object.keys(localData[mapId].markedItems)) {
-      searchLayers.push(layers[id]);
+    for (id of Object.keys(localData[mapId].activeLayers)) {
+      if (localData[mapId].activeLayers[id] && layers[id]) {
+        searchLayers.push(layers[id]);
+      }
     }
     searchControl.setLayer(L.featureGroup(searchLayers));
   }
@@ -149,14 +150,14 @@ function loadMap() {
     }
     localData[mapId].activeLayers[e.layer.id] = true;
     //console.log(localData[mapId].activeLayers);
-    //updateSearch();
+    updateSearch();
     saveSettings();
   });
 
   map.on('overlayremove', function(e) {
     delete localData[mapId].activeLayers[e.layer.id];
     //console.log(localData[mapId].activeLayers);
-    //updateSearch();
+    updateSearch();
     saveSettings();
   });
 
@@ -178,13 +179,11 @@ function loadMap() {
 
   if (mapId == 'sl') {
     for (const [id, title] of Object.entries({'pipes':'Pipes', 'pads':'Pads'})) {
-      var layer = L.tileLayer.canvas(tilesDir+'/'+id+'/{z}/{x}/{y}.png', layerOptions);//.addTo(map);
+      var layer = L.tileLayer.canvas(tilesDir+'/'+id+'/{z}/{x}/{y}.png', layerOptions);
       layer.id = id;
-
       if (localData[mapId].activeLayers[id]) {
         layer.addTo(map);
       }
-
       layerControl.addOverlay(layer, title);
     }
   }
@@ -312,155 +311,208 @@ function loadMap() {
   function onPopupOpen(e) {
     let x = e.popup._source._latlng.lng;
     let y = e.popup._source._latlng.lat;
-    let type = e.popup._source.options.type;
     let markerId = e.popup._source.options.alt;
 
     let dist = Infinity;
     let res = null;
 
     let text = JSON.stringify(e.popup._source.options.o, null, 2).replaceAll('\n','<br>').replaceAll(' ','&nbsp;');
-
     let found = localData[mapId].markedItems[markerId]==true
-
     let value = found ? 'checked' : '';
 
     // it's not "found" but rather "removed" (e.g. BuySword2_2 in the beginning of Crash DLC)
     text += '<br><br><input type="checkbox" id="'+markerId+'" '+value+' onclick=markItemFound("'+markerId+'",this.checked)><label for="'+markerId+'">Found</label>';
-
     e.popup.setContent(text);
 
-    filename = 'data/legacy/' + mapId + '/'+type+'.csv';
-    var loadedCsv = Papa.parse(filename, { download: true, header: true, complete: function(results, filename) {
-      var chests = 0;
-      for (o of results.data) {
-        if (!o.x) {
-          continue;
+    for (const lookup of ['chests.csv', 'collectables.csv', 'shops.csv']) {
+      filename = 'data/legacy/' + mapId + '/'+lookup;
+      var loadedCsv = Papa.parse(filename, { download: true, header: true, complete: function(results, filename) {
+        var chests = 0;
+        for (o of results.data) {
+          if (!o.x) {
+            continue;
+          }
+          let d = Math.pow(  Math.pow(o.x-x, 2) + Math.pow(o.y-y, 2), 0.5);
+          if (d<dist) {
+            dist = d;
+            res = o;
+          }
         }
-
-        let d = Math.pow(  Math.pow(o.x-x, 2) + Math.pow(o.y-y, 2), 0.5);
-
-        if (d<dist) {
-          dist = d;
-          res = o;
+        if (dist<1000 && res.ytVideo) {
+          let url = 'https://youtu.be/'+res.ytVideo+'&?t='+res.ytStart;
+          e.popup.setContent(text + '<br><br><a href="'+url+'" target=_blank>'+url+'</a>');
         }
-      }
-
-      if (dist<1000 && res.ytVideo) {
-        let url = 'https://youtu.be/'+res.ytVideo+'&?t='+res.ytStart;
-        text += '<br><br><a href="'+url+'" target=_blank>'+url+'</a>'
-      }
-
-      e.popup.setContent(text);
-
-    }});
-
-  };
+      }});
+    }
+  }
 
   function loadMarkers() {
-    fetch('data/markers.'+mapId+'.json')
+    for (const fname of ['markers','community-markers'])
+    fetch('data/'+fname+'.'+mapId+'.json')
       .then((response) => response.json())
       .then((j) => {
-        var chests = 0;
-        var chests_total = 0;
-
+        objects = {};
         for (o of j) {
+
+          // skip markers out of bounds (e.g. "PipesystemNew_AboveSewer" in DLC2_Area0)
+          let [[top,left],[bottom,right]] = mapBounds;
+          if (! (o.lng>left && o.lng<right && o.lat>top && o.lat<bottom )) {
+            continue;
+          }
+
+          // skip PipeCap_C (decorative) until we find a reliable link to the pipe system
+          if (o.type == 'PipeCap_C') {
+            continue;
+          }
+
+          // check if class is in the types list
           if (c = classes[o.type]) {
-
             let markerId = o.area + ':' + o.name;
-
-            let text = '';//JSON.stringify(o, null, 2).replaceAll('\n','<br>').replaceAll(' ','&nbsp;');
+            let text = ''; // set it later in onPopupOpen
             let title = o.name;
+            let defaultIcon = 'question_mark';
+            let defaultLayer = 'misc';
+            let icon = c.icon || defaultIcon;
+            let layer = layers[c.layer] ? c.layer : defaultLayer;
 
             if (o.type.endsWith('Chest_C')) {
-              chests += 1;
-              chests_total += 1;
-
-              let icon = 'chest';
-
+              icon = 'chest';
               layer = 'closedChest';
-
               if (o.spawns) {
                 title = title + ' ('+o.spawns+')';
               } else if (o.coins) {
                 title = title + ' ('+o.coins+' coin'+(o.coins>1?'s':'')+')';
               }
+            }
 
-              L.marker([o.lat, o.lng], {icon: getIcon(icon), title: title, type: 'chests', o:o, zIndexOffset: 100, alt: markerId }).addTo(layers[layer])
+            // all items you can purchase are marked as shops. note they may overlap "upgrades" and spawns. 
+            if (o.type.startsWith('Buy') || o.type.startsWith('BP_Buy') || o.type.startsWith('Purchase') || o.type.startsWith('BP_Purchase')) {
+              let icon = 'shop';
+              let layer = 'shop';
+              L.marker([o.lat, o.lng], {icon: getIcon(icon), title: title, zIndexOffset: 10, alt: markerId, o:o }).addTo(layers[layer])
               .bindPopup(text)
               .on('popupopen', onPopupOpen)
               .on('contextmenu',onContextMenu)
               ;
             }
 
-            if (o.type.startsWith('Buy') || o.type.startsWith('BP_Buy') || o.type.startsWith('Purchase') || o.type.startsWith('BP_Purchase') || o.type.startsWith('BP_BoneDetector_C')) {
-              icon = 'shop';
-              layer = 'shop';
-              L.marker([o.lat, o.lng], {icon: getIcon(icon), title: title, type: 'shops', o:o, zIndexOffset: 100, alt: markerId }).addTo(layers[layer])
-              .bindPopup(text)
-              .on('popupopen', onPopupOpen)
-              .on('contextmenu',onContextMenu)
-              ;
-            }
-
-
-            icon = c.icon;
-            layer = c.layer;
-
-            if (s = classes[o.spawns]) {
-              icon = s.icon;
-              layer = s.layer;
-              if (o.spawncount>1) {
-                icon = 'coinStash';
-              }
-            }
-
-            if (icon == '') {
-              icon = 'question_mark';
-            }
-
-            if (!layers[layer]) {
-              layer = 'misc';
-            }
-
-            if (o.type == 'PlayerStart' && !playerMarker) {
-              playerStart = [o.lat, o.lng, o.alt];
-              playerMarker = L.marker([o.lat, o.lng], {zIndexOffset: 10000, draggable: true, title: Math.round(o.lat)+', '+Math.round(o.lng) })
-              .bindPopup()
-              .on('moveend', function(e) {
-                let marker = e.target;
-                let t = marker.getLatLng();
-                localData[mapId].playerPosition = [t.lat, t.lng, 0];
-                saveSettings();
-                console.log(e);
-                e.target._icon.title = Math.round(t.lat)+', '+Math.round(t.lng)
-              })
-              .on('popupopen', function(e) {
-                  let marker = e.target;
-                  let t = marker.getLatLng();
-                  t = {name:'playerPosition', lat:Math.round(t.lat), lng:Math.round(t.lng)};
-                  marker.setPopupContent(JSON.stringify(t, null, 2).replaceAll('\n','<br>').replaceAll(' ','&nbsp;'));
-                  marker.openPopup();
-              }).addTo(map)
-            }
-
-            L.marker([o.lat, o.lng], {icon: getIcon(icon), title: title, type: 'collectables', o:o, zIndexOffset: 100, alt: markerId }).addTo(layers[layer])
+            // finally, add marker (base marker goes in the middle)
+            L.marker([o.lat, o.lng], {icon: getIcon(icon), title: title, zIndexOffset: 100, alt: markerId, o:o }).addTo(layers[layer])
             .bindPopup(text)
             .on('popupopen', onPopupOpen)
             .on('contextmenu',onContextMenu)
-            //.bindTooltip(function (e) { return String(e.options.title);}, {permanent: true, opacity: 1.0})
             ;
+
+            // we also have to put all spawns up there as separate markers, they may overlap already listed items (legacy thing)
+            if (s = classes[o.spawns]) {
+              let icon = s.icon || defaultIcon;
+              let layer = layers[s.layer] ? s.layer : defaultLayer;
+              L.marker([o.lat, o.lng], {icon: getIcon(icon), title: title, zIndexOffset: 1000, alt: markerId, o:o }).addTo(layers[layer])
+              .bindPopup(text)
+              .on('popupopen', onPopupOpen)
+              .on('contextmenu',onContextMenu)
+              ;
+            }
+
+          } // end of all items that have types entry
+
+          // add dynamic player marker on top of PlayerStart icon
+          if (o.type == 'PlayerStart' && !playerMarker) {
+            playerStart = [o.lat, o.lng, o.alt];
+            let t = new L.LatLng(o.lat, o.lng);
+            if (p = localData[mapId].playerPosition) {
+              t = new L.LatLng(p[0], p[1]);
+            }
+            playerMarker = L.marker([t.lat, t.lng], {zIndexOffset: 10000, draggable: true, title: Math.round(t.lat)+', '+Math.round(t.lng) })
+            .bindPopup()
+            .on('moveend', function(e) {
+              let marker = e.target;
+              let t = marker.getLatLng();
+              localData[mapId].playerPosition = [t.lat, t.lng, 0];
+              saveSettings();
+              e.target._icon.title = Math.round(t.lat)+', '+Math.round(t.lng)
+            })
+            .on('popupopen', function(e) {
+                let marker = e.target;
+                let t = marker.getLatLng();
+                t = {name:'playerPosition', lat:Math.round(t.lat), lng:Math.round(t.lng)};
+                marker.setPopupContent(JSON.stringify(t, null, 2).replaceAll('\n','<br>').replaceAll(' ','&nbsp;'));
+                marker.openPopup();
+            }).addTo(map)
           }
+
+          // collect objects for the 2-nd pass
+          objects[o.area + ':' + o.name] = o;
+
         } // end of loop
 
-        let p = localData[mapId].playerPosition;
-        if (p && playerMarker) {
-          var latlng = new L.LatLng(p[0], p[1]);
-          //console.log('setting player position from storage', mapId, latlng);
-          playerMarker.setLatLng(latlng);
-        }
+        // 2-nd pass (pads and pipes)
+        for (name of Object.keys(objects)) {
+          o = objects[name];
+
+          if (o.type == 'Jumppad_C') {
+            if (r = o.direction) {
+              let color = 'magenta';
+
+              let x1 = o.lng;
+              let y1 = o.lat;
+              let z1 = o.alt;
+
+              let k = o.relative_velocity || 1000;
+
+              let vx = -o.direction.x * k;
+              let vy = -o.direction.y * k;
+              let vz = o.direction.z * k;
+
+              if (o.velocity && o.allow_stomp) {
+                color = 'cyan';
+                vx = o.velocity.x;
+                vy = o.velocity.y;
+                vz = o.velocity.z;
+              }
+
+              let x = o.lng;
+              let y = o.lat;
+              let z = o.alt;
+
+              let dt = 0.5;
+              let g = 9.8;
+              let m = 95;
+
+              x1=x;
+              y1=y;
+              z1=z;
+
+              for (let t=0; t<20; t+=dt) {
+                vz -= g * m * dt;
+                x += vx * dt;
+                y += vy * dt;
+                z += vz * dt;
+                if (o.alt>0 && z<0) break;
+                if (o.alt<0 && z<o.alt) break;
+              }
+
+              let x2 = x;
+              let y2 = y;
+              let z2 = z;
+
+              // need to add title as a single space (leaflet search issue)
+              L.polyline([[y1,x1],[y2,x2]], {title:' ', color: color}).addTo(layers['jumppads']);
+            }
+          }
+
+          // pipes
+          if (o.other_pipe) {
+            if (p = objects[o.other_pipe]) {
+              L.polyline([[o.lat, o.lng],[p.lat, p.lng]], {title:' ', color: 'lawngreen'}).addTo(layers['pipesys']);
+            }
+          }
+
+        } // end of 2-nd pass
 
         resizeIcons();
     });
+
   }
 
   function loadLayers() {

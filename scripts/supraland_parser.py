@@ -1,7 +1,5 @@
 # install UE4Parse module: pip install git+https://github.com/joric/pyUE4Parse.git
 # install dependencies: pip install mathutils aes
-# see https://github.com/MinshuG/pyUE4Parse/issues/9 about outer nodes
-# see https://github.com/MinshuG/pyUE4Parse/issues/20 about python 3.12
 
 from UE4Parse.Assets.Objects.FGuid import FGuid
 from UE4Parse.Provider import DefaultFileProvider, MappingProvider
@@ -87,7 +85,13 @@ marker_types = {
   'LotsOfCoins5_C', 'LotsofCoins200_C', 'MinecraftBrick_C', 'MoonTake_C', 'PlayerStart', 'Plumbus_C', 'Purchase_DiamondPickaxe_C',
   'Purchase_ForceBeam_C', 'Purchase_ForceCube_C', 'Purchase_IronPickaxe_C', 'Purchase_StonePickaxe_C', 'Purchase_WoodPickaxe_C',
   'Scrap_C', 'SlumBurningQuest_C', 'SpawnEnemy3_C', 'Stone_C', 'UpgradeHappiness_C', 'ValveCarriable_C', 'ValveSlot_C', 'Valve_C',
-  'HealingStation_C','MatchBox_C','EnemySpawn1_C','EnemySpawn2_C','EnemySpawn3_C'
+  'HealingStation_C','MatchBox_C','EnemySpawn1_C','EnemySpawn2_C','EnemySpawn3_C','PipeCap_C','Lift1_C','PipesystemNew_C',
+  'PipesystemNewDLC_C','Shell_C'
+}
+
+price_types = {
+    'EPriceType::NewEnumerator5':'scrap',
+    'EPriceType::NewEnumerator6':'bones',
 }
 
 
@@ -117,59 +121,79 @@ def export_levels(game, cache_dir):
 
 def export_markers(game, cache_dir, marker_types=marker_types, marker_names=[]):
     data = []
-    assets = {}
-    optKey = lambda d,k,v: v and d.__setitem__(k,v)
+    areas = {}
+    optKey = lambda d,k,v: v is not None and d.__setitem__(k,v)
     getVec = lambda d,v=0: Vector((d['X'], d['Y'], d['Z'])) if d else Vector((v,v,v))
     getRot = lambda d,v=0: Euler(( radians(d['Roll']), radians(d['Pitch']), radians(d['Yaw'])) ) if d else Euler((v,v,v))
     getQuat= lambda d,v=0: Quaternion((d['W'], d['X'], d['Y'], d['Z'])) if d else Quaternion((v,v,v,v))
+    getXYZ = lambda v:{'x':v.x, 'y': v.y, 'z': v.z}
 
     def parse_json(j, area):
         outer = {}
+        pipes = {}
         for o in j:
+            p = o.get('Properties',{})
+            if a := p.get('WorldAsset',{}).get('AssetPathName'):
+                if t := p.get('LevelTransform'):
+                    areas[a.split('.').pop()] = Matrix.Translation(getVec(t.get('Translation'))) @ getQuat(t.get('Rotation')).to_matrix().to_4x4()
+
             if 'Outer' in o:
                 outer[':'.join((o['Name'],o['Type'],o['Outer']))] = o # pyUE4Parse 5e0e6f0
                 outer[':'.join((o['Name'],o['Outer']))] = o # pyUE4Parse 90e309b
 
-        for i, o in enumerate(j):
-            prop = o.get('Properties',{})
-            if asset:=prop.get('WorldAsset',{}).get('AssetPathName'):
-                asset = asset.split('.').pop()
-                t = prop.get('LevelTransform',{})
-                assets[asset] = Matrix.Translation(getVec(t.get('Translation'))) @ getQuat(t.get('Rotation')).to_matrix().to_4x4()
+            if o['Type'] in ('PipesystemNew_C','PipesystemNewDLC_C') and 'Pipe' in p and ('OtherPipe' in p or 'otherPipeInOtherLevel' in p):
+                a = ':'.join((area, p['Pipe']['Outer']))
+                b = ':'.join((t['AssetPathName'].split('.').pop(),t['SubPathString'].split('.').pop()) if (t:=p.get('otherPipeInOtherLevel')) else (area, p['OtherPipe']['ObjectName']))
+                pipes[ a ] = b
+                pipes[ b ] = a
 
+        for o in j:
             if not ((not marker_names or o['Name'] in marker_names) and (not marker_types or o['Type'] in marker_types)):
                 continue
 
-            data.append({'name':o['Name'], 'type':o['Type'], 'area':area })
-            optKey(data[-1], 'coins', prop.get('Coins',0))
-            optKey(data[-1], 'coins', prop.get('CoinsInGold',0))
-            optKey(data[-1], 'cost', prop.get('Cost',0))
-            optKey(data[-1], 'spawns', prop.get('Spawnthing',{}).get('ObjectName'))
-            optKey(data[-1], 'hits', prop.get('HitsToBreak',0))
-            optKey(data[-1], 'obsidian', prop.get('bObsidian',0))
-
-            vector = Vector((0,0,0))
-
-            def f(r, k=''):
-                nonlocal vector
-                p = r.get('Properties',{})
-
+            def get_matrix(o, matrix=Matrix.Identity(4)):
+                p = o.get('Properties',{})
                 if p.get('RelativeLocation'):
-                    matrix = Matrix.LocRotScale(getVec(p.get('RelativeLocation')), getRot(p.get('RelativeRotation')), getVec(p.get('RelativeScale3D'), 1))
-                    vector = matrix @ vector
+                    matrix = Matrix.LocRotScale(getVec(p.get('RelativeLocation')), getRot(p.get('RelativeRotation')), getVec(p.get('RelativeScale3D'), 1)) @ matrix
 
                 for parent in ['RootObject', 'RootComponent', 'DefaultSceneRoot', 'AttachParent']:
                     node = p.get(parent,{})
                     if ref := node.get('OuterIndex',{}).get('ObjectName'):
-                        key = ':'.join( ( node.get('ObjectName',''), ref ) )
+                        key = ':'.join((node.get('ObjectName',''),ref))
                         if key in outer:
-                            return f( outer[key], key )
-            f(o)
+                            return get_matrix(outer[key], matrix)
 
-            if area in assets:
-                vector = assets[area] @ vector
+                return matrix
 
-            data[-1].update({'lat': vector.y, 'lng': vector.x, 'alt': vector.z})
+            matrix = get_matrix(o)
+            if area in areas:
+                matrix  = areas[area] @ matrix
+
+            data.append({'name':o['Name'], 'type':o['Type'], 'area':area })
+
+            v = matrix.to_translation()
+            data[-1].update({'lat': v.y, 'lng': v.x, 'alt': v.z})
+
+            p = o.get('Properties',{})
+            optKey(data[-1], 'coins', p.get('Coins'))
+            optKey(data[-1], 'coins', p.get('CoinsInGold'))
+            optKey(data[-1], 'cost', p.get('Cost'))
+            optKey(data[-1], 'spawns', p.get('Spawnthing',{}).get('ObjectName'))
+            optKey(data[-1], 'hits', p.get('HitsToBreak'))
+            optKey(data[-1], 'obsidian', p.get('bObsidian'))
+            optKey(data[-1], 'other_pipe', pipes.get(':'.join((area,o['Name']))))
+            optKey(data[-1], 'price_type', price_types.get(p.get('PriceType')))
+
+            if o['Type'] in ('Jumppad_C'):
+                optKey(data[-1], 'relative_velocity', p.get('RelativeVelocity'))
+                optKey(data[-1], 'velocity', (v:=p.get('Velocity'))and getXYZ(getVec(v)))
+                d = Vector((matrix[0][2],matrix[1][2],matrix[2][2]));
+                d.normalize()
+                data[-1].update({'direction': getXYZ(d)})
+                optKey(data[-1], 'allow_stomp', p.get('AllowStomp'))
+                optKey(data[-1], 'disable_movement', p.get('DisableMovementInAir'))
+                optKey(data[-1], 'allow_relative_velocity', p.get('RelativeVelocity?'))
+                optKey(data[-1], 'center_actor', p.get('CenterActor'))
 
     for area in config[game]['maps']:
         path = os.path.join(cache_dir, area + '.json')

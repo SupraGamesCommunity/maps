@@ -107,37 +107,37 @@
     "name": "BuyBelt2_2",
     "type": "BuyBelt_C",
     "area": "Map",
-    "cost": 120,
     "lat": 16689.0234375,
     "lng": 20230.7265625,
-    "alt": 803.8145141601562
+    "alt": 803.8145141601562,
+    "cost": 120
   },
   {
     "name": "BuyChestDetector_30",
     "type": "BuyChestDetector_C",
     "area": "Map",
-    "cost": 400,
     "lat": 27170.046875,
     "lng": 44738.703125,
-    "alt": 1335.6939697265625
+    "alt": 1335.6939697265625,
+    "cost": 400
   },
   {
     "name": "BuyChestDetectorRadius",
     "type": "BuyChestDetectorRadius_C",
     "area": "Map",
-    "cost": 474,
     "lat": -33748.2265625,
     "lng": 175.25746154785156,
-    "alt": -208.8917236328125
+    "alt": -208.8917236328125,
+    "cost": 474
   },
   {
     "name": "BuyDoubleJump2",
     "type": "BuyDoubleJump_C",
     "area": "Map",
-    "cost": 15,
     "lat": 17104.06640625,
     "lng": 20346.30078125,
-    "alt": 804.4705200195312
+    "alt": 804.4705200195312,
+    "cost": 15
   },
   {
     "name": "BuyDoubleJump_786",
@@ -151,37 +151,37 @@
     "name": "BuyForceBeamGold",
     "type": "BuyForceBeamGold_C",
     "area": "Map",
-    "cost": 5,
     "lat": 17283.3203125,
     "lng": 20384.515625,
-    "alt": 802.7789306640625
+    "alt": 802.7789306640625,
+    "cost": 5
   },
   {
     "name": "BuyForceBlock3",
     "type": "BuyForceBlock_C",
     "area": "Map",
-    "cost": 40,
     "lat": 16903.8125,
     "lng": 20281.40625,
-    "alt": 803.8145141601562
+    "alt": 803.8145141601562,
+    "cost": 40
   },
   {
     "name": "BuyForceBlock_695",
     "type": "BuyForceBlock_C",
     "area": "Map",
-    "cost": 20,
     "lat": -33724.125,
     "lng": 135.09010314941406,
-    "alt": -208.89215087890625
+    "alt": -208.89215087890625,
+    "cost": 20
   },
   {
     "name": "BuyGun2_2",
     "type": "BuyGun1_C",
     "area": "Map",
-    "cost": 60,
     "lat": 16804.07421875,
     "lng": 20279.546875,
-    "alt": 803.8143310546875
+    "alt": 803.8143310546875,
+    "cost": 60
   },
   {
     "name": "BuyGunAlt_478",
@@ -195,235 +195,235 @@
     "name": "BuyGunCriticalDamage_1496",
     "type": "BuyGunCriticalDamage_C",
     "area": "Map",
-    "cost": 25,
     "lat": 2690.83251953125,
     "lng": -736.9744873046875,
-    "alt": 128.9107666015625
+    "alt": 128.9107666015625,
+    "cost": 25
   },
   {
     "name": "BuyGunCriticalDamageChance2_1856",
     "type": "BuyGunCriticalDamageChance_C",
     "area": "Map",
-    "cost": 10,
     "lat": -37136.22265625,
     "lng": -18338.43359375,
-    "alt": -1138.0845947265625
+    "alt": -1138.0845947265625,
+    "cost": 10
   },
   {
     "name": "BuyGunCriticalDamageChance3_3189",
     "type": "BuyGunCriticalDamageChance_C",
     "area": "Map",
-    "cost": 20,
     "lat": 22096.912109375,
     "lng": 10155.486328125,
-    "alt": -18.22405242919922
+    "alt": -18.22405242919922,
+    "cost": 20
   },
   {
     "name": "BuyGunCriticalDamageChance4_198",
     "type": "BuyGunCriticalDamageChance_C",
     "area": "Map",
-    "cost": 20,
     "lat": 52516.84375,
     "lng": -67209.0859375,
-    "alt": 1099.707763671875
+    "alt": 1099.707763671875,
+    "cost": 20
   },
   {
     "name": "BuyGunCriticalDamageChance_1426",
     "type": "BuyGunCriticalDamageChance_C",
     "area": "Map",
-    "cost": 10,
     "lat": -11419.5537109375,
     "lng": -12802.7421875,
-    "alt": -1690.3917236328125
+    "alt": -1690.3917236328125,
+    "cost": 10
   },
   {
     "name": "BuyGunDamage+15_1234",
     "type": "BuyGunDamage+15_C",
     "area": "Map",
-    "cost": 120,
     "lat": -11550.875,
     "lng": -23101.931640625,
-    "alt": -1660.382080078125
+    "alt": -1660.382080078125,
+    "cost": 120
   },
   {
     "name": "BuyGunDamage+5_235",
     "type": "BuyGunDamage+5_C",
     "area": "Map",
-    "cost": 120,
     "lat": 21814.56640625,
     "lng": 9879.4658203125,
-    "alt": -20.0
+    "alt": -20.0,
+    "cost": 120
   },
   {
     "name": "BuyGunRefillSpeed+66_478",
     "type": "BuyGunRefillSpeed+66_C",
     "area": "Map",
-    "cost": 30,
     "lat": -36879.9140625,
     "lng": -18389.73828125,
-    "alt": -1075.4705810546875
+    "alt": -1075.4705810546875,
+    "cost": 30
   },
   {
     "name": "BuyGunRefillSpeed+67_198",
     "type": "BuyGunRefillSpeed+66_C",
     "area": "Map",
-    "cost": 250,
     "lat": 52239.375,
     "lng": -67205.3515625,
-    "alt": 1105.3001708984375
+    "alt": 1105.3001708984375,
+    "cost": 250
   },
   {
     "name": "BuyGunRefillSpeedx2_374",
     "type": "BuyGunRefillSpeed+66_C",
     "area": "Map",
-    "cost": 190,
     "lat": 21487.068359375,
     "lng": 9621.9853515625,
-    "alt": -20.0
+    "alt": -20.0,
+    "cost": 190
   },
   {
     "name": "BuySilentFeet2",
     "type": "BuyGunRefillSpeed+66_C",
     "area": "Map",
-    "cost": 40,
     "lat": -12392.7412109375,
     "lng": -23095.521484375,
-    "alt": -1668.999755859375
+    "alt": -1668.999755859375,
+    "cost": 40
   },
   {
     "name": "BuyGunRefireRate50_506",
     "type": "BuyGunRefireRate50_C",
     "area": "Map",
-    "cost": 140,
     "lat": -11320.359375,
     "lng": -23100.384765625,
-    "alt": -1663.2586669921875
+    "alt": -1663.2586669921875,
+    "cost": 140
   },
   {
     "name": "BuySilentFeet_902",
     "type": "BuyGunRefireRate50_C",
     "area": "Map",
-    "cost": 40,
     "lat": -12244.0947265625,
     "lng": -23095.03515625,
-    "alt": -1722.1226806640625
+    "alt": -1722.1226806640625,
+    "cost": 40
   },
   {
     "name": "BuyGunSpeedx2_436",
     "type": "BuyGunSpeedx2_C",
     "area": "Map",
-    "cost": 5,
     "lat": -11697.0458984375,
     "lng": -23131.419921875,
-    "alt": -1740.8134765625
+    "alt": -1740.8134765625,
+    "cost": 5
   },
   {
     "name": "BuyHealth+15_765",
     "type": "BuyHealth+15_C",
     "area": "Map",
-    "cost": 10,
     "lat": -33490.23046875,
     "lng": 275.44390869140625,
-    "alt": -208.89215087890625
+    "alt": -208.89215087890625,
+    "cost": 10
   },
   {
     "name": "BuyHealth+16_457",
     "type": "BuyHealth+15_C",
     "area": "Map",
-    "cost": 70,
     "lat": -11908.509765625,
     "lng": -23116.8515625,
-    "alt": -1713.5672607421875
+    "alt": -1713.5672607421875,
+    "cost": 70
   },
   {
     "name": "BuyHealth+17",
     "type": "BuyHealth+15_C",
     "area": "Map",
-    "cost": 150,
     "lat": 21667.548828125,
     "lng": 9757.6328125,
-    "alt": -20.0
+    "alt": -20.0,
+    "cost": 150
   },
   {
     "name": "BuyHealth+5",
     "type": "BuyHealth+5_C",
     "area": "Map",
-    "cost": 35,
     "lat": 2127.868896484375,
     "lng": -583.0960083007812,
-    "alt": 323.40106201171875
+    "alt": 323.40106201171875,
+    "cost": 35
   },
   {
     "name": "BuyHealthRegen2_695",
     "type": "BuyHealthRegen_C",
     "area": "Map",
-    "cost": 5,
     "lat": -34003.71875,
     "lng": -67.00196838378906,
-    "alt": -208.8922119140625
+    "alt": -208.8922119140625,
+    "cost": 5
   },
   {
     "name": "BuyHealthRegenMax10_330",
     "type": "BuyHealthRegenMax10_C",
     "area": "Map",
-    "cost": 180,
     "lat": 21912.978515625,
     "lng": 9971.3427734375,
-    "alt": -20.0
+    "alt": -20.0,
+    "cost": 180
   },
   {
     "name": "BuyHealthRegenMax5_1162",
     "type": "BuyHealthRegenMax5_C",
     "area": "Map",
-    "cost": 40,
     "lat": 52018.39453125,
     "lng": -67206.46875,
-    "alt": 1099.7083740234375
+    "alt": 1099.7083740234375,
+    "cost": 40
   },
   {
     "name": "BuyShieldBreaker_1026",
     "type": "BuyShieldBreaker_C",
     "area": "Map",
-    "cost": 35,
     "lat": -36682.95703125,
     "lng": -18442.462890625,
-    "alt": -1137.511962890625
+    "alt": -1137.511962890625,
+    "cost": 35
   },
   {
     "name": "BuyShowProgress2_2",
     "type": "BuyShowProgress_C",
     "area": "Map",
-    "cost": 1,
     "lat": 2154.03564453125,
     "lng": -584.609619140625,
-    "alt": 194.14773559570312
+    "alt": 194.14773559570312,
+    "cost": 1
   },
   {
     "name": "BuySmashdownDamage+33",
     "type": "BuySmashdownDamage+33_C",
     "area": "Map",
-    "cost": 50,
     "lat": 51529.32421875,
     "lng": -67252.4453125,
-    "alt": 1072.819091796875
+    "alt": 1072.819091796875,
+    "cost": 50
   },
   {
     "name": "BuySpeedx15_2",
     "type": "BuySpeedx15_C",
     "area": "Map",
-    "cost": 223,
     "lat": -33893.21875,
     "lng": 18.940216064453125,
-    "alt": -208.89239501953125
+    "alt": -208.89239501953125,
+    "cost": 223
   },
   {
     "name": "BuySpeedx2_206",
     "type": "BuySpeedx2_C",
     "area": "Map",
-    "cost": 12,
     "lat": -33804.83203125,
     "lng": 80.78148651123047,
-    "alt": -210.2398681640625
+    "alt": -210.2398681640625,
+    "cost": 12
   },
   {
     "name": "BuyStats",
@@ -453,55 +453,55 @@
     "name": "BuySwordCriticalDamageChance2_2395",
     "type": "BuySwordCriticalDamageChance_C",
     "area": "Map",
-    "cost": 10,
     "lat": -36483.71875,
     "lng": -18478.12109375,
-    "alt": -1062.850830078125
+    "alt": -1062.850830078125,
+    "cost": 10
   },
   {
     "name": "BuySwordCriticalDamageChance3_296",
     "type": "BuySwordCriticalDamageChance_C",
     "area": "Map",
-    "cost": 10,
     "lat": 51767.75,
     "lng": -67199.3984375,
-    "alt": 1104.100830078125
+    "alt": 1104.100830078125,
+    "cost": 10
   },
   {
     "name": "BuySwordCriticalDamageChance_1657",
     "type": "BuySwordCriticalDamageChance_C",
     "area": "Map",
-    "cost": 10,
     "lat": 2393.044189453125,
     "lng": -733.5379638671875,
-    "alt": 128.91061401367188
+    "alt": 128.91061401367188,
+    "cost": 10
   },
   {
     "name": "BuySwordDamage+11",
     "type": "BuySwordDamage+1_C",
     "area": "Map",
-    "cost": 5,
     "lat": -33958.2890625,
     "lng": 16.502090454101562,
-    "alt": -208.89187622070312
+    "alt": -208.89187622070312,
+    "cost": 5
   },
   {
     "name": "BuySwordDamage+10_2",
     "type": "BuySwordDamage+3_C",
     "area": "Map",
-    "cost": 65,
     "lat": -33530.83984375,
     "lng": 333.5240173339844,
-    "alt": -208.89187622070312
+    "alt": -208.89187622070312,
+    "cost": 65
   },
   {
     "name": "UpgradeSwordDamageX2_716",
     "type": "BuySwordDamage+3_C",
     "area": "Map",
-    "cost": 40,
     "lat": -12066.693359375,
     "lng": -23106.603515625,
-    "alt": -1670.8896484375
+    "alt": -1670.8896484375,
+    "cost": 40
   },
   {
     "name": "BuyTranslocator_7",
@@ -515,73 +515,73 @@
     "name": "BuyTripleJump2",
     "type": "BuyTripleJump_C",
     "area": "Map",
-    "cost": 15,
     "lat": 17041.91015625,
     "lng": 20299.1328125,
-    "alt": 802.3577270507812
+    "alt": 802.3577270507812,
+    "cost": 15
   },
   {
     "name": "BuyTripleJump_877",
     "type": "BuyTripleJump_C",
     "area": "Map",
-    "cost": 30,
     "lat": -33882.11328125,
     "lng": 55.43764877319336,
-    "alt": -208.89208984375
+    "alt": -208.89208984375,
+    "cost": 30
   },
   {
     "name": "BuyUpgradeChestNum",
     "type": "BuyUpgradeChestNum_C",
     "area": "Map",
-    "cost": 337,
     "lat": -34014.0,
     "lng": -37.0,
-    "alt": -209.0
+    "alt": -209.0,
+    "cost": 337
   },
   {
     "name": "BuyWalletx15",
     "type": "BuyWalletx15_C",
     "area": "Map",
-    "cost": 15,
     "lat": -11426.935546875,
     "lng": -23135.169921875,
-    "alt": -1728.2237548828125
+    "alt": -1728.2237548828125,
+    "cost": 15
   },
   {
     "name": "BuyWalletx16",
     "type": "BuyWalletx15_C",
     "area": "Map",
-    "cost": 15,
     "lat": 2225.852294921875,
     "lng": -322.3926696777344,
-    "alt": 181.45103454589844
+    "alt": 181.45103454589844,
+    "cost": 15
   },
   {
     "name": "BuyWalletx17_426",
     "type": "BuyWalletx15_C",
     "area": "Map",
-    "cost": 55,
     "lat": 52723.30078125,
     "lng": -67194.859375,
-    "alt": 1071.166259765625
+    "alt": 1071.166259765625,
+    "cost": 55
   },
   {
     "name": "BuyWallet+50_737",
     "type": "BuyWalletx2_C",
     "area": "Map",
-    "cost": 24,
     "lat": -33628.9296875,
     "lng": 201.7998504638672,
-    "alt": -208.89208984375
+    "alt": -208.89208984375,
+    "cost": 24
   },
   {
     "name": "BuyWallet+51",
     "type": "BuyWalletx2_C",
     "area": "Map",
-    "cost": 10,
     "lat": -33561.3203125,
     "lng": 274.32745361328125,
-    "alt": -203.6505126953125
+    "alt": -203.6505126953125,
+    "cost": 10
   },
   {
     "name": "BuyWalletx2_986",
@@ -595,856 +595,856 @@
     "name": "Chest100_2221",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuySmashdownRadius+_C",
     "lat": 39146.71484375,
     "lng": -17795.33203125,
-    "alt": 392.96710205078125
+    "alt": 392.96710205078125,
+    "spawns": "BuySmashdownRadius+_C"
   },
   {
     "name": "Chest101_2025",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuyGunComboDamage+25_C",
     "lat": 43893.93359375,
     "lng": -15900.5791015625,
-    "alt": 2372.739990234375
+    "alt": 2372.739990234375,
+    "spawns": "BuyGunComboDamage+25_C"
   },
   {
     "name": "Chest102_2567",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuyGunComboDamage+25_C",
     "lat": 63076.5703125,
     "lng": -64200.48828125,
-    "alt": 1378.385986328125
+    "alt": 1378.385986328125,
+    "spawns": "BuyGunComboDamage+25_C"
   },
   {
     "name": "Chest103_3711",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuyGunDamage+1_C",
     "lat": -5707.30859375,
     "lng": -12871.306640625,
-    "alt": 1128.05908203125
+    "alt": 1128.05908203125,
+    "spawns": "BuyGunDamage+1_C"
   },
   {
     "name": "Chest104_6073",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuyGunDamage+1_C",
     "lat": -17135.998046875,
     "lng": -34467.23046875,
-    "alt": 1577.4239501953125
+    "alt": 1577.4239501953125,
+    "spawns": "BuyGunDamage+1_C"
   },
   {
     "name": "Chest105_6706",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuyGunDamage+1_C",
     "lat": -16791.982421875,
     "lng": -18221.794921875,
-    "alt": 1215.118896484375
+    "alt": 1215.118896484375,
+    "spawns": "BuyGunDamage+1_C"
   },
   {
     "name": "Chest106_8060",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuyGunDamage+1_C",
     "lat": -37686.9921875,
     "lng": -65869.3203125,
-    "alt": 3493.421875
+    "alt": 3493.421875,
+    "spawns": "BuyGunDamage+1_C"
   },
   {
     "name": "Chest107_9218",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuyGunComboDamage+25_C",
     "lat": -27832.703125,
     "lng": -2740.546875,
-    "alt": 7813.55517578125
+    "alt": 7813.55517578125,
+    "spawns": "BuyGunComboDamage+25_C"
   },
   {
     "name": "Chest108_10670",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuyHealth+5_C",
     "lat": -23492.60546875,
     "lng": 12744.0087890625,
-    "alt": 567.9069213867188
+    "alt": 567.9069213867188,
+    "spawns": "BuyHealth+5_C"
   },
   {
     "name": "Chest109",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuyGunComboDamage+25_C",
     "lat": -38824.625,
     "lng": -2867.938720703125,
-    "alt": 382.10589599609375
+    "alt": 382.10589599609375,
+    "spawns": "BuyGunComboDamage+25_C"
   },
   {
     "name": "Chest10_1082",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "LotsOfCoins15_C",
     "lat": 4425.0,
     "lng": -4040.0,
-    "alt": -1315.0
+    "alt": -1315.0,
+    "spawns": "LotsOfCoins15_C"
   },
   {
     "name": "Chest110",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuySwordDamage+1_C",
     "lat": 51285.05078125,
     "lng": -44251.36328125,
-    "alt": 2376.92041015625
+    "alt": 2376.92041015625,
+    "spawns": "BuySwordDamage+1_C"
   },
   {
     "name": "Chest111_3",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuySwordDamage+1_C",
     "lat": -33359.74609375,
     "lng": -54718.44921875,
-    "alt": 4186.7998046875
+    "alt": 4186.7998046875,
+    "spawns": "BuySwordDamage+1_C"
   },
   {
     "name": "Chest112",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuyHealth+5_C",
     "lat": -39082.74609375,
     "lng": 525.322265625,
-    "alt": -182.00238037109375
+    "alt": -182.00238037109375,
+    "spawns": "BuyHealth+5_C"
   },
   {
     "name": "Chest113",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuySwordDamage+3_C",
     "lat": -26443.373046875,
     "lng": 2568.15673828125,
-    "alt": -53.847312927246094
+    "alt": -53.847312927246094,
+    "spawns": "BuySwordDamage+3_C"
   },
   {
     "name": "Chest114",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "StolenCoins_C",
     "lat": 34034.94140625,
     "lng": 25784.552734375,
-    "alt": 1173.0
+    "alt": 1173.0,
+    "spawns": "StolenCoins_C"
   },
   {
     "name": "Chest115_4",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "LotsOfCoins30_C",
     "lat": 38830.87109375,
     "lng": -62130.93359375,
-    "alt": 1676.8167724609375
+    "alt": 1676.8167724609375,
+    "spawns": "LotsOfCoins30_C"
   },
   {
     "name": "Chest116",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuyGunDamage+5_C",
     "lat": -43593.7890625,
     "lng": -15185.2529296875,
-    "alt": 1723.478271484375
+    "alt": 1723.478271484375,
+    "spawns": "BuyGunDamage+5_C"
   },
   {
     "name": "Chest117_2",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuyHealth+2_C",
     "lat": 19336.0,
     "lng": 19598.0,
-    "alt": 779.0
+    "alt": 779.0,
+    "spawns": "BuyHealth+2_C"
   },
   {
     "name": "Chest118_2",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuyGunDamage+5_C",
     "lat": 7147.97119140625,
     "lng": 51670.09375,
-    "alt": 3556.567626953125
+    "alt": 3556.567626953125,
+    "spawns": "BuyGunDamage+5_C"
   },
   {
     "name": "Chest119_2",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuyForceCubeBeam_C",
     "lat": -19590.267578125,
     "lng": 44702.30859375,
-    "alt": -587.1028442382812
+    "alt": -587.1028442382812,
+    "spawns": "BuyForceCubeBeam_C"
   },
   {
     "name": "Chest11_13130",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuyNumberRising_C",
     "lat": -34133.49609375,
     "lng": 632.2237548828125,
-    "alt": -388.4318542480469
+    "alt": -388.4318542480469,
+    "spawns": "BuyNumberRising_C"
   },
   {
     "name": "Chest120_2",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuyHealth+5_C",
     "lat": -13930.876953125,
     "lng": 35871.41015625,
-    "alt": 2466.5029296875
+    "alt": 2466.5029296875,
+    "spawns": "BuyHealth+5_C"
   },
   {
     "name": "Chest121_2",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuyTranslocatorDamagex3_C",
     "lat": 10624.03125,
     "lng": 39585.828125,
-    "alt": 3090.688720703125
+    "alt": 3090.688720703125,
+    "spawns": "BuyTranslocatorDamagex3_C"
   },
   {
     "name": "Chest122_2",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuyTranslocatorShotForce_C",
     "lat": 15619.4423828125,
     "lng": 51301.2734375,
-    "alt": 3129.594970703125
+    "alt": 3129.594970703125,
+    "spawns": "BuyTranslocatorShotForce_C"
   },
   {
     "name": "Chest123_5",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuyGunComboDamage+25_C",
     "lat": 12290.2578125,
     "lng": 51140.765625,
-    "alt": 6159.91796875
+    "alt": 6159.91796875,
+    "spawns": "BuyGunComboDamage+25_C"
   },
   {
     "name": "Chest124_8",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuyTranslocatorCoolDownHalf_C",
     "lat": 2748.13525390625,
     "lng": 40305.8671875,
-    "alt": 3414.068115234375
+    "alt": 3414.068115234375,
+    "spawns": "BuyTranslocatorCoolDownHalf_C"
   },
   {
     "name": "Chest125_2",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuyTranslocatorDamagex3_C",
     "lat": 16012.36328125,
     "lng": 38553.40625,
-    "alt": 3101.88232421875
+    "alt": 3101.88232421875,
+    "spawns": "BuyTranslocatorDamagex3_C"
   },
   {
     "name": "Chest126",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuyHealth+5_C",
     "lat": 20044.0390625,
     "lng": -7045.00341796875,
-    "alt": 625.2646484375
+    "alt": 625.2646484375,
+    "spawns": "BuyHealth+5_C"
   },
   {
     "name": "Chest127_2",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "LotsOfCoins30_C",
     "lat": 35519.03125,
     "lng": -51927.90625,
-    "alt": 3319.460205078125
+    "alt": 3319.460205078125,
+    "spawns": "LotsOfCoins30_C"
   },
   {
     "name": "Chest128",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "LotsOfCoins50_C",
     "lat": 32970.49609375,
     "lng": -48130.70703125,
-    "alt": 3082.763427734375
+    "alt": 3082.763427734375,
+    "spawns": "LotsOfCoins50_C"
   },
   {
     "name": "Chest129_6",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "LotsOfCoins50_C",
     "lat": 51090.31640625,
     "lng": -41244.4921875,
-    "alt": 1406.1898193359375
+    "alt": 1406.1898193359375,
+    "spawns": "LotsOfCoins50_C"
   },
   {
     "name": "Chest12_686",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuyHealthRegenMax5_C",
     "lat": -24524.421875,
     "lng": 11393.2548828125,
-    "alt": -593.3642578125
+    "alt": -593.3642578125,
+    "spawns": "BuyHealthRegenMax5_C"
   },
   {
     "name": "Chest130",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuyGunAltDamagex2_C",
     "lat": 25215.560546875,
     "lng": 23898.3828125,
-    "alt": 1316.6619873046875
+    "alt": 1316.6619873046875,
+    "spawns": "BuyGunAltDamagex2_C"
   },
   {
     "name": "Chest131",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "LotsOfCoins30_C",
     "lat": 23021.51953125,
     "lng": 11597.5537109375,
-    "alt": 7051.5625
+    "alt": 7051.5625,
+    "spawns": "LotsOfCoins30_C"
   },
   {
     "name": "Chest132",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "LotsOfCoins30_C",
     "lat": 13356.607421875,
     "lng": 9440.51171875,
-    "alt": 1041.968505859375
+    "alt": 1041.968505859375,
+    "spawns": "LotsOfCoins30_C"
   },
   {
     "name": "Chest133",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuyGunDamage+5_C",
     "lat": 9021.771484375,
     "lng": 53784.45703125,
-    "alt": 5603.29833984375
+    "alt": 5603.29833984375,
+    "spawns": "BuyGunDamage+5_C"
   },
   {
     "name": "Chest134_13",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuySwordDamage+1_C",
     "lat": -37658.640625,
     "lng": 28638.166015625,
-    "alt": 3881.4814453125
+    "alt": 3881.4814453125,
+    "spawns": "BuySwordDamage+1_C"
   },
   {
     "name": "Chest135",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuyGunComboDamage+25_C",
     "lat": -41590.078125,
     "lng": -28214.529296875,
-    "alt": -284.93194580078125
+    "alt": -284.93194580078125,
+    "spawns": "BuyGunComboDamage+25_C"
   },
   {
     "name": "Chest136_3",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "MoonTake_C",
     "lat": -26357.958984375,
     "lng": 20784.220703125,
-    "alt": 200.55702209472656
+    "alt": 200.55702209472656,
+    "spawns": "MoonTake_C"
   },
   {
     "name": "Chest137",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "MoonTake_C",
     "lat": -32352.046875,
     "lng": 21744.97265625,
-    "alt": -49.86250305175781
+    "alt": -49.86250305175781,
+    "spawns": "MoonTake_C"
   },
   {
     "name": "Chest138_5",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuyGunDamage+5_C",
     "lat": -11139.9130859375,
     "lng": 13519.4892578125,
-    "alt": -605.7159423828125
+    "alt": -605.7159423828125,
+    "spawns": "BuyGunDamage+5_C"
   },
   {
     "name": "Chest139",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuySwordCriticalDamageChance_C",
     "lat": 30531.1953125,
     "lng": 8227.3603515625,
-    "alt": 4123.068359375
+    "alt": 4123.068359375,
+    "spawns": "BuySwordCriticalDamageChance_C"
   },
   {
     "name": "Chest13_410",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuySwordDamage+02_C",
     "lat": -26135.19921875,
     "lng": 3358.921630859375,
-    "alt": 861.9844970703125
+    "alt": 861.9844970703125,
+    "spawns": "BuySwordDamage+02_C"
   },
   {
     "name": "Chest140",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "LotsOfCoins50_C",
     "lat": 29965.5,
     "lng": 8059.4765625,
-    "alt": 6777.4658203125
+    "alt": 6777.4658203125,
+    "spawns": "LotsOfCoins50_C"
   },
   {
     "name": "Chest141_3",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "LotsofCoins200_C",
     "lat": -39476.51171875,
     "lng": -7380.970703125,
-    "alt": 2009.1376953125
+    "alt": 2009.1376953125,
+    "spawns": "LotsofCoins200_C"
   },
   {
     "name": "Chest142",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuyWalletx15_C",
     "lat": -39472.4453125,
     "lng": -8026.84765625,
-    "alt": 1903.2098388671875
+    "alt": 1903.2098388671875,
+    "spawns": "BuyWalletx15_C"
   },
   {
     "name": "Chest143",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuyGunSplashDamage_C",
     "lat": 4337.05859375,
     "lng": -32797.2578125,
-    "alt": 812.6336059570312
+    "alt": 812.6336059570312,
+    "spawns": "BuyGunSplashDamage_C"
   },
   {
     "name": "Chest144",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuySwordDamage+1_C",
     "lat": -47494.66015625,
     "lng": -47968.08984375,
-    "alt": -58.144386291503906
+    "alt": -58.144386291503906,
+    "spawns": "BuySwordDamage+1_C"
   },
   {
     "name": "Chest145_2",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuyBelt_C",
     "lat": -41458.19921875,
     "lng": -60588.0390625,
-    "alt": -1552.3193359375
+    "alt": -1552.3193359375,
+    "spawns": "BuyBelt_C"
   },
   {
     "name": "Chest146_2",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuyCrystal_C",
     "lat": -22843.6640625,
     "lng": 46495.74609375,
-    "alt": 4484.392578125
+    "alt": 4484.392578125,
+    "spawns": "BuyCrystal_C"
   },
   {
     "name": "Chest147_2",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuyCrystal_C",
     "lat": 3320.883544921875,
     "lng": -8199.7744140625,
-    "alt": -1356.4093017578125
+    "alt": -1356.4093017578125,
+    "spawns": "BuyCrystal_C"
   },
   {
     "name": "Chest148_5",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuyGunComboDamage+25_C",
     "lat": -40128.234375,
     "lng": -26360.1953125,
-    "alt": -1103.99951171875
+    "alt": -1103.99951171875,
+    "spawns": "BuyGunComboDamage+25_C"
   },
   {
     "name": "Chest149",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuyGunHoly2_C",
     "lat": -35729.84765625,
     "lng": 367.09576416015625,
-    "alt": -151.61349487304688
+    "alt": -151.61349487304688,
+    "spawns": "BuyGunHoly2_C"
   },
   {
     "name": "Chest14_1121",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuyGun1_C",
     "lat": -28263.45703125,
     "lng": 23463.630859375,
-    "alt": 5183.943359375
+    "alt": 5183.943359375,
+    "spawns": "BuyGun1_C"
   },
   {
     "name": "Chest150",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuyHealthRegenMax5_C",
     "lat": 30090.171875,
     "lng": 30125.029296875,
-    "alt": 784.2453002929688
+    "alt": 784.2453002929688,
+    "spawns": "BuyHealthRegenMax5_C"
   },
   {
     "name": "Chest151_3",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuyHealthRegenMax5_C",
     "lat": -39268.0,
     "lng": 38657.26953125,
-    "alt": 5562.18408203125
+    "alt": 5562.18408203125,
+    "spawns": "BuyHealthRegenMax5_C"
   },
   {
     "name": "Chest152_6",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuyHealthRegenMax5_C",
     "lat": 28272.693359375,
     "lng": 86401.9921875,
-    "alt": 11015.41015625
+    "alt": 11015.41015625,
+    "spawns": "BuyHealthRegenMax5_C"
   },
   {
     "name": "Chest153_9",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "LotsofCoins200_C",
     "lat": -20062.634765625,
     "lng": 64640.875,
-    "alt": 12941.9169921875
+    "alt": 12941.9169921875,
+    "spawns": "LotsofCoins200_C"
   },
   {
     "name": "Chest154",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuyHealthRegenMax5_C",
     "lat": 7326.0,
     "lng": 4125.0,
-    "alt": 2724.0
+    "alt": 2724.0,
+    "spawns": "BuyHealthRegenMax5_C"
   },
   {
     "name": "Chest155_2",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuySmashdownRadius+_C",
     "lat": -47807.0,
     "lng": 1933.0,
-    "alt": 2225.0
+    "alt": 2225.0,
+    "spawns": "BuySmashdownRadius+_C"
   },
   {
     "name": "Chest156_2",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuySilentFeet_C",
     "lat": -46182.67578125,
     "lng": -39268.80078125,
-    "alt": 2034.1473388671875
+    "alt": 2034.1473388671875,
+    "spawns": "BuySilentFeet_C"
   },
   {
     "name": "Chest157",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuyGraveDetector_C",
     "lat": -59401.328125,
     "lng": -8534.4365234375,
-    "alt": 1102.0
+    "alt": 1102.0,
+    "spawns": "BuyGraveDetector_C"
   },
   {
     "name": "Chest158",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuyUpgradeGraveNum_C",
     "lat": 75514.5,
     "lng": 16598.02734375,
-    "alt": 3609.28369140625
+    "alt": 3609.28369140625,
+    "spawns": "BuyUpgradeGraveNum_C"
   },
   {
     "name": "Chest159_6",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuyForceCubeStompGrave3_C",
     "lat": 19500.9375,
     "lng": -44223.921875,
-    "alt": 1000.9692993164062
+    "alt": 1000.9692993164062,
+    "spawns": "BuyForceCubeStompGrave3_C"
   },
   {
     "name": "Chest15_2768",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "LotsOfCoins10_C",
     "lat": -24497.416015625,
     "lng": 16194.025390625,
-    "alt": 1666.862060546875
+    "alt": 1666.862060546875,
+    "spawns": "LotsOfCoins10_C"
   },
   {
     "name": "Chest160",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuyGunAltDamagex2_C",
     "lat": -5777.71044921875,
     "lng": 86925.6328125,
-    "alt": 5673.5517578125
+    "alt": 5673.5517578125,
+    "spawns": "BuyGunAltDamagex2_C"
   },
   {
     "name": "Chest161_2",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuyMoreLoot_C",
     "lat": 27414.28125,
     "lng": 42711.47265625,
-    "alt": 1831.2603759765625
+    "alt": 1831.2603759765625,
+    "spawns": "BuyMoreLoot_C"
   },
   {
     "name": "Chest162",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuyWalletx15_C",
     "lat": -38565.91796875,
     "lng": 1377.625244140625,
-    "alt": 1643.7452392578125
+    "alt": 1643.7452392578125,
+    "spawns": "BuyWalletx15_C"
   },
   {
     "name": "Chest163",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuyHealthRegenMax5_C",
     "lat": 1173.6888427734375,
     "lng": 9469.7958984375,
-    "alt": 851.746826171875
+    "alt": 851.746826171875,
+    "spawns": "BuyHealthRegenMax5_C"
   },
   {
     "name": "Chest164",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuyHealthRegenMax5_C",
     "lat": -29163.38671875,
     "lng": 22977.734375,
-    "alt": -687.1444702148438
+    "alt": -687.1444702148438,
+    "spawns": "BuyHealthRegenMax5_C"
   },
   {
     "name": "Chest165",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuyHealthRegenMax5_C",
     "lat": 51178.8515625,
     "lng": -5570.2119140625,
-    "alt": 656.7651977539062
+    "alt": 656.7651977539062,
+    "spawns": "BuyHealthRegenMax5_C"
   },
   {
     "name": "Chest166",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuyHealthRegenMax5_C",
     "lat": 45188.140625,
     "lng": -25940.03515625,
-    "alt": 242.19204711914062
+    "alt": 242.19204711914062,
+    "spawns": "BuyHealthRegenMax5_C"
   },
   {
     "name": "Chest167",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuyHealthRegenMax5_C",
     "lat": 34155.140625,
     "lng": -5064.72998046875,
-    "alt": 2749.980712890625
+    "alt": 2749.980712890625,
+    "spawns": "BuyHealthRegenMax5_C"
   },
   {
     "name": "Chest168",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuyWalletx2_C",
     "lat": -20231.435546875,
     "lng": 64139.890625,
-    "alt": 12868.1220703125
+    "alt": 12868.1220703125,
+    "spawns": "BuyWalletx2_C"
   },
   {
     "name": "Chest169",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuyHealth+5_C",
     "lat": -15349.2451171875,
     "lng": 17640.1640625,
-    "alt": 968.7579345703125
+    "alt": 968.7579345703125,
+    "spawns": "BuyHealth+5_C"
   },
   {
     "name": "Chest16_5090",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuyGunAltDamagex2_C",
     "lat": -37346.328125,
     "lng": -36853.71484375,
-    "alt": 735.130615234375
+    "alt": 735.130615234375,
+    "spawns": "BuyGunAltDamagex2_C"
   },
   {
     "name": "Chest170",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuyHealth+5_C",
     "lat": -29122.087890625,
     "lng": 23125.0625,
-    "alt": 238.6454315185547
+    "alt": 238.6454315185547,
+    "spawns": "BuyHealth+5_C"
   },
   {
     "name": "Chest171_2",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuyHealthRegenMax5_C",
     "lat": 35811.7421875,
     "lng": 25197.794921875,
-    "alt": 2307.26708984375
+    "alt": 2307.26708984375,
+    "spawns": "BuyHealthRegenMax5_C"
   },
   {
     "name": "Chest172",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuySwordDamage+1_C",
     "lat": -22882.7734375,
     "lng": 8870.53515625,
-    "alt": 600.6342163085938
+    "alt": 600.6342163085938,
+    "spawns": "BuySwordDamage+1_C"
   },
   {
     "name": "Chest17_812",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuySwordDamage+1_C",
     "lat": -25065.0,
     "lng": 24425.0,
-    "alt": 3995.0
+    "alt": 3995.0,
+    "spawns": "BuySwordDamage+1_C"
   },
   {
     "name": "Chest18_812",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuySwordDamage+02_C",
     "lat": -34330.0,
     "lng": 15830.0,
-    "alt": 4160.9326171875
+    "alt": 4160.9326171875,
+    "spawns": "BuySwordDamage+02_C"
   },
   {
     "name": "Chest19_6182",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuyForceBlockTelefrag_C",
     "lat": -16721.474609375,
     "lng": 23511.6640625,
-    "alt": 643.7122802734375
+    "alt": 643.7122802734375,
+    "spawns": "BuyForceBlockTelefrag_C"
   },
   {
     "name": "Chest2",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuySwordDamage+1_C",
     "lat": -20440.513671875,
     "lng": 9824.7294921875,
-    "alt": 1035.530029296875
+    "alt": 1035.530029296875,
+    "spawns": "BuySwordDamage+1_C"
   },
   {
     "name": "Chest20_9041",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuyHealth+5_C",
     "lat": -45484.5546875,
     "lng": 3975.550048828125,
-    "alt": 788.945556640625
+    "alt": 788.945556640625,
+    "spawns": "BuyHealth+5_C"
   },
   {
     "name": "Chest21_10208",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuyWalletx2_C",
     "lat": -36796.46484375,
     "lng": 13052.90625,
-    "alt": 1694.427978515625
+    "alt": 1694.427978515625,
+    "spawns": "BuyWalletx2_C"
   },
   {
     "name": "Chest22_11777",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuyHealth+5_C",
     "lat": -24074.880859375,
     "lng": -3682.033935546875,
-    "alt": -2113.833251953125
+    "alt": -2113.833251953125,
+    "spawns": "BuyHealth+5_C"
   },
   {
     "name": "Chest23_14291",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuySwordDamage+1_C",
     "lat": -27703.71484375,
     "lng": 29420.501953125,
-    "alt": 1701.3138427734375
+    "alt": 1701.3138427734375,
+    "spawns": "BuySwordDamage+1_C"
   },
   {
     "name": "Chest24_16178",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuyHealthRegenSpeed_C",
     "lat": -29514.26171875,
     "lng": 18011.08984375,
-    "alt": -122.11679077148438
+    "alt": -122.11679077148438,
+    "spawns": "BuyHealthRegenSpeed_C"
   },
   {
     "name": "Chest25_692",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuyHealth+2_C",
     "lat": -25290.0,
     "lng": 24135.619140625,
-    "alt": 3090.0
+    "alt": 3090.0,
+    "spawns": "BuyHealth+2_C"
   },
   {
     "name": "Chest26_1739",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "LotsOfCoins10_C",
     "lat": -39112.77734375,
     "lng": 1010.739501953125,
-    "alt": 248.50770568847656
+    "alt": 248.50770568847656,
+    "spawns": "LotsOfCoins10_C"
   },
   {
     "name": "Chest27_4172",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuyHealth+5_C",
     "lat": -38583.33203125,
     "lng": -2698.9853515625,
-    "alt": 82.5428466796875
+    "alt": 82.5428466796875,
+    "spawns": "BuyHealth+5_C"
   },
   {
     "name": "Chest28_4997",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuyHealthRegenSpeed_C",
     "lat": -6981.54296875,
     "lng": 8050.6123046875,
-    "alt": 1198.4239501953125
+    "alt": 1198.4239501953125,
+    "spawns": "BuyHealthRegenSpeed_C"
   },
   {
     "name": "Chest29_7214",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuySwordHoly1_C",
     "lat": -36769.86328125,
     "lng": 13286.13671875,
-    "alt": 461.1050109863281
+    "alt": 461.1050109863281,
+    "spawns": "BuySwordHoly1_C"
   },
   {
     "name": "Chest30_2321",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "LotsOfCoins15_C",
     "lat": 8539.5283203125,
     "lng": -6211.3154296875,
-    "alt": 251.29544067382812
+    "alt": 251.29544067382812,
+    "spawns": "LotsOfCoins15_C"
   },
   {
     "name": "Chest31_9005",
@@ -1458,685 +1458,685 @@
     "name": "Chest32_1454",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuySwordRange25_C",
     "lat": -39510.37890625,
     "lng": -3131.217041015625,
-    "alt": 599.9825439453125
+    "alt": 599.9825439453125,
+    "spawns": "BuySwordRange25_C"
   },
   {
     "name": "Chest33_1094",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuyHealth+5_C",
     "lat": -35592.91015625,
     "lng": -748.7430419921875,
-    "alt": 350.3088684082031
+    "alt": 350.3088684082031,
+    "spawns": "BuyHealth+5_C"
   },
   {
     "name": "Chest34_2175",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "LotsOfCoins10_C",
     "lat": -32485.2421875,
     "lng": -473.9959716796875,
-    "alt": -46.821571350097656
+    "alt": -46.821571350097656,
+    "spawns": "LotsOfCoins10_C"
   },
   {
     "name": "Chest35_2137",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuySwordCriticalDamage_C",
     "lat": -19473.7734375,
     "lng": 3023.560546875,
-    "alt": 46.30939483642578
+    "alt": 46.30939483642578,
+    "spawns": "BuySwordCriticalDamage_C"
   },
   {
     "name": "Chest36_4639",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuyHealth+5_C",
     "lat": -27931.107421875,
     "lng": 23444.71484375,
-    "alt": 4392.32568359375
+    "alt": 4392.32568359375,
+    "spawns": "BuyHealth+5_C"
   },
   {
     "name": "Chest37_1815",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuyEnemiesLoot_C",
     "lat": -24664.7734375,
     "lng": 13408.8837890625,
-    "alt": 986.7191162109375
+    "alt": 986.7191162109375,
+    "spawns": "BuyEnemiesLoot_C"
   },
   {
     "name": "Chest38_3995",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuyHealthRegenMax5_C",
     "lat": -41894.8359375,
     "lng": 10113.1630859375,
-    "alt": 596.8021850585938
+    "alt": 596.8021850585938,
+    "spawns": "BuyHealthRegenMax5_C"
   },
   {
     "name": "Chest39_5860",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuyHealth+5_C",
     "lat": -41104.50390625,
     "lng": 1580.95361328125,
-    "alt": 520.6995849609375
+    "alt": 520.6995849609375,
+    "spawns": "BuyHealth+5_C"
   },
   {
     "name": "Chest3_1811",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "LotsOfCoins10_C",
     "lat": -17914.5390625,
     "lng": -28836.90234375,
-    "alt": 863.5711669921875
+    "alt": 863.5711669921875,
+    "spawns": "LotsOfCoins10_C"
   },
   {
     "name": "Chest40_8",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuySwordDamage+3_C",
     "lat": 29591.244140625,
     "lng": 7846.037109375,
-    "alt": 4081.624267578125
+    "alt": 4081.624267578125,
+    "spawns": "BuySwordDamage+3_C"
   },
   {
     "name": "Chest41_2",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuyGunComboDamage+25_C",
     "lat": 32351.224609375,
     "lng": 66436.7734375,
-    "alt": 3132.062255859375
+    "alt": 3132.062255859375,
+    "spawns": "BuyGunComboDamage+25_C"
   },
   {
     "name": "Chest42_1521",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "LotsOfCoins10_C",
     "lat": 3515.743408203125,
     "lng": -22074.646484375,
-    "alt": -667.5899047851562
+    "alt": -667.5899047851562,
+    "spawns": "LotsOfCoins10_C"
   },
   {
     "name": "Chest43",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuyHealth+5_C",
     "lat": -11545.7763671875,
     "lng": 25739.546875,
-    "alt": 832.4546508789062
+    "alt": 832.4546508789062,
+    "spawns": "BuyHealth+5_C"
   },
   {
     "name": "Chest44_2721",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuySmashdown_C",
     "lat": -20127.658203125,
     "lng": -30162.654296875,
-    "alt": -654.6292114257812
+    "alt": -654.6292114257812,
+    "spawns": "BuySmashdown_C"
   },
   {
     "name": "Chest45_4075",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuyHealth+5_C",
     "lat": -26324.57421875,
     "lng": -29171.681640625,
-    "alt": -1260.02587890625
+    "alt": -1260.02587890625,
+    "spawns": "BuyHealth+5_C"
   },
   {
     "name": "Chest46",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuyHealthRegenMax5_C",
     "lat": -37777.0,
     "lng": -2191.605712890625,
-    "alt": 123.48472595214844
+    "alt": 123.48472595214844,
+    "spawns": "BuyHealthRegenMax5_C"
   },
   {
     "name": "Chest47",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuyCrystal_C",
     "lat": -22481.505859375,
     "lng": -26123.95703125,
-    "alt": -331.85400390625
+    "alt": -331.85400390625,
+    "spawns": "BuyCrystal_C"
   },
   {
     "name": "Chest48_4722",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "LotsOfCoins10_C",
     "lat": -22614.806640625,
     "lng": -23469.712890625,
-    "alt": 961.1815795898438
+    "alt": 961.1815795898438,
+    "spawns": "LotsOfCoins10_C"
   },
   {
     "name": "Chest49_1234",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "LotsOfCoins50_C",
     "lat": -24188.359375,
     "lng": -35370.546875,
-    "alt": -996.1937866210938
+    "alt": -996.1937866210938,
+    "spawns": "LotsOfCoins50_C"
   },
   {
     "name": "Chest4_1544",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuySwordCriticalDamageChance_C",
     "lat": -26292.451171875,
     "lng": -1787.8641357421875,
-    "alt": 1278.3411865234375
+    "alt": 1278.3411865234375,
+    "spawns": "BuySwordCriticalDamageChance_C"
   },
   {
     "name": "Chest50_2182",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "LotsOfCoins15_C",
     "lat": -29084.794921875,
     "lng": -3945.395263671875,
-    "alt": 1897.4688720703125
+    "alt": 1897.4688720703125,
+    "spawns": "LotsOfCoins15_C"
   },
   {
     "name": "Chest51_1360",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuySwordDamage+02_C",
     "lat": -16193.373046875,
     "lng": -29697.01171875,
-    "alt": 241.7152557373047
+    "alt": 241.7152557373047,
+    "spawns": "BuySwordDamage+02_C"
   },
   {
     "name": "Chest52_10699",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "LotsOfCoins10_C",
     "lat": -19937.205078125,
     "lng": 352.684326171875,
-    "alt": -2011.9208984375
+    "alt": -2011.9208984375,
+    "spawns": "LotsOfCoins10_C"
   },
   {
     "name": "Chest53_1192",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuySwordCriticalDamageChance_C",
     "lat": -42995.2109375,
     "lng": -51711.6171875,
-    "alt": -507.0574035644531
+    "alt": -507.0574035644531,
+    "spawns": "BuySwordCriticalDamageChance_C"
   },
   {
     "name": "Chest54_8402",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuySmashdownDamage+33_C",
     "lat": 24147.111328125,
     "lng": -27786.30078125,
-    "alt": 414.645751953125
+    "alt": 414.645751953125,
+    "spawns": "BuySmashdownDamage+33_C"
   },
   {
     "name": "Chest55_3907",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuyGunDamage+5_C",
     "lat": -15953.23828125,
     "lng": -2269.961669921875,
-    "alt": -6484.873046875
+    "alt": -6484.873046875,
+    "spawns": "BuyGunDamage+5_C"
   },
   {
     "name": "Chest56_5023",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuyGunAltDamagex2_C",
     "lat": -33068.1015625,
     "lng": -37006.8203125,
-    "alt": 413.2902526855469
+    "alt": 413.2902526855469,
+    "spawns": "BuyGunAltDamagex2_C"
   },
   {
     "name": "Chest57_1073",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuySwordCriticalDamageChance_C",
     "lat": -29244.177734375,
     "lng": -23865.8203125,
-    "alt": -1521.3038330078125
+    "alt": -1521.3038330078125,
+    "spawns": "BuySwordCriticalDamageChance_C"
   },
   {
     "name": "Chest58",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuySmashdownDamage+33_C",
     "lat": -34425.42578125,
     "lng": -3210.875244140625,
-    "alt": 15.370918273925781
+    "alt": 15.370918273925781,
+    "spawns": "BuySmashdownDamage+33_C"
   },
   {
     "name": "Chest59",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuySmashdownDamage+33_C",
     "lat": -36866.69140625,
     "lng": 1377.625244140625,
-    "alt": -139.70022583007812
+    "alt": -139.70022583007812,
+    "spawns": "BuySmashdownDamage+33_C"
   },
   {
     "name": "Chest5_1955",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuyShowHealthbar_C",
     "lat": -12127.8095703125,
     "lng": 15246.1240234375,
-    "alt": 36.17879867553711
+    "alt": 36.17879867553711,
+    "spawns": "BuyShowHealthbar_C"
   },
   {
     "name": "Chest60_2151",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuyCrystal_C",
     "lat": -34660.765625,
     "lng": 34512.62890625,
-    "alt": 1941.2728271484375
+    "alt": 1941.2728271484375,
+    "spawns": "BuyCrystal_C"
   },
   {
     "name": "Chest61_2816",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuyHealthRegenMax5_C",
     "lat": -47549.59375,
     "lng": -10899.859375,
-    "alt": -164.20887756347656
+    "alt": -164.20887756347656,
+    "spawns": "BuyHealthRegenMax5_C"
   },
   {
     "name": "Chest62_3729",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuyGunCoin_C",
     "lat": -38836.0546875,
     "lng": -24820.95703125,
-    "alt": -222.33322143554688
+    "alt": -222.33322143554688,
+    "spawns": "BuyGunCoin_C"
   },
   {
     "name": "Chest63_1565",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuyHealthRegenMax5_C",
     "lat": -44794.40625,
     "lng": -38748.125,
-    "alt": -2732.01123046875
+    "alt": -2732.01123046875,
+    "spawns": "BuyHealthRegenMax5_C"
   },
   {
     "name": "Chest64_1416",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuyCrystal_C",
     "lat": -48150.27734375,
     "lng": -48991.83984375,
-    "alt": -671.9144287109375
+    "alt": -671.9144287109375,
+    "spawns": "BuyCrystal_C"
   },
   {
     "name": "Chest65_5150",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuyGunAltDamagex2_C",
     "lat": -47662.921875,
     "lng": -56299.90625,
-    "alt": -933.2216796875
+    "alt": -933.2216796875,
+    "spawns": "BuyGunAltDamagex2_C"
   },
   {
     "name": "Chest66_7106",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuyGunCriticalDamageChance_C",
     "lat": -44774.10546875,
     "lng": -26061.16796875,
-    "alt": -839.9653930664062
+    "alt": -839.9653930664062,
+    "spawns": "BuyGunCriticalDamageChance_C"
   },
   {
     "name": "Chest67",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuySmashdownRadius+_C",
     "lat": -15275.7626953125,
     "lng": 9820.4765625,
-    "alt": 1300.602783203125
+    "alt": 1300.602783203125,
+    "spawns": "BuySmashdownRadius+_C"
   },
   {
     "name": "Chest68",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuySwordCriticalDamageChance_C",
     "lat": -20955.080078125,
     "lng": -3873.044677734375,
-    "alt": -1822.767822265625
+    "alt": -1822.767822265625,
+    "spawns": "BuySwordCriticalDamageChance_C"
   },
   {
     "name": "Chest69",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "LotsOfCoins5_C",
     "lat": -27714.396484375,
     "lng": 1661.13134765625,
-    "alt": -31.19489288330078
+    "alt": -31.19489288330078,
+    "spawns": "LotsOfCoins5_C"
   },
   {
     "name": "Chest6_710",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuyArmor1_C",
     "lat": -21310.82421875,
     "lng": 23339.314453125,
-    "alt": -554.9049682617188
+    "alt": -554.9049682617188,
+    "spawns": "BuyArmor1_C"
   },
   {
     "name": "Chest70",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuySwordDamage+02_C",
     "lat": -45261.92578125,
     "lng": -47174.03515625,
-    "alt": 1164.3348388671875
+    "alt": 1164.3348388671875,
+    "spawns": "BuySwordDamage+02_C"
   },
   {
     "name": "Chest71",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuyHealth+5_C",
     "lat": -25946.32421875,
     "lng": 2982.635986328125,
-    "alt": 2000.692138671875
+    "alt": 2000.692138671875,
+    "spawns": "BuyHealth+5_C"
   },
   {
     "name": "Chest72_2",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuySwordRefireRate-33_C",
     "lat": -39136.92578125,
     "lng": 21131.69140625,
-    "alt": 7568.77490234375
+    "alt": 7568.77490234375,
+    "spawns": "BuySwordRefireRate-33_C"
   },
   {
     "name": "Chest73_1605",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuyGunDamage+5_C",
     "lat": 24735.771484375,
     "lng": 6647.0537109375,
-    "alt": -3441.6640625
+    "alt": -3441.6640625,
+    "spawns": "BuyGunDamage+5_C"
   },
   {
     "name": "Chest74",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuySwordCriticalDamageChance_C",
     "lat": -28450.92578125,
     "lng": -294.4132385253906,
-    "alt": -513.7168579101562
+    "alt": -513.7168579101562,
+    "spawns": "BuySwordCriticalDamageChance_C"
   },
   {
     "name": "Chest75",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuySmashdownDamage+33_C",
     "lat": -33032.78125,
     "lng": 23031.28125,
-    "alt": -952.281982421875
+    "alt": -952.281982421875,
+    "spawns": "BuySmashdownDamage+33_C"
   },
   {
     "name": "Chest76",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuySwordDamage+3_C",
     "lat": -24717.935546875,
     "lng": -1688.93603515625,
-    "alt": -1760.600341796875
+    "alt": -1760.600341796875,
+    "spawns": "BuySwordDamage+3_C"
   },
   {
     "name": "Chest77_4",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuyForceBeam_C",
     "lat": 42475.23828125,
     "lng": -35746.15234375,
-    "alt": -6859.37548828125
+    "alt": -6859.37548828125,
+    "spawns": "BuyForceBeam_C"
   },
   {
     "name": "Chest78_7640",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuySwordDamage+02_C",
     "lat": -38364.1484375,
     "lng": -58152.453125,
-    "alt": -2302.031494140625
+    "alt": -2302.031494140625,
+    "spawns": "BuySwordDamage+02_C"
   },
   {
     "name": "Chest79_2",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuySwordDamage+02_C",
     "lat": 3897.5439453125,
     "lng": 5326.13720703125,
-    "alt": 1430.970947265625
+    "alt": 1430.970947265625,
+    "spawns": "BuySwordDamage+02_C"
   },
   {
     "name": "Chest7_818",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuyHeartLuck_C",
     "lat": -17338.869140625,
     "lng": 17812.56640625,
-    "alt": 1700.8857421875
+    "alt": 1700.8857421875,
+    "spawns": "BuyHeartLuck_C"
   },
   {
     "name": "Chest80_1332",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuyCrystal_C",
     "lat": 40600.96875,
     "lng": -7036.787109375,
-    "alt": 329.80865478515625
+    "alt": 329.80865478515625,
+    "spawns": "BuyCrystal_C"
   },
   {
     "name": "Chest81",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuyForceCubeStomp_C",
     "lat": 39385.26171875,
     "lng": -36217.89453125,
-    "alt": -2993.778564453125
+    "alt": -2993.778564453125,
+    "spawns": "BuyForceCubeStomp_C"
   },
   {
     "name": "Chest82_4377",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuyCoinMagnet_C",
     "lat": 16674.76953125,
     "lng": -17126.388671875,
-    "alt": 3571.804443359375
+    "alt": 3571.804443359375,
+    "spawns": "BuyCoinMagnet_C"
   },
   {
     "name": "Chest83_1920",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuySwordCriticalDamageChance_C",
     "lat": 38106.7265625,
     "lng": -41437.0390625,
-    "alt": 411.7832946777344
+    "alt": 411.7832946777344,
+    "spawns": "BuySwordCriticalDamageChance_C"
   },
   {
     "name": "Chest84_3197",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuySwordHoly2_C",
     "lat": 32020.3046875,
     "lng": -14410.3876953125,
-    "alt": -2119.851806640625
+    "alt": -2119.851806640625,
+    "spawns": "BuySwordHoly2_C"
   },
   {
     "name": "Chest85_1892",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "LotsOfCoins50_C",
     "lat": 15271.82421875,
     "lng": 10178.921875,
-    "alt": 1750.0
+    "alt": 1750.0,
+    "spawns": "LotsOfCoins50_C"
   },
   {
     "name": "Chest86_2441",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuyHealth+15_C",
     "lat": 27460.0,
     "lng": 19250.0,
-    "alt": 1835.0
+    "alt": 1835.0,
+    "spawns": "BuyHealth+15_C"
   },
   {
     "name": "Chest87",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuyGunCriticalDamageChance_C",
     "lat": -38503.1328125,
     "lng": -26623.298828125,
-    "alt": -235.5223388671875
+    "alt": -235.5223388671875,
+    "spawns": "BuyGunCriticalDamageChance_C"
   },
   {
     "name": "Chest88_1696",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuyHealth+15_C",
     "lat": 36871.31640625,
     "lng": -56068.81640625,
-    "alt": 389.71917724609375
+    "alt": 389.71917724609375,
+    "spawns": "BuyHealth+15_C"
   },
   {
     "name": "Chest89_3036",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuySwordDamage+3_C",
     "lat": 52174.01171875,
     "lng": -69602.7109375,
-    "alt": 701.2073974609375
+    "alt": 701.2073974609375,
+    "spawns": "BuySwordDamage+3_C"
   },
   {
     "name": "Chest8_878",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuySwordDamage+3_C",
     "lat": -23085.87109375,
     "lng": 4222.51416015625,
-    "alt": -2343.439208984375
+    "alt": -2343.439208984375,
+    "spawns": "BuySwordDamage+3_C"
   },
   {
     "name": "Chest90_2137",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuyHealth+5_C",
     "lat": 39459.09375,
     "lng": -36709.4765625,
-    "alt": -4993.42578125
+    "alt": -4993.42578125,
+    "spawns": "BuyHealth+5_C"
   },
   {
     "name": "Chest91",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuyGunDamage+5_C",
     "lat": -13819.646484375,
     "lng": -29499.791015625,
-    "alt": -2221.270263671875
+    "alt": -2221.270263671875,
+    "spawns": "BuyGunDamage+5_C"
   },
   {
     "name": "Chest92",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuyGunHoly1_C",
     "lat": 11155.1279296875,
     "lng": 8075.1552734375,
-    "alt": 507.3171691894531
+    "alt": 507.3171691894531,
+    "spawns": "BuyGunHoly1_C"
   },
   {
     "name": "Chest93_3307",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuyGunDamage+5_C",
     "lat": -23146.896484375,
     "lng": 27421.515625,
-    "alt": 455.7991638183594
+    "alt": 455.7991638183594,
+    "spawns": "BuyGunDamage+5_C"
   },
   {
     "name": "Chest94",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuySmashdownRadius+_C",
     "lat": -18745.646484375,
     "lng": -4666.81494140625,
-    "alt": 477.2615661621094
+    "alt": 477.2615661621094,
+    "spawns": "BuySmashdownRadius+_C"
   },
   {
     "name": "Chest95_6394",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuySmashdownRadius+_C",
     "lat": -44290.796875,
     "lng": -43824.046875,
-    "alt": -1171.62255859375
+    "alt": -1171.62255859375,
+    "spawns": "BuySmashdownRadius+_C"
   },
   {
     "name": "Chest96_8035",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuySmashdownRadius+_C",
     "lat": -51346.296875,
     "lng": -48456.2578125,
-    "alt": 1157.0697021484375
+    "alt": 1157.0697021484375,
+    "spawns": "BuySmashdownRadius+_C"
   },
   {
     "name": "Chest97_9186",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuySmashdownRadius+_C",
     "lat": 60180.21484375,
     "lng": -54282.6640625,
-    "alt": 537.2112426757812
+    "alt": 537.2112426757812,
+    "spawns": "BuySmashdownRadius+_C"
   },
   {
     "name": "Chest98_10407",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuySmashdownRadius+_C",
     "lat": 41498.15625,
     "lng": -53865.47265625,
-    "alt": 2371.0888671875
+    "alt": 2371.0888671875,
+    "spawns": "BuySmashdownRadius+_C"
   },
   {
     "name": "Chest99_2116",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "BuyHealthRegenSpeed_C",
     "lat": 58460.35546875,
     "lng": -39243.765625,
-    "alt": 3342.82373046875
+    "alt": 3342.82373046875,
+    "spawns": "BuyHealthRegenSpeed_C"
   },
   {
     "name": "Chest9_2231",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "LotsOfCoins10_C",
     "lat": -24717.935546875,
     "lng": -1655.5399169921875,
-    "alt": -1480.3377685546875
+    "alt": -1480.3377685546875,
+    "spawns": "LotsOfCoins10_C"
   },
   {
     "name": "Chest_622",
     "type": "Chest_C",
     "area": "Map",
-    "spawns": "LotsOfCoins10_C",
     "lat": -18495.890625,
     "lng": 12047.7880859375,
-    "alt": -88.48363494873047
+    "alt": -88.48363494873047,
+    "spawns": "LotsOfCoins10_C"
   },
   {
     "name": "Coin10",
@@ -10288,7 +10288,12 @@
     "area": "Map",
     "lat": 43153.69140625,
     "lng": -40441.78125,
-    "alt": -1887.727294921875
+    "alt": -1887.727294921875,
+    "direction": {
+      "x": -0.7071082592010498,
+      "y": 0.0,
+      "z": 0.707105278968811
+    }
   },
   {
     "name": "Jumppad11_1342",
@@ -10296,7 +10301,18 @@
     "area": "Map",
     "lat": -40968.60546875,
     "lng": 6927.02490234375,
-    "alt": -275.79742431640625
+    "alt": -275.79742431640625,
+    "relative_velocity": 1555.0,
+    "velocity": {
+      "x": -450.0,
+      "y": 650.0,
+      "z": 1400.0
+    },
+    "direction": {
+      "x": 0.40416446328163147,
+      "y": -0.6532799601554871,
+      "z": 0.6402158737182617
+    }
   },
   {
     "name": "Jumppad12_1472",
@@ -10304,7 +10320,18 @@
     "area": "Map",
     "lat": -930.0,
     "lng": -18986.234375,
-    "alt": -2374.123291015625
+    "alt": -2374.123291015625,
+    "relative_velocity": 2097.361328125,
+    "velocity": {
+      "x": 700.0,
+      "y": 0.0,
+      "z": 2000.0
+    },
+    "direction": {
+      "x": -0.3323599696159363,
+      "y": 0.0,
+      "z": 0.9431526064872742
+    }
   },
   {
     "name": "Jumppad13_972",
@@ -10312,7 +10339,19 @@
     "area": "Map",
     "lat": -11788.5810546875,
     "lng": -28320.197265625,
-    "alt": 1339.5185546875
+    "alt": 1339.5185546875,
+    "relative_velocity": 5715.23046875,
+    "velocity": {
+      "x": 4800.0,
+      "y": 250.0,
+      "z": 3500.0
+    },
+    "direction": {
+      "x": -0.7168710231781006,
+      "y": -0.028279317542910576,
+      "z": 0.6966320872306824
+    },
+    "center_actor": true
   },
   {
     "name": "Jumppad14_7215",
@@ -10320,7 +10359,19 @@
     "area": "Map",
     "lat": -10152.76953125,
     "lng": 6939.50927734375,
-    "alt": 267.7165832519531
+    "alt": 267.7165832519531,
+    "relative_velocity": 6000.0,
+    "velocity": {
+      "x": -4500.0,
+      "y": 0.0,
+      "z": 4000.0
+    },
+    "direction": {
+      "x": 0.7071068286895752,
+      "y": 0.0,
+      "z": 0.7071067094802856
+    },
+    "center_actor": true
   },
   {
     "name": "Jumppad15_762",
@@ -10328,7 +10379,18 @@
     "area": "Map",
     "lat": -11914.76171875,
     "lng": -24982.04296875,
-    "alt": -1269.9053955078125
+    "alt": -1269.9053955078125,
+    "velocity": {
+      "x": 0.0,
+      "y": -3000.0,
+      "z": 1850.0
+    },
+    "direction": {
+      "x": -3.725104988916428e-06,
+      "y": 0.9239068627357483,
+      "z": 0.3826174736022949
+    },
+    "allow_relative_velocity": false
   },
   {
     "name": "Jumppad16",
@@ -10336,7 +10398,18 @@
     "area": "Map",
     "lat": -26726.357421875,
     "lng": 25940.681640625,
-    "alt": 749.9100341796875
+    "alt": 749.9100341796875,
+    "relative_velocity": 2400.0,
+    "velocity": {
+      "x": 0.0,
+      "y": 250.0,
+      "z": 2500.0
+    },
+    "direction": {
+      "x": 0.19509005546569824,
+      "y": 0.0,
+      "z": 0.9807853102684021
+    }
   },
   {
     "name": "Jumppad17_13105",
@@ -10344,7 +10417,19 @@
     "area": "Map",
     "lat": -24867.41015625,
     "lng": -38368.94921875,
-    "alt": 188.93057250976562
+    "alt": 188.93057250976562,
+    "relative_velocity": 1500.0,
+    "velocity": {
+      "x": 1500.0,
+      "y": 0.0,
+      "z": 555.0
+    },
+    "direction": {
+      "x": -1.0,
+      "y": 2.1022908640588867e-06,
+      "z": 2.9877819542889483e-05
+    },
+    "disable_movement": false
   },
   {
     "name": "Jumppad18",
@@ -10352,7 +10437,19 @@
     "area": "Map",
     "lat": -24097.64453125,
     "lng": -31647.798828125,
-    "alt": -1058.822509765625
+    "alt": -1058.822509765625,
+    "relative_velocity": 1700.0,
+    "velocity": {
+      "x": 700.0,
+      "y": 0.0,
+      "z": 600.0
+    },
+    "direction": {
+      "x": -0.956940770149231,
+      "y": 9.399895475326048e-07,
+      "z": 0.2902831435203552
+    },
+    "disable_movement": false
   },
   {
     "name": "Jumppad19",
@@ -10360,7 +10457,19 @@
     "area": "Map",
     "lat": -21995.822265625,
     "lng": -38368.94921875,
-    "alt": -1036.3271484375
+    "alt": -1036.3271484375,
+    "relative_velocity": 2222.0,
+    "velocity": {
+      "x": 1250.0,
+      "y": 0.0,
+      "z": 555.0
+    },
+    "direction": {
+      "x": 2.7972038196821813e-07,
+      "y": 0.2902851402759552,
+      "z": 0.9569401741027832
+    },
+    "disable_movement": false
   },
   {
     "name": "Jumppad20_2",
@@ -10368,7 +10477,12 @@
     "area": "Map",
     "lat": -8998.3740234375,
     "lng": 67418.7734375,
-    "alt": 5481.66943359375
+    "alt": 5481.66943359375,
+    "direction": {
+      "x": -0.6208978891372681,
+      "y": -0.46049150824546814,
+      "z": 0.6343763470649719
+    }
   },
   {
     "name": "Jumppad21_2",
@@ -10376,7 +10490,12 @@
     "area": "Map",
     "lat": 16833.087890625,
     "lng": -48074.046875,
-    "alt": 1237.910888671875
+    "alt": 1237.910888671875,
+    "direction": {
+      "x": -1.0,
+      "y": 2.1894786641496466e-06,
+      "z": -1.235804234056559e-06
+    }
   },
   {
     "name": "Jumppad22_1179",
@@ -10384,7 +10503,18 @@
     "area": "Map",
     "lat": -20527.89453125,
     "lng": -17644.560546875,
-    "alt": -298.1341552734375
+    "alt": -298.1341552734375,
+    "relative_velocity": 1200.0,
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1200.0
+    },
+    "direction": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    }
   },
   {
     "name": "Jumppad23_3162",
@@ -10392,7 +10522,13 @@
     "area": "Map",
     "lat": -38028.48046875,
     "lng": -3131.210205078125,
-    "alt": 281.1507568359375
+    "alt": 281.1507568359375,
+    "relative_velocity": 2750.0,
+    "direction": {
+      "x": 0.5510815978050232,
+      "y": -0.31372755765914917,
+      "z": 0.7732296586036682
+    }
   },
   {
     "name": "Jumppad24",
@@ -10400,7 +10536,13 @@
     "area": "Map",
     "lat": -33632.13671875,
     "lng": -9403.6337890625,
-    "alt": -32.774322509765625
+    "alt": -32.774322509765625,
+    "relative_velocity": 2850.0,
+    "direction": {
+      "x": -0.44688454270362854,
+      "y": 0.23689526319503784,
+      "z": 0.8626556992530823
+    }
   },
   {
     "name": "Jumppad25_11306",
@@ -10408,7 +10550,13 @@
     "area": "Map",
     "lat": -23489.306640625,
     "lng": -25678.37109375,
-    "alt": -109.66482543945312
+    "alt": -109.66482543945312,
+    "relative_velocity": 1750.0,
+    "direction": {
+      "x": 0.46927616000175476,
+      "y": -0.28337526321411133,
+      "z": 0.8363482356071472
+    }
   },
   {
     "name": "Jumppad26",
@@ -10416,7 +10564,14 @@
     "area": "Map",
     "lat": -41676.1171875,
     "lng": -33508.28125,
-    "alt": -498.17327880859375
+    "alt": -498.17327880859375,
+    "relative_velocity": 4900.0,
+    "direction": {
+      "x": -0.7084013819694519,
+      "y": -0.21719563007354736,
+      "z": 0.671560525894165
+    },
+    "allow_stomp": true
   },
   {
     "name": "Jumppad27_1960",
@@ -10424,7 +10579,19 @@
     "area": "Map",
     "lat": -10129.4580078125,
     "lng": 10072.9677734375,
-    "alt": -420.1930236816406
+    "alt": -420.1930236816406,
+    "relative_velocity": 1800.0,
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1800.0
+    },
+    "direction": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "disable_movement": false
   },
   {
     "name": "Jumppad28_8720",
@@ -10432,7 +10599,18 @@
     "area": "Map",
     "lat": -28726.1171875,
     "lng": -39562.5390625,
-    "alt": 1590.470458984375
+    "alt": 1590.470458984375,
+    "velocity": {
+      "x": 0.0,
+      "y": -3000.0,
+      "z": 350.0
+    },
+    "direction": {
+      "x": -3.2395048492617207e-06,
+      "y": 1.0,
+      "z": -4.371138828673793e-08
+    },
+    "allow_relative_velocity": false
   },
   {
     "name": "Jumppad29_13926",
@@ -10440,7 +10618,13 @@
     "area": "Map",
     "lat": -28636.791015625,
     "lng": -38368.828125,
-    "alt": 511.29278564453125
+    "alt": 511.29278564453125,
+    "relative_velocity": 1500.0,
+    "direction": {
+      "x": 0.08715584129095078,
+      "y": 0.0,
+      "z": 0.9961946606636047
+    }
   },
   {
     "name": "Jumppad2_49",
@@ -10448,7 +10632,20 @@
     "area": "Map",
     "lat": -30098.595703125,
     "lng": 2520.616455078125,
-    "alt": -266.2233581542969
+    "alt": -266.2233581542969,
+    "relative_velocity": 6000.0,
+    "velocity": {
+      "x": 2550.0,
+      "y": 5200.0,
+      "z": 2100.0
+    },
+    "direction": {
+      "x": -0.3633880317211151,
+      "y": -0.723253071308136,
+      "z": 0.587242841720581
+    },
+    "allow_stomp": true,
+    "allow_relative_velocity": false
   },
   {
     "name": "Jumppad30_17845",
@@ -10456,7 +10653,13 @@
     "area": "Map",
     "lat": -27850.0,
     "lng": -35370.0,
-    "alt": -880.0
+    "alt": -880.0,
+    "relative_velocity": 2200.0,
+    "direction": {
+      "x": 0.4999997019767761,
+      "y": 0.0,
+      "z": 0.8660255670547485
+    }
   },
   {
     "name": "Jumppad31_1993",
@@ -10464,7 +10667,14 @@
     "area": "Map",
     "lat": -37780.0,
     "lng": -26690.0,
-    "alt": -1960.0
+    "alt": -1960.0,
+    "relative_velocity": 1600.0,
+    "direction": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "disable_movement": false
   },
   {
     "name": "Jumppad32_9265",
@@ -10472,7 +10682,12 @@
     "area": "Map",
     "lat": -42354.9765625,
     "lng": -52705.58203125,
-    "alt": -1452.3626708984375
+    "alt": -1452.3626708984375,
+    "direction": {
+      "x": -0.8637011647224426,
+      "y": -0.22574441134929657,
+      "z": 0.45062151551246643
+    }
   },
   {
     "name": "Jumppad33_1894",
@@ -10480,7 +10695,13 @@
     "area": "Map",
     "lat": -27370.982421875,
     "lng": -1650.08447265625,
-    "alt": 166.31826782226562
+    "alt": 166.31826782226562,
+    "relative_velocity": 1400.0,
+    "direction": {
+      "x": -0.6228500604629517,
+      "y": 0.4459581673145294,
+      "z": 0.6427900791168213
+    }
   },
   {
     "name": "Jumppad34_2191",
@@ -10488,7 +10709,14 @@
     "area": "Map",
     "lat": -42906.3125,
     "lng": -21078.736328125,
-    "alt": 0.6382675170898438
+    "alt": 0.6382675170898438,
+    "relative_velocity": 2000.0,
+    "direction": {
+      "x": 0.0,
+      "y": -0.6360566020011902,
+      "z": 0.7716423869132996
+    },
+    "disable_movement": false
   },
   {
     "name": "Jumppad35",
@@ -10496,7 +10724,14 @@
     "area": "Map",
     "lat": -33811.9609375,
     "lng": -9830.8046875,
-    "alt": -219.3920135498047
+    "alt": -219.3920135498047,
+    "relative_velocity": 4900.0,
+    "direction": {
+      "x": 0.721126914024353,
+      "y": 0.26081740856170654,
+      "z": 0.641833484172821
+    },
+    "allow_stomp": true
   },
   {
     "name": "Jumppad36_6503",
@@ -10504,7 +10739,14 @@
     "area": "Map",
     "lat": -29110.439453125,
     "lng": 21452.93359375,
-    "alt": -991.9861450195312
+    "alt": -991.9861450195312,
+    "relative_velocity": 1700.0,
+    "direction": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "disable_movement": false
   },
   {
     "name": "Jumppad37_8255",
@@ -10512,7 +10754,13 @@
     "area": "Map",
     "lat": -42703.7109375,
     "lng": -31951.298828125,
-    "alt": -891.9833984375
+    "alt": -891.9833984375,
+    "relative_velocity": 2150.0,
+    "direction": {
+      "x": 0.3591386675834656,
+      "y": 0.0,
+      "z": 0.9332842230796814
+    }
   },
   {
     "name": "Jumppad38_2356",
@@ -10520,7 +10768,13 @@
     "area": "Map",
     "lat": -26315.85546875,
     "lng": -30735.97265625,
-    "alt": -1088.776611328125
+    "alt": -1088.776611328125,
+    "relative_velocity": 1700.0,
+    "direction": {
+      "x": 0.0,
+      "y": 0.17323115468025208,
+      "z": 0.9848812222480774
+    }
   },
   {
     "name": "Jumppad39_2367",
@@ -10528,7 +10782,13 @@
     "area": "Map",
     "lat": 24302.015625,
     "lng": -12198.673828125,
-    "alt": 480.87432861328125
+    "alt": 480.87432861328125,
+    "relative_velocity": 3000.0,
+    "direction": {
+      "x": 0.831469714641571,
+      "y": 0.0,
+      "z": 0.5555700659751892
+    }
   },
   {
     "name": "Jumppad3_522",
@@ -10536,7 +10796,19 @@
     "area": "Map",
     "lat": -26071.716796875,
     "lng": 4081.52490234375,
-    "alt": -435.8060302734375
+    "alt": -435.8060302734375,
+    "relative_velocity": 1650.0,
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1650.0
+    },
+    "direction": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "disable_movement": false
   },
   {
     "name": "Jumppad40_8816",
@@ -10544,7 +10816,13 @@
     "area": "Map",
     "lat": -43213.19921875,
     "lng": -49859.80078125,
-    "alt": -1721.5721435546875
+    "alt": -1721.5721435546875,
+    "relative_velocity": 1550.0,
+    "direction": {
+      "x": -0.15643446147441864,
+      "y": 0.0,
+      "z": 0.9876883029937744
+    }
   },
   {
     "name": "Jumppad41",
@@ -10552,7 +10830,13 @@
     "area": "Map",
     "lat": -48507.28125,
     "lng": -51536.77734375,
-    "alt": -1710.686767578125
+    "alt": -1710.686767578125,
+    "relative_velocity": 1350.0,
+    "direction": {
+      "x": 0.26227104663848877,
+      "y": -0.03229546919465065,
+      "z": 0.9644536972045898
+    }
   },
   {
     "name": "Jumppad42",
@@ -10560,7 +10844,19 @@
     "area": "Map",
     "lat": -23698.416015625,
     "lng": 18563.1953125,
-    "alt": 38.327606201171875
+    "alt": 38.327606201171875,
+    "relative_velocity": 1850.0,
+    "velocity": {
+      "x": 0.0,
+      "y": 250.0,
+      "z": 1800.0
+    },
+    "direction": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "disable_movement": false
   },
   {
     "name": "Jumppad43_2",
@@ -10568,7 +10864,14 @@
     "area": "Map",
     "lat": -8406.546875,
     "lng": 63599.31640625,
-    "alt": 6091.57861328125
+    "alt": 6091.57861328125,
+    "relative_velocity": 3250.0,
+    "direction": {
+      "x": 0.47139647603034973,
+      "y": 0.0,
+      "z": 0.8819214105606079
+    },
+    "disable_movement": false
   },
   {
     "name": "Jumppad44",
@@ -10576,7 +10879,13 @@
     "area": "Map",
     "lat": -13163.5205078125,
     "lng": -29786.62890625,
-    "alt": -1082.0267333984375
+    "alt": -1082.0267333984375,
+    "relative_velocity": 5200.0,
+    "direction": {
+      "x": -0.47739627957344055,
+      "y": 0.4952518045902252,
+      "z": 0.7258225679397583
+    }
   },
   {
     "name": "Jumppad45",
@@ -10584,7 +10893,14 @@
     "area": "Map",
     "lat": -33100.11328125,
     "lng": -10392.947265625,
-    "alt": -457.6958923339844
+    "alt": -457.6958923339844,
+    "relative_velocity": 5200.0,
+    "direction": {
+      "x": 0.4550488591194153,
+      "y": -0.5158550143241882,
+      "z": 0.7258265018463135
+    },
+    "center_actor": true
   },
   {
     "name": "Jumppad46_2543",
@@ -10592,7 +10908,14 @@
     "area": "Map",
     "lat": -11933.14453125,
     "lng": -110.72685241699219,
-    "alt": 539.2427368164062
+    "alt": 539.2427368164062,
+    "relative_velocity": 5555.0,
+    "direction": {
+      "x": 0.6462330222129822,
+      "y": 0.6979767084121704,
+      "z": 0.3085635304450989
+    },
+    "center_actor": true
   },
   {
     "name": "Jumppad47",
@@ -10600,7 +10923,13 @@
     "area": "Map",
     "lat": -23239.681640625,
     "lng": -9610.2705078125,
-    "alt": -1018.5819091796875
+    "alt": -1018.5819091796875,
+    "relative_velocity": 4400.0,
+    "direction": {
+      "x": -0.5974580645561218,
+      "y": -0.6452233791351318,
+      "z": 0.4761623740196228
+    }
   },
   {
     "name": "Jumppad48",
@@ -10608,7 +10937,18 @@
     "area": "Map",
     "lat": -27533.306640625,
     "lng": 3068.1103515625,
-    "alt": 820.3421630859375
+    "alt": 820.3421630859375,
+    "velocity": {
+      "x": 0.0,
+      "y": 600.0,
+      "z": 1700.0
+    },
+    "direction": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "allow_relative_velocity": false
   },
   {
     "name": "Jumppad49_2147",
@@ -10616,7 +10956,14 @@
     "area": "Map",
     "lat": 29487.25,
     "lng": 6287.68505859375,
-    "alt": -1121.760009765625
+    "alt": -1121.760009765625,
+    "relative_velocity": 1400.0,
+    "direction": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "disable_movement": false
   },
   {
     "name": "Jumppad4_1222",
@@ -10624,7 +10971,19 @@
     "area": "Map",
     "lat": -25006.853515625,
     "lng": 24044.64453125,
-    "alt": 3600.333251953125
+    "alt": 3600.333251953125,
+    "relative_velocity": 1500.0,
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1500.0
+    },
+    "direction": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "disable_movement": false
   },
   {
     "name": "Jumppad50",
@@ -10632,7 +10991,12 @@
     "area": "Map",
     "lat": 27081.2734375,
     "lng": 5950.91748046875,
-    "alt": -1057.48046875
+    "alt": -1057.48046875,
+    "direction": {
+      "x": 0.5000002384185791,
+      "y": 0.0,
+      "z": 0.8660252690315247
+    }
   },
   {
     "name": "Jumppad51",
@@ -10640,7 +11004,14 @@
     "area": "Map",
     "lat": 29068.08984375,
     "lng": -26924.81640625,
-    "alt": 429.0494079589844
+    "alt": 429.0494079589844,
+    "relative_velocity": 1850.0,
+    "direction": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "disable_movement": false
   },
   {
     "name": "Jumppad52",
@@ -10648,7 +11019,13 @@
     "area": "Map",
     "lat": 27537.8046875,
     "lng": -21300.125,
-    "alt": 480.87396240234375
+    "alt": 480.87396240234375,
+    "relative_velocity": 3000.0,
+    "direction": {
+      "x": -0.8314685225486755,
+      "y": 1.9115764189336915e-06,
+      "z": 0.5555718541145325
+    }
   },
   {
     "name": "Jumppad53",
@@ -10656,7 +11033,14 @@
     "area": "Map",
     "lat": 28866.14453125,
     "lng": -26924.81640625,
-    "alt": 2005.7440185546875
+    "alt": 2005.7440185546875,
+    "relative_velocity": 3000.0,
+    "direction": {
+      "x": 0.0,
+      "y": -0.7143462896347046,
+      "z": 0.6997923851013184
+    },
+    "disable_movement": false
   },
   {
     "name": "Jumppad54_1487",
@@ -10664,7 +11048,12 @@
     "area": "Map",
     "lat": 41574.59765625,
     "lng": -12513.8740234375,
-    "alt": -2019.517822265625
+    "alt": -2019.517822265625,
+    "direction": {
+      "x": 0.3826834559440613,
+      "y": 0.0,
+      "z": 0.9238795042037964
+    }
   },
   {
     "name": "Jumppad55",
@@ -10672,7 +11061,13 @@
     "area": "Map",
     "lat": 36053.7578125,
     "lng": -24524.12890625,
-    "alt": 352.36639404296875
+    "alt": 352.36639404296875,
+    "relative_velocity": 2200.0,
+    "direction": {
+      "x": -0.43446674942970276,
+      "y": -0.462157279253006,
+      "z": 0.7730777859687805
+    }
   },
   {
     "name": "Jumppad56",
@@ -10680,7 +11075,13 @@
     "area": "Map",
     "lat": 43012.23046875,
     "lng": -42677.80078125,
-    "alt": 569.2398681640625
+    "alt": 569.2398681640625,
+    "relative_velocity": 3300.0,
+    "direction": {
+      "x": 0.8776724934577942,
+      "y": -0.08644697815179825,
+      "z": 0.4713999330997467
+    }
   },
   {
     "name": "Jumppad57",
@@ -10688,7 +11089,13 @@
     "area": "Map",
     "lat": 46321.93359375,
     "lng": -25151.51953125,
-    "alt": 251.1180419921875
+    "alt": 251.1180419921875,
+    "relative_velocity": 2200.0,
+    "direction": {
+      "x": -0.019579503685235977,
+      "y": 0.6340104937553406,
+      "z": 0.7730765342712402
+    }
   },
   {
     "name": "Jumppad58",
@@ -10696,7 +11103,14 @@
     "area": "Map",
     "lat": 50760.51953125,
     "lng": -45152.98046875,
-    "alt": -403.8818054199219
+    "alt": -403.8818054199219,
+    "relative_velocity": 2200.0,
+    "direction": {
+      "x": 0.7058008313179016,
+      "y": 0.04287060350179672,
+      "z": 0.7071119546890259
+    },
+    "disable_movement": false
   },
   {
     "name": "Jumppad59_1564",
@@ -10704,7 +11118,13 @@
     "area": "Map",
     "lat": 4645.07470703125,
     "lng": 19442.513671875,
-    "alt": 253.28604125976562
+    "alt": 253.28604125976562,
+    "relative_velocity": 5555.0,
+    "direction": {
+      "x": 0.49038517475128174,
+      "y": -0.5975479483604431,
+      "z": 0.6343964338302612
+    }
   },
   {
     "name": "Jumppad5_4135",
@@ -10712,7 +11132,19 @@
     "area": "Map",
     "lat": -28540.0,
     "lng": 22860.0,
-    "alt": 830.0
+    "alt": 830.0,
+    "relative_velocity": 1800.0,
+    "velocity": {
+      "x": 0.0,
+      "y": 250.0,
+      "z": 1800.0
+    },
+    "direction": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "disable_movement": false
   },
   {
     "name": "Jumppad6",
@@ -10720,7 +11152,19 @@
     "area": "Map",
     "lat": -27031.51171875,
     "lng": 5738.78125,
-    "alt": -781.7189331054688
+    "alt": -781.7189331054688,
+    "relative_velocity": 1555.0,
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1555.0
+    },
+    "direction": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "disable_movement": false
   },
   {
     "name": "Jumppad60",
@@ -10728,7 +11172,13 @@
     "area": "Map",
     "lat": 54675.1328125,
     "lng": -43557.62109375,
-    "alt": 1411.283447265625
+    "alt": 1411.283447265625,
+    "relative_velocity": 2850.0,
+    "direction": {
+      "x": -0.6512971520423889,
+      "y": 0.037584710866212845,
+      "z": 0.7578914165496826
+    }
   },
   {
     "name": "Jumppad61",
@@ -10736,7 +11186,13 @@
     "area": "Map",
     "lat": 28683.08203125,
     "lng": -552.713623046875,
-    "alt": 798.834716796875
+    "alt": 798.834716796875,
+    "relative_velocity": 5540.0,
+    "direction": {
+      "x": -0.490377277135849,
+      "y": 0.59754878282547,
+      "z": 0.6344017386436462
+    }
   },
   {
     "name": "Jumppad62_2279",
@@ -10744,7 +11200,12 @@
     "area": "Map",
     "lat": 18192.294921875,
     "lng": 13143.015625,
-    "alt": 70.00004577636719
+    "alt": 70.00004577636719,
+    "direction": {
+      "x": 0.3826150596141815,
+      "y": 0.9239078760147095,
+      "z": 3.101869650024014e-09
+    }
   },
   {
     "name": "Jumppad63",
@@ -10752,7 +11213,12 @@
     "area": "Map",
     "lat": 14391.498046875,
     "lng": 11639.30859375,
-    "alt": 70.00099182128906
+    "alt": 70.00099182128906,
+    "direction": {
+      "x": 0.555618941783905,
+      "y": -0.8314370512962341,
+      "z": -2.376463470454837e-09
+    }
   },
   {
     "name": "Jumppad64_1993",
@@ -10760,7 +11226,13 @@
     "area": "Map",
     "lat": 45283.1328125,
     "lng": -63796.23828125,
-    "alt": 494.8623046875
+    "alt": 494.8623046875,
+    "relative_velocity": 1550.0,
+    "direction": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    }
   },
   {
     "name": "Jumppad65",
@@ -10768,7 +11240,13 @@
     "area": "Map",
     "lat": 44810.15625,
     "lng": -63796.23828125,
-    "alt": 495.697021484375
+    "alt": 495.697021484375,
+    "relative_velocity": 1650.0,
+    "direction": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    }
   },
   {
     "name": "Jumppad66",
@@ -10776,7 +11254,13 @@
     "area": "Map",
     "lat": 44274.20703125,
     "lng": -63796.23828125,
-    "alt": 494.7828369140625
+    "alt": 494.7828369140625,
+    "relative_velocity": 1750.0,
+    "direction": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    }
   },
   {
     "name": "Jumppad67",
@@ -10784,7 +11268,13 @@
     "area": "Map",
     "lat": 50969.33203125,
     "lng": -54670.35546875,
-    "alt": 602.380859375
+    "alt": 602.380859375,
+    "relative_velocity": 2850.0,
+    "direction": {
+      "x": 0.0,
+      "y": -0.8314504623413086,
+      "z": 0.5555989146232605
+    }
   },
   {
     "name": "Jumppad68",
@@ -10792,7 +11282,13 @@
     "area": "Map",
     "lat": 57329.12109375,
     "lng": -55575.11328125,
-    "alt": 656.1351928710938
+    "alt": 656.1351928710938,
+    "relative_velocity": 2850.0,
+    "direction": {
+      "x": 0.6862216591835022,
+      "y": -0.0003632460138760507,
+      "z": 0.727392315864563
+    }
   },
   {
     "name": "Jumppad7",
@@ -10800,7 +11296,19 @@
     "area": "Map",
     "lat": -2363.6796875,
     "lng": 14497.19921875,
-    "alt": 375.2969970703125
+    "alt": 375.2969970703125,
+    "relative_velocity": 3333.0,
+    "velocity": {
+      "x": -2000.0,
+      "y": 800.0,
+      "z": 2800.0
+    },
+    "direction": {
+      "x": 0.6438025832176208,
+      "y": -0.28576943278312683,
+      "z": 0.7098268270492554
+    },
+    "allow_stomp": true
   },
   {
     "name": "Jumppad70",
@@ -10808,7 +11316,13 @@
     "area": "Map",
     "lat": -19236.2109375,
     "lng": 44777.67578125,
-    "alt": 1175.625
+    "alt": 1175.625,
+    "relative_velocity": 3500.0,
+    "direction": {
+      "x": 0.6160761713981628,
+      "y": -0.41164785623550415,
+      "z": 0.6715624928474426
+    }
   },
   {
     "name": "Jumppad71_9499",
@@ -10816,7 +11330,14 @@
     "area": "Map",
     "lat": 61237.2265625,
     "lng": -42297.578125,
-    "alt": 945.1329345703125
+    "alt": 945.1329345703125,
+    "relative_velocity": 2913.4765625,
+    "direction": {
+      "x": -0.7071064114570618,
+      "y": 0.0,
+      "z": 0.7071071267127991
+    },
+    "center_actor": true
   },
   {
     "name": "Jumppad72",
@@ -10824,7 +11345,13 @@
     "area": "Map",
     "lat": 42413.24609375,
     "lng": -16532.533203125,
-    "alt": 577.3323974609375
+    "alt": 577.3323974609375,
+    "relative_velocity": 7100.0,
+    "direction": {
+      "x": 0.8153699040412903,
+      "y": -0.16257573664188385,
+      "z": 0.5556447505950928
+    }
   },
   {
     "name": "Jumppad73",
@@ -10832,7 +11359,13 @@
     "area": "Map",
     "lat": 52016.296875,
     "lng": -65323.69140625,
-    "alt": 941.4310302734375
+    "alt": 941.4310302734375,
+    "relative_velocity": 7100.0,
+    "direction": {
+      "x": -0.8153570890426636,
+      "y": 0.16255173087120056,
+      "z": 0.5556705594062805
+    }
   },
   {
     "name": "Jumppad74",
@@ -10840,7 +11373,13 @@
     "area": "Map",
     "lat": 15400.98046875,
     "lng": -11921.138671875,
-    "alt": 880.3717041015625
+    "alt": 880.3717041015625,
+    "relative_velocity": 2800.0,
+    "direction": {
+      "x": -0.12300770729780197,
+      "y": 0.2969716787338257,
+      "z": 0.9469302892684937
+    }
   },
   {
     "name": "Jumppad75",
@@ -10848,7 +11387,13 @@
     "area": "Map",
     "lat": -23191.125,
     "lng": -17283.203125,
-    "alt": -283.02044677734375
+    "alt": -283.02044677734375,
+    "relative_velocity": 2555.0,
+    "direction": {
+      "x": 0.5067373514175415,
+      "y": 0.5910388231277466,
+      "z": 0.6276068687438965
+    }
   },
   {
     "name": "Jumppad76",
@@ -10856,7 +11401,13 @@
     "area": "Map",
     "lat": 13696.99609375,
     "lng": 13189.1064453125,
-    "alt": 918.78515625
+    "alt": 918.78515625,
+    "relative_velocity": 2000.0,
+    "direction": {
+      "x": 0.3420201539993286,
+      "y": 0.0,
+      "z": 0.9396926164627075
+    }
   },
   {
     "name": "Jumppad77",
@@ -10864,7 +11415,13 @@
     "area": "Map",
     "lat": 17308.708984375,
     "lng": 25803.701171875,
-    "alt": 812.8607177734375
+    "alt": 812.8607177734375,
+    "relative_velocity": 1450.0,
+    "direction": {
+      "x": -0.4713951051235199,
+      "y": 2.4325554477400146e-06,
+      "z": 0.8819221258163452
+    }
   },
   {
     "name": "Jumppad78",
@@ -10872,7 +11429,13 @@
     "area": "Map",
     "lat": 20561.2734375,
     "lng": 25570.3046875,
-    "alt": 1552.3514404296875
+    "alt": 1552.3514404296875,
+    "relative_velocity": 1150.0,
+    "direction": {
+      "x": 0.3035098612308502,
+      "y": 0.22309084236621857,
+      "z": 0.9263435006141663
+    }
   },
   {
     "name": "Jumppad79",
@@ -10880,7 +11443,18 @@
     "area": "Map",
     "lat": -11600.5205078125,
     "lng": 13031.2021484375,
-    "alt": 73.32626342773438
+    "alt": 73.32626342773438,
+    "relative_velocity": 1000.0,
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1650.0
+    },
+    "direction": {
+      "x": 0.17364753782749176,
+      "y": -6.485020094260108e-07,
+      "z": 0.9848078489303589
+    }
   },
   {
     "name": "Jumppad8",
@@ -10888,7 +11462,20 @@
     "area": "Map",
     "lat": 1791.294189453125,
     "lng": 3225.965576171875,
-    "alt": 120.24662780761719
+    "alt": 120.24662780761719,
+    "relative_velocity": 3333.0,
+    "velocity": {
+      "x": 1850.0,
+      "y": -600.0,
+      "z": 2800.0
+    },
+    "direction": {
+      "x": -0.561651349067688,
+      "y": 0.22305326163768768,
+      "z": 0.7967402338981628
+    },
+    "allow_stomp": true,
+    "center_actor": true
   },
   {
     "name": "Jumppad80",
@@ -10896,7 +11483,18 @@
     "area": "Map",
     "lat": 28549.54296875,
     "lng": 24421.96875,
-    "alt": 1508.8070068359375
+    "alt": 1508.8070068359375,
+    "relative_velocity": 1450.0,
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1800.0
+    },
+    "direction": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    }
   },
   {
     "name": "Jumppad81",
@@ -10904,7 +11502,13 @@
     "area": "Map",
     "lat": -12931.7978515625,
     "lng": 37931.4453125,
-    "alt": 1260.1219482421875
+    "alt": 1260.1219482421875,
+    "relative_velocity": 3000.0,
+    "direction": {
+      "x": -0.5872344970703125,
+      "y": 0.5886356830596924,
+      "z": 0.5555751323699951
+    }
   },
   {
     "name": "Jumppad82",
@@ -10912,7 +11516,13 @@
     "area": "Map",
     "lat": -1435.73876953125,
     "lng": 48096.5625,
-    "alt": 3121.874755859375
+    "alt": 3121.874755859375,
+    "relative_velocity": 1800.0,
+    "direction": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    }
   },
   {
     "name": "Jumppad83",
@@ -10920,7 +11530,13 @@
     "area": "Map",
     "lat": 5824.7353515625,
     "lng": 15024.869140625,
-    "alt": 33.81306076049805
+    "alt": 33.81306076049805,
+    "relative_velocity": 6050.0,
+    "direction": {
+      "x": -0.6073151230812073,
+      "y": -0.4244650602340698,
+      "z": 0.6715636253356934
+    }
   },
   {
     "name": "Jumppad84",
@@ -10928,7 +11544,13 @@
     "area": "Map",
     "lat": -1679.1309814453125,
     "lng": 48096.5625,
-    "alt": 4460.46875
+    "alt": 4460.46875,
+    "relative_velocity": 1800.0,
+    "direction": {
+      "x": 0.0,
+      "y": -0.9807799458503723,
+      "z": 0.19511762261390686
+    }
   },
   {
     "name": "Jumppad85",
@@ -10936,7 +11558,13 @@
     "area": "Map",
     "lat": 26780.978515625,
     "lng": 43209.37890625,
-    "alt": 1306.9228515625
+    "alt": 1306.9228515625,
+    "relative_velocity": 5700.0,
+    "direction": {
+      "x": 0.6208897233009338,
+      "y": 0.46047860383987427,
+      "z": 0.6343936920166016
+    }
   },
   {
     "name": "Jumppad86",
@@ -10944,7 +11572,13 @@
     "area": "Map",
     "lat": 27173.25390625,
     "lng": 57068.85546875,
-    "alt": 1583.0025634765625
+    "alt": 1583.0025634765625,
+    "relative_velocity": 2555.0,
+    "direction": {
+      "x": -0.803207516670227,
+      "y": 0.0,
+      "z": 0.5956993103027344
+    }
   },
   {
     "name": "Jumppad87",
@@ -10952,7 +11586,13 @@
     "area": "Map",
     "lat": 35565.73046875,
     "lng": 65191.08984375,
-    "alt": 1661.8887939453125
+    "alt": 1661.8887939453125,
+    "relative_velocity": 3180.0,
+    "direction": {
+      "x": 0.0,
+      "y": 0.671559751033783,
+      "z": 0.7409504055976868
+    }
   },
   {
     "name": "Jumppad88",
@@ -10960,7 +11600,13 @@
     "area": "Map",
     "lat": 549.6739501953125,
     "lng": 52843.875,
-    "alt": 2910.1630859375
+    "alt": 2910.1630859375,
+    "relative_velocity": 3250.0,
+    "direction": {
+      "x": 0.5416461825370789,
+      "y": 0.3915090560913086,
+      "z": 0.743868350982666
+    }
   },
   {
     "name": "Jumppad89",
@@ -10968,7 +11614,14 @@
     "area": "Map",
     "lat": -5299.93359375,
     "lng": 44291.62890625,
-    "alt": 5888.71728515625
+    "alt": 5888.71728515625,
+    "relative_velocity": 5770.0,
+    "direction": {
+      "x": 0.8562067747116089,
+      "y": -0.15989407896995544,
+      "z": 0.4912676215171814
+    },
+    "center_actor": true
   },
   {
     "name": "Jumppad90",
@@ -10976,7 +11629,13 @@
     "area": "Map",
     "lat": 337.01141357421875,
     "lng": 10858.4326171875,
-    "alt": 2612.117431640625
+    "alt": 2612.117431640625,
+    "relative_velocity": 6300.0,
+    "direction": {
+      "x": -0.7556607127189636,
+      "y": 0.1276029646396637,
+      "z": 0.6424130201339722
+    }
   },
   {
     "name": "Jumppad91",
@@ -10984,7 +11643,13 @@
     "area": "Map",
     "lat": 23644.978515625,
     "lng": 39829.37890625,
-    "alt": 2622.9228515625
+    "alt": 2622.9228515625,
+    "relative_velocity": 3000.0,
+    "direction": {
+      "x": 0.0,
+      "y": 0.5555737614631653,
+      "z": 0.8314672708511353
+    }
   },
   {
     "name": "Jumppad92",
@@ -10992,7 +11657,12 @@
     "area": "Map",
     "lat": 13277.2421875,
     "lng": -47961.94921875,
-    "alt": 1237.910888671875
+    "alt": 1237.910888671875,
+    "direction": {
+      "x": 0.0,
+      "y": -1.0,
+      "z": -1.712641392259684e-06
+    }
   },
   {
     "name": "Jumppad93",
@@ -11000,7 +11670,13 @@
     "area": "Map",
     "lat": 13386.439453125,
     "lng": -12094.759765625,
-    "alt": 909.688720703125
+    "alt": 909.688720703125,
+    "relative_velocity": 1300.0,
+    "direction": {
+      "x": 1.0,
+      "y": 0.0,
+      "z": -4.371138828673793e-08
+    }
   },
   {
     "name": "Jumppad94",
@@ -11008,7 +11684,19 @@
     "area": "Map",
     "lat": -34001.74609375,
     "lng": 38969.359375,
-    "alt": 234.11398315429688
+    "alt": 234.11398315429688,
+    "relative_velocity": 1800.0,
+    "velocity": {
+      "x": 0.0,
+      "y": 250.0,
+      "z": 1800.0
+    },
+    "direction": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "disable_movement": false
   },
   {
     "name": "Jumppad95",
@@ -11016,7 +11704,13 @@
     "area": "Map",
     "lat": 13536.853515625,
     "lng": 46836.70703125,
-    "alt": 3163.544677734375
+    "alt": 3163.544677734375,
+    "relative_velocity": 2900.0,
+    "direction": {
+      "x": -0.33036547899246216,
+      "y": -0.08852370828390121,
+      "z": 0.9396926760673523
+    }
   },
   {
     "name": "Jumppad96",
@@ -11024,7 +11718,19 @@
     "area": "Map",
     "lat": -10249.4150390625,
     "lng": -30676.283203125,
-    "alt": 118.1915054321289
+    "alt": 118.1915054321289,
+    "relative_velocity": 8700.0,
+    "velocity": {
+      "x": 4800.0,
+      "y": 250.0,
+      "z": 3500.0
+    },
+    "direction": {
+      "x": 0.22986069321632385,
+      "y": -0.5407039523124695,
+      "z": 0.8091991543769836
+    },
+    "center_actor": true
   },
   {
     "name": "Jumppad97",
@@ -11032,7 +11738,19 @@
     "area": "Map",
     "lat": 58023.26953125,
     "lng": -58992.2421875,
-    "alt": 928.8194580078125
+    "alt": 928.8194580078125,
+    "relative_velocity": 8700.0,
+    "velocity": {
+      "x": 4800.0,
+      "y": 250.0,
+      "z": 3500.0
+    },
+    "direction": {
+      "x": -0.21063314378261566,
+      "y": 0.5484808087348938,
+      "z": 0.8091986775398254
+    },
+    "center_actor": true
   },
   {
     "name": "Jumppad98_2",
@@ -11040,7 +11758,14 @@
     "area": "Map",
     "lat": 43634.921875,
     "lng": -62275.48046875,
-    "alt": -955.3148193359375
+    "alt": -955.3148193359375,
+    "relative_velocity": 1500.0,
+    "direction": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "disable_movement": false
   },
   {
     "name": "Jumppad99",
@@ -11048,7 +11773,14 @@
     "area": "Map",
     "lat": 43552.6171875,
     "lng": -40175.44921875,
-    "alt": -1922.519287109375
+    "alt": -1922.519287109375,
+    "relative_velocity": 2228.18017578125,
+    "direction": {
+      "x": 0.1507868766784668,
+      "y": 0.0,
+      "z": 0.9885662794113159
+    },
+    "disable_movement": false
   },
   {
     "name": "Jumppad9_1454",
@@ -11056,7 +11788,13 @@
     "area": "Map",
     "lat": 43123.2265625,
     "lng": -33327.89453125,
-    "alt": -1887.727294921875
+    "alt": -1887.727294921875,
+    "relative_velocity": 2800.0,
+    "direction": {
+      "x": 0.7071068286895752,
+      "y": 0.0,
+      "z": 0.7071067094802856
+    }
   },
   {
     "name": "Jumppad_266",
@@ -11064,7 +11802,19 @@
     "area": "Map",
     "lat": -6931.44287109375,
     "lng": 13439.556640625,
-    "alt": -446.81304931640625
+    "alt": -446.81304931640625,
+    "relative_velocity": 5600.0,
+    "velocity": {
+      "x": -2400.0,
+      "y": -5200.0,
+      "z": 2100.0
+    },
+    "direction": {
+      "x": 0.37756744027137756,
+      "y": 0.8290273547172546,
+      "z": 0.4125003218650818
+    },
+    "allow_stomp": true
   },
   {
     "name": "Key10_5",
@@ -11339,6 +12089,110 @@
     "alt": -1711.3721923828125
   },
   {
+    "name": "Lift10",
+    "type": "Lift1_C",
+    "area": "Map",
+    "lat": 42147.55078125,
+    "lng": -23847.41015625,
+    "alt": 348.1660461425781
+  },
+  {
+    "name": "Lift11_2123",
+    "type": "Lift1_C",
+    "area": "Map",
+    "lat": 39638.0,
+    "lng": -46572.234375,
+    "alt": 578.9970703125
+  },
+  {
+    "name": "Lift12",
+    "type": "Lift1_C",
+    "area": "Map",
+    "lat": 41329.0,
+    "lng": -44395.0,
+    "alt": 577.0
+  },
+  {
+    "name": "Lift13_1871",
+    "type": "Lift1_C",
+    "area": "Map",
+    "lat": 53496.296875,
+    "lng": -44788.97265625,
+    "alt": 867.7752685546875
+  },
+  {
+    "name": "Lift14",
+    "type": "Lift1_C",
+    "area": "Map",
+    "lat": 4879.63916015625,
+    "lng": 18351.240234375,
+    "alt": 223.53062438964844
+  },
+  {
+    "name": "Lift1_3932",
+    "type": "Lift1_C",
+    "area": "Map",
+    "lat": 1188.050048828125,
+    "lng": 13034.3505859375,
+    "alt": 569.5640869140625
+  },
+  {
+    "name": "Lift2_1066",
+    "type": "Lift1_C",
+    "area": "Map",
+    "lat": -46661.296875,
+    "lng": -48764.3359375,
+    "alt": -1739.1309814453125
+  },
+  {
+    "name": "Lift3_1549",
+    "type": "Lift1_C",
+    "area": "Map",
+    "lat": -394.29144287109375,
+    "lng": -19350.0,
+    "alt": -1080.0
+  },
+  {
+    "name": "Lift4_920",
+    "type": "Lift1_C",
+    "area": "Map",
+    "lat": -11528.2998046875,
+    "lng": -24984.1328125,
+    "alt": -1343.03125
+  },
+  {
+    "name": "Lift5_3065",
+    "type": "Lift1_C",
+    "area": "Map",
+    "lat": -29002.693359375,
+    "lng": -38580.82421875,
+    "alt": 1378.221435546875
+  },
+  {
+    "name": "Lift6",
+    "type": "Lift1_C",
+    "area": "Map",
+    "lat": -49806.15234375,
+    "lng": -52446.984375,
+    "alt": -923.8806762695312
+  },
+  {
+    "name": "Lift7_9313",
+    "type": "Lift1_C",
+    "area": "Map",
+    "lat": -43658.078125,
+    "lng": -55180.12890625,
+    "alt": 3.8812332153320312
+  },
+  {
+    "name": "Lift8",
+    "type": "Lift1_C",
+    "area": "Map",
+    "lat": -228.43508911132812,
+    "lng": -7962.1357421875,
+    "alt": 1531.625732421875
+  },
+  {
     "name": "Brick1682",
     "type": "MinecraftBrick_C",
     "area": "Map",
@@ -11590,10 +12444,10 @@
     "name": "MinecraftBrick38",
     "type": "MinecraftBrick_C",
     "area": "Map",
-    "hits": 1,
     "lat": 54122.73046875,
     "lng": -34180.29296875,
-    "alt": 572.543701171875
+    "alt": 572.543701171875,
+    "hits": 1
   },
   {
     "name": "MinecraftBrick39",
@@ -11631,19 +12485,19 @@
     "name": "MinecraftBrick43",
     "type": "MinecraftBrick_C",
     "area": "Map",
-    "hits": 1,
     "lat": 54240.07421875,
     "lng": -35791.578125,
-    "alt": 501.73193359375
+    "alt": 501.73193359375,
+    "hits": 1
   },
   {
     "name": "MinecraftBrick44",
     "type": "MinecraftBrick_C",
     "area": "Map",
-    "hits": 1,
     "lat": 54240.07421875,
     "lng": -35791.578125,
-    "alt": 829.2449340820312
+    "alt": 829.2449340820312,
+    "hits": 1
   },
   {
     "name": "MinecraftBrick45",
@@ -12006,6 +12860,734 @@
     "alt": 921.8713989257812
   },
   {
+    "name": "PipeCap10_2",
+    "type": "PipeCap_C",
+    "area": "Map",
+    "lat": -34034.41796875,
+    "lng": -2246.938720703125,
+    "alt": -25.360198974609375
+  },
+  {
+    "name": "PipeCap11",
+    "type": "PipeCap_C",
+    "area": "Map",
+    "lat": -8020.4013671875,
+    "lng": 12117.7578125,
+    "alt": -131.71551513671875
+  },
+  {
+    "name": "PipeCap12",
+    "type": "PipeCap_C",
+    "area": "Map",
+    "lat": 42853.12109375,
+    "lng": -30420.552734375,
+    "alt": 829.0733032226562
+  },
+  {
+    "name": "PipeCap13",
+    "type": "PipeCap_C",
+    "area": "Map",
+    "lat": 37942.97265625,
+    "lng": -19348.22265625,
+    "alt": 844.5838012695312
+  },
+  {
+    "name": "PipeCap14",
+    "type": "PipeCap_C",
+    "area": "Map",
+    "lat": 33291.49609375,
+    "lng": -11313.72265625,
+    "alt": 956.9715576171875
+  },
+  {
+    "name": "PipeCap15",
+    "type": "PipeCap_C",
+    "area": "Map",
+    "lat": 1001.8740234375,
+    "lng": -9021.7041015625,
+    "alt": 1174.731201171875
+  },
+  {
+    "name": "PipeCap16",
+    "type": "PipeCap_C",
+    "area": "Map",
+    "lat": -222.67648315429688,
+    "lng": -15564.5390625,
+    "alt": 704.6788940429688
+  },
+  {
+    "name": "PipeCap17",
+    "type": "PipeCap_C",
+    "area": "Map",
+    "lat": 6075.8603515625,
+    "lng": -3303.66259765625,
+    "alt": 588.470703125
+  },
+  {
+    "name": "PipeCap18",
+    "type": "PipeCap_C",
+    "area": "Map",
+    "lat": 13997.0615234375,
+    "lng": -2818.434814453125,
+    "alt": 1306.0714111328125
+  },
+  {
+    "name": "PipeCap19",
+    "type": "PipeCap_C",
+    "area": "Map",
+    "lat": 41645.7265625,
+    "lng": -61356.796875,
+    "alt": 886.5266723632812
+  },
+  {
+    "name": "PipeCap20",
+    "type": "PipeCap_C",
+    "area": "Map",
+    "lat": 57765.93359375,
+    "lng": -62132.546875,
+    "alt": 784.0267944335938
+  },
+  {
+    "name": "PipeCap21_2",
+    "type": "PipeCap_C",
+    "area": "Map",
+    "lat": 40321.734375,
+    "lng": 24932.63671875,
+    "alt": 3519.75634765625
+  },
+  {
+    "name": "PipeCap22",
+    "type": "PipeCap_C",
+    "area": "Map",
+    "lat": -2637.1669921875,
+    "lng": 69839.4296875,
+    "alt": 5770.134765625
+  },
+  {
+    "name": "PipeCap23",
+    "type": "PipeCap_C",
+    "area": "Map",
+    "lat": -7998.51953125,
+    "lng": 64554.55859375,
+    "alt": 5894.67822265625
+  },
+  {
+    "name": "PipeCap24_2",
+    "type": "PipeCap_C",
+    "area": "Map",
+    "lat": -1527.0,
+    "lng": 83212.0,
+    "alt": 5054.0
+  },
+  {
+    "name": "PipeCap25",
+    "type": "PipeCap_C",
+    "area": "Map",
+    "lat": -4143.443359375,
+    "lng": 82687.203125,
+    "alt": 5737.39208984375
+  },
+  {
+    "name": "PipeCap26",
+    "type": "PipeCap_C",
+    "area": "Map",
+    "lat": 4864.4716796875,
+    "lng": 81016.7421875,
+    "alt": 6852.99365234375
+  },
+  {
+    "name": "PipeCap27",
+    "type": "PipeCap_C",
+    "area": "Map",
+    "lat": 25510.626953125,
+    "lng": 43074.0859375,
+    "alt": 1720.2435302734375
+  },
+  {
+    "name": "PipeCap28",
+    "type": "PipeCap_C",
+    "area": "Map",
+    "lat": 13392.2333984375,
+    "lng": -43471.80078125,
+    "alt": 1401.84619140625
+  },
+  {
+    "name": "PipeCap29",
+    "type": "PipeCap_C",
+    "area": "Map",
+    "lat": 13383.0361328125,
+    "lng": -14577.3984375,
+    "alt": 1073.6905517578125
+  },
+  {
+    "name": "PipeCap2_2783",
+    "type": "PipeCap_C",
+    "area": "Map",
+    "lat": -11445.072265625,
+    "lng": 3485.644287109375,
+    "alt": 902.7562866210938
+  },
+  {
+    "name": "PipeCap30",
+    "type": "PipeCap_C",
+    "area": "Map",
+    "lat": 32369.4140625,
+    "lng": 70454.5,
+    "alt": 3420.647216796875
+  },
+  {
+    "name": "PipeCap3_9330",
+    "type": "PipeCap_C",
+    "area": "Map",
+    "lat": -9033.2890625,
+    "lng": 16128.638671875,
+    "alt": 1222.7354736328125
+  },
+  {
+    "name": "PipeCap4",
+    "type": "PipeCap_C",
+    "area": "Map",
+    "lat": -16393.21875,
+    "lng": -8139.65673828125,
+    "alt": -153.00547790527344
+  },
+  {
+    "name": "PipeCap5",
+    "type": "PipeCap_C",
+    "area": "Map",
+    "lat": -11821.9716796875,
+    "lng": -10401.720703125,
+    "alt": -748.558837890625
+  },
+  {
+    "name": "PipeCap6_10455",
+    "type": "PipeCap_C",
+    "area": "Map",
+    "lat": -10682.7841796875,
+    "lng": 14648.044921875,
+    "alt": -532.6305541992188
+  },
+  {
+    "name": "PipeCap7_2",
+    "type": "PipeCap_C",
+    "area": "Map",
+    "lat": 9340.0,
+    "lng": 41910.0,
+    "alt": 3950.0
+  },
+  {
+    "name": "PipeCap_572",
+    "type": "PipeCap_C",
+    "area": "Map",
+    "lat": -11445.072265625,
+    "lng": 58.13136672973633,
+    "alt": 820.5833129882812
+  },
+  {
+    "name": "PipesystemNew10",
+    "type": "PipesystemNew_C",
+    "area": "Map",
+    "lat": -46427.77734375,
+    "lng": -49836.4296875,
+    "alt": -811.4808349609375,
+    "other_pipe": "Map:PipesystemNew9"
+  },
+  {
+    "name": "PipesystemNew11",
+    "type": "PipesystemNew_C",
+    "area": "Map",
+    "lat": -43858.23828125,
+    "lng": -52843.7265625,
+    "alt": -808.6069946289062,
+    "other_pipe": "Map:PipesystemNew12"
+  },
+  {
+    "name": "PipesystemNew12",
+    "type": "PipesystemNew_C",
+    "area": "Map",
+    "lat": -43633.30859375,
+    "lng": -52597.55078125,
+    "alt": -808.6051025390625,
+    "other_pipe": "Map:PipesystemNew11"
+  },
+  {
+    "name": "PipesystemNew13_6600",
+    "type": "PipesystemNew_C",
+    "area": "Map",
+    "lat": -47642.7421875,
+    "lng": -52363.65234375,
+    "alt": -808.5067138671875,
+    "other_pipe": "Map:PipesystemNew14"
+  },
+  {
+    "name": "PipesystemNew14",
+    "type": "PipesystemNew_C",
+    "area": "Map",
+    "lat": -47646.33203125,
+    "lng": -52363.65234375,
+    "alt": -808.5067138671875,
+    "other_pipe": "Map:PipesystemNew13_6600"
+  },
+  {
+    "name": "PipesystemNew15",
+    "type": "PipesystemNew_C",
+    "area": "Map",
+    "lat": -42333.8515625,
+    "lng": -52443.56640625,
+    "alt": -636.0883178710938,
+    "other_pipe": "Map:PipesystemNew16"
+  },
+  {
+    "name": "PipesystemNew16",
+    "type": "PipesystemNew_C",
+    "area": "Map",
+    "lat": -42108.953125,
+    "lng": -52443.54296875,
+    "alt": -390.0661315917969,
+    "other_pipe": "Map:PipesystemNew15"
+  },
+  {
+    "name": "PipesystemNew17",
+    "type": "PipesystemNew_C",
+    "area": "Map",
+    "lat": -43631.08984375,
+    "lng": -54340.93359375,
+    "alt": -828.0422973632812,
+    "other_pipe": "Map:PipesystemNew18"
+  },
+  {
+    "name": "PipesystemNew18",
+    "type": "PipesystemNew_C",
+    "area": "Map",
+    "lat": -43883.20703125,
+    "lng": -54342.8515625,
+    "alt": -1723.1712646484375,
+    "other_pipe": "Map:PipesystemNew17"
+  },
+  {
+    "name": "PipesystemNew19_1192",
+    "type": "PipesystemNew_C",
+    "area": "Map",
+    "lat": -22770.5390625,
+    "lng": -29638.9921875,
+    "alt": -1069.1103515625,
+    "other_pipe": "Map:PipesystemNew20"
+  },
+  {
+    "name": "PipesystemNew2",
+    "type": "PipesystemNew_C",
+    "area": "Map",
+    "lat": -46679.64453125,
+    "lng": -38759.44140625,
+    "alt": -2886.20556640625,
+    "other_pipe": "Map:PipesystemNew_7546"
+  },
+  {
+    "name": "PipesystemNew20",
+    "type": "PipesystemNew_C",
+    "area": "Map",
+    "lat": -22877.4140625,
+    "lng": -28769.99609375,
+    "alt": 487.214111328125,
+    "other_pipe": "Map:PipesystemNew19_1192"
+  },
+  {
+    "name": "PipesystemNew21_1352",
+    "type": "PipesystemNew_C",
+    "area": "Map",
+    "lat": -11441.89453125,
+    "lng": 2661.948974609375,
+    "alt": 737.302490234375,
+    "other_pipe": "Map:PipesystemNew22"
+  },
+  {
+    "name": "PipesystemNew22",
+    "type": "PipesystemNew_C",
+    "area": "Map",
+    "lat": -11442.0263671875,
+    "lng": 884.7308959960938,
+    "alt": 661.5625,
+    "other_pipe": "Map:PipesystemNew21_1352"
+  },
+  {
+    "name": "PipesystemNew23",
+    "type": "PipesystemNew_C",
+    "area": "Map",
+    "lat": -16392.2890625,
+    "lng": -8966.6103515625,
+    "alt": -318.3667907714844,
+    "other_pipe": "Map:PipesystemNew24"
+  },
+  {
+    "name": "PipesystemNew24",
+    "type": "PipesystemNew_C",
+    "area": "Map",
+    "lat": -11988.1201171875,
+    "lng": -9591.1025390625,
+    "alt": -905.7933959960938,
+    "other_pipe": "Map:PipesystemNew23"
+  },
+  {
+    "name": "PipesystemNew25_14338",
+    "type": "PipesystemNew_C",
+    "area": "Map",
+    "lat": -42675.88671875,
+    "lng": -50513.0,
+    "alt": 1355.6444091796875,
+    "other_pipe": "Map:PipesystemNew26"
+  },
+  {
+    "name": "PipesystemNew26",
+    "type": "PipesystemNew_C",
+    "area": "Map",
+    "lat": -43482.26953125,
+    "lng": -46902.98046875,
+    "alt": 1355.3355712890625,
+    "other_pipe": "Map:PipesystemNew25_14338"
+  },
+  {
+    "name": "PipesystemNew27",
+    "type": "PipesystemNew_C",
+    "area": "Map",
+    "lat": -23548.01171875,
+    "lng": 28172.130859375,
+    "alt": 569.4591674804688,
+    "other_pipe": "Map:PipesystemNew28"
+  },
+  {
+    "name": "PipesystemNew28",
+    "type": "PipesystemNew_C",
+    "area": "Map",
+    "lat": -7291.01025390625,
+    "lng": 11730.39453125,
+    "alt": -297.354248046875,
+    "other_pipe": "Map:PipesystemNew27"
+  },
+  {
+    "name": "PipesystemNew29",
+    "type": "PipesystemNew_C",
+    "area": "Map",
+    "lat": 42850.54296875,
+    "lng": -31249.998046875,
+    "alt": 663.28564453125,
+    "other_pipe": "Map:PipesystemNew30"
+  },
+  {
+    "name": "PipesystemNew30",
+    "type": "PipesystemNew_C",
+    "area": "Map",
+    "lat": 40752.08984375,
+    "lng": -35766.68359375,
+    "alt": -6822.90234375,
+    "other_pipe": "Map:PipesystemNew31"
+  },
+  {
+    "name": "PipesystemNew31",
+    "type": "PipesystemNew_C",
+    "area": "Map",
+    "lat": 44691.10546875,
+    "lng": -41006.4375,
+    "alt": -7368.0341796875,
+    "other_pipe": "Map:PipesystemNew30"
+  },
+  {
+    "name": "PipesystemNew32",
+    "type": "PipesystemNew_C",
+    "area": "Map",
+    "lat": 37145.75390625,
+    "lng": -19066.091796875,
+    "alt": 861.8736572265625,
+    "other_pipe": "Map:PipesystemNew33"
+  },
+  {
+    "name": "PipesystemNew33",
+    "type": "PipesystemNew_C",
+    "area": "Map",
+    "lat": 34021.78125,
+    "lng": -11706.99609375,
+    "alt": 791.1838989257812,
+    "other_pipe": "Map:PipesystemNew32"
+  },
+  {
+    "name": "PipesystemNew34",
+    "type": "PipesystemNew_C",
+    "area": "Map",
+    "lat": 879.0299682617188,
+    "lng": -9787.6318359375,
+    "alt": 852.052490234375,
+    "other_pipe": "Map:PipesystemNew35"
+  },
+  {
+    "name": "PipesystemNew35",
+    "type": "PipesystemNew_C",
+    "area": "Map",
+    "lat": 582.1702270507812,
+    "lng": -15350.435546875,
+    "alt": 594.0664672851562,
+    "other_pipe": "Map:PipesystemNew34"
+  },
+  {
+    "name": "PipesystemNew36",
+    "type": "PipesystemNew_C",
+    "area": "Map",
+    "lat": 6841.78759765625,
+    "lng": -3426.50634765625,
+    "alt": 265.7921447753906,
+    "other_pipe": "Map:PipesystemNew37"
+  },
+  {
+    "name": "PipesystemNew37",
+    "type": "PipesystemNew_C",
+    "area": "Map",
+    "lat": 13192.2138671875,
+    "lng": -3032.54052734375,
+    "alt": 1195.4588623046875,
+    "other_pipe": "Map:PipesystemNew36"
+  },
+  {
+    "name": "PipesystemNew38",
+    "type": "PipesystemNew_C",
+    "area": "Map",
+    "lat": -34030.0,
+    "lng": -2077.0,
+    "alt": -853.0,
+    "other_pipe": "Map:PipesystemNew39"
+  },
+  {
+    "name": "PipesystemNew39",
+    "type": "PipesystemNew_C",
+    "area": "Map",
+    "lat": -34920.0,
+    "lng": -2075.85888671875,
+    "alt": -2013.9991455078125,
+    "other_pipe": "Map:PipesystemNew38"
+  },
+  {
+    "name": "PipesystemNew3_20340",
+    "type": "PipesystemNew_C",
+    "area": "Map",
+    "lat": -40052.6796875,
+    "lng": -31571.26171875,
+    "alt": -1439.1903076171875,
+    "other_pipe": "Map:PipesystemNew4"
+  },
+  {
+    "name": "PipesystemNew4",
+    "type": "PipesystemNew_C",
+    "area": "Map",
+    "lat": -41795.1171875,
+    "lng": -30131.025390625,
+    "alt": -1380.234130859375,
+    "other_pipe": "Map:PipesystemNew3_20340"
+  },
+  {
+    "name": "PipesystemNew40",
+    "type": "PipesystemNew_C",
+    "area": "Map",
+    "lat": 42457.390625,
+    "lng": -61393.34765625,
+    "alt": 672.6939086914062,
+    "other_pipe": "Map:PipesystemNew41"
+  },
+  {
+    "name": "PipesystemNew41",
+    "type": "PipesystemNew_C",
+    "area": "Map",
+    "lat": 57324.1328125,
+    "lng": -61436.3984375,
+    "alt": 622.5835571289062,
+    "other_pipe": "Map:PipesystemNew40"
+  },
+  {
+    "name": "PipesystemNew42",
+    "type": "PipesystemNew_C",
+    "area": "Map",
+    "lat": 32362.10546875,
+    "lng": 78773.25,
+    "alt": 5144.212890625,
+    "other_pipe": "Map:PipesystemNew43_4"
+  },
+  {
+    "name": "PipesystemNew43_4",
+    "type": "PipesystemNew_C",
+    "area": "Map",
+    "lat": 32677.07421875,
+    "lng": 81542.546875,
+    "alt": 1786.5152587890625,
+    "other_pipe": "Map:PipesystemNew42"
+  },
+  {
+    "name": "PipesystemNew44",
+    "type": "PipesystemNew_C",
+    "area": "Map",
+    "lat": -1817.0162353515625,
+    "lng": 69885.34375,
+    "alt": 5593.80419921875,
+    "other_pipe": "Map:PipesystemNew47"
+  },
+  {
+    "name": "PipesystemNew45_2",
+    "type": "PipesystemNew_C",
+    "area": "Map",
+    "lat": -2521.0,
+    "lng": 83210.0,
+    "alt": 4854.525390625,
+    "other_pipe": "Map:PipesystemNew46"
+  },
+  {
+    "name": "PipesystemNew46",
+    "type": "PipesystemNew_C",
+    "area": "Map",
+    "lat": -3297.68603515625,
+    "lng": 82735.65625,
+    "alt": 5773.17431640625,
+    "other_pipe": "Map:PipesystemNew45_2"
+  },
+  {
+    "name": "PipesystemNew47",
+    "type": "PipesystemNew_C",
+    "area": "Map",
+    "lat": -8342.90234375,
+    "lng": 63801.08984375,
+    "alt": 5754.9111328125,
+    "other_pipe": "Map:PipesystemNew44"
+  },
+  {
+    "name": "PipesystemNew48",
+    "type": "PipesystemNew_C",
+    "area": "Map",
+    "lat": 5497.263671875,
+    "lng": 80249.3203125,
+    "alt": 6656.8330078125,
+    "other_pipe": "Map:PipesystemNew49"
+  },
+  {
+    "name": "PipesystemNew49",
+    "type": "PipesystemNew_C",
+    "area": "Map",
+    "lat": 24648.08203125,
+    "lng": 43441.53515625,
+    "alt": 1334.4451904296875,
+    "other_pipe": "Map:PipesystemNew54"
+  },
+  {
+    "name": "PipesystemNew50",
+    "type": "PipesystemNew_C",
+    "area": "Map",
+    "lat": 39564.94140625,
+    "lng": 20876.578125,
+    "alt": 1487.6585693359375,
+    "other_pipe": "Map:PipesystemNew51"
+  },
+  {
+    "name": "PipesystemNew51",
+    "type": "PipesystemNew_C",
+    "area": "Map",
+    "lat": 23793.748046875,
+    "lng": 16360.7412109375,
+    "alt": 3636.9287109375,
+    "other_pipe": "Map:PipesystemNew50"
+  },
+  {
+    "name": "PipesystemNew52",
+    "type": "PipesystemNew_C",
+    "area": "Map",
+    "lat": 13389.0546875,
+    "lng": -42648.11328125,
+    "alt": 1236.392333984375,
+    "other_pipe": "Map:PipesystemNew53"
+  },
+  {
+    "name": "PipesystemNew53",
+    "type": "PipesystemNew_C",
+    "area": "Map",
+    "lat": 13386.21484375,
+    "lng": -15401.0888671875,
+    "alt": 908.2366943359375,
+    "other_pipe": "Map:PipesystemNew52"
+  },
+  {
+    "name": "PipesystemNew54",
+    "type": "PipesystemNew_C",
+    "area": "Map",
+    "lat": 31564.310546875,
+    "lng": 69891.2421875,
+    "alt": 3170.859375,
+    "other_pipe": "Map:PipesystemNew49"
+  },
+  {
+    "name": "PipesystemNew5_822",
+    "type": "PipesystemNew_C",
+    "area": "Map",
+    "lat": -12597.36328125,
+    "lng": -7623.994140625,
+    "alt": 189.6727294921875,
+    "other_pipe": "Map:PipesystemNew6"
+  },
+  {
+    "name": "PipesystemNew6",
+    "type": "PipesystemNew_C",
+    "area": "Map",
+    "lat": -19968.634765625,
+    "lng": 913.2150268554688,
+    "alt": -5918.21044921875,
+    "other_pipe": "Map:PipesystemNew5_822"
+  },
+  {
+    "name": "PipesystemNew7_1302",
+    "type": "PipesystemNew_C",
+    "area": "Map",
+    "lat": -46179.28515625,
+    "lng": -52597.734375,
+    "alt": -808.60595703125,
+    "other_pipe": "Map:PipesystemNew8"
+  },
+  {
+    "name": "PipesystemNew8",
+    "type": "PipesystemNew_C",
+    "area": "Map",
+    "lat": -46404.21875,
+    "lng": -52843.72265625,
+    "alt": -808.61083984375,
+    "other_pipe": "Map:PipesystemNew7_1302"
+  },
+  {
+    "name": "PipesystemNew9",
+    "type": "PipesystemNew_C",
+    "area": "Map",
+    "lat": -46673.7734375,
+    "lng": -50061.35546875,
+    "alt": -811.47607421875,
+    "other_pipe": "Map:PipesystemNew10"
+  },
+  {
+    "name": "PipesystemNew_7546",
+    "type": "PipesystemNew_C",
+    "area": "Map",
+    "lat": -45546.08984375,
+    "lng": -39272.2421875,
+    "alt": 681.110107421875,
+    "other_pipe": "Map:PipesystemNew2"
+  },
+  {
+    "name": "PipesystemNewDLC2",
+    "type": "PipesystemNewDLC_C",
+    "area": "Map",
+    "lat": -31372.689453125,
+    "lng": -32894.3515625,
+    "alt": 716.6857299804688,
+    "other_pipe": "Map:PipesystemNewDLC_2"
+  },
+  {
+    "name": "PipesystemNewDLC_2",
+    "type": "PipesystemNewDLC_C",
+    "area": "Map",
+    "lat": -32069.55859375,
+    "lng": -32344.66796875,
+    "alt": -1682.9599609375,
+    "other_pipe": "Map:PipesystemNewDLC2"
+  },
+  {
     "name": "PlayerStart_2",
     "type": "PlayerStart",
     "area": "Map",
@@ -12334,6 +13916,54 @@
     "alt": -92.99317169189453
   },
   {
+    "name": "Shell13_3781",
+    "type": "Shell_C",
+    "area": "Map",
+    "lat": -30310.697265625,
+    "lng": 18402.51171875,
+    "alt": -179.83314514160156
+  },
+  {
+    "name": "Shell16_5895",
+    "type": "Shell_C",
+    "area": "Map",
+    "lat": -27676.451171875,
+    "lng": 27871.296875,
+    "alt": 789.3646240234375
+  },
+  {
+    "name": "Shell2_1957",
+    "type": "Shell_C",
+    "area": "Map",
+    "lat": -23368.978515625,
+    "lng": 22076.857421875,
+    "alt": -311.8001708984375
+  },
+  {
+    "name": "Shell5_1015",
+    "type": "Shell_C",
+    "area": "Map",
+    "lat": -29293.5,
+    "lng": 23115.37890625,
+    "alt": 177.25180053710938
+  },
+  {
+    "name": "Shell9_2044",
+    "type": "Shell_C",
+    "area": "Map",
+    "lat": -29017.29296875,
+    "lng": 24427.900390625,
+    "alt": 228.79879760742188
+  },
+  {
+    "name": "Shell_1483",
+    "type": "Shell_C",
+    "area": "Map",
+    "lat": -39009.05859375,
+    "lng": 26275.26171875,
+    "alt": 854.6920166015625
+  },
+  {
     "name": "Stone2_5",
     "type": "Stone_C",
     "area": "Map",
@@ -12353,10 +13983,10 @@
     "name": "UpgradeHappiness2_2",
     "type": "UpgradeHappiness_C",
     "area": "Map",
-    "cost": 1337,
     "lat": -33803.76171875,
     "lng": 65.12112426757812,
-    "alt": -208.89263916015625
+    "alt": -208.89263916015625,
+    "cost": 1337
   },
   {
     "name": "Valve2_108",
