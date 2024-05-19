@@ -68,6 +68,7 @@ BuyGunRefireRate50_C,gun_upgrade,upgrades
 BuyGunSpeedx2_C,gun_upgrade,upgrades
 BuyGunSplashDamage_C,gun_damage,upgrades
 BuyHealth+15_C,health,upgrades
+BuyHealth+1_C,health,upgrades
 BuyHealth+2_C,health,upgrades
 BuyHealth+5_C,health,upgrades
 BuyHealthRegenMax+1_C,health_regen_max,upgrades

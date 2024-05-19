@@ -378,6 +378,10 @@ function loadMap() {
             if (o.type.endsWith('Chest_C')) {
               icon = 'chest';
               layer = 'closedChest';
+              // There is one chest in SL that has no spawns and it's Health+1
+              if (!o.spawns) {
+                o.spawns = "BuyHealth+1_C";
+              } 
               if (o.spawns) {
                 title = title + ' ('+o.spawns+')';
               } else if (o.coins) {
