@@ -48,8 +48,11 @@ There are also dependencies on some python libraries. Run python then enter
 the following commands:
 
   pip install mathutil aes
-  pip install UE4Parse[tex]@git+https://github.com/MinshuG/pyUE4Parse.git
+  pip install git+https://github.com/joric/pyUE4Parse.git
   exit()
+
+Note this is Joric's copy and originally installed as follows:
+  pip install UE4Parse[tex]@git+https://github.com/MinshuG/pyUE4Parse.git
 
 VoidTools Everything
 Everything is an extremely fast and powerful Windows file search utility
@@ -133,31 +136,33 @@ actually build the marker file (markers.{game}.json). Internally the script
 has a list of classes we're interested in and dumps the instances with the
 following properties (if available):
 
-  name			Name of the instance
-  type			Name of the class it instances
-  area			Level / map it is attached to
+  name			  Name of the instance
+  type			  Name of the class it instances
+  area			  Level / map it is attached to
   lat,lng,alt	3D position (x,y,z)
-  coins			Number of coins
-  cost			Cost to buy
-  spawns		What it spawns
-  hits			Hits to break
-  obsidian		Obsidian?
+  coins			  Number of coins
+  cost			  Cost to buy
+  spawns		  What it spawns
+  hits			  Hits to break
+  obsidian    Obsidian?
+  price_type  "scrap" or "bones" for cost instead of coins
 
 The name is often the type with _C removed and a number added.
 
 ## Custom Data and Legacy Data
 
-In addition to the ap has two custom data files that control behaviour and
-also pulls data from copies of files taken from the original community maps.
+In addition to the extracted data tha map has a number of custom data files
+that control behaviour and it also pulls data from copies of files taken from
+the original community maps.
 
 'layers.csv' says which layers (marker collections/extra maps) should be
-available for toggling and whether they should be on by default, and what the
-UI should call them.
+available for toggling and whether they should be on by default, what the
+UI should call them and the default icon.
 
-'types.csv' is a mapping from instance type to the marker icon that should
-be used to display it and the layer it should be displayed on. If icon is
-not specified ? icon will be used. If layer is not specified 'misc' will be
-used.
+'types.csv' is a mapping from instance class to the marker icon that should
+be used to display it, the layer it should be displayed on and the spoiler layer.
+If icon is not specified default (or ?) icon will be used. If layer is not
+specified then 'extra' will be used.
 
 'custom-markers.{game}.json' are files which custom markers can be added using the
 same format as the extracted data. Custom classes could be added with unique icons

@@ -1,4 +1,5 @@
 # install UE4Parse module: pip install git+https://github.com/joric/pyUE4Parse.git
+# This was previously: pip install UE4Parse[tex]@git+https://github.com/MinshuG/pyUE4Parse.git
 # install dependencies: pip install mathutils aes
 
 from UE4Parse.Assets.Objects.FGuid import FGuid
@@ -70,7 +71,7 @@ marker_types = {
   'BuyGraveDetector_C', 'BuyGun1_C', 'BuyGunAltDamagex2_C', 'BuyGunAlt_C', 'BuyGunCoin_C', 'BuyGunComboDamage+25_C',
   'BuyGunCriticalDamageChance_C', 'BuyGunCriticalDamage_C', 'BuyGunDamage+15_C', 'BuyGunDamage+1_C', 'BuyGunDamage+5_C',
   'BuyGunHoly1_C', 'BuyGunHoly2_C', 'BuyGunRefillSpeed+66_C', 'BuyGunRefireRate50_C', 'BuyGunSpeedx2_C', 'BuyGunSplashDamage_C',
-  'BuyHealth+15_C', 'BuyHealth+1_C', 'BuyHealth+2_C', 'BuyHealth+5_C', 'BuyHealthRegenMax+1_C', 'BuyHealthRegenMax10_C', 'BuyHealthRegenMax15_C',
+  'BuyHealth+15_C', 'BuyHealth+2_C', 'BuyHealth+5_C', 'BuyHealthRegenMax+1_C', 'BuyHealthRegenMax10_C', 'BuyHealthRegenMax15_C',
   'BuyHealthRegenMax5_C', 'BuyHealthRegenSpeed_C', 'BuyHealthRegen_C', 'BuyHeartLuck_C', 'BuyJumpHeightPlus_C', 'BuyJumpIncrease_C',
   'BuyMoreLoot_C', 'BuyNumberRising_C', 'BuyQuintupleJump_C', 'BuyShieldBreaker_C', 'BuyShowHealthbar_C', 'BuyShowProgress_C',
   'BuySilentFeet_C', 'BuySmashdownDamage+100_C', 'BuySmashdownDamage+1_C', 'BuySmashdownDamage+33_C', 'BuySmashdownDamage+3_C',
@@ -175,14 +176,51 @@ def export_markers(game, cache_dir, marker_types=marker_types, marker_names=[]):
             data[-1].update({'lat': v.y, 'lng': v.x, 'alt': v.z})
 
             p = o.get('Properties',{})
+
+            optKey(data[-1], 'spawns', spawns := p.get('Spawnthing',{}).get('ObjectName'))
+
             optKey(data[-1], 'coins', p.get('Coins'))
             optKey(data[-1], 'coins', p.get('CoinsInGold'))
+            optKey(data[-1], 'coins', p.get('Value'))
+
+            # There is at least one chest that doesn't have spawn data but actually spawns Health+1 (SL Chest31_9005)
+            # There's also a chest that has coins in it but also has a "spawns" (SIU ChestAreaEnd_78)
+            if o['Type'] == 'Chest_C':
+                if data[-1].get('spawns') is None:
+                    data[-1]['spawns'] = '_BuyHealth+1_C'
+                elif data[-1].get('coins') is not None:
+                    data[-1].pop('spawns')
+
+            # Get coin count for chests that spawn "LotsOfCouns{#coins}_C" 
+            if spawns is not None and spawns.startswith('LotsOfCoins'):
+                data[-1]['coins'] = int(spawns[11:-2])
+
+            # Set some default values for coins that don't have one
+            if data[-1].get('coins') is None:
+                if o['Type'] == "Coin_C":
+                    data[-1]['coins]'] = 1;
+                if o['Type'] == "CoinBig_C":
+                    data[-1]['coins'] = 10;
+
+            # Hack the spawns field so it's easier to add chest to both chests and coins layers
+            if o['Type'] == "Chest_C" and spawns is None and data[-1].get('coins') is not None:
+                data[-1]['spawns'] = '_CoinChest_C'
+
             optKey(data[-1], 'cost', p.get('Cost'))
-            optKey(data[-1], 'spawns', p.get('Spawnthing',{}).get('ObjectName'))
-            optKey(data[-1], 'hits', p.get('HitsToBreak'))
-            optKey(data[-1], 'obsidian', p.get('bObsidian'))
+
+            optKey(data[-1], 'hits', hits:= p.get('HitsToBreak'))
             optKey(data[-1], 'other_pipe', pipes.get(':'.join((area,o['Name']))))
             optKey(data[-1], 'price_type', price_types.get(p.get('PriceType')))
+            #optKey(data[-1], 'color', color := p.get('CustomColor'))
+
+            #optKey(data[-1], 'brick_type', p.get('BrickType'))
+            optKey(data[-1], 'obsidian', p.get('bObsidian'))
+
+            # We override the class of mine craft bricks that we think spawn gold and set default coins to 3
+            if p.get('BrickType') == 'EMinecraftBrickType::NewEnumerator4':
+                data[-1]['type'] = '_MinecraftBrickGold_C'
+                if data[-1].get('coins') is None:
+                    data[-1]['coins'] = 3
 
             if o['Type'] in ('Jumppad_C'):
                 optKey(data[-1], 'relative_velocity', p.get('RelativeVelocity'))

@@ -36,6 +36,7 @@ var maps = {
 };
 
 window.onload = function(event) {
+  // Choose map to load: See if url ends in #{map} otherwise try localStorage.mapId otherwise default to 'sl'  
   mapId = Object.keys(maps).find(id=>location.hash.endsWith(id)) || localStorage.getItem('mapId') || 'sl';
   loadMap();
 };
@@ -365,6 +366,39 @@ function loadMap() {
             continue;
           }
 
+/*
+  Work in progress
+          // check if class is in the types list
+          if (c = classes[o.type]) {
+            const defaultIcon = 'question_mark';
+            const defaultLayer = 'extra';
+
+            let markerId = o.area + ':' + o.name;
+            let text = ''; // set it later in onPopupOpen
+            let title = o.name;
+            if(o.spawns) {
+              title += ` (${o.spawns.slice(o.spawns.startsWith("_") ? 1 : 0)})`;
+            }
+            if(o.coins) {
+              title += o.coins == 0 ? " [free]" : ` [${o.coins} coin${o.coins > 1 ? "s":""}]`;
+            }
+c.nospoiler not set -> default layer
+c.nospoiler layer set but layer doesn't exist -> default layer
+c.nospoiler layer set and layer exists -> c.nospoiler
+
+icon -> c.icon otherwise layers[c.nospoiler].icon
+
+
+            let icon = c.icon || defaultIcon;
+            let layer = layers[c.layer] ? c.layer : defaultLayer;
+            let noSpoilerLayer = layers[c.nospoiler] ? (c.nospoiler ?  : "";
+
+            // If it has a spoiler layer specified add it with that layer's default icon (or otherwise default icon)
+            icon = 
+
+            // Add to class specified layer with class specified icon (or default's if unspecified) 
+            
+*/
           // check if class is in the types list
           if (c = classes[o.type]) {
             let markerId = o.area + ':' + o.name;
@@ -390,7 +424,7 @@ function loadMap() {
             }
 
             // all items you can purchase are marked as shops. note they may overlap "upgrades" and spawns. 
-            if (o.type.startsWith('Buy') || o.type.startsWith('BP_Buy') || o.type.startsWith('Purchase') || o.type.startsWith('BP_Purchase')) {
+            if (o.type.includes('Buy') || o.type.includes('Purchase')) {
               let icon = 'shop';
               let layer = 'shop';
               L.marker([o.lat, o.lng], {icon: getIcon(icon), title: title, zIndexOffset: 10, alt: markerId, o:o }).addTo(layers[layer])
@@ -617,6 +651,12 @@ function getIcon(icon) {
   let iconObj = icons[icon];
   if (!iconObj) {
     let s = getIconSize(map.getZoom());
+
+    // For small coins, shrink them down to half the size 
+    // TODO: This is a nasty hack hard coding the icon and assuming we only use it for small coins
+    if (icon.includes("coin_small")) {
+      s = s >> 1
+    }
     let c = s >> 1;
     iconObj = L.icon({iconUrl: 'img/markers/'+icon+'.png', iconSize: [s,s], iconAnchor: [c,c]});
     icons[icon] = iconObj;
@@ -631,6 +671,12 @@ function resizeIcons() {
         let icon = layer.options.icon;
         if (icon.options.iconUrl!='marker-icon.png') {
           let s = getIconSize(map.getZoom());
+
+          // For small coins, shrink them down to half the size 
+          // TODO: This is a nasty hack hard coding the icon and assuming we only use it for small coins
+          if(icon.options.iconUrl.includes("coin_small")) {
+            s = s >> 1
+          }
           let c = s >> 1;
           icon.options.iconSize = [s,s];
           icon.options.iconAnchor = [c,c];
