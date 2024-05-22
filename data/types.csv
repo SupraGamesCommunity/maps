@@ -147,7 +147,7 @@ _CoinChest_C,chest_coin,coin,
 MinecraftBrick_C,brick,extra,
 _MinecraftBrickGold_C,brick,coin,
 MoonTake_C,moon_green,collectable,misc
-PlayerStart,awesome,coordinate,
+PlayerStart,awesome,extra,
 Plumbus_C,,extra,
 Purchase_DiamondPickaxe_C,pickaxe_diamond,upgrades,shop
 Purchase_ForceBeam_C,beam,upgrades,shop
