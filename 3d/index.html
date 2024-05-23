@@ -248,17 +248,19 @@ function loadMap(mapId) {
     enableAltitude: enableAltitude,
     sortByDistanceToCamera: true,
     forceRenderOnMoving: true,
+    forceRenderOnRotating: true,
   }).addTo(map);
 
   let vectorLayer = new maptalks.VectorLayer('vector', {
     enableAltitude: enableAltitude,
     sortByDistanceToCamera: true,
     forceRenderOnMoving: true,
+    forceRenderOnRotating: true,
   }).addTo(map);
 
   if (drawAltitude) {
-    vectorLayer.setOptions({drawAltitude : {lineWidth : 2, lineColor : '#888'}});
-    //lineLayer.setOptions({drawAltitude : {lineWidth : 1, lineColor : '#888'}});
+    vectorLayer.setOptions({drawAltitude : {lineWidth : 3, lineColor : '#888', lineOpacity: 1.0 }});
+    //lineLayer.setOptions({drawAltitude : {lineWidth : 1, lineColor : '#888', lineOpacity: 0.5}});
   }
 
   for (const fname of ['markers','custom-markers'])

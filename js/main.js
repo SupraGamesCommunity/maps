@@ -8,8 +8,8 @@ var icons = {};
 var playerStart;
 var playerMarker;
 let reloading;
-let searchText='';
-var experimentalSearch = true;
+let settings;
+let experimentalSearch = true;
 
 var maps = {
   // data taken from the MapWorld* nodes
@@ -48,6 +48,12 @@ function saveSettings() {
   localStorage.setItem(localDataName, JSON.stringify(localData));
 }
 
+function clearFilter() {
+  settings.searchText = '';
+  saveSettings();
+  markItems();
+}
+
 function loadMap() {
   localStorage.setItem('mapId', mapId);
 
@@ -59,6 +65,9 @@ function loadMap() {
     if (!localData[id].markedItems) {
       localData[id].markedItems = {};
     }
+    if (!localData[id].searchText) {
+      localData[id].searchText = '';
+    }
     if (!localData[id].activeLayers) {
       localData[id].activeLayers = {'closedChest':true, 'shop':true, 'collectable':true};
       if (id=='sl') {
@@ -67,6 +76,8 @@ function loadMap() {
       }
     }
   }
+
+  settings = localData[mapId];
 
   var mapSize = {width: 8192, height: 8192}
   var tileSize   = {x: 512, y: 512};
@@ -143,13 +154,14 @@ function loadMap() {
   });
 
   map.on('overlayadd', function(e) {
+    settings.activeLayers[e.layer.id] = true;
     markItems();
-    localData[mapId].activeLayers[e.layer.id] = true;
     saveSettings();
   });
 
   map.on('overlayremove', function(e) {
-    delete localData[mapId].activeLayers[e.layer.id];
+    delete settings.activeLayers[e.layer.id];
+    markItems();
     saveSettings();
   });
 
@@ -170,7 +182,7 @@ function loadMap() {
     for (const [id, title] of Object.entries({'pipes':'Pipe Lines Map', 'pads':'Pad Lines Map'})) {
       var layer = L.tileLayer.canvas(tilesDir+'/'+id+'/{z}/{x}/{y}.png', layerOptions);
       layer.id = id;
-      if (localData[mapId].activeLayers[id]) {
+      if (settings.activeLayers[id]) {
         layer.addTo(map);
       }
       layerControl.addOverlay(layer, title);
@@ -293,7 +305,7 @@ function loadMap() {
 
   function onContextMenu(e) {
     let markerId = e.target.options.alt;
-    let found = localData[mapId].markedItems[markerId]==true;
+    let found = settings.markedItems[markerId]==true;
     markItemFound(markerId, !found);
     e.target.closePopup();
   }
@@ -307,7 +319,7 @@ function loadMap() {
     let res = null;
 
     let text = JSON.stringify(e.popup._source.options.o, null, 2).replaceAll('\n','<br>').replaceAll(' ','&nbsp;');
-    let found = localData[mapId].markedItems[markerId]==true
+    let found = settings.markedItems[markerId]==true
     let value = found ? 'checked' : '';
 
     // it's not "found" but rather "removed" (e.g. BuySword2_2 in the beginning of Crash DLC)
@@ -341,8 +353,11 @@ function loadMap() {
     fetch('data/'+fname+'.'+mapId+'.json')
       .then((response) => response.json())
       .then((j) => {
-        objects = {};
+        let objects = {};
+        let titles = {};
         for (o of j) {
+
+          let alt = o.area + ':' + o.name;
 
           // skip markers out of bounds (e.g. "PipesystemNew_AboveSewer" in DLC2_Area0)
           let [[top,left],[bottom,right]] = mapBounds;
@@ -390,13 +405,19 @@ icon -> c.icon otherwise layers[c.nospoiler].icon
 */
           // check if class is in the types list
           if (c = classes[o.type]) {
-            let markerId = o.area + ':' + o.name;
             let text = ''; // set it later in onPopupOpen
+
             let title = o.name;
             let defaultIcon = 'question_mark';
             let defaultLayer = 'misc';
             let icon = c.icon || defaultIcon;
             let layer = layers[c.layer] ? c.layer : defaultLayer;
+
+            // can't have duplicate titles in search
+            while (titles[title]) {
+              title += '_';
+            }
+            titles[title] = title;
 
             if (o.type.endsWith('Chest_C')) {
               icon = 'chest';
@@ -410,13 +431,15 @@ icon -> c.icon otherwise layers[c.nospoiler].icon
               } else if (o.coins) {
                 title = title + ' ('+o.coins+' coin'+(o.coins>1?'s':'')+')';
               }
+            } else {
+              title = title + ' ('+o.type+')';
             }
 
             // all items you can purchase are marked as shops. note they may overlap "upgrades" and spawns. 
             if (o.type.includes('Buy') || o.type.includes('Purchase')) {
               let icon = 'shop';
               let layer = 'shop';
-              L.marker([o.lat, o.lng], {icon: getIcon(icon), title: title, zIndexOffset: 10, alt: markerId, o:o, layer:layer }).addTo(layers[layer])
+              L.marker([o.lat, o.lng], {icon: getIcon(icon), title: title, zIndexOffset: 10, alt: alt, o:o, layer:layer }).addTo(layers[layer])
               .bindPopup(text)
               .on('popupopen', onPopupOpen)
               .on('contextmenu',onContextMenu)
@@ -424,7 +447,7 @@ icon -> c.icon otherwise layers[c.nospoiler].icon
             }
 
             // finally, add marker (base marker goes in the middle)
-            L.marker([o.lat, o.lng], {icon: getIcon(icon), title: title, zIndexOffset: 100, alt: markerId, o:o, layer:layer }).addTo(layers[layer])
+            L.marker([o.lat, o.lng], {icon: getIcon(icon), title: title, zIndexOffset: 100, alt: alt, o:o, layer:layer }).addTo(layers[layer])
             .bindPopup(text)
             .on('popupopen', onPopupOpen)
             .on('contextmenu',onContextMenu)
@@ -434,7 +457,7 @@ icon -> c.icon otherwise layers[c.nospoiler].icon
             if (s = classes[o.spawns]) {
               let icon = s.icon || defaultIcon;
               let layer = layers[s.layer] ? s.layer : defaultLayer;
-              L.marker([o.lat, o.lng], {icon: getIcon(icon), title: title, zIndexOffset: 1000, alt: markerId, o:o, layer:layer }).addTo(layers[layer])
+              L.marker([o.lat, o.lng], {icon: getIcon(icon), title: title, zIndexOffset: 1000, alt: alt, o:o, layer:layer }).addTo(layers[layer])
               .bindPopup(text)
               .on('popupopen', onPopupOpen)
               .on('contextmenu',onContextMenu)
@@ -447,15 +470,15 @@ icon -> c.icon otherwise layers[c.nospoiler].icon
           if (o.type == 'PlayerStart' && !playerMarker) {
             playerStart = [o.lat, o.lng, o.alt];
             let t = new L.LatLng(o.lat, o.lng);
-            if (p = localData[mapId].playerPosition) {
+            if (p = settings.playerPosition) {
               t = new L.LatLng(p[0], p[1]);
             }
-            playerMarker = L.marker([t.lat, t.lng], {zIndexOffset: 10000, draggable: true, title: Math.round(t.lat)+', '+Math.round(t.lng) })
+            playerMarker = L.marker([t.lat, t.lng], {zIndexOffset: 10000, draggable: true, title: Math.round(t.lat)+', '+Math.round(t.lng), alt:'playerMarker'})
             .bindPopup()
             .on('moveend', function(e) {
               let marker = e.target;
               let t = marker.getLatLng();
-              localData[mapId].playerPosition = [t.lat, t.lng, 0];
+              settings.playerPosition = [t.lat, t.lng, 0];
               saveSettings();
               e.target._icon.title = Math.round(t.lat)+', '+Math.round(t.lng)
             })
@@ -469,30 +492,33 @@ icon -> c.icon otherwise layers[c.nospoiler].icon
           }
 
           // collect objects for the 2-nd pass
-          objects[o.area + ':' + o.name] = o;
+          objects[alt] = o;
 
         } // end of loop
         /*
         // 2-nd pass (pads and pipes)
         for (name of Object.keys(objects)) {
-          o = objects[name];
+          let o = objects[name];
+          let alt = o.area + ':' + o.name
 
           if (o.type == 'Jumppad_C' && o.target) {
             if (r = o.direction) {
               let color = (o.allow_stomp || o.disable_movement==false) ? 'dodgerblue' : 'red';
 
               // need to add title as a single space (leaflet search issue)
-              L.polyline([[o.lat, o.lng],[o.target.y,o.target.x]], {title:' ', color: color}).addTo(layers['jumppads']);
+              let line = L.polyline([[o.lat, o.lng],[o.target.y,o.target.x]], {title:alt, color: color}).addTo(layers['jumppads']);
+              setTimeout(function(line, alt){if (line._path) {line._path.setAttribute('alt', alt)}}, 500, line, alt);
             }
           }
 
           // pipes
           if (o.other_pipe) {
             if (p = objects[o.other_pipe]) {
-              L.polyline([[o.lat, o.lng],[p.lat, p.lng]], {title:' ', color: 'yellowgreen'}).addTo(layers['pipesys']);
+              let line = L.polyline([[o.lat, o.lng],[p.lat, p.lng]], {title:alt, color: 'yellowgreen'}).addTo(layers['pipesys']);
+              setTimeout(function(line, alt){if (line._path) {line._path.setAttribute('alt', alt)}}, 500, line, alt);
             }
           }
-
+         
         } // end of 2-nd pass
         */
         markItems();
@@ -522,7 +548,7 @@ icon -> c.icon otherwise layers[c.nospoiler].icon
           let layerObj = L.layerGroup();
           layerObj.id = o.id;
 
-          if (localData[mapId].activeLayers[o.id]) {
+          if (settings.activeLayers[o.id]) {
             layerObj.addTo(map);
             activeLayers.push(layerObj);
           } else {
@@ -547,13 +573,29 @@ icon -> c.icon otherwise layers[c.nospoiler].icon
           }).addTo(map);
 
           searchControl._handleSubmit = function(){
-            let records = searchControl._filterData(searchText, searchControl._recordsCache);
-            console.log('handling enter key, unimplemented. Supposed to filter markers by ', records);
-            if (records && Object.keys(records).length>0) {
-              submitItem(Object.keys(records)[0]);
-            }
+            map.closePopup();
             searchControl.collapse();
-          };
+            applyFilter();
+          }
+
+          function applyFilter() {
+            // need fixing an issue with brackets (submitting a fullname from keyboard doesn't work)
+            let records = searchControl._recordsCache = searchControl._filterData(settings.searchText, searchControl._recordsFromLayer());
+            if (records && Object.keys(records).length>0) {
+              count = Object.keys(records).length;
+              if (count>0) {
+                let text = Object.keys(records)[0];
+                if (count==1) { // ==1 popup if we found 1 item, >=1 always show popup at first item
+                  submitItem(text);
+                } else {
+                  let o = records[text];
+                  layers[o.layer.options.layer].addTo(map);
+                }
+              }
+            }
+            saveSettings();
+            markItems();
+          }
 
           function submitItem(text) {
             const loc = searchControl._getLocation(text)
@@ -567,19 +609,31 @@ icon -> c.icon otherwise layers[c.nospoiler].icon
             }
           }
 
+          function clickItem(text) {
+            applyFilter();
+            submitItem(text);
+          }
+
           searchControl.on('search:expanded', function (e) {
-            document.querySelector('input.search-input').value = searchText;
-            searchControl.searchText(searchText);
-            addSearchCallbacks();
+            let input = document.querySelector('input.search-input');
+            input.value = settings.searchText;
+            if (settings.searchText) {
+              input.focus();
+              input.select();
+              searchControl.searchText(settings.searchText);
+              addSearchCallbacks();
+            }
           });
 
           document.querySelector('.search-cancel').addEventListener('click',function (e) {
-            console.log('cancel clicked');
-            searchText = '';
+            clearFilter();
           });
 
-          document.querySelector('input.search-input').addEventListener('keydown', function(e) {
-            searchText = document.querySelector('input.search-input').value;
+          document.querySelector('input.search-input').addEventListener('input', function(e) {
+            settings.searchText = document.querySelector('input.search-input').value;
+            if (!settings.searchText) {
+              //markItems(); // show everything without pressing enter
+            }
             addSearchCallbacks();
           });
 
@@ -590,7 +644,7 @@ icon -> c.icon otherwise layers[c.nospoiler].icon
               [].forEach.call(divs, function(div) {
                 div.addEventListener('click', function (e) {
                   let text = e.target.innerText;
-                  submitItem(text);
+                  clickItem(text);
                   e.preventDefault();
                 })
               })
@@ -620,6 +674,8 @@ icon -> c.icon otherwise layers[c.nospoiler].icon
               e.layer.openPopup();
             }
         });
+
+        markItems();
 
         filename = 'data/types.csv';
         Papa.parse(filename, { download: true, header: true, complete: function(results, filename) {
@@ -664,6 +720,10 @@ icon -> c.icon otherwise layers[c.nospoiler].icon
         } else {
           map.toggleFullscreen();
         }
+        break;
+      case 'Slash':
+        searchControl.expand(true);
+        e.preventDefault();
         break;
       case 'Digit1': reloadMap('sl'); break;
       case 'Digit2': reloadMap('slc'); break;
@@ -732,9 +792,9 @@ window.markItemFound = function (id, found=true, save=true) {
   });
 
   if (found) {
-    localData[mapId].markedItems[id] = true;
+    settings.markedItems[id] = true;
   } else {
-    delete localData[mapId].markedItems[id];
+    delete settings.markedItems[id];
   }
 
   if (save) {
@@ -743,23 +803,48 @@ window.markItemFound = function (id, found=true, save=true) {
 }
 
 function markItems() {
-  for (const[id,value] of Object.entries(localData[mapId].markedItems)) {
-    var divs = document.querySelectorAll('img[alt="' + id + '"]');
+  for (const[id,value] of Object.entries(settings.markedItems)) {
+    var divs = document.querySelectorAll('*[alt="' + id + '"]');
     [].forEach.call(divs, function(div) {
       div.classList.add('found');
     });
   }
+
+  // filter by settings.searchText
+  if (Object.keys(searchControl._recordsCache).length == 0) {
+    searchControl._recordsCache = searchControl._filterData(settings.searchText,searchControl._recordsFromLayer());
+  }
+
+  let records = settings.searchText.length>0 ? searchControl._recordsCache : {};
+  let unfiltered = Object.keys(records).length==0;
+
+  let lookup = {}
+  for (const o of Object.values(records)) {
+    lookup[o.layer.options.alt] = true;
+  }
+
+  var divs = document.querySelectorAll('img.leaflet-marker-icon, path.leaflet-interactive');
+  [].forEach.call(divs, function(div) {
+    if (div.alt!='playerMarker') {
+      let alt = div.getAttribute('alt');
+      if (unfiltered || lookup[alt]) {
+        div.classList.remove('hidden');
+      } else {
+        div.classList.add('hidden');
+      }
+    }
+  });
 }
 
 function unmarkItems() {
-  for (const[id,value] of Object.entries(localData[mapId].markedItems)) {
+  for (const[id,value] of Object.entries(settings.markedItems)) {
     var divs = document.querySelectorAll('img[alt="' + id + '"]');
     [].forEach.call(divs, function(div) {
       div.classList.remove('found');
     });
   }
-  localData[mapId].markedItems={};
-  localData[mapId].playerPosition = playerStart;
+  settings.markedItems={};
+  settings.playerPosition = playerStart;
   if (playerMarker) {
     playerMarker.setLatLng(new L.LatLng(playerStart[0], playerStart[1]));
   }
@@ -827,7 +912,7 @@ window.loadSaveFile = function () {
           var latlng = new L.LatLng(p.y, p.x);
           //console.log('setting player position from file', mapId, latlng);
           playerMarker.setLatLng(latlng);
-          localData[mapId].playerPosition = [p.y, p.x, p.z];
+          settings.playerPosition = [p.y, p.x, p.z];
         } else {
           console.log('cannot load player position from', JSON.stringify(o));
         }
@@ -835,8 +920,8 @@ window.loadSaveFile = function () {
       }
     }
 
-    setTimeout(function(){alert('Loaded successfully. Marked ' + Object.keys(localData[mapId].markedItems).length + ' items')},250);
-    //console.log('Marked ' + Object.keys(localData[mapId].markedItems).length + ' items');
+    //setTimeout(function(){alert('Loaded successfully. Marked ' + Object.keys(settings.markedItems).length + ' items')},250);
+    console.log('Marked ' + Object.keys(settings.markedItems).length + ' items');
 
     saveSettings();
 

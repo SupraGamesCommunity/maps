@@ -201,20 +201,15 @@ class UEReadHelper {
                     retVal.z = this.getFloat32();
                     retVal.w = this.getFloat32();
                     break;
-                  case "Transform":
-                    var p;
-                    while ((p = this.getNextProperty()).name != "None") {
-                      retVal[p.name] = p;
-                    }
-                    break;
       default:
         retVal.name = type;
         if( type.endsWith("Property") ) { 
           retVal.value = this.getValueByType(this.getString());
         } else {
-          //console.log("nested property type not explicitly handled: " + type);
-          this.pos -= 8;
-          retVal.value = this.getString64Custom(overlen);
+          var p;
+          while ((p = this.getNextProperty()).name != "None") {
+            retVal[p.name] = p;
+          }
         }
         break;
     }
@@ -272,22 +267,21 @@ window.loadSaveFile = function () {
 
 if (typeof require !== 'undefined' && require.main === module) {
   for (fname of [
-    'C:\\Users\\user\\AppData\\Local\\Supraland\\Saved\\SaveGames\\CrashSave1.sav',
-    'C:\\Users\\user\\AppData\\Local\\SupralandSIU\\Saved\\SaveGames\\SixInchesSave1.sav',
-    'SixInchesSave1.good.sav',
-    'SixInchesSave1.bad.sav']) {
-    require('fs').readFile(fname, (err, buf) => {
-      if (err) {
-        console.log(err);
-      } else {
-        let loadedSave = new UESaveObject(buf.buffer);
-        //require('fs').writeFileSync('save.json', JSON.stringify(loadedSave,null,2));
-        for (o of loadedSave.Properties) {
-          if (o.name == 'Player Position') {
-            console.log(o);
-          }
+    "C:\\Users\\user\\AppData\\Local\\Supraland\\Saved\\SaveGames\\Save1.sav",
+    "C:\\Users\\user\\AppData\\Local\\Supraland\\Saved\\SaveGames\\CrashSave1.sav",
+    "C:\\Users\\user\\AppData\\Local\\SupralandSIU\\Saved\\SaveGames\\SixInchesSave1.sav",
+  ])
+  require('fs').readFile(fname, (err, buf) => {
+    if (err) {
+      console.log(err);
+    } else {
+      let loadedSave = new UESaveObject(buf.buffer);
+      //require('fs').writeFileSync('save.json', JSON.stringify(loadedSave,null,2));
+      for (o of loadedSave.Properties) {
+        if (o.name == 'Player Position') {
+          console.log(JSON.stringify(o, null, 2));
         }
       }
-    })
-  }
+    }
+  })
 }
