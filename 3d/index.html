@@ -2,6 +2,7 @@
 <html>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" type="image/x-icon" href="data:image/x-icon;," />
 <title>Joric's Supraland 3D</title>
 <style type="text/css">
 html,body{margin:0px;height:100%;width:100%; font-family:sans-serif;}
@@ -12,37 +13,62 @@ html,body{margin:0px;height:100%;width:100%; font-family:sans-serif;}
 <link rel="stylesheet" href="https://unpkg.com/maptalks/dist/maptalks.css">
 <script type="text/javascript" src="https://unpkg.com/maptalks/dist/maptalks.min.js"></script>
 
+<script type="text/javascript" src="simplify.js"></script>
+
 <!-- font awesome  -->
 <!--link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" /-->
-<!--script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/all.min.js" integrity="sha512-u3fPA7V8qQmhBPNT5quvaXVa1mnnLSXUep5PS1qo5NRzHwG19aHmNJnj1Q8hpA/nBWZtZD4r4AX6YOt5ynLN2g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/all.min.js" integrity="sha512-u3fPA7V8qQmhBPNT5quvaXVa1mnnLSXUep5PS1qo5NRzHwG19aHmNJnj1Q8hpA/nBWZtZD4r4AX6YOt5ynLN2g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <base href="../"></base>
 <body>
 <div id="map" class="container"></div>
 <script>
 
-let heightFactor = 1;
-let startPitch = 45;
+let heightFactor = 0.25;
+let startPitch = 0;
 let defaultZoom = 4;
 let defaultPitch = 45;
 let defaultBearing = 0;
 let enableAltitude = true;
 let drawAltitude = true;
 let drawShadow = false;
-let markerSymbol = markerSymbol1;
+let markerSymbol = markerSymbol3;
+let symbolCache = {};
 let map = null;
 
 let markerColors = ['#48a1c2','#f4bd76','#419869','#88cf78','#988','#877','#766','#e4e1d6'];
 let lineColor = '#888';
 let colors = {};
 let items = {
-  //'Chest_C':'chest','BP_EngagementCup_Base_C':'trophy','Bones_C':'bones',
-  //'Scrap_C':'scrap',
-  //'EnemySpawn1_C':'grave_wood','EnemySpawn2_C':'grave_stone','EnemySpawn3_C':'grave_volcano',
-  //'Coin_C':'coin'
+  'Chest_C':'chest',
+  'BP_EngagementCup_Base_C':'trophy',
+  'Bones_C':'bones',
+  'PipesystemNew_C':'pipe_green',
+  'PipesystemNewDLC_C':'pipe_green',
+  'Scrap_C':'scrap',
+  //'EnemySpawn1_C':'grave_wood', 'EnemySpawn2_C':'grave_stone', 'EnemySpawn3_C':'grave_volcano',
+  //'Coin_C':'coin',
   'Jumppad_C':'map',
-  '_JumppadTarget_C':'question_mark',
-  //'PipesystemNew_C':'gun_yellow'
+  //'_JumppadTarget_C':'question_mark',
+  'BarrelRed_C':'barrel_red',
+  'BarrelColor_C': 'barrel_gold',
+  'BarrelClosed_Blueprint_C': 'barrel_gold',
+};
+
+let icons = {
+  'jumppad_blue':  {icon: 'circle-chevron-up',   color: 'dodgerblue'},
+  'jumppad_red':   {icon: 'circle-chevron-up',   color: 'red'},
+  'chest':         {icon: 'toolbox',             color: 'grey'},
+  'trophy':        {icon: 'trophy',              color: 'peru'},
+  'bones':         {icon: 'skull-crossbones',    color: 'goldenrod'},
+  'pipe_green':    {icon: 'circle-chevron-down', color: 'yellowgreen'},
+  'grave_wood':    {icon: 'cross',               color: 'sienna'},
+  'grave_stone':   {icon: 'cross',               color: 'dimgrey'},
+  'grave_volcano': {icon: 'cross',               color: 'tomato'},
+  'coin':          {icon: 'coins',               color: 'orange'},
+  'scrap':         {icon: 'gear',                color: 'darkcyan'},
+  'barrel_red':    {icon: 'prescription-bottle', color: 'maroon'},
+  'barrel_gold':   {icon: 'prescription-bottle', color: 'chocolate'},
 };
 
 let bindings = {
@@ -128,33 +154,39 @@ function markerSymbol2(icon, shadow=false) {
   ];
 }
 
-// see https://github.com/FortAwesome/font-awesome-less/blob/master/assets/stylesheets/font-awesome/variables.less
-function fontAwesomeLookup(fa) {
-  switch(fa) {
-    case 'globe': return '\uf0ac';
-    case 'map': return '\uf279';
-    default: return '\uf0ac';
-  }
-}
-
 function markerSymbol3(icon, shadow=false) {
-  return [
-    {
-      markerWidth: 85,
-      markerHeight: 85,
-      markerFill: 'royalblue',//colors[icon],
-      markerType: 'pin',
-    },
-    {
-      textFaceName: 'fontAwesome',
-      textName: fontAwesomeLookup('map'),
-      textSize: 28,
-      textFill: 'white',
-      //textVerticalAlignment: 'top',
-      textDy: -44,
-      textDx: -3,
-    },
+  let d = 48;
+  let iconName = icons[icon].icon;
+  let color = icons[icon].color;
+  let [w1,h1,[s1],c1,p1] = FontAwesome.icon({ iconName: 'location-pin' }).icon;
+
+  if (!(t = FontAwesome.icon({ iconName: iconName }))) {
+    t = FontAwesome.icon({ iconName: 'question' });
+  }
+
+  let [w2,h2,[s2],c2,p2] = t.icon;
+
+  let bgcolor = color;
+  let fgcolor = 'white';
+
+  let dx = 64 + (512-w2)/4;
+  let dy = 64 + (512-h2)/4;
+  let path = [
+    {path:p1, fill: 'black'},
+    {transform: 'matrix(0.976,0,0,0.976,5,5)', path: p1, fill: bgcolor },
+    {transform: 'matrix(0.5,0,0,0.5,'+dx+','+dy+')', path:p2, fill: fgcolor }
   ];
+  return {
+    markerType: 'path',
+    markerPath : path,
+    markerPathWidth : w1,
+    markerPathHeight : h1,
+    markerLineColor : 12,
+    markerWidth: w1*d/512,
+    markerHeight: h1*d/512,
+    markerDy : 0,
+    markerDx : 0
+  };
 }
 
 function loadMap(mapId) {
@@ -212,40 +244,41 @@ function loadMap(mapId) {
     opacity: 0.25,
   }).addTo(map);
 
+  let lineLayer = new maptalks.VectorLayer('lines', {
+    enableAltitude: enableAltitude,
+    sortByDistanceToCamera: true,
+    forceRenderOnMoving: true,
+  }).addTo(map);
+
   let vectorLayer = new maptalks.VectorLayer('vector', {
     enableAltitude: enableAltitude,
     sortByDistanceToCamera: true,
+    forceRenderOnMoving: true,
   }).addTo(map);
 
   if (drawAltitude) {
-    vectorLayer.setOptions({
-      drawAltitude : {
-        lineWidth : 1,
-        lineColor : '#fff',
-      },
-    })
+    vectorLayer.setOptions({drawAltitude : {lineWidth : 2, lineColor : '#888'}});
+    //lineLayer.setOptions({drawAltitude : {lineWidth : 1, lineColor : '#888'}});
   }
 
   for (const fname of ['markers','custom-markers'])
     fetch('data/'+fname+'.'+mapId+'.json')
     .then((response) => response.json())
     .then((j) => {
-      for (o of j) {
+
+      let objects = {};
+
+      for (const o of j) {
+
         if (! (o.lng>left && o.lng<right && o.lat>top && o.lat<bottom )) {
           continue;
         }
 
         if (icon = items[o.type]) {
 
-          var marker = new maptalks.Marker([o.lng, o.lat, o.alt],{
-            properties: {name: o.name},
-            symbol: markerSymbol(icon),
-          }).addTo(vectorLayer);
-
           if (o.type == 'Jumppad_C') {// && o.name=='Jumppad2_49') {
 
             if (r = o.direction) {
-              let color = 'magenta';
               let x1 = o.lng;
               let y1 = o.lat;
               let z1 = o.alt;
@@ -257,61 +290,64 @@ function loadMap(mapId) {
               let vz = o.direction.z * k;
 
               if (o.velocity && o.allow_stomp) {
-                color = 'cyan';
                 vx = o.velocity.x;
                 vy = o.velocity.y;
                 vz = o.velocity.z;
               }
 
-              let x = o.lng;
-              let y = o.lat;
-              let z = o.alt;
+              icon = (o.allow_stomp || o.disable_movement==false) ? 'jumppad_blue' : 'jumppad_red';
 
-              let dt = 0.5;
+              let x = x0 = o.lng;
+              let y = y0 = o.lat;
+              let z = z0 = o.alt;
+
+              let dt = 0.01;
               let g = 9.8;
-              let m = 92;
+              let m = 95;
 
-              x1=x;
-              y1=y;
-              z1=z;
-
-              let x2=y2=z2=0;
+              let last_z = z;
+              let points = []
+              points.push({x:x,y:y,z:z})
 
               for (let t=0;t<20;t+=dt) {
-
                 vz -= g * m * dt;
                 x += vx * dt;
                 y += vy * dt;
                 z += vz * dt;
 
-                x2 = x;
-                y2 = y;
-                z2 = z;
+                points.push({x:x,y:y,z:z})
 
-                var line = new maptalks.LineString(
-                  [
-                    [x1,y1,z1],
-                    [x2,y2,z2]
-                  ],
-                  {
-                    symbol:{
-                      'lineColor' : color,
-                      'lineWidth' : 2,
-                    }
+                if (last_z>z) {
+                  if (o.target) {
+                    if (o.target.z>z) break;
+                  } else {
+                    if (o.alt>0 && z<0) break;
+                    if (o.alt<0 && z<o.alt) break;
                   }
-                ).addTo(vectorLayer);
+                }
+                last_z = z;
+              }
 
-                if (o.alt>0 && z<0) break;
-                if (o.alt<0 && z<o.alt) break;
+              let color = icons[icon].color;
 
-                x1 = x2;
-                y1 = y2;
-                z1 = z2;
+              //console.log('before',points.length);
+              points = simplify(points, 10);
+              //console.log('after',points.length);
 
+              if (points.length>1) {
+                new maptalks.LineString(points,{symbol:{lineColor: color, lineWidth: 2}}).addTo(lineLayer);
               }
             }
           } // end of jumppad
 
+          if (!symbolCache.hasOwnProperty(icon)) {
+            symbolCache[icon] = markerSymbol(icon);
+          }
+
+          var marker = new maptalks.Marker([o.lng, o.lat, o.alt],{
+            properties: {name: o.name},
+            symbol: symbolCache[icon],
+          }).addTo(vectorLayer);
 
           new maptalks.ui.ToolTip(o.name,{}).addTo(marker);
 
@@ -329,6 +365,20 @@ function loadMap(mapId) {
               symbol: markerSymbol(o.icon, true),
             })
             .addTo(shadowLayer);
+          }
+        }
+        objects[o.area + ':' + o.name] = o;
+      }
+
+      for (name of Object.keys(objects)) {
+        let o = objects[name];
+        if (o.other_pipe) {
+          let icon = items[o.type];
+          let color = icons[icon].color;
+          if (p = objects[o.other_pipe]) {
+            let points = [[o.lng, o.lat, o.alt],[p.lng, p.lat, p.alt]];
+            //new maptalks.LineString(points,{symbol:{lineColor: color, lineWidth: 2, lineDasharray:[10,5,5]}}).addTo(lineLayer);
+            new maptalks.LineString(points,{symbol:{lineColor: color, lineWidth: 2,}}).addTo(lineLayer);
           }
         }
       }
@@ -386,6 +436,12 @@ function loadMap(mapId) {
       div.style.color = '#fff';
     }
   });
+
+  map.on('viewchange', function(e) {
+      vectorLayer.setOptions({enableAltitude: map.getPitch()!=0});
+      lineLayer.setOptions({enableAltitude: map.getPitch()!=0});
+  });
+
 }
 
 function resetPitch(e) {
@@ -411,17 +467,22 @@ window.onload = function(event) {
   // preload all colors and load map
   for (key of Object.keys(items)) {
     const image = new Image();
-    image.id = items[key];
-    image.onload = function() {
+    image.param = items[key];
+    image.onload = function(e) {
       ctx.drawImage(image,0,0,100,100);
-      colors[image.id] = getDominantColor(image, 1.25);
-      if (Object.keys(items).length == Object.keys(colors).length) {
+      colors[image.param] = getDominantColor(image, 1.25);
+      if (Object.keys(items).length >= Object.keys(colors).length) {
+        loadMap(mapId);
+      }
+    };
+    image.onerror = function() {
+      colors[image.param] = '#888';
+      if (Object.keys(items).length >= Object.keys(colors).length) {
         loadMap(mapId);
       }
     };
     image.src = 'img/'+items[key]+'.png';
   }
-
 
   let pressed = {};
 
@@ -466,10 +527,10 @@ window.onload = function(event) {
 
   window.requestAnimationFrame(update);
 
+
   // redraw (need font awesome)
   //setTimeout(function(){map.setPitch(map.getPitch()+0.01);},1000);
 }
-
 </script>
 </body>
 </html>

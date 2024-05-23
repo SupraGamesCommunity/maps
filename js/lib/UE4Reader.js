@@ -195,39 +195,17 @@ class UEReadHelper {
                     retVal.b = this.getFloat32();
                     retVal.a = this.getFloat32();
                     break;
+                  case "Quat":
+                    retVal.x = this.getFloat32();
+                    retVal.y = this.getFloat32();
+                    retVal.z = this.getFloat32();
+                    retVal.w = this.getFloat32();
+                    break;
                   case "Transform":
-                    let p = this.pos;
-                    /*
-                    \x09\x00\x00\x00Rotation\x00
-                    \x0F\x00\x00\x00StructProperty\x00\x10\x00\x00\x00\x00\x00\x00\x00
-                    \x05\x00\x00\x00Quat\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x80\x00\x00\x00\x00\xf3\x04\x35\xbf\xf2\x04\x35\x3f
-                    \x0c\x00\x00\x00Translation\x00
-                    \x0F\x00\x00\x00StructProperty\x00\x0c\x00\x00\x00\x00\x00\x00\x00
-                    \x07\x00\x00\x00Vector\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x41\x4a\x90\x46\x62\x28\xaf\xc6\x80\x1a\x70\xc2
-                    \x05\x00\x00\x00None
-                    */
-                    let t = this.getString(); // Rotation
-                    this.pos += 0;
-
-                    t = this.getString(); // StructProperty
-                    this.pos += 8;
-
-                    t = this.getString(); // Quat
-                    this.pos += 17; // padding
-                    retVal.rotation = {x: this.getFloat32(), y: this.getFloat32(), z: this.getFloat32(), w: this.getFloat32()}
-
-                    t = this.getString(); // Translation
-                    this.pos += 0;
-
-                    t = this.getString(); // StructProperty
-                    this.pos += 8;
-
-                    t = this.getString(); // Vector
-                    this.pos += 17; // padding
-                    retVal.translation = {x: this.getFloat32(), y: this.getFloat32(), z: this.getFloat32()}
-
-                    this.pos = p - 8
-                    this.getString64Custom(overlen);
+                    var p;
+                    while ((p = this.getNextProperty()).name != "None") {
+                      retVal[p.name] = p;
+                    }
                     break;
       default:
         retVal.name = type;
@@ -293,19 +271,23 @@ window.loadSaveFile = function () {
 */
 
 if (typeof require !== 'undefined' && require.main === module) {
-  fname = 'C:\\Users\\user\\AppData\\Local\\Supraland\\Saved\\SaveGames\\CrashSave1.sav';
-  fname = 'C:\\Users\\user\\AppData\\Local\\SupralandSIU\\Saved\\SaveGames\\SixInchesSave1.sav';
-  require('fs').readFile(fname, (err, buf) => {
-    if (err) {
-      console.log(err);
-    } else {
-      let loadedSave = new UESaveObject(buf.buffer);
-      //require('fs').writeFileSync('save.json', JSON.stringify(loadedSave,null,2));
-      for (o of loadedSave.Properties) {
-        if (o.name == 'Player Position') {
-          console.log(o);
+  for (fname of [
+    'C:\\Users\\user\\AppData\\Local\\Supraland\\Saved\\SaveGames\\CrashSave1.sav',
+    'C:\\Users\\user\\AppData\\Local\\SupralandSIU\\Saved\\SaveGames\\SixInchesSave1.sav',
+    'SixInchesSave1.good.sav',
+    'SixInchesSave1.bad.sav']) {
+    require('fs').readFile(fname, (err, buf) => {
+      if (err) {
+        console.log(err);
+      } else {
+        let loadedSave = new UESaveObject(buf.buffer);
+        //require('fs').writeFileSync('save.json', JSON.stringify(loadedSave,null,2));
+        for (o of loadedSave.Properties) {
+          if (o.name == 'Player Position') {
+            console.log(o);
+          }
         }
       }
-    }
-  })
+    })
+  }
 }

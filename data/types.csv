@@ -26,6 +26,7 @@ BP_Purchase_TranslocatorCooldown_C,translocator_cooldown,upgrades,shop
 BP_TrophyDetector_C,,upgrades,shop
 BarrelColor_C,barrel_gold,collectable,misc
 BarrelRed_C,barrel_red,collectable,misc
+BarrelClosed_Blueprint_C,barrel_gold,collectable,misc
 Battery_C,,extra,
 Bones_C,bones,collectable,misc
 BuyArmor1_C,armor,upgrades,shop
@@ -173,4 +174,5 @@ PipeCap_C,pipe_red,pipesys,
 PipesystemNew_C,pipe_green,pipesys,
 PipesystemNewDLC_C,pipe_blue,pipesys,
 Shell_C,shell,collectable,misc
-_JumppadTarget_C,,jumppads,
+MetalBall_C,,extra
+Supraball_C,,extra
