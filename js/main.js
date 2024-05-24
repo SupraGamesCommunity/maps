@@ -33,6 +33,7 @@ let mapCenter;
 
 // Parameters extracted from URL
 let param = {};
+let restrictSearchCollapse = false;
 
 // Hard coded map data extracted from the games
 const maps = {
@@ -194,6 +195,7 @@ function loadMap() {
   map.on('overlayadd', function(e) {
     settings.activeLayers[e.layer.id] = true;
     // set alt for polylines (attributes are not populated to paths)
+    if (layers[e.layer.id])
     for (const m of Object.values(layers[e.layer.id]._layers)) {
       if (p = m._path) {
         p.setAttribute('alt', m.options.alt);
@@ -213,7 +215,6 @@ function loadMap() {
 
   // L.tileLayer.canvas() is much faster than L.tileLayer() but requires a L.TileLayer.Canvas plugin
   let baseLayer = L.tileLayer.canvas(tilesDir+'/base/{z}/{x}/{y}.jpg', layerOptions).addTo(map);
-  //let baseLayer = L.tileLayer(tilesDir+'/base/{z}/{x}/{y}.jpg', layerOptions).addTo(map);
 
   for (let id in maps) {
     var title = maps[id].title;
@@ -464,7 +465,7 @@ icon -> c.icon otherwise layers[c.nospoiler].icon
                 title = title + ' ('+o.coins+' coin'+(o.coins>1?'s':'')+')';
               }
             } else {
-              title = title + ' ('+o.type+')';
+              title = title + ' of '+o.type;
             }
 
             // all items you can purchase are marked as shops. note they may overlap "upgrades" and spawns. 
@@ -608,6 +609,8 @@ icon -> c.icon otherwise layers[c.nospoiler].icon
               collapsed: true, // can't set to expanded here, need events
           }).addTo(map);
 
+          if (restrictSearchCollapse) {
+
           searchControl.collapse = function() {
             // never collapse with text
             //console.log('firing collapse');
@@ -649,17 +652,23 @@ icon -> c.icon otherwise layers[c.nospoiler].icon
           // doesn't add collapse on start
           map.off('dragstart click', searchControl.collapse, searchControl);
 
+          }//restrict collapse
+
           // select on focus
           searchControl._input.addEventListener('focus', function() {
             searchControl._input.select();
           });
 
           if (settings.searchText != '') {
-            searchControl._input.value = settings.searchText;
-            searchControl.expand();
-            searchControl._cancel.style.display = 'block';
-            searchControl._input.focus();
-            searchControl.searchText(settings.searchText);
+            if (restrictSearchCollapse) {
+              searchControl._input.value = settings.searchText;
+              searchControl.expand();
+              searchControl._cancel.style.display = 'block';
+              searchControl._input.focus();
+              searchControl.searchText(settings.searchText);
+            } else {
+              markItems();
+            }
           }
 
           searchControl._handleSubmit = function(){
