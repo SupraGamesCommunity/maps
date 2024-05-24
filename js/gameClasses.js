@@ -191,5 +191,6 @@ const gameClasses = {
     "PipesystemNewDLC_C"                : new GameClass("pipe_blue",                "pipesys",     ""),
     "Shell_C"                           : new GameClass("shell",                    "collectable", "misc"),
     "MetalBall_C"                       : new GameClass(null,                       "extra",       null),
-    "Supraball_C"                       : new GameClass(null,                       "extra",       null)
+    "Supraball_C"                       : new GameClass(null,                       "extra",       null),
+    "Trash_C"                           : new GameClass(null,                       "extra",       null)
 }

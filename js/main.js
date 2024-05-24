@@ -29,6 +29,10 @@ let reloading;      // Flag used to prevent triggering loading while already in 
 // Enable experimental search feature: Filter's markers based on current search
 let experimentalSearch = true;
 let searchControl = {}
+let mapCenter;
+
+// Parameters extracted from URL
+let param = {};
 
 // Hard coded map data extracted from the games
 const maps = {
@@ -58,13 +62,6 @@ const maps = {
    },
 };
 
-window.onload = function(event) {
-  // Choose map to load: See if url ends in #{map} otherwise try localStorage.mapId otherwise default to 'sl'  
-  mapId = Object.keys(maps).find(id=>location.hash.endsWith(id)) || localStorage.getItem('mapId') || 'sl';
-  loadMap();
-};
-
-// Called when settings change to save to the current window local storage
 function saveSettings() {
   localStorage.setItem(localDataName, JSON.stringify(localData));
 }
@@ -77,9 +74,15 @@ function clearFilter() {
   markItems();
 }
 
+function getViewURL() {
+  let base = window.location.href.replace(/#.*$/,'');
+  let p = map.getCenter();
+  let vars = {mapId:mapId, lat:Math.round(p.lat), lng:Math.round(p.lng), zoom:map.getZoom()};
+  return base +'#' + Object.entries(vars).map(e=>e[0]+'='+encodeURIComponent(e[1])).join('&');
+}
+
 // Called when Window loads and when base map changes, loads currently select mapId
 function loadMap() {
-  localStorage.setItem('mapId', mapId);
 
   // Make sure localStorage contains a good set of defaults
   for (let id in maps) {
@@ -98,8 +101,12 @@ function loadMap() {
     }
   }
 
+  localData.mapId = mapId;
+  saveSettings();
 
   settings = localData[mapId];
+
+  //console.log(localData);
 
   var mapSize = {width: 8192, height: 8192}
   var tileSize   = {x: 512, y: 512};
@@ -108,37 +115,40 @@ function loadMap() {
 
   document.querySelector('#map').style.backgroundColor = mapId=='siu' ? '#141414' : '#000';
 
-  var w = maps[mapId];
+  var p = maps[mapId];
 
   // fixes 404 errors
-  w.MapWorldUpperLeft.X  += 1;
-  w.MapWorldUpperLeft.Y += 1;
-  w.MapWorldLowerRight.X -= 1;
-  w.MapWorldLowerRight.Y -= 1;
+  p.MapWorldUpperLeft.X  += 1;
+  p.MapWorldUpperLeft.Y += 1;
+  p.MapWorldLowerRight.X -= 1;
+  p.MapWorldLowerRight.Y -= 1;
 
-  var mapBounds = [
-    [ w.MapWorldUpperLeft.Y, w.MapWorldUpperLeft.X ],
-    [ w.MapWorldLowerRight.Y, w.MapWorldLowerRight.X ]
+  let mapBounds = [
+    [ p.MapWorldUpperLeft.Y, p.MapWorldUpperLeft.X ],
+    [ p.MapWorldLowerRight.Y, p.MapWorldLowerRight.X ]
   ];
 
-  var m = w.MapWorldSize / mapSize.width;
+  var m = p.MapWorldSize / mapSize.width;
   var mapScale   = {x: 1.0/m, y: 1.0/m};
-  var mapOrigin  = {x: -w.MapWorldUpperLeft.X * mapScale.x, y: -w.MapWorldUpperLeft.Y * mapScale.y};
+  var mapOrigin  = {x: -p.MapWorldUpperLeft.X * mapScale.x, y: -p.MapWorldUpperLeft.Y * mapScale.y};
 
   // Create a coordinate system for the map
   var crs = L.CRS.Simple;
   crs.transformation = new L.Transformation(mapScale.x, mapOrigin.x, mapScale.y, mapOrigin.y);
   crs.scale = function (zoom) { return Math.pow(2, zoom) / mapMinResolution; };
   crs.zoom = function (scale) { return Math.log(scale * mapMinResolution) / Math.LN2; };
-  let gap = w.MapWorldSize/4;
+
+  mapCenter = [p.MapWorldCenter.Y, p.MapWorldCenter.X];
+
+  let gap = p.MapWorldSize/2;
 
   //Create the map
   map = new L.Map('map', {
     crs: crs,
     fadeAnimation: false,
     maxBounds: [
-      [ w.MapWorldUpperLeft.Y - gap, w.MapWorldUpperLeft.X - gap ],
-      [ w.MapWorldLowerRight.Y + gap, w.MapWorldLowerRight.X + gap ]
+      [ p.MapWorldUpperLeft.Y - gap, p.MapWorldUpperLeft.X - gap ],
+      [ p.MapWorldLowerRight.Y + gap, p.MapWorldLowerRight.X + gap ]
     ],
     zoomControl: false,
   });
@@ -163,9 +173,15 @@ function loadMap() {
     position: 'topright',
   });
 
+  map.on('moveend zoomend', function(e) {
+    settings.center = [map.getCenter().lat, map.getCenter().lng]; // avoid circular refs here
+    settings.zoom = map.getZoom();
+    saveSettings();
+  });
+
   map.on('baselayerchange', function(e) {
     let id = e.layer.mapId;
-    localStorage.setItem(mapId, location.hash);
+    //localStorage.setItem(mapId, location.hash);
     location.hash = '';
     map.off();
     map.remove();
@@ -177,6 +193,12 @@ function loadMap() {
 
   map.on('overlayadd', function(e) {
     settings.activeLayers[e.layer.id] = true;
+    // set alt for polylines (attributes are not populated to paths)
+    for (const m of Object.values(layers[e.layer.id]._layers)) {
+      if (p = m._path) {
+        p.setAttribute('alt', m.options.alt);
+      }
+    }
     markItems();
     saveSettings();
   });
@@ -213,117 +235,98 @@ function loadMap() {
 
   L.control.mousePosition().addTo(map);
 
-  map.fitBounds(mapBounds);
-
-  if (location.hash == '') {
-      location.hash = localStorage.getItem(mapId);
+  if (param.lat && param.lng && param.zoom) {
+    map.setView([param.lat, param.lng], param.zoom);
+    param = {};
+  } else if (settings.center && settings.zoom) {
+    map.setView(settings.center, settings.zoom);
+  } else {
+    map.fitBounds(mapBounds);
   }
 
-  var hash = new L.Hash(map);   
-
-  map.mapId = mapId; // for hash plugin to add mapId
-
-
-  window.mapref = map;
-
-  function newAction(conf) {
-    var ImmediateSubAction = L.Toolbar2.Action.extend({
-      initialize: function(map, myAction) {
-          this.map = map;
-          this.myAction = myAction;
-          L.Toolbar2.Action.prototype.initialize.call(this);
-      },
-      addHooks: function() { this.myAction.disable(); }
-    });
-
-    var Cancel = ImmediateSubAction.extend({
-        options: {
-            toolbarIcon: {
-                html: '&times;',
-                tooltip: 'Cancel'
-            }
-        }
-    });
-
-    let subActions = []
-
-    for (const [title, className] of Object.entries(conf.actions)) {
-          let a = ImmediateSubAction.extend({
-              options: {
-                  toolbarIcon: {
-                      html: title, //'<img src="img/'+title+'.png"/>',
-                      tooltip: title,
-                      className: className,
-                  },
-              },
-              addHooks: function() {
-                //typeof func === 'function' ? func() : function(){}
-                //this.myAction.disable();
-              }
-          });
-        subActions.push(a);
-    }
-
-    subActions.push(Cancel);
-
-    return L.Toolbar2.Action.extend({
-        options: {
-            toolbarIcon: {
-                html: conf.icon,
-                tooltip: conf.tooltip,
-            },
-            subToolbar: new L.Toolbar2({ 
-                actions: subActions
-            })
-        }
-    });
-  }
-
-  let actions = []
-  actions.push(newAction({icon:'&#x1F4C1;', tooltip:'Upload Save File', actions:{'Instructions':'copy-path', 'Load Game':'upload-save', 'Unmark All': 'unmark-items' }}));
-  let toolbar = new L.Toolbar2.Control({actions: actions, position: 'bottomleft'}).addTo(map);
-
-  document.querySelector('.copy-path').onclick = function(e) {
-    window.putSavefileLocationOnClipboard();
+  function copyToClipboard(text) {
+    let input = document.body.appendChild(document.createElement("input"));
+    input.value = text;
+    input.focus();
+    input.select();
+    document.execCommand('copy');
+    input.parentNode.removeChild(input);
+    console.log(text + ' copied to clipboard');
   }
 
   document.querySelector('#file').onchange = function(e) {
-    window.loadSaveFile();
-    document.querySelector('.leaflet-toolbar-1').style.display = 'none';
+    loadSaveFile();
   }
 
-  document.querySelector('.upload-save').onclick = function(e) {
-    document.querySelector('#file').value = null;
-    document.querySelector('#file').accept = '.sav';
-    document.querySelector('#file').click();
-  }
+  let subAction = L.Toolbar2.Action.extend({
+    initialize:function(map,myAction){this.map=map;this.myAction=myAction;L.Toolbar2.Action.prototype.initialize.call(this);},
+    addHooks:function(){ this.myAction.disable(); }
+  });
 
-  document.querySelector('.unmark-items').onclick = function(e) {
-    if (confirm('Are you sure to unmark all items?')) {
-      unmarkItems();
-      saveSettings();
-    }
-  }
-
-/*
-  // No longer used
-  function loadMarkersLegacy() {
-    chestIconBig = L.icon({iconUrl: 'img/markers/chest.png', iconSize: [64,64], iconAnchor: [32,32]});
-    filename = 'data/legacy/' + mapId + '/chests.csv';
-    var loadedCsv = Papa.parse(filename, { download: true, header: true, complete: function(results, filename) {
-      var chests = 0;
-      for (o of results.data) {
-        if (!o.x) {
-          continue;
-        }
-        chests += 1;
-        var layer = 'closedChest';
-        m = L.marker([o.y, o.x], {icon: chestIconBig, title: o.type, zIndexOffset: -100 }).addTo(layers[layer])
-        .bindPopup(JSON.stringify(o, null, 2).replaceAll('\n','<br>').replaceAll(' ','&nbsp;'));
-      }
-    }});
-  }
-*/
+  new L.Toolbar2.Control({
+      position: 'bottomleft',
+      actions: [
+        // share button
+        L.Toolbar2.Action.extend({
+          options: {
+            toolbarIcon:{html: '&#x1F517;', tooltip: 'Share'},
+            subToolbar: new L.Toolbar2({ 
+              actions: [
+                subAction.extend({
+                  options:{toolbarIcon:{html:'Copy Map View URL', tooltip: 'Copies View URL to Clipboard'}},
+                  addHooks:function() {
+                    copyToClipboard(getViewURL());
+                    subAction.prototype.addHooks.call(this); // closes sub-action
+                  }
+                }),
+                subAction.extend({
+                  options:{toolbarIcon:{html:'&times;', tooltip: 'Close'}}
+                }),
+              ],
+            })
+          }
+        }),
+        // load game button
+        L.Toolbar2.Action.extend({
+          options: {
+            toolbarIcon:{html: '&#x1F4C1;', tooltip: 'Upload'},
+            subToolbar: new L.Toolbar2({ 
+              actions: [
+                subAction.extend({
+                  options:{toolbarIcon:{html:'Copy Path', tooltip: 'Copy save file directory path to clipboard'}},
+                  addHooks:function() {
+                    copyToClipboard('%LocalAppData%\\Supraland'+(mapId=='siu' ? 'SIU':'')+'\\Saved\\SaveGames');
+                    subAction.prototype.addHooks.call(this);
+                  }
+                }),
+                subAction.extend({
+                  options:{toolbarIcon:{html:'Load Game', tooltip: 'Load game save (*.sav) to mark collected items'}},
+                  addHooks: function () {
+                    document.querySelector('#file').value = null;
+                    document.querySelector('#file').accept = '.sav';
+                    document.querySelector('#file').click();
+                    subAction.prototype.addHooks.call(this);
+                  }
+                }),
+                subAction.extend({
+                  options:{toolbarIcon:{html:'Unmark All', tooltip: 'Unmark all items'}},
+                  addHooks: function () { 
+                    if (confirm('Are you sure to unmark all items?')) {
+                      unmarkItems();
+                      saveSettings();
+                    }
+                    subAction.prototype.addHooks.call(this);
+                  }
+                }),
+                subAction.extend({
+                  options:{toolbarIcon:{html:'&times;', tooltip: 'Close'}}
+                }),
+              ],
+            })
+          }
+        }),
+      ],
+  }).addTo(map);
 
   function onContextMenu(e) {
     let markerId = e.target.options.alt;
@@ -339,10 +342,16 @@ function loadMap() {
 
     let dist = Infinity;
     let res = null;
+    let o = e.popup._source.options.o;
 
-    let text = JSON.stringify(e.popup._source.options.o, null, 2).replaceAll('\n','<br>').replaceAll(' ','&nbsp;');
+    let text = JSON.stringify(o, null, 2).replaceAll('\n','<br>').replaceAll(' ','&nbsp;');
     let found = settings.markedItems[markerId]==true
     let value = found ? 'checked' : '';
+
+    let base = window.location.href.replace(/#.*$/,'');
+    let vars = {mapId:mapId, lat:Math.round(map.getCenter().lat), lng:Math.round(map.getCenter().lng), zoom:map.getZoom()};
+    let url = base +'#' + Object.entries(vars).map(e=>e[0]+'='+encodeURIComponent(e[1])).join('&');
+    let a = '<a href="'+url+'" onclick="return false">Map URL</a>';
 
     // it's not "found" but rather "removed" (e.g. BuySword2_2 in the beginning of Crash DLC)
     text += '<br><br><input type="checkbox" id="'+markerId+'" '+value+' onclick=markItemFound("'+markerId+'",this.checked)><label for="'+markerId+'">Found</label>';
@@ -436,9 +445,10 @@ icon -> c.icon otherwise layers[c.nospoiler].icon
             let layer = layers[c.layer] ? c.layer : defaultLayer;
 
             // can't have duplicate titles in search
-            while (titles[title]) {
-              title += '_';
+            if (titles[title]) {
+              title = o.area + ':' + o.name;
             }
+
             titles[title] = title;
 
             if (o.type.endsWith('Chest_C')) {
@@ -461,7 +471,7 @@ icon -> c.icon otherwise layers[c.nospoiler].icon
             if (o.type.includes('Buy') || o.type.includes('Purchase')) {
               let icon = 'shop';
               let layer = 'shop';
-              L.marker([o.lat, o.lng], {icon: getIcon(icon), title: title, zIndexOffset: 10, alt: alt, o:o, layer:layer }).addTo(layers[layer])
+              L.marker([o.lat, o.lng], {icon: getIcon(icon), title: title, zIndexOffset: 10, alt: alt, o:o, layerId:layer }).addTo(layers[layer])
               .bindPopup(text)
               .on('popupopen', onPopupOpen)
               .on('contextmenu',onContextMenu)
@@ -469,18 +479,19 @@ icon -> c.icon otherwise layers[c.nospoiler].icon
             }
 
             // finally, add marker (base marker goes in the middle)
-            L.marker([o.lat, o.lng], {icon: getIcon(icon), title: title, zIndexOffset: 100, alt: alt, o:o, layer:layer }).addTo(layers[layer])
+            L.marker([o.lat, o.lng], {icon: getIcon(icon), title: title, zIndexOffset: 100, alt: alt, o:o, layerId:layer }).addTo(layers[layer])
             .bindPopup(text)
             .on('popupopen', onPopupOpen)
             .on('contextmenu',onContextMenu)
             ;
 
             // we also have to put all spawns up there as separate markers, they may overlap already listed items (legacy thing)
+            // note the title is ' ' to prevent leaflet-search from collecting items from a fake item layer
             let s = {}
             if (s = classes[o.spawns]) {
               let icon = s.icon || defaultIcon;
               let layer = layers[s.layer] ? s.layer : defaultLayer;
-              L.marker([o.lat, o.lng], {icon: getIcon(icon), title: title, zIndexOffset: 1000, alt: alt, o:o, layer:layer }).addTo(layers[layer])
+              L.marker([o.lat, o.lng], {icon: getIcon(icon), title: ' ', zIndexOffset: 1000, alt: alt, o:o, layerId:layer }).addTo(layers[layer])
               .bindPopup(text)
               .on('popupopen', onPopupOpen)
               .on('contextmenu',onContextMenu)
@@ -497,7 +508,7 @@ icon -> c.icon otherwise layers[c.nospoiler].icon
             if (p = settings.playerPosition) {
               t = new L.LatLng(p[0], p[1]);
             }
-            playerMarker = L.marker([t.lat, t.lng], {zIndexOffset: 10000, draggable: true, title: Math.round(t.lat)+', '+Math.round(t.lng), alt:'playerMarker'})
+            playerMarker = L.marker([t.lat, t.lng], {zIndexOffset: 10000, draggable: false, title: Math.round(t.lat)+', '+Math.round(t.lng), alt:'playerMarker'})
             .bindPopup()
             .on('moveend', function(e) {
               let marker = e.target;
@@ -529,17 +540,17 @@ icon -> c.icon otherwise layers[c.nospoiler].icon
             if (r = o.direction) {
               let color = (o.allow_stomp || o.disable_movement==false) ? 'dodgerblue' : 'red';
 
-              // need to add title as a single space (leaflet search issue)
-              let line = L.polyline([[o.lat, o.lng],[o.target.y,o.target.x]], {title:alt, color: color}).addTo(layers['jumppads']);
-              setTimeout(function(line, alt){if (line._path) {line._path.setAttribute('alt', alt)}}, 500, line, alt);
+              // need to add title as a single space (leaflet search issue), but not the full title so it doesn't appear in search
+              let line = L.polyline([[o.lat, o.lng],[o.target.y,o.target.x]], {title:' ', alt:alt, color: color}).addTo(layers['jumppads']);
+              line._path && line._path.setAttribute('alt', alt);
             }
           }
 
           // pipes
           if (o.other_pipe) {
             if (p = objects[o.other_pipe]) {
-              let line = L.polyline([[o.lat, o.lng],[p.lat, p.lng]], {title:alt, color: 'yellowgreen'}).addTo(layers['pipesys']);
-              setTimeout(function(line, alt){if (line._path) {line._path.setAttribute('alt', alt)}}, 500, line, alt);
+              let line = L.polyline([[o.lat, o.lng],[p.lat, p.lng]], {title:' ', alt:alt, color: 'yellowgreen'}).addTo(layers['pipesys']);
+              line._path && line._path.setAttribute('alt', alt);
             }
           }
          
@@ -592,60 +603,217 @@ icon -> c.icon otherwise layers[c.nospoiler].icon
               initial: false, // search any substring
               firstTipSubmit: false, // use first autosuggest
               autoCollapse: false,
-              tipAutoSubmit: false, //auto map panTo when click on tooltip
+              tipAutoSubmit: true, //auto map panTo when click on tooltip
               tooltipLimit: -1,
+              collapsed: true, // can't set to expanded here, need events
           }).addTo(map);
 
-          searchControl._handleSubmit = function(){
-            map.closePopup();
-            searchControl.collapse();
-            applyFilter();
+          searchControl.collapse = function() {
+            // never collapse with text
+            //console.log('firing collapse');
+            if (this._input.value != '') {
+              return this;
+            }
+            this._hideTooltip()
+            this.cancel()
+            this._alert.style.display = 'none'
+            this._input.blur()
+            if (this.options.collapsed) {
+              this._input.style.display = 'none'
+              this._cancel.style.display = 'none'
+              L.DomUtil.removeClass(this._container, 'search-exp')
+              if (this.options.hideMarkerOnCollapse) {
+                this._map.removeLayer(this._markerSearch)
+              }
+              this._map.off('dragstart click', this.collapse, this)
+            }
+            this.fire('search:collapsed')
+            return this
           }
 
-          function applyFilter() {
-            // need fixing an issue with brackets (submitting a fullname from keyboard doesn't work)
-            let records = searchControl._recordsCache = searchControl._filterData(settings.searchText, searchControl._recordsFromLayer());
-            if (records && Object.keys(records).length>0) {
-              let count = Object.keys(records).length;
-              if (count>0) {
-                let text = Object.keys(records)[0];
-                if (count==1) { // ==1 popup if we found 1 item, >=1 always show popup at first item
-                  submitItem(text);
-                } else {
-                  let o = records[text];
-                  layers[o.layer.options.layer].addTo(map);
+          searchControl.expand = function (toggle) {
+
+            //console.log('firing expand');
+
+            toggle = typeof toggle === 'boolean' ? toggle : true
+            this._input.style.display = 'block'
+            L.DomUtil.addClass(this._container, 'search-exp')
+            if (toggle !== false) {
+              this._input.focus()
+              this._map.on('dragstart click', this.collapse, this)
+            }
+            this.fire('search:expanded')
+            return this
+          };
+
+          // doesn't add collapse on start
+          map.off('dragstart click', searchControl.collapse, searchControl);
+
+          // select on focus
+          searchControl._input.addEventListener('focus', function() {
+            searchControl._input.select();
+          });
+
+          if (settings.searchText != '') {
+            searchControl._input.value = settings.searchText;
+            searchControl.expand();
+            searchControl._cancel.style.display = 'block';
+            searchControl._input.focus();
+            searchControl.searchText(settings.searchText);
+          }
+
+          searchControl._handleSubmit = function(){
+            //map.closePopup();
+
+            if (searchControl._input.value=='') {
+              searchControl.collapse();
+            }
+            //applyFilter();
+            //searchControl._input.select();
+          }
+
+          searchControl._handleArrowSelect =  function (velocity) {
+            const searchTips = this._tooltip.hasChildNodes() ? this._tooltip.childNodes : []
+
+            for (let i = 0; i < searchTips.length; i++) {
+              L.DomUtil.removeClass(searchTips[i], 'search-tip-select')
+            }
+
+            // always mark input
+            this._input.select();
+            map.closePopup();
+
+
+            if ((velocity === 1) && (this._tooltip.currentSelection >= (searchTips.length - 1))) { // If at end of list.
+              //L.DomUtil.addClass(searchTips[this._tooltip.currentSelection], 'search-tip-select')
+              this._tooltip.currentSelection = -1; // joric - circular navigation
+
+            } else if ((velocity === -1) && (this._tooltip.currentSelection <= 0)) { // Going back up to the search box.
+              this._tooltip.currentSelection = searchTips.length; // joric - circular navigation
+            }
+
+            if (this._tooltip.style.display !== 'none') {
+              this._tooltip.currentSelection += velocity
+
+              L.DomUtil.addClass(searchTips[this._tooltip.currentSelection], 'search-tip-select')
+
+              // do not replace input text
+              //this._input.value = searchTips[this._tooltip.currentSelection]._text
+
+              // scroll:
+              const tipOffsetTop = searchTips[this._tooltip.currentSelection].offsetTop
+
+              if (tipOffsetTop + searchTips[this._tooltip.currentSelection].clientHeight >= this._tooltip.scrollTop + this._tooltip.clientHeight) {
+                this._tooltip.scrollTop = tipOffsetTop - this._tooltip.clientHeight + searchTips[this._tooltip.currentSelection].clientHeight
+              } else if (tipOffsetTop <= this._tooltip.scrollTop) {
+                this._tooltip.scrollTop = tipOffsetTop
+              }
+
+
+              clickItem(searchTips[this._tooltip.currentSelection]._text);
+
+            }
+          }
+
+          searchControl._createTip = function (text, val) { // val is object in recordCache, usually is Latlng
+            let tip
+
+            // reveal layers on creating tips
+            if (val.layer) {
+              layers[val.layer.options.layerId].addTo(map);
+            }
+
+            if (this.options.buildTip) {
+              tip = this.options.buildTip.call(ctrl, text, val) // custom tip node or html string
+              if (typeof tip === 'string') {
+                const tmpNode = L.DomUtil.create('div')
+                tmpNode.innerHTML = tip
+                tip = tmpNode.firstChild
+              }
+            } else {
+              tip = L.DomUtil.create('li', '')
+              tip.innerHTML = text
+            }
+            L.DomUtil.addClass(tip, 'search-tip')
+            tip._text = text // value replaced in this._input and used by _autoType
+            if (this.options.tipAutoSubmit) {
+              L.DomEvent
+                .disableClickPropagation(tip)
+                .on(tip, 'click', L.DomEvent.stop, this)
+                .on(tip, 'click', function (e) {
+                  clickItem(text);
+                }, this)
+            }
+            return tip
+          };
+
+          searchControl.showTooltip = function (records) {
+            this._countertips = 0
+            this._tooltip.innerHTML = ''
+            this._tooltip.currentSelection = -1 // inizialized for _handleArrowSelect()
+            if (this.options.tooltipLimit) {
+              for (const key in records) { // fill tooltip
+                if (this._countertips === this.options.tooltipLimit) {
+                  break
                 }
+                this._countertips++
+                this._tooltip.appendChild(this._createTip(key, records[key]))
               }
             }
-            saveSettings();
-            markItems();
-          }
 
-          function submitItem(text) {
-            const loc = searchControl._getLocation(text)
-            if (loc) {
-              searchControl.showLocation(loc, text);
-              searchControl.fire('search:locationfound', {
-                latlng: loc,
-                text: text,
-                layer: loc.layer ? loc.layer : null
-              })
+            if (this._countertips > 0) {
+              this._tooltip.style.display = 'block'
+
+              if (this._autoTypeTmp) {
+                this._autoType()
+              }
+
+              this._autoTypeTmp = this.options.autoType// reset default value
+            } else {
+              this._hideTooltip()
             }
-          }
+
+            this._tooltip.scrollTop = 0
+
+            map.closePopup();
+            settings.searchText = this._input.value;
+            markItems();
+
+            if (settings.searchText != '') {
+              let c = [];
+              for (const o of Object.values(searchControl._filterData(settings.searchText, searchControl._recordsFromLayer()))) {
+                //lookup[o.layer.options.alt] = true;
+                c.push([o.lat, o.lng]);
+              }
+              var bounds = new L.LatLngBounds(c);
+              if (bounds) {
+                //map.fitBounds(bounds); // too much action, maybe do optional
+              }
+            }
+
+            return this._countertips
+          };
 
           function clickItem(text) {
-            applyFilter();
-            submitItem(text);
+            const loc = searchControl._getLocation(text)
+            if (loc) {
+              map.panTo(loc);
+              if (loc.layer._popup) {
+                // reveal layers on click
+                //layers[loc.layer.options.layerId].addTo(map);
+                loc.layer.openPopup();
+              }
+            }
           }
 
           searchControl.on('search:expanded', function (e) {
             let input = document.querySelector('input.search-input');
             input.value = settings.searchText;
             if (settings.searchText) {
-              input.focus();
-              input.select();
+              //input.focus();
+              //input.select();
               searchControl.searchText(settings.searchText);
-              addSearchCallbacks();
+              //addSearchCallbacks();
             }
           });
 
@@ -653,27 +821,13 @@ icon -> c.icon otherwise layers[c.nospoiler].icon
             clearFilter();
           });
 
-          document.querySelector('input.search-input').addEventListener('input', function(e) {
-            settings.searchText = document.querySelector('input.search-input').value;
-            if (!settings.searchText) {
-              //markItems(); // show everything without pressing enter
+          searchControl._input.addEventListener('input', function(e) {
+            if (this.value == '') {
+              clearFilter();
+              //console.log('cleared');
             }
-            addSearchCallbacks();
           });
 
-          // add click callbacks to search dropdown list items
-          function addSearchCallbacks(){
-            setTimeout(function() {
-              let divs = document.querySelectorAll('.search-tip');
-              [].forEach.call(divs, function(div) {
-                div.addEventListener('click', function (e) {
-                  let text = e.target.innerText;
-                  clickItem(text);
-                  e.preventDefault();
-                })
-              })
-            }, 1500)
-          }
 
         } else { // legacy search
 
@@ -720,43 +874,15 @@ icon -> c.icon otherwise layers[c.nospoiler].icon
   }
 
   loadLayers();
-
-  function reloadMap(id) {
-    if (!reloading) {
-      reloading = true;
-      map.fireEvent('baselayerchange',{layer:{mapId:id}});
-      setTimeout(function(){ reloading = false; }, 250);
-    }
-  }
-
-  window.addEventListener("keydown",function (e) {
-    //console.log(e.code);
-
-    if (e.target.id.startsWith('searchtext')) {
-      return;
-    }
-
-    switch (e.code) {
-      case 'KeyF':
-        if (e.ctrlKey) {
-          searchControl.expand(true);
-          e.preventDefault();
-        } else {
-          map.toggleFullscreen();
-        }
-        break;
-      case 'Slash':
-        searchControl.expand(true);
-        e.preventDefault();
-        break;
-      case 'Digit1': reloadMap('sl'); break;
-      case 'Digit2': reloadMap('slc'); break;
-      case 'Digit3': reloadMap('siu'); break;
-    }
-
-  });
-
 } // end of loadmap
+
+function reloadMap(id) {
+  if (!reloading) {
+    reloading = true;
+    map.fireEvent('baselayerchange',{layer:{mapId:id}});
+    setTimeout(function(){ reloading = false; }, 250);
+  }
+}
 
 function getIconSize(zoom) {
   let s = [32];
@@ -834,24 +960,18 @@ function markItems() {
     });
   }
 
-  // filter by settings.searchText
-  if (Object.keys(searchControl._recordsCache).length == 0) {
-    searchControl._recordsCache = searchControl._filterData(settings.searchText,searchControl._recordsFromLayer());
-  }
-
-  let records = settings.searchText.length>0 ? searchControl._recordsCache : {};
-  let unfiltered = Object.keys(records).length==0;
-
+  // filter by settings.searchText. caching is unreliable, just perform a full search here
   let lookup = {}
-  for (const o of Object.values(records)) {
-    lookup[o.layer.options.alt] = true;
+  if (settings.searchText != '') {
+    for (const o of Object.values(searchControl._filterData(settings.searchText, searchControl._recordsFromLayer()))) {
+      lookup[o.layer.options.alt] = true;
+    }
   }
 
-  let divs = document.querySelectorAll('img.leaflet-marker-icon, path.leaflet-interactive');
-  [].forEach.call(divs, function(div) {
+  [].forEach.call(document.querySelectorAll('img.leaflet-marker-icon, path.leaflet-interactive'), function(div) {
     if (div.alt!='playerMarker') {
       let alt = div.getAttribute('alt');
-      if (unfiltered || lookup[alt]) {
+      if (Object.keys(lookup).length==0 || lookup[alt]) {
         div.classList.remove('hidden');
       } else {
         div.classList.add('hidden');
@@ -957,21 +1077,74 @@ window.loadSaveFile = function () {
   }
 }
 
-window.putSavefileLocationOnClipboard = function() {
-  let location = '%LocalAppData%\\Supraland'+(map.mapId=='siu' ? 'SIU':'')+'\\Saved\\SaveGames';
-
-  let text = 
-  'This map allows you to import the game save file (latest .sav) to mark the collected items automatically. '+
-  'On Windows, the default save path for this game is "'+location+'". '+
-  'Click OK to copy the path to your clipboard.'
-  ;
-
-  if (confirm(text)) {
-    let inputc = document.body.appendChild(document.createElement("input"));
-    inputc.value = location;
-    inputc.focus();
-    inputc.select();
-    document.execCommand('copy');
-    inputc.parentNode.removeChild(inputc);
+window.onload = function(event) {
+  if (location.hash.length>1) {
+    for (const s of location.hash.slice(1).split('&')) {
+      let [k,v] = s.split('=');
+      param[k] = v;
+    }
   }
+
+  // clear location hash
+  history.pushState('', document.title, window.location.pathname + window.location.search);
+
+  mapId = param.mapId || localData.mapId || 'sl';
+
+  loadMap();
+
+  let bindings = {
+    KeyA:['x',+1],KeyD:['x',-1],
+    KeyW:['y',+1],KeyS:['y',-1],
+    KeyT:['z',+1],KeyG:['z',-1],
+  };
+
+  let pressed = {};
+
+  function update(timestep) {
+    let step = 100;
+    let v = {};
+    for (key of Object.keys(bindings)) {
+      if (pressed[key]) {
+        let [dir, step] = bindings[key];
+        v[dir] = (v[dir]||0) + step;
+      }
+    }
+    (v.x || v.y) && map.panBy([(-v.x||0)*step, (-v.y||0)*step], {animation: false});
+    //v.z && map.setZoom(map.getZoom()+v.z/16, {duration: 1});
+    window.requestAnimationFrame(update);
+  }
+
+  window.addEventListener('keyup', (e) => {
+    delete pressed[e.code];
+  });
+
+  window.addEventListener("keydown",function (e) {
+    //console.log(e.code);
+    if (e.target.id.startsWith('searchtext')) {
+      return;
+    }
+    pressed[e.code] = true;
+    switch (e.code) {
+      case 'KeyF':
+        if (e.ctrlKey) {
+          searchControl.expand(true);
+          e.preventDefault();
+        } else {
+          map.toggleFullscreen();
+        }
+        break;
+      case 'Slash':
+        searchControl.expand(true);
+        e.preventDefault();
+        break;
+      case 'KeyR':if (!e.ctrlKey) map.flyTo(playerMarker ? playerMarker._latlng : mapCenter); break;
+      case 'Digit1': reloadMap('sl'); break;
+      case 'Digit2': reloadMap('slc'); break;
+      case 'Digit3': reloadMap('siu'); break;
+      case 'KeyT': map.zoomIn(1); break;
+      case 'KeyG': map.zoomOut(1); break;
+    }
+  });
+
+  window.requestAnimationFrame(update);
 }

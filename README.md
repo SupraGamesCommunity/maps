@@ -20,7 +20,8 @@ Additional support from:
 
 # Features
 
-* Supports all games (Supraland, Supraland Crash, Supraland Six Inches Under) and map location URLs.
+* Supports all games (Supraland, Supraland Crash, Supraland Six Inches Under).
+* Supports URL for map zoom, location and base map selection
 * Supports save file uploading to show/hide items you collected (or not collected yet) for all games.
 * Crash Map kindly exported by BenVlodgi and upscaled/fogged by Egasuas
 * Game maps and items extracted from game data files see [scripts](https://github.com/SupraGamesCommunity/SupraMaps/tree/main/scripts) directory)
@@ -73,7 +74,7 @@ https://supragamescommunity.github.io/SupraMaps/#siu
 
 In addition you can share a link to a specific map, zoom level and position:
 
-https://supragamescommunity.github.io/SupraMaps/#{zoom}/{lat}/{lng}/{map}
+https://supragamescommunity.github.io/SupraMaps/#mapId={map}&lat={lat}&lng={lng}&zoom={zoom}
 
 zoom is 0-4 where 0 is all the way zoomed out
 lat/lng are the X Y position on the map
