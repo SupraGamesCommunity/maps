@@ -1,36 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Supraland Maps</title>
 <meta charset="utf-8">
-<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
 <meta name="apple-mobile-web-app-capable" content="yes"/>
+<title>Supraland Maps</title>
 
 <link rel="icon" type="image/png" href="img/favicon.png" sizes="250x250"/>
 
-<meta property="og:image" content="https://repository-images.githubusercontent.com/582784623/92475b6a-2789-497d-a6e0-a4fed17378ac" />
+<meta property="og:image" content="https://opengraph.githubassets.com/1/supragamescommunity/supramaps" />
 <meta property="og:site_name" content="SupraMaps" />
 <meta property="og:type" content="object" />
 <meta property="og:title" content="SupraMaps" />
 <meta property="og:description" content="SupraGames Interactive Maps" />
 
-<link rel="stylesheet" href="css/leaflet.min.css"/>
-<link rel="stylesheet" href="css/leaflet.toolbar.min.css" />
-<link rel="stylesheet" href="css/L.Control.MousePosition.css" />
-<link rel="stylesheet" href="css/Control.FullScreen.css" />
-<link rel="stylesheet" href="css/leaflet-search.src.min.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/leaflet-toolbar@0.4.0-alpha.2/dist/leaflet.toolbar.min.css" integrity="sha384-2KKj7Qg5GzD7GqKFyzNlbNOUnKMDSFSS1YYQmjeYOTDq6u6SDWvJ9RYOmvPTzutf" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/leaflet-mouse-position@1.2.0/src/L.Control.MousePosition.css" integrity="sha384-XGQcA1WStLESSf/nuYD0jsiDKrJynA5NsHvssoIo8/YscEgxF+mgX+hk8VRp1x7e" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/leaflet.fullscreen@3.0.2/Control.FullScreen.css" integrity="sha384-PALxxXbG28eiE9bT7yKmsbjd4Ta3qKMLlzsrp6G+05f4Nltt4ktlg1l7e4RPeNEa" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/leaflet-search@3.0.2/dist/leaflet-search.min.css" integrity="sha384-REIuC/quYqJV/qB1xEce8EVloOP7BrMb8UptyzM97otOZeYzO/aI0bVbcd5mlhFP" crossorigin="anonymous">
+
 <link rel="stylesheet" href="css/main.css"/>
 
-<script src="js/lib/papaparse.min.js"></script>
-<script src="js/lib/leaflet.min.js"></script>
-<script src="js/lib/leaflet.toolbar.min.js"></script>
+<script src="https://unpkg.com/papaparse@5.4.1/papaparse.min.js" integrity="sha384-D/t0ZMqQW31H3az8ktEiNb39wyKnS82iFY52QPACM+IjKW3jDUhyIgh2PApRqJZs" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/leaflet-toolbar@0.4.0-alpha.2/dist/leaflet.toolbar.min.js" integrity="sha384-jdx1Vm5o3IjWMiKCxPglnuY3o2XER8iDm+KK23hVZFCEKecy1lEAE2vpxIdSUxGB" crossorigin="anonymous"></script>
 <script src="js/lib/L.TileLayer.Canvas.min.js"></script>
-<script src="js/lib/L.Control.MousePosition.js"></script>
-<script src="js/lib/Control.FullScreen.js"></script>
+<script src="https://unpkg.com/leaflet-mouse-position@1.2.0/src/L.Control.MousePosition.js" integrity="sha384-FCf3UyYmLb2xtSYus3tvzfABjydQazPbiKC8YUqt1YCBovJPLSv1imJAS9CNB5Cr" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/leaflet.fullscreen@3.0.2/Control.FullScreen.js" integrity="sha384-l0YxV5zMlsDoa/OatH90j4WDu9eFcFTMBjn1+AZN39VXC/k+uKAu3RTciIg3Te2t" crossorigin="anonymous"></script>
 <script src="js/lib/leaflet-hash.js"></script>
-<script src="js/lib/leaflet-search.src.min.js"></script>
+<script src="https://unpkg.com/leaflet-search@3.0.2/dist/leaflet-search.min.js" integrity="sha384-JI+HrtbrAPI2WVM8g/f/KIjqz75GFxrPVIyNNG5bDJEeNFmN+PgvMvc7zfFwkQRg" crossorigin="anonymous"></script>
+
 <script src="js/lib/UE4Reader.js"></script>
 
+<script src="js/gameClasses.js"></script>
+<script src="js/layerConfig.js"></script>
 <script src="js/main.js"></script>
 
 <style>
@@ -53,6 +57,6 @@
 </head>
 <body>
 <div id="map" class="sidebar-map"></div>
-<input id="file" type='file' hidden/>
+<input id="file" type='file' hidden>
 </body>
 </html>

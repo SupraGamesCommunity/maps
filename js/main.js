@@ -1,17 +1,37 @@
-var map = null;
-var mapId = '';
-var localDataName = 'supgragamescommunity_maps';
-var localData = JSON.parse(localStorage.getItem(localDataName)) || {};
-var layers = {};
-var classes = {};
-var icons = {};
-var playerStart;
-var playerMarker;
-let reloading;
-let settings;
-let experimentalSearch = true;
+"use strict";
+/*global L, LayerConfig, layerConfigs, layerConfigsGetDefaultActive*/
 
-var maps = {
+// Terminology,
+// Class - The type of object represented by marker. Based on UE4 classes/blueprints 
+// Layer - a toggleable set of data on the map (base map, overlays, groups of markers)
+//         Leaflet calls it a LayerGroup 
+// Marker - An individual icon displayed on the map with a specific position
+
+var map = null;     // Leaflet map object containing current game map and all its markers
+var mapId = '';     // Current map selected (one of sl, slc or siu)
+
+// Data we store in the HTML Window localStorage property 
+// Current mapId, markedItems[{markerId}:true] (found), activeLayers[{layer}:true] and playerPosition
+const localDataName = 'supgragamescommunity_maps';
+let localData = JSON.parse(localStorage.getItem(localDataName)) || {};
+
+let settings;       // Reference to localData[mapId]
+
+let layers = {};    // Leaflet layerGroup array, one for each collection of markers
+let classes = {};   // The contents of classes.csv JSON - data about how to deal with each blueprint class
+                    // type,icon,layer,nospoiler
+let icons = {};     // Dict of Leaflet icon objects keyed by our icon file basename
+let playerStart;    // Position of first player start instance found in map data
+let playerMarker;   // Leaflet marker object for current player start (or dragged position)
+
+let reloading;      // Flag used to prevent triggering loading while already in progress
+
+// Enable experimental search feature: Filter's markers based on current search
+let experimentalSearch = true;
+let searchControl = {}
+
+// Hard coded map data extracted from the games
+const maps = {
   // data taken from the MapWorld* nodes
   'sl':  { 
       title: 'Supraland',
@@ -44,21 +64,26 @@ window.onload = function(event) {
   loadMap();
 };
 
+// Called when settings change to save to the current window local storage
 function saveSettings() {
   localStorage.setItem(localDataName, JSON.stringify(localData));
 }
 
+// Called when the search is cleared/cancelled to update searchText, save change
+// and reflect changes in current marker draw state
 function clearFilter() {
   settings.searchText = '';
   saveSettings();
   markItems();
 }
 
+// Called when Window loads and when base map changes, loads currently select mapId
 function loadMap() {
   localStorage.setItem('mapId', mapId);
 
-  for (id in maps) {
-    var title = maps[id].title;
+  // Make sure localStorage contains a good set of defaults
+  for (let id in maps) {
+    //var title = maps[id].title;
     if (!localData[id]) {
       localData[id] = {};
     }
@@ -69,13 +94,10 @@ function loadMap() {
       localData[id].searchText = '';
     }
     if (!localData[id].activeLayers) {
-      localData[id].activeLayers = {'closedChest':true, 'shop':true, 'collectable':true};
-      if (id=='sl') {
-        localData[id].activeLayers['pads']=true;
-        localData[id].activeLayers['pipes']=true;
-      }
+      localData[id].activeLayers = layerConfigsGetDefaultActive();
     }
   }
+
 
   settings = localData[mapId];
 
@@ -124,7 +146,7 @@ function loadMap() {
   L.control.zoom({ position: 'bottomright'}).addTo(map);
   L.control.fullscreen({ position: 'bottomright', forceSeparateButton: true}).addTo(map);
 
-  layerOptions = {
+  let layerOptions = {
       tileSize: L.point(tileSize.x, tileSize.y),
       noWrap: true,
       tms: false,
@@ -142,7 +164,7 @@ function loadMap() {
   });
 
   map.on('baselayerchange', function(e) {
-    id = e.layer.mapId;
+    let id = e.layer.mapId;
     localStorage.setItem(mapId, location.hash);
     location.hash = '';
     map.off();
@@ -165,13 +187,13 @@ function loadMap() {
     saveSettings();
   });
 
-  tilesDir = 'tiles/'+mapId;
+  let tilesDir = 'tiles/'+mapId;
 
   // L.tileLayer.canvas() is much faster than L.tileLayer() but requires a L.TileLayer.Canvas plugin
-  // let baseLayer = L.tileLayer.canvas(tilesDir+'/base/{z}/{x}/{y}.jpg', layerOptions).addTo(map);
-  let baseLayer = L.tileLayer(tilesDir+'/base/{z}/{x}/{y}.jpg', layerOptions).addTo(map);
+  let baseLayer = L.tileLayer.canvas(tilesDir+'/base/{z}/{x}/{y}.jpg', layerOptions).addTo(map);
+  //let baseLayer = L.tileLayer(tilesDir+'/base/{z}/{x}/{y}.jpg', layerOptions).addTo(map);
 
-  for (id in maps) {
+  for (let id in maps) {
     var title = maps[id].title;
     var layer = id==mapId ? baseLayer : L.layerGroup();
     layer.mapId = id;
@@ -180,7 +202,7 @@ function loadMap() {
 
   if (mapId == 'sl') {
     for (const [id, title] of Object.entries({'pipes':'Pipe Lines Map', 'pads':'Pad Lines Map'})) {
-      var layer = L.tileLayer.canvas(tilesDir+'/'+id+'/{z}/{x}/{y}.png', layerOptions);
+      let layer = L.tileLayer.canvas(tilesDir+'/'+id+'/{z}/{x}/{y}.png', layerOptions);
       layer.id = id;
       if (settings.activeLayers[id]) {
         layer.addTo(map);
@@ -197,7 +219,7 @@ function loadMap() {
       location.hash = localStorage.getItem(mapId);
   }
 
-  var hash = new L.Hash(map);
+  var hash = new L.Hash(map);   
 
   map.mapId = mapId; // for hash plugin to add mapId
 
@@ -223,10 +245,10 @@ function loadMap() {
         }
     });
 
-    subActions = []
+    let subActions = []
 
     for (const [title, className] of Object.entries(conf.actions)) {
-          a = ImmediateSubAction.extend({
+          let a = ImmediateSubAction.extend({
               options: {
                   toolbarIcon: {
                       html: title, //'<img src="img/'+title+'.png"/>',
@@ -257,7 +279,7 @@ function loadMap() {
     });
   }
 
-  actions = []
+  let actions = []
   actions.push(newAction({icon:'&#x1F4C1;', tooltip:'Upload Save File', actions:{'Instructions':'copy-path', 'Load Game':'upload-save', 'Unmark All': 'unmark-items' }}));
   let toolbar = new L.Toolbar2.Control({actions: actions, position: 'bottomleft'}).addTo(map);
 
@@ -327,10 +349,9 @@ function loadMap() {
     e.popup.setContent(text);
 
     for (const lookup of ['chests.csv', 'collectables.csv', 'shops.csv']) {
-      filename = 'data/legacy/' + mapId + '/'+lookup;
+      let filename = 'data/legacy/' + mapId + '/'+lookup;
       var loadedCsv = Papa.parse(filename, { download: true, header: true, complete: function(results, filename) {
-        var chests = 0;
-        for (o of results.data) {
+        for (let o of results.data) {
           if (!o.x) {
             continue;
           }
@@ -355,7 +376,7 @@ function loadMap() {
       .then((j) => {
         let objects = {};
         let titles = {};
-        for (o of j) {
+        for(let o of j) {
 
           let alt = o.area + ':' + o.name;
 
@@ -404,6 +425,7 @@ icon -> c.icon otherwise layers[c.nospoiler].icon
             
 */
           // check if class is in the types list
+          let c = {}
           if (c = classes[o.type]) {
             let text = ''; // set it later in onPopupOpen
 
@@ -454,6 +476,7 @@ icon -> c.icon otherwise layers[c.nospoiler].icon
             ;
 
             // we also have to put all spawns up there as separate markers, they may overlap already listed items (legacy thing)
+            let s = {}
             if (s = classes[o.spawns]) {
               let icon = s.icon || defaultIcon;
               let layer = layers[s.layer] ? s.layer : defaultLayer;
@@ -470,6 +493,7 @@ icon -> c.icon otherwise layers[c.nospoiler].icon
           if (o.type == 'PlayerStart' && !playerMarker) {
             playerStart = [o.lat, o.lng, o.alt];
             let t = new L.LatLng(o.lat, o.lng);
+            let p = {}
             if (p = settings.playerPosition) {
               t = new L.LatLng(p[0], p[1]);
             }
@@ -527,14 +551,14 @@ icon -> c.icon otherwise layers[c.nospoiler].icon
 
   function loadLayers() {
       playerMarker = null;
-      filename = 'data/layers.csv';
+      let filename = 'data/layers.csv';
 
       let activeLayers = [];
       let inactiveLayers = [];
       let searchLayers = [];
 
       var loadedCsv = Papa.parse(filename, { download: true, header: true, complete: function(results, filename) {
-        for (o of results.data) {
+        for (let o of results.data) {
           if (!o.id) {
             continue;
           }
@@ -582,7 +606,7 @@ icon -> c.icon otherwise layers[c.nospoiler].icon
             // need fixing an issue with brackets (submitting a fullname from keyboard doesn't work)
             let records = searchControl._recordsCache = searchControl._filterData(settings.searchText, searchControl._recordsFromLayer());
             if (records && Object.keys(records).length>0) {
-              count = Object.keys(records).length;
+              let count = Object.keys(records).length;
               if (count>0) {
                 let text = Object.keys(records)[0];
                 if (count==1) { // ==1 popup if we found 1 item, >=1 always show popup at first item
@@ -664,7 +688,7 @@ icon -> c.icon otherwise layers[c.nospoiler].icon
         }
 
         // search reveals all layers, hide all inactive layers right away
-        for (layerObj of inactiveLayers) {
+        for (let layerObj of inactiveLayers) {
           map.removeLayer(layerObj);
         }
 
@@ -679,7 +703,7 @@ icon -> c.icon otherwise layers[c.nospoiler].icon
 
         filename = 'data/types.csv';
         Papa.parse(filename, { download: true, header: true, complete: function(results, filename) {
-          for (o of results.data) {
+          for (let o of results.data) {
             if (!o.type) {
               continue;
             }
@@ -781,7 +805,7 @@ function resizeIcons() {
   */
 
 window.markItemFound = function (id, found=true, save=true) {
-  var divs = document.querySelectorAll('img[alt="' + id + '"]');
+  let divs = document.querySelectorAll('img[alt="' + id + '"]');
 
   [].forEach.call(divs, function(div) {
     if (found) {
@@ -804,7 +828,7 @@ window.markItemFound = function (id, found=true, save=true) {
 
 function markItems() {
   for (const[id,value] of Object.entries(settings.markedItems)) {
-    var divs = document.querySelectorAll('*[alt="' + id + '"]');
+    let divs = document.querySelectorAll('*[alt="' + id + '"]');
     [].forEach.call(divs, function(div) {
       div.classList.add('found');
     });
@@ -823,7 +847,7 @@ function markItems() {
     lookup[o.layer.options.alt] = true;
   }
 
-  var divs = document.querySelectorAll('img.leaflet-marker-icon, path.leaflet-interactive');
+  let divs = document.querySelectorAll('img.leaflet-marker-icon, path.leaflet-interactive');
   [].forEach.call(divs, function(div) {
     if (div.alt!='playerMarker') {
       let alt = div.getAttribute('alt');
@@ -838,7 +862,7 @@ function markItems() {
 
 function unmarkItems() {
   for (const[id,value] of Object.entries(settings.markedItems)) {
-    var divs = document.querySelectorAll('img[alt="' + id + '"]');
+    let divs = document.querySelectorAll('img[alt="' + id + '"]');
     [].forEach.call(divs, function(div) {
       div.classList.remove('found');
     });
@@ -884,11 +908,11 @@ window.loadSaveFile = function () {
     //console.log(loadedSave);
 
     for (let section of ["ThingsToRemove", "ThingsToActivate", "ThingsToOpenForever"]) {
-      for (o of loadedSave.Properties) {
+      for (let o of loadedSave.Properties) {
         if (o.name != section) {
           continue;
         }
-        for(x of o.value.value) {
+        for(let x of o.value.value) {
           // map '/Game/FirstPersonBP/Maps/DLC2_Complete.DLC2_Complete:PersistentLevel.Coin442_41' to 'DLC2_Complete:Coin442_41'
           let name = x.split(".").pop();
           let area = x.split("/").pop().split('.')[0];
@@ -899,9 +923,9 @@ window.loadSaveFile = function () {
       }
     }
 
-    for (o of loadedSave.Properties) {
+    for (let o of loadedSave.Properties) {
       if (o.name == 'Player Position' && playerMarker) {
-        let c = [0,0,0]
+        //let c = [0,0,0]
         let p = o.value;
 
         if (o.value.type=='Transform' && o.value['Translation']) {

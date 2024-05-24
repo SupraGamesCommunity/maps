@@ -155,8 +155,7 @@ In addition to the extracted data tha map has a number of custom data files
 that control behaviour and it also pulls data from copies of files taken from
 the original community maps.
 
-'layers.csv' says which layers (marker collections/extra maps) should be
-available for toggling and whether they should be on by default, what the
+'layers.csv' says which layers (marker: what the
 UI should call them and the default icon.
 
 'types.csv' is a mapping from instance class to the marker icon that should

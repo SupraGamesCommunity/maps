@@ -33,15 +33,13 @@ Many marker icons supplied by DavidM from game assets and others made by the com
 L.Control.FullScreen (https://github.com/brunob/leaflet.fullscreen) - Adds fullscreen button to leaflet map.
 L.Control.MousePosition (https://github.com/ardhi/Leaflet.MousePosition) - Displays mouse XY map position on a leaflet map.
 L.TileLayer.Canvas (https://github.com/GIAPspzoo/L.TileLayer.Canvas) - Leaflet extension to use map tile hierarchy.
-leaflet.fullHash (https://github.com/KoGor/leaflet-fullHash) - Dynamic URL hash for leaflet map.
-leaflet-hash (https://github.com/mlevans/leaflet-hash) - Add dynamic URL hashes to web pages with Leaflet maps.
+leaflet-hash (https://github.com/mlevans/leaflet-hash) - Add dynamic URL hashes to web pages with Leaflet maps (modified).
 leaflet-search (https://github.com/stefanocudini/leaflet-search) - search icon for leaflet maps.
-Leaflet.EdgeBuffer (https://github.com/TolonUK/Leaflet.EdgeBuffer) - Leaflet extension to buffer offscreen tiles to smooth scrolling.
 leaflet (https://leafletjs.com/) - A javascript library for interactive maps.
 leaflet.toolbar (https://github.com/Leaflet/Leaflet.toolbar) -  flexible, extensible toolbar interfaces for Leaflet maps.
 papaparse (https://github.com/mholt/PapaParse) - Fast CSV reading.
 UE4Parse (https://github.com/MinshuG/pyUE4Parse) - UE4 PAK file reader for Python.
-Joric's UE4Parse (https://github.com/joric/pyUE4Parse.git) - Joric's fork of the UE4 parse
+Joric's UE4Parse (https://github.com/joric/pyUE4Parse.git) - Joric's fork of the UE4 parse (modified)
 gentiles.py from Jeff Thompson (jeffreythomson.org), Dan Davis (danizen.net) and Joric (https://github.com/danizen/campaign-map/blob/master/gentiles.py)
 
 ImageMagick (https://imagemagick.org/index.php) - command line image manipulation.
@@ -84,4 +82,4 @@ map is one of sl, slc or siu
 
 # Technical Documentation
 
-See [technicalnotes.md](https://github.com/SupraGamesCommunity/SupraMaps/blob/main/docs/technicalnotes.md)
+See [technicalnotes.md](https://github.com/SupraGamesCommunity/SupraMaps/blob/main/doc/technicalnotes.md)
