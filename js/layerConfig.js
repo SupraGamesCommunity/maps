@@ -3,7 +3,7 @@
 // Configures the set of layers and some properties for each game map.
 
 class LayerConfig {
-    constructor(type, name, defaultIcon='question_mark', defaultActive=false, games=null) {
+    constructor(type, name, defaultIcon='question_mark', defaultActive, games) {
         this.type = type;                           // Type of layer (can be tiles)
         this.name = name;                           // User facing name of the layer
         this.defaultIcon = defaultIcon;             // Default icon to use for markers on this layer
@@ -15,7 +15,6 @@ class LayerConfig {
 
 /* exported layerConfigs */
 const layerConfigs = {
-
     data: new Map([
         ['pipes',       new LayerConfig('tiles',   'Pipe Lines Map', null,            false, ['sl'              ])],
         ['pads',        new LayerConfig('tiles',   'Pad Lines Map',  null,            false, ['sl'              ])],
