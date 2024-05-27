@@ -6926,13 +6926,7 @@
     "lat": 6073.7109375,
     "lng": 17775.4453125,
     "alt": 3131.557861328125,
-    "relative_velocity": 1912.375244140625,
-    "center_actor": true,
-    "direction": {
-      "x": -0.3237169086933136,
-      "y": -0.642633855342865,
-      "z": 0.6944271326065063
-    },
+    "color": "#FF0000",
     "target": {
       "x": 19335.497182283085,
       "y": 9170.682769031017,
@@ -6947,12 +6941,7 @@
     "lng": 5635.47119140625,
     "alt": 1833.4017333984375,
     "disable_movement": false,
-    "center_actor": true,
-    "direction": {
-      "x": 0.0,
-      "y": 0.573577344417572,
-      "z": 0.8191515207290649
-    },
+    "color": "#1E90FF",
     "target": {
       "x": 5635.47119140625,
       "y": -44303.63264977932,
@@ -6966,11 +6955,7 @@
     "lat": -41541.0,
     "lng": -275.865234375,
     "alt": 1793.0,
-    "direction": {
-      "x": 0.0,
-      "y": 0.0,
-      "z": 1.0
-    },
+    "color": "#FF0000",
     "target": {
       "x": -275.865234375,
       "y": -41541.0,
@@ -6984,13 +6969,7 @@
     "lat": 11236.0361328125,
     "lng": 25533.75,
     "alt": 3188.543701171875,
-    "relative_velocity": 2250.0,
-    "center_actor": true,
-    "direction": {
-      "x": 0.23824691772460938,
-      "y": 0.665762722492218,
-      "z": 0.7071056962013245
-    },
+    "color": "#FF0000",
     "target": {
       "x": 24617.094984054565,
       "y": 8674.514058023691,
@@ -7004,13 +6983,7 @@
     "lat": -57239.609375,
     "lng": 53700.4453125,
     "alt": 3575.69775390625,
-    "relative_velocity": 1589.53662109375,
-    "center_actor": true,
-    "direction": {
-      "x": -0.06715545803308487,
-      "y": 0.016225062310695648,
-      "z": 0.9976105690002441
-    },
+    "color": "#FF0000",
     "target": {
       "x": 54061.24699479193,
       "y": -57326.78069284212,
@@ -7024,13 +6997,7 @@
     "lat": -58911.76171875,
     "lng": 53013.69921875,
     "alt": 550.591552734375,
-    "relative_velocity": 3129.51513671875,
-    "center_actor": true,
-    "direction": {
-      "x": -0.075677290558815,
-      "y": -0.10362160950899124,
-      "z": 0.9917336106300354
-    },
+    "color": "#FF0000",
     "target": {
       "x": 54261.81032140202,
       "y": -57202.7776847324,
@@ -7044,13 +7011,7 @@
     "lat": -52478.375,
     "lng": 51697.90625,
     "alt": 567.47412109375,
-    "relative_velocity": 3000.0,
-    "center_actor": true,
-    "direction": {
-      "x": -0.00742892874404788,
-      "y": -0.4565246105194092,
-      "z": 0.8896797895431519
-    },
+    "color": "#FF0000",
     "target": {
       "x": 51801.31693811715,
       "y": -46123.552421569824,
@@ -7064,13 +7025,7 @@
     "lat": -58719.88671875,
     "lng": 53063.578125,
     "alt": 537.6765747070312,
-    "relative_velocity": 2690.35107421875,
-    "center_actor": true,
-    "direction": {
-      "x": 0.006245676893740892,
-      "y": -0.15610289573669434,
-      "z": 0.9877210259437561
-    },
+    "color": "#FF0000",
     "target": {
       "x": 52994.349503214034,
       "y": -56989.6037546274,
@@ -7084,14 +7039,8 @@
     "lat": -49784.45703125,
     "lng": 3275.899169921875,
     "alt": 1843.9998779296875,
-    "relative_velocity": 2000.0,
     "disable_movement": false,
-    "center_actor": true,
-    "direction": {
-      "x": 0.13466675579547882,
-      "y": -0.3143821656703949,
-      "z": 0.9396960735321045
-    },
+    "color": "#1E90FF",
     "target": {
       "x": 2198.5651235580444,
       "y": -47269.39970588684,
@@ -7105,15 +7054,9 @@
     "lat": -29318.4765625,
     "lng": -48241.37109375,
     "alt": 17560.2734375,
-    "relative_velocity": 3288.854736328125,
     "allow_stomp": true,
     "disable_movement": false,
-    "center_actor": true,
-    "direction": {
-      "x": 0.0,
-      "y": 0.0,
-      "z": 1.0
-    },
+    "color": "#1E90FF",
     "target": {
       "x": -48241.37109375,
       "y": -29318.4765625,
@@ -7127,13 +7070,7 @@
     "lat": -46658.4140625,
     "lng": 41889.8515625,
     "alt": -579.4031982421875,
-    "relative_velocity": 2330.821044921875,
-    "center_actor": true,
-    "direction": {
-      "x": 0.2952122390270233,
-      "y": -0.028087280690670013,
-      "z": 0.9550187587738037
-    },
+    "color": "#FF0000",
     "target": {
       "x": 39873.756947132846,
       "y": -46466.597437460056,
@@ -7147,13 +7084,7 @@
     "lat": -12873.2890625,
     "lng": 19814.46484375,
     "alt": 2194.414306640625,
-    "relative_velocity": 3100.0,
-    "center_actor": true,
-    "direction": {
-      "x": 0.2655801773071289,
-      "y": -0.01896471343934536,
-      "z": 0.9639022350311279
-    },
+    "color": "#FF0000",
     "target": {
       "x": 16282.514065742493,
       "y": -12621.077338470146,
@@ -7167,13 +7098,7 @@
     "lat": -65327.3671875,
     "lng": 42971.5078125,
     "alt": 3263.00634765625,
-    "relative_velocity": 2600.0,
-    "center_actor": true,
-    "direction": {
-      "x": 0.0935068354010582,
-      "y": -0.22573493421077728,
-      "z": 0.9696907997131348
-    },
+    "color": "#FF0000",
     "target": {
       "x": 41658.67184346914,
       "y": -62158.04871118069,
@@ -7187,13 +7112,7 @@
     "lat": -19581.373046875,
     "lng": 31702.646484375,
     "alt": -2519.508544921875,
-    "relative_velocity": 2123.885498046875,
-    "center_actor": true,
-    "direction": {
-      "x": 0.0,
-      "y": 0.19509710371494293,
-      "z": 0.9807839393615723
-    },
+    "color": "#FF0000",
     "target": {
       "x": 31702.646484375,
       "y": -20878.332082956473,
@@ -7207,14 +7126,8 @@
     "lat": -39366.8984375,
     "lng": 30833.41796875,
     "alt": -151.15478515625,
-    "relative_velocity": 1750.0,
     "disable_movement": false,
-    "center_actor": true,
-    "direction": {
-      "x": 0.3592487871646881,
-      "y": -0.134441539645195,
-      "z": 0.9235073328018188
-    },
+    "color": "#1E90FF",
     "target": {
       "x": 28519.85577940941,
       "y": -38501.094922184944,
@@ -7229,12 +7142,7 @@
     "lng": 35262.24609375,
     "alt": 1002.8065185546875,
     "disable_movement": false,
-    "center_actor": true,
-    "direction": {
-      "x": 0.5417236685752869,
-      "y": 0.03792191669344902,
-      "z": 0.8397007584571838
-    },
+    "color": "#1E90FF",
     "target": {
       "x": 34097.54020631313,
       "y": -36846.203995890915,
@@ -7248,14 +7156,8 @@
     "lat": 1039.43408203125,
     "lng": 40478.515625,
     "alt": 2472.13134765625,
-    "relative_velocity": 1700.0,
     "disable_movement": false,
-    "center_actor": true,
-    "direction": {
-      "x": 0.6405259966850281,
-      "y": 0.26321423053741455,
-      "z": 0.7214186191558838
-    },
+    "color": "#1E90FF",
     "target": {
       "x": 37810.72484880686,
       "y": -56.853188157081604,
@@ -7270,12 +7172,7 @@
     "lng": 64113.53515625,
     "alt": 673.0908203125,
     "disable_movement": false,
-    "center_actor": true,
-    "direction": {
-      "x": 0.13578374683856964,
-      "y": 0.6790565252304077,
-      "z": 0.7214187383651733
-    },
+    "color": "#1E90FF",
     "target": {
       "x": 63904.4281861186,
       "y": -52484.66501760483,
@@ -7290,12 +7187,7 @@
     "lng": 62445.37109375,
     "alt": 703.9044799804688,
     "disable_movement": false,
-    "center_actor": true,
-    "direction": {
-      "x": -0.13015544414520264,
-      "y": -0.6801573634147644,
-      "z": 0.721419095993042
-    },
+    "color": "#1E90FF",
     "target": {
       "x": 62643.20736885071,
       "y": -57577.02018260956,
@@ -7309,13 +7201,7 @@
     "lat": -8002.98779296875,
     "lng": -58051.7734375,
     "alt": 8213.736328125,
-    "relative_velocity": 2815.86865234375,
-    "center_actor": true,
-    "direction": {
-      "x": -1.0652629498508759e-06,
-      "y": -1.0,
-      "z": -1.951060085048084e-06
-    },
+    "color": "#FF0000",
     "target": {
       "x": -58051.77316753232,
       "y": -7749.5596142578115,
@@ -7329,13 +7215,7 @@
     "lat": -25500.7734375,
     "lng": 17354.271484375,
     "alt": -148.09979248046875,
-    "relative_velocity": 3102.7041015625,
-    "center_actor": true,
-    "direction": {
-      "x": -0.08123118430376053,
-      "y": 0.32075658440589905,
-      "z": 0.9436719417572021
-    },
+    "color": "#FF0000",
     "target": {
       "x": 18841.28582378858,
       "y": -31372.52878073309,
@@ -7349,13 +7229,7 @@
     "lat": -45936.65625,
     "lng": 45890.671875,
     "alt": 884.2994995117188,
-    "relative_velocity": 7185.0,
-    "center_actor": true,
-    "direction": {
-      "x": 0.5646113753318787,
-      "y": -0.42549189925193787,
-      "z": 0.7072274088859558
-    },
+    "color": "#FF0000",
     "target": {
       "x": 2889.304918349312,
       "y": -13530.767711073953,
@@ -7369,11 +7243,7 @@
     "lat": -49544.36328125,
     "lng": 53220.69921875,
     "alt": 1975.7183837890625,
-    "direction": {
-      "x": 0.21984723210334778,
-      "y": 0.2620031535625458,
-      "z": 0.9396922588348389
-    },
+    "color": "#FF0000",
     "target": {
       "x": 52785.40169918537,
       "y": -50063.12952530384,
@@ -7387,13 +7257,7 @@
     "lat": 8546.908203125,
     "lng": 17938.09765625,
     "alt": 3188.543701171875,
-    "relative_velocity": 1500.0,
-    "center_actor": true,
-    "direction": {
-      "x": -0.06930907070636749,
-      "y": 0.7037029266357422,
-      "z": 0.7071056962013245
-    },
+    "color": "#FF0000",
     "target": {
       "x": 18175.134678065777,
       "y": 6140.244194030762,
@@ -7407,13 +7271,7 @@
     "lat": -10834.64453125,
     "lng": 58047.2109375,
     "alt": 510.0,
-    "relative_velocity": 3000.0,
-    "center_actor": true,
-    "direction": {
-      "x": -0.18301351368427277,
-      "y": -0.18301068246364594,
-      "z": 0.9659260511398315
-    },
+    "color": "#FF0000",
     "target": {
       "x": 60495.93175059557,
       "y": -8385.961599886417,
@@ -7427,13 +7285,7 @@
     "lat": 6396.71826171875,
     "lng": 30354.216796875,
     "alt": 3574.655029296875,
-    "relative_velocity": 1500.0,
-    "center_actor": true,
-    "direction": {
-      "x": -0.4891197383403778,
-      "y": -0.07929494231939316,
-      "z": 0.8686047196388245
-    },
+    "color": "#FF0000",
     "target": {
       "x": 32019.669505923986,
       "y": 6666.717540316284,
@@ -7447,14 +7299,8 @@
     "lat": -17893.37890625,
     "lng": 62331.7109375,
     "alt": 510.00341796875,
-    "relative_velocity": 2950.0,
     "allow_stomp": true,
-    "center_actor": true,
-    "direction": {
-      "x": 0.27481475472450256,
-      "y": 0.2957473397254944,
-      "z": 0.9148827195167542
-    },
+    "color": "#1E90FF",
     "target": {
       "x": 57710.70083680749,
       "y": -22866.370423734188,
@@ -7468,14 +7314,8 @@
     "lat": -15603.8349609375,
     "lng": 55923.72265625,
     "alt": 510.0,
-    "relative_velocity": 3600.0,
     "allow_stomp": true,
-    "center_actor": true,
-    "direction": {
-      "x": -0.3815585672855377,
-      "y": -0.21282678842544556,
-      "z": 0.8995097875595093
-    },
+    "color": "#1E90FF",
     "target": {
       "x": 63602.20726430416,
       "y": -11320.908670663834,
@@ -7489,14 +7329,8 @@
     "lat": -21646.8125,
     "lng": 50827.7734375,
     "alt": 510.0,
-    "relative_velocity": 2600.0,
     "allow_stomp": true,
-    "center_actor": true,
-    "direction": {
-      "x": -0.20777089893817902,
-      "y": -0.6934918165206909,
-      "z": 0.6898553967475891
-    },
+    "color": "#1E90FF",
     "target": {
       "x": 51870.36780837178,
       "y": -18166.870564699173,
@@ -7510,13 +7344,7 @@
     "lat": -14800.46875,
     "lng": 63497.81640625,
     "alt": 509.999755859375,
-    "relative_velocity": 1500.0,
-    "center_actor": true,
-    "direction": {
-      "x": 0.18301275372505188,
-      "y": 0.1830122470855713,
-      "z": 0.9659258723258972
-    },
+    "color": "#FF0000",
     "target": {
       "x": 62644.06191012263,
       "y": -15654.22088265419,
@@ -7530,13 +7358,7 @@
     "lat": 2970.6826171875,
     "lng": 16209.8173828125,
     "alt": 3217.068603515625,
-    "relative_velocity": 2000.0,
-    "center_actor": true,
-    "direction": {
-      "x": 0.7221805453300476,
-      "y": -0.03142488747835159,
-      "z": 0.6909903883934021
-    },
+    "color": "#FF0000",
     "target": {
       "x": 11818.95966720581,
       "y": 3161.7459330558777,
@@ -11639,7 +11461,13 @@
     "lat": -44912.16796875,
     "lng": 51589.5,
     "alt": 2909.39208984375,
-    "other_pipe": "DLC2_Complete:PipesystemNew6_1"
+    "other_pipe": "DLC2_Complete:PipesystemNew6_1",
+    "color": "#4DFF00",
+    "target": {
+      "x": 52092.3125,
+      "y": -43757.26171875,
+      "z": 1271.7386474609375
+    }
   },
   {
     "name": "PipesystemNew11",
@@ -11648,7 +11476,13 @@
     "lat": -46867.0625,
     "lng": 50368.0234375,
     "alt": 2493.39208984375,
-    "other_pipe": "DLC2_Complete:PipesystemNew3"
+    "other_pipe": "DLC2_Complete:PipesystemNew3",
+    "color": "#4DFF00",
+    "target": {
+      "x": 51430.28125,
+      "y": -48244.4140625,
+      "z": 2113.39208984375
+    }
   },
   {
     "name": "PipesystemNew12_5",
@@ -11657,7 +11491,13 @@
     "lat": -44372.0,
     "lng": 19610.0859375,
     "alt": 27491.0,
-    "other_pipe": "DLC2_Complete:PipesystemNew9_2"
+    "other_pipe": "DLC2_Complete:PipesystemNew9_2",
+    "color": "#4DFF00",
+    "target": {
+      "x": -73832.0,
+      "y": -21942.0,
+      "z": -9857.0
+    }
   },
   {
     "name": "PipesystemNew2",
@@ -11666,7 +11506,13 @@
     "lat": -48137.3203125,
     "lng": 52687.015625,
     "alt": 1995.3919677734375,
-    "other_pipe": "DLC2_Complete:PipesystemNew_2"
+    "other_pipe": "DLC2_Complete:PipesystemNew_2",
+    "color": "#4DFF00",
+    "target": {
+      "x": 52665.15625,
+      "y": -48115.3359375,
+      "z": 1995.3919677734375
+    }
   },
   {
     "name": "PipesystemNew3",
@@ -11675,7 +11521,13 @@
     "lat": -48244.4140625,
     "lng": 51430.28125,
     "alt": 2113.39208984375,
-    "other_pipe": "DLC2_Complete:PipesystemNew11"
+    "other_pipe": "DLC2_Complete:PipesystemNew11",
+    "color": "#4DFF00",
+    "target": {
+      "x": 50368.0234375,
+      "y": -46867.0625,
+      "z": 2493.39208984375
+    }
   },
   {
     "name": "PipesystemNew4",
@@ -11684,7 +11536,13 @@
     "lat": -13603.6845703125,
     "lng": 61608.2109375,
     "alt": 1640.0,
-    "other_pipe": "DLC2_Complete:PipesystemNew5"
+    "other_pipe": "DLC2_Complete:PipesystemNew5",
+    "color": "#4DFF00",
+    "target": {
+      "x": 62915.63671875,
+      "y": -12294.8603515625,
+      "z": 1610.0
+    }
   },
   {
     "name": "PipesystemNew5",
@@ -11693,7 +11551,13 @@
     "lat": -12294.8603515625,
     "lng": 62915.63671875,
     "alt": 1610.0,
-    "other_pipe": "DLC2_Complete:PipesystemNew4"
+    "other_pipe": "DLC2_Complete:PipesystemNew4",
+    "color": "#4DFF00",
+    "target": {
+      "x": 61608.2109375,
+      "y": -13603.6845703125,
+      "z": 1640.0
+    }
   },
   {
     "name": "PipesystemNew6_1",
@@ -11702,7 +11566,13 @@
     "lat": -43757.26171875,
     "lng": 52092.3125,
     "alt": 1271.7386474609375,
-    "other_pipe": "DLC2_Complete:PipesystemNew10"
+    "other_pipe": "DLC2_Complete:PipesystemNew10",
+    "color": "#4DFF00",
+    "target": {
+      "x": 51589.5,
+      "y": -44912.16796875,
+      "z": 2909.39208984375
+    }
   },
   {
     "name": "PipesystemNew7_2",
@@ -11711,7 +11581,13 @@
     "lat": -48181.70703125,
     "lng": 42572.3984375,
     "alt": 1440.0,
-    "other_pipe": "DLC2_Complete:PipesystemNew8"
+    "other_pipe": "DLC2_Complete:PipesystemNew8",
+    "color": "#4DFF00",
+    "target": {
+      "x": 42642.87109375,
+      "y": -48240.84765625,
+      "z": -101.0
+    }
   },
   {
     "name": "PipesystemNew8",
@@ -11720,7 +11596,13 @@
     "lat": -48240.84765625,
     "lng": 42642.87109375,
     "alt": -101.0,
-    "other_pipe": "DLC2_Complete:PipesystemNew7_2"
+    "other_pipe": "DLC2_Complete:PipesystemNew7_2",
+    "color": "#4DFF00",
+    "target": {
+      "x": 42572.3984375,
+      "y": -48181.70703125,
+      "z": 1440.0
+    }
   },
   {
     "name": "PipesystemNew9_2",
@@ -11729,7 +11611,13 @@
     "lat": -21942.0,
     "lng": -73832.0,
     "alt": -9857.0,
-    "other_pipe": "DLC2_Complete:PipesystemNew12_5"
+    "other_pipe": "DLC2_Complete:PipesystemNew12_5",
+    "color": "#4DFF00",
+    "target": {
+      "x": 19610.0859375,
+      "y": -44372.0,
+      "z": 27491.0
+    }
   },
   {
     "name": "PipesystemNew_2",
@@ -11738,7 +11626,13 @@
     "lat": -48115.3359375,
     "lng": 52665.15625,
     "alt": 1995.3919677734375,
-    "other_pipe": "DLC2_Complete:PipesystemNew2"
+    "other_pipe": "DLC2_Complete:PipesystemNew2",
+    "color": "#4DFF00",
+    "target": {
+      "x": 52687.015625,
+      "y": -48137.3203125,
+      "z": 1995.3919677734375
+    }
   },
   {
     "name": "Area1_FastTravelPipe",
@@ -11747,7 +11641,13 @@
     "lat": 14537.7373046875,
     "lng": 20063.669921875,
     "alt": 3337.74609375,
-    "other_pipe": "DLC2_Complete:PipeToArea1"
+    "other_pipe": "DLC2_Complete:PipeToArea1",
+    "color": "#4DFF00",
+    "target": {
+      "x": 17410.0,
+      "y": -33236.0,
+      "z": 842.0
+    }
   },
   {
     "name": "Area2ShortcutPipe",
@@ -11756,7 +11656,13 @@
     "lat": -6527.8447265625,
     "lng": 62033.18359375,
     "alt": 4430.0,
-    "other_pipe": "DLC2_Complete:PipeToArea2"
+    "other_pipe": "DLC2_Complete:PipeToArea2",
+    "color": "#4DFF00",
+    "target": {
+      "x": 17984.0,
+      "y": -33236.0,
+      "z": 842.0
+    }
   },
   {
     "name": "Area5ShortcutPipe",
@@ -11773,7 +11679,13 @@
     "lat": -44234.078125,
     "lng": 9774.3837890625,
     "alt": 2226.891357421875,
-    "other_pipe": "DLC2_Complete:PipeToArea3"
+    "other_pipe": "DLC2_Complete:PipeToArea3",
+    "color": "#4DFF00",
+    "target": {
+      "x": 18543.0,
+      "y": -33236.0,
+      "z": 842.0
+    }
   },
   {
     "name": "NODE_AddChildActorComponent-1_PipesystemNewDLC_C_CAT_0",
@@ -11878,7 +11790,13 @@
     "lat": -60760.12109375,
     "lng": 58695.98828125,
     "alt": 1034.8792724609375,
-    "other_pipe": "DLC2_Complete:PipeToArea4"
+    "other_pipe": "DLC2_Complete:PipeToArea4",
+    "color": "#4DFF00",
+    "target": {
+      "x": 19089.0,
+      "y": -33236.0,
+      "z": 842.0
+    }
   },
   {
     "name": "PipesystemNewDLC10",
@@ -11887,7 +11805,13 @@
     "lat": -49335.3359375,
     "lng": 55097.140625,
     "alt": 2831.169921875,
-    "other_pipe": "DLC2_Complete:PipesystemNewDLC_334"
+    "other_pipe": "DLC2_Complete:PipesystemNewDLC_334",
+    "color": "#4DFF00",
+    "target": {
+      "x": 55098.828125,
+      "y": -49338.26171875,
+      "z": 1986.86865234375
+    }
   },
   {
     "name": "PipesystemNewDLC11_405",
@@ -11896,7 +11820,13 @@
     "lat": 13449.060546875,
     "lng": 23204.26171875,
     "alt": 3128.976806640625,
-    "other_pipe": "DLC2_Complete:PipesystemNewDLC12_407"
+    "other_pipe": "DLC2_Complete:PipesystemNewDLC12_407",
+    "color": "#4DFF00",
+    "target": {
+      "x": 20689.521484375,
+      "y": 12670.26171875,
+      "z": 3152.341796875
+    }
   },
   {
     "name": "PipesystemNewDLC12_407",
@@ -11905,7 +11835,13 @@
     "lat": 12670.26171875,
     "lng": 20689.521484375,
     "alt": 3152.341796875,
-    "other_pipe": "DLC2_Complete:PipesystemNewDLC11_405"
+    "other_pipe": "DLC2_Complete:PipesystemNewDLC11_405",
+    "color": "#4DFF00",
+    "target": {
+      "x": 23204.26171875,
+      "y": 13449.060546875,
+      "z": 3128.976806640625
+    }
   },
   {
     "name": "PipesystemNewDLC16_2167",
@@ -11914,7 +11850,13 @@
     "lat": -33614.1796875,
     "lng": 22480.037109375,
     "alt": -420.270263671875,
-    "other_pipe": "DLC2_Complete:PipesystemNewDLC19"
+    "other_pipe": "DLC2_Complete:PipesystemNewDLC19",
+    "color": "#4DFF00",
+    "target": {
+      "x": 18459.4375,
+      "y": -31866.4375,
+      "z": -2803.29541015625
+    }
   },
   {
     "name": "PipesystemNewDLC19",
@@ -11923,7 +11865,13 @@
     "lat": -31866.4375,
     "lng": 18459.4375,
     "alt": -2803.29541015625,
-    "other_pipe": "DLC2_Complete:PipesystemNewDLC16_2167"
+    "other_pipe": "DLC2_Complete:PipesystemNewDLC16_2167",
+    "color": "#4DFF00",
+    "target": {
+      "x": 22480.037109375,
+      "y": -33614.1796875,
+      "z": -420.270263671875
+    }
   },
   {
     "name": "PipesystemNewDLC2",
@@ -11932,7 +11880,13 @@
     "lat": -39630.97265625,
     "lng": 1548.9307861328125,
     "alt": 5275.92578125,
-    "other_pipe": "DLC2_Complete:PipesystemNewDLC3"
+    "other_pipe": "DLC2_Complete:PipesystemNewDLC3",
+    "color": "#4DFF00",
+    "target": {
+      "x": 2373.036376953125,
+      "y": -35944.9765625,
+      "z": 1909.189453125
+    }
   },
   {
     "name": "PipesystemNewDLC2_Middle",
@@ -11941,7 +11895,13 @@
     "lat": -12769.98046875,
     "lng": 56546.48046875,
     "alt": 671.1775512695312,
-    "other_pipe": "DLC2_Complete:PipesystemNewDLC_Start"
+    "other_pipe": "DLC2_Complete:PipesystemNewDLC_Start",
+    "color": "#4DFF00",
+    "target": {
+      "x": 55579.390625,
+      "y": -12820.93359375,
+      "z": 670.0
+    }
   },
   {
     "name": "PipesystemNewDLC3",
@@ -11950,7 +11910,13 @@
     "lat": -35944.9765625,
     "lng": 2373.036376953125,
     "alt": 1909.189453125,
-    "other_pipe": "DLC2_Complete:PipesystemNewDLC2"
+    "other_pipe": "DLC2_Complete:PipesystemNewDLC2",
+    "color": "#4DFF00",
+    "target": {
+      "x": 1548.9307861328125,
+      "y": -39630.97265625,
+      "z": 5275.92578125
+    }
   },
   {
     "name": "PipesystemNewDLC3_End",
@@ -11967,7 +11933,13 @@
     "lat": -1150.75,
     "lng": 36981.75390625,
     "alt": 2538.18017578125,
-    "other_pipe": "DLC2_Complete:PipesystemNewDLC6"
+    "other_pipe": "DLC2_Complete:PipesystemNewDLC6",
+    "color": "#4DFF00",
+    "target": {
+      "x": 30174.87890625,
+      "y": 2415.970947265625,
+      "z": 5459.419921875
+    }
   },
   {
     "name": "PipesystemNewDLC6",
@@ -11976,7 +11948,13 @@
     "lat": 2415.970947265625,
     "lng": 30174.87890625,
     "alt": 5459.419921875,
-    "other_pipe": "DLC2_Complete:PipesystemNewDLC5_3570"
+    "other_pipe": "DLC2_Complete:PipesystemNewDLC5_3570",
+    "color": "#4DFF00",
+    "target": {
+      "x": 36981.75390625,
+      "y": -1150.75,
+      "z": 2538.18017578125
+    }
   },
   {
     "name": "PipesystemNewDLC7_3581",
@@ -11985,7 +11963,13 @@
     "lat": -11389.6220703125,
     "lng": 57514.05859375,
     "alt": 4687.990234375,
-    "other_pipe": "DLC2_Complete:PipesystemNewDLC8"
+    "other_pipe": "DLC2_Complete:PipesystemNewDLC8",
+    "color": "#4DFF00",
+    "target": {
+      "x": 57091.01953125,
+      "y": -10963.87890625,
+      "z": 4687.990234375
+    }
   },
   {
     "name": "PipesystemNewDLC8",
@@ -11994,7 +11978,13 @@
     "lat": -10963.87890625,
     "lng": 57091.01953125,
     "alt": 4687.990234375,
-    "other_pipe": "DLC2_Complete:PipesystemNewDLC7_3581"
+    "other_pipe": "DLC2_Complete:PipesystemNewDLC7_3581",
+    "color": "#4DFF00",
+    "target": {
+      "x": 57514.05859375,
+      "y": -11389.6220703125,
+      "z": 4687.990234375
+    }
   },
   {
     "name": "PipesystemNewDLC9_2017",
@@ -12003,7 +11993,13 @@
     "lat": -2155.849365234375,
     "lng": -59503.16796875,
     "alt": 2302.79638671875,
-    "other_pipe": "DLC2_Complete:RainbowTownShortcutPipe"
+    "other_pipe": "DLC2_Complete:RainbowTownShortcutPipe",
+    "color": "#4DFF00",
+    "target": {
+      "x": -67755.71875,
+      "y": -20467.703125,
+      "z": 9166.0439453125
+    }
   },
   {
     "name": "PipesystemNewDLC_334",
@@ -12012,7 +12008,13 @@
     "lat": -49338.26171875,
     "lng": 55098.828125,
     "alt": 1986.86865234375,
-    "other_pipe": "DLC2_Complete:PipesystemNewDLC10"
+    "other_pipe": "DLC2_Complete:PipesystemNewDLC10",
+    "color": "#4DFF00",
+    "target": {
+      "x": 55097.140625,
+      "y": -49335.3359375,
+      "z": 2831.169921875
+    }
   },
   {
     "name": "PipesystemNewDLC_BathToSecretLavaAreaToBath1",
@@ -12021,7 +12023,13 @@
     "lat": 1614.123046875,
     "lng": 10273.6982421875,
     "alt": 3074.8310546875,
-    "other_pipe": "DLC2_SecretLavaArea:PipesystemNewDLC_BathToSecretLavaAreaToBath2"
+    "other_pipe": "DLC2_SecretLavaArea:PipesystemNewDLC_BathToSecretLavaAreaToBath2",
+    "color": "#4DFF00",
+    "target": {
+      "x": 7443.4892578125,
+      "y": 585.74365234375,
+      "z": 180.625732421875
+    }
   },
   {
     "name": "PipesystemNewDLC_CombatExitPipe",
@@ -12030,7 +12038,13 @@
     "lat": -20788.62890625,
     "lng": -32291.802734375,
     "alt": 5625.8564453125,
-    "other_pipe": "DLC2_Complete:PipeToAreaBoss2"
+    "other_pipe": "DLC2_Complete:PipeToAreaBoss2",
+    "color": "#4DFF00",
+    "target": {
+      "x": 20665.326171875,
+      "y": -31966.03125,
+      "z": -456.35546875
+    }
   },
   {
     "name": "PipesystemNewDLC_Start",
@@ -12039,7 +12053,13 @@
     "lat": -12820.93359375,
     "lng": 55579.390625,
     "alt": 670.0,
-    "other_pipe": "DLC2_Complete:PipesystemNewDLC_Start"
+    "other_pipe": "DLC2_Complete:PipesystemNewDLC_Start",
+    "color": "#4DFF00",
+    "target": {
+      "x": 55579.390625,
+      "y": -12820.93359375,
+      "z": 670.0
+    }
   },
   {
     "name": "PipeToArea1",
@@ -12048,7 +12068,13 @@
     "lat": -33236.0,
     "lng": 17410.0,
     "alt": 842.0,
-    "other_pipe": "DLC2_Complete:Area1_FastTravelPipe"
+    "other_pipe": "DLC2_Complete:Area1_FastTravelPipe",
+    "color": "#4DFF00",
+    "target": {
+      "x": 20063.669921875,
+      "y": 14537.7373046875,
+      "z": 3337.74609375
+    }
   },
   {
     "name": "PipeToArea2",
@@ -12057,7 +12083,13 @@
     "lat": -33236.0,
     "lng": 17984.0,
     "alt": 842.0,
-    "other_pipe": "DLC2_Complete:Area2ShortcutPipe"
+    "other_pipe": "DLC2_Complete:Area2ShortcutPipe",
+    "color": "#4DFF00",
+    "target": {
+      "x": 62033.18359375,
+      "y": -6527.8447265625,
+      "z": 4430.0
+    }
   },
   {
     "name": "PipeToArea3",
@@ -12066,7 +12098,13 @@
     "lat": -33236.0,
     "lng": 18543.0,
     "alt": 842.0,
-    "other_pipe": "DLC2_Complete:DLC3_upstairsPipe"
+    "other_pipe": "DLC2_Complete:DLC3_upstairsPipe",
+    "color": "#4DFF00",
+    "target": {
+      "x": 9774.3837890625,
+      "y": -44234.078125,
+      "z": 2226.891357421875
+    }
   },
   {
     "name": "PipeToArea4",
@@ -12075,7 +12113,13 @@
     "lat": -33236.0,
     "lng": 19089.0,
     "alt": 842.0,
-    "other_pipe": "DLC2_Complete:Pipesystem_Area4"
+    "other_pipe": "DLC2_Complete:Pipesystem_Area4",
+    "color": "#4DFF00",
+    "target": {
+      "x": 58695.98828125,
+      "y": -60760.12109375,
+      "z": 1034.8792724609375
+    }
   },
   {
     "name": "PipeToAreaBoss2",
@@ -12084,7 +12128,13 @@
     "lat": -31966.03125,
     "lng": 20665.326171875,
     "alt": -456.35546875,
-    "other_pipe": "DLC2_Complete:PipesystemNewDLC_CombatExitPipe"
+    "other_pipe": "DLC2_Complete:PipesystemNewDLC_CombatExitPipe",
+    "color": "#4DFF00",
+    "target": {
+      "x": -32291.802734375,
+      "y": -20788.62890625,
+      "z": 5625.8564453125
+    }
   },
   {
     "name": "PipeToAreaSpecial",
@@ -12093,7 +12143,13 @@
     "lat": -33236.0,
     "lng": 19643.0,
     "alt": 842.0,
-    "other_pipe": "DLC2_Complete:RainbowTownShortcutPipe"
+    "other_pipe": "DLC2_Complete:RainbowTownShortcutPipe",
+    "color": "#4DFF00",
+    "target": {
+      "x": -67755.71875,
+      "y": -20467.703125,
+      "z": 9166.0439453125
+    }
   },
   {
     "name": "RainbowTownShortcutPipe",
@@ -12102,7 +12158,13 @@
     "lat": -20467.703125,
     "lng": -67755.71875,
     "alt": 9166.0439453125,
-    "other_pipe": "DLC2_Complete:PipeToAreaSpecial"
+    "other_pipe": "DLC2_Complete:PipeToAreaSpecial",
+    "color": "#4DFF00",
+    "target": {
+      "x": 19643.0,
+      "y": -33236.0,
+      "z": 842.0
+    }
   },
   {
     "name": "PlayerStart_1",
@@ -13248,12 +13310,7 @@
     "lat": -12697.01171875,
     "lng": -21377.443359375,
     "alt": 3516.73046875,
-    "relative_velocity": 3150.0,
-    "direction": {
-      "x": 0.08549012243747711,
-      "y": 0.39428001642227173,
-      "z": 0.9150053262710571
-    },
+    "color": "#FF0000",
     "target": {
       "x": -22212.254404976964,
       "y": -16547.156079113483,
@@ -13340,7 +13397,13 @@
     "lat": -9792.423828125,
     "lng": -5053.1416015625,
     "alt": 3239.46875,
-    "other_pipe": "DLC2_FinalBoss:BossArea_BaronPipe2"
+    "other_pipe": "DLC2_FinalBoss:BossArea_BaronPipe2",
+    "color": "#4DFF00",
+    "target": {
+      "x": -30353.6875,
+      "y": -19427.09765625,
+      "z": 7000.56689453125
+    }
   },
   {
     "name": "BossArea_BaronPipe2",
@@ -13349,7 +13412,13 @@
     "lat": -19427.09765625,
     "lng": -30353.6875,
     "alt": 7000.56689453125,
-    "other_pipe": "DLC2_FinalBoss:BossArea_BaronPipe1"
+    "other_pipe": "DLC2_FinalBoss:BossArea_BaronPipe1",
+    "color": "#4DFF00",
+    "target": {
+      "x": -5053.1416015625,
+      "y": -9792.423828125,
+      "z": 3239.46875
+    }
   },
   {
     "name": "BuyQuintupleJump",
@@ -13392,7 +13461,13 @@
     "lat": -284030.0,
     "lng": -2077.0,
     "alt": 9147.0,
-    "other_pipe": "DLC2_Area0_Below:PipesystemNew_IntoSewer"
+    "other_pipe": "DLC2_Area0_Below:PipesystemNew_IntoSewer",
+    "color": "#4DFF00",
+    "target": {
+      "x": 9276.5419921875,
+      "y": 21059.283203125,
+      "z": 20986.0
+    }
   },
   {
     "name": "Plumbus2_9",
@@ -14691,15 +14766,9 @@
     "lat": 7389.45263671875,
     "lng": 1531.5936279296875,
     "alt": 417.341064453125,
-    "relative_velocity": 1800.0,
     "allow_stomp": true,
     "disable_movement": false,
-    "center_actor": true,
-    "direction": {
-      "x": -0.9286309480667114,
-      "y": 0.2483799159526825,
-      "z": 0.2755940556526184
-    },
+    "color": "#1E90FF",
     "target": {
       "x": 3838.3129029273987,
       "y": 6772.476925492287,
@@ -14713,14 +14782,8 @@
     "lat": 1964.4383544921875,
     "lng": -15567.2978515625,
     "alt": 1427.23388671875,
-    "relative_velocity": 2150.0,
     "allow_stomp": true,
-    "center_actor": true,
-    "direction": {
-      "x": 0.18187639117240906,
-      "y": 0.4657635986804962,
-      "z": 0.8660169243812561
-    },
+    "color": "#1E90FF",
     "target": {
       "x": -16587.897220626473,
       "y": -649.194079503417,
@@ -15870,7 +15933,13 @@
     "lat": 2748.17138671875,
     "lng": -961.5007934570312,
     "alt": 2460.0,
-    "other_pipe": "DLC2_SecretLavaArea:Secret_TeleportPipe1"
+    "other_pipe": "DLC2_SecretLavaArea:Secret_TeleportPipe1",
+    "color": "#4DFF00",
+    "target": {
+      "x": 19.36597442626953,
+      "y": 3949.585693359375,
+      "z": 940.0185546875
+    }
   },
   {
     "name": "PipesystemNew_4",
@@ -15879,7 +15948,13 @@
     "lat": 10191.171875,
     "lng": -3894.28955078125,
     "alt": 2904.20458984375,
-    "other_pipe": "DLC2_SecretLavaArea:Secret_GetCarryPipe_TeleportPipe"
+    "other_pipe": "DLC2_SecretLavaArea:Secret_GetCarryPipe_TeleportPipe",
+    "color": "#4DFF00",
+    "target": {
+      "x": -1678.115966796875,
+      "y": 8960.6259765625,
+      "z": 1740.47265625
+    }
   },
   {
     "name": "Secret_DrainWater_TeleportPipe1",
@@ -15888,7 +15963,13 @@
     "lat": 10816.677734375,
     "lng": 5672.96826171875,
     "alt": -945.0032958984375,
-    "other_pipe": "DLC2_SecretLavaArea:Secret_TeleportPipe6"
+    "other_pipe": "DLC2_SecretLavaArea:Secret_TeleportPipe6",
+    "color": "#4DFF00",
+    "target": {
+      "x": 5673.66845703125,
+      "y": 10821.8154296875,
+      "z": -2012.6494140625
+    }
   },
   {
     "name": "Secret_GetCarryPipe_TeleportPipe",
@@ -15897,7 +15978,13 @@
     "lat": 8960.6259765625,
     "lng": -1678.115966796875,
     "alt": 1740.47265625,
-    "other_pipe": "DLC2_SecretLavaArea:PipesystemNew_4"
+    "other_pipe": "DLC2_SecretLavaArea:PipesystemNew_4",
+    "color": "#4DFF00",
+    "target": {
+      "x": -3894.28955078125,
+      "y": 10191.171875,
+      "z": 2904.20458984375
+    }
   },
   {
     "name": "Secret_TeleportPipe1",
@@ -15906,7 +15993,13 @@
     "lat": 3949.585693359375,
     "lng": 19.36597442626953,
     "alt": 940.0185546875,
-    "other_pipe": "DLC2_SecretLavaArea:PipesystemNew39"
+    "other_pipe": "DLC2_SecretLavaArea:PipesystemNew39",
+    "color": "#4DFF00",
+    "target": {
+      "x": -961.5007934570312,
+      "y": 2748.17138671875,
+      "z": 2460.0
+    }
   },
   {
     "name": "Secret_TeleportPipe2",
@@ -15915,7 +16008,13 @@
     "lat": 2874.1748046875,
     "lng": 5304.390625,
     "alt": 179.0185546875,
-    "other_pipe": "DLC2_SecretLavaArea:Secret_TeleportPipe3"
+    "other_pipe": "DLC2_SecretLavaArea:Secret_TeleportPipe3",
+    "color": "#4DFF00",
+    "target": {
+      "x": 4935.88037109375,
+      "y": 3133.619140625,
+      "z": -2491.081298828125
+    }
   },
   {
     "name": "Secret_TeleportPipe3",
@@ -15924,7 +16023,13 @@
     "lat": 3133.619140625,
     "lng": 4935.88037109375,
     "alt": -2491.081298828125,
-    "other_pipe": "DLC2_SecretLavaArea:Secret_TeleportPipe2"
+    "other_pipe": "DLC2_SecretLavaArea:Secret_TeleportPipe2",
+    "color": "#4DFF00",
+    "target": {
+      "x": 5304.390625,
+      "y": 2874.1748046875,
+      "z": 179.0185546875
+    }
   },
   {
     "name": "Secret_TeleportPipe6",
@@ -15933,7 +16038,13 @@
     "lat": 10821.8154296875,
     "lng": 5673.66845703125,
     "alt": -2012.6494140625,
-    "other_pipe": "DLC2_SecretLavaArea:Secret_DrainWater_TeleportPipe1"
+    "other_pipe": "DLC2_SecretLavaArea:Secret_DrainWater_TeleportPipe1",
+    "color": "#4DFF00",
+    "target": {
+      "x": 5672.96826171875,
+      "y": 10816.677734375,
+      "z": -945.0032958984375
+    }
   },
   {
     "name": "PipesystemNewDLC_BathToSecretLavaAreaToBath2",
@@ -15942,7 +16053,13 @@
     "lat": 585.74365234375,
     "lng": 7443.4892578125,
     "alt": 180.625732421875,
-    "other_pipe": "DLC2_Complete:PipesystemNewDLC_BathToSecretLavaAreaToBath1"
+    "other_pipe": "DLC2_Complete:PipesystemNewDLC_BathToSecretLavaAreaToBath1",
+    "color": "#4DFF00",
+    "target": {
+      "x": 10273.6982421875,
+      "y": 1614.123046875,
+      "z": 3074.8310546875
+    }
   },
   {
     "name": "PipesystemNewDLC_FastTravelLavaToBeam1",
@@ -15951,7 +16068,13 @@
     "lat": 3448.9765625,
     "lng": 9152.3671875,
     "alt": -7087.57666015625,
-    "other_pipe": "DLC2_SecretLavaArea:PipesystemNewDLC_FastTravelLavaToBeam2"
+    "other_pipe": "DLC2_SecretLavaArea:PipesystemNewDLC_FastTravelLavaToBeam2",
+    "color": "#4DFF00",
+    "target": {
+      "x": 17185.609375,
+      "y": -23284.6796875,
+      "z": -2970.29345703125
+    }
   },
   {
     "name": "PipesystemNewDLC_FastTravelLavaToBeam2",
@@ -15960,7 +16083,13 @@
     "lat": -23284.6796875,
     "lng": 17185.609375,
     "alt": -2970.29345703125,
-    "other_pipe": "DLC2_SecretLavaArea:PipesystemNewDLC_FastTravelLavaToBeam1"
+    "other_pipe": "DLC2_SecretLavaArea:PipesystemNewDLC_FastTravelLavaToBeam1",
+    "color": "#4DFF00",
+    "target": {
+      "x": 9152.3671875,
+      "y": 3448.9765625,
+      "z": -7087.57666015625
+    }
   },
   {
     "name": "ValveCarriable_2",
@@ -16928,15 +17057,9 @@
     "lat": -44543.8828125,
     "lng": -46408.5859375,
     "alt": 6000.06689453125,
-    "relative_velocity": 2292.03466796875,
     "allow_stomp": true,
     "disable_movement": false,
-    "center_actor": true,
-    "direction": {
-      "x": 0.6091373562812805,
-      "y": -0.47589102387428284,
-      "z": 0.6344125866889954
-    },
+    "color": "#1E90FF",
     "target": {
       "x": -50652.92430948082,
       "y": -41227.976288819686,
@@ -16952,12 +17075,7 @@
     "alt": 5279.142578125,
     "allow_stomp": true,
     "disable_movement": false,
-    "center_actor": true,
-    "direction": {
-      "x": -0.38113147020339966,
-      "y": 0.5529000759124756,
-      "z": 0.7409725785255432
-    },
+    "color": "#1E90FF",
     "target": {
       "x": -50989.204087376595,
       "y": -42940.384558200836,
@@ -16973,12 +17091,7 @@
     "alt": 11117.380859375,
     "allow_stomp": true,
     "disable_movement": false,
-    "center_actor": true,
-    "direction": {
-      "x": 0.1267279088497162,
-      "y": 0.3177516460418701,
-      "z": 0.9396669268608093
-    },
+    "color": "#1E90FF",
     "target": {
       "x": -47463.39317756891,
       "y": -39173.06231355667,
@@ -17053,7 +17166,13 @@
     "lat": -39467.86328125,
     "lng": -53929.92578125,
     "alt": 5190.4228515625,
-    "other_pipe": "DLC2_PostRainbow:PipesystemNew_2"
+    "other_pipe": "DLC2_PostRainbow:PipesystemNew_2",
+    "color": "#4DFF00",
+    "target": {
+      "x": -53630.5078125,
+      "y": -39725.625,
+      "z": 5169.57275390625
+    }
   },
   {
     "name": "PipesystemNew3_5",
@@ -17062,7 +17181,13 @@
     "lat": -41000.0390625,
     "lng": -71331.84375,
     "alt": 11042.857421875,
-    "other_pipe": "DLC2_PostRainbow:PipesystemNew6"
+    "other_pipe": "DLC2_PostRainbow:PipesystemNew6",
+    "color": "#4DFF00",
+    "target": {
+      "x": -55234.1953125,
+      "y": -44440.8984375,
+      "z": 3695.21044921875
+    }
   },
   {
     "name": "PipesystemNew4_2",
@@ -17071,7 +17196,13 @@
     "lat": -43297.078125,
     "lng": -70577.5,
     "alt": 4932.72705078125,
-    "other_pipe": "DLC2_PostRainbow:PipesystemNew3_5"
+    "other_pipe": "DLC2_PostRainbow:PipesystemNew3_5",
+    "color": "#4DFF00",
+    "target": {
+      "x": -71331.84375,
+      "y": -41000.0390625,
+      "z": 11042.857421875
+    }
   },
   {
     "name": "PipesystemNew5",
@@ -17080,7 +17211,13 @@
     "lat": -37744.7890625,
     "lng": -57149.6328125,
     "alt": 4853.21533203125,
-    "other_pipe": "DLC2_PostRainbow:PipesystemNew3_5"
+    "other_pipe": "DLC2_PostRainbow:PipesystemNew3_5",
+    "color": "#4DFF00",
+    "target": {
+      "x": -71331.84375,
+      "y": -41000.0390625,
+      "z": 11042.857421875
+    }
   },
   {
     "name": "PipesystemNew6",
@@ -17089,7 +17226,13 @@
     "lat": -44440.8984375,
     "lng": -55234.1953125,
     "alt": 3695.21044921875,
-    "other_pipe": "DLC2_PostRainbow:PipesystemNew3_5"
+    "other_pipe": "DLC2_PostRainbow:PipesystemNew3_5",
+    "color": "#4DFF00",
+    "target": {
+      "x": -71331.84375,
+      "y": -41000.0390625,
+      "z": 11042.857421875
+    }
   },
   {
     "name": "PipesystemNew_2",
@@ -17098,7 +17241,13 @@
     "lat": -39725.625,
     "lng": -53630.5078125,
     "alt": 5169.57275390625,
-    "other_pipe": "DLC2_PostRainbow:PipesystemNew2"
+    "other_pipe": "DLC2_PostRainbow:PipesystemNew2",
+    "color": "#4DFF00",
+    "target": {
+      "x": -53929.92578125,
+      "y": -39467.86328125,
+      "z": 5190.4228515625
+    }
   },
   {
     "name": "BP_PurchaseSpeedx2_2",
@@ -17160,7 +17309,13 @@
     "lat": 21059.283203125,
     "lng": 9276.5419921875,
     "alt": 20986.0,
-    "other_pipe": "DLC2_Area0_Below:PipesystemNew_IntoSewer2"
+    "other_pipe": "DLC2_Area0_Below:PipesystemNew_IntoSewer2",
+    "color": "#4DFF00",
+    "target": {
+      "x": 9693.0283203125,
+      "y": 19590.291015625,
+      "z": 20986.0
+    }
   },
   {
     "name": "PipesystemNew_IntoSewer2",
@@ -17169,7 +17324,13 @@
     "lat": 19590.291015625,
     "lng": 9693.0283203125,
     "alt": 20986.0,
-    "other_pipe": "DLC2_Area0_Below:PipesystemNew_IntoSewer"
+    "other_pipe": "DLC2_Area0_Below:PipesystemNew_IntoSewer",
+    "color": "#4DFF00",
+    "target": {
+      "x": 9276.5419921875,
+      "y": 21059.283203125,
+      "z": 20986.0
+    }
   },
   {
     "name": "MinecraftBrick_GEN_VARIABLE_ValveCarriable_C_CAT_0",

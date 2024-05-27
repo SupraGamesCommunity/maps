@@ -97,6 +97,9 @@ price_types = {
     'EPriceType::NewEnumerator6':'bones',
 }
 
+PAD_COL_RED = '#FF0000'
+PAD_COL_BLUE = '#1E90FF'
+PIPE_COL = '#4DFF00'
 
 def export_levels(game, cache_dir):
     path = os.environ.get(game+'dir',config[game]['path'])
@@ -125,6 +128,7 @@ def export_levels(game, cache_dir):
 def export_markers(game, cache_dir, marker_types=marker_types, marker_names=[]):
     data = []
     areas = {}
+    pipe_marker_indices = {}
 
     optKey = lambda d,k,v: v is not None and d.__setitem__(k,v)
     getVec = lambda d,v=0: Vector((d['X'], d['Y'], d['Z'])) if d else Vector((v,v,v))
@@ -174,6 +178,7 @@ def export_markers(game, cache_dir, marker_types=marker_types, marker_names=[]):
                 matrix  = areas[area] @ matrix
 
             data.append({'name':o['Name'], 'type':o['Type'], 'area':area })
+            unique_name = ':'.join((area, o['Name']))
 
             t = matrix.to_translation()
             data[-1].update({'lat': t.y, 'lng': t.x, 'alt': t.z})
@@ -212,9 +217,7 @@ def export_markers(game, cache_dir, marker_types=marker_types, marker_names=[]):
             optKey(data[-1], 'cost', p.get('Cost'))
 
             optKey(data[-1], 'hits', hits:= p.get('HitsToBreak'))
-            optKey(data[-1], 'other_pipe', pipes.get(':'.join((area,o['Name']))))
             optKey(data[-1], 'price_type', price_types.get(p.get('PriceType')))
-            #optKey(data[-1], 'color', color := p.get('CustomColor'))
 
             #optKey(data[-1], 'brick_type', p.get('BrickType'))
             optKey(data[-1], 'obsidian', p.get('bObsidian'))
@@ -225,25 +228,44 @@ def export_markers(game, cache_dir, marker_types=marker_types, marker_names=[]):
                 if data[-1].get('coins') is None:
                     data[-1]['coins'] = 3
 
+            if other_pipe := pipes.get(unique_name):
+                optKey(data[-1], 'other_pipe', other_pipe)
+                pipe_marker_indices[unique_name] = len(data)-1 
+                data[-1]['color'] = PIPE_COL;
+            
             if o['Type'] in ('Jumppad_C'):
                 optKey(data[-1], 'relative_velocity', p.get('RelativeVelocity'))
-                optKey(data[-1], 'velocity', (v:=p.get('Velocity'))and getXYZ(getVec(v)))
-                optKey(data[-1], 'allow_stomp', p.get('AllowStomp'))
-                optKey(data[-1], 'disable_movement', p.get('DisableMovementInAir'))
-                optKey(data[-1], 'allow_relative_velocity', p.get('RelativeVelocity?'))
-                optKey(data[-1], 'center_actor', p.get('CenterActor'))
+                optKey(data[-1], 'velocity', (v:=p.get('Velocity')) and getXYZ(getVec(v)))
+                optKey(data[-1], 'allow_stomp', stomp := p.get('AllowStomp'))
+                optKey(data[-1], 'disable_movement', disable_move := p.get('DisableMovementInAir'))
+                #optKey(data[-1], 'allow_relative_velocity', p.get('RelativeVelocity?'))
+                #optKey(data[-1], 'center_actor', p.get('CenterActor'))
+                data[-1]['color'] = PAD_COL_BLUE if (stomp == True or disable_move == False) else PAD_COL_RED
 
                 d = Vector((matrix[0][2],matrix[1][2],matrix[2][2]));
                 d.normalize()
                 data[-1].update({'direction': getXYZ(d)})
                 data[-1].update({'target': getXYZ(Vector((0,0,0)))})
 
+
     for area in config[game]['maps']:
         path = os.path.join(cache_dir, area + '.json')
         print('loading "%s" ...' % path)
         parse_json(json.load(open(path)), area)
 
+    # Add 'target' value to pipe objects
+    for i in pipe_marker_indices.values():
+        omi = pipe_marker_indices[data[i]['other_pipe']]
+        data[i].update({'target':{'x': data[omi]['lng'], 'y': data[omi]['lat'], 'z': data[omi]['alt']}})
+
+    # Add 'target' value for jump pad objects
     calc_targets(data)
+
+    # Remove unused instance data from export
+    for m in data:
+        m.pop('direction', None)
+        m.pop('relative_velocity', None)
+        m.pop('velocity', None)
 
     print('collected %d markers' % (len(data)))
     json_file = 'markers.' + game + '.json'
