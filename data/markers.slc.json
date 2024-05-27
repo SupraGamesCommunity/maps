@@ -3750,6 +3750,22 @@
     "alt": 508.00042724609375
   },
   {
+    "name": "KeyLock2_2",
+    "type": "KeyLock_C",
+    "area": "Crash",
+    "lat": -5594.4736328125,
+    "lng": 7636.98291015625,
+    "alt": 155.33912658691406
+  },
+  {
+    "name": "KeyLock_2",
+    "type": "KeyLock_C",
+    "area": "Crash",
+    "lat": -14769.294921875,
+    "lng": 43716.484375,
+    "alt": 848.9498291015625
+  },
+  {
     "name": "Lift1_5",
     "type": "Lift1_C",
     "area": "Crash",

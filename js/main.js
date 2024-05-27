@@ -1,5 +1,5 @@
 "use strict";
-/*global L, Papa, layerConfigs, gameClasses*/
+/*global L, Papa, layerConfigs, gameClasses, UESaveObject*/
 
 // Terminology,
 // Class - The type of object represented by marker. Based on UE4 classes/blueprints 
@@ -15,52 +15,46 @@ var mapId = '';         // Current map selected (one of sl, slc or siu)
 const localDataName = 'supgragamescommunity_maps';
 let localData = JSON.parse(localStorage.getItem(localDataName)) || {};
 
-let settings;           // Reference to localData[mapId]
-
 let layers = {};        // Leaflet layerGroup array, one for each collection of markers
-let classes = {};       // The contents of classes.csv JSON - data about how to deal with each blueprint class
-                        // type,icon,layer,nospoiler
 let icons = {};         // Dict of Leaflet icon objects keyed by our icon file basename
 let playerStart;        // Position of first player start instance found in map data
 let playerMarker;       // Leaflet marker object for current player start (or dragged position)
 
 let reloading;          // Flag used to prevent triggering reloading while already in progress
 
-// Enable experimental search feature: Filter's markers based on current search
-let experimentalSearch = true;
-let searchControl = {}  // Leaflet control for searching
-let mapCenter;
+let searchControl = {}; // Leaflet control for searching
+let settings;           // Reference to localData[mapId]
 
-// Parameters extracted from URL
-let param = {};
-let restrictSearchCollapse = false;
+
+let mapCenter;
+let mapParam = {};      // Parameters extracted from map URL
 
 // Hard coded map data extracted from the games
 const maps = {
   // data taken from the MapWorld* nodes
   'sl':  { 
-      title: 'Supraland',
-      "MapWorldCenter": { "X": 13000.0, "Y": -2000.0, "Z": 0.0 },
-      "MapWorldSize": 175000.0,
-      "MapWorldUpperLeft": { "X": -74500.0, "Y": -89500.0, "Z": 0.0 },
-      "MapWorldLowerRight": { "X": 100500.0, "Y": 85500.0, "Z": 0.0 },
+    title: 'Supraland',
+    "MapWorldCenter": { "X": 13000.0, "Y": -2000.0, "Z": 0.0 },
+    "MapWorldSize": 175000.0,
+    "MapWorldUpperLeft": { "X": -74500.0, "Y": -89500.0, "Z": 0.0 },
+    "MapWorldLowerRight": { "X": 100500.0, "Y": 85500.0, "Z": 0.0 }
    },
 
   'slc': {
     title: 'Supraland Crash',
-      "MapWorldCenter": { "X": 25991.0, "Y": -16.0, "Z": 0.0  },
-      "MapWorldSize": 90112.0,
-      "MapWorldUpperLeft": { "X": -19065.0, "Y": -45040.0, "Z": 0.0 },
-      "MapWorldLowerRight": { "X": 71047.0, "Y": 45072.0, "Z": 0.0 },
+    "MapWorldCenter": { "X": 25991.0, "Y": -16.0, "Z": 0.0  },
+    "MapWorldSize": 90112.0,
+    "MapWorldUpperLeft": { "X": -19065.0, "Y": -45040.0, "Z": 0.0 },
+    "MapWorldLowerRight": { "X": 71047.0, "Y": 45072.0, "Z": 0.0 }
    },
 
   'siu': {
-      title: 'Supraland Six Inches Under',
-      "MapWorldCenter": { "X": 0.0, "Y": -19000.0, "Z": 10000.0 },
-      "MapWorldSize": 147456.0,
-      "MapWorldUpperLeft": { "X": -73728.0, "Y": -92728.0, "Z": 10000.0 },
-      "MapWorldLowerRight": { "X": 73728.0, "Y": 54728.0, "Z": 10000.0 },
-   },
+    title: 'Supraland Six Inches Under',
+    "MapWorldCenter": { "X": 0.0, "Y": -19000.0, "Z": 10000.0 },
+    "MapWorldSize": 147456.0,
+    "MapWorldUpperLeft": { "X": -73728.0, "Y": -92728.0, "Z": 10000.0 },
+    "MapWorldLowerRight": { "X": 73728.0, "Y": 54728.0, "Z": 10000.0 }
+   }
 };
 
 // Save the local state data we track to the window local storage
@@ -239,9 +233,9 @@ function loadMap(id) {
 
   L.control.mousePosition().addTo(map);
 
-  if (param.lat && param.lng && param.zoom) {
-    map.setView([param.lat, param.lng], param.zoom);
-    param = {};
+  if (mapParam.lat && mapParam.lng && mapParam.zoom) {
+    map.setView([mapParam.lat, mapParam.lng], mapParam.zoom);
+    mapParam = {};
   } else if (settings.center && settings.zoom) {
     map.setView(settings.center, settings.zoom);
   } else {
@@ -353,10 +347,10 @@ function loadMap(id) {
     let found = settings.markedItems[markerId]==true
     let value = found ? 'checked' : '';
 
-    let base = window.location.href.replace(/#.*$/,'');
-    let vars = {mapId:mapId, lat:Math.round(map.getCenter().lat), lng:Math.round(map.getCenter().lng), zoom:map.getZoom()};
-    let url = base +'#' + Object.entries(vars).map(e=>e[0]+'='+encodeURIComponent(e[1])).join('&');
-    let a = '<a href="'+url+'" onclick="return false">Map URL</a>';
+    //let base = window.location.href.replace(/#.*$/,'');
+    //let vars = {mapId:mapId, lat:Math.round(map.getCenter().lat), lng:Math.round(map.getCenter().lng), zoom:map.getZoom()};
+    //let url = base +'#' + Object.entries(vars).map(e=>e[0]+'='+encodeURIComponent(e[1])).join('&');
+    //let a = '<a href="'+url+'" onclick="return false">Map URL</a>';
 
     // it's not "found" but rather "removed" (e.g. BuySword2_2 in the beginning of Crash DLC)
     text += '<br><br><input type="checkbox" id="'+markerId+'" '+value+' onclick=window.markItemFound("'+markerId+'",this.checked)><label for="'+markerId+'">Found</label>';
@@ -382,6 +376,10 @@ function loadMap(id) {
         }
       }});
     }
+  }
+
+  function getMarkerColor(o) {
+    return o.color ? o.color : '#888';
   }
 
   function loadMarkers() {
@@ -417,6 +415,8 @@ function loadMap(id) {
             }
             titles[title] = title;
 
+            title += ' of ' + o.type;
+            
             if(o.coins) {
               title += o.coins == 0 ? " [free]" : ` [${o.coins} coin${o.coins > 1 ? "s":""}]`;
             } else if(o.spawns) {
@@ -432,10 +432,8 @@ function loadMap(id) {
               const icon = layerConfig.defaultIcon || defaultIcon;
               const zIndexOffset = 10 * layerConfig.index * 10;
 
-              L.marker([o.lat, o.lng], {icon: getIcon(icon), title: title, zIndexOffset: zIndexOffset, alt: alt, o:o, layerId:layer }).addTo(layers[layer])
-                .bindPopup(text)
-                .on('popupopen', onPopupOpen)
-                .on('contextmenu', onContextMenu);
+              L.marker([o.lat, o.lng], {icon: getIcon(icon), title: title, zIndexOffset: zIndexOffset, alt: alt, o:o, layerId:layer })
+                .addTo(layers[layer]).bindPopup(text).on('popupopen', onPopupOpen).on('contextmenu', onContextMenu);
             }
 
             if(c.layer && enabledLayers[c.layer])
@@ -444,10 +442,8 @@ function loadMap(id) {
               const layerConfig = layerConfigs.get(layer);
               const icon = o.icon || c.icon || layerConfigs.defaultIcon || defaultIcon;
               const zIndexOffset = 10 * layerConfig.index * 10;
-              L.marker([o.lat, o.lng], {icon: getIcon(icon), title: title, zIndexOffset: zIndexOffset, alt: alt, o:o, layerId:layer }).addTo(layers[layer])
-              .bindPopup(text)
-              .on('popupopen', onPopupOpen)
-              .on('contextmenu', onContextMenu);
+              L.marker([o.lat, o.lng], {icon: getIcon(icon), title: title, zIndexOffset: zIndexOffset, alt: alt, o:o, layerId:layer })
+                .addTo(layers[layer]).bindPopup(text).on('popupopen', onPopupOpen).on('contextmenu', onContextMenu);
             }
 
             // Add spawned object to appropriate layer
@@ -460,10 +456,8 @@ function loadMap(id) {
               const layerConfig = layerConfigs.get(sc.layer);
               const icon = sc.icon || layerConfig.defaultIcon || defaultIcon;
               const zIndexOffset = 10 * layerConfig.index * 10;
-              L.marker([o.lat, o.lng], {icon: getIcon(icon), title: title, zIndexOffset: zIndexOffset, alt: alt, o:o, layerId:sc.layer }).addTo(layers[sc.layer])
-              .bindPopup(text)
-              .on('popupopen', onPopupOpen)
-              .on('contextmenu', onContextMenu);
+              L.marker([o.lat, o.lng], {icon: getIcon(icon), title: title, zIndexOffset: zIndexOffset, alt: alt, o:o, layerId:sc.layer })
+                .addTo(layers[sc.layer]).bindPopup(text).on('popupopen', onPopupOpen).on('contextmenu', onContextMenu);
             }
 
             // Add a polyline to the appropriate layer
@@ -478,9 +472,15 @@ function loadMap(id) {
                 else
                   other_pipes.add(alt);
 
+              let color = getMarkerColor(o);
+              L.circleMarker([o.lat, o.lng], {radius: 5, fillOpacity: 1, weight: 0, color: 'black', fillColor: color, title: title, o:o, alt: alt})
+                .addTo(layers[c.lines]).bindPopup('').on('popupopen', onPopupOpen).on('contextmenu',onContextMenu);
+  
               if(add_line) {
+
                 // need to add title as a single space (leaflet search issue), but not the full title so it doesn't appear in search
-                let line = L.polyline([[o.lat, o.lng],[o.target.y,o.target.x]], {title:' ', alt:alt, color: o.color}).addTo(layers[c.lines]);
+                let line = L.polyline([[o.lat, o.lng],[o.target.y,o.target.x]], {title:' ', alt:alt, color: color})
+                  .addTo(layers[c.lines]);
                 line._path && line._path.setAttribute('alt', alt);
               }
             }
@@ -512,7 +512,7 @@ function loadMap(id) {
             }).addTo(map)
           }
         } // end of loop
-        
+
         markItems();
     });
   }
@@ -540,273 +540,75 @@ function loadMap(id) {
       searchLayers.push(layerObj);
     })
 
-    if (experimentalSearch) {
+    // search
+    let searchControl = new L.Control.Search({
+        layer: L.featureGroup(searchLayers),
+        marker: false, // no red circle
+        initial: false, // search any substring
+        firstTipSubmit: false, // use first autosuggest
+        autoCollapse: false,
+        tipAutoSubmit: false, //auto map panTo when click on tooltip
+        tooltipLimit: -1,
+        textPlaceholder: 'Search (Enter to save search phrase)',
+    }).addTo(map);
 
-      searchControl = new L.Control.Search({
-          layer: L.featureGroup(searchLayers),
-          marker: false, // no red circle
-          initial: false, // search any substring
-          firstTipSubmit: false, // use first autosuggest
-          autoCollapse: false,
-          tipAutoSubmit: true, //auto map panTo when click on tooltip
-          tooltipLimit: -1,
-          collapsed: true, // can't set to expanded here, need events
-      }).addTo(map);
-
-      if (restrictSearchCollapse) {
-
-      searchControl.collapse = function() {
-        // never collapse with text
-        //console.log('firing collapse');
-        if (this._input.value != '') {
-          return this;
-        }
-        this._hideTooltip()
-        this.cancel()
-        this._alert.style.display = 'none'
-        this._input.blur()
-        if (this.options.collapsed) {
-          this._input.style.display = 'none'
-          this._cancel.style.display = 'none'
-          L.DomUtil.removeClass(this._container, 'search-exp')
-          if (this.options.hideMarkerOnCollapse) {
-            this._map.removeLayer(this._markerSearch)
-          }
-          this._map.off('dragstart click', this.collapse, this)
-        }
-        this.fire('search:collapsed')
-        return this
-      }
-
-      searchControl.expand = function (toggle) {
-
-        //console.log('firing expand');
-
-        toggle = typeof toggle === 'boolean' ? toggle : true
-        this._input.style.display = 'block'
-        L.DomUtil.addClass(this._container, 'search-exp')
-        if (toggle !== false) {
-          this._input.focus()
-          this._map.on('dragstart click', this.collapse, this)
-        }
-        this.fire('search:expanded')
-        return this
-      };
-
-      // doesn't add collapse on start
-      map.off('dragstart click', searchControl.collapse, searchControl);
-
-      }//restrict collapse
-
-      // select on focus
-      searchControl._input.addEventListener('focus', function() {
-        searchControl._input.select();
-      });
-
-      if (settings.searchText != '') {
-        if (restrictSearchCollapse) {
-          searchControl._input.value = settings.searchText;
-          searchControl.expand();
-          searchControl._cancel.style.display = 'block';
-          searchControl._input.focus();
-          searchControl.searchText(settings.searchText);
-        } else {
-          markItems();
-        }
-      }
-
-      searchControl._handleSubmit = function(){
-        //map.closePopup();
-
-        if (searchControl._input.value=='') {
-          searchControl.collapse();
-        }
-        //applyFilter();
-        //searchControl._input.select();
-      }
-
-      searchControl._handleArrowSelect =  function (velocity) {
-        const searchTips = this._tooltip.hasChildNodes() ? this._tooltip.childNodes : []
-
-        for (let i = 0; i < searchTips.length; i++) {
-          L.DomUtil.removeClass(searchTips[i], 'search-tip-select')
-        }
-
-        // always mark input
-        this._input.select();
-        map.closePopup();
-
-
-        if ((velocity === 1) && (this._tooltip.currentSelection >= (searchTips.length - 1))) { // If at end of list.
-          //L.DomUtil.addClass(searchTips[this._tooltip.currentSelection], 'search-tip-select')
-          this._tooltip.currentSelection = -1; // joric - circular navigation
-
-        } else if ((velocity === -1) && (this._tooltip.currentSelection <= 0)) { // Going back up to the search box.
-          this._tooltip.currentSelection = searchTips.length; // joric - circular navigation
-        }
-
-        if (this._tooltip.style.display !== 'none') {
-          this._tooltip.currentSelection += velocity
-
-          L.DomUtil.addClass(searchTips[this._tooltip.currentSelection], 'search-tip-select')
-
-          // do not replace input text
-          //this._input.value = searchTips[this._tooltip.currentSelection]._text
-
-          // scroll:
-          const tipOffsetTop = searchTips[this._tooltip.currentSelection].offsetTop
-
-          if (tipOffsetTop + searchTips[this._tooltip.currentSelection].clientHeight >= this._tooltip.scrollTop + this._tooltip.clientHeight) {
-            this._tooltip.scrollTop = tipOffsetTop - this._tooltip.clientHeight + searchTips[this._tooltip.currentSelection].clientHeight
-          } else if (tipOffsetTop <= this._tooltip.scrollTop) {
-            this._tooltip.scrollTop = tipOffsetTop
-          }
-
-
-          clickItem(searchTips[this._tooltip.currentSelection]._text);
-
-        }
-      }
-
-      searchControl._createTip = function (text, val) { // val is object in recordCache, usually is Latlng
-        let tip
-
-        // reveal layers on creating tips
-        if (val.layer) {
-          layers[val.layer.options.layerId].addTo(map);
-        }
-
-        if (this.options.buildTip) {
-          tip = this.options.buildTip.call(this, text, val) // custom tip node or html string
-          if (typeof tip === 'string') {
-            const tmpNode = L.DomUtil.create('div')
-            tmpNode.innerHTML = tip
-            tip = tmpNode.firstChild
-          }
-        } else {
-          tip = L.DomUtil.create('li', '')
-          tip.innerHTML = text
-        }
-        L.DomUtil.addClass(tip, 'search-tip')
-        tip._text = text // value replaced in this._input and used by _autoType
-        if (this.options.tipAutoSubmit) {
-          L.DomEvent
-            .disableClickPropagation(tip)
-            .on(tip, 'click', L.DomEvent.stop, this)
-            .on(tip, 'click', function (e) {
-              clickItem(text);
-            }, this)
-        }
-        return tip
-      };
-
-      searchControl.showTooltip = function (records) {
-        this._countertips = 0
-        this._tooltip.innerHTML = ''
-        this._tooltip.currentSelection = -1 // inizialized for _handleArrowSelect()
-        if (this.options.tooltipLimit) {
-          for (const key in records) { // fill tooltip
-            if (this._countertips === this.options.tooltipLimit) {
-              break
-            }
-            this._countertips++
-            this._tooltip.appendChild(this._createTip(key, records[key]))
-          }
-        }
-
-        if (this._countertips > 0) {
-          this._tooltip.style.display = 'block'
-
-          if (this._autoTypeTmp) {
-            this._autoType()
-          }
-
-          this._autoTypeTmp = this.options.autoType// reset default value
-        } else {
-          this._hideTooltip()
-        }
-
-        this._tooltip.scrollTop = 0
-
-        map.closePopup();
-        settings.searchText = this._input.value;
-        markItems();
-
-        if (settings.searchText != '') {
-          let c = [];
-          for (const o of Object.values(searchControl._filterData(settings.searchText, searchControl._recordsFromLayer()))) {
-            //lookup[o.layer.options.alt] = true;
-            c.push([o.lat, o.lng]);
-          }
-          var bounds = new L.LatLngBounds(c);
-          if (bounds) {
-            //map.fitBounds(bounds); // too much action, maybe do optional
-          }
-        }
-
-        return this._countertips
-      };
-
-      function clickItem(text) {
-        const loc = searchControl._getLocation(text)
-        if (loc) {
-          map.panTo(loc);
-          if (loc.layer._popup) {
-            // reveal layers on click
-            //layers[loc.layer.options.layerId].addTo(map);
-            loc.layer.openPopup();
-          }
-        }
-      }
-
-      searchControl.on('search:expanded', function (e) {
-        let input = document.querySelector('input.search-input');
-        input.value = settings.searchText;
-        if (settings.searchText) {
-          //input.focus();
-          //input.select();
-          searchControl.searchText(settings.searchText);
-          //addSearchCallbacks();
-        }
-      });
-
-      document.querySelector('.search-cancel').addEventListener('click',function (e) {
-        clearFilter();
-      });
-
-      searchControl._input.addEventListener('input', function(e) {
-        if (this.value == '') {
-          clearFilter();
-          //console.log('cleared');
-        }
-      });
-
-
-    } else { // legacy search
-
-      searchControl = new L.Control.Search({
-          layer: L.featureGroup(searchLayers),
-          marker: false, // no red circle
-          initial: false, // search any substring
-          firstTipSubmit: true, // use first autosuggest
-          autoCollapse: true,
-          tipAutoSubmit: true, //auto map panTo when click on tooltip
-      }).addTo(map);
-    }
-
-    // search reveals all layers, hide all inactive layers right away
+    // workaround: search reveals all layers, hide all inactive layers
     for (let layerObj of inactiveLayers) {
       map.removeLayer(layerObj);
     }
 
+    // filter items by saved query value
+    markItems();
+
+    searchControl._handleSubmit = function(){
+      settings.searchText = this._input.value;
+      map.closePopup();
+      saveSettings();
+      markItems();
+      this._input.select();
+    }
+
+    document.querySelector('.search-cancel').addEventListener('click', clearFilter);
+    searchControl._input.addEventListener('focus', function(e) { setTimeout(function(e){ e.target.select(); },50,e); } );
+    searchControl._input.addEventListener('input', addSearchCallbacks);
+
+    // item clicked in a dropdown list
+    function clickItem(text, collapse=false) {
+      let loc;
+      if ((loc = searchControl._getLocation(text))) {
+        searchControl.showLocation(loc, text);
+        searchControl.fire('search:locationfound', { latlng: loc, text: text, layer:loc.layer });
+        collapse && searchControl.collapse();
+      }
+    }
+
+    // add click callbacks to dropdown list after input events, wait 1500 ms so it could reload items
+    function addSearchCallbacks(){
+      setTimeout(function() {
+        let divs = document.querySelectorAll('.search-tip');
+        [].forEach.call(divs, function(div) {
+          div.addEventListener('click', function (e) { clickItem(e.target.innerText); e.preventDefault(); })
+          div.addEventListener('dblclick', function (e) { clickItem(e.target.innerText, true); e.preventDefault(); })
+        })
+      }, 1500)
+    }
+
+    // fired after search control focused on the item
     searchControl.on('search:locationfound', function (e) {
         if (e.layer._popup) {
-          layers[e.layer.options.layer].addTo(map);
+          // reveal layer on click
+          layers[e.layer.options.layerId].addTo(map);
           e.layer.openPopup();
         }
     });
 
-    markItems();
+    // fired when input control is expanded (not the dropdown list)
+    searchControl.on('search:expanded', function (e) {
+      searchControl._input.value = settings.searchText;
+      searchControl.searchText(settings.searchText);
+      addSearchCallbacks();
+    });
+    // end of search
 
     loadMarkers();
 
@@ -872,7 +674,7 @@ function resizeIcons() {
   */
 
 window.markItemFound = function (id, found=true, save=true) {
-  let divs = document.querySelectorAll('img[alt="' + id + '"]');
+  var divs = document.querySelectorAll('*[alt="' + id + '"]');
 
   [].forEach.call(divs, function(div) {
     if (found) {
@@ -903,16 +705,18 @@ function markItems() {
 
   // filter by settings.searchText. caching is unreliable, just perform a full search here
   let lookup = {}
-  if (settings.searchText != '') {
+  if (settings.searchText) {
     for (const o of Object.values(searchControl._filterData(settings.searchText, searchControl._recordsFromLayer()))) {
       lookup[o.layer.options.alt] = true;
+      // reveal layers on filter
+      layers[o.layer.options.layerId].addTo(map);
     }
   }
 
   [].forEach.call(document.querySelectorAll('img.leaflet-marker-icon, path.leaflet-interactive'), function(div) {
     if (div.alt!='playerMarker') {
       let alt = div.getAttribute('alt');
-      if (Object.keys(lookup).length==0 || lookup[alt]) {
+      if (!settings.searchText || lookup[alt]) {
         div.classList.remove('hidden');
       } else {
         div.classList.add('hidden');
@@ -923,7 +727,7 @@ function markItems() {
 
 function unmarkItems() {
   for (const[id,value] of Object.entries(settings.markedItems)) {
-    let divs = document.querySelectorAll('img[alt="' + id + '"]');
+    var divs = document.querySelectorAll('*[alt="' + id + '"]');
     [].forEach.call(divs, function(div) {
       div.classList.remove('found');
     });
@@ -978,6 +782,12 @@ window.loadSaveFile = function () {
           let name = x.split(".").pop();
           let area = x.split("/").pop().split('.')[0];
           if (name != "None") {
+
+            // do not mark jumppads and pipes for now
+            if (name.includes('Jumppad') || name.includes('Pipesystem')) {
+              continue;
+            }
+
             window.markItemFound(area + ':' + name, true, false);
           }
         }
@@ -1022,15 +832,16 @@ window.onload = function(event) {
   if (location.hash.length>1) {
     for (const s of location.hash.slice(1).split('&')) {
       let [k,v] = s.split('=');
-      param[k] = v;
+      mapParam[k] = v;
     }
   }
 
   // clear location hash
   history.pushState('', document.title, window.location.pathname + window.location.search);
 
-  loadMap(param.mapId || localData.mapId || 'sl');
+  mapId = mapParam.mapId || localData.mapId || 'sl';
 
+  loadMap(mapId);
 
   // Keys mappings for pan and zoom map controls
   let bindings = {
@@ -1090,4 +901,6 @@ window.onload = function(event) {
 
   // Call update (once) at next opportunity to handle pan controls
   window.requestAnimationFrame(update);
+
+  window.addEventListener('contextmenu', function(e) { e.stopPropagation()}, true); // enable default context menu
 }

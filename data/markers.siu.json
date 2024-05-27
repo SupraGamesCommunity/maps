@@ -7438,6 +7438,14 @@
     "alt": 1877.6624755859375
   },
   {
+    "name": "KeyLock8_2",
+    "type": "KeyLock_C",
+    "area": "DLC2_Complete",
+    "lat": -52353.9921875,
+    "lng": 47191.03125,
+    "alt": 529.594482421875
+  },
+  {
     "name": "Lift1_2",
     "type": "Lift1_C",
     "area": "DLC2_Complete",

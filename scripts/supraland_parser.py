@@ -89,7 +89,7 @@ marker_types = {
   'Purchase_ForceBeam_C', 'Purchase_ForceCube_C', 'Purchase_IronPickaxe_C', 'Purchase_StonePickaxe_C', 'Purchase_WoodPickaxe_C',
   'Scrap_C', 'SlumBurningQuest_C', 'SpawnEnemy3_C', 'Stone_C', 'UpgradeHappiness_C', 'ValveCarriable_C', 'ValveSlot_C', 'Valve_C',
   'HealingStation_C','MatchBox_C','EnemySpawn1_C','EnemySpawn2_C','EnemySpawn3_C','PipeCap_C','Lift1_C','PipesystemNew_C',
-  'PipesystemNewDLC_C','Shell_C','BarrelClosed_Blueprint_C','MetalBall_C', 'Supraball_C','Trash_C'
+  'PipesystemNewDLC_C','Shell_C','BarrelClosed_Blueprint_C','MetalBall_C', 'Supraball_C','Trash_C','KeyLock_C',
 }
 
 price_types = {
