@@ -79,6 +79,22 @@ function getViewURL() {
   return base +'#' + Object.entries(vars).map(e=>e[0]+'='+encodeURIComponent(e[1])).join('&');
 }
 
+function copyToClipboard(text) {
+  let input = document.body.appendChild(document.createElement("input"));
+  input.value = text;
+  input.focus();
+  input.select();
+  document.execCommand('copy');
+  input.parentNode.removeChild(input);
+  console.log(text + ' copied to clipboard');
+}
+
+function openLoadFileDialog() {
+  document.querySelector('#file').value = null;
+  document.querySelector('#file').accept = '.sav';
+  document.querySelector('#file').click();
+}
+
 // Called when Window loads and when base map changes, loads currently select mapId
 function loadMap(id) {
 
@@ -242,21 +258,6 @@ function loadMap(id) {
     map.fitBounds(mapBounds);
   }
 
-  function copyToClipboard(text) {
-    let input = document.body.appendChild(document.createElement("input"));
-    input.value = text;
-    input.focus();
-    input.select();
-    document.execCommand('copy');
-    input.parentNode.removeChild(input);
-    console.log(text + ' copied to clipboard');
-  }
-
-  // eslint-disable-next-line no-unused-vars
-  document.querySelector('#file').onchange = function(e) {
-    window.loadSaveFile();
-  }
-
   let subAction = L.Toolbar2.Action.extend({
     initialize:function(map,myAction){this.map=map;this.myAction=myAction;L.Toolbar2.Action.prototype.initialize.call(this);},
     addHooks:function(){ this.myAction.disable(); }
@@ -288,22 +289,20 @@ function loadMap(id) {
         // load game button
         L.Toolbar2.Action.extend({
           options: {
-            toolbarIcon:{html: '&#x1F4C1;', tooltip: 'Upload'},
+            toolbarIcon:{html: '&#x1F4C1;', tooltip: 'Load Game'},
             subToolbar: new L.Toolbar2({ 
               actions: [
                 subAction.extend({
-                  options:{toolbarIcon:{html:'Copy Path', tooltip: 'Copy save file directory path to clipboard'}},
-                  addHooks:function() {
-                    copyToClipboard('%LocalAppData%\\Supraland'+(mapId=='siu' ? 'SIU':'')+'\\Saved\\SaveGames');
+                  options:{toolbarIcon:{html:'Load Game', tooltip: 'Load game save (*.sav) to mark collected items (Alt+F)'}},
+                  addHooks: function () {
+                    openLoadFileDialog();
                     subAction.prototype.addHooks.call(this);
                   }
                 }),
                 subAction.extend({
-                  options:{toolbarIcon:{html:'Load Game', tooltip: 'Load game save (*.sav) to mark collected items'}},
-                  addHooks: function () {
-                    document.querySelector('#file').value = null;
-                    document.querySelector('#file').accept = '.sav';
-                    document.querySelector('#file').click();
+                  options:{toolbarIcon:{html:'Copy Path', tooltip: 'Copy default Windows game save file path to clipboard'}},
+                  addHooks:function() {
+                    copyToClipboard('%LocalAppData%\\Supraland'+(mapId=='siu' ? 'SIU':'')+'\\Saved\\SaveGames');
                     subAction.prototype.addHooks.call(this);
                   }
                 }),
@@ -473,13 +472,13 @@ function loadMap(id) {
                   other_pipes.add(alt);
 
               let color = getMarkerColor(o);
-              L.circleMarker([o.lat, o.lng], {radius: 5, fillOpacity: 1, weight: 0, color: 'black', fillColor: color, title: title, o:o, alt: alt})
+              L.circleMarker([o.lat, o.lng], {radius: 6, fillOpacity: 1, weight: 0, color: 'black', fillColor: color, title: title, o:o, alt: alt})
                 .addTo(layers[c.lines]).bindPopup('').on('popupopen', onPopupOpen).on('contextmenu',onContextMenu);
   
               if(add_line) {
 
                 // need to add title as a single space (leaflet search issue), but not the full title so it doesn't appear in search
-                let line = L.polyline([[o.lat, o.lng],[o.target.y,o.target.x]], {title:' ', alt:alt, color: color})
+                let line = L.polyline([[o.lat, o.lng],[o.target.y,o.target.x]], {weight: 4, title:' ', alt:alt, color: color})
                   .addTo(layers[c.lines]);
                 line._path && line._path.setAttribute('alt', alt);
               }
@@ -785,7 +784,9 @@ window.loadSaveFile = function () {
 
             // do not mark jumppads and pipes for now
             if (name.includes('Jumppad') || name.includes('Pipesystem')) {
-              continue;
+              //continue; // let's try inverting css rules for paths so activated are brighter
+
+              console.log('activating', area +':' + name);
             }
 
             window.markItemFound(area + ':' + name, true, false);
@@ -874,18 +875,24 @@ window.onload = function(event) {
   });
 
   window.addEventListener("keydown",function (e) {
-    //console.log(e.code);
+    //console.log(e, e.code);
     if (e.target.id.startsWith('searchtext')) {
       return;
     }
     pressed[e.code] = true;
+    setTimeout(function(code){pressed[code]=false;},250,e.code); // prevent stuck keys
     switch (e.code) {
       case 'KeyF':        // F (no ctrl) to toggle fullscreen
-        if (!e.ctrlKey) {
+        if(e.ctrlKey) {
+          searchControl.expand(true);
+          e.preventDefault();
+        } else if(e.altKey){
+          openLoadFileDialog();
+          e.preventDefault();
+        } else {
           map.toggleFullscreen();
-          break;
         }
-        /* eslint-next-line no-fallthrough */
+        break;
       case 'Slash':     // Ctrl+F or / to search
         searchControl.expand(true);
         e.preventDefault();
@@ -899,8 +906,10 @@ window.onload = function(event) {
     }
   });
 
-  // Call update (once) at next opportunity to handle pan controls
-  window.requestAnimationFrame(update);
+  document.querySelector('#file').onchange = function(e) {
+    loadSaveFile();
+  }
 
+  window.requestAnimationFrame(update);
   window.addEventListener('contextmenu', function(e) { e.stopPropagation()}, true); // enable default context menu
 }

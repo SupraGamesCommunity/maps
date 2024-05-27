@@ -3,6 +3,9 @@ html, body, #map { width:100%; height:100%; margin:0; padding:0; z-index: 1; bac
 .found { opacity: 30%; }
 .hidden { visibility: hidden; }
 
+path { opacity: 30% }
+path.found {opacity: 100%}
+
 .leaflet-control-search .search-input {
   width: 230px;
 }
