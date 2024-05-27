@@ -162,6 +162,7 @@ function loadMap(id) {
   map = new L.Map('map', {
     crs: crs,
     fadeAnimation: false,
+    maxZoom: 8,
     maxBounds: [
       [ p.MapWorldUpperLeft.Y - gap, p.MapWorldUpperLeft.X - gap ],
       [ p.MapWorldLowerRight.Y + gap, p.MapWorldLowerRight.X + gap ]
