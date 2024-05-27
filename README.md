@@ -84,3 +84,6 @@ map is one of sl, slc or siu
 # Technical Documentation
 
 See [technicalnotes.md](https://github.com/SupraGamesCommunity/SupraMaps/blob/main/doc/technicalnotes.md)
+
+See [Joric's Supraland Map Wiki](https://github.com/joric/supraland/wiki) for some details of the system
+

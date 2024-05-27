@@ -908,7 +908,7 @@ window.onload = function(event) {
   });
 
   document.querySelector('#file').onchange = function(e) {
-    loadSaveFile();
+    window.loadSaveFile();
   }
 
   window.requestAnimationFrame(update);

@@ -214,6 +214,7 @@ def export_markers(game, cache_dir, marker_types=marker_types, marker_names=[]):
             if o['Type'] == "Chest_C" and spawns is None and data[-1].get('coins') is not None:
                 data[-1]['spawns'] = '_CoinChest_C'
 
+            # Not sure if this covers everything that is "buyable"
             optKey(data[-1], 'cost', p.get('Cost'))
 
             optKey(data[-1], 'hits', hits:= p.get('HitsToBreak'))
@@ -263,9 +264,9 @@ def export_markers(game, cache_dir, marker_types=marker_types, marker_names=[]):
 
     # Remove unused instance data from export
     for m in data:
-        m.pop('direction', None)
-        m.pop('relative_velocity', None)
-        m.pop('velocity', None)
+        m.pop('direction', None)          # used by 3d map (will break without it but leave it this way as we're not using it)
+        m.pop('relative_velocity', None)  # used by 3d map
+        m.pop('velocity', None)           # used by 3d map
 
     print('collected %d markers' % (len(data)))
     json_file = 'markers.' + game + '.json'
