@@ -47,3 +47,4 @@ powerup,sword_damage,-67176.96,51738.31,1193.82,Sword Critical Damage Chance +5%
 powerup,stomp_damage,-67215.6,51531.44,1136.89,Stomp Damage +33%,50,,,ReN380PXV-A,13131,
 powerup,map,-49380,-45266,,Map,20,,,,,
 powerup,sword_red,17826,9499,,Supra Sword,6 Red Moons,,,,,
+powerup,translocator,42325.14,3719.42,1529.72,Translocator,free,,,,ReN380PXV-A,20527,

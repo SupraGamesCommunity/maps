@@ -8,9 +8,11 @@ from UE4Parse.Versions import EUEVersion, VersionContainer
 from UE4Parse.Encryption import FAESKey
 from mathutils import *
 from math import *
-import logging, gc, json, gc, os, sys, csv, argparse, tempfile
+import logging, gc, json, gc, os, sys, csv, re, argparse, tempfile
 import numpy as np
 from sklearn.neighbors import KDTree
+
+DOING_3D = False
 
 config = {
     'sl': {
@@ -89,7 +91,8 @@ marker_types = {
   'Purchase_ForceBeam_C', 'Purchase_ForceCube_C', 'Purchase_IronPickaxe_C', 'Purchase_StonePickaxe_C', 'Purchase_WoodPickaxe_C',
   'Scrap_C', 'SlumBurningQuest_C', 'SpawnEnemy3_C', 'Stone_C', 'UpgradeHappiness_C', 'ValveCarriable_C', 'ValveSlot_C', 'Valve_C',
   'HealingStation_C','MatchBox_C','EnemySpawn1_C','EnemySpawn2_C','EnemySpawn3_C','PipeCap_C','Lift1_C','PipesystemNew_C',
-  'PipesystemNewDLC_C','Shell_C','BarrelClosed_Blueprint_C','MetalBall_C', 'Supraball_C','Trash_C','KeyLock_C',
+  'PipesystemNewDLC_C','Shell_C','BarrelClosed_Blueprint_C','MetalBall_C', 'Supraball_C','Trash_C','KeyLock_C','BP_UnlockMap_C',
+  'PhysicalCoin_C', 'Juicer_C'
 }
 
 price_types = {
@@ -198,20 +201,28 @@ def export_markers(game, cache_dir, marker_types=marker_types, marker_names=[]):
                     data[-1]['spawns'] = '_BuyHealth+1_C'
                 elif data[-1].get('coins') is not None:
                     data[-1].pop('spawns')
-
-            # Get coin count for chests that spawn "LotsOfCouns{#coins}_C" 
-            if spawns is not None and spawns.startswith('LotsOfCoins'):
-                data[-1]['coins'] = int(spawns[11:-2])
-
-            # Set some default values for coins that don't have one
-            if data[-1].get('coins') is None:
-                if o['Type'] == "Coin_C":
-                    data[-1]['coins]'] = 1;
-                if o['Type'] == "CoinBig_C":
+                elif data[-1]['spawns'] == 'CoinBig_C':
                     data[-1]['coins'] = 10;
 
-            # Hack the spawns field so it's easier to add chest to both chests and coins layers
-            if o['Type'] == "Chest_C" and spawns is None and data[-1].get('coins') is not None:
+            # Get coin count for chests that spawn "LotsOfCouns{#coins}_C" 
+            if spawns is not None and spawns.lower().startswith('lotsofcoins'):
+                data[-1]['coins'] = int(spawns[11:-2])
+
+            # Destroyable pots can contain a coin
+            if o['Type'] == 'DestroyablePots_C':
+                if p.get('Contains Coin'):
+                    data[-1]['coins'] = 1
+                    data[-1]['type'] = '_CoinDestroyablePots_C'
+
+            # Set some default values for coins and pots that don't have one
+            if data[-1].get('coins') is None:
+                if o['Type'] == "Coin_C" or o['Type'] == 'PhysicalCoin_C':
+                    data[-1]['coins'] = 1;
+                if o['Type'] == 'CoinBig_C':
+                    data[-1]['coins'] = 10;
+
+            # Hack the spawns field so it's easier to add chest to both chests and coins layers (we lose CoinBig_C)
+            if o['Type'] == "Chest_C" and data[-1].get('coins') is not None:  # and spawns is None? 
                 data[-1]['spawns'] = '_CoinChest_C'
 
             # Not sure if this covers everything that is "buyable"
@@ -225,7 +236,7 @@ def export_markers(game, cache_dir, marker_types=marker_types, marker_names=[]):
 
             # We override the class of mine craft bricks that we think spawn gold and set default coins to 3
             if p.get('BrickType') == 'EMinecraftBrickType::NewEnumerator4':
-                data[-1]['type'] = '_MinecraftBrickGold_C'
+                data[-1]['type'] = '_GoldMinecraftBrick_C'
                 if data[-1].get('coins') is None:
                     data[-1]['coins'] = 3
 
@@ -262,11 +273,14 @@ def export_markers(game, cache_dir, marker_types=marker_types, marker_names=[]):
     # Add 'target' value for jump pad objects
     calc_targets(data)
 
-    # Remove unused instance data from export
-    for m in data:
-        m.pop('direction', None)          # used by 3d map (will break without it but leave it this way as we're not using it)
-        m.pop('relative_velocity', None)  # used by 3d map
-        m.pop('velocity', None)           # used by 3d map
+    # Remove unused instance data from export if we're not doing 3D
+    if not DOING_3D:
+        for m in data:
+            m.pop('direction', None)          # used by 3d map (will break without it but leave it this way as we're not using it)
+            m.pop('relative_velocity', None)  # used by 3d map
+            m.pop('velocity', None)           # used by 3d map
+
+    combine_legacy(game, data)
 
     print('collected %d markers' % (len(data)))
     json_file = 'markers.' + game + '.json'
@@ -354,6 +368,105 @@ def get_z(x, y, triangle):
         z = alpha * v1[2] + beta * v2[2] + gamma * v3[2]
     return z
 
+# Read types.csv which contains gameClasses.js
+def read_types_csv():
+    types = {}
+    with open('types.csv', 'r', encoding='utf-8-sig') as csv_fh:
+        csv_reader = csv.DictReader(csv_fh, delimiter=',')
+        for cls in csv_reader:
+            type = cls['type']
+            del cls['type']
+            types[type] = {k:cls[k] for k in cls if k != 'type'}
+    return types
+
+# Read the specified legacy CSV
+def read_legacy_csv(game, file):
+    filename = '..\\data\\legacy\\{}\\{}.csv'.format(game, file)
+    rows = []
+    with open(filename, 'r', encoding='utf-8-sig') as csv_fh:
+        csv_reader = csv.DictReader(csv_fh, delimiter=',')
+        for row in csv_reader:
+            rows.append(row)
+            rows[-1]['file'] = file;
+    return rows
+
+# Go through all the objects we have found and look for match with the objects in the legacy file
+# Generates a CSV as a report ({game}-legacycomp.csv)
+def combine_legacy(game, data):
+
+    # Specifies which layer classes to check for the file
+    filelayers = {
+        'chests':       ['closedChest'],
+        'shops':        ['upgrades'],
+        'collectables': ['misc', 'coin', 'graves']
+    }
+
+    print('Reading legacy files...');
+    print('Writing cross-check report ('+game+'-legacycomp.csv)')
+    types = read_types_csv()
+    suss_count = 0
+    suss_dist = 250.0
+    longest_d = (0.0, -1)
+
+    with open(game+'-legacycomp.csv', 'w') as fh:
+
+        nkeys = ['area', 'name', 'type', 'spawns', 'coins', 'cost']
+        lkeys = ['icon', 'item', 'id', 'price', 'file', 'type']
+
+        # Write CSV header with column names
+        fh.write('dist,url,'+','.join(str(k) for k in nkeys+lkeys)+'\n')
+
+        for file in filelayers.keys():
+
+            ldata = read_legacy_csv(game, file)
+            if len(ldata) <= 0:
+                continue
+
+            # Create a list of the objects that are likely to match with items in this file based on layer
+            ndata = []
+            for no in data:
+                layer = types[no['type']]['layer']
+                if layer and layer in filelayers[file]:
+                    ndata.append(no)
+
+            # Use KD Tree of extracted object points to query legacy points 
+            npt = [(nd['lng'], nd['lat']) for nd in ndata]
+            lpt = [(ld['x'],   ld['y'])   for ld in ldata]
+
+            kdtree = KDTree(npt)
+
+            (dist, nidx) = kdtree.query(lpt, k=1)
+
+            for li, da in enumerate(dist):
+
+                # Track longest and shortest distances
+                d = da[0]
+                if(d > longest_d[0]):
+                    longest_d = (d, li)
+                if d > suss_dist:
+                    suss_count += 1
+
+                lo = ldata[li]
+                ni = nidx[li][0]
+                no = ndata[ni]
+
+                # lo is a legacy object (with file type added)
+                # no is an extracted object
+
+                # Write distance between the points and the url to the new map
+                fh.write(str(d)+',https://supragamescommunity.github.io/SupraMaps/#mapId={}&lat={}&lng={}&zoom=5'.format(game, no['lat'], no['lng']))
+
+                for k in nkeys:
+                    fh.write(','+str(no.get(k, '')))
+                for k in lkeys:
+                    fh.write(','+str(lo.get(k, '')))
+                fh.write('\n')
+
+    print('{} entries from legacy CSV files checked'.format(len(ldata)))
+    print("Max separation: {:.4g} Median {:.4g}".format(longest_d[0], np.median(dist)))
+    print("Suspcious items {} (distance > {:.4g})".format(suss_count, suss_dist))
+
+
 def export_textures(game, cache_dir):
     path = os.environ.get(game+'dir',config[game]['path'])
     prefix = config[game]['prefix']
@@ -376,6 +489,7 @@ def export_textures(game, cache_dir):
         if texture := package.find_export_of_type("Texture2D"):
             image = texture.decode()
             image.save(filename, "png")
+
 
 def main():
     # Looks for environment variable {game}dir ie %SLDIR% for the path where the game data is stored 
