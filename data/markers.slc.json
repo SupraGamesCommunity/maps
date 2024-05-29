@@ -1399,7 +1399,7 @@
     "lat": -8265.380859375,
     "lng": 41874.1875,
     "alt": 555.439453125,
-    "coins]": 1
+    "coins": 1
   },
   {
     "name": "Coin11_12",
@@ -1408,7 +1408,7 @@
     "lat": -8508.857421875,
     "lng": 40540.98046875,
     "alt": 658.3890991210938,
-    "coins]": 1
+    "coins": 1
   },
   {
     "name": "Coin12",
@@ -1417,7 +1417,7 @@
     "lat": 2746.59814453125,
     "lng": 42993.265625,
     "alt": 1221.8802490234375,
-    "coins]": 1
+    "coins": 1
   },
   {
     "name": "Coin13",
@@ -1426,7 +1426,7 @@
     "lat": -14371.3154296875,
     "lng": 44224.859375,
     "alt": 1682.6807861328125,
-    "coins]": 1
+    "coins": 1
   },
   {
     "name": "Coin14_2",
@@ -1435,7 +1435,7 @@
     "lat": 11095.9345703125,
     "lng": -1022.216064453125,
     "alt": 2116.39892578125,
-    "coins]": 1
+    "coins": 1
   },
   {
     "name": "Coin15",
@@ -1444,7 +1444,7 @@
     "lat": 10991.798828125,
     "lng": -1040.0557861328125,
     "alt": 2116.39892578125,
-    "coins]": 1
+    "coins": 1
   },
   {
     "name": "Coin16",
@@ -1453,7 +1453,7 @@
     "lat": -4286.35205078125,
     "lng": 43319.11328125,
     "alt": 128.8662109375,
-    "coins]": 1
+    "coins": 1
   },
   {
     "name": "Coin17",
@@ -1462,7 +1462,7 @@
     "lat": -4342.7861328125,
     "lng": 43696.59765625,
     "alt": 126.62286376953125,
-    "coins]": 1
+    "coins": 1
   },
   {
     "name": "Coin18",
@@ -1471,7 +1471,7 @@
     "lat": -6036.3896484375,
     "lng": 44305.31640625,
     "alt": 158.15684509277344,
-    "coins]": 1
+    "coins": 1
   },
   {
     "name": "Coin19",
@@ -1480,7 +1480,7 @@
     "lat": 4143.1923828125,
     "lng": 38446.3515625,
     "alt": 584.1189575195312,
-    "coins]": 1
+    "coins": 1
   },
   {
     "name": "Coin20",
@@ -1489,7 +1489,7 @@
     "lat": 4312.8212890625,
     "lng": 38439.37890625,
     "alt": 490.82928466796875,
-    "coins]": 1
+    "coins": 1
   },
   {
     "name": "Coin21",
@@ -1498,7 +1498,7 @@
     "lat": 3925.759033203125,
     "lng": 38455.32421875,
     "alt": 649.3693237304688,
-    "coins]": 1
+    "coins": 1
   },
   {
     "name": "Coin23",
@@ -1507,7 +1507,7 @@
     "lat": -14371.8935546875,
     "lng": 44026.03125,
     "alt": 1689.3519287109375,
-    "coins]": 1
+    "coins": 1
   },
   {
     "name": "Coin25",
@@ -1516,7 +1516,7 @@
     "lat": 10980.390625,
     "lng": -894.3538818359375,
     "alt": 2116.39892578125,
-    "coins]": 1
+    "coins": 1
   },
   {
     "name": "Coin26",
@@ -1525,7 +1525,7 @@
     "lat": 11060.6455078125,
     "lng": -905.5567016601562,
     "alt": 2116.39892578125,
-    "coins]": 1
+    "coins": 1
   },
   {
     "name": "Coin27",
@@ -1534,7 +1534,7 @@
     "lat": 10867.1904296875,
     "lng": -892.5287475585938,
     "alt": 2127.1318359375,
-    "coins]": 1
+    "coins": 1
   },
   {
     "name": "Coin28",
@@ -1543,7 +1543,7 @@
     "lat": -10223.6748046875,
     "lng": 44063.85546875,
     "alt": 1309.927978515625,
-    "coins]": 1
+    "coins": 1
   },
   {
     "name": "Coin29_2",
@@ -1552,7 +1552,7 @@
     "lat": 1645.535888671875,
     "lng": 45028.64453125,
     "alt": 153.44650268554688,
-    "coins]": 1
+    "coins": 1
   },
   {
     "name": "Coin2_17",
@@ -1561,7 +1561,7 @@
     "lat": 2046.6826171875,
     "lng": 42947.3203125,
     "alt": 810.618408203125,
-    "coins]": 1
+    "coins": 1
   },
   {
     "name": "Coin3",
@@ -1570,7 +1570,7 @@
     "lat": 2519.1064453125,
     "lng": 42887.56640625,
     "alt": 1221.8802490234375,
-    "coins]": 1
+    "coins": 1
   },
   {
     "name": "Coin30",
@@ -1579,7 +1579,7 @@
     "lat": 1377.31787109375,
     "lng": 45121.7578125,
     "alt": 136.94467163085938,
-    "coins]": 1
+    "coins": 1
   },
   {
     "name": "Coin31_2",
@@ -1588,7 +1588,7 @@
     "lat": -3810.0,
     "lng": 10280.0,
     "alt": 590.0,
-    "coins]": 1
+    "coins": 1
   },
   {
     "name": "Coin32",
@@ -1597,7 +1597,7 @@
     "lat": -3810.0,
     "lng": 10410.0,
     "alt": 600.0,
-    "coins]": 1
+    "coins": 1
   },
   {
     "name": "Coin33",
@@ -1606,7 +1606,7 @@
     "lat": -3810.0,
     "lng": 10550.0,
     "alt": 600.0,
-    "coins]": 1
+    "coins": 1
   },
   {
     "name": "Coin36",
@@ -1615,7 +1615,7 @@
     "lat": 10867.1904296875,
     "lng": -1040.6455078125,
     "alt": 2127.1318359375,
-    "coins]": 1
+    "coins": 1
   },
   {
     "name": "Coin37",
@@ -1624,7 +1624,7 @@
     "lat": 17141.916015625,
     "lng": 16914.689453125,
     "alt": 3096.8837890625,
-    "coins]": 1
+    "coins": 1
   },
   {
     "name": "Coin38",
@@ -1633,7 +1633,7 @@
     "lat": 17141.916015625,
     "lng": 16914.689453125,
     "alt": 3184.737060546875,
-    "coins]": 1
+    "coins": 1
   },
   {
     "name": "Coin39",
@@ -1642,7 +1642,7 @@
     "lat": 17141.916015625,
     "lng": 16914.689453125,
     "alt": 3268.43798828125,
-    "coins]": 1
+    "coins": 1
   },
   {
     "name": "Coin4",
@@ -1651,7 +1651,7 @@
     "lat": -10178.109375,
     "lng": 43855.86328125,
     "alt": 1275.4951171875,
-    "coins]": 1
+    "coins": 1
   },
   {
     "name": "Coin40",
@@ -1660,7 +1660,7 @@
     "lat": 17141.916015625,
     "lng": 16914.689453125,
     "alt": 3350.991455078125,
-    "coins]": 1
+    "coins": 1
   },
   {
     "name": "Coin41",
@@ -1669,7 +1669,7 @@
     "lat": 12498.9765625,
     "lng": 15539.3681640625,
     "alt": 4467.0537109375,
-    "coins]": 1
+    "coins": 1
   },
   {
     "name": "Coin42",
@@ -1678,7 +1678,7 @@
     "lat": 12596.0517578125,
     "lng": 16049.8349609375,
     "alt": 4467.0537109375,
-    "coins]": 1
+    "coins": 1
   },
   {
     "name": "Coin43",
@@ -1687,7 +1687,7 @@
     "lat": 12560.2529296875,
     "lng": 15896.927734375,
     "alt": 4523.3984375,
-    "coins]": 1
+    "coins": 1
   },
   {
     "name": "Coin44",
@@ -1696,7 +1696,7 @@
     "lat": 12532.77734375,
     "lng": 15703.8095703125,
     "alt": 4523.3984375,
-    "coins]": 1
+    "coins": 1
   },
   {
     "name": "Coin45",
@@ -1705,7 +1705,7 @@
     "lat": 13912.4736328125,
     "lng": 7027.56103515625,
     "alt": 3091.988037109375,
-    "coins]": 1
+    "coins": 1
   },
   {
     "name": "Coin46",
@@ -1714,7 +1714,7 @@
     "lat": 14035.59375,
     "lng": 7231.29052734375,
     "alt": 3091.988037109375,
-    "coins]": 1
+    "coins": 1
   },
   {
     "name": "Coin47",
@@ -1723,7 +1723,7 @@
     "lat": 13854.578125,
     "lng": 7238.4306640625,
     "alt": 3091.988037109375,
-    "coins]": 1
+    "coins": 1
   },
   {
     "name": "Coin48",
@@ -1732,7 +1732,7 @@
     "lat": 1887.872802734375,
     "lng": 7938.025390625,
     "alt": 2153.7998046875,
-    "coins]": 1
+    "coins": 1
   },
   {
     "name": "Coin49",
@@ -1741,7 +1741,7 @@
     "lat": 3431.77587890625,
     "lng": 7609.583984375,
     "alt": 2338.061767578125,
-    "coins]": 1
+    "coins": 1
   },
   {
     "name": "Coin5",
@@ -1750,7 +1750,7 @@
     "lat": -10289.7724609375,
     "lng": 43597.34765625,
     "alt": 1309.927978515625,
-    "coins]": 1
+    "coins": 1
   },
   {
     "name": "Coin50",
@@ -1759,7 +1759,7 @@
     "lat": 754.7450561523438,
     "lng": 8129.05419921875,
     "alt": 1510.8870849609375,
-    "coins]": 1
+    "coins": 1
   },
   {
     "name": "Coin51",
@@ -1768,7 +1768,7 @@
     "lat": 500.0,
     "lng": 9160.0,
     "alt": 2870.0,
-    "coins]": 1
+    "coins": 1
   },
   {
     "name": "Coin52",
@@ -1777,7 +1777,7 @@
     "lat": -1350.0,
     "lng": 16500.0,
     "alt": 2720.0,
-    "coins]": 1
+    "coins": 1
   },
   {
     "name": "Coin53",
@@ -1786,7 +1786,7 @@
     "lat": -920.0,
     "lng": 16500.0,
     "alt": 2700.0,
-    "coins]": 1
+    "coins": 1
   },
   {
     "name": "Coin54",
@@ -1795,7 +1795,7 @@
     "lat": -1140.0,
     "lng": 16320.0,
     "alt": 2740.0,
-    "coins]": 1
+    "coins": 1
   },
   {
     "name": "Coin55",
@@ -1804,7 +1804,7 @@
     "lat": -1090.0,
     "lng": 16710.0,
     "alt": 2670.0,
-    "coins]": 1
+    "coins": 1
   },
   {
     "name": "Coin56",
@@ -1813,7 +1813,7 @@
     "lat": -4530.0,
     "lng": -10290.0,
     "alt": 480.0,
-    "coins]": 1
+    "coins": 1
   },
   {
     "name": "Coin57",
@@ -1822,7 +1822,7 @@
     "lat": -4700.0,
     "lng": -10290.0,
     "alt": 480.0,
-    "coins]": 1
+    "coins": 1
   },
   {
     "name": "Coin58",
@@ -1831,7 +1831,7 @@
     "lat": -3180.0,
     "lng": -10290.0,
     "alt": 480.0,
-    "coins]": 1
+    "coins": 1
   },
   {
     "name": "Coin59",
@@ -1840,7 +1840,7 @@
     "lat": -3350.0,
     "lng": -10290.0,
     "alt": 480.0,
-    "coins]": 1
+    "coins": 1
   },
   {
     "name": "Coin60",
@@ -1849,7 +1849,7 @@
     "lat": -8550.0,
     "lng": -2180.0,
     "alt": 650.0,
-    "coins]": 1
+    "coins": 1
   },
   {
     "name": "Coin61",
@@ -1858,7 +1858,7 @@
     "lat": -8550.0,
     "lng": -2370.0,
     "alt": 650.0,
-    "coins]": 1
+    "coins": 1
   },
   {
     "name": "Coin62",
@@ -1867,7 +1867,7 @@
     "lat": -8700.0,
     "lng": -2370.0,
     "alt": 650.0,
-    "coins]": 1
+    "coins": 1
   },
   {
     "name": "Coin63",
@@ -1876,7 +1876,7 @@
     "lat": 4830.0,
     "lng": -1800.0,
     "alt": 1900.0,
-    "coins]": 1
+    "coins": 1
   },
   {
     "name": "Coin64",
@@ -1885,7 +1885,7 @@
     "lat": 4780.0,
     "lng": -1770.0,
     "alt": 1900.0,
-    "coins]": 1
+    "coins": 1
   },
   {
     "name": "Coin65",
@@ -1894,7 +1894,7 @@
     "lat": 4740.0,
     "lng": -1750.0,
     "alt": 1900.0,
-    "coins]": 1
+    "coins": 1
   },
   {
     "name": "Coin66",
@@ -1903,7 +1903,7 @@
     "lat": 2820.0,
     "lng": 680.0,
     "alt": 1290.0,
-    "coins]": 1
+    "coins": 1
   },
   {
     "name": "Coin67",
@@ -1912,7 +1912,7 @@
     "lat": 2730.0,
     "lng": 680.0,
     "alt": 1290.0,
-    "coins]": 1
+    "coins": 1
   },
   {
     "name": "Coin68",
@@ -1921,7 +1921,7 @@
     "lat": 2630.0,
     "lng": 680.0,
     "alt": 1290.0,
-    "coins]": 1
+    "coins": 1
   },
   {
     "name": "Coin69",
@@ -1930,7 +1930,7 @@
     "lat": 2690.0,
     "lng": 4220.0,
     "alt": 2370.0,
-    "coins]": 1
+    "coins": 1
   },
   {
     "name": "Coin6_3",
@@ -1939,7 +1939,7 @@
     "lat": -17597.259765625,
     "lng": 43600.578125,
     "alt": 1432.9134521484375,
-    "coins]": 1
+    "coins": 1
   },
   {
     "name": "Coin70",
@@ -1948,7 +1948,7 @@
     "lat": 2600.0,
     "lng": 4220.0,
     "alt": 2370.0,
-    "coins]": 1
+    "coins": 1
   },
   {
     "name": "Coin71",
@@ -1957,7 +1957,7 @@
     "lat": 14810.0,
     "lng": -9580.0,
     "alt": 2150.0,
-    "coins]": 1
+    "coins": 1
   },
   {
     "name": "Coin72",
@@ -1966,7 +1966,7 @@
     "lat": 15090.0,
     "lng": -9590.0,
     "alt": 2150.0,
-    "coins]": 1
+    "coins": 1
   },
   {
     "name": "Coin73",
@@ -1975,7 +1975,7 @@
     "lat": 15340.0,
     "lng": -9570.0,
     "alt": 2150.0,
-    "coins]": 1
+    "coins": 1
   },
   {
     "name": "Coin74",
@@ -1984,7 +1984,7 @@
     "lat": 11880.0,
     "lng": -3900.0,
     "alt": 580.0,
-    "coins]": 1
+    "coins": 1
   },
   {
     "name": "Coin75",
@@ -1993,7 +1993,7 @@
     "lat": 11860.0,
     "lng": -3770.0,
     "alt": 580.0,
-    "coins]": 1
+    "coins": 1
   },
   {
     "name": "Coin76",
@@ -2002,7 +2002,7 @@
     "lat": 13520.0,
     "lng": -2110.0,
     "alt": 760.0,
-    "coins]": 1
+    "coins": 1
   },
   {
     "name": "Coin77",
@@ -2011,7 +2011,7 @@
     "lat": 13720.0,
     "lng": -2090.0,
     "alt": 760.0,
-    "coins]": 1
+    "coins": 1
   },
   {
     "name": "Coin78",
@@ -2020,7 +2020,7 @@
     "lat": 1051.40771484375,
     "lng": 2113.689697265625,
     "alt": 2070.0,
-    "coins]": 1
+    "coins": 1
   },
   {
     "name": "Coin79",
@@ -2029,7 +2029,7 @@
     "lat": 1051.40771484375,
     "lng": 2640.068115234375,
     "alt": 2070.0,
-    "coins]": 1
+    "coins": 1
   },
   {
     "name": "Coin7_2",
@@ -2038,7 +2038,7 @@
     "lat": 2648.6259765625,
     "lng": 42023.890625,
     "alt": -1.5628128051757812,
-    "coins]": 1
+    "coins": 1
   },
   {
     "name": "Coin80",
@@ -2047,7 +2047,7 @@
     "lat": 1051.0081787109375,
     "lng": 2213.451171875,
     "alt": 2070.0,
-    "coins]": 1
+    "coins": 1
   },
   {
     "name": "Coin81_54",
@@ -2056,7 +2056,7 @@
     "lat": -3380.0,
     "lng": 4760.0,
     "alt": 790.0360717773438,
-    "coins]": 1
+    "coins": 1
   },
   {
     "name": "Coin82",
@@ -2065,7 +2065,7 @@
     "lat": -3500.0,
     "lng": 4680.0,
     "alt": 790.0360717773438,
-    "coins]": 1
+    "coins": 1
   },
   {
     "name": "Coin83",
@@ -2074,7 +2074,7 @@
     "lat": -14880.060546875,
     "lng": 42003.60546875,
     "alt": 422.7973327636719,
-    "coins]": 1
+    "coins": 1
   },
   {
     "name": "Coin84",
@@ -2083,7 +2083,7 @@
     "lat": -15137.2509765625,
     "lng": 41988.39453125,
     "alt": 464.1658630371094,
-    "coins]": 1
+    "coins": 1
   },
   {
     "name": "Coin85",
@@ -2092,7 +2092,7 @@
     "lat": -14968.9521484375,
     "lng": 42172.0703125,
     "alt": 464.1658630371094,
-    "coins]": 1
+    "coins": 1
   },
   {
     "name": "Coin86",
@@ -2101,7 +2101,7 @@
     "lat": -17597.259765625,
     "lng": 43686.49609375,
     "alt": 1432.9134521484375,
-    "coins]": 1
+    "coins": 1
   },
   {
     "name": "Coin87",
@@ -2110,7 +2110,7 @@
     "lat": -17597.259765625,
     "lng": 43504.9140625,
     "alt": 1432.9134521484375,
-    "coins]": 1
+    "coins": 1
   },
   {
     "name": "Coin88_2",
@@ -2119,7 +2119,7 @@
     "lat": -515.4964599609375,
     "lng": 26111.38671875,
     "alt": 1759.6181640625,
-    "coins]": 1
+    "coins": 1
   },
   {
     "name": "Coin89",
@@ -2128,7 +2128,7 @@
     "lat": -15982.0419921875,
     "lng": 47294.921875,
     "alt": 729.474609375,
-    "coins]": 1
+    "coins": 1
   },
   {
     "name": "Coin8_5",
@@ -2137,7 +2137,7 @@
     "lat": 6103.8447265625,
     "lng": 37841.0859375,
     "alt": -117.94195556640625,
-    "coins]": 1
+    "coins": 1
   },
   {
     "name": "Coin9",
@@ -2146,7 +2146,7 @@
     "lat": 6108.4599609375,
     "lng": 38615.859375,
     "alt": -117.94195556640625,
-    "coins]": 1
+    "coins": 1
   },
   {
     "name": "Coin90",
@@ -2155,7 +2155,7 @@
     "lat": -140.0,
     "lng": 10170.0,
     "alt": 2880.0,
-    "coins]": 1
+    "coins": 1
   },
   {
     "name": "Coin91_2",
@@ -2164,7 +2164,7 @@
     "lat": -15595.4580078125,
     "lng": 51356.5,
     "alt": 364.3646240234375,
-    "coins]": 1
+    "coins": 1
   },
   {
     "name": "Coin92",
@@ -2173,7 +2173,7 @@
     "lat": -15878.2216796875,
     "lng": 51356.5,
     "alt": 516.0580444335938,
-    "coins]": 1
+    "coins": 1
   },
   {
     "name": "Coin93_2",
@@ -2182,7 +2182,7 @@
     "lat": -9969.9013671875,
     "lng": -65.34184265136719,
     "alt": -794.531982421875,
-    "coins]": 1
+    "coins": 1
   },
   {
     "name": "Coin94",
@@ -2191,7 +2191,7 @@
     "lat": -11279.10546875,
     "lng": 5580.43994140625,
     "alt": -674.49951171875,
-    "coins]": 1
+    "coins": 1
   },
   {
     "name": "Coin95",
@@ -2200,7 +2200,7 @@
     "lat": -1913.284912109375,
     "lng": 7539.30126953125,
     "alt": 139.76304626464844,
-    "coins]": 1
+    "coins": 1
   },
   {
     "name": "Coin96",
@@ -2209,7 +2209,7 @@
     "lat": -4459.52587890625,
     "lng": 1244.2454833984375,
     "alt": 108.62197875976562,
-    "coins]": 1
+    "coins": 1
   },
   {
     "name": "Coin_15",
@@ -2218,7 +2218,7 @@
     "lat": 2046.6826171875,
     "lng": 42947.3203125,
     "alt": 705.6405029296875,
-    "coins]": 1
+    "coins": 1
   },
   {
     "name": "CoinBig2",
@@ -2398,187 +2398,210 @@
   },
   {
     "name": "DestroyablePots10",
-    "type": "DestroyablePots_C",
+    "type": "_CoinDestroyablePots_C",
     "area": "Crash",
     "lat": -5096.443359375,
     "lng": 44043.4375,
-    "alt": 129.1203155517578
+    "alt": 129.1203155517578,
+    "coins": 1
   },
   {
     "name": "DestroyablePots11",
-    "type": "DestroyablePots_C",
+    "type": "_CoinDestroyablePots_C",
     "area": "Crash",
     "lat": -6101.0078125,
     "lng": 41852.38671875,
-    "alt": 131.1345672607422
+    "alt": 131.1345672607422,
+    "coins": 1
   },
   {
     "name": "DestroyablePots12",
-    "type": "DestroyablePots_C",
+    "type": "_CoinDestroyablePots_C",
     "area": "Crash",
     "lat": -6026.8125,
     "lng": 41877.03515625,
-    "alt": 135.1933135986328
+    "alt": 135.1933135986328,
+    "coins": 1
   },
   {
     "name": "DestroyablePots13",
-    "type": "DestroyablePots_C",
+    "type": "_CoinDestroyablePots_C",
     "area": "Crash",
     "lat": -6146.07470703125,
     "lng": 41784.734375,
-    "alt": 143.5320587158203
+    "alt": 143.5320587158203,
+    "coins": 1
   },
   {
     "name": "DestroyablePots14",
-    "type": "DestroyablePots_C",
+    "type": "_CoinDestroyablePots_C",
     "area": "Crash",
     "lat": -6166.56640625,
     "lng": 41828.828125,
-    "alt": 132.7110595703125
+    "alt": 132.7110595703125,
+    "coins": 1
   },
   {
     "name": "DestroyablePots15",
-    "type": "DestroyablePots_C",
+    "type": "_CoinDestroyablePots_C",
     "area": "Crash",
     "lat": -18.222373962402344,
     "lng": 38704.421875,
-    "alt": 103.48106384277344
+    "alt": 103.48106384277344,
+    "coins": 1
   },
   {
     "name": "DestroyablePots16",
-    "type": "DestroyablePots_C",
+    "type": "_CoinDestroyablePots_C",
     "area": "Crash",
     "lat": 77.80015563964844,
     "lng": 38695.671875,
-    "alt": 103.43453979492188
+    "alt": 103.43453979492188,
+    "coins": 1
   },
   {
     "name": "DestroyablePots17",
-    "type": "DestroyablePots_C",
+    "type": "_CoinDestroyablePots_C",
     "area": "Crash",
     "lat": -78.81648254394531,
     "lng": 38596.09765625,
-    "alt": 103.33926391601562
+    "alt": 103.33926391601562,
+    "coins": 1
   },
   {
     "name": "DestroyablePots18",
-    "type": "DestroyablePots_C",
+    "type": "_CoinDestroyablePots_C",
     "area": "Crash",
     "lat": -99.30839538574219,
     "lng": 38640.19140625,
-    "alt": 103.48106384277344
+    "alt": 103.48106384277344,
+    "coins": 1
   },
   {
     "name": "DestroyablePots19_26",
-    "type": "DestroyablePots_C",
+    "type": "_CoinDestroyablePots_C",
     "area": "Crash",
     "lat": -9366.712890625,
     "lng": 44360.41796875,
-    "alt": 610.6602783203125
+    "alt": 610.6602783203125,
+    "coins": 1
   },
   {
     "name": "DestroyablePots2",
-    "type": "DestroyablePots_C",
+    "type": "_CoinDestroyablePots_C",
     "area": "Crash",
     "lat": -4975.46875,
     "lng": 43563.7109375,
-    "alt": 609.482421875
+    "alt": 609.482421875,
+    "coins": 1
   },
   {
     "name": "DestroyablePots20",
-    "type": "DestroyablePots_C",
+    "type": "_CoinDestroyablePots_C",
     "area": "Crash",
     "lat": 2712.616455078125,
     "lng": 42175.5625,
-    "alt": 111.67073059082031
+    "alt": 111.67073059082031,
+    "coins": 1
   },
   {
     "name": "DestroyablePots21",
-    "type": "DestroyablePots_C",
+    "type": "_CoinDestroyablePots_C",
     "area": "Crash",
     "lat": 2707.447509765625,
     "lng": 41861.94140625,
-    "alt": 102.26692962646484
+    "alt": 102.26692962646484,
+    "coins": 1
   },
   {
     "name": "DestroyablePots22",
-    "type": "DestroyablePots_C",
+    "type": "_CoinDestroyablePots_C",
     "area": "Crash",
     "lat": 2503.999267578125,
     "lng": 42033.09375,
-    "alt": 115.1194839477539
+    "alt": 115.1194839477539,
+    "coins": 1
   },
   {
     "name": "DestroyablePots23",
-    "type": "DestroyablePots_C",
+    "type": "_CoinDestroyablePots_C",
     "area": "Crash",
     "lat": -9308.2978515625,
     "lng": 44340.91796875,
-    "alt": 608.0128784179688
+    "alt": 608.0128784179688,
+    "coins": 1
   },
   {
     "name": "DestroyablePots24_32",
-    "type": "DestroyablePots_C",
+    "type": "_CoinDestroyablePots_C",
     "area": "Crash",
     "lat": -9022.4892578125,
     "lng": 40661.1796875,
-    "alt": 200.214111328125
+    "alt": 200.214111328125,
+    "coins": 1
   },
   {
     "name": "DestroyablePots25_33",
-    "type": "DestroyablePots_C",
+    "type": "_CoinDestroyablePots_C",
     "area": "Crash",
     "lat": -9156.0302734375,
     "lng": 40626.69140625,
-    "alt": 200.356201171875
+    "alt": 200.356201171875,
+    "coins": 1
   },
   {
     "name": "DestroyablePots26",
-    "type": "DestroyablePots_C",
+    "type": "_CoinDestroyablePots_C",
     "area": "Crash",
     "lat": -5982.1513671875,
     "lng": 41665.2734375,
-    "alt": 884.716064453125
+    "alt": 884.716064453125,
+    "coins": 1
   },
   {
     "name": "DestroyablePots27",
-    "type": "DestroyablePots_C",
+    "type": "_CoinDestroyablePots_C",
     "area": "Crash",
     "lat": -6010.2431640625,
     "lng": 41873.1484375,
-    "alt": 884.6687622070312
+    "alt": 884.6687622070312,
+    "coins": 1
   },
   {
     "name": "DestroyablePots28",
-    "type": "DestroyablePots_C",
+    "type": "_CoinDestroyablePots_C",
     "area": "Crash",
     "lat": -5914.078125,
     "lng": 41410.21875,
-    "alt": 884.5747680664062
+    "alt": 884.5747680664062,
+    "coins": 1
   },
   {
     "name": "DestroyablePots29_39",
-    "type": "DestroyablePots_C",
+    "type": "_CoinDestroyablePots_C",
     "area": "Crash",
     "lat": -14063.1357421875,
     "lng": 43299.5234375,
-    "alt": 367.49798583984375
+    "alt": 367.49798583984375,
+    "coins": 1
   },
   {
     "name": "DestroyablePots3",
-    "type": "DestroyablePots_C",
+    "type": "_CoinDestroyablePots_C",
     "area": "Crash",
     "lat": -4992.65283203125,
     "lng": 43462.28515625,
-    "alt": 609.482421875
+    "alt": 609.482421875,
+    "coins": 1
   },
   {
     "name": "DestroyablePots30",
-    "type": "DestroyablePots_C",
+    "type": "_CoinDestroyablePots_C",
     "area": "Crash",
     "lat": -14136.7734375,
     "lng": 43310.19140625,
-    "alt": 378.5403137207031
+    "alt": 378.5403137207031,
+    "coins": 1
   },
   {
     "name": "DestroyablePots31_2",
@@ -2654,11 +2677,12 @@
   },
   {
     "name": "DestroyablePots4",
-    "type": "DestroyablePots_C",
+    "type": "_CoinDestroyablePots_C",
     "area": "Crash",
     "lat": -5456.3701171875,
     "lng": 43502.2421875,
-    "alt": 609.482421875
+    "alt": 609.482421875,
+    "coins": 1
   },
   {
     "name": "DestroyablePots40",
@@ -2734,171 +2758,192 @@
   },
   {
     "name": "DestroyablePots49",
-    "type": "DestroyablePots_C",
+    "type": "_CoinDestroyablePots_C",
     "area": "Crash",
     "lat": -12050.345703125,
     "lng": -915.8556518554688,
-    "alt": -794.9569702148438
+    "alt": -794.9569702148438,
+    "coins": 1
   },
   {
     "name": "DestroyablePots5",
-    "type": "DestroyablePots_C",
+    "type": "_CoinDestroyablePots_C",
     "area": "Crash",
     "lat": -5020.142578125,
     "lng": 43616.94921875,
-    "alt": 14.075471878051758
+    "alt": 14.075471878051758,
+    "coins": 1
   },
   {
     "name": "DestroyablePots50",
-    "type": "DestroyablePots_C",
+    "type": "_CoinDestroyablePots_C",
     "area": "Crash",
     "lat": -12143.5576171875,
     "lng": -983.5042114257812,
-    "alt": -795.0029907226562
+    "alt": -795.0029907226562,
+    "coins": 1
   },
   {
     "name": "DestroyablePots51",
-    "type": "DestroyablePots_C",
+    "type": "_CoinDestroyablePots_C",
     "area": "Crash",
     "lat": -12049.3984375,
     "lng": -976.7899780273438,
-    "alt": -795.0988159179688
+    "alt": -795.0988159179688,
+    "coins": 1
   },
   {
     "name": "DestroyablePots52",
-    "type": "DestroyablePots_C",
+    "type": "_CoinDestroyablePots_C",
     "area": "Crash",
     "lat": -12076.68359375,
     "lng": -1033.4544677734375,
-    "alt": -795.0029296875
+    "alt": -795.0029296875,
+    "coins": 1
   },
   {
     "name": "DestroyablePots53",
-    "type": "DestroyablePots_C",
+    "type": "_CoinDestroyablePots_C",
     "area": "Crash",
     "lat": -11982.1142578125,
     "lng": -1037.453369140625,
-    "alt": -795.0029296875
+    "alt": -795.0029296875,
+    "coins": 1
   },
   {
     "name": "DestroyablePots54",
-    "type": "DestroyablePots_C",
+    "type": "_CoinDestroyablePots_C",
     "area": "Crash",
     "lat": -11922.86328125,
     "lng": -962.7936401367188,
-    "alt": -794.9569091796875
+    "alt": -794.9569091796875,
+    "coins": 1
   },
   {
     "name": "DestroyablePots55",
-    "type": "DestroyablePots_C",
+    "type": "_CoinDestroyablePots_C",
     "area": "Crash",
     "lat": -12001.26171875,
     "lng": -411.6659240722656,
-    "alt": -795.0987548828125
+    "alt": -795.0987548828125,
+    "coins": 1
   },
   {
     "name": "DestroyablePots56",
-    "type": "DestroyablePots_C",
+    "type": "_CoinDestroyablePots_C",
     "area": "Crash",
     "lat": -12002.119140625,
     "lng": -335.8600769042969,
-    "alt": -791.0940551757812
+    "alt": -791.0940551757812,
+    "coins": 1
   },
   {
     "name": "DestroyablePots57",
-    "type": "DestroyablePots_C",
+    "type": "_CoinDestroyablePots_C",
     "area": "Crash",
     "lat": -11995.859375,
     "lng": -264.42559814453125,
-    "alt": -795.0987548828125
+    "alt": -795.0987548828125,
+    "coins": 1
   },
   {
     "name": "DestroyablePots58",
-    "type": "DestroyablePots_C",
+    "type": "_CoinDestroyablePots_C",
     "area": "Crash",
     "lat": -11938.111328125,
     "lng": -373.0803527832031,
-    "alt": -793.3704223632812
+    "alt": -793.3704223632812,
+    "coins": 1
   },
   {
     "name": "DestroyablePots59",
-    "type": "DestroyablePots_C",
+    "type": "_CoinDestroyablePots_C",
     "area": "Crash",
     "lat": -11946.77734375,
     "lng": -887.2837524414062,
-    "alt": -795.0029907226562
+    "alt": -795.0029907226562,
+    "coins": 1
   },
   {
     "name": "DestroyablePots6",
-    "type": "DestroyablePots_C",
+    "type": "_CoinDestroyablePots_C",
     "area": "Crash",
     "lat": -4936.26953125,
     "lng": 43624.18359375,
-    "alt": 34.021705627441406
+    "alt": 34.021705627441406,
+    "coins": 1
   },
   {
     "name": "DestroyablePots60",
-    "type": "DestroyablePots_C",
+    "type": "_CoinDestroyablePots_C",
     "area": "Crash",
     "lat": -12019.2138671875,
     "lng": 2391.453125,
-    "alt": -795.0029907226562
+    "alt": -795.0029907226562,
+    "coins": 1
   },
   {
     "name": "DestroyablePots61",
-    "type": "DestroyablePots_C",
+    "type": "_CoinDestroyablePots_C",
     "area": "Crash",
     "lat": -12041.3876953125,
     "lng": 2458.474853515625,
-    "alt": -795.0988159179688
+    "alt": -795.0988159179688,
+    "coins": 1
   },
   {
     "name": "DestroyablePots62",
-    "type": "DestroyablePots_C",
+    "type": "_CoinDestroyablePots_C",
     "area": "Crash",
     "lat": -11980.4892578125,
     "lng": 2442.76953125,
-    "alt": -795.0029296875
+    "alt": -795.0029296875,
+    "coins": 1
   },
   {
     "name": "DestroyablePots63",
-    "type": "DestroyablePots_C",
+    "type": "_CoinDestroyablePots_C",
     "area": "Crash",
     "lat": -11858.0126953125,
     "lng": 2256.62060546875,
-    "alt": -795.0987548828125
+    "alt": -795.0987548828125,
+    "coins": 1
   },
   {
     "name": "DestroyablePots64",
-    "type": "DestroyablePots_C",
+    "type": "_CoinDestroyablePots_C",
     "area": "Crash",
     "lat": -11908.1767578125,
     "lng": 2311.030029296875,
-    "alt": -793.3704223632812
+    "alt": -793.3704223632812,
+    "coins": 1
   },
   {
     "name": "DestroyablePots65",
-    "type": "DestroyablePots_C",
+    "type": "_CoinDestroyablePots_C",
     "area": "Crash",
     "lat": -12978.2470703125,
     "lng": 32460.29296875,
-    "alt": -2587.579345703125
+    "alt": -2587.579345703125,
+    "coins": 1
   },
   {
     "name": "DestroyablePots66",
-    "type": "DestroyablePots_C",
+    "type": "_CoinDestroyablePots_C",
     "area": "Crash",
     "lat": -13059.333984375,
     "lng": 32396.068359375,
-    "alt": -2588.86328125
+    "alt": -2588.86328125,
+    "coins": 1
   },
   {
     "name": "DestroyablePots67_2",
-    "type": "DestroyablePots_C",
+    "type": "_CoinDestroyablePots_C",
     "area": "Crash",
     "lat": -4170.0,
     "lng": 44420.0,
-    "alt": -340.0
+    "alt": -340.0,
+    "coins": 1
   },
   {
     "name": "DestroyablePots68",
@@ -2918,11 +2963,12 @@
   },
   {
     "name": "DestroyablePots7",
-    "type": "DestroyablePots_C",
+    "type": "_CoinDestroyablePots_C",
     "area": "Crash",
     "lat": -4992.47314453125,
     "lng": 43562.6328125,
-    "alt": 14.075471878051758
+    "alt": 14.075471878051758,
+    "coins": 1
   },
   {
     "name": "DestroyablePots70",
@@ -2974,27 +3020,30 @@
   },
   {
     "name": "DestroyablePots8",
-    "type": "DestroyablePots_C",
+    "type": "_CoinDestroyablePots_C",
     "area": "Crash",
     "lat": -5022.45556640625,
     "lng": 44078.18359375,
-    "alt": 129.2620849609375
+    "alt": 129.2620849609375,
+    "coins": 1
   },
   {
     "name": "DestroyablePots9",
-    "type": "DestroyablePots_C",
+    "type": "_CoinDestroyablePots_C",
     "area": "Crash",
     "lat": -4948.26025390625,
     "lng": 44102.83203125,
-    "alt": 129.21603393554688
+    "alt": 129.21603393554688,
+    "coins": 1
   },
   {
     "name": "DestroyablePots_2",
-    "type": "DestroyablePots_C",
+    "type": "_CoinDestroyablePots_C",
     "area": "Crash",
     "lat": -4843.65576171875,
     "lng": 43606.24609375,
-    "alt": 616.41357421875
+    "alt": 616.41357421875,
+    "coins": 1
   },
   {
     "name": "EnemySpawner2_2",
