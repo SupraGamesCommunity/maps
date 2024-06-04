@@ -1,14 +1,12 @@
-id,name,defaultIcon,defaultActive
+id,name,background,defaultActive
 pipes,Pipes,,x
 pads,Pads,,x
-closedChest,Chests,chest,x
-shop,Shop,shop,x
-collectable,Collectables,question_mark,x
-upgrades,Upgrades,loot,
-misc,Miscellaneous,question_mark,
-coin,Coins,awesome,
-graves,Graves,question_mark,
-extra,Extras,question_mark,
-pipesys,Pipe System,,
+closedChest,Chests,,x
+shop,Shop,,x
+collectable,Collectables,,x
+upgrades,Upgrades,,
+misc,Miscellaneous,,
+pipecaps,Pipe System,,
 jumppads,Pads System,,
-
+graves,Graves,,
+coin,Coins,,

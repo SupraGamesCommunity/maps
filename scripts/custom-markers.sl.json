@@ -1,0 +1,124 @@
+[
+  {
+    "name": "Juicer2",
+    "area": "Map",
+    "variant": "yellow"
+  },
+  {
+    "name": "Juicer3",
+    "area": "Map",
+    "variant": "red"
+  },
+  {
+    "name": "Juicer_286",
+    "area": "Map",
+    "variant": "green"
+  },
+  {
+    "name": "DeadHero2Austin",
+    "area": "Map",
+    "variant": "spy-glasses"
+  },
+  {
+    "name": "DeadHero2Link",
+    "area": "Map",
+    "variant": "adventure-kid"
+  },
+  {
+    "name": "DeadHero3Heman",
+    "area": "Map",
+    "variant": "him-guy"
+  },
+  {
+    "name": "DeadHero3Pokemon",
+    "area": "Map",
+    "variant": "catch-hat"
+  },
+  {
+    "name": "DeadHero4Picard",
+    "area": "Map",
+    "variant": "commander"
+  },
+  {
+    "name": "DeadHero4Santa",
+    "area": "Map",
+    "variant": "santa"
+  },
+  {
+    "name": "DeadHero4Santa2",
+    "area": "Map",
+    "variant": "vault-toy"
+  },
+  {
+    "name": "DeadHero4Santa3",
+    "area": "Map",
+    "variant": "hans-yolo"
+  },
+  {
+    "name": "DeadHero_3",
+    "area": "Map",
+    "variant": "magic-boy"
+  },
+  {
+    "name": "DeadHeroGoku",
+    "area": "Map",
+    "variant": "power-hair"
+  },
+  {
+    "name": "DeadHeroGuybrush",
+    "area": "Map",
+    "variant": "murray"
+  },
+  {
+    "name": "DeadHeroIndy",
+    "area": "Map",
+    "variant": "adventure-hat"
+  },
+  {
+    "name": "BuyDoubleJump_786",
+    "area": "Map",
+    "cost": 36
+  },
+  {
+    "name": "BuySword2_2",
+    "area": "Map",
+    "cost": 6,
+    "price_type":7 
+  },
+  {
+    "name": "BuySwordDamage+11",
+    "area": "Map",
+    "yt_video": "ReN380PXV-A",
+    "yt_start": "198"
+  },
+  {
+    "name": "BuySpeedx2_206",
+    "area": "Map",
+    "yt_video": "ReN380PXV-A",
+    "yt_start": "197"
+},
+  {
+    "name": "BuySwordDamage+10_2",
+    "area": "Map",
+    "yt_video": "ReN380PXV-A",
+    "yt_start": "200"
+  },
+  {
+    "name": "BuySpeedx15_2",
+    "area": "Map",
+    "yt_video": "!",
+    "yt_start": "!"
+  },
+  {
+    "name": "UpgradeHappiness2_2",
+    "area": "Map",
+    "yt_video": "!",
+    "yt_start": "!"
+  },
+  {
+    "name": "BuyHealth+15_765",
+    "area": "Map",
+    "yt_video": "!",
+    "yt_start": "!"
+  }
+] 
