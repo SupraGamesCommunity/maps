@@ -146,9 +146,9 @@ const gameClasses = {
     'BuyWalletx15_C'                     : new GameClass(null,                       'upgrades',    'shop'),
     'BuyWalletx2_C'                      : new GameClass(null,                       'upgrades',    'shop'),
     'Chest_C'                            : new GameClass('chest',                    null,          'closedChest'),
-    'CoinBig_C'                          : new GameClass('coin_big',                 'coin'),
+    'CoinBig_C'                          : new GameClass('coin:32',                  'coin'),
     'CoinRed_C'                          : new GameClass('coinRed',                  'misc',        'collectable'),
-    'Coin_C'                             : new GameClass('coin_small',               'coin'),
+    'Coin_C'                             : new GameClass('coin:16',                  'coin'),
     '_CoinStash'                         : new GameClass('coinStash2',               'coin'),
     'Coin:DestroyablePots_C'             : new GameClass('pots',                     'coin'),
     'GoldBlock_C'                        : new GameClass(null,                       'extra'),
@@ -163,9 +163,10 @@ const gameClasses = {
     'LotsOfCoins5_C'                     : new GameClass('chest_coin',               'coin'),
     'LotsofCoins200_C'                   : new GameClass('chest_coin',               'coin'),
     'Coin:Chest_C'                       : new GameClass('chest_coin',               'coin',        'closedChest'),
-    'Coin:MinecraftBrick_C'              : new GameClass('brick',                    'coin'),
+    'Coin:MinecraftBrick_C'              : new GameClass('brick:v',                    'coin'),
     'MoonTake_C'                         : new GameClass('moon_green',               'misc',        'collectable'),
     'PlayerStart'                        : new GameClass('awesome',                  'extra'),
+    '_PlayerPosition'                    : new GameClass('player:v48',               null),
     'Plumbus_C'                          : new GameClass('plumbus',                  'extra'),
     'Purchase_DiamondPickaxe_C'          : new GameClass('pickaxe_diamond',          'upgrades',    'shop'),
     'Purchase_ForceBeam_C'               : new GameClass('beam',                     'upgrades',    'shop'),
@@ -182,18 +183,18 @@ const gameClasses = {
     'ValveCarriable_C'                   : new GameClass('valve',                    'misc',        'collectable'),
     'ValveSlot_C'                        : new GameClass('valve',                    'extra'),
     'Valve_C'                            : new GameClass('valve',                    'extra'),
-    'HealingStation_C'                   : new GameClass('health',                   'extra'),
+    'HealingStation_C'                   : new GameClass('supradoh',                 'extra'),
     'EnemySpawn1_C'                      : new GameClass('grave_wood',               'graves'),
     'EnemySpawn2_C'                      : new GameClass('grave_stone',              'graves'),
     'EnemySpawn3_C'                      : new GameClass('grave_volcano',            'graves'),
     'Shell_C'                            : new GameClass('shell',                    'misc',        'collectable'),
-    'DeadHero_C'                         : new GameClass('hero_placeholder',         'misc',        'collectable'),
+    'DeadHero_C'                         : new GameClass('hero:v',                   'misc',        'collectable'),
     'EnemySpawner_C'                     : new GameClass(null,                       'extra'),
     'Enemyspawner2_C'                    : new GameClass(null,                       'extra'),
     'SnappyPipe'                         : new GameClass('pipe',                     'extra'),
     'CarryPipe_C'                        : new GameClass('pipe',                     'extra'),
     'PipeCap_C'                          : new GameClass('pipe',                     'extra'),
-    'Juicer_C'                           : new GameClass('bucket',                   'upgrades',    'shop'),
+    'Juicer_C'                           : new GameClass('bucket:v',                 'upgrades',    'shop'),
     'Lever_C'                            : new GameClass('lever',                    'extra'),
     'Button_C'                           : new GameClass('button',                   'extra'),
     'ButtonFloor_C'                      : new GameClass('floor_button',             'extra'),
@@ -232,25 +233,63 @@ const gameClasses = {
     'KeyPlastic_C'                       : new GameClass('key_plastic',              'extra'),
     'KeyLockPlastic_C'                   : new GameClass('lock_plastic',             'extra'),
     'TalkingSpeaker_C'                   : new GameClass('speaker',                  'extra'),
-    'KeycardColor_C'                     : new GameClass('keycard',                  'extra'),
-    'KeycardReader_C'                    : new GameClass('keycard_reader',           'extra'),
+    'KeycardColor_C'                     : new GameClass('keycard:v',                'extra'),
+    'KeycardReader_C'                    : new GameClass('keycard_reader',         'extra'),
     'MetalBall_C'                        : new GameClass('metal_ball',               'extra'),
     'Lift1_C'                            : new GameClass('lift',                     'extra'),
     'Sponge_C'                           : new GameClass('sponge',                   'extra'),
     'SpongeBig_C'                        : new GameClass('sponge',                   'extra'),
     'Sponge_Large_C'                     : new GameClass('sponge',                   'extra'),
     'Supraball_C'                        : new GameClass('supraball',                'extra'),
-    'Seed_C'                             : new GameClass('seed',                     'extra'),
-    'RingColorerFlower_C'                : new GameClass('flower',                   'extra'),
+    'Seed_C'                             : new GameClass('seed:v',                   'extra'),
+    'RingColorerFlower_C'                : new GameClass('flower:v',                 'extra'),
     'Trash_C'                            : new GameClass('trash',                    'extra'),
     'MatchBox_C'                         : new GameClass('matchbox',                 'extra'),
-    'PhysicalCoin_C'                     : new GameClass('small_coin',               'coin'),
-    'RedGuy_C'                           : new GameClass('guy',                      'extra'),
+    'PhysicalCoin_C'                     : new GameClass('coin',                     'coin'),
+    'RedGuy_C'                           : new GameClass('guy:v',                    'extra'),
     'BP_UnlockMap_C'                     : new GameClass('map',                      'upgrades',    'shop'),
     'Pipesystem_C'                       : new GameClass('pipe',                     null,        null,           'pipesys'),
     'PipesystemNew_C'                    : new GameClass('pipe',                     null,        null,           'pipesys'),
     'PipesystemNewDLC_C'                 : new GameClass('pipe',                     null,        null,           'pipesys'),
-    'MinecraftBrick_C'                   : new GameClass('brick',                    'extra'),
-    'MinecraftBrickRespawnable_C'        : new GameClass('brick',                    'extra'),
+    'MinecraftBrick_C'                   : new GameClass('brick:v',                  'extra'),
+    'MinecraftBrickRespawnable_C'        : new GameClass('brick:v',                  'extra'),
     'SecretFound_C'                      : new GameClass(null,                       'extra'),
+}
+
+// Returns the [icon, size] based on the decorated icon name plus a variant if supplied
+/* exported decodeIconName */
+function decodeIconName(icon, variant = null) {
+    let size = 32
+    let ci = icon.indexOf(':');
+    if(ci >= 0) {
+        let flags = icon.substring(ci+1);
+        icon = icon.substring(0, ci);
+
+        if(variant && flags.indexOf('v') >= 0)
+            icon += '_'+variant;
+        let n = flags.replace(/[^0-9]/g,"");
+        if(n)
+            size = Number(n);
+    }
+    return [icon, size];
+}
+
+// Returns the [icon, size] for the given class. If variant is not supplied it
+// is treated as null.
+/* exported getClassIcon */
+function getClassIcon(cls, variant = null)
+{
+    return decodeIconName(cls.icon ? cls.icon : 'question_mark', variant)
+}
+
+// Returns [icon, size] for the given object. If variant not supplied its taken
+// from the object.
+/* exported getObjectIcon */
+function getObjectIcon(object, variant = null)
+{
+    variant = variant ? variant : object.variant;
+    if(object.icon)
+        return decodeIconName(object.icon, variant);
+    else
+        return getClassIcon(object.type, variant)    
 }

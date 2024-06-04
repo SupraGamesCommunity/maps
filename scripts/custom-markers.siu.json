@@ -1,2 +1,44 @@
 [
+  {
+    "name": "ChestArea4_48",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "9713"
+  },
+  {
+    "name": "ChestArea4_55",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "9667"
+  },    
+  {
+    "name": "BP_MonsterChest2_2",
+    "area": "DLC2_Complete",
+    "spawns": "BuyEnemiesLoot_C"
+  },
+  {
+    "name": "BP_MonsterChest3_2",
+    "area": "DLC2_Complete",
+    "spawns": "BP_PurchaseHealth+1_C"
+  },
+  {
+    "name": "BP_MonsterChest_2",
+    "area": "DLC2_Complete",
+    "spawns": "BP_DoubleHealthLoot_C"
+  },
+  {
+    "name": "BP_TrophyDetector_2",
+    "area": "DLC2_Complete",
+    "cost": 500
+  },
+  {
+    "name": "BP_Purchase_Crouch_2",
+    "area": "DLC2_Complete",
+    "cost": 10
+  },
+  {
+    "name": "Coin328",
+    "area": "DLC2_Complete",
+    "icon": "coin:48"
+  }
 ]

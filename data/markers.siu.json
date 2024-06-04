@@ -356,6 +356,7 @@
     "lat": -9945.6474609375,
     "lng": 17196.806640625,
     "alt": 3408.571533203125,
+    "spawns": "BuyEnemiesLoot_C",
     "yt_video": "5KkEVBgFW3U",
     "yt_start": "5891"
   },
@@ -366,6 +367,7 @@
     "lat": -48014.71484375,
     "lng": 43832.578125,
     "alt": 251.35140991210938,
+    "spawns": "BP_PurchaseHealth+1_C",
     "yt_video": "5KkEVBgFW3U",
     "yt_start": "9267"
   },
@@ -376,6 +378,7 @@
     "lat": -42638.0,
     "lng": 3219.0,
     "alt": 2383.774169921875,
+    "spawns": "BP_DoubleHealthLoot_C",
     "yt_video": "5KkEVBgFW3U",
     "yt_start": "8450"
   },
@@ -410,6 +413,7 @@
     "lat": 15517.7568359375,
     "lng": 22243.890625,
     "alt": 3172.55419921875,
+    "cost": 10,
     "yt_video": "5KkEVBgFW3U",
     "yt_start": "416"
   },
@@ -471,7 +475,7 @@
     "alt": 3200.79296875,
     "cost": 10,
     "yt_video": "5KkEVBgFW3U",
-    "yt_start": "359"
+    "yt_start": "5819"
   },
   {
     "name": "BP_ShowerQuest_2",
@@ -517,6 +521,7 @@
     "lat": -49300.0,
     "lng": -61380.0,
     "alt": 10070.0,
+    "cost": 500,
     "yt_video": "5KkEVBgFW3U",
     "yt_start": "12876"
   },
@@ -537,7 +542,7 @@
       }
     ],
     "yt_video": "5KkEVBgFW3U",
-    "yt_start": "2552"
+    "yt_start": "6393"
   },
   {
     "name": "ButtonFloor-FatNPC2",
@@ -1226,7 +1231,7 @@
     "alt": 1815.2095947265625,
     "spawns": "BuyElectricGun_C",
     "yt_video": "5KkEVBgFW3U",
-    "yt_start": "2064"
+    "yt_start": "8096"
   },
   {
     "name": "Chest17",
@@ -1803,7 +1808,7 @@
     "alt": 2963.65966796875,
     "spawns": "BP_PurchaseHealth+1_C",
     "yt_video": "5KkEVBgFW3U",
-    "yt_start": "7734"
+    "yt_start": "7311"
   },
   {
     "name": "ChestArea2_67",
@@ -2098,7 +2103,8 @@
     "lat": -64008.4453125,
     "lng": 55088.7265625,
     "alt": 1660.006591796875,
-    "spawns": "BP_BuyGunRechargeTime-50pct_C"
+    "spawns": "BP_BuyGunRechargeTime-50pct_C",
+    "yt_video": "5KkEVBgFW3U"
   },
   {
     "name": "ChestArea4_54",
@@ -2120,7 +2126,7 @@
     "alt": 4412.15576171875,
     "spawns": "BP_BuyBoomeraxeDistance_C",
     "yt_video": "5KkEVBgFW3U",
-    "yt_start": "9713"
+    "yt_start": "9667"
   },
   {
     "name": "ChestArea4_56",
@@ -4571,6 +4577,7 @@
     "lat": -44921.73828125,
     "lng": 2834.04248046875,
     "alt": 3922.484619140625,
+    "icon": "coin:48",
     "coins": 100
   },
   {
@@ -10258,53 +10265,48 @@
   },
   {
     "name": "MinecraftBrick100",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -5501.6162109375,
     "lng": 63750.0,
     "alt": 4636.24755859375,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick101",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -5301.6162109375,
     "lng": 63750.0,
     "alt": 4636.24755859375,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick102",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -5101.6162109375,
     "lng": 63750.0,
     "alt": 4436.24755859375,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick103",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -5101.6162109375,
     "lng": 63750.0,
     "alt": 4636.24755859375,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick104",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -5301.6162109375,
     "lng": 63950.0,
     "alt": 4636.24755859375,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick105",
@@ -10318,53 +10320,48 @@
   },
   {
     "name": "MinecraftBrick106",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -5101.6162109375,
     "lng": 63950.0,
     "alt": 4636.24755859375,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick107",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -5101.6162109375,
     "lng": 63950.0,
     "alt": 4436.24755859375,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick108_52",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -8852.9990234375,
     "lng": 56278.39453125,
     "alt": 513.1370849609375,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick109",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -8852.9990234375,
     "lng": 56278.39453125,
     "alt": 713.1370849609375,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick11",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": 6571.4072265625,
     "lng": 23591.484375,
     "alt": 4015.83544921875,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick110",
@@ -10378,13 +10375,12 @@
   },
   {
     "name": "MinecraftBrick111",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -8994.4208984375,
     "lng": 56136.97265625,
     "alt": 713.1370849609375,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick112_58",
@@ -10398,13 +10394,12 @@
   },
   {
     "name": "MinecraftBrick113",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -23750.0,
     "lng": 39213.08203125,
     "alt": 2922.737548828125,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick114",
@@ -10418,33 +10413,30 @@
   },
   {
     "name": "MinecraftBrick115",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -23552.37109375,
     "lng": 39013.140625,
     "alt": 2922.737548828125,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick116",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -23552.37109375,
     "lng": 39213.08203125,
     "alt": 2922.737548828125,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick117",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -23552.37109375,
     "lng": 39410.88671875,
     "alt": 2922.737548828125,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick118",
@@ -10458,43 +10450,39 @@
   },
   {
     "name": "MinecraftBrick119",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -25120.734375,
     "lng": 9411.763671875,
     "alt": -130.55247497558594,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick12",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": 6571.4072265625,
     "lng": 23591.484375,
     "alt": 4299.7451171875,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick120",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -25092.923828125,
     "lng": 9692.2919921875,
     "alt": -130.55247497558594,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick121",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -24966.548828125,
     "lng": 9538.2919921875,
     "alt": 67.08224487304688,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick122_73",
@@ -10508,83 +10496,75 @@
   },
   {
     "name": "MinecraftBrick123",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -31196.234375,
     "lng": 22212.134765625,
     "alt": 114.42840576171875,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick124",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -30995.92578125,
     "lng": 22212.134765625,
     "alt": -86.67320251464844,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick125",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -31196.234375,
     "lng": 22015.87109375,
     "alt": -86.67158508300781,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick126_79",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -32220.578125,
     "lng": 20515.0625,
     "alt": -87.03345489501953,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick127",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -32419.83203125,
     "lng": 20515.0625,
     "alt": -87.03345489501953,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick128",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -32618.734375,
     "lng": 20515.0625,
     "alt": -87.03345489501953,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick129",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -32419.83203125,
     "lng": 20714.544921875,
     "alt": -87.03345489501953,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick13",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": 6462.71533203125,
     "lng": 23853.888671875,
     "alt": 4299.7451171875,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick130_2",
@@ -10606,133 +10586,120 @@
   },
   {
     "name": "MinecraftBrick132_2",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -23526.140625,
     "lng": 34007.5859375,
     "alt": 1736.6708984375,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick133_90",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -39467.9140625,
     "lng": 1125.2281494140625,
     "alt": 4205.99560546875,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick134",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -39467.9140625,
     "lng": 928.1380004882812,
     "alt": 4205.99560546875,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick135",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -39269.33984375,
     "lng": 928.1380004882812,
     "alt": 4205.99560546875,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick136",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -39269.33984375,
     "lng": 928.1380615234375,
     "alt": 4404.0498046875,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick137",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -48478.91015625,
     "lng": -1564.63916015625,
     "alt": 1804.1336669921875,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick138",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -23457.73828125,
     "lng": 33819.6484375,
     "alt": 1751.1160888671875,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick139_100",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -39624.4765625,
     "lng": 6639.03857421875,
     "alt": 1846.3101806640625,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick14",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -12472.7841796875,
     "lng": 64128.40234375,
     "alt": 570.8310546875,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick140",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -39624.4765625,
     "lng": 6639.0546875,
     "alt": 2043.444091796875,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick141",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -23526.140625,
     "lng": 34007.5859375,
     "alt": 1936.6708984375,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick142_2",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -21615.267578125,
     "lng": -48448.7578125,
     "alt": 16143.8271484375,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick143_108",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -33191.93359375,
     "lng": 20629.146484375,
     "alt": 1459.0927734375,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick144",
@@ -10746,13 +10713,12 @@
   },
   {
     "name": "MinecraftBrick145",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -32348.978515625,
     "lng": 21694.28515625,
     "alt": 1459.0927734375,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick146_113",
@@ -10766,33 +10732,30 @@
   },
   {
     "name": "MinecraftBrick147",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": 15854.2021484375,
     "lng": 17897.51171875,
     "alt": 5546.107421875,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick148",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": 15743.521484375,
     "lng": 17731.86328125,
     "alt": 5746.01416015625,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick149",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": 15853.8193359375,
     "lng": 17896.908203125,
     "alt": 5746.01416015625,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick150",
@@ -10806,93 +10769,84 @@
   },
   {
     "name": "MinecraftBrick151",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": 15688.7783203125,
     "lng": 18008.06640625,
     "alt": 5546.107421875,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick152",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": 15578.09765625,
     "lng": 17842.41796875,
     "alt": 5746.01416015625,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick153",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": 15688.3955078125,
     "lng": 18007.462890625,
     "alt": 5746.01416015625,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick154",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": 15523.265625,
     "lng": 18118.66015625,
     "alt": 5546.107421875,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick155",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": 6565.556640625,
     "lng": 10389.404296875,
     "alt": 3775.5380859375,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick156",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": 6565.556640625,
     "lng": 10389.404296875,
     "alt": 3575.5380859375,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick157",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": 9082.388671875,
     "lng": 8230.421875,
     "alt": 3940.072998046875,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick158_134",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": 23015.53125,
     "lng": 16619.48828125,
     "alt": 3881.268310546875,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick159",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": 9082.388671875,
     "lng": 8230.421875,
     "alt": 3655.5380859375,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick160_136",
@@ -10906,33 +10860,30 @@
   },
   {
     "name": "MinecraftBrick161",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": 9357.5107421875,
     "lng": 8302.99609375,
     "alt": 3940.0712890625,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick162",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": 22899.880859375,
     "lng": 16792.759765625,
     "alt": 4082.901123046875,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick163",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": 22788.96875,
     "lng": 16958.75390625,
     "alt": 4082.901123046875,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick168_153",
@@ -11035,73 +10986,66 @@
   },
   {
     "name": "MinecraftBrick177_168",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -36501.53515625,
     "lng": 4602.70654296875,
     "alt": 3044.120361328125,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick178",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -36501.53515625,
     "lng": 4802.49951171875,
     "alt": 3044.120361328125,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick179",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -48238.15234375,
     "lng": 5541.17822265625,
     "alt": 2518.839599609375,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick180",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -49663.7578125,
     "lng": 5551.44482421875,
     "alt": 1909.455322265625,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick181",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -50695.16015625,
     "lng": 5537.1298828125,
     "alt": 2771.342041015625,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick19",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -9775.8525390625,
     "lng": 55921.63671875,
     "alt": 2354.166259765625,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick190_19",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -12426.759765625,
     "lng": 16246.2568359375,
     "alt": 6433.82958984375,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick191",
@@ -11115,53 +11059,48 @@
   },
   {
     "name": "MinecraftBrick192",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -12398.333984375,
     "lng": 16526.875,
     "alt": 6433.82958984375,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick193_24",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -15659.6572265625,
     "lng": 14262.2568359375,
     "alt": 5091.19189453125,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick194",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -15506.2841796875,
     "lng": 14388.126953125,
     "alt": 5091.19189453125,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick195",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -15659.1376953125,
     "lng": 14262.6845703125,
     "alt": 5288.595703125,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick196",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -12273.8857421875,
     "lng": 16371.716796875,
     "alt": 6630.2099609375,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick197",
@@ -11174,33 +11113,30 @@
   },
   {
     "name": "MinecraftBrick198",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -14705.8828125,
     "lng": 21743.51953125,
     "alt": 4769.31201171875,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick199",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -14858.736328125,
     "lng": 21618.076171875,
     "alt": 4966.7158203125,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick20",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": 9292.7021484375,
     "lng": 15022.3095703125,
     "alt": 3190.53173828125,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick200",
@@ -11286,133 +11222,120 @@
   },
   {
     "name": "MinecraftBrick209",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -15262.7080078125,
     "lng": 21800.560546875,
     "alt": 4970.5322265625,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick210",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -15012.658203125,
     "lng": 21491.779296875,
     "alt": 4769.31201171875,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick211",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -15012.6630859375,
     "lng": 21491.779296875,
     "alt": 4969.5244140625,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick212",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -15288.0908203125,
     "lng": 21524.177734375,
     "alt": 4769.31201171875,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick213_54",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -14677.78125,
     "lng": 22021.453125,
     "alt": 4769.31201171875,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick214",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -15288.0927734375,
     "lng": 21524.1796875,
     "alt": 4968.609375,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick215",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -14734.8583984375,
     "lng": 21464.984375,
     "alt": 4769.31201171875,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick216",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -14706.443359375,
     "lng": 21744.205078125,
     "alt": 4967.93115234375,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick217_55",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -14678.341796875,
     "lng": 22022.138671875,
     "alt": 4967.93115234375,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick218_57",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -14554.58203125,
     "lng": 21871.328125,
     "alt": 4769.31201171875,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick219",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -15414.5859375,
     "lng": 21678.326171875,
     "alt": 4769.31201171875,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick21_5",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": 9151.2802734375,
     "lng": 15163.7314453125,
     "alt": 3190.53173828125,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick220",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -15414.587890625,
     "lng": 21678.328125,
     "alt": 4968.609375,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick221_60",
@@ -11450,13 +11373,12 @@
   },
   {
     "name": "MinecraftBrick223",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -41877.2890625,
     "lng": -1411.583740234375,
     "alt": 2490.0,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick224",
@@ -11470,43 +11392,39 @@
   },
   {
     "name": "MinecraftBrick225",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -12551.306640625,
     "lng": 40494.8203125,
     "alt": 1149.6090087890625,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick226",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -12553.1923828125,
     "lng": 40494.8203125,
     "alt": 1349.39697265625,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick227",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -12351.46484375,
     "lng": 40494.8203125,
     "alt": 1349.39697265625,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick228",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -12351.46484375,
     "lng": 40694.84375,
     "alt": 1349.39697265625,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick231",
@@ -11520,23 +11438,21 @@
   },
   {
     "name": "MinecraftBrick232",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -17500.0,
     "lng": 30620.0,
     "alt": -2080.0,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick233",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -17500.0,
     "lng": 30620.0,
     "alt": -2280.0,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick234_19",
@@ -11550,33 +11466,30 @@
   },
   {
     "name": "MinecraftBrick235",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -14580.0,
     "lng": 32430.0,
     "alt": -2400.0,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick236",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -14180.0,
     "lng": 32430.0,
     "alt": -2400.0,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick237_24",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -29650.0,
     "lng": 16250.0,
     "alt": 420.0,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick238",
@@ -11600,13 +11513,12 @@
   },
   {
     "name": "MinecraftBrick23_2",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -23460.177734375,
     "lng": 21543.32421875,
     "alt": -67.82820129394531,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick240",
@@ -11660,13 +11572,12 @@
   },
   {
     "name": "MinecraftBrick245_38",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -29831.47265625,
     "lng": 21376.568359375,
     "alt": 403.6053161621094,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick246",
@@ -11680,53 +11591,48 @@
   },
   {
     "name": "MinecraftBrick247",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -29632.150390625,
     "lng": 21175.68359375,
     "alt": 403.6052551269531,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick248_43",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -33736.84765625,
     "lng": 19839.73828125,
     "alt": -79.80071258544922,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick249",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -33736.84765625,
     "lng": 19839.73828125,
     "alt": 224.0423583984375,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick24_7",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": 9009.8583984375,
     "lng": 15305.1533203125,
     "alt": 3190.53173828125,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick250_47",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -31203.697265625,
     "lng": 16839.517578125,
     "alt": 683.1514892578125,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick251",
@@ -11739,13 +11645,12 @@
   },
   {
     "name": "MinecraftBrick252",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -31603.697265625,
     "lng": 16839.517578125,
     "alt": 683.1514892578125,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick253",
@@ -11777,13 +11682,12 @@
   },
   {
     "name": "MinecraftBrick256",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -31203.697265625,
     "lng": 17239.517578125,
     "alt": 683.1514892578125,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick257",
@@ -11796,63 +11700,57 @@
   },
   {
     "name": "MinecraftBrick258",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -31603.697265625,
     "lng": 17239.517578125,
     "alt": 683.1514892578125,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick259",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -31403.697265625,
     "lng": 16839.517578125,
     "alt": 883.1514892578125,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick25_11",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": 9292.7021484375,
     "lng": 15022.3095703125,
     "alt": 3390.53173828125,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick26",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -31356.20703125,
     "lng": 17746.17578125,
     "alt": 688.4395751953125,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick260",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -31603.697265625,
     "lng": 16839.517578125,
     "alt": 883.1514892578125,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick261",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -31203.697265625,
     "lng": 17039.517578125,
     "alt": 883.1514892578125,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick262",
@@ -11874,23 +11772,21 @@
   },
   {
     "name": "MinecraftBrick264",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -31403.697265625,
     "lng": 17239.517578125,
     "alt": 883.1514892578125,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick265_64",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -23950.0,
     "lng": 20850.0,
     "alt": 403.5732421875,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick266",
@@ -11904,73 +11800,66 @@
   },
   {
     "name": "MinecraftBrick267",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -24347.796875,
     "lng": 20891.9375,
     "alt": 403.5732421875,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick268",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -24169.8671875,
     "lng": 20672.0703125,
     "alt": 403.5732421875,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick269",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -24127.9296875,
     "lng": 21069.8671875,
     "alt": 403.5732421875,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick270",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -24148.8984375,
     "lng": 20870.96875,
     "alt": 603.5732421875,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick271",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -27208.12890625,
     "lng": 16002.419921875,
     "alt": 604.228515625,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick272",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -27236.962890625,
     "lng": 15804.509765625,
     "alt": 604.228515625,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick273",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -27265.796875,
     "lng": 15606.599609375,
     "alt": 404.228515625,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick274_75",
@@ -11993,93 +11882,84 @@
   },
   {
     "name": "MinecraftBrick276",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -27811.833984375,
     "lng": 14238.3271484375,
     "alt": -130.55247497558594,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick277",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -27612.396484375,
     "lng": 14235.6650390625,
     "alt": -130.55247497558594,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick278",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -27814.49609375,
     "lng": 14039.125,
     "alt": -130.55247497558594,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick279",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -27811.8359375,
     "lng": 14238.326171875,
     "alt": 67.08224487304688,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick27_2",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -17415.439453125,
     "lng": 25258.64453125,
     "alt": -1540.1341552734375,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick28",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": 11425.2138671875,
     "lng": 10675.2109375,
     "alt": 3300.483154296875,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick280",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -28210.953125,
     "lng": 14243.6474609375,
     "alt": -130.55247497558594,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick281",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -28014.48046875,
     "lng": 14041.79296875,
     "alt": -130.55247497558594,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick282",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -28011.8203125,
     "lng": 14240.994140625,
     "alt": 67.08224487304688,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick283",
@@ -12093,53 +11973,48 @@
   },
   {
     "name": "MinecraftBrick284",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -32819.40625,
     "lng": 13705.0556640625,
     "alt": -332.9177551269531,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick285",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -30874.91015625,
     "lng": 13279.08984375,
     "alt": -287.1344909667969,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick286",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -31329.53515625,
     "lng": 12935.1201171875,
     "alt": -356.645263671875,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick287",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -17215.439453125,
     "lng": 25058.64453125,
     "alt": -1140.1341552734375,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick288",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -24326.830078125,
     "lng": 21090.8359375,
     "alt": 403.5732421875,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick289",
@@ -12162,23 +12037,21 @@
   },
   {
     "name": "MinecraftBrick292_98",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -46379.4296875,
     "lng": 42681.3203125,
     "alt": -549.197265625,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick293_101",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -47381.625,
     "lng": 43081.34765625,
     "alt": -502.6898498535156,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick294",
@@ -12192,43 +12065,39 @@
   },
   {
     "name": "MinecraftBrick295",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -47690.83984375,
     "lng": 42827.59765625,
     "alt": -502.6898498535156,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick296",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -47845.4453125,
     "lng": 42700.72265625,
     "alt": -502.6898498535156,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick297",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -47254.74609375,
     "lng": 42926.73828125,
     "alt": -502.6898498535156,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick298",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -47409.3515625,
     "lng": 42799.86328125,
     "alt": -502.6898498535156,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick2_2",
@@ -12250,23 +12119,21 @@
   },
   {
     "name": "MinecraftBrick30",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -37066.921875,
     "lng": -379.4332580566406,
     "alt": 2493.4169921875,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick302_115",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -48115.8671875,
     "lng": 50458.34375,
     "alt": 2165.118896484375,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick303",
@@ -12280,33 +12147,30 @@
   },
   {
     "name": "MinecraftBrick304_125",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -48115.8671875,
     "lng": 50458.34375,
     "alt": 2365.118896484375,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick305",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -48242.7421875,
     "lng": 50612.94921875,
     "alt": 2165.118896484375,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick306",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -48397.3515625,
     "lng": 50486.07421875,
     "alt": 2165.118896484375,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick307_132",
@@ -12320,23 +12184,21 @@
   },
   {
     "name": "MinecraftBrick308",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -48397.3515625,
     "lng": 50486.07421875,
     "alt": 2365.118896484375,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick309",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -48270.4765625,
     "lng": 50331.46875,
     "alt": 2365.118896484375,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick310_135",
@@ -12388,13 +12250,12 @@
   },
   {
     "name": "MinecraftBrick316",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -2029.100830078125,
     "lng": 17704.326171875,
     "alt": 4890.146484375,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick317",
@@ -12437,23 +12298,21 @@
   },
   {
     "name": "MinecraftBrick321_148",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -25661.6875,
     "lng": 25621.25390625,
     "alt": 2580.7578125,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick322",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -25461.6875,
     "lng": 25621.25390625,
     "alt": 2580.7578125,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick323",
@@ -12467,43 +12326,39 @@
   },
   {
     "name": "MinecraftBrick324",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -25461.6875,
     "lng": 25221.25390625,
     "alt": 2580.7578125,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick325",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -25661.6875,
     "lng": 25421.25390625,
     "alt": 2580.7578125,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick326",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -25461.6875,
     "lng": 25621.25390625,
     "alt": 2780.7578125,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick327",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -25461.6875,
     "lng": 25421.25390625,
     "alt": 2780.7578125,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick328",
@@ -12527,13 +12382,12 @@
   },
   {
     "name": "MinecraftBrick32_66",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -24812.59765625,
     "lng": 9664.6328125,
     "alt": -130.55247497558594,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick330",
@@ -12555,83 +12409,75 @@
   },
   {
     "name": "MinecraftBrick332",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -49434.41015625,
     "lng": 53050.1640625,
     "alt": 2005.118896484375,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick333",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -49561.28515625,
     "lng": 53204.7734375,
     "alt": 2005.118896484375,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick334_163",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -10500.0,
     "lng": 61200.0,
     "alt": 400.0,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick335",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -9061.1826171875,
     "lng": 57953.46484375,
     "alt": 400.0,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick336",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -49349.62109375,
     "lng": 53262.03515625,
     "alt": 2005.118896484375,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick339_172",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -17700.0,
     "lng": 54000.0,
     "alt": 4900.0,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick33_2",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -3725.876220703125,
     "lng": 65068.34765625,
     "alt": 8927.4072265625,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick34",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": 9151.2802734375,
     "lng": 15163.7314453125,
     "alt": 3390.53173828125,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick340",
@@ -12655,113 +12501,102 @@
   },
   {
     "name": "MinecraftBrick342",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -17700.0,
     "lng": 65900.0,
     "alt": 3673.055908203125,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick343",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -17900.0,
     "lng": 65700.0,
     "alt": 3673.055908203125,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick344",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -17900.0,
     "lng": 65900.0,
     "alt": 3873.055908203125,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick345",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -18100.0,
     "lng": 65900.0,
     "alt": 3673.055908203125,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick346",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -18700.0,
     "lng": 65000.0,
     "alt": 3673.055908203125,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick347",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -18700.0,
     "lng": 65200.0,
     "alt": 3673.055908203125,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick348",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -18700.0,
     "lng": 65200.0,
     "alt": 3873.055908203125,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick349",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -15045.57421875,
     "lng": 66843.8515625,
     "alt": 3479.95361328125,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick350",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -14969.0361328125,
     "lng": 67028.6328125,
     "alt": 3479.95361328125,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick351",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -14969.05078125,
     "lng": 67028.59375,
     "alt": 3679.95361328125,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick352_189",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -7586.91357421875,
     "lng": 57647.36328125,
     "alt": 2874.235107421875,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick353_192",
@@ -12775,103 +12610,93 @@
   },
   {
     "name": "MinecraftBrick354_195",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -9797.3486328125,
     "lng": 65600.75,
     "alt": 577.4940185546875,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick355",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -9655.9267578125,
     "lng": 65459.328125,
     "alt": 577.4940185546875,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick356",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -9797.3486328125,
     "lng": 65600.75,
     "alt": 777.4940185546875,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick357",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -9655.9267578125,
     "lng": 65459.328125,
     "alt": 777.4940185546875,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick358",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -9797.3486328125,
     "lng": 65317.90625,
     "alt": 577.4940185546875,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick359",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -10080.1923828125,
     "lng": 65317.90625,
     "alt": 577.4940185546875,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick36",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": 6605.39013671875,
     "lng": 10585.400390625,
     "alt": 3575.5380859375,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick365",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -42718.37109375,
     "lng": 20355.279296875,
     "alt": 3000.0,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick366",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -42519.33203125,
     "lng": 20335.677734375,
     "alt": 3000.0,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick367_212",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -42737.97265625,
     "lng": 20156.244140625,
     "alt": 3000.0,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick37_2",
@@ -12885,53 +12710,48 @@
   },
   {
     "name": "MinecraftBrick383_236",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -11160.0947265625,
     "lng": -59981.8046875,
     "alt": 7933.1484375,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick384_239",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": 176.3837432861328,
     "lng": -56618.09765625,
     "alt": 6823.91552734375,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick385",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": 364.6730041503906,
     "lng": -56550.734375,
     "alt": 6823.91552734375,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick386",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": 124.85298919677734,
     "lng": -56443.25,
     "alt": 6844.41552734375,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick387",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": 176.3837432861328,
     "lng": -56618.09765625,
     "alt": 7023.91552734375,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick388",
@@ -12974,33 +12794,30 @@
   },
   {
     "name": "MinecraftBrick391",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -19765.916015625,
     "lng": 12631.892578125,
     "alt": 2724.9453125,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick392_253",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -20662.2734375,
     "lng": 25153.27734375,
     "alt": 2863.686767578125,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick393",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -20839.037109375,
     "lng": 25247.794921875,
     "alt": 2863.686767578125,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick394_257",
@@ -13024,13 +12841,12 @@
   },
   {
     "name": "MinecraftBrick396_263",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -13945.7255859375,
     "lng": 64842.87890625,
     "alt": 14068.8095703125,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick397",
@@ -13044,63 +12860,57 @@
   },
   {
     "name": "MinecraftBrick398",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -12351.46484375,
     "lng": 40294.359375,
     "alt": 1347.2547607421875,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick399",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -12351.46484375,
     "lng": 40294.359375,
     "alt": 1146.897705078125,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick39_19",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": 14691.115234375,
     "lng": 22146.400390625,
     "alt": 3514.239501953125,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick400",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -12351.46484375,
     "lng": 40294.359375,
     "alt": 945.6572875976562,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick401",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -12351.46484375,
     "lng": 40694.5546875,
     "alt": 1149.7152099609375,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick402",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -12351.46484375,
     "lng": 40695.59765625,
     "alt": 949.4119873046875,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick403",
@@ -13114,43 +12924,39 @@
   },
   {
     "name": "MinecraftBrick404",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -12351.41796875,
     "lng": 40494.8203125,
     "alt": 1149.6090087890625,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick405",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -12709.4072265625,
     "lng": 40494.8203125,
     "alt": 1522.10791015625,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick406",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -12709.4072265625,
     "lng": 40494.8203125,
     "alt": 1721.6951904296875,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick407",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -12709.4072265625,
     "lng": 40494.8203125,
     "alt": 1921.2376708984375,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick408",
@@ -13164,23 +12970,21 @@
   },
   {
     "name": "MinecraftBrick409",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -23712.720703125,
     "lng": 38483.8515625,
     "alt": 1804.65576171875,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick410",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -23885.771484375,
     "lng": 38383.9453125,
     "alt": 2004.7117919921875,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick411",
@@ -13194,173 +12998,156 @@
   },
   {
     "name": "MinecraftBrick412_2",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -14859.8369140625,
     "lng": 42553.25,
     "alt": 3425.5361328125,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick413",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -14859.8369140625,
     "lng": 42353.25,
     "alt": 3425.5361328125,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick414",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -14859.8369140625,
     "lng": 42153.25,
     "alt": 3425.5361328125,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick415",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -14859.8369140625,
     "lng": 41953.25,
     "alt": 3425.5361328125,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick416",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -14859.8369140625,
     "lng": 42553.25,
     "alt": 3625.5361328125,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick417",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -14859.8369140625,
     "lng": 42353.25,
     "alt": 3625.5361328125,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick418",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -14859.8369140625,
     "lng": 42153.25,
     "alt": 3625.5361328125,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick419",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -14859.8369140625,
     "lng": 41953.25,
     "alt": 3625.5361328125,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick42",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": 15701.1748046875,
     "lng": 19642.505859375,
     "alt": 3171.560546875,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick420",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -14859.8369140625,
     "lng": 42553.25,
     "alt": 3825.5361328125,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick421",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -14859.8369140625,
     "lng": 42353.25,
     "alt": 3825.5361328125,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick422",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -14859.8369140625,
     "lng": 42153.25,
     "alt": 3825.5361328125,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick423",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -14859.8369140625,
     "lng": 41953.25,
     "alt": 3825.5361328125,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick424",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": 9292.7021484375,
     "lng": 15022.3095703125,
     "alt": 3790.53173828125,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick425",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": 9151.2802734375,
     "lng": 15163.7314453125,
     "alt": 3790.53173828125,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick426",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": 9009.8583984375,
     "lng": 15305.1533203125,
     "alt": 3790.53173828125,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick427",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": 8868.4365234375,
     "lng": 15446.5751953125,
     "alt": 3790.53173828125,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick428",
@@ -13383,43 +13170,39 @@
   },
   {
     "name": "MinecraftBrick430",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -19500.0,
     "lng": 41156.796875,
     "alt": -330.0,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick431",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -19500.0,
     "lng": 41156.796875,
     "alt": -130.0,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick432_5",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -21635.087890625,
     "lng": 40600.28125,
     "alt": 7151.5390625,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick433",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -19846.40625,
     "lng": 41356.796875,
     "alt": -330.0,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick434_21",
@@ -13433,13 +13216,12 @@
   },
   {
     "name": "MinecraftBrick435",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -28173.287109375,
     "lng": 16389.86328125,
     "alt": -70.25227355957031,
-    "variant": "gold",
-    "coins": 3,
+    "variant": "stone",
     "linetype": "trigger",
     "targets": [
       {
@@ -13451,13 +13233,12 @@
   },
   {
     "name": "MinecraftBrick436_2",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -42432.33984375,
     "lng": 34473.66796875,
     "alt": 1180.6717529296875,
-    "variant": "gold",
-    "coins": 3,
+    "variant": "stone",
     "linetype": "trigger",
     "targets": [
       {
@@ -13469,43 +13250,39 @@
   },
   {
     "name": "MinecraftBrick437_11",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": 14615.763671875,
     "lng": 21691.06640625,
     "alt": 3514.11474609375,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick438_22",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": 14650.1142578125,
     "lng": 23233.705078125,
     "alt": 3520.5712890625,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick439",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": 9357.5107421875,
     "lng": 8302.99609375,
     "alt": 3655.5380859375,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick44",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": 9009.8583984375,
     "lng": 15305.1533203125,
     "alt": 3390.53173828125,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick440",
@@ -13527,233 +13304,210 @@
   },
   {
     "name": "MinecraftBrick442_5",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -16970.0,
     "lng": 44820.0,
     "alt": 590.0,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick444",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -17170.0,
     "lng": 44820.0,
     "alt": 590.0,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick445",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -17170.0,
     "lng": 44820.0,
     "alt": 790.0,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick446",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -16970.0,
     "lng": 45020.0,
     "alt": 590.0,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick447",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -16970.0,
     "lng": 44620.0,
     "alt": 590.0,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick448",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -17655.076171875,
     "lng": 45727.6015625,
     "alt": 1498.21044921875,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick45",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": 9292.7021484375,
     "lng": 15022.3095703125,
     "alt": 3590.53173828125,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick46",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": 9151.2802734375,
     "lng": 15163.7314453125,
     "alt": 3590.53173828125,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick47",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": 9009.8583984375,
     "lng": 15305.1533203125,
     "alt": 3590.53173828125,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick48",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": 8868.4365234375,
     "lng": 15446.5751953125,
     "alt": 3190.53173828125,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick49",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": 8868.4365234375,
     "lng": 15446.5751953125,
     "alt": 3390.53173828125,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick50",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": 8868.4365234375,
     "lng": 15446.5751953125,
     "alt": 3590.53173828125,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick51",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": 11283.7919921875,
     "lng": 10816.6328125,
     "alt": 3300.483154296875,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick52_11",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -19400.0,
     "lng": 41330.0,
     "alt": -330.0,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick53",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -19573.203125,
     "lng": 41430.0,
     "alt": -330.0,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick54",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -19673.203125,
     "lng": 41256.796875,
     "alt": -130.0,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick55",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": 6645.21826171875,
     "lng": 10781.3955078125,
     "alt": 3575.5380859375,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick56",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": 6605.39013671875,
     "lng": 10585.400390625,
     "alt": 3775.5380859375,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick57",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": 6645.21826171875,
     "lng": 10781.3955078125,
     "alt": 3775.5380859375,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick5_4",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -41877.2890625,
     "lng": -1685.583740234375,
     "alt": 2490.0,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick60",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -37066.921875,
     "lng": -655.8556518554688,
     "alt": 2493.4169921875,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick61",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -23724.841796875,
     "lng": 21581.80859375,
     "alt": -67.82894897460938,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick64",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -19400.0,
     "lng": 41330.0,
     "alt": -130.0,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick66",
@@ -13766,23 +13520,21 @@
   },
   {
     "name": "MinecraftBrick67",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": 15595.07421875,
     "lng": 20143.962890625,
     "alt": 3067.815673828125,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick68",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": 15586.3583984375,
     "lng": 20134.134765625,
     "alt": 3267.82958984375,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick69",
@@ -13806,23 +13558,21 @@
   },
   {
     "name": "MinecraftBrick71",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -17415.439453125,
     "lng": 24658.64453125,
     "alt": -1540.1341552734375,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick72",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -17215.439453125,
     "lng": 24658.64453125,
     "alt": -1540.1341552734375,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick73",
@@ -13836,73 +13586,66 @@
   },
   {
     "name": "MinecraftBrick74",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -17215.439453125,
     "lng": 25058.64453125,
     "alt": -1540.1341552734375,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick75",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -17415.439453125,
     "lng": 25258.64453125,
     "alt": -1340.1341552734375,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick76",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -17415.439453125,
     "lng": 25058.64453125,
     "alt": -1340.1341552734375,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick77",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -17415.439453125,
     "lng": 24858.64453125,
     "alt": -1340.1341552734375,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick78",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -17415.439453125,
     "lng": 24658.64453125,
     "alt": -1340.1341552734375,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick79",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -17215.439453125,
     "lng": 24658.64453125,
     "alt": -1340.1341552734375,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick80",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -17215.439453125,
     "lng": 24858.64453125,
     "alt": -1340.1341552734375,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick81",
@@ -13916,43 +13659,39 @@
   },
   {
     "name": "MinecraftBrick82",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -17615.439453125,
     "lng": 25258.64453125,
     "alt": -1540.1341552734375,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick83",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -17615.439453125,
     "lng": 25058.64453125,
     "alt": -1540.1341552734375,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick84",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -17615.439453125,
     "lng": 24858.64453125,
     "alt": -1540.1341552734375,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick85",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -17615.439453125,
     "lng": 25058.64453125,
     "alt": -1340.1341552734375,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick86_22",
@@ -13966,33 +13705,30 @@
   },
   {
     "name": "MinecraftBrick87",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -8420.7109375,
     "lng": 16832.287109375,
     "alt": 3350.0,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick88",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -8420.7109375,
     "lng": 16832.287109375,
     "alt": 3550.0,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick89",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -8326.4296875,
     "lng": 16655.904296875,
     "alt": 3550.0,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick90_28",
@@ -14006,43 +13742,39 @@
   },
   {
     "name": "MinecraftBrick91",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -23558.27734375,
     "lng": 51988.5,
     "alt": 517.449462890625,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick92",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -23550.44921875,
     "lng": 51788.65234375,
     "alt": 517.449462890625,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick93",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -23765.951171875,
     "lng": 52180.515625,
     "alt": 517.449462890625,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick94",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -23566.107421875,
     "lng": 52188.34375,
     "alt": 717.449462890625,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick95_93",
@@ -14066,163 +13798,147 @@
   },
   {
     "name": "MinecraftBrick97",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -27179.29296875,
     "lng": 16200.330078125,
     "alt": 404.228515625,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick98_40",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -5500.0,
     "lng": 63750.0,
     "alt": 4436.24755859375,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick99",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -5301.6162109375,
     "lng": 63750.0,
     "alt": 4436.24755859375,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick9_2",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": 6462.796875,
     "lng": 23853.693359375,
     "alt": 4015.83544921875,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrickRespawnable10",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -54857.13671875,
     "lng": 56567.7109375,
     "alt": 535.5946044921875,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrickRespawnable13_119",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -4148.99560546875,
     "lng": -47194.5078125,
     "alt": 7669.580078125,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrickRespawnable19",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -16599.025390625,
     "lng": 37461.8671875,
     "alt": 4022.694091796875,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrickRespawnable2",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -27156.03125,
     "lng": 19768.6796875,
     "alt": -2848.47998046875,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrickRespawnable25",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -4370.3134765625,
     "lng": -46411.7890625,
     "alt": 7141.0322265625,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrickRespawnable26",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -3976.594970703125,
     "lng": -46411.7890625,
     "alt": 7141.0322265625,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrickRespawnable27",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -3580.634033203125,
     "lng": -46411.7890625,
     "alt": 7141.0322265625,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrickRespawnable35",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -54851.72265625,
     "lng": 56568.15625,
     "alt": 811.0558471679688,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrickRespawnable40",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -51272.09765625,
     "lng": 39784.24609375,
     "alt": -220.25392150878906,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrickRespawnable41",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -51272.09765625,
     "lng": 39784.24609375,
     "alt": -498.30584716796875,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrickRespawnable42",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -26896.75,
     "lng": 19768.6796875,
     "alt": -2848.47998046875,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrickRespawnable45",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -51058.41796875,
     "lng": 39959.2265625,
     "alt": -379.67138671875,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrickRespawnable46",
@@ -14236,23 +13952,21 @@
   },
   {
     "name": "MinecraftBrickRespawnable47",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -16775.482421875,
     "lng": 37239.3359375,
     "alt": 4022.694091796875,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrickRespawnable_2",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_Complete",
     "lat": -4148.99462890625,
     "lng": -46795.9921875,
     "alt": 7669.580078125,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrickRespawnable11",
@@ -16704,7 +16418,8 @@
     "area": "DLC2_Complete",
     "lat": -3.0517578125e-05,
     "lng": 0.0,
-    "alt": -19900.0
+    "alt": -19900.0,
+    "variant": "blue"
   },
   {
     "name": "Purchase_DiamondPickaxe_2",
@@ -21607,33 +21322,30 @@
   },
   {
     "name": "MinecraftBrick187",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_FinalBoss",
     "lat": -13772.7099609375,
     "lng": 4141.01953125,
     "alt": 1829.6612548828125,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick189",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_FinalBoss",
     "lat": -13759.673828125,
     "lng": 4127.5078125,
     "alt": 2129.65869140625,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick230",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_FinalBoss",
     "lat": -13730.0546875,
     "lng": 4096.76611328125,
     "alt": 2429.64697265625,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "Boss_RespawnButtonKey1",
@@ -24185,23 +23897,21 @@
   },
   {
     "name": "MinecraftBrick100",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_SecretLavaArea",
     "lat": 808.479248046875,
     "lng": 8394.4326171875,
     "alt": 600.0,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick101_2",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_SecretLavaArea",
     "lat": -32.317893981933594,
     "lng": -851.3427734375,
     "alt": 768.17529296875,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick102",
@@ -24285,13 +23995,12 @@
   },
   {
     "name": "MinecraftBrick10_15",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_SecretLavaArea",
     "lat": 808.479248046875,
     "lng": 8394.4326171875,
     "alt": 200.0,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick11",
@@ -24325,13 +24034,12 @@
   },
   {
     "name": "MinecraftBrick112",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_SecretLavaArea",
     "lat": 9350.00390625,
     "lng": 715.4989624023438,
     "alt": 1160.0,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick113",
@@ -24355,33 +24063,30 @@
   },
   {
     "name": "MinecraftBrick115",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_SecretLavaArea",
     "lat": 9089.2060546875,
     "lng": 785.38330078125,
     "alt": 1576.8359375,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick116",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_SecretLavaArea",
     "lat": 9036.5078125,
     "lng": -183.44456481933594,
     "alt": 1390.0,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick117",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_SecretLavaArea",
     "lat": 8086.900390625,
     "lng": 6228.39453125,
     "alt": -2448.0,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick12",
@@ -24395,13 +24100,12 @@
   },
   {
     "name": "MinecraftBrick13",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_SecretLavaArea",
     "lat": 809.0436401367188,
     "lng": 8194.4326171875,
     "alt": 200.0,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick14",
@@ -24549,13 +24253,12 @@
   },
   {
     "name": "MinecraftBrick291_2",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_SecretLavaArea",
     "lat": -7396.10546875,
     "lng": -2591.569091796875,
     "alt": 3720.53759765625,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick2_5",
@@ -24586,113 +24289,102 @@
   },
   {
     "name": "MinecraftBrick313",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_SecretLavaArea",
     "lat": -7396.10546875,
     "lng": -2991.569091796875,
     "alt": 3720.53759765625,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick32_8",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_SecretLavaArea",
     "lat": 6864.51708984375,
     "lng": -534.3471069335938,
     "alt": 453.287841796875,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick33",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_SecretLavaArea",
     "lat": 6612.96435546875,
     "lng": -535.4285888671875,
     "alt": 436.35595703125,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick34_38",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_SecretLavaArea",
     "lat": 6612.97998046875,
     "lng": -536.1961669921875,
     "alt": 184.35595703125,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick35_41",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_SecretLavaArea",
     "lat": 6864.49560546875,
     "lng": -536.0531616210938,
     "alt": 201.287841796875,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick36_45",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_SecretLavaArea",
     "lat": 6612.99560546875,
     "lng": -285.4269104003906,
     "alt": 305.213134765625,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick37_47",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_SecretLavaArea",
     "lat": 6864.50341796875,
     "lng": -285.5136413574219,
     "alt": 250.71630859375,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick38_51",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_SecretLavaArea",
     "lat": 6612.98779296875,
     "lng": -35.23988342285156,
     "alt": 122.0703125,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick39_53",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_SecretLavaArea",
     "lat": 6864.50537109375,
     "lng": -35.47187805175781,
     "alt": 67.573486328125,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick40",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_SecretLavaArea",
     "lat": 7115.36865234375,
     "lng": -533.629150390625,
     "alt": 435.520263671875,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick41_57",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_SecretLavaArea",
     "lat": 7115.36474609375,
     "lng": -535.33740234375,
     "alt": 183.520263671875,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick428",
@@ -24732,43 +24424,39 @@
   },
   {
     "name": "MinecraftBrick43_52",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_SecretLavaArea",
     "lat": 7115.37646484375,
     "lng": -33.84962463378906,
     "alt": 34.31787109375,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick44_69",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_SecretLavaArea",
     "lat": 6612.99560546875,
     "lng": -285.2042541503906,
     "alt": 52.213134765625,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick45_70",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_SecretLavaArea",
     "lat": 7115.37451171875,
     "lng": -283.847412109375,
     "alt": 105.889404296875,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick46_71",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_SecretLavaArea",
     "lat": 6864.50341796875,
     "lng": -285.2140808105469,
     "alt": -2.28369140625,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick47_84",
@@ -24799,13 +24487,12 @@
   },
   {
     "name": "MinecraftBrick4_10",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_SecretLavaArea",
     "lat": -2194.51220703125,
     "lng": 7659.328125,
     "alt": 988.81201171875,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick50_87",
@@ -24872,13 +24559,12 @@
   },
   {
     "name": "MinecraftBrick5_5",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_SecretLavaArea",
     "lat": -2479.64990234375,
     "lng": 7764.189453125,
     "alt": 712.50732421875,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick6",
@@ -25036,13 +24722,12 @@
   },
   {
     "name": "MinecraftBrick8",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_SecretLavaArea",
     "lat": -2194.51220703125,
     "lng": 7659.328125,
     "alt": 1188.81201171875,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick80",
@@ -25084,23 +24769,21 @@
   },
   {
     "name": "MinecraftBrick87",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_SecretLavaArea",
     "lat": 8106.900390625,
     "lng": 5695.583984375,
     "alt": -2715.0,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick88",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_SecretLavaArea",
     "lat": 8089.900390625,
     "lng": 5962.083984375,
     "alt": -2715.0,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick89",
@@ -25114,43 +24797,39 @@
   },
   {
     "name": "MinecraftBrick9",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_SecretLavaArea",
     "lat": -2194.51220703125,
     "lng": 7659.328125,
     "alt": 1388.81201171875,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick90",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_SecretLavaArea",
     "lat": 8123.900390625,
     "lng": 5695.583984375,
     "alt": -2448.0,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick91",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_SecretLavaArea",
     "lat": 8105.900390625,
     "lng": 5962.083984375,
     "alt": -2448.0,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick92",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_SecretLavaArea",
     "lat": -2479.64990234375,
     "lng": 7764.189453125,
     "alt": 912.50732421875,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick93",
@@ -25163,113 +24842,102 @@
   },
   {
     "name": "MinecraftBrick94",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_SecretLavaArea",
     "lat": -2479.64990234375,
     "lng": 7764.189453125,
     "alt": 1112.50732421875,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick95_2",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_SecretLavaArea",
     "lat": 8963.63671875,
     "lng": 819.0269165039062,
     "alt": 1160.0,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick96",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_SecretLavaArea",
     "lat": 809.0445556640625,
     "lng": 7994.4326171875,
     "alt": 200.0,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick97",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_SecretLavaArea",
     "lat": 809.0445556640625,
     "lng": 7994.4326171875,
     "alt": 400.0,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick98",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_SecretLavaArea",
     "lat": 809.0445556640625,
     "lng": 7994.4326171875,
     "alt": 600.0,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick99",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_SecretLavaArea",
     "lat": 809.0436401367188,
     "lng": 8194.4326171875,
     "alt": 600.0,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick_5",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_SecretLavaArea",
     "lat": -2194.51220703125,
     "lng": 7659.328125,
     "alt": 788.81201171875,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick_AttachedToStalagmite1",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_SecretLavaArea",
     "lat": 5429.19140625,
     "lng": -10158.8837890625,
     "alt": 1717.318359375,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick_AttachedToStalagmite2",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_SecretLavaArea",
     "lat": 5429.19140625,
     "lng": -10299.986328125,
     "alt": 1997.17236328125,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick_AttachedToStalagmite3",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_SecretLavaArea",
     "lat": 5283.599609375,
     "lng": -9589.7861328125,
     "alt": 1717.318359375,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrick_AttachedToStalagmite4",
-    "type": "Coin:MinecraftBrick_C",
+    "type": "MinecraftBrick_C",
     "area": "DLC2_SecretLavaArea",
     "lat": 5406.64697265625,
     "lng": -9518.91796875,
     "alt": 1997.17236328125,
-    "variant": "gold",
-    "coins": 3
+    "variant": "stone"
   },
   {
     "name": "MinecraftBrickRespawnable10",
@@ -28373,7 +28041,8 @@
     "area": "DLC2_Menu",
     "lat": -16198.95703125,
     "lng": -5676.1787109375,
-    "alt": 3433.3935546875
+    "alt": 3433.3935546875,
+    "variant": "blue"
   },
   {
     "name": "RedGuy_2",

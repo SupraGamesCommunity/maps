@@ -1,6 +1,7 @@
 /*eslint strict: ["error", "global"]*/
-
-/*global L, layerConfigs, gameClasses,  defaultGameClass, UESaveObject*/
+/*global L, UESaveObject*/
+/*global layerConfigs*/
+/*global gameClasses,  defaultGameClass, decodeIconName, getClassIcon, getObjectIcon*/
 
 // Terminology,
 // Class - The type of object represented by marker. Based on UE4 classes/blueprints 
@@ -17,7 +18,7 @@ const localDataName = 'supgragamescommunity_maps';
 let localData = JSON.parse(localStorage.getItem(localDataName)) || {};
 
 let layers = {};        // Leaflet layerGroup array, one for each collection of markers
-let icons = {};         // Dict of Leaflet icon objects keyed by our icon file basename
+let icons = {};         // Dict of Leaflet icon objects keyed by our icon file basename + size
 let playerStart;        // Position of first player start instance found in map data
 let playerMarker;       // Leaflet marker object for current player start (or dragged position)
 
@@ -433,25 +434,28 @@ function loadMap(id) {
           
           if(c.nospoiler && enabledLayers[c.nospoiler])
           {
-            const layer = c.nospoiler;
+            const layer = c.nospoiler
             const layerConfig = layerConfigs.get(layer);
-            const icon = layerConfig.defaultIcon || defaultIcon;
+            const [icon, size] = decodeIconName(layerConfig.defaultIcon || defaultIcon);
             const zIndexOffset = 10 * layerConfig.index;
 
-            L.marker([o.lat, o.lng], {icon: getIcon(icon), title: title, zIndexOffset: zIndexOffset, alt: alt, o:o, layerId:layer })
+            L.marker([o.lat, o.lng], {icon: getIcon(icon, size), title: title, zIndexOffset: zIndexOffset, alt: alt, o:o, layerId:layer })
               .addTo(layers[layer]).bindPopup(text).on('popupopen', onPopupOpen).on('contextmenu', onContextMenu);
           }
 
           // For the spoiler version the marker config is based on the spawned data if it spawns and otherwise normal
           // Thus coinchest goes on coinchest config, but chest containing upgrade goes on upgrade layer
-          let sc = o.spawns ? gameClasses[o.spawns] || defaultGameClass : c
+          let sc = o.spawns ? (gameClasses[o.spawns] || defaultGameClass) : c
           if(sc.layer && enabledLayers[sc.layer])
           {
-            const layer = sc.layer;
+            if(o.name == "Coin328")
+              console.log("test")
+            const layer = sc.layer
             const layerConfig = layerConfigs.get(layer);
-            const icon = o.icon || sc.icon || layerConfigs.defaultIcon || defaultIcon;
+            const [icon, size] = decodeIconName((o.icon || sc.icon || layerConfig.defaultIcon || defaultIcon), o.variant);
             const zIndexOffset = 10 * layerConfig.index;
-            L.marker([o.lat, o.lng], {icon: getIcon(icon), title: title, zIndexOffset: zIndexOffset, alt: alt, o:o, layerId:layer })
+
+            L.marker([o.lat, o.lng], {icon: getIcon(icon, size), title: title, zIndexOffset: zIndexOffset, alt: alt, o:o, layerId:layer })
               .addTo(layers[layer]).bindPopup(text).on('popupopen', onPopupOpen).on('contextmenu', onContextMenu);
           }
 
@@ -472,9 +476,11 @@ function loadMap(id) {
             }
           }
 
-          //add dynamic player marker on top of PlayerStart icon
+          // add dynamic player marker on top of PlayerStart icon (moves with load save game) 
           if (o.type == 'PlayerStart' && !playerMarker) {
-            let icon = mapId=='siu' ? 'player_blue' : 'player_red';
+            const pc = gameClasses['_PlayerPosition'];
+            const [icon, size] = getClassIcon(pc, o['variant']);
+            const addto = pc.layer ? layers[pc.layer] : map
             playerStart = [o.lat, o.lng, o.alt];
             let title = 'PlayerPosition';
             let t = new L.LatLng(o.lat, o.lng);
@@ -482,7 +488,7 @@ function loadMap(id) {
             if (p) {
               t = new L.LatLng(p[0], p[1]);
             }
-            playerMarker = L.marker([t.lat, t.lng], {icon: getIcon(icon,42), zIndexOffset: 0, draggable: false, title: title, alt:'playerMarker'})
+            playerMarker = L.marker([t.lat, t.lng], {icon: getIcon(icon,size), zIndexOffset: 0, draggable: false, title: title, alt:'playerMarker'})
             .bindPopup()
             .on('popupopen', function(e) {
                 let marker = e.target;
@@ -490,7 +496,7 @@ function loadMap(id) {
                 let t = {name: marker.options.title, lat:p[0], lng:p[1], alt:p[2]};
                 marker.setPopupContent(JSON.stringify(t, null, 2).replaceAll('\n','<br>').replaceAll(' ','&nbsp;'));
                 marker.openPopup();
-            }).addTo(map)
+            }).addTo(addto)
 
           } // end of player marker
         } // end of loop
@@ -615,19 +621,14 @@ function getIconSize(zoom) {
   return s[Math.round(Math.min(zoom,s.length-1))];
 }
 
-function getIcon(icon, size) {
-  let iconObj = icons[icon];
+function getIcon(icon, size=32) {
+  let iconObj = icons[icon+size.toString()];
   if (!iconObj) {
-    let s = size ? size : getIconSize(map.getZoom());
+    let s = size ? size : getIconSize(map.getZoom()); // size now always set so zoom ignored for now
 
-    // For small coins, shrink them down to half the size 
-    // TODO: This is a nasty hack hard coding the icon and assuming we only use it for small coins
-    if (icon.includes("coin_small")) {
-      s = s >> 1
-    }
     let c = s >> 1;
     iconObj = L.icon({iconUrl: 'img/markers/'+icon+'.png', iconSize: [s,s], iconAnchor: [c,c]});
-    icons[icon] = iconObj;
+    icons[icon+size.toString()] = iconObj;
   }
   return iconObj;
 }

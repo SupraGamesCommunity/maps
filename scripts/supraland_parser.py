@@ -437,6 +437,7 @@ exported_properties = [
     'spawns',                                       # generates some other class (chest or quest)
     'coins',                                        # generates coins when taken (coin chest, pots, bricks and various coin types)
     'cost', 'price_type',                           # cost when purchased (shops, quests...) and units (defaults to coins)
+    'icon',                                         # explicit icon override
     'variant',                                      # variant allows change of marker
     'linetype',                                     # Trigger, red/blue pad, pipe
     'startpos',                                     # where to draw lines from (if not lat/lng/alt)
@@ -467,7 +468,7 @@ def cleanup_objects(game, classes_found, data_lookup, data):
             for c in sorted(classes_to_filter):
                 fh.write("    '{:<36}: new GameClass(),\n".format(c))
 
-    def parse_json(j):
+    def parse_json(j, justdel = False):
         # Custom markers is an array of dictionaries which must have name/area declared
         # if 'del': True then we delete the whole instance
         # otherwise we take the remaining members
@@ -488,7 +489,7 @@ def cleanup_objects(game, classes_found, data_lookup, data):
                 for prop, value in jo.items():
                     if value == '!':
                         o.pop(prop, None)
-                    else:
+                    elif not justdel:
                         o[prop] = value
         return count
     
@@ -524,11 +525,15 @@ def cleanup_objects(game, classes_found, data_lookup, data):
         # variant is set to the brick type
         if o['type'] == 'MinecraftBrick_C':
             if game == 'siu':
-                o['variant'] = brick_types[o.get('brick_type') or 4]       # It appears gold brick is default
+                o['variant'] = brick_types[o.get('brick_type') or (4 if o.get('coins') else 0)]
                 if o['variant'] == 'gold' and not o.get('coins'):
                     o['coins'] = 3
                 if o.get('coins') is not None and o['variant'] != 'gold':
                     print(f'Non gold coin containing MinecraftBrick_C:{o['variant']}:{o['coins']}')
+
+        # Player icon changes colour based on game
+        if o['type'] == 'PlayerStart':
+            o['variant'] = 'blue' if game == 'siu' else 'red'
 
         # Allow things with colors can have variants (minecraft bricks have type and colour)
         if o.get('variant') is None:
@@ -585,6 +590,11 @@ def cleanup_objects(game, classes_found, data_lookup, data):
 
     # Merge in legacy data but don't override if it already exists
     combine_legacy(game, classes, data)
+
+    # Legacy combine might have added properties custom data says to delete, so re-run but delete only
+    cfn = f'custom-markers.{game}.json'
+    if os.path.isfile(cfn):
+        count = parse_json(json.load(open(cfn)), justdel = True)
 
     # Merge non-rotating coins together (bDoesntRotate)
     # Add all coins and big coins that have the bDoesntRotate and use this algorithm
@@ -755,7 +765,9 @@ def combine_legacy(game, classes, data):
                 # Merge in the data from the legacy object we've matched
                 for k in ['image', 'ytVideo', 'ytStart', 'ytEnd']:
                     if (v := lo.get(k)):
-                        no[camel_to_snake(k)] = v
+                        nk = camel_to_snake(k)
+                        if not no.get(nk):              # Don't override properties we already set (could be from custom data)
+                            no[camel_to_snake(k)] = v
 
                 for k in nkeys:
                     fh.write(f',{no.get(k, '')}')
@@ -763,7 +775,7 @@ def combine_legacy(game, classes, data):
                     fh.write(f',{lo.get(k, '')}')
                 fh.write('\n')
 
-    print(f'{len(ldata)} entries from legacy CSV files checked')
+    print(f'All entries from legacy CSV files checked')
     print(f'Max separation: {longest_d[0]:.4g} Median {np.median(dist):.4g}')
     print(f'Suspcious items {suss_count} (distance > {suss_dist:.4g})')
 
