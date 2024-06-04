@@ -415,7 +415,8 @@ function loadMap(id) {
 
           // Add price, coins or spawns to title
           if(o.cost) {
-            title += ` (${o.cost} ${price_types[o.price_type in price_types ? o.price_type : 0]}${o.cost > 0 ? 's':''})`
+            let price_type = (o.price_type in price_types ? o.price_type : 0);
+            title += ` (${o.cost} ${price_types[price_type]}${o.cost != 1 && price_type != 5 ? 's':''})`  // No s on plural of scrap
           }
           else if(o.coins) {
             title += ` [${o.coins} coin${o.coins > 1 ? "s":""}]`;
@@ -481,7 +482,7 @@ function loadMap(id) {
             if (p) {
               t = new L.LatLng(p[0], p[1]);
             }
-            playerMarker = L.marker([t.lat, t.lng], {icon: getIcon(icon,42), zIndexOffset: 10000, draggable: false, title: title, alt:'playerMarker'})
+            playerMarker = L.marker([t.lat, t.lng], {icon: getIcon(icon,42), zIndexOffset: 0, draggable: false, title: title, alt:'playerMarker'})
             .bindPopup()
             .on('popupopen', function(e) {
                 let marker = e.target;

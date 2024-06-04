@@ -73,6 +73,7 @@ marker_types = {
   'Scrap_C','TalkingSpeaker_C','Sponge_Large_C',
   # siu
   'HealingStation_C','BP_EngagementCup_Base_C','SlumBurningQuest_C','Trash_C',
+  'SecretFound_C',
 }
 
 starts_with = {
@@ -460,7 +461,7 @@ def cleanup_objects(game, classes_found, data_lookup, data):
     # Write out a file for optional insertion into gameClasses.js
     classes_to_filter = []
     if stripUnusedClasses:
-        classes_to_filter = [ k for k in classes_found if k not in classes ]
+        classes_to_filter = [ k for k in classes_found if k not in classes or classes[k]['layer'] == 'extra' ]
         print(f'Writing {len(classes_to_filter)} gameClasses to "filtered_classes.js"')
         with open('filtered_classes.js', 'w') as fh:
             for c in sorted(classes_to_filter):

@@ -252,4 +252,5 @@ const gameClasses = {
     'PipesystemNewDLC_C'                 : new GameClass('pipe',                     null,        null,           'pipesys'),
     'MinecraftBrick_C'                   : new GameClass('brick',                    'extra'),
     'MinecraftBrickRespawnable_C'        : new GameClass('brick',                    'extra'),
+    'SecretFound_C'                      : new GameClass(null,                       'extra'),
 }
