@@ -69,6 +69,7 @@ marker_types = {
   'GoldNugget_C', 'Jumppillow_C', 'MoonTake_C', 'Plumbus_C','Stone_C', 'ValveCarriable_C',
   'ValveSlot_C', 'Valve_C','MatchBox_C','Shell_C','BarrelClosed_Blueprint_C','MetalBall_C',
   'Supraball_C','Key_C','KeyLock_C','KeycardColor_C','PipeCap_C','Sponge_C','Juicer_C','Seed_C',
+  'Anvil_C','Map_C',
   # slc
   'Scrap_C','TalkingSpeaker_C','Sponge_Large_C',
   # siu
@@ -83,16 +84,18 @@ starts_with = {
 }
 
 ends_with = {
-    'Chest_C','Button_C','Lever_C','Meat_C','Loot_C','Detector_C','Door_C','Flower_C','Coin_C','Guy_C','Quest_C'
+    'Chest_C','Button_C','Lever_C','Meat_C','Loot_C','Detector_C','Door_C','Flower_C','Coin_C','Guy_C',
+    'TriggerVolume_C', # opens pipes in SIU
 }
 
 properties = [
     'IsInShop','canBePickedUp', 'PriceType', # BP_UnlockMap_C, etc.
     'Coins','CoinsInGold','Cost','Value', # Chest_C
     'HitsToBreak','bObsidian', 'HitsTaken', 'BrickType', # Minecraftbrick_C
-    'AllowEnemyProjectiles','RequiresPurpleShot?', # Button_C
+    'AllowEnemyProjectiles','RequiresPurpleShot?', 'ButtonType', 'Shape', # Button_C
     'Color', 'OriginalColor', # Seed_C/*Flower_C/Keycard*_C (0 - white, 1 - yellow, 2 - red, 5 - green)
-    'RelativeVelocity', 'AllowStomp', 'DisableMovementInAir', 'RelativeVelocity','CenterActor', # jumpppad_c
+    'RelativeVelocity', 'AllowStomp', 'DisableMovementInAir', 'RelativeVelocity?', 'CenterActor', # jumpppad_c
+    'Achievement?','Achievement Name', # trigger volumes
     'Contains Coin', # DestroyablePots_C
     'bDoesntRotate', # Coin_C, BigCoin_C
 ]
@@ -100,7 +103,9 @@ properties = [
 actions = {
     'OpenWhenTake','Actor','Actors','ActivateActors','Actor To Move','More Actors to Turn On','ActorsToActivate',
     'Actors to Open','Actors To Enable/Disable','ObjectsToInvert','ActivateThese','Actors to Activate',
-    'ActorsToOpen','ObjectsToDestroy','OpenOnDestroy',
+    'ActorsToOpen','ObjectsToDestroy','OpenOnDestroy','ActorsToOpenOnOpen','PostTownCelebration_Open','ActionsOnOpen',
+    'openWhenPlayerEnters', 'UniqueActorBeginOverlap',
+    'Objects', # used by TriggerVolume_C in SL/SLC
 }
 
 def camel_to_snake(s):
@@ -224,13 +229,24 @@ def export_markers(game, cache_dir, marker_types=marker_types, marker_names=[]):
             def get_actors(o,level=0):
                 for action in actions:
                     if a := o.get('Properties',{}).get(action):
-                        for d in [a] if type(a) is dict else a:
-                            if type(d) is dict and 'OuterIndex' in d and 'ObjectName' in d:
-                                key = ':'.join((k:= d['OuterIndex']['Outer'],v:= d['ObjectName']))
-                                actors.append(optArea(area, k, v))
-                                if key in objects and level<5:
-                                    get_actors(objects[key], level+1)
+                        for d in [a] if type(a) is dict else a if type(a) is list else []:
+                            for b in ([d[x] for x in d.keys()] if action=='ActionsOnOpen' else [d]):
+                                if type(b) is dict and 'OuterIndex' in b and 'ObjectName' in b:
+                                    key = ':'.join((k:= b['OuterIndex']['Outer'],v:= b['ObjectName']))
+                                    actors.append(optArea(area, k, v))
+                                    if key in objects and level<6:
+                                        get_actors(objects[key], level+1)
+
             get_actors(o)
+
+            # investigate Relay_C links, namely FinalBossQuest_4
+            if o.get('Properties',{}).get('PropogateToRelaysInOtherMaps'):
+                b = ':'.join((t['AssetPathName'].split('.').pop(),t['SubPathString'].split('.').pop()))
+                actors.append(b)
+                get_actors(objects[b])
+
+            # looks like we hit a wall here, UniqueActorBeginOverlap of BP_TriggerVolume_C is empty in UE4Parse
+            # but has an invocation list in FModel. Related issue https://github.com/MinshuG/pyUE4Parse/issues/22
             optKey(data[-1], 'actors', actors or None)
 
 

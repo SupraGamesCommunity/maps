@@ -198,7 +198,9 @@ function loadMap(id) {
     settings.center = [map.getCenter().lat, map.getCenter().lng]; // avoid circular refs here
     settings.zoom = map.getZoom();
     saveSettings();
-  });
+    updatePolylines();
+    markItems();
+});
 
   map.on('baselayerchange', function(e) {
     location.hash = '';
@@ -211,12 +213,9 @@ function loadMap(id) {
 
   function updatePolylines() {
     // set alt for polylines (attributes are not populated to paths)
-    for (const layerObj of Object.values(layers)) {
-      for (const m of Object.values(layerObj._layers)) {
-        let p = m.path
-        if (p) {
-          p.setAttribute('alt', m.options.alt);
-        }
+    for (const m of Object.values(map._layers)) {
+      if ((p = m._path)) {
+        p.setAttribute('alt', m.options.alt);
       }
     }
   }
@@ -226,6 +225,9 @@ function loadMap(id) {
     updatePolylines();
     markItems();
     saveSettings();
+
+    // let's maybe clear search on layer change just to avoid confusion
+    clearFilter();
   });
 
 
@@ -373,16 +375,6 @@ function loadMap(id) {
     }
   }
 
-  function getLineColor(lineType) {
-    const line_colors = {
-      pipe:         '#4DFF00',
-      jumppad_red:  '#FF0000',
-      jumppad_blue: '#1E90FF',
-      trigger:      '#FFFFFF',
-    }
-    return line_colors[lineType] || '#FFFF00'
-  }
-
   const price_types = {
     0: 'coin',
     5: 'scrap',
@@ -409,6 +401,7 @@ function loadMap(id) {
           let text = ''; // Set it on demand in onPopupOpen (as it's potentially slow for now)
           let alt = o.area + ':' + o.name
           let title = o.name;
+          let radius = 6; // polyline dots
 
           // can't have duplicate titles in search (loses items) clarify duplicate titles
           title = titles[title] ? alt : title;
@@ -448,8 +441,6 @@ function loadMap(id) {
           let sc = o.spawns ? (gameClasses[o.spawns] || defaultGameClass) : c
           if(sc.layer && enabledLayers[sc.layer])
           {
-            if(o.name == "Coin328")
-              console.log("test")
             const layer = sc.layer
             const layerConfig = layerConfigs.get(layer);
             const [icon, size] = decodeIconName((o.icon || sc.icon || layerConfig.defaultIcon || defaultIcon), o.variant);
@@ -461,18 +452,34 @@ function loadMap(id) {
 
           // Add a polyline to the appropriate layer
           if(c.lines && enabledLayers[c.lines] && o.linetype) {
-            let start = 'startpos' in o ? [o.startpos.y, o.startpos.x] : [o.lat, o.lng] 
-            let endxys = o.linetype != 'trigger' ? [o.target] : o.targets
-            let color = getLineColor(o.linetype)
+            let start = 'startpos' in o ? [o.startpos.y, o.startpos.x] : [o.lat, o.lng]; 
+            let endxys = o.linetype != 'trigger' ? [o.target] : o.targets;
 
-            L.circleMarker(start, {radius: 6, fillOpacity: 1, weight: 0, color: 'black', fillColor: color, title: title, o:o, alt: alt})
-              .addTo(layers[c.lines]).bindPopup('').on('popupopen', onPopupOpen).on('contextmenu',onContextMenu);
-            
+            let [addMarker, color, opacity, weight, offset, dist] = {
+                pipe:         [true,  '#4DFF00', 1,   3, radius, 1000],
+                jumppad_red:  [true,  '#FF0000', 1,   3, '0%',   100],
+                jumppad_blue: [true,  '#1E90FF', 1,   3, '0%',   100],
+                trigger:      [false, '#FFFFFF', 0.5, 2, '50%',  0],
+            } [o.linetype]
+
+            if(addMarker) {
+              L.circleMarker(start, {radius: radius, fillOpacity: opacity, weight: 0, fillColor: color, title: title, o:o, alt: alt})
+                .addTo(layers[c.lines]).bindPopup('').on('popupopen', onPopupOpen).on('contextmenu',onContextMenu);
+            }
+
             for(let endxy of endxys) {
               // need to add title as a single space (leaflet search issue), but not the full title so it doesn't appear in search
-              let line = L.polyline([start,[endxy.y, endxy.x]], {weight: 4, title:' ', alt:'', color: color})
+              // note draw the line backwards
+              let line = L.polyline([[endxy.y, endxy.x], start], {weight: weight, title:' ', alt:alt, opacity: opacity, color: color, interactive: false})
                 .addTo(layers[c.lines]);
-              line._path && line._path.setAttribute('alt', alt);
+              
+              if ((Math.sqrt(Math.pow(start[0] - endxy.y, 2) + Math.pow(start[1] - endxy.x, 2))) > dist) {  
+                // polylineDecorator doesn't support end arrow offset so we use start offset, reverse the line and reverse the arrow using headAngle
+                L.polylineDecorator(line,{patterns:[{offset:offset, repeat:0, symbol:
+                  L.Symbol.arrowHead({pixelSize:radius*2, headAngle: -290, pathOptions:
+                    {opacity: opacity, fillOpacity: opacity, weight: 0, color: color, interactive: false, title:' ', alt:alt}})}],})
+                      .addTo(layers[c.lines]);
+              }
             }
           }
 
@@ -603,8 +610,11 @@ function loadMap(id) {
 
     layerControl.addTo(map); // triggers baselayerchange, so called in the end
   }
-
   loadLayers();
+
+  // redraw paths on dragging (sets % of padding around viewport, may be performance issue)
+  map.getRenderer(map).options.padding = 1;
+
 } // end of loadmap
 
 // Change current map loaded (if not currently reloading)
@@ -680,7 +690,7 @@ window.markItemFound = function (id, found=true, save=true) {
 }
 
 function markItems() {
-  for (const[id,value] of Object.entries(settings.markedItems)) {
+  for (let id of Object.keys(settings.markedItems)) {
     let divs = document.querySelectorAll('*[alt="' + id + '"]');
     [].forEach.call(divs, function(div) {
       div.classList.add('found');
@@ -689,7 +699,7 @@ function markItems() {
 
   // filter by settings.searchText. caching is unreliable, just perform a full search here
   let lookup = {}
-  if (settings.searchText) {
+  if (settings.searchText && searchControl) {
     for (const o of Object.values(searchControl._filterData(settings.searchText, searchControl._recordsFromLayer()))) {
       lookup[o.layer.options.alt] = true;
       // reveal layers on filter
@@ -767,7 +777,8 @@ window.loadSaveFile = function () {
           let name = x.split(".").pop();
           let area = x.split("/").pop().split('.')[0];
           if (name != "None") {
-            window.markItemFound(area + ':' + name, true, false);
+            let id = area + ':' + name;
+            settings.markedItems[id] = true;
           }
         }
       }
@@ -797,6 +808,7 @@ window.loadSaveFile = function () {
     //setTimeout(function(){alert('Loaded successfully. Marked ' + Object.keys(settings.markedItems).length + ' items')},250);
     console.log('Marked ' + Object.keys(settings.markedItems).length + ' items');
 
+    markItems();
     saveSettings();
 
     ready = true;

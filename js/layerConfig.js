@@ -18,6 +18,8 @@ const layerConfigs = {
     data: new Map([
         ['pipes',       new LayerConfig('tiles',   'Pipe Lines Map', null,            false, ['sl'              ])],
         ['pads',        new LayerConfig('tiles',   'Pad Lines Map',  null,            false, ['sl'              ])],
+        ['pipesys',     new LayerConfig('markers', 'Pipe System',    null,            false, ['sl', 'slc', 'siu'])],
+        ['jumppads',    new LayerConfig('markers', 'Pads System',    null,            false, ['sl', 'slc', 'siu'])],
         ['closedChest', new LayerConfig('markers', 'Chests',         'chest',         true,  ['sl', 'slc', 'siu'])],
         ['shop',        new LayerConfig('markers', 'Shop',           'shop',          true,  ['sl', 'slc', 'siu'])],
         ['collectable', new LayerConfig('markers', 'Collectables',   'question_mark', true,  ['sl', 'slc', 'siu'])],
@@ -26,8 +28,6 @@ const layerConfigs = {
         ['coin',        new LayerConfig('markers', 'Coins',          'awesome',       false, ['sl', 'slc', 'siu'])],
         ['graves',      new LayerConfig('markers', 'Graves',         'question_mark', false, ['sl'              ])],
         ['extra',       new LayerConfig('markers', 'Extras',         'question_mark', false, ['sl', 'slc', 'siu'])],
-        ['pipesys',     new LayerConfig('markers', 'Pipe System',    null,            false, ['sl', 'slc', 'siu'])],
-        ['jumppads',    new LayerConfig('markers', 'Pads System',    null,            false, ['sl', 'slc', 'siu'])]
     ]),
 
     // Initialise any procedural data - store index based on position in Map
