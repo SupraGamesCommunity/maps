@@ -3,14 +3,24 @@
 // All the data we extract from the game data files consist of instances of specific game classes/blueprints.
 // For each class we hold a bunch of data specifying how to deal with the class in the maps.
 
+// Note: supraland_parser.py extracts the data from this file, so format is somewhat important
+// In particular, it requires all constructor arguments to have default values.
 class GameClass {
-    constructor(icon, layer, nospoiler = null, lines = null) {
+    constructor(icon = 'question_mark', layer = 'extra', nospoiler = null, lines = 'extra') {
         this.icon = icon;               // Icon used to represent instances on the map
-        this.layer = layer;             // Which layer these instances should be put on 
+        this.layer = layer;             // Which layer these instances should be put on
         this.nospoiler = nospoiler;     // Which no spoiler layer should these instances be put on
         this.lines = lines;             // If this object has lines then the layer to put them on (otherwise null)
     }
 }
+
+/* exported defaultGameClass */
+// Defines what happens for an unrecognised class
+const defaultGameClass =                  new GameClass();
+
+/* exported disableGameClass */
+// Value used for diabled game class
+const disableGameClass =                  new GameClass(null, null, null, null,)
 
 /* exported gameClasses */
 const gameClasses = {
@@ -29,7 +39,7 @@ const gameClasses = {
     'BP_CookableMeat_C'                  : new GameClass('meat',                     'extra'),
     'BP_DoubleHealthLoot_C'              : new GameClass('health',                   'upgrades',    'shop'),
     'BP_EngagementCup_Base_C'            : new GameClass('trophy',                   'misc',        'collectable'),
-    'BP_MonsterChest_C'                  : new GameClass('chest',                    'closedChest', null),
+    'BP_MonsterChest_C'                  : new GameClass('chest',                    null,          'closedChest'),
     'BP_PickaxeDamage+1_C'               : new GameClass('gun_upgrade',              'upgrades',    'shop'),
     'BP_PurchaseHealth+1_C'              : new GameClass('health',                   'upgrades',    'shop'),
     'BP_PurchaseJumpHeightPlus_C'        : new GameClass('double_jump',              'upgrades',    'shop'),
@@ -83,7 +93,6 @@ const gameClasses = {
     'BuyGunSpeedx2_C'                    : new GameClass('gun_upgrade',              'upgrades',    'shop'),
     'BuyGunSplashDamage_C'               : new GameClass('gun_damage',               'upgrades',    'shop'),
     'BuyHealth+15_C'                     : new GameClass('health',                   'upgrades',    'shop'),
-    '_BuyHealth+1_C'                     : new GameClass('health',                   'upgrades',    'shop'),
     'BuyHealth+2_C'                      : new GameClass('health',                   'upgrades',    'shop'),
     'BuyHealth+5_C'                      : new GameClass('health',                   'upgrades',    'shop'),
     'BuyHealthRegenMax+1_C'              : new GameClass('health_regen_max',         'upgrades',    'shop'),
@@ -136,27 +145,25 @@ const gameClasses = {
     'BuyUpgradeGraveNum_C'               : new GameClass(null,                       'upgrades',    'shop'),
     'BuyWalletx15_C'                     : new GameClass(null,                       'upgrades',    'shop'),
     'BuyWalletx2_C'                      : new GameClass(null,                       'upgrades',    'shop'),
-    'Chest_C'                            : new GameClass('chest',                    'closedChest'),
+    'Chest_C'                            : new GameClass('chest',                    null,          'closedChest'),
     'CoinBig_C'                          : new GameClass('coin_big',                 'coin'),
     'CoinRed_C'                          : new GameClass('coinRed',                  'misc',        'collectable'),
     'Coin_C'                             : new GameClass('coin_small',               'coin'),
     '_CoinStash'                         : new GameClass('coinStash2',               'coin'),
-    'DeadHero_C'                         : new GameClass('hero_placeholder',         'misc',        'collectable'),
-    'DestroyablePots_C'                  : new GameClass('pots',                     'extra'),
-    '_CoinDestroyablePots_C'             : new GameClass('pots',                     'coin'),
+    'Coin:DestroyablePots_C'             : new GameClass('pots',                     'coin'),
     'GoldBlock_C'                        : new GameClass(null,                       'extra'),
     'GoldNugget_C'                       : new GameClass(null,                       'extra'),
     'Jumppad_C'                          : new GameClass('jumppad',                  null,          null,           'jumppads'),
     'Jumppillow_C'                       : new GameClass(null,                       'extra'),
+    'LotsOfCoins1_C'                     : new GameClass('chest_coin',               'coin'),
     'LotsOfCoins10_C'                    : new GameClass('chest_coin',               'coin'),
     'LotsOfCoins15_C'                    : new GameClass('chest_coin',               'coin'),
     'LotsOfCoins30_C'                    : new GameClass('chest_coin',               'coin'),
     'LotsOfCoins50_C'                    : new GameClass('chest_coin',               'coin'),
     'LotsOfCoins5_C'                     : new GameClass('chest_coin',               'coin'),
     'LotsofCoins200_C'                   : new GameClass('chest_coin',               'coin'),
-    '_CoinChest_C'                       : new GameClass('chest_coin',               'coin'),
-    'MinecraftBrick_C'                   : new GameClass('brick',                    'extra'),
-    '_GoldMinecraftBrick_C'              : new GameClass('brick',                    'coin'),
+    'Coin:Chest_C'                       : new GameClass('chest_coin',               'coin',        'closedChest'),
+    'Coin:MinecraftBrick_C'              : new GameClass('brick',                    'coin'),
     'MoonTake_C'                         : new GameClass('moon_green',               'misc',        'collectable'),
     'PlayerStart'                        : new GameClass('awesome',                  'extra'),
     'Plumbus_C'                          : new GameClass('plumbus',                  'extra'),
@@ -180,16 +187,13 @@ const gameClasses = {
     'EnemySpawn2_C'                      : new GameClass('grave_stone',              'graves'),
     'EnemySpawn3_C'                      : new GameClass('grave_volcano',            'graves'),
     'Shell_C'                            : new GameClass('shell',                    'misc',        'collectable'),
-    'BP_UnlockMap_C'                     : new GameClass('map',                      'upgrades',    'shop'),
-    'EnemySpawner_C'                     : new GameClass('question_mark',            'extra'),
-    'Enemyspawner2_C'                    : new GameClass('question_mark',            'extra'),
+    'DeadHero_C'                         : new GameClass('hero_placeholder',         'misc',        'collectable'),
+    'EnemySpawner_C'                     : new GameClass(null,                       'extra'),
+    'Enemyspawner2_C'                    : new GameClass(null,                       'extra'),
     'SnappyPipe'                         : new GameClass('pipe',                     'extra'),
     'CarryPipe_C'                        : new GameClass('pipe',                     'extra'),
-    'PipeCap_C'                          : new GameClass('pipe',                     null,          null,           'pipesys'),
-    'Pipesystem_C'                       : new GameClass('pipe',                     null,          null,           'pipesys'),
-    'PipesystemNew_C'                    : new GameClass('pipe',                     null,          null,           'pipesys'),
-    'PipesystemNewDLC_C'                 : new GameClass('pipe',                     null,          null,           'pipesys'),
-    'Juicer_C'                           : new GameClass('null',                     'upgrades',    'shop'),
+    'PipeCap_C'                          : new GameClass('pipe',                     'extra'),
+    'Juicer_C'                           : new GameClass('bucket',                   'upgrades',    'shop'),
     'Lever_C'                            : new GameClass('lever',                    'extra'),
     'Button_C'                           : new GameClass('button',                   'extra'),
     'ButtonFloor_C'                      : new GameClass('floor_button',             'extra'),
@@ -234,10 +238,18 @@ const gameClasses = {
     'Lift1_C'                            : new GameClass('lift',                     'extra'),
     'Sponge_C'                           : new GameClass('sponge',                   'extra'),
     'SpongeBig_C'                        : new GameClass('sponge',                   'extra'),
+    'Sponge_Large_C'                     : new GameClass('sponge',                   'extra'),
     'Supraball_C'                        : new GameClass('supraball',                'extra'),
     'Seed_C'                             : new GameClass('seed',                     'extra'),
     'RingColorerFlower_C'                : new GameClass('flower',                   'extra'),
     'Trash_C'                            : new GameClass('trash',                    'extra'),
     'MatchBox_C'                         : new GameClass('matchbox',                 'extra'),
-    'PhysicalCoin_C'                     : new GameClass('small_coin',               'coin')
-    }
+    'PhysicalCoin_C'                     : new GameClass('small_coin',               'coin'),
+    'RedGuy_C'                           : new GameClass('guy',                      'extra'),
+    'BP_UnlockMap_C'                     : new GameClass('map',                      'upgrades',    'shop'),
+    'Pipesystem_C'                       : new GameClass('pipe',                     null,        null,           'pipesys'),
+    'PipesystemNew_C'                    : new GameClass('pipe',                     null,        null,           'pipesys'),
+    'PipesystemNewDLC_C'                 : new GameClass('pipe',                     null,        null,           'pipesys'),
+    'MinecraftBrick_C'                   : new GameClass('brick',                    'extra'),
+    'MinecraftBrickRespawnable_C'        : new GameClass('brick',                    'extra'),
+}

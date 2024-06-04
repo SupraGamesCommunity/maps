@@ -136,7 +136,6 @@ LotsOfCoins30_C,coinStash,coin
 LotsOfCoins50_C,coinStash,coin
 LotsOfCoins5_C,coinStash,coin
 LotsofCoins200_C,coinStash,coin
-MinecraftBrick_C,brick,misc
 MoonTake_C,moon_green,collectable
 PlayerStart,awesome,misc
 Plumbus_C,plumbus,misc
@@ -166,9 +165,6 @@ Enemyspawner2_C,,
 SnappyPipe,pipe,pipecaps
 CarryPipe_C,pipe,pipecaps
 PipeCap_C,pipe,pipecaps
-Pipesystem_C,pipe,pipecaps
-PipesystemNew_C,pipe,pipecaps
-PipesystemNewDLC_C,pipe,pipecaps
 Juicer_C,bucket,misc
 Lever_C,lever,misc
 Button_C,button,misc
@@ -215,9 +211,14 @@ MetalBall_C,metal_ball,misc
 Lift1_C,lift,misc
 Sponge_C,sponge,misc
 SpongeBig_C,sponge,misc
+Sponge_Large_C,sponge,misc
 Supraball_C,supraball,misc
 Seed_C,seed,misc
 RingColorerFlower_C,flower,misc
 Trash_C,trash,misc
 MatchBox_C,matchbox,misc
 PhysicalCoin_C,coin,coins
+RedGuy_C,guy,misc
+BP_UnlockMap_C,map,upgrades
+MinecraftBrick_C,brick,misc
+MinecraftBrickRespawnable_C,brick,misc

@@ -6,6 +6,8 @@ html, body, #map { width:100%; height:100%; margin:0; padding:0; z-index: 1; bac
 path { opacity: 50% }
 path.found {opacity: 100%}
 
+path[alt=''] { opacity: 100% }
+
 .leaflet-control-search .search-input {
   width: 230px;
 }

@@ -1,5 +1,6 @@
-"use strict";
-/*global L, Papa, layerConfigs, gameClasses, UESaveObject*/
+/*eslint strict: ["error", "global"]*/
+
+/*global L, layerConfigs, gameClasses,  defaultGameClass, UESaveObject*/
 
 // Terminology,
 // Class - The type of object represented by marker. Based on UE4 classes/blueprints 
@@ -144,6 +145,12 @@ function loadMap(id) {
     [ p.MapWorldLowerRight.Y, p.MapWorldLowerRight.X ]
   ];
 
+  let gap = p.MapWorldSize/2;
+  let mapBoundsWithGap = [
+    [ p.MapWorldUpperLeft.Y - gap, p.MapWorldUpperLeft.X - gap ],
+    [ p.MapWorldLowerRight.Y + gap, p.MapWorldLowerRight.X + gap ]
+  ];
+
   var m = p.MapWorldSize / mapSize.width;
   var mapScale   = {x: 1.0/m, y: 1.0/m};
   var mapOrigin  = {x: -p.MapWorldUpperLeft.X * mapScale.x, y: -p.MapWorldUpperLeft.Y * mapScale.y};
@@ -156,17 +163,12 @@ function loadMap(id) {
 
   mapCenter = [p.MapWorldCenter.Y, p.MapWorldCenter.X];
 
-  let gap = p.MapWorldSize/2;
-
   // Create the base map
   map = new L.Map('map', {
     crs: crs,
     fadeAnimation: false,
     maxZoom: 8,
-    maxBounds: [
-      [ p.MapWorldUpperLeft.Y - gap, p.MapWorldUpperLeft.X - gap ],
-      [ p.MapWorldLowerRight.Y + gap, p.MapWorldLowerRight.X + gap ]
-    ],
+    maxBounds: mapBoundsWithGap, // elastic-y bounds
     zoomControl: false,
   });
 
@@ -206,18 +208,25 @@ function loadMap(id) {
     loadMap(e.layer.mapId);
   });
 
-  map.on('overlayadd', function(e) {
-    settings.activeLayers[e.layer.id] = true;
+  function updatePolylines() {
     // set alt for polylines (attributes are not populated to paths)
-    if (layers[e.layer.id])
-    for (const m of Object.values(layers[e.layer.id]._layers)) {
-      if ((p = m._path)) {
-        p.setAttribute('alt', m.options.alt);
+    for (const layerObj of Object.values(layers)) {
+      for (const m of Object.values(layerObj._layers)) {
+        let p = m.path
+        if (p) {
+          p.setAttribute('alt', m.options.alt);
+        }
       }
     }
+  }
+
+  map.on('overlayadd', function(e) {
+    settings.activeLayers[e.layer.id] = true;
+    updatePolylines();
     markItems();
     saveSettings();
   });
+
 
   map.on('overlayremove', function(e) {
     delete settings.activeLayers[e.layer.id];
@@ -294,7 +303,7 @@ function loadMap(id) {
             subToolbar: new L.Toolbar2({ 
               actions: [
                 subAction.extend({
-                  options:{toolbarIcon:{html:'Load Game', tooltip: 'Load game save (*.sav) to mark collected items (Alt+F)'}},
+                  options:{toolbarIcon:{html:'Load Game', tooltip: 'Load game save (*.sav) to mark collected items (Alt+R)'}},
                   addHooks: function () {
                     openLoadFileDialog();
                     subAction.prototype.addHooks.call(this);
@@ -356,162 +365,136 @@ function loadMap(id) {
     text += '<br><br><input type="checkbox" id="'+markerId+'" '+value+' onclick=window.markItemFound("'+markerId+'",this.checked)><label for="'+markerId+'">Found</label>';
     e.popup.setContent(text);
 
-    for (const lookup of ['chests.csv', 'collectables.csv', 'shops.csv']) {
-      let filename = 'data/legacy/' + mapId + '/'+lookup;
-      // eslint-disable-next-line no-unused-vars
-      Papa.parse(filename, { download: true, header: true, complete: function(results, filename) {
-        for (let o of results.data) {
-          if (!o.x) {
-            continue;
-          }
-          let d = Math.pow(  Math.pow(o.x-x, 2) + Math.pow(o.y-y, 2), 0.5);
-          if (d<dist) {
-            dist = d;
-            res = o;
-          }
-        }
-        if (dist<1000 && res.ytVideo) {
-          let url = 'https://youtu.be/'+res.ytVideo+'&?t='+res.ytStart;
-          e.popup.setContent(text + '<br><br><a href="'+url+'" target=_blank>'+url+'</a>');
-        }
-      }});
+    if(o.yt_video) {
+      let yt_start = o.yt_start || 0
+      let url = 'https://youtu.be/'+res.ytVideo+'&?t='+yt_start;
+      e.popup.setContent(text + '<br><br><a href="'+url+'" target=_blank>'+url+'</a>');
     }
   }
 
-  function getMarkerColor(o) {
-    return o.color ? o.color : '#888';
+  function getLineColor(lineType) {
+    const line_colors = {
+      pipe:         '#4DFF00',
+      jumppad_red:  '#FF0000',
+      jumppad_blue: '#1E90FF',
+      trigger:      '#FFFFFF',
+    }
+    return line_colors[lineType] || '#FFFF00'
+  }
+
+  const price_types = {
+    0: 'coin',
+    5: 'scrap',
+    6: 'bone',
+    7: 'red moon',
   }
 
   function loadMarkers() {
-    fetch('data/'+'markers'+'.'+mapId+'.json')
+    fetch('data/markers.'+mapId+'.json')
       .then((response) => response.json())
       .then((j) => {
-        let other_pipes = new Set();
         let titles = {};
 
         let enabledLayers = layerConfigs.getEnabledLayers(mapId) 
         for(let o of j) {
 
-          // Unique name
-          let alt = o.area + ':' + o.name;
-
-          // skip markers out of bounds (e.g. "PipesystemNew_AboveSewer" in DLC2_Area0)
+          // skip markers out of bounds (e.g. the whole start area of the red town in SIU is not painted on the map)
           let [[top,left],[bottom,right]] = mapBounds;
           if (! (o.lng>left && o.lng<right && o.lat>top && o.lat<bottom )) {
             continue;
           }
 
-          // check if class is in the gameClasses list
-          let c = gameClasses[o.type];
-          if (c) {
-            let text = ''; // Set it on demand in onPopupOpen (as it's potentially slow for now)
+          let c = gameClasses[o.type] || defaultGameClass;
+          let text = ''; // Set it on demand in onPopupOpen (as it's potentially slow for now)
+          let alt = o.area + ':' + o.name
+          let title = o.name;
 
-            let title = o.name;
-            // Can't have duplicate titles in search
-            // Map area + name would be unique
-            if (titles[title]) {
-              title = o.area + ':' + o.name;
-            }
-            titles[title] = title;
+          // can't have duplicate titles in search (loses items) clarify duplicate titles
+          title = titles[title] ? alt : title;
+          titles[title] = title;
 
-            title += ' of ' + o.type;
+          // Add price, coins or spawns to title
+          if(o.cost) {
+            title += ` (${o.cost} ${price_types[o.price_type in price_types ? o.price_type : 0]}${o.cost > 0 ? 's':''})`
+          }
+          else if(o.coins) {
+            title += ` [${o.coins} coin${o.coins > 1 ? "s":""}]`;
+          } else if(o.spawns) {
+            //title += ` (${o.spawns.slice(o.spawns.startsWith("_") ? 1 : 0)})`;    // Remove leading _
+            //title += ` (${o.spawns.split(':').reverse()[0]})`;                    // Remove subclass
+            title += ` (${o.spawns})`
+          }
+
+          // add class name to title
+          title += ' of ' + o.type;
+
+          const defaultIcon = 'question_mark';
+          
+          if(c.nospoiler && enabledLayers[c.nospoiler])
+          {
+            const layer = c.nospoiler;
+            const layerConfig = layerConfigs.get(layer);
+            const icon = layerConfig.defaultIcon || defaultIcon;
+            const zIndexOffset = 10 * layerConfig.index;
+
+            L.marker([o.lat, o.lng], {icon: getIcon(icon), title: title, zIndexOffset: zIndexOffset, alt: alt, o:o, layerId:layer })
+              .addTo(layers[layer]).bindPopup(text).on('popupopen', onPopupOpen).on('contextmenu', onContextMenu);
+          }
+
+          // For the spoiler version the marker config is based on the spawned data if it spawns and otherwise normal
+          // Thus coinchest goes on coinchest config, but chest containing upgrade goes on upgrade layer
+          let sc = o.spawns ? gameClasses[o.spawns] || defaultGameClass : c
+          if(sc.layer && enabledLayers[sc.layer])
+          {
+            const layer = sc.layer;
+            const layerConfig = layerConfigs.get(layer);
+            const icon = o.icon || sc.icon || layerConfigs.defaultIcon || defaultIcon;
+            const zIndexOffset = 10 * layerConfig.index;
+            L.marker([o.lat, o.lng], {icon: getIcon(icon), title: title, zIndexOffset: zIndexOffset, alt: alt, o:o, layerId:layer })
+              .addTo(layers[layer]).bindPopup(text).on('popupopen', onPopupOpen).on('contextmenu', onContextMenu);
+          }
+
+          // Add a polyline to the appropriate layer
+          if(c.lines && enabledLayers[c.lines] && o.linetype) {
+            let start = 'startpos' in o ? [o.startpos.y, o.startpos.x] : [o.lat, o.lng] 
+            let endxys = o.linetype != 'trigger' ? [o.target] : o.targets
+            let color = getLineColor(o.linetype)
+
+            L.circleMarker(start, {radius: 6, fillOpacity: 1, weight: 0, color: 'black', fillColor: color, title: title, o:o, alt: alt})
+              .addTo(layers[c.lines]).bindPopup('').on('popupopen', onPopupOpen).on('contextmenu',onContextMenu);
             
-            if(o.coins) {
-              title += o.coins == 0 ? " [free]" : ` [${o.coins} coin${o.coins > 1 ? "s":""}]`;
-            } else if(o.spawns) {
-              title += ` (${o.spawns.slice(o.spawns.startsWith("_") ? 1 : 0)})`;
+            for(let endxy of endxys) {
+              // need to add title as a single space (leaflet search issue), but not the full title so it doesn't appear in search
+              let line = L.polyline([start,[endxy.y, endxy.x]], {weight: 4, title:' ', alt:'', color: color})
+                .addTo(layers[c.lines]);
+              line._path && line._path.setAttribute('alt', alt);
             }
+          }
 
-            const defaultIcon = 'question_mark';
-            
-            if(c.nospoiler && enabledLayers[c.nospoiler])
-            {
-              const layer = c.nospoiler;
-              const layerConfig = layerConfigs.get(layer);
-              const icon = layerConfig.defaultIcon || defaultIcon;
-              const zIndexOffset = 10 * layerConfig.index * 10;
-
-              L.marker([o.lat, o.lng], {icon: getIcon(icon), title: title, zIndexOffset: zIndexOffset, alt: alt, o:o, layerId:layer })
-                .addTo(layers[layer]).bindPopup(text).on('popupopen', onPopupOpen).on('contextmenu', onContextMenu);
-            }
-
-            if(c.layer && enabledLayers[c.layer])
-            {
-              const layer = c.layer;
-              const layerConfig = layerConfigs.get(layer);
-              const icon = o.icon || c.icon || layerConfigs.defaultIcon || defaultIcon;
-              const zIndexOffset = 10 * layerConfig.index * 10;
-              L.marker([o.lat, o.lng], {icon: getIcon(icon), title: title, zIndexOffset: zIndexOffset, alt: alt, o:o, layerId:layer })
-                .addTo(layers[layer]).bindPopup(text).on('popupopen', onPopupOpen).on('contextmenu', onContextMenu);
-            }
-
-            // Add spawned object to appropriate layer
-            let sc;
-            if(o.spawns) {
-              sc = gameClasses[o.spawns];
-            }
-            if(o.spawns && (sc = gameClasses[o.spawns]) && enabledLayers[sc.layer])
-            {
-              const layerConfig = layerConfigs.get(sc.layer);
-              const icon = sc.icon || layerConfig.defaultIcon || defaultIcon;
-              const zIndexOffset = 10 * layerConfig.index * 10;
-              L.marker([o.lat, o.lng], {icon: getIcon(icon), title: title, zIndexOffset: zIndexOffset, alt: alt, o:o, layerId:sc.layer })
-                .addTo(layers[sc.layer]).bindPopup(text).on('popupopen', onPopupOpen).on('contextmenu', onContextMenu);
-            }
-
-            // Add a polyline to the appropriate layer
-            if(c.lines && enabledLayers[c.lines] && o.target && o.color ) {
-              let add_line = true;
-
-              if(o.other_pipe)
-                if(other_pipes.has(alt)) {
-                  other_pipes.delete(alt);
-                  add_line = false;
-                }
-                else
-                  other_pipes.add(alt);
-
-              let color = getMarkerColor(o);
-              L.circleMarker([o.lat, o.lng], {radius: 6, fillOpacity: 1, weight: 0, color: 'black', fillColor: color, title: title, o:o, alt: alt})
-                .addTo(layers[c.lines]).bindPopup('').on('popupopen', onPopupOpen).on('contextmenu',onContextMenu);
-  
-              if(add_line) {
-
-                // need to add title as a single space (leaflet search issue), but not the full title so it doesn't appear in search
-                let line = L.polyline([[o.lat, o.lng],[o.target.y,o.target.x]], {weight: 4, title:' ', alt:alt, color: color})
-                  .addTo(layers[c.lines]);
-                line._path && line._path.setAttribute('alt', alt);
-              }
-            }
-          } // End of all items that have gameClasses entries
-
-          // Add dynamic player marker on top of PlayerStart icon
+          //add dynamic player marker on top of PlayerStart icon
           if (o.type == 'PlayerStart' && !playerMarker) {
+            let icon = mapId=='siu' ? 'player_blue' : 'player_red';
             playerStart = [o.lat, o.lng, o.alt];
+            let title = 'PlayerPosition';
             let t = new L.LatLng(o.lat, o.lng);
-            let p = {}
-            if ((p = settings.playerPosition)) {
+            let p = settings.playerPosition
+            if (p) {
               t = new L.LatLng(p[0], p[1]);
             }
-            playerMarker = L.marker([t.lat, t.lng], {zIndexOffset: 10000, draggable: true, title: Math.round(t.lat)+', '+Math.round(t.lng), alt:'playerMarker'})
+            playerMarker = L.marker([t.lat, t.lng], {icon: getIcon(icon,42), zIndexOffset: 10000, draggable: false, title: title, alt:'playerMarker'})
             .bindPopup()
-            .on('moveend', function(e) {
-              let marker = e.target;
-              let t = marker.getLatLng();
-              settings.playerPosition = [t.lat, t.lng, 0];
-              saveSettings();
-              e.target._icon.title = Math.round(t.lat)+', '+Math.round(t.lng)
-            })
             .on('popupopen', function(e) {
                 let marker = e.target;
-                let t = marker.getLatLng();
-                t = {name:'playerPosition', lat:Math.round(t.lat), lng:Math.round(t.lng)};
+                let p = settings.playerPosition;
+                let t = {name: marker.options.title, lat:p[0], lng:p[1], alt:p[2]};
                 marker.setPopupContent(JSON.stringify(t, null, 2).replaceAll('\n','<br>').replaceAll(' ','&nbsp;'));
                 marker.openPopup();
             }).addTo(map)
-          }
+
+          } // end of player marker
         } // end of loop
 
+        updatePolylines();
         markItems();
     });
   }
@@ -631,10 +614,10 @@ function getIconSize(zoom) {
   return s[Math.round(Math.min(zoom,s.length-1))];
 }
 
-function getIcon(icon) {
+function getIcon(icon, size) {
   let iconObj = icons[icon];
   if (!iconObj) {
-    let s = getIconSize(map.getZoom());
+    let s = size ? size : getIconSize(map.getZoom());
 
     // For small coins, shrink them down to half the size 
     // TODO: This is a nasty hack hard coding the icon and assuming we only use it for small coins
@@ -712,7 +695,7 @@ function markItems() {
     }
   }
 
-  [].forEach.call(document.querySelectorAll('img.leaflet-marker-icon, path.leaflet-interactive'), function(div) {
+  [].forEach.call(document.querySelectorAll('img.leaflet-marker-icon, path'), function(div) {
     if (div.alt!='playerMarker') {
       let alt = div.getAttribute('alt');
       if (!settings.searchText || lookup[alt]) {
@@ -763,6 +746,7 @@ window.loadSaveFile = function () {
     let loadedSave;
     try {
       loadedSave = new UESaveObject(evt.target.result);
+      evt.target.value = null;
     } catch(e) {
       console.log(e);
       alert('Could not load file, incompatible format.');
@@ -781,14 +765,6 @@ window.loadSaveFile = function () {
           let name = x.split(".").pop();
           let area = x.split("/").pop().split('.')[0];
           if (name != "None") {
-
-            // do not mark jumppads and pipes for now
-            if (name.includes('Jumppad') || name.includes('Pipesystem')) {
-              //continue; // let's try inverting css rules for paths so activated are brighter
-
-              console.log('activating', area +':' + name);
-            }
-
             window.markItemFound(area + ':' + name, true, false);
           }
         }
@@ -869,6 +845,10 @@ window.onload = function(event) {
     window.requestAnimationFrame(update);
   }
 
+  document.querySelector('#map').addEventListener('blur', function(e) {
+    pressed = {}; // prevent sticky keys
+  });
+
   // When a key goes up remove it from the list 
   window.addEventListener('keyup', (e) => {
     delete pressed[e.code];
@@ -880,14 +860,10 @@ window.onload = function(event) {
       return;
     }
     pressed[e.code] = true;
-    setTimeout(function(code){pressed[code]=false;},250,e.code); // prevent stuck keys
     switch (e.code) {
       case 'KeyF':        // F (no ctrl) to toggle fullscreen
         if(e.ctrlKey) {
           searchControl.expand(true);
-          e.preventDefault();
-        } else if(e.altKey){
-          openLoadFileDialog();
           e.preventDefault();
         } else {
           map.toggleFullscreen();
@@ -897,8 +873,14 @@ window.onload = function(event) {
         searchControl.expand(true);
         e.preventDefault();
         break;
-      case 'KeyR':if (!e.ctrlKey) map.flyTo(playerMarker ? playerMarker._latlng : mapCenter); break;
-      case 'Digit1': reloadMap('sl'); break;
+      case 'KeyR':
+        if (!e.ctrlKey && !e.altKey) {
+          map.flyTo(playerMarker ? playerMarker._latlng : mapCenter);
+        } else if (e.altKey) {
+          openLoadFileDialog();
+        }
+        break;
+    case 'Digit1': reloadMap('sl'); break;
       case 'Digit2': reloadMap('slc'); break;
       case 'Digit3': reloadMap('siu'); break;
       case 'KeyT': map.zoomIn(1); break;

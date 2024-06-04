@@ -12,7 +12,9 @@ import logging, gc, json, gc, os, sys, csv, re, argparse, tempfile
 import numpy as np
 from sklearn.neighbors import KDTree
 
-DOING_3D = False
+
+stripUnusedClasses = False      # strip any instances that have a type we don't explicitly support in gameClasses.js  
+stripUnusedProperties = True    # strip any properties we don't explicitly require from all objects (defined in exported_properties)
 
 config = {
     'sl': {
@@ -62,47 +64,49 @@ config = {
 }
 
 marker_types = {
-  'BP_A3_StrengthQuest_C', 'BP_BoneDetector_C', 'BP_BuyBeamElasticity_C', 'BP_BuyBoomerAxe_C', 'BP_BuyBoomeraxeDistance_C',
-  'BP_BuyBoomeraxePenetration_C', 'BP_BuyBoomeraxeThrowSpeed_C', 'BP_BuyFireGunAutoRecharge_C', 'BP_BuyGunCapacity+3shots_C',
-  'BP_BuyGunDamage+100pct_C', 'BP_BuyGunDuration+2s_C', 'BP_BuyGunRechargeTime-50pct_C', 'BP_CookableMeat_C',
-  'BP_DoubleHealthLoot_C', 'BP_EngagementCup_Base_C', 'BP_MonsterChest_C', 'BP_PickaxeDamage+1_C', 'BP_PurchaseHealth+1_C',
-  'BP_PurchaseJumpHeightPlus_C', 'BP_PurchaseSpeedx2_C', 'BP_Purchase_Crouch_C', 'BP_Purchase_FasterPickaxe_C',
-  'BP_Purchase_Pickaxe_Range+_C', 'BP_Purchase_TranslocatorCooldown_C', 'BP_TrophyDetector_C', 'BarrelColor_C', 'BarrelRed_C',
-  'Battery_C', 'Bones_C', 'BuyArmor1_C', 'BuyBeltRepel_C', 'BuyBelt_C', 'BuyBelt_DLC2_C', 'BuyBrokenPipeDetector_C',
-  'BuyChestDetectorRadius_C', 'BuyChestDetector_C', 'BuyCoinMagnet_C', 'BuyCritChance+5_C', 'BuyCrystal_C', 'BuyDoubleJump_C',
-  'BuyElectricGun_C', 'BuyEnemiesLoot_C', 'BuyFireGun_C', 'BuyForceBeamGold_C', 'BuyForceBeam_C', 'BuyForceBlockTelefrag_C',
-  'BuyForceBlock_C', 'BuyForceCubeBeam_C', 'BuyForceCubeStompGrave3_C', 'BuyForceCubeStompJump_C', 'BuyForceCubeStomp_C',
-  'BuyGraveDetector_C', 'BuyGun1_C', 'BuyGunAltDamagex2_C', 'BuyGunAlt_C', 'BuyGunCoin_C', 'BuyGunComboDamage+25_C',
-  'BuyGunCriticalDamageChance_C', 'BuyGunCriticalDamage_C', 'BuyGunDamage+15_C', 'BuyGunDamage+1_C', 'BuyGunDamage+5_C',
-  'BuyGunHoly1_C', 'BuyGunHoly2_C', 'BuyGunRefillSpeed+66_C', 'BuyGunRefireRate50_C', 'BuyGunSpeedx2_C', 'BuyGunSplashDamage_C',
-  'BuyHealth+15_C', 'BuyHealth+2_C', 'BuyHealth+5_C', 'BuyHealthRegenMax+1_C', 'BuyHealthRegenMax10_C', 'BuyHealthRegenMax15_C',
-  'BuyHealthRegenMax5_C', 'BuyHealthRegenSpeed_C', 'BuyHealthRegen_C', 'BuyHeartLuck_C', 'BuyJumpHeightPlus_C', 'BuyJumpIncrease_C',
-  'BuyMoreLoot_C', 'BuyNumberRising_C', 'BuyQuintupleJump_C', 'BuyShieldBreaker_C', 'BuyShowHealthbar_C', 'BuyShowProgress_C',
-  'BuySilentFeet_C', 'BuySmashdownDamage+100_C', 'BuySmashdownDamage+1_C', 'BuySmashdownDamage+33_C', 'BuySmashdownDamage+3_C',
-  'BuySmashdownRadius+5_C', 'BuySmashdownRadius+_C', 'BuySmashdown_C', 'BuySpeedx15_C', 'BuySpeedx2_C', 'BuyStats_C', 'BuySword2_C',
-  'BuySwordCriticalDamageChance_C', 'BuySwordCriticalDamage_C', 'BuySwordDamage+02_C', 'BuySwordDamage+1_C', 'BuySwordDamage+3_C',
-  'BuySwordDoorKnocker_C', 'BuySwordHoly1_C', 'BuySwordHoly2_C', 'BuySwordRange25_C', 'BuySwordRefireRate-33_C', 'BuySword_C',
-  'BuyTranslocatorCoolDownHalf_C', 'BuyTranslocatorDamagex3_C', 'BuyTranslocatorModule_C', 'BuyTranslocatorShotForce_C',
-  'BuyTranslocatorWeight_C', 'BuyTranslocator_C', 'BuyTranslocator_Fake_C', 'BuyTripleJump_C', 'BuyUpgradeChestNum_C',
-  'BuyUpgradeGraveNum_C', 'BuyWalletx15_C', 'BuyWalletx2_C', 'Chest_C', 'CoinBig_C', 'CoinRed_C', 'Coin_C', 'DeadHero_C',
-  'DestroyablePots_C', 'EnemySpawner_C', 'Enemyspawner2_C', 'ExplodingBattery_C', 'GoldBlock_C', 'GoldNugget_C', 'Jumppad_C',
-  'Jumppillow_C', 'Key_C', 'KeycardColor_C', 'LotsOfCoins10_C', 'LotsOfCoins15_C', 'LotsOfCoins30_C', 'LotsOfCoins50_C',
-  'LotsOfCoins5_C', 'LotsofCoins200_C', 'MinecraftBrick_C', 'MoonTake_C', 'PlayerStart', 'Plumbus_C', 'Purchase_DiamondPickaxe_C',
-  'Purchase_ForceBeam_C', 'Purchase_ForceCube_C', 'Purchase_IronPickaxe_C', 'Purchase_StonePickaxe_C', 'Purchase_WoodPickaxe_C',
-  'Scrap_C', 'SlumBurningQuest_C', 'SpawnEnemy3_C', 'Stone_C', 'UpgradeHappiness_C', 'ValveCarriable_C', 'ValveSlot_C', 'Valve_C',
-  'HealingStation_C','MatchBox_C','EnemySpawn1_C','EnemySpawn2_C','EnemySpawn3_C','PipeCap_C','Lift1_C','PipesystemNew_C',
-  'PipesystemNewDLC_C','Shell_C','BarrelClosed_Blueprint_C','MetalBall_C', 'Supraball_C','Trash_C','KeyLock_C','BP_UnlockMap_C',
-  'PhysicalCoin_C', 'Juicer_C'
+  'PlayerStart','Jumppad_C','Bones_C','Chest_C','BarrelColor_C', 'BarrelRed_C','Battery_C',
+  'BP_A3_StrengthQuest_C','Lift1_C', 'DeadHero_C','ExplodingBattery_C', 'GoldBlock_C',
+  'GoldNugget_C', 'Jumppillow_C', 'MoonTake_C', 'Plumbus_C','Stone_C', 'ValveCarriable_C',
+  'ValveSlot_C', 'Valve_C','MatchBox_C','Shell_C','BarrelClosed_Blueprint_C','MetalBall_C',
+  'Supraball_C','Key_C','KeyLock_C','KeycardColor_C','PipeCap_C','Sponge_C','Juicer_C','Seed_C',
+  # slc
+  'Scrap_C','TalkingSpeaker_C','Sponge_Large_C',
+  # siu
+  'HealingStation_C','BP_EngagementCup_Base_C','SlumBurningQuest_C','Trash_C',
 }
 
-price_types = {
-    'EPriceType::NewEnumerator5':'scrap',
-    'EPriceType::NewEnumerator6':'bones',
+starts_with = {
+    'Pipesystem','Buy','BP_Buy','BP_Purchase','BP_Unlock', 'Purchase','Upgrade','Button','Smallbutton','Coin',
+    'Lighttrigger','LotsOfCoins','EnemySpawn','Destroyable','BP_Pickaxe','Door','Key','ProjectileShooter',
+    'MinecraftBrick', # can be MinecraftBrick_C and MinecraftBrickRespawnable_C
 }
 
-PAD_COL_RED = '#FF0000'
-PAD_COL_BLUE = '#1E90FF'
-PIPE_COL = '#4DFF00'
+ends_with = {
+    'Chest_C','Button_C','Lever_C','Meat_C','Loot_C','Detector_C','Door_C','Flower_C','Coin_C','Guy_C','Quest_C'
+}
+
+properties = [
+    'IsInShop','canBePickedUp', 'PriceType', # BP_UnlockMap_C, etc.
+    'Coins','CoinsInGold','Cost','Value', # Chest_C
+    'HitsToBreak','bObsidian', 'HitsTaken', 'BrickType', # Minecraftbrick_C
+    'AllowEnemyProjectiles','RequiresPurpleShot?', # Button_C
+    'Color', 'OriginalColor', # Seed_C/*Flower_C/Keycard*_C (0 - white, 1 - yellow, 2 - red, 5 - green)
+    'RelativeVelocity', 'AllowStomp', 'DisableMovementInAir', 'RelativeVelocity','CenterActor', # jumpppad_c
+    'Contains Coin', # DestroyablePots_C
+    'bDoesntRotate', # Coin_C, BigCoin_C
+]
+
+actions = {
+    'OpenWhenTake','Actor','Actors','ActivateActors','Actor To Move','More Actors to Turn On','ActorsToActivate',
+    'Actors to Open','Actors To Enable/Disable','ObjectsToInvert','ActivateThese','Actors to Activate',
+    'ActorsToOpen','ObjectsToDestroy','OpenOnDestroy',
+}
+
+def camel_to_snake(s):
+    if s[-1]=='?': s = s[:-1] + 'Flag'
+    if s.startswith('b'): s = 'Is' + s[1:]
+    s = s.replace(' ','')
+    return ''.join(['_'+c.lower() if c.isupper() else c for c in s]).lstrip('_')
 
 def export_levels(game, cache_dir):
     path = os.environ.get(game+'dir',config[game]['path'])
@@ -130,10 +134,19 @@ def export_levels(game, cache_dir):
 
 def export_markers(game, cache_dir, marker_types=marker_types, marker_names=[]):
     data = []
+    data_lookup = {}
+    classes_found = set()
     areas = {}
-    pipe_marker_indices = {}
+    
+    markerFileName = f"{game}.marker_names.txt"
+    if os.path.isfile(markerFileName):
+        with open(markerFileName) as fh:
+            marker_names += fh.read().splitlines()
 
-    optKey = lambda d,k,v: v is not None and d.__setitem__(k,v)
+    optEnum= lambda s:int(s[len(s.rstrip('0123456789')):]or 0) if type(s) is str and '::' in s else s
+    optArea= lambda a,k,v: v if a==k else ':'.join((k,v))
+    optColor=lambda p:p and '#'+''.join(hex(int(p[c]))[2:] for c in 'RGB')
+    optKey = lambda d,k,v: v is not None and d.__setitem__(k,optEnum(v))
     getVec = lambda d,v=0: Vector((d['X'], d['Y'], d['Z'])) if d else Vector((v,v,v))
     getRot = lambda d,v=0: Euler(( radians(d['Roll']), radians(d['Pitch']), radians(d['Yaw'])) ) if d else Euler((v,v,v))
     getQuat= lambda d,v=0: Quaternion((d['W'], d['X'], d['Y'], d['Z'])) if d else Quaternion((v,v,v,v))
@@ -142,6 +155,7 @@ def export_markers(game, cache_dir, marker_types=marker_types, marker_names=[]):
     def parse_json(j, area):
         outer = {}
         pipes = {}
+        objects = {}
         for o in j:
             p = o.get('Properties',{})
             if a := p.get('WorldAsset',{}).get('AssetPathName'):
@@ -152,28 +166,37 @@ def export_markers(game, cache_dir, marker_types=marker_types, marker_names=[]):
                 outer[':'.join((o['Name'],o['Type'],o['Outer']))] = o # pyUE4Parse 5e0e6f0
                 outer[':'.join((o['Name'],o['Outer']))] = o # pyUE4Parse 90e309b
 
-            if o['Type'] in ('PipesystemNew_C','PipesystemNewDLC_C') and 'Pipe' in p and ('OtherPipe' in p or 'otherPipeInOtherLevel' in p):
+            if o['Type'].startswith('Pipesystem') and 'Pipe' in p and ('OtherPipe' in p or 'otherPipeInOtherLevel' in p):
                 a = ':'.join((area, p['Pipe']['Outer']))
                 b = ':'.join((t['AssetPathName'].split('.').pop(),t['SubPathString'].split('.').pop()) if (t:=p.get('otherPipeInOtherLevel')) else (area, p['OtherPipe']['ObjectName']))
                 pipes[ a ] = b
-                pipes[ b ] = a
+                #pipes[ b ] = a # links may be single-sided
+
+            objects[area +':'+o['Name']] = o
 
         for o in j:
-            if not ((not marker_names or o['Name'] in marker_names) and (not marker_types or o['Type'] in marker_types)):
-                continue
+            allowed_items = (
+                marker_names and o['Name'] in marker_names
+                or marker_types and o['Type'] in marker_types
+                or any(o['Type'].startswith(s) for s in starts_with)
+                or any(o['Type'].endswith(s) for s in ends_with)
+            )
+
+            if not allowed_items: continue
+            #if not o['Type'].endswith('_C'): continue
+            #if not 'Pipe' in o['Type']: continue
 
             def get_matrix(o, matrix=Matrix.Identity(4)):
                 p = o.get('Properties',{})
                 if p.get('RelativeLocation'):
                     matrix = Matrix.LocRotScale(getVec(p.get('RelativeLocation')), getRot(p.get('RelativeRotation')), getVec(p.get('RelativeScale3D'), 1)) @ matrix
-
                 for parent in ['RootObject', 'RootComponent', 'DefaultSceneRoot', 'AttachParent']:
                     node = p.get(parent,{})
-                    if ref := node.get('OuterIndex',{}).get('ObjectName'):
-                        key = ':'.join((node.get('ObjectName',''),ref))
-                        if key in outer:
-                            return get_matrix(outer[key], matrix)
-
+                    if type(node) is dict:
+                        if ref := node.get('OuterIndex',{}).get('ObjectName'):
+                            key = ':'.join((node.get('ObjectName',''),ref))
+                            if key in outer:
+                                return get_matrix(outer[key], matrix)
                 return matrix
 
             matrix = get_matrix(o)
@@ -181,113 +204,113 @@ def export_markers(game, cache_dir, marker_types=marker_types, marker_names=[]):
                 matrix  = areas[area] @ matrix
 
             data.append({'name':o['Name'], 'type':o['Type'], 'area':area })
-            unique_name = ':'.join((area, o['Name']))
+            classes_found.add(o['Type'])
+            data_lookup[':'.join((area, o['Name'])  )] = data[-1]
 
             t = matrix.to_translation()
             data[-1].update({'lat': t.y, 'lng': t.x, 'alt': t.z})
 
             p = o.get('Properties',{})
 
-            optKey(data[-1], 'spawns', spawns := p.get('Spawnthing',{}).get('ObjectName'))
+            for key in properties:
+                optKey(data[-1], camel_to_snake(key), p.get(key))
 
-            optKey(data[-1], 'coins', p.get('Coins'))
-            optKey(data[-1], 'coins', p.get('CoinsInGold'))
-            optKey(data[-1], 'coins', p.get('Value'))
+            optKey(data[-1], 'spawns', p.get('Spawnthing',{}).get('ObjectName'))
+            optKey(data[-1], 'other_pipe', pipes.get(':'.join((area,o['Name']))))
+            optKey(data[-1], 'custom_color', optColor(p.get('CustomColor')))
 
-            # There is at least one chest that doesn't have spawn data but actually spawns Health+1 (SL Chest31_9005)
-            # There's also a chest that has coins in it but also has a "spawns" (SIU ChestAreaEnd_78)
-            if o['Type'] == 'Chest_C':
-                if data[-1].get('spawns') is None:
-                    data[-1]['spawns'] = '_BuyHealth+1_C'
-                elif data[-1].get('coins') is not None:
-                    data[-1].pop('spawns')
-                elif data[-1]['spawns'] == 'CoinBig_C':
-                    data[-1]['coins'] = 10;
+            actors = []
+            def get_actors(o,level=0):
+                for action in actions:
+                    if a := o.get('Properties',{}).get(action):
+                        for d in [a] if type(a) is dict else a:
+                            if type(d) is dict and 'OuterIndex' in d and 'ObjectName' in d:
+                                key = ':'.join((k:= d['OuterIndex']['Outer'],v:= d['ObjectName']))
+                                actors.append(optArea(area, k, v))
+                                if key in objects and level<5:
+                                    get_actors(objects[key], level+1)
+            get_actors(o)
+            optKey(data[-1], 'actors', actors or None)
 
-            # Get coin count for chests that spawn "LotsOfCouns{#coins}_C" 
-            if spawns is not None and spawns.lower().startswith('lotsofcoins'):
-                data[-1]['coins'] = int(spawns[11:-2])
 
-            # Destroyable pots can contain a coin
-            if o['Type'] == 'DestroyablePots_C':
-                if p.get('Contains Coin'):
-                    data[-1]['coins'] = 1
-                    data[-1]['type'] = '_CoinDestroyablePots_C'
-
-            # Set some default values for coins and pots that don't have one
-            if data[-1].get('coins') is None:
-                if o['Type'] == "Coin_C" or o['Type'] == 'PhysicalCoin_C':
-                    data[-1]['coins'] = 1;
-                if o['Type'] == 'CoinBig_C':
-                    data[-1]['coins'] = 10;
-
-            # Hack the spawns field so it's easier to add chest to both chests and coins layers (we lose CoinBig_C)
-            if o['Type'] == "Chest_C" and data[-1].get('coins') is not None:  # and spawns is None? 
-                data[-1]['spawns'] = '_CoinChest_C'
-
-            # Not sure if this covers everything that is "buyable"
-            optKey(data[-1], 'cost', p.get('Cost'))
-
-            optKey(data[-1], 'hits', hits:= p.get('HitsToBreak'))
-            optKey(data[-1], 'price_type', price_types.get(p.get('PriceType')))
-
-            #optKey(data[-1], 'brick_type', p.get('BrickType'))
-            optKey(data[-1], 'obsidian', p.get('bObsidian'))
-
-            # We override the class of mine craft bricks that we think spawn gold and set default coins to 3
-            if p.get('BrickType') == 'EMinecraftBrickType::NewEnumerator4':
-                data[-1]['type'] = '_GoldMinecraftBrick_C'
-                if data[-1].get('coins') is None:
-                    data[-1]['coins'] = 3
-
-            if other_pipe := pipes.get(unique_name):
-                optKey(data[-1], 'other_pipe', other_pipe)
-                pipe_marker_indices[unique_name] = len(data)-1 
-                data[-1]['color'] = PIPE_COL;
-            
             if o['Type'] in ('Jumppad_C'):
-                optKey(data[-1], 'relative_velocity', p.get('RelativeVelocity'))
-                optKey(data[-1], 'velocity', (v:=p.get('Velocity')) and getXYZ(getVec(v)))
-                optKey(data[-1], 'allow_stomp', stomp := p.get('AllowStomp'))
-                optKey(data[-1], 'disable_movement', disable_move := p.get('DisableMovementInAir'))
-                #optKey(data[-1], 'allow_relative_velocity', p.get('RelativeVelocity?'))
-                #optKey(data[-1], 'center_actor', p.get('CenterActor'))
-                data[-1]['color'] = PAD_COL_BLUE if (stomp == True or disable_move == False) else PAD_COL_RED
-
+                optKey(data[-1], 'velocity', (v:=p.get('Velocity'))and getXYZ(getVec(v)))
                 d = Vector((matrix[0][2],matrix[1][2],matrix[2][2]));
                 d.normalize()
                 data[-1].update({'direction': getXYZ(d)})
                 data[-1].update({'target': getXYZ(Vector((0,0,0)))})
-
 
     for area in config[game]['maps']:
         path = os.path.join(cache_dir, area + '.json')
         print('loading "%s" ...' % path)
         parse_json(json.load(open(path)), area)
 
-    # Add 'target' value to pipe objects
-    for i in pipe_marker_indices.values():
-        omi = pipe_marker_indices[data[i]['other_pipe']]
-        data[i].update({'target':{'x': data[omi]['lng'], 'y': data[omi]['lat'], 'z': data[omi]['alt']}})
+    calc_pads(data)
+    calc_pipes(data)
 
-    # Add 'target' value for jump pad objects
-    calc_targets(data)
-
-    # Remove unused instance data from export if we're not doing 3D
-    if not DOING_3D:
-        for m in data:
-            m.pop('direction', None)          # used by 3d map (will break without it but leave it this way as we're not using it)
-            m.pop('relative_velocity', None)  # used by 3d map
-            m.pop('velocity', None)           # used by 3d map
-
-    combine_legacy(game, data)
+    # Merge in custom and legacy data, clean the properties and remove ones we don't need
+    cleanup_objects(game, classes_found, data_lookup, data)
 
     print('collected %d markers' % (len(data)))
     json_file = 'markers.' + game + '.json'
     print('writing "%s" ...' % json_file)
     json.dump(data, open(json_file,'w'), indent=2)
 
-def calc_targets(data):
+def calc_pipes(data):
+    # I could not find hierarchy connection between pipe caps and pipe systems
+    # so I decided to search for the nearest pipe cap
+    # It should work fine most of the time
+    allowed_points = lambda o: o['type'] in ('PipeCap_C')
+    points = [(o['lng'], o['lat'], o['alt']) for o in data if allowed_points(o)]
+    data_indices = [i for i,o in enumerate(data) if allowed_points(o)]
+    print('collected', len(points), 'pipe caps, calculating links...')
+
+    if not points:
+        return
+
+    tree = KDTree(points)
+
+    pipes = {}
+    lookup = {}
+    cap_indices = {}
+
+    # update pipe system, find nearest caps
+    for i,o in enumerate(data):
+        if not o['type'].startswith('Pipesystem'):
+            continue
+        x,y,z = o['lng'],o['lat'],o['alt']
+
+        query_point = [x,y,z]
+        _, indices = tree.query([query_point], k=3)
+        indices = indices[0]
+        j = data_indices[indices[0]]
+        p = data[j]
+        dist = (Vector((x,y,z))-Vector((p['lng'], p['lat'], p['alt']))).length
+        if dist<=1500:
+            nearest_cap = p['area'] + ':' + p['name']
+            cap_indices[nearest_cap] = j
+            data[i].update({'nearest_cap':nearest_cap})
+            a = o['area'] + ':' + o['name']
+            lookup[a] = o
+
+    ''' just add nearest cap for now ^. handle the rest in frontend
+    # update caps with cross-references
+    # not all pipes have caps, unfortunately
+    # some only have level geometry that's not in the classes
+    for i,o in enumerate(data):
+        if o['type'] not in ('PipesystemNew_C','PipesystemNewDLC_C'):
+            continue
+        # get nearest cap, get other pipe, update other pipe's cap
+        if 'nearest_cap' in o and 'other_pipe' in o:
+            if nearest_cap := o.get('nearest_cap'):
+                if other_pipe := o.get('other_pipe'):
+                    if p:=lookup.get(other_pipe):
+                        if other_cap := p.get('nearest_cap'):
+                            if j := cap_indices.get(nearest_cap):
+                                data[j].update({'other_cap': other_cap})
+    '''
+
+def calc_pads(data):
     # calculates target altitude from the jump pad's velocity data
     # builds 3d terrain from selected points (uses jump pad locations by default)
     # traces parabolic path and find z of an intersection with a plane defined by 3 closest points
@@ -300,6 +323,9 @@ def calc_targets(data):
     data_indices = [i for i,o in enumerate(data) if allowed_points(o)]
 
     print('collected', len(points), 'terrain points, calculating targets...')
+
+    if not points:
+        return
 
     tree = KDTree(points)
 
@@ -368,16 +394,280 @@ def get_z(x, y, triangle):
         z = alpha * v1[2] + beta * v2[2] + gamma * v3[2]
     return z
 
-# Read types.csv which contains gameClasses.js
-def read_types_csv():
-    types = {}
-    with open('types.csv', 'r', encoding='utf-8-sig') as csv_fh:
-        csv_reader = csv.DictReader(csv_fh, delimiter=',')
-        for cls in csv_reader:
-            type = cls['type']
-            del cls['type']
-            types[type] = {k:cls[k] for k in cls if k != 'type'}
-    return types
+
+# Variant names for the colours of keys, keycards, flowers, seeds...
+colors = {
+    0: 'white',         #FFFFFF
+    1: 'yellow',        #FFFF66
+    2: 'red',           #FF0000
+    3: 'blue',          #1E90FF
+    4: 'purple',        #9933ff
+    5: 'green',         #4DFF00
+    6: 'orange',        #ff9900
+}
+
+# Variant names for minecraft bricks
+brick_types = {
+    0: 'stone',
+    1: 'obsidian',
+    2: 'metal',
+    3: 'diamond',
+    4: 'gold',
+};
+
+# Number of coins given by classes if not explicit
+# Coin pots provide 1 if the flag is true
+coin_defaults = {
+    'Coin_C': 1,
+    'CoinBig_C' : 10,
+    'LotsOfCoins1_C': 1,
+    'LotsOfCoins5_C': 5,
+    'LotsOfCoins10_C': 10,
+    'LotsOfCoins15_C': 15,
+    'LotsOfCoins30_C': 30,
+    'LotsOfCoins50_C': 50,
+    'LotsofCoins200_C': 200,    # Note lower case 'of'
+    'PhysicalCoin_C': 1,
+}
+
+# Which properties we allow to be exported for each instance
+exported_properties = [
+    'name', 'type', 'area', 'lat', 'lng', 'alt',    # all instances have these
+    'spawns',                                       # generates some other class (chest or quest)
+    'coins',                                        # generates coins when taken (coin chest, pots, bricks and various coin types)
+    'cost', 'price_type',                           # cost when purchased (shops, quests...) and units (defaults to coins)
+    'variant',                                      # variant allows change of marker
+    'linetype',                                     # Trigger, red/blue pad, pipe
+    'startpos',                                     # where to draw lines from (if not lat/lng/alt)
+    'target',                                       # where to draw line to for pipes and pads
+    'targets',                                      # array of dictionaries 'type' and target position
+                                                    # pipe, jumppad_red, jumppad_blue, trigger 
+    'image', 'yt_video', 'yt_end',                  # data pulled from matched legacy data
+]
+
+# The purpose of this code is to walk through all the objects we've gathered and prepare them for
+# display by the map.
+#
+# classes is a set of all 'type' names
+# lookup is a dictionary from area:name to objects
+# data is an array of the same objects
+# each object is a dictionary of k,v pairs
+def cleanup_objects(game, classes_found, data_lookup, data):
+
+    classes = read_game_classes()
+
+    # Make a set of all the classes found that are not in gameClasses.js
+    # Write out a file for optional insertion into gameClasses.js
+    classes_to_filter = []
+    if stripUnusedClasses:
+        classes_to_filter = [ k for k in classes_found if k not in classes ]
+        print(f'Writing {len(classes_to_filter)} gameClasses to "filtered_classes.js"')
+        with open('filtered_classes.js', 'w') as fh:
+            for c in sorted(classes_to_filter):
+                fh.write("    '{:<36}: new GameClass(),\n".format(c))
+
+    def parse_json(j):
+        # Custom markers is an array of dictionaries which must have name/area declared
+        # if 'del': True then we delete the whole instance
+        # otherwise we take the remaining members
+        # and merge: 'property': new value
+        # or delete: '!property': anything
+        count = 0
+        for jo in j:
+            id = ':'.join((jo['area'], jo['name']))
+            o = data_lookup.get(id)
+            count += 1
+            if jo.get('del'):
+                if o: data.remove(o)
+            else:
+                if not o:
+                    o = {}
+                    data_lookup['id'] = o
+                    data.append(o)
+                for prop, value in jo.items():
+                    if value == '!':
+                        o.pop(prop, None)
+                    else:
+                        o[prop] = value
+        return count
+    
+    # Read custom markers and merge them  in
+    cfn = f'custom-markers.{game}.json'
+    if os.path.isfile(cfn):
+        count = parse_json(json.load(open(cfn)))
+        print(f'Processed {count} instances read from {cfn}')
+
+    # Walk the remaining instances and fix up entries
+    for o in data:
+        # Merge the various gold properties into one (we'll remove the properties later)
+        # and deal with defaults for all coin or coin spawning classes
+        # also takes care of DestroyablePots_C
+        coins = o.get('coins') or o.get('coins_in_gold') or o.get('value') or (1 if o.get('contains_coin') else None)
+        if coins is not None:
+            o['coins'] = coins
+        else:
+            if o['type'] in coin_defaults:
+                o['coins'] = coin_defaults[o['type']]
+            elif o.get('spawns') in coin_defaults:
+                o['coins'] = coin_defaults[o['spawns']]
+
+        # There is at least one chest that doesn't have spawn data but actually spawns Health+1 (SL Chest31_9005)
+        if o['type'] == 'Chest_C' and o.get('spawns') is None:
+            o['spawns'] = 'BP_PurchaseHealth+1_C'
+
+        # If this is the stolen coins chest then set coins to 'some' it will remove the spawns property later
+        if o.get('spawns') == 'StolenCoins_C':
+            o['coins'] = 'varies'
+
+        # Minecraft bricks may contain coins, but if they are not specified gold ones default to 3 
+        # variant is set to the brick type
+        if o['type'] == 'MinecraftBrick_C':
+            if game == 'siu':
+                o['variant'] = brick_types[o.get('brick_type') or 4]       # It appears gold brick is default
+                if o['variant'] == 'gold' and not o.get('coins'):
+                    o['coins'] = 3
+                if o.get('coins') is not None and o['variant'] != 'gold':
+                    print(f'Non gold coin containing MinecraftBrick_C:{o['variant']}:{o['coins']}')
+
+        # Allow things with colors can have variants (minecraft bricks have type and colour)
+        if o.get('variant') is None:
+            color = o.get('color') or o.get('original_color')
+            if color and type(color) is int and color >= 0 and color < len(colors):
+                o['variant'] = colors[color]
+
+        # Anything that has coins gets a subclass (chests, minecraft bricks, destroyable pots...)
+        # Anything that provides coins and spawns we clear the spawns field (chests can't do both)
+        # There's also a chest that has coins in it but also has a "spawns" (SIU ChestAreaEnd_78)
+        if o.get('coins') is not None:
+            if o['type'] not in coin_defaults:  # don't add subclass to coins
+                o['type'] = 'Coin:'+o['type']
+            if o.get('spawns') is not None:
+                del o['spawns']
+
+        # Create line data
+        get_xyz = lambda o: { 'x':o['lng'], 'y':o['lat'], 'z':o['alt'] }
+        get_nc_xyz = lambda o: get_xyz(data_lookup[o['nearest_cap']]) if 'nearest_cap' in o else get_xyz(o)
+
+        if o.get('other_pipe'):
+            o['linetype'] = 'pipe'
+            if o.get('nearest_cap'):    
+                o['startpos'] = get_xyz(data_lookup[o['nearest_cap']])
+            o['target'] = get_nc_xyz(data_lookup[o['other_pipe']])
+        elif o['type'] == 'Jumppad_C':
+            o['linetype'] = 'jumppad_blue' if (o.get('allow_stomp') or o.get('disable_movement_in_air') == False) else 'jumppad_red'
+        elif o.get('actors'):
+            targets = []
+            for actor in o['actors']:
+                a = actor if ':' in actor else ':'.join((o['area'], actor))
+                if (ao := data_lookup.get(a)) and ao in data and ao['type'] not in classes_to_filter:
+                    targets.append(get_xyz(data_lookup[a]))
+            if targets != []:
+                o['linetype'] = 'trigger'
+                o['targets'] = targets
+
+    # Strip properties we don't need to export
+    if stripUnusedProperties:
+        for o in data:
+            for prop in list(o.keys()):
+                if not prop in exported_properties:
+                    del o[prop]
+
+    # Remove entries that match the specified set of classes
+    # note they still exist in data_lookup if needed (for references)
+    if stripUnusedClasses:
+        i = len(data)
+        print(f'lengths {i} {len(data_lookup.values())}')
+        for o in data_lookup.values():
+            if o['type'] in classes_to_filter:
+                data.remove(o)
+        print(f'Removed {i - len(data)} instances of {len(classes_to_filter)} classes')
+
+    # Merge in legacy data but don't override if it already exists
+    combine_legacy(game, classes, data)
+
+    # Merge non-rotating coins together (bDoesntRotate)
+    # Add all coins and big coins that have the bDoesntRotate and use this algorithm
+    # https://stackoverflow.com/questions/78484486/how-to-group-3d-points-closer-than-a-distance-threshold-in-python/78485350#78485350
+    # Remove the coins found and replace with custom coinstack marker
+
+    # Make the filter of Joric classes optional (debug)
+    # Make the filter of unused properties optional (debug)
+    # *** Update main.js to deal with new data
+    # *** check integration of main with Joric code (in MapCompare)
+
+
+def read_game_classes(fn = '..\\js\\gameClasses.js'):
+
+    print('Reading "'+fn+'"...')
+
+    # Open and read the whole js file if it exists
+    if not os.path.exists(fn):
+        sys.exit(f'{fn} not found, exiting')
+
+    with open(fn, 'r', encoding='utf-8-sig') as fh:
+        gc_txt = fh.read()
+
+    # Find constructor parameters and slice them out
+    if not (m := re.search('constructor *?\\( *', gc_txt)):
+        sys.exit('Unexpected format: Can\'t find "constructor("')
+
+    # First column is always 'type'
+    keys = []
+    defaults = []
+
+    # Extract the gameClasses dictionary keys
+    next_idx = m.span()[1]
+    while True:
+        m = re.search(" *([^ ,)]*) *= *(.*?) *([,\\)])", gc_txt[next_idx:], re.M)
+        if m is None: sys.exit('Unexpected format: Reading constructor arguments')
+        next_idx += m.span()[1]
+        keys.append(m.groups()[0])
+        defaults.append(m.groups()[1].strip('\'"'))
+        if defaults[-1] == 'null': defaults[-1]=None
+        if(m.groups()[2]!=','):
+            break;
+
+    # Find the initialiser
+    m = re.search('gameClasses *= *\\{ *\n', gc_txt[next_idx:], re.S)
+    next_idx += m.span()[1]
+
+    class_count = 0
+    classes = {}
+
+    # For each line of the initialiser until we hit the closing }
+    while gc_txt[next_idx:].lstrip()[0] != '}':
+        key = ''
+        entry = {}
+        i = 0
+        while i < len(keys)+1:
+            m = re.search('[^\n]*?(?:(null)|["\'](.*?)["\'])[, )]*', gc_txt[next_idx:])
+            if m is None or gc_txt[next_idx] == '\n':
+                break
+
+            if grp := m.groups()[1]:
+                if not key:
+                    key = grp
+                else:
+                    entry[keys[i-1]] = grp
+            elif not key:
+                sys.exit("Unexpected format: Reading class name")
+            else:
+                entry[keys[i-1]] = None
+
+            next_idx += m.span()[1]
+            i += 1
+
+        while i < len(keys)+1:
+            entry[keys[i-1]] = defaults[i-1]
+            i += 1
+    
+        next_idx += 1
+        classes[key]=entry
+        class_count += 1
+
+    print(f'Success: {class_count} classes read with {len(keys)} members each')
+    return classes
+
 
 # Read the specified legacy CSV
 def read_legacy_csv(game, file):
@@ -392,18 +682,19 @@ def read_legacy_csv(game, file):
 
 # Go through all the objects we have found and look for match with the objects in the legacy file
 # Generates a CSV as a report ({game}-legacycomp.csv)
-def combine_legacy(game, data):
+def combine_legacy(game, classes, data):
 
     # Specifies which layer classes to check for the file
-    filelayers = {
-        'chests':       ['closedChest'],
-        'shops':        ['upgrades'],
-        'collectables': ['misc', 'coin', 'graves']
-    }
+    filelayers = [
+        {'file':'chests',      'types':['coin', 'powerup'],     'nospoiler':'closedChest', 'layer': '-'},
+        {'file':'shops',       'types':['powerup'],             'nospoiler':'shop',        'layer': '-'},
+        {'file':'collectables','types':['coin'],                'nospoiler':'-',           'layer': 'coin'},
+        {'file':'collectables','types':['collectable', 'grave'],'nospoiler':'collectable', 'layer': '-'},
+    ]
 
     print('Reading legacy files...');
-    print('Writing cross-check report ('+game+'-legacycomp.csv)')
-    types = read_types_csv()
+    print(f'Writing cross-check report ({game}-legacycomp.csv)')
+
     suss_count = 0
     suss_dist = 250.0
     longest_d = (0.0, -1)
@@ -416,18 +707,22 @@ def combine_legacy(game, data):
         # Write CSV header with column names
         fh.write('dist,url,'+','.join(str(k) for k in nkeys+lkeys)+'\n')
 
-        for file in filelayers.keys():
+        for filelayer in filelayers:
+            ldata = read_legacy_csv(game, filelayer['file'])
+            ldata = [ lo for lo in ldata if lo['type'] in filelayer['types']]
 
-            ldata = read_legacy_csv(game, file)
             if len(ldata) <= 0:
                 continue
 
             # Create a list of the objects that are likely to match with items in this file based on layer
             ndata = []
             for no in data:
-                layer = types[no['type']]['layer']
-                if layer and layer in filelayers[file]:
-                    ndata.append(no)
+                typeid = no['type']
+                if typeid in classes:
+                    layer = classes[typeid]['layer']
+                    nospoiler = classes[typeid]['nospoiler']
+                    if layer == filelayer['layer'] or nospoiler == filelayer['nospoiler']: 
+                        ndata.append(no)
 
             # Use KD Tree of extracted object points to query legacy points 
             npt = [(nd['lng'], nd['lat']) for nd in ndata]
@@ -454,17 +749,22 @@ def combine_legacy(game, data):
                 # no is an extracted object
 
                 # Write distance between the points and the url to the new map
-                fh.write(str(d)+',https://supragamescommunity.github.io/SupraMaps/#mapId={}&lat={}&lng={}&zoom=5'.format(game, no['lat'], no['lng']))
+                fh.write(f'{d},https://supragamescommunity.github.io/SupraMaps/#mapId={game}&lat={lo['y']}&lng={lo['x']}&zoom=5')
+
+                # Merge in the data from the legacy object we've matched
+                for k in ['image', 'ytVideo', 'ytStart', 'ytEnd']:
+                    if (v := lo.get(k)):
+                        no[camel_to_snake(k)] = v
 
                 for k in nkeys:
-                    fh.write(','+str(no.get(k, '')))
+                    fh.write(f',{no.get(k, '')}')
                 for k in lkeys:
-                    fh.write(','+str(lo.get(k, '')))
+                    fh.write(f',{lo.get(k, '')}')
                 fh.write('\n')
 
-    print('{} entries from legacy CSV files checked'.format(len(ldata)))
-    print("Max separation: {:.4g} Median {:.4g}".format(longest_d[0], np.median(dist)))
-    print("Suspcious items {} (distance > {:.4g})".format(suss_count, suss_dist))
+    print(f'{len(ldata)} entries from legacy CSV files checked')
+    print(f'Max separation: {longest_d[0]:.4g} Median {np.median(dist):.4g}')
+    print(f'Suspcious items {suss_count} (distance > {suss_dist:.4g})')
 
 
 def export_textures(game, cache_dir):
