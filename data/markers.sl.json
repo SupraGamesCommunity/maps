@@ -1253,6 +1253,11 @@
         "x": 13830.9814453125,
         "y": -8307.271484375,
         "z": -457.7048645019531
+      },
+      {
+        "x": 13830.9814453125,
+        "y": -8307.271484375,
+        "z": -457.7048645019531
       }
     ]
   },
@@ -2296,7 +2301,9 @@
     "area": "Map",
     "lat": -35623.22265625,
     "lng": -1665.0548095703125,
-    "alt": -195.50253295898438
+    "alt": -195.50253295898438,
+    "yt_video": "nWigHgcWFCE",
+    "yt_start": "371"
   },
   {
     "name": "BuySword2_2",
@@ -2454,7 +2461,7 @@
     "alt": 1071.166259765625,
     "cost": 55,
     "yt_video": "ReN380PXV-A",
-    "yt_start": "13100"
+    "yt_start": "14321"
   },
   {
     "name": "BuyWallet+50_737",
@@ -14285,9 +14292,7 @@
     "lat": -36991.19921875,
     "lng": -4023.167236328125,
     "alt": 127.11111450195312,
-    "variant": "red",
-    "yt_video": "nWigHgcWFCE",
-    "yt_start": "371"
+    "variant": "red"
   },
   {
     "name": "Juicer_286",
@@ -14296,9 +14301,7 @@
     "lat": 55691.06640625,
     "lng": -63200.2578125,
     "alt": 455.5135803222656,
-    "variant": "green",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "14321"
+    "variant": "green"
   },
   {
     "name": "Jumppad10",
@@ -14336,9 +14339,9 @@
     "lng": -18986.234375,
     "alt": -2374.123291015625,
     "target": {
-      "x": -17006.530164698488,
+      "x": -16818.318848930387,
       "y": -930.0,
-      "z": -523.9859694541655
+      "z": -738.9729825451525
     },
     "linetype": "jumppad_red"
   },
@@ -14448,9 +14451,9 @@
     "lng": 67418.7734375,
     "alt": 5481.66943359375,
     "target": {
-      "x": 68412.21215820312,
-      "y": -8261.586084365845,
-      "z": 5297.540441772462
+      "x": 68294.24131011963,
+      "y": -8349.079652130604,
+      "z": 5444.113209551239
     },
     "linetype": "jumppad_red"
   },
@@ -14854,9 +14857,9 @@
     "lng": -9610.2705078125,
     "alt": -1018.5819091796875,
     "target": {
-      "x": -277.9755394458771,
-      "y": -13161.29245853424,
-      "z": 536.0853730068469
+      "x": -3669.1475138664246,
+      "y": -16823.58035850525,
+      "z": 1328.2686380714547
     },
     "linetype": "jumppad_red"
   },
@@ -14910,9 +14913,9 @@
     "lng": 5950.91748046875,
     "alt": -1057.48046875,
     "target": {
-      "x": 5480.917256355286,
+      "x": 4975.917015552521,
       "y": 27081.2734375,
-      "z": -659.1082158603652
+      "z": -1147.872194138523
     },
     "linetype": "jumppad_red"
   },
@@ -15078,9 +15081,9 @@
     "lng": -43557.62109375,
     "alt": 1411.283447265625,
     "target": {
-      "x": -35910.08083605766,
-      "y": 54233.84113261849,
-      "z": 2389.676361492384
+      "x": -36225.634681642056,
+      "y": 54252.04976989515,
+      "z": 2661.889030080113
     },
     "linetype": "jumppad_red"
   },
@@ -15288,9 +15291,9 @@
     "lng": -17283.203125,
     "alt": -283.02044677734375,
     "target": {
-      "x": -21413.340570860637,
-      "y": -28008.35737596131,
-      "z": 80.43395657636606
+      "x": -21995.96184065289,
+      "y": -28687.904262852404,
+      "z": -630.7840460853333
     },
     "linetype": "jumppad_red"
   },
@@ -15484,9 +15487,9 @@
     "lng": 52843.875,
     "alt": 2910.1630859375,
     "target": {
-      "x": 45644.050249278545,
-      "y": -4654.456216424704,
-      "z": 4992.07156432203
+      "x": 47510.01950007677,
+      "y": -3305.7085448801517,
+      "z": 5947.598941806719
     },
     "linetype": "jumppad_red"
   },
@@ -15498,9 +15501,9 @@
     "lng": 44291.62890625,
     "alt": 5888.71728515625,
     "target": {
-      "x": 6350.024374389972,
-      "y": 1785.5486640930176,
-      "z": 166.49655802015803
+      "x": 6201.814981687393,
+      "y": 1813.2263291627169,
+      "z": 36.473983304782834
     },
     "linetype": "jumppad_red"
   },
@@ -15512,9 +15515,9 @@
     "lng": 10858.4326171875,
     "alt": 2612.117431640625,
     "target": {
-      "x": 48324.846414506435,
-      "y": -5989.671176224947,
-      "z": 5595.335582903245
+      "x": 48372.45303940773,
+      "y": -5997.710162997246,
+      "z": 5562.444803171686
     },
     "linetype": "jumppad_red"
   },
@@ -25983,6 +25986,749 @@
         "z": 118.53591918945312
       }
     ]
+  },
+  {
+    "name": "RairiTrigger",
+    "type": "TriggerVolume_C",
+    "area": "Map",
+    "lat": 51723.37890625,
+    "lng": -68887.1328125,
+    "alt": 632.8060302734375,
+    "linetype": "trigger",
+    "targets": [
+      {
+        "x": -68713.359375,
+        "y": 51322.3671875,
+        "z": 669.659912109375
+      }
+    ]
+  },
+  {
+    "name": "TriggerVolume101",
+    "type": "TriggerVolume_C",
+    "area": "Map",
+    "lat": 12643.19140625,
+    "lng": 50304.43359375,
+    "alt": 3112.067138671875,
+    "linetype": "trigger",
+    "targets": [
+      {
+        "x": 50800.04296875,
+        "y": 12231.7099609375,
+        "z": 4987.630859375
+      },
+      {
+        "x": 50177.02734375,
+        "y": 14557.734375,
+        "z": 5013.6142578125
+      },
+      {
+        "x": 46836.70703125,
+        "y": 13536.853515625,
+        "z": 3163.544677734375
+      }
+    ]
+  },
+  {
+    "name": "TriggerVolume102_5",
+    "type": "TriggerVolume_C",
+    "area": "Map",
+    "lat": 38285.05078125,
+    "lng": 26225.173828125,
+    "alt": 3040.346435546875
+  },
+  {
+    "name": "TriggerVolume104_8",
+    "type": "TriggerVolume_C",
+    "area": "Map",
+    "lat": 22423.240234375,
+    "lng": 82018.8828125,
+    "alt": 3408.86279296875
+  },
+  {
+    "name": "TriggerVolume105",
+    "type": "TriggerVolume_C",
+    "area": "Map",
+    "lat": 23631.80859375,
+    "lng": 80805.28125,
+    "alt": 2430.357421875
+  },
+  {
+    "name": "TriggerVolume106",
+    "type": "TriggerVolume_C",
+    "area": "Map",
+    "lat": 23628.5703125,
+    "lng": 80184.0234375,
+    "alt": 2615.171875,
+    "linetype": "trigger",
+    "targets": [
+      {
+        "x": 81016.7421875,
+        "y": 4864.4716796875,
+        "z": 6852.99365234375
+      },
+      {
+        "x": 43074.0859375,
+        "y": 25510.626953125,
+        "z": 1720.2435302734375
+      }
+    ]
+  },
+  {
+    "name": "TriggerVolume107_17",
+    "type": "TriggerVolume_C",
+    "area": "Map",
+    "lat": -20098.19921875,
+    "lng": -1706.47998046875,
+    "alt": -2078.316162109375
+  },
+  {
+    "name": "TriggerVolume108",
+    "type": "TriggerVolume_C",
+    "area": "Map",
+    "lat": 4382.44091796875,
+    "lng": 82251.8984375,
+    "alt": 7032.1689453125
+  },
+  {
+    "name": "TriggerVolume109_20",
+    "type": "TriggerVolume_C",
+    "area": "Map",
+    "lat": 15459.1494140625,
+    "lng": 81628.796875,
+    "alt": 4426.17236328125
+  },
+  {
+    "name": "TriggerVolume110",
+    "type": "TriggerVolume_C",
+    "area": "Map",
+    "lat": 13890.5078125,
+    "lng": 81902.6875,
+    "alt": 4426.17236328125
+  },
+  {
+    "name": "TriggerVolume111",
+    "type": "TriggerVolume_C",
+    "area": "Map",
+    "lat": 12310.20703125,
+    "lng": 81859.6953125,
+    "alt": 4426.17236328125
+  },
+  {
+    "name": "TriggerVolume112",
+    "type": "TriggerVolume_C",
+    "area": "Map",
+    "lat": 10468.4658203125,
+    "lng": 81875.3125,
+    "alt": 4426.17236328125
+  },
+  {
+    "name": "TriggerVolume113",
+    "type": "TriggerVolume_C",
+    "area": "Map",
+    "lat": 8999.9580078125,
+    "lng": 82706.5,
+    "alt": 4515.30908203125
+  },
+  {
+    "name": "TriggerVolume114",
+    "type": "TriggerVolume_C",
+    "area": "Map",
+    "lat": 7520.88232421875,
+    "lng": 82861.46875,
+    "alt": 5155.8017578125
+  },
+  {
+    "name": "TriggerVolume117",
+    "type": "TriggerVolume_C",
+    "area": "Map",
+    "lat": -24686.025390625,
+    "lng": 13464.2568359375,
+    "alt": 1240.1806640625,
+    "linetype": "trigger",
+    "targets": [
+      {
+        "x": 41553.2421875,
+        "y": 25813.60546875,
+        "z": 1269.8482666015625
+      }
+    ]
+  },
+  {
+    "name": "TriggerVolume118_2",
+    "type": "TriggerVolume_C",
+    "area": "Map",
+    "lat": -3635.1162109375,
+    "lng": 71004.5703125,
+    "alt": 5560.91259765625
+  },
+  {
+    "name": "TriggerVolume119",
+    "type": "TriggerVolume_C",
+    "area": "Map",
+    "lat": -2767.678955078125,
+    "lng": 72378.0859375,
+    "alt": 5560.91259765625
+  },
+  {
+    "name": "TriggerVolume120",
+    "type": "TriggerVolume_C",
+    "area": "Map",
+    "lat": -4165.7333984375,
+    "lng": 73418.703125,
+    "alt": 5278.0830078125
+  },
+  {
+    "name": "TriggerVolume121",
+    "type": "TriggerVolume_C",
+    "area": "Map",
+    "lat": -5605.64208984375,
+    "lng": 74765.0,
+    "alt": 5278.0830078125
+  },
+  {
+    "name": "TriggerVolume122",
+    "type": "TriggerVolume_C",
+    "area": "Map",
+    "lat": -7693.564453125,
+    "lng": 73416.34375,
+    "alt": 5509.27978515625
+  },
+  {
+    "name": "TriggerVolume123",
+    "type": "TriggerVolume_C",
+    "area": "Map",
+    "lat": -8431.28125,
+    "lng": 72238.9375,
+    "alt": 5509.27978515625
+  },
+  {
+    "name": "TriggerVolume124",
+    "type": "TriggerVolume_C",
+    "area": "Map",
+    "lat": -8970.1796875,
+    "lng": 75124.3046875,
+    "alt": 5509.27978515625
+  },
+  {
+    "name": "TriggerVolume125",
+    "type": "TriggerVolume_C",
+    "area": "Map",
+    "lat": -10492.0048828125,
+    "lng": 72065.28125,
+    "alt": 5526.60009765625
+  },
+  {
+    "name": "TriggerVolume128",
+    "type": "TriggerVolume_C",
+    "area": "Map",
+    "lat": -5876.638671875,
+    "lng": 68366.2109375,
+    "alt": 5290.4755859375
+  },
+  {
+    "name": "TriggerVolume129",
+    "type": "TriggerVolume_C",
+    "area": "Map",
+    "lat": -4681.125,
+    "lng": 67727.53125,
+    "alt": 5560.912109375
+  },
+  {
+    "name": "TriggerVolume130",
+    "type": "TriggerVolume_C",
+    "area": "Map",
+    "lat": -8241.3740234375,
+    "lng": 68542.8203125,
+    "alt": 5443.435546875
+  },
+  {
+    "name": "TriggerVolume132",
+    "type": "TriggerVolume_C",
+    "area": "Map",
+    "lat": -7413.40771484375,
+    "lng": 70070.9375,
+    "alt": 5560.912109375
+  },
+  {
+    "name": "TriggerVolume133",
+    "type": "TriggerVolume_C",
+    "area": "Map",
+    "lat": -7143.27197265625,
+    "lng": 64755.28125,
+    "alt": 5709.53564453125
+  },
+  {
+    "name": "TriggerVolume134",
+    "type": "TriggerVolume_C",
+    "area": "Map",
+    "lat": -4185.6650390625,
+    "lng": 63420.50390625,
+    "alt": 5966.5087890625
+  },
+  {
+    "name": "TriggerVolume135",
+    "type": "TriggerVolume_C",
+    "area": "Map",
+    "lat": -3442.15771484375,
+    "lng": 64595.82421875,
+    "alt": 6085.0859375
+  },
+  {
+    "name": "TriggerVolume136",
+    "type": "TriggerVolume_C",
+    "area": "Map",
+    "lat": -4560.31591796875,
+    "lng": 77897.0546875,
+    "alt": 5278.0830078125
+  },
+  {
+    "name": "TriggerVolume137",
+    "type": "TriggerVolume_C",
+    "area": "Map",
+    "lat": -3253.033203125,
+    "lng": 75258.359375,
+    "alt": 5408.41845703125
+  },
+  {
+    "name": "TriggerVolume138",
+    "type": "TriggerVolume_C",
+    "area": "Map",
+    "lat": -6654.77734375,
+    "lng": 75727.859375,
+    "alt": 5408.41845703125
+  },
+  {
+    "name": "TriggerVolume139_3",
+    "type": "TriggerVolume_C",
+    "area": "Map",
+    "lat": 475.26556396484375,
+    "lng": 81510.984375,
+    "alt": 5376.04248046875
+  },
+  {
+    "name": "TriggerVolume141_2",
+    "type": "TriggerVolume_C",
+    "area": "Map",
+    "lat": -6606.28759765625,
+    "lng": 79599.8828125,
+    "alt": 6386.04248046875
+  },
+  {
+    "name": "TriggerVolume142_5",
+    "type": "TriggerVolume_C",
+    "area": "Map",
+    "lat": -6548.0,
+    "lng": 99771.0,
+    "alt": 13733.0
+  },
+  {
+    "name": "TriggerVolume147",
+    "type": "TriggerVolume_C",
+    "area": "Map",
+    "lat": -5665.6318359375,
+    "lng": 46798.95703125,
+    "alt": 5817.19580078125
+  },
+  {
+    "name": "TriggerVolume148",
+    "type": "TriggerVolume_C",
+    "area": "Map",
+    "lat": 8132.5302734375,
+    "lng": 82839.109375,
+    "alt": 4935.2841796875
+  },
+  {
+    "name": "TriggerVolume149_2",
+    "type": "TriggerVolume_C",
+    "area": "Map",
+    "lat": -21876.697265625,
+    "lng": 7596.35400390625,
+    "alt": 1149.842529296875
+  },
+  {
+    "name": "TriggerVolume150",
+    "type": "TriggerVolume_C",
+    "area": "Map",
+    "lat": 1157.64453125,
+    "lng": 7148.40625,
+    "alt": 159.112060546875
+  },
+  {
+    "name": "TriggerVolume151_6",
+    "type": "TriggerVolume_C",
+    "area": "Map",
+    "lat": -26996.99609375,
+    "lng": -21493.732421875,
+    "alt": 95.2470703125
+  },
+  {
+    "name": "TriggerVolume153",
+    "type": "TriggerVolume_C",
+    "area": "Map",
+    "lat": -31364.607421875,
+    "lng": 3395.30810546875,
+    "alt": 10.28997802734375
+  },
+  {
+    "name": "TriggerVolume154",
+    "type": "TriggerVolume_C",
+    "area": "Map",
+    "lat": -24435.9609375,
+    "lng": -1941.19873046875,
+    "alt": -2045.254638671875
+  },
+  {
+    "name": "TriggerVolume161_2",
+    "type": "TriggerVolume_C",
+    "area": "Map",
+    "lat": 54110.91796875,
+    "lng": -36217.71875,
+    "alt": 2699.6884765625,
+    "linetype": "trigger",
+    "targets": [
+      {
+        "x": -43557.62109375,
+        "y": 54675.1328125,
+        "z": 1411.283447265625
+      }
+    ]
+  },
+  {
+    "name": "TriggerVolume163_2",
+    "type": "TriggerVolume_C",
+    "area": "Map",
+    "lat": 25690.1484375,
+    "lng": 52825.30859375,
+    "alt": 1797.2850341796875,
+    "linetype": "trigger",
+    "targets": [
+      {
+        "x": 50355.9296875,
+        "y": 25549.70703125,
+        "z": 1280.35546875
+      }
+    ]
+  },
+  {
+    "name": "TriggerVolume17",
+    "type": "TriggerVolume_C",
+    "area": "Map",
+    "lat": -32478.525390625,
+    "lng": -1664.77734375,
+    "alt": -2076.14111328125
+  },
+  {
+    "name": "TriggerVolume170",
+    "type": "TriggerVolume_C",
+    "area": "Map",
+    "lat": 12513.681640625,
+    "lng": 50368.56640625,
+    "alt": 3112.067138671875
+  },
+  {
+    "name": "TriggerVolume18",
+    "type": "TriggerVolume_C",
+    "area": "Map",
+    "lat": -22533.001953125,
+    "lng": 19325.25390625,
+    "alt": -860.0748901367188,
+    "linetype": "trigger",
+    "targets": [
+      {
+        "x": 19601.712890625,
+        "y": -22758.767578125,
+        "z": -810.4617309570312
+      }
+    ]
+  },
+  {
+    "name": "TriggerVolume182_2",
+    "type": "TriggerVolume_C",
+    "area": "Map",
+    "lat": 39626.125,
+    "lng": -18009.279296875,
+    "alt": 475.6195068359375
+  },
+  {
+    "name": "TriggerVolume2_2",
+    "type": "TriggerVolume_C",
+    "area": "Map",
+    "lat": -36048.19921875,
+    "lng": -1749.7003173828125,
+    "alt": 14.7808837890625
+  },
+  {
+    "name": "TriggerVolume3",
+    "type": "TriggerVolume_C",
+    "area": "Map",
+    "lat": -33489.80859375,
+    "lng": -2064.092041015625,
+    "alt": -1898.6806640625
+  },
+  {
+    "name": "TriggerVolume31_29",
+    "type": "TriggerVolume_C",
+    "area": "Map",
+    "lat": 28697.125,
+    "lng": 6173.12255859375,
+    "alt": 11.423660278320312
+  },
+  {
+    "name": "TriggerVolume32",
+    "type": "TriggerVolume_C",
+    "area": "Map",
+    "lat": 29223.744140625,
+    "lng": 10655.2490234375,
+    "alt": 36.92808532714844
+  },
+  {
+    "name": "TriggerVolume33",
+    "type": "TriggerVolume_C",
+    "area": "Map",
+    "lat": 25572.900390625,
+    "lng": 7487.82861328125,
+    "alt": 1022.6614990234375
+  },
+  {
+    "name": "TriggerVolume4",
+    "type": "TriggerVolume_C",
+    "area": "Map",
+    "lat": -32537.041015625,
+    "lng": 1415.636962890625,
+    "alt": 24.565093994140625
+  },
+  {
+    "name": "TriggerVolume51_2",
+    "type": "TriggerVolume_C",
+    "area": "Map",
+    "lat": -1848.9989013671875,
+    "lng": -17159.828125,
+    "alt": -549.06787109375
+  },
+  {
+    "name": "TriggerVolume53_6",
+    "type": "TriggerVolume_C",
+    "area": "Map",
+    "lat": 10558.9794921875,
+    "lng": 22159.654296875,
+    "alt": 808.6358642578125
+  },
+  {
+    "name": "TriggerVolume54_8",
+    "type": "TriggerVolume_C",
+    "area": "Map",
+    "lat": 17486.009765625,
+    "lng": 21539.9375,
+    "alt": 1117.344482421875
+  },
+  {
+    "name": "TriggerVolume57_2",
+    "type": "TriggerVolume_C",
+    "area": "Map",
+    "lat": -32767.244140625,
+    "lng": 1930.78857421875,
+    "alt": -432.0
+  },
+  {
+    "name": "TriggerVolume58",
+    "type": "TriggerVolume_C",
+    "area": "Map",
+    "lat": 25601.8046875,
+    "lng": 27327.8359375,
+    "alt": 1117.344482421875
+  },
+  {
+    "name": "TriggerVolume60",
+    "type": "TriggerVolume_C",
+    "area": "Map",
+    "lat": -32882.9453125,
+    "lng": -1598.0345458984375,
+    "alt": -1898.6806640625,
+    "linetype": "trigger",
+    "targets": [
+      {
+        "x": -2246.938720703125,
+        "y": -34034.41796875,
+        "z": -25.360198974609375
+      }
+    ]
+  },
+  {
+    "name": "TriggerVolume61",
+    "type": "TriggerVolume_C",
+    "area": "Map",
+    "lat": -8307.271484375,
+    "lng": 13830.9814453125,
+    "alt": -457.7048645019531
+  },
+  {
+    "name": "TriggerVolume62_4",
+    "type": "TriggerVolume_C",
+    "area": "Map",
+    "lat": -2065.75048828125,
+    "lng": -16133.5263671875,
+    "alt": -785.841064453125,
+    "linetype": "trigger",
+    "targets": [
+      {
+        "x": -15403.9658203125,
+        "y": -1392.6865234375,
+        "z": -993.7944946289062
+      }
+    ]
+  },
+  {
+    "name": "TriggerVolume65_2",
+    "type": "TriggerVolume_C",
+    "area": "Map",
+    "lat": -45193.85546875,
+    "lng": -35188.6953125,
+    "alt": -506.174072265625,
+    "linetype": "trigger",
+    "targets": [
+      {
+        "x": -35014.0546875,
+        "y": -45153.83984375,
+        "z": -764.3771362304688
+      }
+    ]
+  },
+  {
+    "name": "TriggerVolume66_5",
+    "type": "TriggerVolume_C",
+    "area": "Map",
+    "lat": -24561.83203125,
+    "lng": -35202.12109375,
+    "alt": -458.6051025390625,
+    "linetype": "trigger",
+    "targets": [
+      {
+        "x": -35521.44140625,
+        "y": -24750.291015625,
+        "z": -998.9998779296875
+      }
+    ]
+  },
+  {
+    "name": "TriggerVolume67_2",
+    "type": "TriggerVolume_C",
+    "area": "Map",
+    "lat": -17846.970703125,
+    "lng": 21777.9453125,
+    "alt": 1757.72021484375
+  },
+  {
+    "name": "TriggerVolume69_5",
+    "type": "TriggerVolume_C",
+    "area": "Map",
+    "lat": -28036.69140625,
+    "lng": 23190.47265625,
+    "alt": 4981.7177734375
+  },
+  {
+    "name": "TriggerVolume70_6",
+    "type": "TriggerVolume_C",
+    "area": "Map",
+    "lat": 39556.59765625,
+    "lng": 27171.03125,
+    "alt": 3144.67236328125
+  },
+  {
+    "name": "TriggerVolume71_8",
+    "type": "TriggerVolume_C",
+    "area": "Map",
+    "lat": 39556.59765625,
+    "lng": 25175.083984375,
+    "alt": 3144.67236328125
+  },
+  {
+    "name": "TriggerVolume74_2",
+    "type": "TriggerVolume_C",
+    "area": "Map",
+    "lat": 38354.70703125,
+    "lng": 26238.82421875,
+    "alt": 3076.64111328125
+  },
+  {
+    "name": "TriggerVolume80_2",
+    "type": "TriggerVolume_C",
+    "area": "Map",
+    "lat": 858.0,
+    "lng": 48195.0,
+    "alt": 3073.0
+  },
+  {
+    "name": "TriggerVolume81_2",
+    "type": "TriggerVolume_C",
+    "area": "Map",
+    "lat": 3790.321044921875,
+    "lng": 46505.6484375,
+    "alt": 2763.76953125
+  },
+  {
+    "name": "TriggerVolume82_2",
+    "type": "TriggerVolume_C",
+    "area": "Map",
+    "lat": 3709.638671875,
+    "lng": 42312.421875,
+    "alt": 1693.8748779296875,
+    "linetype": "trigger",
+    "targets": [
+      {
+        "x": 41555.6015625,
+        "y": 3622.973876953125,
+        "z": 2419.8740234375
+      }
+    ]
+  },
+  {
+    "name": "TriggerVolume86_2",
+    "type": "TriggerVolume_C",
+    "area": "Map",
+    "lat": 15493.4306640625,
+    "lng": 51516.40625,
+    "alt": 3044.225830078125
+  },
+  {
+    "name": "TriggerVolume92_2",
+    "type": "TriggerVolume_C",
+    "area": "Map",
+    "lat": 26135.576171875,
+    "lng": 48288.32421875,
+    "alt": 1594.514404296875
+  },
+  {
+    "name": "TriggerVolume94_2",
+    "type": "TriggerVolume_C",
+    "area": "Map",
+    "lat": -6815.48193359375,
+    "lng": -31614.6484375,
+    "alt": -1043.057861328125
+  },
+  {
+    "name": "TriggerVolume97",
+    "type": "TriggerVolume_C",
+    "area": "Map",
+    "lat": -8865.0,
+    "lng": -19770.0,
+    "alt": -1345.0
+  },
+  {
+    "name": "TriggerVolume98",
+    "type": "TriggerVolume_C",
+    "area": "Map",
+    "lat": -17991.779296875,
+    "lng": -5338.603515625,
+    "alt": 1570.0
+  },
+  {
+    "name": "TriggerVolume99",
+    "type": "TriggerVolume_C",
+    "area": "Map",
+    "lat": -27765.52734375,
+    "lng": -14698.796875,
+    "alt": 1570.0
   },
   {
     "name": "UpgradeHappiness2_2",

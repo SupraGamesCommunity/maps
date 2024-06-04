@@ -1,5 +1,21 @@
 [
   {
+    "name": "Anvil2_3",
+    "type": "Anvil_C",
+    "area": "DLC2_Complete",
+    "lat": -46690.0,
+    "lng": 38863.0,
+    "alt": 726.2919311523438
+  },
+  {
+    "name": "Anvil4_2",
+    "type": "Anvil_C",
+    "area": "DLC2_Complete",
+    "lat": -29656.037109375,
+    "lng": 24391.212890625,
+    "alt": 1728.9361572265625
+  },
+  {
     "name": "BallButton",
     "type": "BallButton_C",
     "area": "DLC2_Complete",
@@ -132,54 +148,6 @@
     "yt_start": "2341"
   },
   {
-    "name": "BP_Area2_FatGuyQuest_2",
-    "type": "BP_Area2_FatGuyQuest_C",
-    "area": "DLC2_Complete",
-    "lat": -11983.7578125,
-    "lng": 64093.80859375,
-    "alt": 4094.28271484375
-  },
-  {
-    "name": "BP_Area2_OutsideSpeakerQuest_2",
-    "type": "BP_Area2_OutsideSpeakerQuest_C",
-    "area": "DLC2_Complete",
-    "lat": -10006.8876953125,
-    "lng": 62015.73828125,
-    "alt": 441.20745849609375
-  },
-  {
-    "name": "BP_Area2_Uncloged_Quest_10",
-    "type": "BP_Area2_Uncloged_Quest_C",
-    "area": "DLC2_Complete",
-    "lat": -8006.755859375,
-    "lng": 60487.296875,
-    "alt": 4265.0
-  },
-  {
-    "name": "Area2EntranceQuest_2",
-    "type": "BP_Area2EntranceQuest_C",
-    "area": "DLC2_Complete",
-    "lat": -16017.76171875,
-    "lng": 47044.21875,
-    "alt": 645.227294921875
-  },
-  {
-    "name": "BP_BaronGoldQuest_2",
-    "type": "BP_BaronGoldQuest_C",
-    "area": "DLC2_Complete",
-    "lat": -30600.998046875,
-    "lng": 18461.029296875,
-    "alt": 3167.28857421875
-  },
-  {
-    "name": "BP_BeamFightTrainingQuest_2",
-    "type": "BP_BeamFightTrainingQuest_C",
-    "area": "DLC2_Complete",
-    "lat": -26436.349609375,
-    "lng": 32237.353515625,
-    "alt": 999.7582397460938
-  },
-  {
     "name": "BP_BoneDetector_2",
     "type": "BP_BoneDetector_C",
     "area": "DLC2_Complete",
@@ -189,38 +157,6 @@
     "cost": 50,
     "yt_video": "5KkEVBgFW3U",
     "yt_start": "11697"
-  },
-  {
-    "name": "BP_BoomeraxeKeyQuest_2",
-    "type": "BP_BoomeraxeKeyQuest_C",
-    "area": "DLC2_Complete",
-    "lat": -11332.0888671875,
-    "lng": 40157.82421875,
-    "alt": 989.301025390625
-  },
-  {
-    "name": "BP_Building1_BlockageQuest_2",
-    "type": "BP_Building1_BlockageQuest_C",
-    "area": "DLC2_Complete",
-    "lat": -11451.6494140625,
-    "lng": 58007.9296875,
-    "alt": 1352.802490234375
-  },
-  {
-    "name": "BP_Building2_BlockageQuest2",
-    "type": "BP_Building1_BlockageQuest_C",
-    "area": "DLC2_Complete",
-    "lat": -14735.927734375,
-    "lng": 61989.6796875,
-    "alt": 1352.802490234375
-  },
-  {
-    "name": "BP_Building2OptionalRoofQuest_2",
-    "type": "BP_Building2OptionalRoofQuest_C",
-    "area": "DLC2_Complete",
-    "lat": -16120.7890625,
-    "lng": 58435.46875,
-    "alt": 3067.405517578125
   },
   {
     "name": "BP_BuyBeamElasticity_2",
@@ -244,14 +180,6 @@
     "cost": 50,
     "yt_video": "5KkEVBgFW3U",
     "yt_start": "2484"
-  },
-  {
-    "name": "BP_CaveKeyQuest_2",
-    "type": "BP_CaveKeyQuest_C",
-    "area": "DLC2_Complete",
-    "lat": -22475.15625,
-    "lng": 58654.58203125,
-    "alt": 4202.9970703125
   },
   {
     "name": "BP_CookableMeat10",
@@ -334,22 +262,6 @@
     "alt": 10.0
   },
   {
-    "name": "BP_FoodQuest2",
-    "type": "BP_FoodQuest_C",
-    "area": "DLC2_Complete",
-    "lat": -48202.1328125,
-    "lng": -378.0361022949219,
-    "alt": 3340.4345703125
-  },
-  {
-    "name": "BP_GreenhouseQuest_2",
-    "type": "BP_GreenhouseQuest_C",
-    "area": "DLC2_Complete",
-    "lat": -21448.931640625,
-    "lng": 23626.6640625,
-    "alt": -371.3694763183594
-  },
-  {
     "name": "BP_MonsterChest2_2",
     "type": "BP_MonsterChest_C",
     "area": "DLC2_Complete",
@@ -381,30 +293,6 @@
     "spawns": "BP_DoubleHealthLoot_C",
     "yt_video": "5KkEVBgFW3U",
     "yt_start": "8450"
-  },
-  {
-    "name": "BP_OpenPipeHouseQuest_2",
-    "type": "BP_OpenPipeHouseAndArea2Quest_C",
-    "area": "DLC2_Complete",
-    "lat": -30808.318359375,
-    "lng": 18647.84375,
-    "alt": 182.97079467773438
-  },
-  {
-    "name": "BP_ParanoidQuest_2",
-    "type": "BP_ParanoidQuest_C",
-    "area": "DLC2_Complete",
-    "lat": -28347.85546875,
-    "lng": 14974.4609375,
-    "alt": -152.20645141601562
-  },
-  {
-    "name": "BP_PrefectTrappedQuest_2",
-    "type": "BP_PrefectTrappedQuest_C",
-    "area": "DLC2_Complete",
-    "lat": -23517.681640625,
-    "lng": 20619.5390625,
-    "alt": 1426.2056884765625
   },
   {
     "name": "BP_Purchase_Crouch_2",
@@ -478,41 +366,1424 @@
     "yt_start": "5819"
   },
   {
-    "name": "BP_ShowerQuest_2",
-    "type": "BP_ShowerQuest_C",
+    "name": "A2_YellowBldgExitTrigger",
+    "type": "BP_TriggerVolume_C",
     "area": "DLC2_Complete",
-    "lat": -20626.630859375,
-    "lng": 13611.3720703125,
-    "alt": -71.22149658203125,
+    "lat": -11777.0,
+    "lng": 62571.0,
+    "alt": 3176.0
+  },
+  {
+    "name": "Area5IntroCutsceneTrigger",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -41980.0,
+    "lng": 21510.0,
+    "alt": 3660.0
+  },
+  {
+    "name": "BankElectricGunCheckVolume",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -46963.06640625,
+    "lng": 6013.58935546875,
+    "alt": 2281.20751953125
+  },
+  {
+    "name": "BP_A3_Rework_Locking_Fix",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -42866.53515625,
+    "lng": -250.88330078125,
+    "alt": 2383.84716796875,
     "linetype": "trigger",
     "targets": [
       {
-        "x": 13520.916015625,
-        "y": -20228.533203125,
-        "z": -169.4905242919922
-      },
-      {
-        "x": 13485.70703125,
-        "y": -20418.41015625,
-        "z": -169.4905242919922
+        "x": -899.452880859375,
+        "y": -43705.30078125,
+        "z": 2404.25
       }
     ]
   },
   {
-    "name": "BP_SmashyGlassQuest2",
-    "type": "BP_SmashyGlassQuest_C",
+    "name": "BP_TownCelebrationTrigger",
+    "type": "BP_TriggerVolume_C",
     "area": "DLC2_Complete",
-    "lat": -49204.0,
-    "lng": 3838.999755859375,
-    "alt": 3257.0
+    "lat": -28666.78515625,
+    "lng": 18427.716796875,
+    "alt": 115.24168395996094
   },
   {
-    "name": "TownIntroQuest_2",
-    "type": "BP_TownIntroQuest_C",
+    "name": "BP_Trigger_DisableAtmosphericFog",
+    "type": "BP_TriggerVolume_C",
     "area": "DLC2_Complete",
-    "lat": -21165.80078125,
-    "lng": 18475.09765625,
-    "alt": 24.06549072265625
+    "lat": 9872.8779296875,
+    "lng": 12787.8193359375,
+    "alt": 3128.0
+  },
+  {
+    "name": "BP_TriggerVolume10",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -35006.90625,
+    "lng": 20535.43359375,
+    "alt": 4028.052490234375
+  },
+  {
+    "name": "BP_TriggerVolume11",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -22247.39453125,
+    "lng": -66731.1015625,
+    "alt": 9184.779296875
+  },
+  {
+    "name": "BP_TriggerVolume12_491",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -47260.265625,
+    "lng": 46549.078125,
+    "alt": 1476.3919677734375
+  },
+  {
+    "name": "BP_TriggerVolume13_522",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": 17574.3984375,
+    "lng": 22954.166015625,
+    "alt": 2677.103271484375
+  },
+  {
+    "name": "BP_TriggerVolume15",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -62533.1953125,
+    "lng": 41349.5703125,
+    "alt": 3584.96826171875
+  },
+  {
+    "name": "BP_TriggerVolume16_531",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -36331.0,
+    "lng": -1885.0,
+    "alt": 5095.0
+  },
+  {
+    "name": "BP_TriggerVolume17_221",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -27388.138671875,
+    "lng": 21058.740234375,
+    "alt": -110.2090072631836
+  },
+  {
+    "name": "BP_TriggerVolume18",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -26723.90625,
+    "lng": 21702.935546875,
+    "alt": -110.2090072631836
+  },
+  {
+    "name": "BP_TriggerVolume19_487",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -32122.197265625,
+    "lng": 15557.9609375,
+    "alt": 787.9292602539062
+  },
+  {
+    "name": "BP_TriggerVolume2",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -21703.375,
+    "lng": -73625.1015625,
+    "alt": 8534.779296875
+  },
+  {
+    "name": "BP_TriggerVolume20_487",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": 20144.49609375,
+    "lng": 18240.775390625,
+    "alt": 3531.0
+  },
+  {
+    "name": "BP_TriggerVolume21",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -46943.7734375,
+    "lng": 4285.0703125,
+    "alt": 1865.0
+  },
+  {
+    "name": "BP_TriggerVolume22_525",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -17267.0,
+    "lng": 45619.0,
+    "alt": 1052.0
+  },
+  {
+    "name": "BP_TriggerVolume23_494",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -44220.90234375,
+    "lng": 19651.064453125,
+    "alt": 3170.0
+  },
+  {
+    "name": "BP_TriggerVolume24",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -8646.974609375,
+    "lng": 18615.0,
+    "alt": 4992.1259765625
+  },
+  {
+    "name": "BP_TriggerVolume25_524",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": 15516.2578125,
+    "lng": 21877.634765625,
+    "alt": 3133.44921875
+  },
+  {
+    "name": "BP_TriggerVolume26_487",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -44231.31640625,
+    "lng": 19626.94140625,
+    "alt": 4537.8427734375
+  },
+  {
+    "name": "BP_TriggerVolume27_490",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -32540.0,
+    "lng": 18013.767578125,
+    "alt": 3585.0
+  },
+  {
+    "name": "BP_TriggerVolume28",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -26489.375,
+    "lng": 18550.5078125,
+    "alt": -2036.3515625
+  },
+  {
+    "name": "BP_TriggerVolume29_487",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -30114.0,
+    "lng": 18492.3984375,
+    "alt": -2358.70263671875
+  },
+  {
+    "name": "BP_TriggerVolume30_522",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": 17694.6953125,
+    "lng": 22962.966796875,
+    "alt": 2805.364501953125
+  },
+  {
+    "name": "BP_TriggerVolume31_525",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": 15100.4248046875,
+    "lng": 23057.853515625,
+    "alt": 3100.110107421875
+  },
+  {
+    "name": "BP_TriggerVolume32",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": 20438.8046875,
+    "lng": 21126.537109375,
+    "alt": 2909.784912109375
+  },
+  {
+    "name": "BP_TriggerVolume33",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": 9331.1826171875,
+    "lng": 16970.17578125,
+    "alt": 3666.810791015625
+  },
+  {
+    "name": "BP_TriggerVolume34_603",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": 16599.0,
+    "lng": 23023.0,
+    "alt": 3818.0
+  },
+  {
+    "name": "BP_TriggerVolume35_607",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": 9619.4111328125,
+    "lng": 19750.126953125,
+    "alt": 3013.0
+  },
+  {
+    "name": "BP_TriggerVolume36_522",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -24865.111328125,
+    "lng": 20378.974609375,
+    "alt": -129.24880981445312
+  },
+  {
+    "name": "BP_TriggerVolume37_522",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -29135.0,
+    "lng": 20940.0,
+    "alt": 1460.0
+  },
+  {
+    "name": "BP_TriggerVolume38_661",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -45857.7890625,
+    "lng": 6023.6953125,
+    "alt": 2020.753173828125
+  },
+  {
+    "name": "BP_TriggerVolume39_661",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -40263.890625,
+    "lng": 33849.75,
+    "alt": 260.6277160644531
+  },
+  {
+    "name": "BP_TriggerVolume3_2",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -41540.0,
+    "lng": -279.88720703125,
+    "alt": 2630.0
+  },
+  {
+    "name": "BP_TriggerVolume4",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -43506.5625,
+    "lng": -6561.5244140625,
+    "alt": 2636.175048828125
+  },
+  {
+    "name": "BP_TriggerVolume40",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": 14072.4111328125,
+    "lng": 23545.46484375,
+    "alt": 3642.35498046875
+  },
+  {
+    "name": "BP_TriggerVolume41",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": 13821.5390625,
+    "lng": 21734.150390625,
+    "alt": 3411.62744140625
+  },
+  {
+    "name": "BP_TriggerVolume42_524",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -21527.0,
+    "lng": 23632.0,
+    "alt": -288.0
+  },
+  {
+    "name": "BP_TriggerVolume43_522",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -36387.73828125,
+    "lng": 20685.634765625,
+    "alt": 4041.3857421875,
+    "linetype": "trigger",
+    "targets": [
+      {
+        "x": 20356.125,
+        "y": -36786.609375,
+        "z": 3622.0390625
+      }
+    ]
+  },
+  {
+    "name": "BP_TriggerVolume44",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -46722.421875,
+    "lng": 44787.4296875,
+    "alt": 839.7850341796875
+  },
+  {
+    "name": "BP_TriggerVolume45",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -45870.5234375,
+    "lng": 45550.0859375,
+    "alt": 1312.048095703125
+  },
+  {
+    "name": "BP_TriggerVolume46",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -36628.8671875,
+    "lng": 20741.451171875,
+    "alt": 4041.3857421875,
+    "linetype": "trigger",
+    "targets": [
+      {
+        "x": 21206.2890625,
+        "y": -36866.19921875,
+        "z": 3607.400390625
+      }
+    ]
+  },
+  {
+    "name": "BP_TriggerVolume47",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": 15951.1923828125,
+    "lng": 18715.455078125,
+    "alt": 4039.595458984375
+  },
+  {
+    "name": "BP_TriggerVolume50_661",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -33786.0,
+    "lng": 20346.0,
+    "alt": 190.0
+  },
+  {
+    "name": "BP_TriggerVolume51_664",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": 978.1974487304688,
+    "lng": 9687.26171875,
+    "alt": 3458.065673828125,
+    "linetype": "trigger",
+    "targets": [
+      {
+        "x": 9572.201171875,
+        "y": 1355.6878662109375,
+        "z": 3200.802001953125
+      }
+    ]
+  },
+  {
+    "name": "BP_TriggerVolume52_667",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": 19712.298828125,
+    "lng": 19959.208984375,
+    "alt": 3257.15283203125,
+    "linetype": "trigger",
+    "targets": [
+      {
+        "x": 19901.6484375,
+        "y": 19485.626953125,
+        "z": 3091.51318359375
+      }
+    ]
+  },
+  {
+    "name": "BP_TriggerVolume53_661",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -16290.810546875,
+    "lng": 42493.828125,
+    "alt": 2552.579833984375
+  },
+  {
+    "name": "BP_TriggerVolume55",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -40976.546875,
+    "lng": 39483.45703125,
+    "alt": 7977.50048828125
+  },
+  {
+    "name": "BP_TriggerVolume56",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -47076.6875,
+    "lng": 4733.7314453125,
+    "alt": 1865.0
+  },
+  {
+    "name": "BP_TriggerVolume57",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -46420.43359375,
+    "lng": 4324.29443359375,
+    "alt": 1865.0
+  },
+  {
+    "name": "BP_TriggerVolume58",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -49212.0,
+    "lng": 2722.668701171875,
+    "alt": 1864.0001220703125,
+    "linetype": "trigger",
+    "targets": [
+      {
+        "x": 5902.171875,
+        "y": -45215.02734375,
+        "z": 1859.0
+      },
+      {
+        "x": 7172.6533203125,
+        "y": -42902.0859375,
+        "z": 2191.778076171875
+      },
+      {
+        "x": 5902.171875,
+        "y": -45215.02734375,
+        "z": 1859.0
+      }
+    ]
+  },
+  {
+    "name": "BP_TriggerVolume59",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -50730.0546875,
+    "lng": 1232.4803466796875,
+    "alt": 2493.83203125
+  },
+  {
+    "name": "BP_TriggerVolume60",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -51265.4609375,
+    "lng": 4758.353515625,
+    "alt": 2182.5966796875
+  },
+  {
+    "name": "BP_TriggerVolume61",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -49253.02734375,
+    "lng": 3825.21435546875,
+    "alt": 2015.693115234375
+  },
+  {
+    "name": "BP_TriggerVolume62",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -51982.8125,
+    "lng": 3788.0791015625,
+    "alt": 2015.693115234375
+  },
+  {
+    "name": "BP_TriggerVolume63",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -47402.609375,
+    "lng": 2894.129638671875,
+    "alt": 3536.116943359375
+  },
+  {
+    "name": "BP_TriggerVolume64_661",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -27820.0,
+    "lng": 18480.0,
+    "alt": -2760.0
+  },
+  {
+    "name": "BP_TriggerVolume65_664",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -21690.572265625,
+    "lng": -73678.484375,
+    "alt": 2553.041015625
+  },
+  {
+    "name": "BP_TriggerVolume66_661",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": 3834.699462890625,
+    "lng": -58458.0234375,
+    "alt": 2933.677734375
+  },
+  {
+    "name": "BP_TriggerVolume68_661",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": 651.9661254882812,
+    "lng": -58314.5234375,
+    "alt": 8455.24609375
+  },
+  {
+    "name": "BP_TriggerVolume69_661",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": 51.0,
+    "lng": 7502.0,
+    "alt": 196.0
+  },
+  {
+    "name": "BP_TriggerVolume6_125",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -41113.94921875,
+    "lng": 9846.1953125,
+    "alt": 2193.583984375
+  },
+  {
+    "name": "BP_TriggerVolume70_664",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": 4844.2470703125,
+    "lng": 8522.01953125,
+    "alt": -7487.0
+  },
+  {
+    "name": "BP_TriggerVolume71_667",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -7242.0,
+    "lng": -1748.0,
+    "alt": 1177.0
+  },
+  {
+    "name": "BP_TriggerVolume72_661",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -26506.064453125,
+    "lng": 23648.912109375,
+    "alt": -2797.6455078125
+  },
+  {
+    "name": "BP_TriggerVolume7_484",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -38415.65625,
+    "lng": 20802.505859375,
+    "alt": 4002.105712890625
+  },
+  {
+    "name": "BP_TriggerVolume9",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -5478.40771484375,
+    "lng": 18615.0,
+    "alt": 4851.494140625
+  },
+  {
+    "name": "BP_TriggerVolume_661",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -41120.58203125,
+    "lng": 9347.6171875,
+    "alt": 2804.6494140625
+  },
+  {
+    "name": "BP_TriggerVolume_A1_Combat",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": 4333.01025390625,
+    "lng": 11442.115234375,
+    "alt": 3920.155517578125
+  },
+  {
+    "name": "BP_TriggerVolume_A1_Combat10",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": 6307.89501953125,
+    "lng": 30305.59375,
+    "alt": 4211.63037109375
+  },
+  {
+    "name": "BP_TriggerVolume_A1_Combat11",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": 9405.6611328125,
+    "lng": 33300.078125,
+    "alt": 4211.626953125
+  },
+  {
+    "name": "BP_TriggerVolume_A1_Combat2",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": 3022.61181640625,
+    "lng": 15308.853515625,
+    "alt": 3774.389404296875
+  },
+  {
+    "name": "BP_TriggerVolume_A1_Combat3",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": 3747.172119140625,
+    "lng": 19186.908203125,
+    "alt": 4081.336181640625
+  },
+  {
+    "name": "BP_TriggerVolume_A1_Combat4_488",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": 123.41480255126953,
+    "lng": 17523.9921875,
+    "alt": 3997.513427734375
+  },
+  {
+    "name": "BP_TriggerVolume_A1_Combat5",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -3436.997802734375,
+    "lng": 18064.25390625,
+    "alt": 4383.5166015625
+  },
+  {
+    "name": "BP_TriggerVolume_A1_Combat6",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": 6926.17724609375,
+    "lng": 32977.15234375,
+    "alt": 3909.25439453125
+  },
+  {
+    "name": "BP_TriggerVolume_A1_Combat7",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": 868.497802734375,
+    "lng": 38968.4140625,
+    "alt": 3201.52294921875
+  },
+  {
+    "name": "BP_TriggerVolume_A1_Combat8",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": 6944.41064453125,
+    "lng": 10525.33984375,
+    "alt": 3791.082763671875
+  },
+  {
+    "name": "BP_TriggerVolume_A1_Combat9",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -2431.89208984375,
+    "lng": 17909.654296875,
+    "alt": 4445.8388671875
+  },
+  {
+    "name": "BP_TriggerVolume_A1_Fire_Prevention",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": 1815.5560302734375,
+    "lng": 37550.3046875,
+    "alt": 2481.9560546875
+  },
+  {
+    "name": "BP_TriggerVolume_A1_HotBallsGuy",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": 9125.3779296875,
+    "lng": 17342.79296875,
+    "alt": 3257.260009765625
+  },
+  {
+    "name": "BP_TriggerVolume_A2_Combat1",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -24363.326171875,
+    "lng": 34546.57421875,
+    "alt": 1600.4052734375
+  },
+  {
+    "name": "BP_TriggerVolume_A2_Combat10",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -14661.6728515625,
+    "lng": 39794.19921875,
+    "alt": 4478.326171875
+  },
+  {
+    "name": "BP_TriggerVolume_A2_Combat11",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -16194.5556640625,
+    "lng": 41034.13671875,
+    "alt": 4247.55517578125
+  },
+  {
+    "name": "BP_TriggerVolume_A2_Combat12",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -17218.908203125,
+    "lng": 54265.37890625,
+    "alt": 4247.56103515625
+  },
+  {
+    "name": "BP_TriggerVolume_A2_Combat14",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -6467.47021484375,
+    "lng": 63576.34765625,
+    "alt": 4247.60986328125
+  },
+  {
+    "name": "BP_TriggerVolume_A2_Combat15",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -14820.1162109375,
+    "lng": 62235.52734375,
+    "alt": 4247.650390625
+  },
+  {
+    "name": "BP_TriggerVolume_A2_Combat3",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -20222.82421875,
+    "lng": 40796.1875,
+    "alt": 736.0849609375
+  },
+  {
+    "name": "BP_TriggerVolume_A2_Combat5",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -17545.6171875,
+    "lng": 37577.4609375,
+    "alt": 4974.666015625
+  },
+  {
+    "name": "BP_TriggerVolume_A2_Combat6",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -23215.90234375,
+    "lng": 36986.18359375,
+    "alt": 771.05810546875
+  },
+  {
+    "name": "BP_TriggerVolume_A2_Combat8",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -17741.044921875,
+    "lng": 37537.08203125,
+    "alt": 3003.41455078125
+  },
+  {
+    "name": "BP_TriggerVolume_A2_Combat_Lava",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -26092.115234375,
+    "lng": 32707.20703125,
+    "alt": 1600.41943359375
+  },
+  {
+    "name": "BP_TriggerVolume_A2_Combat_Side5",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -13019.5869140625,
+    "lng": 62828.30859375,
+    "alt": 3704.7919921875
+  },
+  {
+    "name": "BP_TriggerVolume_A3_Bank_Combat",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -46745.3828125,
+    "lng": 216.74609375,
+    "alt": 2478.0751953125
+  },
+  {
+    "name": "BP_TriggerVolume_A3_Combat",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -40037.13671875,
+    "lng": 12178.9462890625,
+    "alt": 2786.62158203125
+  },
+  {
+    "name": "BP_TriggerVolume_A3_Prevention",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -36687.62109375,
+    "lng": 14654.3125,
+    "alt": 2326.68603515625
+  },
+  {
+    "name": "BP_TriggerVolume_A3_Prevention3",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -47100.72265625,
+    "lng": 1505.1573486328125,
+    "alt": 1952.238525390625
+  },
+  {
+    "name": "BP_TriggerVolume_A4_Arena_Combat1",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -55362.59375,
+    "lng": 64078.28515625,
+    "alt": 1870.38427734375
+  },
+  {
+    "name": "BP_TriggerVolume_A4_Combat",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -31655.5,
+    "lng": 28136.4453125,
+    "alt": 1600.68408203125
+  },
+  {
+    "name": "BP_TriggerVolume_A4_Combat2",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -36710.3359375,
+    "lng": 32205.01171875,
+    "alt": 2786.60888671875
+  },
+  {
+    "name": "BP_TriggerVolume_A4_Combat3",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -32979.20703125,
+    "lng": 26812.74609375,
+    "alt": 1600.68408203125
+  },
+  {
+    "name": "BP_TriggerVolume_A4_Prevention",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -30401.37109375,
+    "lng": 26589.5234375,
+    "alt": 2294.59521484375
+  },
+  {
+    "name": "BP_TriggerVolume_A4_Prevention2",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -33994.6796875,
+    "lng": 30153.81640625,
+    "alt": 58.643157958984375
+  },
+  {
+    "name": "BP_TriggerVolume_A4_Prevention3",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -56353.1875,
+    "lng": 59971.1484375,
+    "alt": 1075.0169677734375
+  },
+  {
+    "name": "BP_TriggerVolume_Area2_Entrance2",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -25596.609375,
+    "lng": 29566.998046875,
+    "alt": 1252.34765625
+  },
+  {
+    "name": "BP_TriggerVolume_B2_RoofPuzzle",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -16269.734375,
+    "lng": 58426.44921875,
+    "alt": 3177.23583984375
+  },
+  {
+    "name": "BP_TriggerVolume_BoomeraxeContainer",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -11504.1474609375,
+    "lng": 40668.71875,
+    "alt": 1148.9871826171875
+  },
+  {
+    "name": "BP_TriggerVolume_Cave",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -22949.814453125,
+    "lng": 58429.578125,
+    "alt": 4231.4853515625
+  },
+  {
+    "name": "BP_TriggerVolume_CloseMagnetDoor",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -23307.216796875,
+    "lng": 32922.390625,
+    "alt": 1327.5576171875,
+    "linetype": "trigger",
+    "targets": [
+      {
+        "x": 32687.7265625,
+        "y": -12633.00390625,
+        "z": -443.505126953125
+      }
+    ]
+  },
+  {
+    "name": "BP_TriggerVolume_CloseMagnetTutorials",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -21263.20703125,
+    "lng": 38600.41796875,
+    "alt": 1256.7132568359375
+  },
+  {
+    "name": "BP_TriggerVolume_ClosePickThrowTutorials",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -12451.0068359375,
+    "lng": 38983.86328125,
+    "alt": 4035.0498046875
+  },
+  {
+    "name": "BP_TriggerVolume_DetectKey",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -22734.7578125,
+    "lng": 58667.74609375,
+    "alt": 4231.4853515625
+  },
+  {
+    "name": "BP_TriggerVolume_ElevatorCounter",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -43869.82421875,
+    "lng": 20705.30078125,
+    "alt": 3069.484375
+  },
+  {
+    "name": "BP_TriggerVolume_Gold",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -31888.634765625,
+    "lng": 17946.984375,
+    "alt": 3961.20556640625
+  },
+  {
+    "name": "BP_TriggerVolume_HideActorsForCredits",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -21672.671875,
+    "lng": -73940.203125,
+    "alt": 8467.416015625
+  },
+  {
+    "name": "BP_TriggerVolume_InsideHospital",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": 3904.214111328125,
+    "lng": 23150.865234375,
+    "alt": 3335.0
+  },
+  {
+    "name": "BP_TriggerVolume_Marius",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -15932.853515625,
+    "lng": 49995.1171875,
+    "alt": 1188.26708984375
+  },
+  {
+    "name": "BP_TriggerVolume_OpenA1Pipe",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -31805.494140625,
+    "lng": 18481.890625,
+    "alt": 171.35873413085938,
+    "linetype": "trigger",
+    "targets": [
+      {
+        "x": 17408.404296875,
+        "y": -32586.25390625,
+        "z": 379.67572021484375
+      },
+      {
+        "x": 20652.861328125,
+        "y": 15560.884765625,
+        "z": 3572.840087890625
+      }
+    ]
+  },
+  {
+    "name": "BP_TriggerVolume_OpenA2Pipe",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -30482.23046875,
+    "lng": 18318.46484375,
+    "alt": 171.35873413085938
+  },
+  {
+    "name": "BP_TriggerVolume_OpenMagnetDoorIfStuck",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -21968.328125,
+    "lng": 32073.8359375,
+    "alt": 607.3565673828125,
+    "linetype": "trigger",
+    "targets": [
+      {
+        "x": 32568.529296875,
+        "y": -22761.140625,
+        "z": 795.9964599609375
+      }
+    ]
+  },
+  {
+    "name": "BP_TriggerVolume_OutsideHospital",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": 4312.82421875,
+    "lng": 22759.6640625,
+    "alt": 3335.0
+  },
+  {
+    "name": "BP_TriggerVolume_PlayerLeftTown",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -24505.537109375,
+    "lng": 11806.833984375,
+    "alt": 865.27734375
+  },
+  {
+    "name": "BP_TriggerVolume_PrisonDialogue",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -41494.55078125,
+    "lng": -1261.9366455078125,
+    "alt": 1869.425537109375
+  },
+  {
+    "name": "BP_TriggerVolume_RT_Combat1",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -5353.03857421875,
+    "lng": -56478.80078125,
+    "alt": 6285.05078125
+  },
+  {
+    "name": "BP_TriggerVolume_RT_Combat2",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -9095.1123046875,
+    "lng": -41927.16015625,
+    "alt": 5393.2109375
+  },
+  {
+    "name": "BP_TriggerVolume_RT_Combat3",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -2817.87646484375,
+    "lng": -43934.51953125,
+    "alt": 4372.75341796875
+  },
+  {
+    "name": "BP_TriggerVolume_RT_Combat4",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -7764.53125,
+    "lng": -40312.48828125,
+    "alt": 5478.14794921875
+  },
+  {
+    "name": "BP_TriggerVolume_TeleportToElevator",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -44308.640625,
+    "lng": 19648.751953125,
+    "alt": 3236.8173828125
+  },
+  {
+    "name": "BP_TriggerVolume_Town_Combat",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -13821.5185546875,
+    "lng": 18197.669921875,
+    "alt": 1230.26611328125
+  },
+  {
+    "name": "BP_TriggerVolume_Town_Combat2",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -25603.166015625,
+    "lng": 603.455810546875,
+    "alt": 2786.61962890625
+  },
+  {
+    "name": "BP_TriggerVolume_Town_Combat3",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -26865.61328125,
+    "lng": 26860.3671875,
+    "alt": 1054.3580322265625
+  },
+  {
+    "name": "BP_TriggerVolume_Town_Combat4",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -24667.48046875,
+    "lng": 28703.015625,
+    "alt": 997.504638671875
+  },
+  {
+    "name": "BP_TriggerVolume_Town_Combat5",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -25174.41796875,
+    "lng": 24606.35546875,
+    "alt": 997.5035400390625
+  },
+  {
+    "name": "BP_TriggerVolume_Town_Combat6",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -9985.796875,
+    "lng": 18139.74609375,
+    "alt": 1230.265625
+  },
+  {
+    "name": "BP_TriggerVolume_Town_Combat7",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -25274.32421875,
+    "lng": 29750.671875,
+    "alt": 1230.265380859375
+  },
+  {
+    "name": "BP_TriggerVolume_Town_Combat8",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -25615.041015625,
+    "lng": 30381.73046875,
+    "alt": 1230.265380859375
+  },
+  {
+    "name": "BP_TriggerVolume_Town_Prevention",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -27736.099609375,
+    "lng": 4586.708984375,
+    "alt": 1419.333984375
+  },
+  {
+    "name": "BP_TriggerVolume_TownEntrance",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -21659.603515625,
+    "lng": 18468.701171875,
+    "alt": 20.63983154296875
+  },
+  {
+    "name": "BP_TriggerVolumePlayerLandInBossArea",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -14394.302734375,
+    "lng": 4099.4482421875,
+    "alt": 1410.7025146484375
+  },
+  {
+    "name": "BP_TriggerVolumeSetSupraSunEvening1",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -287139.75,
+    "lng": -358.74658203125,
+    "alt": 11786.0302734375
+  },
+  {
+    "name": "BP_TriggerVolumeSetSupraSunNoon",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -3761.427001953125,
+    "lng": 36836.3828125,
+    "alt": 16786.029296875
+  },
+  {
+    "name": "BP_TriggerVolumeTalkTrigger",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -7201.00830078125,
+    "lng": 60268.65234375,
+    "alt": 4229.1689453125
+  },
+  {
+    "name": "CheckIfPlayerIsInBank2",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -49162.0,
+    "lng": 2579.0,
+    "alt": 2349.0
+  },
+  {
+    "name": "CullBlueRoyalsTrigger",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -41098.5546875,
+    "lng": 10001.9453125,
+    "alt": 2254.0
+  },
+  {
+    "name": "DemoOverTrigger1",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -9787.087890625,
+    "lng": 18813.2421875,
+    "alt": 4008.4873046875
+  },
+  {
+    "name": "DemoOverTrigger2",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -11298.9833984375,
+    "lng": 18813.2421875,
+    "alt": 4833.37841796875
+  },
+  {
+    "name": "GetIntoFloor2Trigger",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -28152.0,
+    "lng": 20909.0,
+    "alt": 1817.0
+  },
+  {
+    "name": "GuardLeavePostTrigger",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -49107.0,
+    "lng": 4546.0,
+    "alt": 1877.0
+  },
+  {
+    "name": "NewValveDetectionVolume_GEN_VARIABLE_BP_TriggerVolume_C_CAT_485",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -14700.0634765625,
+    "lng": 62163.140625,
+    "alt": 1391.3427734375
+  },
+  {
+    "name": "NewValveDetectionVolume_GEN_VARIABLE_BP_TriggerVolume_C_CAT_490",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -9166.39453125,
+    "lng": 59665.6328125,
+    "alt": 2754.759033203125
+  },
+  {
+    "name": "NewValveDetectionVolume_GEN_VARIABLE_BP_TriggerVolume_C_CAT_619",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -14664.3154296875,
+    "lng": 62213.16796875,
+    "alt": 1391.5087890625
+  },
+  {
+    "name": "NewValveDetectionVolume_GEN_VARIABLE_BP_TriggerVolume_C_CAT_621",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -9118.740234375,
+    "lng": 59732.34375,
+    "alt": 2754.978515625
+  },
+  {
+    "name": "NOSTUARTBADSTUARTDONTSKIPTHISSTUARTTRIGGER",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -24277.0,
+    "lng": 18529.0,
+    "alt": 493.89013671875
+  },
+  {
+    "name": "PostStealGoldTrigger",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -30540.0,
+    "lng": 18505.0,
+    "alt": 3140.0
+  },
+  {
+    "name": "PostStealGoldTrigger2",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -32668.0,
+    "lng": 20936.0,
+    "alt": 3427.0
+  },
+  {
+    "name": "PreStealGoldTrigger",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -30565.0,
+    "lng": 18505.0,
+    "alt": 3140.0,
+    "linetype": "trigger",
+    "targets": [
+      {
+        "x": 17354.271484375,
+        "y": -25500.7734375,
+        "z": -148.09979248046875
+      }
+    ]
+  },
+  {
+    "name": "Trigger_Area3_InspectorRun2",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -42902.0859375,
+    "lng": 7172.6533203125,
+    "alt": 2191.778076171875,
+    "linetype": "trigger",
+    "targets": [
+      {
+        "x": 5902.171875,
+        "y": -45215.02734375,
+        "z": 1859.0
+      }
+    ]
+  },
+  {
+    "name": "Trigger_Area3_Intro2",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -45215.02734375,
+    "lng": 5902.171875,
+    "alt": 1859.0
+  },
+  {
+    "name": "trigger_beach_hint",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -35859.46484375,
+    "lng": 14790.7529296875,
+    "alt": 3884.454345703125,
+    "linetype": "trigger",
+    "targets": [
+      {
+        "x": 8937.830078125,
+        "y": -43396.73046875,
+        "z": 2463.414306640625
+      },
+      {
+        "x": 18539.6328125,
+        "y": -32586.25390625,
+        "z": 381.9172668457031
+      }
+    ]
+  },
+  {
+    "name": "Trigger_ElevatorRising_RainbowTown",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -21632.609375,
+    "lng": -73690.7734375,
+    "alt": 4162.0
   },
   {
     "name": "BP_TrophyDetector_2",
@@ -7778,14 +9049,6 @@
     "alt": 3176.125244140625
   },
   {
-    "name": "DoctorQuest_2",
-    "type": "DoctorQuest_C",
-    "area": "DLC2_Complete",
-    "lat": 4184.8291015625,
-    "lng": 22789.734375,
-    "alt": 3436.081787109375
-  },
-  {
     "name": "Door23",
     "type": "Door3_C",
     "area": "DLC2_Complete",
@@ -9120,8 +10383,8 @@
     "alt": 1833.4017333984375,
     "target": {
       "x": 5635.47119140625,
-      "y": -44154.50254023075,
-      "z": 1833.1768946743039
+      "y": -44148.766766786575,
+      "z": 1841.2778794670132
     },
     "linetype": "jumppad_blue"
   },
@@ -9217,9 +10480,9 @@
     "lng": 3275.899169921875,
     "alt": 1843.9998779296875,
     "target": {
-      "x": 2489.4453160762787,
-      "y": -47948.465183734894,
-      "z": 3349.1931473571954
+      "x": 2597.1787207126617,
+      "y": -48199.97091627121,
+      "z": 3612.226288531508
     },
     "linetype": "jumppad_blue"
   },
@@ -9273,9 +10536,9 @@
     "lng": 42971.5078125,
     "alt": 3263.00634765625,
     "target": {
-      "x": 41658.67184346914,
-      "y": -62158.04871118069,
-      "z": 3278.348175628725
+      "x": 41690.2771538347,
+      "y": -62234.34711894393,
+      "z": 3596.892885325683
     },
     "linetype": "jumppad_red"
   },
@@ -9315,9 +10578,9 @@
     "lng": 35262.24609375,
     "alt": 1002.8065185546875,
     "target": {
-      "x": 34227.5538867712,
-      "y": -36837.10273588449,
-      "z": 899.5533672079121
+      "x": 34612.177691459656,
+      "y": -36810.17817503214,
+      "z": 1334.54142870331
     },
     "linetype": "jumppad_blue"
   },
@@ -9329,9 +10592,9 @@
     "lng": 40478.515625,
     "alt": 2472.13134765625,
     "target": {
-      "x": 37810.72484880686,
-      "y": -56.853188157081604,
-      "z": 2671.271396440515
+      "x": 38093.83733934164,
+      "y": 59.48750174045563,
+      "z": 2915.193866773613
     },
     "linetype": "jumppad_blue"
   },
@@ -9343,9 +10606,9 @@
     "lng": 64113.53515625,
     "alt": 673.0908203125,
     "target": {
-      "x": 63893.56548637152,
-      "y": -52538.98953962326,
-      "z": 612.5898764640826
+      "x": 64007.623833715916,
+      "y": -51968.58205842972,
+      "z": 948.956336237336
     },
     "linetype": "jumppad_blue"
   },
@@ -9357,9 +10620,9 @@
     "lng": 62445.37109375,
     "alt": 703.9044799804688,
     "target": {
-      "x": 62658.82602214813,
-      "y": -57495.40129899979,
-      "z": 627.3887974090595
+      "x": 62604.16073560715,
+      "y": -57781.06739163399,
+      "z": 885.5064770919812
     },
     "linetype": "jumppad_blue"
   },
@@ -9385,9 +10648,9 @@
     "lng": 17354.271484375,
     "alt": -148.09979248046875,
     "target": {
-      "x": 18564.045862203,
-      "y": -30277.794733689632,
-      "z": 3158.523267773279
+      "x": 18569.08658877728,
+      "y": -30297.698989090422,
+      "z": 3127.4266638576696
     },
     "linetype": "jumppad_red"
   },
@@ -9441,9 +10704,9 @@
     "lng": 58047.2109375,
     "alt": 510.0,
     "target": {
-      "x": 60446.518101900816,
-      "y": -8435.374484151602,
-      "z": 4263.341230443238
+      "x": 60484.95093977451,
+      "y": -8396.942240834236,
+      "z": 4178.786001182602
     },
     "linetype": "jumppad_red"
   },
@@ -9455,9 +10718,9 @@
     "lng": 30354.216796875,
     "alt": 3574.655029296875,
     "target": {
-      "x": 32195.752611726522,
-      "y": 6695.263719551265,
-      "z": 3900.5711987370587
+      "x": 32210.426203876734,
+      "y": 6697.642567820847,
+      "z": 3879.613840326224
     },
     "linetype": "jumppad_red"
   },
@@ -9469,9 +10732,9 @@
     "lng": 62331.7109375,
     "alt": 510.00341796875,
     "target": {
-      "x": 58894.32798540592,
-      "y": -21592.586631536484,
-      "z": 3565.0464736843523
+      "x": 59186.181254923344,
+      "y": -21278.50295674801,
+      "z": 3955.866425557553
     },
     "linetype": "jumppad_blue"
   },
@@ -9511,9 +10774,9 @@
     "lng": 63497.81640625,
     "alt": 509.999755859375,
     "target": {
-      "x": 62825.244536310434,
-      "y": -15473.038758039474,
-      "z": 1254.208836657058
+      "x": 62819.75415369868,
+      "y": -15478.529125452042,
+      "z": 1237.2883128268352
     },
     "linetype": "jumppad_red"
   },
@@ -14077,14 +15340,6 @@
     ]
   },
   {
-    "name": "MinerQuest_2",
-    "type": "MinerQuest_C",
-    "area": "DLC2_Complete",
-    "lat": 15689.80859375,
-    "lng": 22158.33984375,
-    "alt": 3190.00830078125
-  },
-  {
     "name": "BankElectricityPuzzle_1_PedestalButton_ResetBattery",
     "type": "PedestalButton_C",
     "area": "DLC2_Complete",
@@ -14530,7 +15785,15 @@
     "area": "DLC2_Complete",
     "lat": -46676.828125,
     "lng": 38564.29296875,
-    "alt": 748.3919677734375
+    "alt": 748.3919677734375,
+    "linetype": "trigger",
+    "targets": [
+      {
+        "x": 38863.0,
+        "y": -46690.0,
+        "z": 726.2919311523438
+      }
+    ]
   },
   {
     "name": "PedestalButton35_8",
@@ -15113,7 +16376,15 @@
     "area": "DLC2_Complete",
     "lat": -29831.0,
     "lng": 24415.0,
-    "alt": 1717.0
+    "alt": 1717.0,
+    "linetype": "trigger",
+    "targets": [
+      {
+        "x": 24391.212890625,
+        "y": -29656.037109375,
+        "z": 1728.9361572265625
+      }
+    ]
   },
   {
     "name": "PedestalButton77_4",
@@ -15289,15 +16560,7 @@
     "area": "DLC2_Complete",
     "lat": -49268.77734375,
     "lng": 4080.97265625,
-    "alt": 3260.769287109375,
-    "linetype": "trigger",
-    "targets": [
-      {
-        "x": 3838.999755859375,
-        "y": -49204.0,
-        "z": 3257.0
-      }
-    ]
+    "alt": 3260.769287109375
   },
   {
     "name": "PedestalButton88",
@@ -20052,6 +21315,46 @@
     "alt": 1014.994140625
   },
   {
+    "name": "TriggerVolume2_2",
+    "type": "TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -48014.55078125,
+    "lng": 46237.46875,
+    "alt": 461.9168701171875
+  },
+  {
+    "name": "TriggerVolume3",
+    "type": "TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -48841.734375,
+    "lng": 45239.5,
+    "alt": 586.6885986328125
+  },
+  {
+    "name": "TriggerVolume8_2",
+    "type": "TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": 23447.5234375,
+    "lng": 15738.8271484375,
+    "alt": 4141.74169921875
+  },
+  {
+    "name": "TriggerVolume_2",
+    "type": "TriggerVolume_C",
+    "area": "DLC2_Complete",
+    "lat": -56294.7265625,
+    "lng": 55762.9765625,
+    "alt": 5755.57666015625,
+    "linetype": "trigger",
+    "targets": [
+      {
+        "x": 55670.5859375,
+        "y": -55967.0703125,
+        "z": 5635.62548828125
+      }
+    ]
+  },
+  {
     "name": "MinecraftBrick_GEN_VARIABLE_ValveCarriable_C_CAT_424",
     "type": "ValveCarriable_C",
     "area": "DLC2_Complete",
@@ -20147,6 +21450,159 @@
     "lat": -25030.71875,
     "lng": -23943.265625,
     "alt": 7218.1044921875
+  },
+  {
+    "name": "BP_TriggerVolume_2",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_FinalBoss",
+    "lat": -22798.4296875,
+    "lng": -31422.17578125,
+    "alt": 5443.0
+  },
+  {
+    "name": "BP_TriggerVolume_ApprachMusic",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_FinalBoss",
+    "lat": -20129.955078125,
+    "lng": -28737.390625,
+    "alt": 6408.06201171875
+  },
+  {
+    "name": "BP_TriggerVolume_BaronTalk1",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_FinalBoss",
+    "lat": -11726.5595703125,
+    "lng": -4168.5302734375,
+    "alt": 1891.0
+  },
+  {
+    "name": "BP_TriggerVolume_BaronTalk2_0",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_FinalBoss",
+    "lat": -11416.9765625,
+    "lng": -6458.5009765625,
+    "alt": 1891.0
+  },
+  {
+    "name": "BP_TriggerVolume_BaronTalk3",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_FinalBoss",
+    "lat": -21343.724609375,
+    "lng": -17055.904296875,
+    "alt": 3981.0
+  },
+  {
+    "name": "BP_TriggerVolume_BaronTalk4",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_FinalBoss",
+    "lat": -13444.9560546875,
+    "lng": -21540.11328125,
+    "alt": 3981.0
+  },
+  {
+    "name": "BP_TriggerVolume_BaronTalk5",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_FinalBoss",
+    "lat": -19076.556640625,
+    "lng": -22873.052734375,
+    "alt": 5854.77490234375
+  },
+  {
+    "name": "BP_TriggerVolume_BaronTalk6",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_FinalBoss",
+    "lat": -20799.48046875,
+    "lng": -26733.96875,
+    "alt": 6631.36376953125
+  },
+  {
+    "name": "BP_TriggerVolume_BossArea_ChangeWinds1",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_FinalBoss",
+    "lat": -25389.171875,
+    "lng": -39272.3125,
+    "alt": 12996.8671875
+  },
+  {
+    "name": "BP_TriggerVolume_BossArea_ChangeWinds2",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_FinalBoss",
+    "lat": -19165.376953125,
+    "lng": -36537.56640625,
+    "alt": 12996.9384765625
+  },
+  {
+    "name": "BP_TriggerVolume_BossArea_ChangeWinds3",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_FinalBoss",
+    "lat": -24412.51953125,
+    "lng": -34090.3984375,
+    "alt": 12606.06640625
+  },
+  {
+    "name": "BP_TriggerVolume_SetBossSun1",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_FinalBoss",
+    "lat": -12254.5322265625,
+    "lng": -5474.75830078125,
+    "alt": 1665.0
+  },
+  {
+    "name": "BP_TriggerVolume_SetBossSun2",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_FinalBoss",
+    "lat": -19134.716796875,
+    "lng": -20226.529296875,
+    "alt": 5465.0
+  },
+  {
+    "name": "BP_TriggerVolume_SetBossSun3",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_FinalBoss",
+    "lat": -22099.94921875,
+    "lng": -29756.30859375,
+    "alt": 6895.0
+  },
+  {
+    "name": "Trigger_PlayerOutSideBoss-CheckIfDoorShouldBeOpen",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_FinalBoss",
+    "lat": -18103.82421875,
+    "lng": -20881.587890625,
+    "alt": 4866.34521484375,
+    "linetype": "trigger",
+    "targets": [
+      {
+        "x": -23642.3984375,
+        "y": -21571.9375,
+        "z": 5995.0
+      },
+      {
+        "x": -25358.8046875,
+        "y": -18835.640625,
+        "z": 5995.0
+      },
+      {
+        "x": -28787.82421875,
+        "y": -19954.9765625,
+        "z": 6395.0
+      },
+      {
+        "x": -24345.373046875,
+        "y": -21534.421875,
+        "z": 6030.90771484375
+      },
+      {
+        "x": -27882.685546875,
+        "y": -20051.919921875,
+        "z": 5995.0
+      },
+      {
+        "x": -30054.828125,
+        "y": -20071.126953125,
+        "z": 7161.45068359375
+      }
+    ]
   },
   {
     "name": "BossPuzzle0_ButtonFloor",
@@ -21106,14 +22562,6 @@
     "alt": 7288.19580078125
   },
   {
-    "name": "FinalBossQuest_4",
-    "type": "FinalBossQuest_C",
-    "area": "DLC2_FinalBoss",
-    "lat": -21607.802734375,
-    "lng": -28435.4609375,
-    "alt": 6918.3232421875
-  },
-  {
     "name": "HealingStation_2",
     "type": "HealingStation_C",
     "area": "DLC2_FinalBoss",
@@ -21225,9 +22673,9 @@
     "lng": -21377.443359375,
     "alt": 3516.73046875,
     "target": {
-      "x": -22573.108211785555,
-      "y": -18211.412028431892,
-      "z": 7116.645961977049
+      "x": -22740.070420905948,
+      "y": -18981.44090050459,
+      "z": 6158.970264184437
     },
     "linetype": "jumppad_red"
   },
@@ -21417,7 +22865,40 @@
     "area": "DLC2_FinalBoss",
     "lat": -20791.92578125,
     "lng": -29420.947265625,
-    "alt": 5995.0
+    "alt": 5995.0,
+    "linetype": "trigger",
+    "targets": [
+      {
+        "x": -23642.3984375,
+        "y": -21571.9375,
+        "z": 5995.0
+      },
+      {
+        "x": -25358.8046875,
+        "y": -18835.640625,
+        "z": 5995.0
+      },
+      {
+        "x": -28787.82421875,
+        "y": -19954.9765625,
+        "z": 6395.0
+      },
+      {
+        "x": -24345.373046875,
+        "y": -21534.421875,
+        "z": 6030.90771484375
+      },
+      {
+        "x": -27882.685546875,
+        "y": -20051.919921875,
+        "z": 5995.0
+      },
+      {
+        "x": -30054.828125,
+        "y": -20071.126953125,
+        "z": 7161.45068359375
+      }
+    ]
   },
   {
     "name": "BossPuzzleEnd2_PedestalButton",
@@ -21425,7 +22906,40 @@
     "area": "DLC2_FinalBoss",
     "lat": -22971.900390625,
     "lng": -28386.798828125,
-    "alt": 5995.0
+    "alt": 5995.0,
+    "linetype": "trigger",
+    "targets": [
+      {
+        "x": -23642.3984375,
+        "y": -21571.9375,
+        "z": 5995.0
+      },
+      {
+        "x": -25358.8046875,
+        "y": -18835.640625,
+        "z": 5995.0
+      },
+      {
+        "x": -28787.82421875,
+        "y": -19954.9765625,
+        "z": 6395.0
+      },
+      {
+        "x": -24345.373046875,
+        "y": -21534.421875,
+        "z": 6030.90771484375
+      },
+      {
+        "x": -27882.685546875,
+        "y": -20051.919921875,
+        "z": 5995.0
+      },
+      {
+        "x": -30054.828125,
+        "y": -20071.126953125,
+        "z": 7161.45068359375
+      }
+    ]
   },
   {
     "name": "BossPuzzleEnd3_PedestalButton",
@@ -21433,7 +22947,40 @@
     "area": "DLC2_FinalBoss",
     "lat": -22164.49609375,
     "lng": -26541.45703125,
-    "alt": 5995.0
+    "alt": 5995.0,
+    "linetype": "trigger",
+    "targets": [
+      {
+        "x": -23642.3984375,
+        "y": -21571.9375,
+        "z": 5995.0
+      },
+      {
+        "x": -25358.8046875,
+        "y": -18835.640625,
+        "z": 5995.0
+      },
+      {
+        "x": -28787.82421875,
+        "y": -19954.9765625,
+        "z": 6395.0
+      },
+      {
+        "x": -24345.373046875,
+        "y": -21534.421875,
+        "z": 6030.90771484375
+      },
+      {
+        "x": -27882.685546875,
+        "y": -20051.919921875,
+        "z": 5995.0
+      },
+      {
+        "x": -30054.828125,
+        "y": -20071.126953125,
+        "z": 7161.45068359375
+      }
+    ]
   },
   {
     "name": "PedestalButton12",
@@ -21587,6 +23134,170 @@
     "lat": -24775.64453125,
     "lng": -21660.93359375,
     "alt": 5933.626953125
+  },
+  {
+    "name": "BossArea_InEncounter_Volume1_5",
+    "type": "TriggerVolume_C",
+    "area": "DLC2_FinalBoss",
+    "lat": -20840.05078125,
+    "lng": -26664.017578125,
+    "alt": 6575.0,
+    "linetype": "trigger",
+    "targets": [
+      {
+        "x": -23642.3984375,
+        "y": -21571.9375,
+        "z": 5995.0
+      },
+      {
+        "x": -25358.8046875,
+        "y": -18835.640625,
+        "z": 5995.0
+      },
+      {
+        "x": -28787.82421875,
+        "y": -19954.9765625,
+        "z": 6395.0
+      },
+      {
+        "x": -24345.373046875,
+        "y": -21534.421875,
+        "z": 6030.90771484375
+      },
+      {
+        "x": -27882.685546875,
+        "y": -20051.919921875,
+        "z": 5995.0
+      },
+      {
+        "x": -30054.828125,
+        "y": -20071.126953125,
+        "z": 7161.45068359375
+      }
+    ]
+  },
+  {
+    "name": "BossArea_InEncounter_Volume2_6",
+    "type": "TriggerVolume_C",
+    "area": "DLC2_FinalBoss",
+    "lat": -21007.94140625,
+    "lng": -23893.509765625,
+    "alt": 6875.0,
+    "linetype": "trigger",
+    "targets": [
+      {
+        "x": -23642.3984375,
+        "y": -21571.9375,
+        "z": 5995.0
+      },
+      {
+        "x": -25358.8046875,
+        "y": -18835.640625,
+        "z": 5995.0
+      },
+      {
+        "x": -28787.82421875,
+        "y": -19954.9765625,
+        "z": 6395.0
+      },
+      {
+        "x": -24345.373046875,
+        "y": -21534.421875,
+        "z": 6030.90771484375
+      },
+      {
+        "x": -27882.685546875,
+        "y": -20051.919921875,
+        "z": 5995.0
+      },
+      {
+        "x": -30054.828125,
+        "y": -20071.126953125,
+        "z": 7161.45068359375
+      }
+    ]
+  },
+  {
+    "name": "Trigger_MakeSureBossExists1",
+    "type": "TriggerVolume_C",
+    "area": "DLC2_FinalBoss",
+    "lat": -19126.939453125,
+    "lng": -23003.298828125,
+    "alt": 6165.81982421875,
+    "linetype": "trigger",
+    "targets": [
+      {
+        "x": -23642.3984375,
+        "y": -21571.9375,
+        "z": 5995.0
+      },
+      {
+        "x": -25358.8046875,
+        "y": -18835.640625,
+        "z": 5995.0
+      },
+      {
+        "x": -28787.82421875,
+        "y": -19954.9765625,
+        "z": 6395.0
+      },
+      {
+        "x": -24345.373046875,
+        "y": -21534.421875,
+        "z": 6030.90771484375
+      },
+      {
+        "x": -27882.685546875,
+        "y": -20051.919921875,
+        "z": 5995.0
+      },
+      {
+        "x": -30054.828125,
+        "y": -20071.126953125,
+        "z": 7161.45068359375
+      }
+    ]
+  },
+  {
+    "name": "Trigger_MakeSureBossExists2",
+    "type": "TriggerVolume_C",
+    "area": "DLC2_FinalBoss",
+    "lat": -21273.5390625,
+    "lng": -26471.126953125,
+    "alt": 7020.81982421875,
+    "linetype": "trigger",
+    "targets": [
+      {
+        "x": -23642.3984375,
+        "y": -21571.9375,
+        "z": 5995.0
+      },
+      {
+        "x": -25358.8046875,
+        "y": -18835.640625,
+        "z": 5995.0
+      },
+      {
+        "x": -28787.82421875,
+        "y": -19954.9765625,
+        "z": 6395.0
+      },
+      {
+        "x": -24345.373046875,
+        "y": -21534.421875,
+        "z": 6030.90771484375
+      },
+      {
+        "x": -27882.685546875,
+        "y": -20051.919921875,
+        "z": 5995.0
+      },
+      {
+        "x": -30054.828125,
+        "y": -20071.126953125,
+        "z": 7161.45068359375
+      }
+    ]
   },
   {
     "name": "BuyQuintupleJump",
@@ -22542,6 +24253,139 @@
     "alt": 11510.1943359375
   },
   {
+    "name": "TriggerVolume10",
+    "type": "TriggerVolume_C",
+    "area": "DLC2_Area0",
+    "lat": -283935.84375,
+    "lng": -994.0,
+    "alt": 10006.046875
+  },
+  {
+    "name": "TriggerVolume11_InitialFog",
+    "type": "TriggerVolume_C",
+    "area": "DLC2_Area0",
+    "lat": -290161.9375,
+    "lng": -2371.97314453125,
+    "alt": 10636.2509765625
+  },
+  {
+    "name": "TriggerVolume3",
+    "type": "TriggerVolume_C",
+    "area": "DLC2_Area0",
+    "lat": -288600.84375,
+    "lng": -1880.0,
+    "alt": 10676.046875,
+    "linetype": "trigger",
+    "targets": [
+      {
+        "x": -543.5,
+        "y": -289570.0,
+        "z": 10333.171875
+      },
+      {
+        "x": -1033.0,
+        "y": -289573.0,
+        "z": 10333.171875
+      }
+    ]
+  },
+  {
+    "name": "TriggerVolume4",
+    "type": "TriggerVolume_C",
+    "area": "DLC2_Area0",
+    "lat": -287985.84375,
+    "lng": -930.0,
+    "alt": 10462.046875
+  },
+  {
+    "name": "TriggerVolume5",
+    "type": "TriggerVolume_C",
+    "area": "DLC2_Area0",
+    "lat": -284737.09375,
+    "lng": -806.6566162109375,
+    "alt": 9922.046875
+  },
+  {
+    "name": "TriggerVolume7",
+    "type": "TriggerVolume_C",
+    "area": "DLC2_Area0",
+    "lat": -283914.84375,
+    "lng": -1420.0,
+    "alt": 10006.046875
+  },
+  {
+    "name": "TriggerVolume9",
+    "type": "TriggerVolume_C",
+    "area": "DLC2_Area0",
+    "lat": -283258.53125,
+    "lng": 264.0,
+    "alt": 9827.046875
+  },
+  {
+    "name": "TriggerVolume_2",
+    "type": "TriggerVolume_C",
+    "area": "DLC2_Area0",
+    "lat": -289570.5625,
+    "lng": -2166.5,
+    "alt": 10686.046875
+  },
+  {
+    "name": "TriggerVolume_Fog1",
+    "type": "TriggerVolume_C",
+    "area": "DLC2_Area0",
+    "lat": -286950.0,
+    "lng": -1294.0,
+    "alt": 11216.0
+  },
+  {
+    "name": "TriggerVolume_Fog2",
+    "type": "TriggerVolume_C",
+    "area": "DLC2_Area0",
+    "lat": -286950.0,
+    "lng": -1294.0,
+    "alt": 11216.0
+  },
+  {
+    "name": "TriggerVolume_NoRocks1",
+    "type": "TriggerVolume_C",
+    "area": "DLC2_Area0",
+    "lat": -287990.0,
+    "lng": -1294.0,
+    "alt": 10444.0
+  },
+  {
+    "name": "TriggerVolume_NoRocks2",
+    "type": "TriggerVolume_C",
+    "area": "DLC2_Area0",
+    "lat": -286508.0,
+    "lng": 1108.0,
+    "alt": 10444.0
+  },
+  {
+    "name": "TriggerVolume_NoRocks3",
+    "type": "TriggerVolume_C",
+    "area": "DLC2_Area0",
+    "lat": -283006.0,
+    "lng": 1498.0,
+    "alt": 10529.0
+  },
+  {
+    "name": "TriggerVolume_NoRocks4",
+    "type": "TriggerVolume_C",
+    "area": "DLC2_Area0",
+    "lat": -285681.0,
+    "lng": -2757.0,
+    "alt": 10444.0
+  },
+  {
+    "name": "TriggerVolume_NoRocks5",
+    "type": "TriggerVolume_C",
+    "area": "DLC2_Area0",
+    "lat": -285681.0,
+    "lng": 171.0,
+    "alt": 10444.0
+  },
+  {
     "name": "ValveCarriable_288",
     "type": "ValveCarriable_C",
     "area": "DLC2_Area0",
@@ -22603,6 +24447,46 @@
     "alt": 3105.4658203125,
     "yt_video": "5KkEVBgFW3U",
     "yt_start": "10853"
+  },
+  {
+    "name": "BP_TriggerVolume_2",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_SecretLavaArea",
+    "lat": 10721.306640625,
+    "lng": 85.6121597290039,
+    "alt": 2897.72412109375
+  },
+  {
+    "name": "BP_TriggerVolume_PlayerInArenaArea",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_SecretLavaArea",
+    "lat": 638.6362915039062,
+    "lng": -16884.978515625,
+    "alt": 4703.7626953125
+  },
+  {
+    "name": "SecretLavaArea_ArenaPuzzle_EmergencyExitTrigger",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_SecretLavaArea",
+    "lat": 718.5736694335938,
+    "lng": -17389.279296875,
+    "alt": 3165.0244140625,
+    "linetype": "trigger",
+    "targets": [
+      {
+        "x": -14423.1806640625,
+        "y": 807.2150268554688,
+        "z": 1420.0
+      }
+    ]
+  },
+  {
+    "name": "SecretLavaArea_SoftLockPrevention_Trigger",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_SecretLavaArea",
+    "lat": 3354.944580078125,
+    "lng": -5521.21728515625,
+    "alt": 1398.68798828125
   },
   {
     "name": "ButtonFloor2",
@@ -24856,7 +26740,40 @@
     "lat": 8963.63671875,
     "lng": 819.0269165039062,
     "alt": 1160.0,
-    "variant": "stone"
+    "variant": "stone",
+    "linetype": "trigger",
+    "targets": [
+      {
+        "x": 819.0269165039062,
+        "y": 8963.63671875,
+        "z": 1160.0
+      },
+      {
+        "x": 819.0269165039062,
+        "y": 8963.63671875,
+        "z": 1160.0
+      },
+      {
+        "x": 819.0269165039062,
+        "y": 8963.63671875,
+        "z": 1160.0
+      },
+      {
+        "x": 785.38330078125,
+        "y": 9089.2060546875,
+        "z": 1576.8359375
+      },
+      {
+        "x": 785.38330078125,
+        "y": 9089.2060546875,
+        "z": 1576.8359375
+      },
+      {
+        "x": 785.38330078125,
+        "y": 9089.2060546875,
+        "z": 1576.8359375
+      }
+    ]
   },
   {
     "name": "MinecraftBrick96",
@@ -25324,7 +27241,20 @@
     "lat": 4922.91259765625,
     "lng": 8243.8955078125,
     "alt": -7577.89404296875,
-    "variant": "yellow"
+    "variant": "yellow",
+    "linetype": "trigger",
+    "targets": [
+      {
+        "x": 9448.2138671875,
+        "y": 2676.927734375,
+        "z": -7585.2919921875
+      },
+      {
+        "x": 16856.8203125,
+        "y": -22388.76171875,
+        "z": -2829.70068359375
+      }
+    ]
   },
   {
     "name": "BallButton2_2",
@@ -25441,6 +27371,150 @@
     "alt": 16208.3984375,
     "yt_video": "5KkEVBgFW3U",
     "yt_start": "12990"
+  },
+  {
+    "name": "BP_TriggerVolume10_15",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_PostRainbow",
+    "lat": -43598.5390625,
+    "lng": -57599.23828125,
+    "alt": 8175.0498046875
+  },
+  {
+    "name": "BP_TriggerVolume11",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_PostRainbow",
+    "lat": -43119.9140625,
+    "lng": -57225.31640625,
+    "alt": 8276.794921875
+  },
+  {
+    "name": "BP_TriggerVolume12_19",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_PostRainbow",
+    "lat": -44460.9296875,
+    "lng": -55631.34375,
+    "alt": 10176.7783203125
+  },
+  {
+    "name": "BP_TriggerVolume13",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_PostRainbow",
+    "lat": -44696.640625,
+    "lng": -55401.6015625,
+    "alt": 10176.7783203125
+  },
+  {
+    "name": "BP_TriggerVolume14_2",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_PostRainbow",
+    "lat": -40958.85546875,
+    "lng": -68200.5,
+    "alt": 5968.3818359375
+  },
+  {
+    "name": "BP_TriggerVolume2_2",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_PostRainbow",
+    "lat": -44970.34375,
+    "lng": -59300.390625,
+    "alt": 10334.0634765625
+  },
+  {
+    "name": "BP_TriggerVolume3",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_PostRainbow",
+    "lat": -45613.1015625,
+    "lng": -59430.00390625,
+    "alt": 10548.3056640625
+  },
+  {
+    "name": "BP_TriggerVolume48_2",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_PostRainbow",
+    "lat": -41589.0703125,
+    "lng": -52728.40625,
+    "alt": 12898.8369140625
+  },
+  {
+    "name": "BP_TriggerVolume49_5",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_PostRainbow",
+    "lat": -40664.73828125,
+    "lng": -66473.046875,
+    "alt": 10710.0087890625
+  },
+  {
+    "name": "BP_TriggerVolume4_2",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_PostRainbow",
+    "lat": -39028.703125,
+    "lng": -68154.7109375,
+    "alt": 10043.2822265625
+  },
+  {
+    "name": "BP_TriggerVolume5",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_PostRainbow",
+    "lat": -39064.19140625,
+    "lng": -68198.9140625,
+    "alt": 10217.2705078125
+  },
+  {
+    "name": "BP_TriggerVolume54_2",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_PostRainbow",
+    "lat": -40159.47265625,
+    "lng": -61669.94921875,
+    "alt": 10518.5205078125,
+    "linetype": "trigger",
+    "targets": [
+      {
+        "x": -60952.66015625,
+        "y": -40498.19921875,
+        "z": 9721.6748046875
+      }
+    ]
+  },
+  {
+    "name": "BP_TriggerVolume6_6",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_PostRainbow",
+    "lat": -41553.30078125,
+    "lng": -70603.953125,
+    "alt": 5766.8193359375
+  },
+  {
+    "name": "BP_TriggerVolume7",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_PostRainbow",
+    "lat": -41782.953125,
+    "lng": -70730.6484375,
+    "alt": 5912.44091796875
+  },
+  {
+    "name": "BP_TriggerVolume8_11",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_PostRainbow",
+    "lat": -49744.3046875,
+    "lng": -44518.734375,
+    "alt": 5847.6552734375
+  },
+  {
+    "name": "BP_TriggerVolume9",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_PostRainbow",
+    "lat": -49176.8671875,
+    "lng": -44532.41015625,
+    "alt": 5951.37548828125
+  },
+  {
+    "name": "BP_TriggerVolume_2",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_PostRainbow",
+    "lat": -37868.7734375,
+    "lng": -56627.9609375,
+    "alt": 10068.025390625
   },
   {
     "name": "ButtonFloor10_277",
@@ -27162,20 +29236,84 @@
     "alt": 9882.1220703125
   },
   {
-    "name": "BP_A0_SewersQuest_2",
-    "type": "BP_A0_SewersQuest_C",
-    "area": "DLC2_Area0_Below",
-    "lat": 24662.150390625,
-    "lng": 15347.90234375,
-    "alt": 19562.0
-  },
-  {
     "name": "BP_PurchaseSpeedx2_2",
     "type": "BP_PurchaseSpeedx2_C",
     "area": "DLC2_Area0_Below",
     "lat": 23538.671875,
     "lng": 10969.87890625,
     "alt": 21214.2578125
+  },
+  {
+    "name": "BP_TriggerVolume2",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Area0_Below",
+    "lat": 21769.32421875,
+    "lng": 12008.6435546875,
+    "alt": 20990.0
+  },
+  {
+    "name": "BP_TriggerVolume3",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Area0_Below",
+    "lat": 26301.412109375,
+    "lng": 13090.736328125,
+    "alt": 19680.0
+  },
+  {
+    "name": "BP_TriggerVolume_7",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Area0_Below",
+    "lat": 20626.64453125,
+    "lng": 10832.0439453125,
+    "alt": 21110.0
+  },
+  {
+    "name": "BP_TriggerVolume_DisableCheckpoint",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Area0_Below",
+    "lat": 24750.765625,
+    "lng": 14656.95703125,
+    "alt": 18742.57421875
+  },
+  {
+    "name": "BP_TriggerVolume_MakeAboveCollapse",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Area0_Below",
+    "lat": 24845.75390625,
+    "lng": 14689.6328125,
+    "alt": 15460.376953125
+  },
+  {
+    "name": "BP_TriggerVolume_ShopFallA0",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Area0_Below",
+    "lat": 22937.17578125,
+    "lng": 12518.478515625,
+    "alt": 20444.0
+  },
+  {
+    "name": "BP_TriggerVolume_ShopFallA0_Backup",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Area0_Below",
+    "lat": 23031.76171875,
+    "lng": 11961.2392578125,
+    "alt": 21459.95703125
+  },
+  {
+    "name": "TriggerSewerChamber",
+    "type": "BP_TriggerVolume_C",
+    "area": "DLC2_Area0_Below",
+    "lat": 23630.703125,
+    "lng": 15265.16796875,
+    "alt": 19760.0,
+    "linetype": "trigger",
+    "targets": [
+      {
+        "x": 12518.478515625,
+        "y": 22937.17578125,
+        "z": 20444.0
+      }
+    ]
   },
   {
     "name": "Coin703_2",
@@ -27710,6 +29848,14 @@
     "lng": 15696.6796875,
     "alt": 19556.3359375,
     "variant": "blue"
+  },
+  {
+    "name": "TriggerVolume6_2",
+    "type": "TriggerVolume_C",
+    "area": "DLC2_Area0_Below",
+    "lat": 24879.939453125,
+    "lng": 14877.5673828125,
+    "alt": 4642.16015625
   },
   {
     "name": "MinecraftBrick_GEN_VARIABLE_ValveCarriable_C_CAT_0",
