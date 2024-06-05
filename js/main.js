@@ -24,39 +24,37 @@ let playerMarker;       // Leaflet marker object for current player start (or dr
 
 let reloading;          // Flag used to prevent triggering reloading while already in progress
 
-let searchControl = {}; // Leaflet control for searching
 let settings;           // Reference to localData[mapId]
-
-
 let mapCenter;
 let mapParam = {};      // Parameters extracted from map URL
+let searchControl = {}; // Leaflet control for searching
 
 // Hard coded map data extracted from the games
-const maps = {
+var maps = {
   // data taken from the MapWorld* nodes
   'sl':  { 
-    title: 'Supraland',
-    "MapWorldCenter": { "X": 13000.0, "Y": -2000.0, "Z": 0.0 },
-    "MapWorldSize": 175000.0,
-    "MapWorldUpperLeft": { "X": -74500.0, "Y": -89500.0, "Z": 0.0 },
-    "MapWorldLowerRight": { "X": 100500.0, "Y": 85500.0, "Z": 0.0 }
+      title: 'Supraland',
+      "MapWorldCenter": { "X": 13000.0, "Y": -2000.0, "Z": 0.0 },
+      "MapWorldSize": 175000.0,
+      "MapWorldUpperLeft": { "X": -74500.0, "Y": -89500.0, "Z": 0.0 },
+      "MapWorldLowerRight": { "X": 100500.0, "Y": 85500.0, "Z": 0.0 },
    },
 
   'slc': {
     title: 'Supraland Crash',
-    "MapWorldCenter": { "X": 25991.0, "Y": -16.0, "Z": 0.0  },
-    "MapWorldSize": 90112.0,
-    "MapWorldUpperLeft": { "X": -19065.0, "Y": -45040.0, "Z": 0.0 },
-    "MapWorldLowerRight": { "X": 71047.0, "Y": 45072.0, "Z": 0.0 }
+      "MapWorldCenter": { "X": 25991.0, "Y": -16.0, "Z": 0.0  },
+      "MapWorldSize": 90112.0,
+      "MapWorldUpperLeft": { "X": -19065.0, "Y": -45040.0, "Z": 0.0 },
+      "MapWorldLowerRight": { "X": 71047.0, "Y": 45072.0, "Z": 0.0 },
    },
 
   'siu': {
-    title: 'Supraland Six Inches Under',
-    "MapWorldCenter": { "X": 0.0, "Y": -19000.0, "Z": 10000.0 },
-    "MapWorldSize": 147456.0,
-    "MapWorldUpperLeft": { "X": -73728.0, "Y": -92728.0, "Z": 10000.0 },
-    "MapWorldLowerRight": { "X": 73728.0, "Y": 54728.0, "Z": 10000.0 }
-   }
+      title: 'Supraland Six Inches Under',
+      "MapWorldCenter": { "X": 0.0, "Y": -19000.0, "Z": 10000.0 },
+      "MapWorldSize": 147456.0,
+      "MapWorldUpperLeft": { "X": -73728.0, "Y": -92728.0, "Z": 10000.0 },
+      "MapWorldLowerRight": { "X": 73728.0, "Y": 54728.0, "Z": 10000.0 },
+   },
 };
 
 // Save the local state data we track to the window local storage
@@ -230,7 +228,6 @@ function loadMap(id) {
     clearFilter();
   });
 
-
   map.on('overlayremove', function(e) {
     delete settings.activeLayers[e.layer.id];
     markItems();
@@ -260,7 +257,7 @@ function loadMap(id) {
     layerControl.addOverlay(layer, layerConfig.name);
   });
 
-  L.control.mousePosition().addTo(map);
+  L.control.mousePosition({numDigits:1, lngFirst:true}).addTo(map);
 
   if (mapParam.lat && mapParam.lng && mapParam.zoom) {
     map.setView([mapParam.lat, mapParam.lng], mapParam.zoom);
@@ -351,7 +348,6 @@ function loadMap(id) {
     let y = e.popup._source._latlng.lat;
     let markerId = e.popup._source.options.alt;
 
-    let dist = Infinity;
     let res = null;
     let o = e.popup._source.options.o;
 
@@ -370,7 +366,7 @@ function loadMap(id) {
 
     if(o.yt_video) {
       let yt_start = o.yt_start || 0
-      let url = 'https://youtu.be/'+res.ytVideo+'&?t='+yt_start;
+      let url = 'https://youtu.be/'+o.yt_video+'&?t='+yt_start;
       e.popup.setContent(text + '<br><br><a href="'+url+'" target=_blank>'+url+'</a>');
     }
   }
@@ -495,6 +491,9 @@ function loadMap(id) {
             if (p) {
               t = new L.LatLng(p[0], p[1]);
             }
+            else {
+              settings.playerPosition = playerStart;
+            }
             playerMarker = L.marker([t.lat, t.lng], {icon: getIcon(icon,size), zIndexOffset: 0, draggable: false, title: title, alt:'playerMarker'})
             .bindPopup()
             .on('popupopen', function(e) {
@@ -507,6 +506,22 @@ function loadMap(id) {
 
           } // end of player marker
         } // end of loop
+
+        if(enabledLayers['coordinate']){
+          playerMarker = L.marker(mapCenter, {zIndexOffset: 10000, draggable: true, title: Math.round(mapCenter[1])+', '+Math.round(mapCenter[0]), alt:'XYMarker'})
+            .bindPopup()
+            .on('moveend', function(e) {
+              let marker = e.target;
+              let t = marker.getLatLng();
+              e.target._icon.title = Math.round(t.lng)+', '+Math.round(t.lat)
+            })
+            .on('popupopen', function(e) {
+                let marker = e.target;
+                let t = marker.getLatLng();
+                marker.setPopupContent(`(${Math.round(t.lng)}, ${Math.round(t.lat)})`);
+                marker.openPopup();
+            }).addTo(layers['coordinate'])
+        }
 
         updatePolylines();
         markItems();
@@ -537,7 +552,7 @@ function loadMap(id) {
     })
 
     // search
-    let searchControl = new L.Control.Search({
+    searchControl = new L.Control.Search({
         layer: L.featureGroup(searchLayers),
         marker: false, // no red circle
         initial: false, // search any substring
@@ -896,7 +911,7 @@ window.onload = function(event) {
     pressed[e.code] = true;
     switch (e.code) {
       case 'KeyF':        // F (no ctrl) to toggle fullscreen
-        if(e.ctrlKey) {
+        if (e.ctrlKey) {
           searchControl.expand(true);
           e.preventDefault();
         } else {

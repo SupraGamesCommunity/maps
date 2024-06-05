@@ -9,7 +9,7 @@ class LayerConfig {
         this.defaultIcon = defaultIcon;             // Default icon to use for markers on this layer
         this.defaultActive = defaultActive;         // Should it be toggled on by default
         this.games = games;                         // Array of games to display for (slc, siu)
-        this.index = 0;                   // Until Init is called index is undefined
+        this.index = 0;                             // Until Init is called index is undefined
     }
 }
 
@@ -27,6 +27,7 @@ const layerConfigs = {
         ['misc',        new LayerConfig('markers', 'Miscellaneous',  'question_mark', false, ['sl', 'slc', 'siu'])],
         ['coin',        new LayerConfig('markers', 'Coins',          'awesome',       false, ['sl', 'slc', 'siu'])],
         ['graves',      new LayerConfig('markers', 'Graves',         'question_mark', false, ['sl'              ])],
+        ['coordinate',  new LayerConfig('markers', 'XY',             null,            false, ['sl', 'slc', 'siu'])],
         ['extra',       new LayerConfig('markers', 'Extras',         'question_mark', false, ['sl', 'slc', 'siu'])],
     ]),
 
