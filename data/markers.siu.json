@@ -28239,22 +28239,13 @@
     "name": "CoinStack4",
     "type": "_CoinStack_C",
     "area": "DLC2_Complete",
-    "lat": -15310.972330729166,
-    "lng": -31607.178385416668,
-    "alt": 22277.963975694445,
-    "coins": "27"
+    "lat": -15356.9994921875,
+    "lng": -31677.89078125,
+    "alt": 22275.551640625,
+    "coins": "34"
   },
   {
     "name": "CoinStack5",
-    "type": "_CoinStack_C",
-    "area": "DLC2_Complete",
-    "lat": -15475.355050223214,
-    "lng": -31859.72265625,
-    "alt": 22269.348493303572,
-    "coins": "7"
-  },
-  {
-    "name": "CoinStack6",
     "type": "_CoinStack_C",
     "area": "DLC2_Complete",
     "lat": -19431.100952148438,
@@ -28263,7 +28254,7 @@
     "coins": "25"
   },
   {
-    "name": "CoinStack7",
+    "name": "CoinStack6",
     "type": "_CoinStack_C",
     "area": "DLC2_Complete",
     "lat": -13026.1240234375,
@@ -28272,25 +28263,16 @@
     "coins": "20"
   },
   {
+    "name": "CoinStack7",
+    "type": "_CoinStack_C",
+    "area": "DLC2_Complete",
+    "lat": -26716.21950954861,
+    "lng": -56521.671223958336,
+    "alt": 14775.584092881945,
+    "coins": "27"
+  },
+  {
     "name": "CoinStack8",
-    "type": "_CoinStack_C",
-    "area": "DLC2_Complete",
-    "lat": -26875.67009943182,
-    "lng": -56601.142045454544,
-    "alt": 14772.022283380682,
-    "coins": "20"
-  },
-  {
-    "name": "CoinStack9",
-    "type": "_CoinStack_C",
-    "area": "DLC2_Complete",
-    "lat": -26465.654296875,
-    "lng": -56396.78850446428,
-    "alt": 14781.181222098214,
-    "coins": "7"
-  },
-  {
-    "name": "CoinStack10",
     "type": "_CoinStack_C",
     "area": "DLC2_Complete",
     "lat": -8670.092502170139,
@@ -28299,7 +28281,7 @@
     "coins": "27"
   },
   {
-    "name": "CoinStack11",
+    "name": "CoinStack9",
     "type": "_CoinStack_C",
     "area": "DLC2_FinalBoss",
     "lat": -18428.279140625,
@@ -28308,7 +28290,7 @@
     "coins": "34"
   },
   {
-    "name": "CoinStack12",
+    "name": "CoinStack10",
     "type": "_CoinStack_C",
     "area": "DLC2_FinalBoss",
     "lat": -23502.833671875,
@@ -28319,7 +28301,7 @@
     "yt_start": "0"
   },
   {
-    "name": "CoinStack13",
+    "name": "CoinStack11",
     "type": "_CoinStack_C",
     "area": "DLC2_FinalBoss",
     "lat": -14683.462890625,
@@ -28328,7 +28310,7 @@
     "coins": "34"
   },
   {
-    "name": "CoinStack14",
+    "name": "CoinStack12",
     "type": "_CoinStack_C",
     "area": "DLC2_FinalBoss",
     "lat": -24876.90715144231,

@@ -630,7 +630,7 @@ def cleanup_objects(game, classes_found, data_lookup, data):
 # Adds the new stack objects to our collection and removes the original coins
 def create_coinstacks(data_lookup, data):
 
-    threshold = 200
+    threshold = 400
 
     # Positions of all non-rotating coins and their corresponding indices in data
     points = []
