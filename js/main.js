@@ -819,6 +819,26 @@ window.loadSaveFile = function () {
   }
 }
 
+window.onhashchange = function(e) { 
+  console.log(location.hash)
+  if (location.hash.length > 1 && map) {
+    let p = map.getCenter();
+    mapParam = {mapId:mapId, lat:Math.round(p.lat), lng:Math.round(p.lng), zoom:map.getZoom()};
+    for (const s of location.hash.slice(1).split('&')) {
+      let [k,v] = s.split('=');
+      mapParam[k] = v;
+    }
+    if(mapId != mapParam.mapId) {
+      reloadMap(mapParam.mapId)
+    }
+    else {
+      map.setView([mapParam.lat, mapParam.lng], mapParam.zoom);
+    }
+    mapParam = {}
+    location.hash = '';
+  }
+}
+
 window.onload = function(event) {
   if (location.hash.length>1) {
     for (const s of location.hash.slice(1).split('&')) {
