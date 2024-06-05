@@ -149,7 +149,7 @@ const gameClasses = {
     'CoinBig_C'                          : new GameClass('coin:32',                  'coin'),
     'CoinRed_C'                          : new GameClass('coinRed',                  'misc',        'collectable'),
     'Coin_C'                             : new GameClass('coin:16',                  'coin'),
-    '_CoinStash'                         : new GameClass('coinStash2',               'coin'),
+    '_CoinStack_C'                       : new GameClass('coinStash2',               'coin'),
     'Coin:DestroyablePots_C'             : new GameClass('pots',                     'coin'),
     'GoldBlock_C'                        : disableGameClass,
     'GoldNugget_C'                       : disableGameClass,

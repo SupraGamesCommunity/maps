@@ -6248,15 +6248,6 @@
     "coins": 1
   },
   {
-    "name": "Coin417",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -11773.794921875,
-    "lng": 31380.4296875,
-    "alt": 1929.340576171875,
-    "coins": 1
-  },
-  {
     "name": "Coin418",
     "type": "Coin_C",
     "area": "DLC2_Complete",
@@ -6299,15 +6290,6 @@
     "lat": -48641.0703125,
     "lng": 45449.8046875,
     "alt": 1094.3919677734375,
-    "coins": 1
-  },
-  {
-    "name": "Coin422",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -11772.794921875,
-    "lng": 31415.533203125,
-    "alt": 1951.0831298828125,
     "coins": 1
   },
   {
@@ -6380,42 +6362,6 @@
     "lat": -17299.095703125,
     "lng": 59816.1953125,
     "alt": 463.2291259765625,
-    "coins": 1
-  },
-  {
-    "name": "Coin430",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -11770.341796875,
-    "lng": 31392.28515625,
-    "alt": 1973.8970947265625,
-    "coins": 1
-  },
-  {
-    "name": "Coin431",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -11761.4296875,
-    "lng": 31372.2890625,
-    "alt": 1996.6160888671875,
-    "coins": 1
-  },
-  {
-    "name": "Coin432",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -11772.2529296875,
-    "lng": 31363.626953125,
-    "alt": 2017.9813232421875,
-    "coins": 1
-  },
-  {
-    "name": "Coin433",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -11763.994140625,
-    "lng": 31354.9140625,
-    "alt": 2038.94384765625,
     "coins": 1
   },
   {
@@ -6554,15 +6500,6 @@
     "coins": 1
   },
   {
-    "name": "Coin448",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -11764.6103515625,
-    "lng": 31350.064453125,
-    "alt": 2058.363037109375,
-    "coins": 1
-  },
-  {
     "name": "Coin449",
     "type": "Coin_C",
     "area": "DLC2_Complete",
@@ -6679,51 +6616,6 @@
     "lat": -13605.7001953125,
     "lng": 61609.4453125,
     "alt": 2455.157470703125,
-    "coins": 1
-  },
-  {
-    "name": "Coin460",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -11772.9765625,
-    "lng": 31325.85546875,
-    "alt": 1924.3154296875,
-    "coins": 1
-  },
-  {
-    "name": "Coin461",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -11770.666015625,
-    "lng": 31350.548828125,
-    "alt": 1958.3294677734375,
-    "coins": 1
-  },
-  {
-    "name": "Coin462",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -11764.0009765625,
-    "lng": 31327.77734375,
-    "alt": 1988.21240234375,
-    "coins": 1
-  },
-  {
-    "name": "Coin463",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -11759.6630859375,
-    "lng": 31349.06640625,
-    "alt": 2076.673583984375,
-    "coins": 1
-  },
-  {
-    "name": "Coin464",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -11838.9892578125,
-    "lng": 31352.677734375,
-    "alt": 1927.8079833984375,
     "coins": 1
   },
   {
@@ -6880,51 +6772,6 @@
     "coins": 1
   },
   {
-    "name": "Coin545",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -33096.40625,
-    "lng": -44401.9765625,
-    "alt": 9806.9677734375,
-    "coins": 1
-  },
-  {
-    "name": "Coin546",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -33216.26171875,
-    "lng": -44362.75,
-    "alt": 9854.8388671875,
-    "coins": 1
-  },
-  {
-    "name": "Coin547",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -33147.3359375,
-    "lng": -44365.609375,
-    "alt": 9874.240234375,
-    "coins": 1
-  },
-  {
-    "name": "Coin548",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -33184.0,
-    "lng": -44367.765625,
-    "alt": 9884.3466796875,
-    "coins": 1
-  },
-  {
-    "name": "Coin549",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -33149.046875,
-    "lng": -44435.234375,
-    "alt": 9853.771484375,
-    "coins": 1
-  },
-  {
     "name": "Coin54_34",
     "type": "Coin_C",
     "area": "DLC2_Complete",
@@ -6943,192 +6790,12 @@
     "coins": 1
   },
   {
-    "name": "Coin550",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -33299.90625,
-    "lng": -44536.3984375,
-    "alt": 9782.1103515625,
-    "coins": 1
-  },
-  {
-    "name": "Coin551",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -33302.375,
-    "lng": -44527.84375,
-    "alt": 9801.0009765625,
-    "coins": 1
-  },
-  {
-    "name": "Coin552",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -33303.171875,
-    "lng": -44541.453125,
-    "alt": 9819.712890625,
-    "coins": 1
-  },
-  {
-    "name": "Coin553",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -33305.03515625,
-    "lng": -44540.3125,
-    "alt": 9836.9814453125,
-    "coins": 1
-  },
-  {
-    "name": "Coin554",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -33305.71875,
-    "lng": -44555.03125,
-    "alt": 9856.052734375,
-    "coins": 1
-  },
-  {
-    "name": "Coin555",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -33308.93359375,
-    "lng": -44535.09375,
-    "alt": 9872.8896484375,
-    "coins": 1
-  },
-  {
-    "name": "Coin556",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -33310.88671875,
-    "lng": -44532.6953125,
-    "alt": 9890.96484375,
-    "coins": 1
-  },
-  {
-    "name": "Coin557",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -33392.99609375,
-    "lng": -44392.4453125,
-    "alt": 9813.734375,
-    "coins": 1
-  },
-  {
-    "name": "Coin558",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -33385.515625,
-    "lng": -44393.5078125,
-    "alt": 9833.4345703125,
-    "coins": 1
-  },
-  {
-    "name": "Coin559",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -33400.1171875,
-    "lng": -44391.18359375,
-    "alt": 9851.5078125,
-    "coins": 1
-  },
-  {
     "name": "Coin56",
     "type": "Coin_C",
     "area": "DLC2_Complete",
     "lat": -9281.23046875,
     "lng": 59322.1484375,
     "alt": 464.2961120605469,
-    "coins": 1
-  },
-  {
-    "name": "Coin560",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -33406.96875,
-    "lng": -44390.07421875,
-    "alt": 9868.7685546875,
-    "coins": 1
-  },
-  {
-    "name": "Coin561",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -33415.82421875,
-    "lng": -44388.67578125,
-    "alt": 9887.43359375,
-    "coins": 1
-  },
-  {
-    "name": "Coin562",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -33396.7421875,
-    "lng": -44391.265625,
-    "alt": 9905.798828125,
-    "coins": 1
-  },
-  {
-    "name": "Coin563",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -33405.65625,
-    "lng": -44390.0234375,
-    "alt": 9923.80859375,
-    "coins": 1
-  },
-  {
-    "name": "Coin564",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -33200.26171875,
-    "lng": -44445.23828125,
-    "alt": 9862.509765625,
-    "coins": 1
-  },
-  {
-    "name": "Coin565",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -33150.2578125,
-    "lng": -44441.48828125,
-    "alt": 9858.8583984375,
-    "coins": 1
-  },
-  {
-    "name": "Coin566",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -33141.2890625,
-    "lng": -44446.484375,
-    "alt": 9875.3935546875,
-    "coins": 1
-  },
-  {
-    "name": "Coin567",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -33156.8359375,
-    "lng": -44446.58203125,
-    "alt": 9897.0244140625,
-    "coins": 1
-  },
-  {
-    "name": "Coin568",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -33173.234375,
-    "lng": -44457.12109375,
-    "alt": 9916.5703125,
-    "coins": 1
-  },
-  {
-    "name": "Coin569",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -33088.53125,
-    "lng": -44477.015625,
-    "alt": 9785.908203125,
     "coins": 1
   },
   {
@@ -7141,60 +6808,6 @@
     "coins": 1
   },
   {
-    "name": "Coin570",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -33382.83984375,
-    "lng": -44232.640625,
-    "alt": 9833.5224609375,
-    "coins": 1
-  },
-  {
-    "name": "Coin571",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -33442.1484375,
-    "lng": -44242.3359375,
-    "alt": 9854.3759765625,
-    "coins": 1
-  },
-  {
-    "name": "Coin572",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -33460.8359375,
-    "lng": -44249.94921875,
-    "alt": 9830.8828125,
-    "coins": 1
-  },
-  {
-    "name": "Coin573",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -33377.55078125,
-    "lng": -44668.6796875,
-    "alt": 9753.412109375,
-    "coins": 1
-  },
-  {
-    "name": "Coin574",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -33260.375,
-    "lng": -44656.26953125,
-    "alt": 9774.265625,
-    "coins": 1
-  },
-  {
-    "name": "Coin575",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -33223.19140625,
-    "lng": -44605.0234375,
-    "alt": 9785.3515625,
-    "coins": 1
-  },
-  {
     "name": "Coin58",
     "type": "Coin_C",
     "area": "DLC2_Complete",
@@ -7204,120 +6817,12 @@
     "coins": 1
   },
   {
-    "name": "Coin581",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -15238.0791015625,
-    "lng": -31652.703125,
-    "alt": 22219.212890625,
-    "coins": 1
-  },
-  {
-    "name": "Coin582",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -15359.123046875,
-    "lng": -31596.814453125,
-    "alt": 22249.7890625,
-    "coins": 1
-  },
-  {
-    "name": "Coin583",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -15289.826171875,
-    "lng": -31595.666015625,
-    "alt": 22271.64453125,
-    "coins": 1
-  },
-  {
-    "name": "Coin584",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -15327.275390625,
-    "lng": -31593.62890625,
-    "alt": 22280.88671875,
-    "coins": 1
-  },
-  {
-    "name": "Coin585",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -15293.67578125,
-    "lng": -31669.146484375,
-    "alt": 22272.859375,
-    "coins": 1
-  },
-  {
-    "name": "Coin586",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -15311.251953125,
-    "lng": -31538.203125,
-    "alt": 22223.44140625,
-    "coins": 1
-  },
-  {
-    "name": "Coin587",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -15302.671875,
-    "lng": -31540.419921875,
-    "alt": 22244.078125,
-    "coins": 1
-  },
-  {
     "name": "Coin59",
     "type": "Coin_C",
     "area": "DLC2_Complete",
     "lat": -8373.3203125,
     "lng": 60145.13671875,
     "alt": 4047.46826171875,
-    "coins": 1
-  },
-  {
-    "name": "Coin592",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -15317.8876953125,
-    "lng": -31538.751953125,
-    "alt": 22260.943359375,
-    "coins": 1
-  },
-  {
-    "name": "Coin593",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -15325.310546875,
-    "lng": -31538.3203125,
-    "alt": 22277.64453125,
-    "coins": 1
-  },
-  {
-    "name": "Coin594",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -15335.8310546875,
-    "lng": -31537.46484375,
-    "alt": 22295.462890625,
-    "coins": 1
-  },
-  {
-    "name": "Coin598",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -15318.5263671875,
-    "lng": -31540.779296875,
-    "alt": 22315.3984375,
-    "coins": 1
-  },
-  {
-    "name": "Coin599",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -15329.0556640625,
-    "lng": -31540.072265625,
-    "alt": 22332.548828125,
     "coins": 1
   },
   {
@@ -7339,174 +6844,12 @@
     "coins": 1
   },
   {
-    "name": "Coin600",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -15345.703125,
-    "lng": -31674.623046875,
-    "alt": 22282.443359375,
-    "coins": 1
-  },
-  {
-    "name": "Coin601",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -15295.2451171875,
-    "lng": -31673.630859375,
-    "alt": 22279.6328125,
-    "coins": 1
-  },
-  {
-    "name": "Coin602",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -15286.708984375,
-    "lng": -31673.697265625,
-    "alt": 22297.421875,
-    "coins": 1
-  },
-  {
-    "name": "Coin603",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -15302.947265625,
-    "lng": -31666.78515625,
-    "alt": 22317.87890625,
-    "coins": 1
-  },
-  {
-    "name": "Coin604",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -15320.376953125,
-    "lng": -31670.576171875,
-    "alt": 22339.443359375,
-    "coins": 1
-  },
-  {
-    "name": "Coin605",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -15473.154296875,
-    "lng": -31861.17578125,
-    "alt": 22213.642578125,
-    "coins": 1
-  },
-  {
-    "name": "Coin606",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -15485.3505859375,
-    "lng": -31863.88671875,
-    "alt": 22232.302734375,
-    "coins": 1
-  },
-  {
-    "name": "Coin607",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -15474.0595703125,
-    "lng": -31860.013671875,
-    "alt": 22251.693359375,
-    "coins": 1
-  },
-  {
-    "name": "Coin608",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -15470.1962890625,
-    "lng": -31858.2421875,
-    "alt": 22269.490234375,
-    "coins": 1
-  },
-  {
-    "name": "Coin609",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -15463.591796875,
-    "lng": -31855.62890625,
-    "alt": 22288.93359375,
-    "coins": 1
-  },
-  {
-    "name": "Coin610",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -15483.9013671875,
-    "lng": -31860.9453125,
-    "alt": 22305.29296875,
-    "coins": 1
-  },
-  {
-    "name": "Coin611",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -15477.2314453125,
-    "lng": -31858.166015625,
-    "alt": 22324.083984375,
-    "coins": 1
-  },
-  {
     "name": "Coin612_23",
     "type": "Coin_C",
     "area": "DLC2_Complete",
     "lat": -12837.9052734375,
     "lng": -60444.81640625,
     "alt": 10865.75,
-    "coins": 1
-  },
-  {
-    "name": "Coin613",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -19388.228515625,
-    "lng": -40459.26171875,
-    "alt": 10374.8154296875,
-    "coins": 1
-  },
-  {
-    "name": "Coin614",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -19466.396484375,
-    "lng": -40558.1796875,
-    "alt": 10422.7529296875,
-    "coins": 1
-  },
-  {
-    "name": "Coin615",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -19445.9140625,
-    "lng": -40491.40234375,
-    "alt": 10438.705078125,
-    "coins": 1
-  },
-  {
-    "name": "Coin616",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -19455.85546875,
-    "lng": -40526.0703125,
-    "alt": 10450.94140625,
-    "coins": 1
-  },
-  {
-    "name": "Coin617",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -19377.87890625,
-    "lng": -40514.5859375,
-    "alt": 10428.66015625,
-    "coins": 1
-  },
-  {
-    "name": "Coin618",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -19384.462890625,
-    "lng": -40565.5,
-    "alt": 10441.4384765625,
     "coins": 1
   },
   {
@@ -7555,78 +6898,6 @@
     "coins": 1
   },
   {
-    "name": "Coin622_30",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -13100.8134765625,
-    "lng": -60482.92578125,
-    "alt": 10885.3583984375,
-    "coins": 1
-  },
-  {
-    "name": "Coin623",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -19478.509765625,
-    "lng": -40485.65234375,
-    "alt": 10390.8505859375,
-    "coins": 1
-  },
-  {
-    "name": "Coin624",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -19485.7578125,
-    "lng": -40500.7890625,
-    "alt": 10403.28125,
-    "coins": 1
-  },
-  {
-    "name": "Coin625",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -19500.06640625,
-    "lng": -40516.796875,
-    "alt": 10394.640625,
-    "coins": 1
-  },
-  {
-    "name": "Coin626",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -19508.943359375,
-    "lng": -40530.91015625,
-    "alt": 10399.6865234375,
-    "coins": 1
-  },
-  {
-    "name": "Coin627",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -19523.7578125,
-    "lng": -40547.29296875,
-    "alt": 10390.0703125,
-    "coins": 1
-  },
-  {
-    "name": "Coin628",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -19526.3125,
-    "lng": -40560.1953125,
-    "alt": 10412.8359375,
-    "coins": 1
-  },
-  {
-    "name": "Coin629",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -19535.12109375,
-    "lng": -40574.93359375,
-    "alt": 10419.24609375,
-    "coins": 1
-  },
-  {
     "name": "Coin63",
     "type": "Coin_C",
     "area": "DLC2_Complete",
@@ -7636,111 +6907,12 @@
     "coins": 1
   },
   {
-    "name": "Coin630",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -19270.681640625,
-    "lng": -40634.10546875,
-    "alt": 10406.8798828125,
-    "coins": 1
-  },
-  {
-    "name": "Coin631",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -19183.119140625,
-    "lng": -40594.203125,
-    "alt": 10442.0986328125,
-    "coins": 1
-  },
-  {
-    "name": "Coin632",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -12967.9853515625,
-    "lng": -60464.34375,
-    "alt": 10912.1806640625,
-    "coins": 1
-  },
-  {
-    "name": "Coin633",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -13026.064453125,
-    "lng": -60499.16796875,
-    "alt": 10938.51953125,
-    "coins": 1
-  },
-  {
-    "name": "Coin634",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -12992.8759765625,
-    "lng": -60480.4375,
-    "alt": 10945.5419921875,
-    "coins": 1
-  },
-  {
-    "name": "Coin635",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -13061.2275390625,
-    "lng": -60434.69921875,
-    "alt": 10933.826171875,
-    "coins": 1
-  },
-  {
-    "name": "Coin636",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -13019.662109375,
-    "lng": -60402.0390625,
-    "alt": 10939.552734375,
-    "coins": 1
-  },
-  {
-    "name": "Coin637",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -13016.919921875,
-    "lng": -60410.95703125,
-    "alt": 10963.4287109375,
-    "coins": 1
-  },
-  {
-    "name": "Coin638",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -13013.5927734375,
-    "lng": -60408.1953125,
-    "alt": 10982.6826171875,
-    "coins": 1
-  },
-  {
-    "name": "Coin639",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -13011.685546875,
-    "lng": -60411.66015625,
-    "alt": 11004.40234375,
-    "coins": 1
-  },
-  {
     "name": "Coin64",
     "type": "Coin_C",
     "area": "DLC2_Complete",
     "lat": -14254.912109375,
     "lng": 60575.96484375,
     "alt": 2657.47314453125,
-    "coins": 1
-  },
-  {
-    "name": "Coin640",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -13008.65625,
-    "lng": -60401.26171875,
-    "alt": 11021.4248046875,
     "coins": 1
   },
   {
@@ -7987,42 +7159,6 @@
     "coins": 1
   },
   {
-    "name": "Coin666",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -26937.703125,
-    "lng": -56528.05078125,
-    "alt": 14675.4287109375,
-    "coins": 1
-  },
-  {
-    "name": "Coin667",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -26890.0234375,
-    "lng": -56628.01171875,
-    "alt": 14755.7021484375,
-    "coins": 1
-  },
-  {
-    "name": "Coin668",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -26951.978515625,
-    "lng": -56593.23046875,
-    "alt": 14740.453125,
-    "coins": 1
-  },
-  {
-    "name": "Coin669",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -26929.7734375,
-    "lng": -56610.921875,
-    "alt": 14766.6376953125,
-    "coins": 1
-  },
-  {
     "name": "Coin67",
     "type": "Coin_C",
     "area": "DLC2_Complete",
@@ -8032,129 +7168,12 @@
     "coins": 1
   },
   {
-    "name": "Coin670",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -26914.283203125,
-    "lng": -56530.88671875,
-    "alt": 14750.8173828125,
-    "coins": 1
-  },
-  {
-    "name": "Coin671",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -26877.875,
-    "lng": -56548.75390625,
-    "alt": 14785.216796875,
-    "coins": 1
-  },
-  {
-    "name": "Coin672",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -26811.318359375,
-    "lng": -56662.99609375,
-    "alt": 14793.9873046875,
-    "coins": 1
-  },
-  {
-    "name": "Coin673",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -26803.0390625,
-    "lng": -56667.1640625,
-    "alt": 14811.4013671875,
-    "coins": 1
-  },
-  {
-    "name": "Coin674",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -26808.7890625,
-    "lng": -56659.55078125,
-    "alt": 14831.548828125,
-    "coins": 1
-  },
-  {
-    "name": "Coin675",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -26819.900390625,
-    "lng": -56661.53515625,
-    "alt": 14852.3720703125,
-    "coins": 1
-  },
-  {
-    "name": "Coin676",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -26461.32421875,
-    "lng": -56438.65234375,
-    "alt": 14724.6259765625,
-    "coins": 1
-  },
-  {
-    "name": "Coin677",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -26469.92578125,
-    "lng": -56447.3125,
-    "alt": 14791.1865234375,
-    "coins": 1
-  },
-  {
-    "name": "Coin678",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -26471.40234375,
-    "lng": -56428.46484375,
-    "alt": 14796.3876953125,
-    "coins": 1
-  },
-  {
-    "name": "Coin679",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -26468.6171875,
-    "lng": -56410.98046875,
-    "alt": 14799.0390625,
-    "coins": 1
-  },
-  {
     "name": "Coin68",
     "type": "Coin_C",
     "area": "DLC2_Complete",
     "lat": -13110.0771484375,
     "lng": 40463.3125,
     "alt": 1942.84521484375,
-    "coins": 1
-  },
-  {
-    "name": "Coin680",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -26476.2578125,
-    "lng": -56391.7578125,
-    "alt": 14797.87890625,
-    "coins": 1
-  },
-  {
-    "name": "Coin681",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -26456.5703125,
-    "lng": -56374.59375,
-    "alt": 14804.6689453125,
-    "coins": 1
-  },
-  {
-    "name": "Coin682",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -26455.482421875,
-    "lng": -56285.7578125,
-    "alt": 14754.4814453125,
     "coins": 1
   },
   {
@@ -8365,15 +7384,6 @@
     "coins": 1
   },
   {
-    "name": "Coin709",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -8683.7509765625,
-    "lng": -37853.59765625,
-    "alt": 16127.14453125,
-    "coins": 1
-  },
-  {
     "name": "Coin71",
     "type": "Coin_C",
     "area": "DLC2_Complete",
@@ -8383,156 +7393,12 @@
     "coins": 1
   },
   {
-    "name": "Coin710",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -8607.84375,
-    "lng": -37960.71484375,
-    "alt": 16165.5146484375,
-    "coins": 1
-  },
-  {
-    "name": "Coin711",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -8665.8818359375,
-    "lng": -37922.66796875,
-    "alt": 16187.0595703125,
-    "coins": 1
-  },
-  {
-    "name": "Coin712",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -8634.462890625,
-    "lng": -37942.98828125,
-    "alt": 16196.6318359375,
-    "coins": 1
-  },
-  {
-    "name": "Coin713",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -8624.21484375,
-    "lng": -37862.65625,
-    "alt": 16178.25390625,
-    "coins": 1
-  },
-  {
-    "name": "Coin714",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -8576.453125,
-    "lng": -37884.26953125,
-    "alt": 16187.197265625,
-    "coins": 1
-  },
-  {
-    "name": "Coin715",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -8620.0791015625,
-    "lng": -37858.89453125,
-    "alt": 16184.353515625,
-    "coins": 1
-  },
-  {
-    "name": "Coin716",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -8626.0859375,
-    "lng": -37852.26171875,
-    "alt": 16201.935546875,
-    "coins": 1
-  },
-  {
-    "name": "Coin717",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -8614.4775390625,
-    "lng": -37864.203125,
-    "alt": 16223.2041015625,
-    "coins": 1
-  },
-  {
-    "name": "Coin718",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -8596.1982421875,
-    "lng": -37867.6328125,
-    "alt": 16244.1220703125,
-    "coins": 1
-  },
-  {
-    "name": "Coin719",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -8751.07421875,
-    "lng": -37921.4921875,
-    "alt": 16156.82421875,
-    "coins": 1
-  },
-  {
     "name": "Coin72",
     "type": "Coin_C",
     "area": "DLC2_Complete",
     "lat": -35888.12890625,
     "lng": 1397.229736328125,
     "alt": 1783.382568359375,
-    "coins": 1
-  },
-  {
-    "name": "Coin720",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -8759.5556640625,
-    "lng": -37923.07421875,
-    "alt": 16177.5576171875,
-    "coins": 1
-  },
-  {
-    "name": "Coin721",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -8744.8154296875,
-    "lng": -37918.328125,
-    "alt": 16194.2509765625,
-    "coins": 1
-  },
-  {
-    "name": "Coin722",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -8737.6748046875,
-    "lng": -37915.67578125,
-    "alt": 16210.8876953125,
-    "coins": 1
-  },
-  {
-    "name": "Coin723",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -8727.53125,
-    "lng": -37912.12890625,
-    "alt": 16228.578125,
-    "coins": 1
-  },
-  {
-    "name": "Coin724",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -8744.4189453125,
-    "lng": -37916.328125,
-    "alt": 16248.71484375,
-    "coins": 1
-  },
-  {
-    "name": "Coin725",
-    "type": "Coin_C",
-    "area": "DLC2_Complete",
-    "lat": -8734.33203125,
-    "lng": -37912.65234375,
-    "alt": 16265.74609375,
     "coins": 1
   },
   {
@@ -8833,57 +7699,12 @@
     "coins": 15
   },
   {
-    "name": "CoinBig16",
-    "type": "CoinBig_C",
-    "area": "DLC2_Complete",
-    "lat": -15298.005859375,
-    "lng": -31687.927734375,
-    "alt": 22242.62109375,
-    "coins": 10
-  },
-  {
-    "name": "CoinBig17",
-    "type": "CoinBig_C",
-    "area": "DLC2_Complete",
-    "lat": -19366.609375,
-    "lng": -40524.70703125,
-    "alt": 10396.708984375,
-    "coins": 10
-  },
-  {
-    "name": "CoinBig18",
-    "type": "CoinBig_C",
-    "area": "DLC2_Complete",
-    "lat": -13067.880859375,
-    "lng": -60419.53515625,
-    "alt": 10902.0185546875,
-    "coins": 10
-  },
-  {
     "name": "CoinBig19_2",
     "type": "CoinBig_C",
     "area": "DLC2_Complete",
     "lat": -32580.0,
     "lng": -34220.0,
     "alt": 23450.0,
-    "coins": 10
-  },
-  {
-    "name": "CoinBig20",
-    "type": "CoinBig_C",
-    "area": "DLC2_Complete",
-    "lat": -26887.6875,
-    "lng": -56521.4609375,
-    "alt": 14728.6796875,
-    "coins": 10
-  },
-  {
-    "name": "CoinBig21",
-    "type": "CoinBig_C",
-    "area": "DLC2_Complete",
-    "lat": -8612.814453125,
-    "lng": -37852.68359375,
-    "alt": 16145.7509765625,
     "coins": 10
   },
   {
@@ -8912,15 +7733,6 @@
     "lng": 4793.4462890625,
     "alt": 2664.69873046875,
     "coins": 15
-  },
-  {
-    "name": "CoinBig9",
-    "type": "CoinBig_C",
-    "area": "DLC2_Complete",
-    "lat": -33153.734375,
-    "lng": -44444.15234375,
-    "alt": 9819.8837890625,
-    "coins": 10
   },
   {
     "name": "CoinBig_2",
@@ -21679,764 +20491,6 @@
     "coins": 1
   },
   {
-    "name": "Coin465_2",
-    "type": "Coin_C",
-    "area": "DLC2_FinalBoss",
-    "lat": -18586.1640625,
-    "lng": -27587.900390625,
-    "alt": 5981.69921875,
-    "coins": 1
-  },
-  {
-    "name": "Coin466",
-    "type": "Coin_C",
-    "area": "DLC2_FinalBoss",
-    "lat": -18457.375,
-    "lng": -27575.130859375,
-    "alt": 6026.0859375,
-    "coins": 1
-  },
-  {
-    "name": "Coin467",
-    "type": "Coin_C",
-    "area": "DLC2_FinalBoss",
-    "lat": -18518.19140625,
-    "lng": -27612.19921875,
-    "alt": 6040.62890625,
-    "coins": 1
-  },
-  {
-    "name": "Coin468",
-    "type": "Coin_C",
-    "area": "DLC2_FinalBoss",
-    "lat": -18486.041015625,
-    "lng": -27595.06640625,
-    "alt": 6053.89013671875,
-    "coins": 1
-  },
-  {
-    "name": "Coin469",
-    "type": "Coin_C",
-    "area": "DLC2_FinalBoss",
-    "lat": -18552.5703125,
-    "lng": -27547.0625,
-    "alt": 6040.3984375,
-    "coins": 1
-  },
-  {
-    "name": "Coin470",
-    "type": "Coin_C",
-    "area": "DLC2_FinalBoss",
-    "lat": -18384.70703125,
-    "lng": -27642.6015625,
-    "alt": 6004.21728515625,
-    "coins": 1
-  },
-  {
-    "name": "Coin471_10",
-    "type": "Coin_C",
-    "area": "DLC2_FinalBoss",
-    "lat": -18379.88671875,
-    "lng": -27649.5,
-    "alt": 6023.56494140625,
-    "coins": 1
-  },
-  {
-    "name": "Coin472",
-    "type": "Coin_C",
-    "area": "DLC2_FinalBoss",
-    "lat": -18387.9140625,
-    "lng": -27638.046875,
-    "alt": 6042.279296875,
-    "coins": 1
-  },
-  {
-    "name": "Coin473",
-    "type": "Coin_C",
-    "area": "DLC2_FinalBoss",
-    "lat": -18387.349609375,
-    "lng": -27638.794921875,
-    "alt": 6059.82763671875,
-    "coins": 1
-  },
-  {
-    "name": "Coin474",
-    "type": "Coin_C",
-    "area": "DLC2_FinalBoss",
-    "lat": -18396.0703125,
-    "lng": -27626.412109375,
-    "alt": 6078.88525390625,
-    "coins": 1
-  },
-  {
-    "name": "Coin475",
-    "type": "Coin_C",
-    "area": "DLC2_FinalBoss",
-    "lat": -18384.623046875,
-    "lng": -27642.73046875,
-    "alt": 6096.37451171875,
-    "coins": 1
-  },
-  {
-    "name": "Coin476",
-    "type": "Coin_C",
-    "area": "DLC2_FinalBoss",
-    "lat": -18383.37109375,
-    "lng": -27644.517578125,
-    "alt": 6114.7607421875,
-    "coins": 1
-  },
-  {
-    "name": "Coin477",
-    "type": "Coin_C",
-    "area": "DLC2_FinalBoss",
-    "lat": -18331.875,
-    "lng": -27484.53125,
-    "alt": 6004.21728515625,
-    "coins": 1
-  },
-  {
-    "name": "Coin478",
-    "type": "Coin_C",
-    "area": "DLC2_FinalBoss",
-    "lat": -18339.5546875,
-    "lng": -27487.986328125,
-    "alt": 6023.56494140625,
-    "coins": 1
-  },
-  {
-    "name": "Coin479",
-    "type": "Coin_C",
-    "area": "DLC2_FinalBoss",
-    "lat": -18326.8125,
-    "lng": -27482.3125,
-    "alt": 6042.279296875,
-    "coins": 1
-  },
-  {
-    "name": "Coin480",
-    "type": "Coin_C",
-    "area": "DLC2_FinalBoss",
-    "lat": -18321.181640625,
-    "lng": -27479.791015625,
-    "alt": 6059.82763671875,
-    "coins": 1
-  },
-  {
-    "name": "Coin481",
-    "type": "Coin_C",
-    "area": "DLC2_FinalBoss",
-    "lat": -18313.76953125,
-    "lng": -27476.490234375,
-    "alt": 6078.88525390625,
-    "coins": 1
-  },
-  {
-    "name": "Coin482",
-    "type": "Coin_C",
-    "area": "DLC2_FinalBoss",
-    "lat": -18332.04296875,
-    "lng": -27484.76953125,
-    "alt": 6096.37451171875,
-    "coins": 1
-  },
-  {
-    "name": "Coin483",
-    "type": "Coin_C",
-    "area": "DLC2_FinalBoss",
-    "lat": -18324.6171875,
-    "lng": -27481.306640625,
-    "alt": 6114.7607421875,
-    "coins": 1
-  },
-  {
-    "name": "Coin484",
-    "type": "Coin_C",
-    "area": "DLC2_FinalBoss",
-    "lat": -18511.96484375,
-    "lng": -27516.103515625,
-    "alt": 6055.20556640625,
-    "coins": 1
-  },
-  {
-    "name": "Coin485",
-    "type": "Coin_C",
-    "area": "DLC2_FinalBoss",
-    "lat": -18512.0625,
-    "lng": -27528.08203125,
-    "alt": 6077.85400390625,
-    "coins": 1
-  },
-  {
-    "name": "Coin486",
-    "type": "Coin_C",
-    "area": "DLC2_FinalBoss",
-    "lat": -18511.02734375,
-    "lng": -27528.025390625,
-    "alt": 6097.55859375,
-    "coins": 1
-  },
-  {
-    "name": "Coin487",
-    "type": "Coin_C",
-    "area": "DLC2_FinalBoss",
-    "lat": -18511.6875,
-    "lng": -27534.296875,
-    "alt": 6118.7001953125,
-    "coins": 1
-  },
-  {
-    "name": "Coin488",
-    "type": "Coin_C",
-    "area": "DLC2_FinalBoss",
-    "lat": -18510.6953125,
-    "lng": -27526.244140625,
-    "alt": 6137.18408203125,
-    "coins": 1
-  },
-  {
-    "name": "Coin497",
-    "type": "Coin_C",
-    "area": "DLC2_FinalBoss",
-    "lat": -23660.712890625,
-    "lng": -23296.796875,
-    "alt": 8586.94921875,
-    "coins": 1
-  },
-  {
-    "name": "Coin498",
-    "type": "Coin_C",
-    "area": "DLC2_FinalBoss",
-    "lat": -23531.9765625,
-    "lng": -23283.94140625,
-    "alt": 8631.3349609375,
-    "coins": 1
-  },
-  {
-    "name": "Coin499",
-    "type": "Coin_C",
-    "area": "DLC2_FinalBoss",
-    "lat": -23592.759765625,
-    "lng": -23321.021484375,
-    "alt": 8645.876953125,
-    "coins": 1
-  },
-  {
-    "name": "Coin500",
-    "type": "Coin_C",
-    "area": "DLC2_FinalBoss",
-    "lat": -23560.625,
-    "lng": -23303.88671875,
-    "alt": 8659.138671875,
-    "coins": 1
-  },
-  {
-    "name": "Coin501",
-    "type": "Coin_C",
-    "area": "DLC2_FinalBoss",
-    "lat": -23627.119140625,
-    "lng": -23255.94921875,
-    "alt": 8645.646484375,
-    "coins": 1
-  },
-  {
-    "name": "Coin502",
-    "type": "Coin_C",
-    "area": "DLC2_FinalBoss",
-    "lat": -23459.2578125,
-    "lng": -23351.443359375,
-    "alt": 8609.4658203125,
-    "coins": 1
-  },
-  {
-    "name": "Coin503",
-    "type": "Coin_C",
-    "area": "DLC2_FinalBoss",
-    "lat": -23454.4375,
-    "lng": -23358.345703125,
-    "alt": 8628.8134765625,
-    "coins": 1
-  },
-  {
-    "name": "Coin504",
-    "type": "Coin_C",
-    "area": "DLC2_FinalBoss",
-    "lat": -23462.462890625,
-    "lng": -23346.89453125,
-    "alt": 8647.52734375,
-    "coins": 1
-  },
-  {
-    "name": "Coin505",
-    "type": "Coin_C",
-    "area": "DLC2_FinalBoss",
-    "lat": -23461.8984375,
-    "lng": -23347.634765625,
-    "alt": 8665.076171875,
-    "coins": 1
-  },
-  {
-    "name": "Coin506",
-    "type": "Coin_C",
-    "area": "DLC2_FinalBoss",
-    "lat": -23470.6328125,
-    "lng": -23335.216796875,
-    "alt": 8684.1328125,
-    "coins": 1
-  },
-  {
-    "name": "Coin507",
-    "type": "Coin_C",
-    "area": "DLC2_FinalBoss",
-    "lat": -23459.173828125,
-    "lng": -23351.587890625,
-    "alt": 8701.6220703125,
-    "coins": 1
-  },
-  {
-    "name": "Coin508",
-    "type": "Coin_C",
-    "area": "DLC2_FinalBoss",
-    "lat": -23457.90625,
-    "lng": -23353.400390625,
-    "alt": 8720.0087890625,
-    "coins": 1
-  },
-  {
-    "name": "Coin509",
-    "type": "Coin_C",
-    "area": "DLC2_FinalBoss",
-    "lat": -23406.427734375,
-    "lng": -23193.38671875,
-    "alt": 8609.4658203125,
-    "coins": 1
-  },
-  {
-    "name": "Coin510",
-    "type": "Coin_C",
-    "area": "DLC2_FinalBoss",
-    "lat": -23414.107421875,
-    "lng": -23196.78515625,
-    "alt": 8628.8134765625,
-    "coins": 1
-  },
-  {
-    "name": "Coin511",
-    "type": "Coin_C",
-    "area": "DLC2_FinalBoss",
-    "lat": -23401.361328125,
-    "lng": -23191.1640625,
-    "alt": 8647.52734375,
-    "coins": 1
-  },
-  {
-    "name": "Coin512",
-    "type": "Coin_C",
-    "area": "DLC2_FinalBoss",
-    "lat": -23395.70703125,
-    "lng": -23188.6875,
-    "alt": 8665.076171875,
-    "coins": 1
-  },
-  {
-    "name": "Coin513",
-    "type": "Coin_C",
-    "area": "DLC2_FinalBoss",
-    "lat": -23388.3203125,
-    "lng": -23185.314453125,
-    "alt": 8684.1328125,
-    "coins": 1,
-    "yt_video": "DmxnGCJRPXw",
-    "yt_start": "0"
-  },
-  {
-    "name": "Coin514",
-    "type": "Coin_C",
-    "area": "DLC2_FinalBoss",
-    "lat": -23406.595703125,
-    "lng": -23193.63671875,
-    "alt": 8701.6220703125,
-    "coins": 1
-  },
-  {
-    "name": "Coin515",
-    "type": "Coin_C",
-    "area": "DLC2_FinalBoss",
-    "lat": -23399.16796875,
-    "lng": -23190.177734375,
-    "alt": 8720.0087890625,
-    "coins": 1
-  },
-  {
-    "name": "Coin516",
-    "type": "Coin_C",
-    "area": "DLC2_FinalBoss",
-    "lat": -23586.51953125,
-    "lng": -23224.95703125,
-    "alt": 8660.4541015625,
-    "coins": 1
-  },
-  {
-    "name": "Coin517",
-    "type": "Coin_C",
-    "area": "DLC2_FinalBoss",
-    "lat": -23586.61328125,
-    "lng": -23236.97265625,
-    "alt": 8683.1015625,
-    "coins": 1
-  },
-  {
-    "name": "Coin518",
-    "type": "Coin_C",
-    "area": "DLC2_FinalBoss",
-    "lat": -23585.578125,
-    "lng": -23236.80859375,
-    "alt": 8702.806640625,
-    "coins": 1
-  },
-  {
-    "name": "Coin519",
-    "type": "Coin_C",
-    "area": "DLC2_FinalBoss",
-    "lat": -23586.25,
-    "lng": -23243.12109375,
-    "alt": 8723.9482421875,
-    "coins": 1
-  },
-  {
-    "name": "Coin520",
-    "type": "Coin_C",
-    "area": "DLC2_FinalBoss",
-    "lat": -23585.25390625,
-    "lng": -23235.09375,
-    "alt": 8742.431640625,
-    "coins": 1
-  },
-  {
-    "name": "Coin521",
-    "type": "Coin_C",
-    "area": "DLC2_FinalBoss",
-    "lat": -14750.955078125,
-    "lng": -27711.208984375,
-    "alt": 6312.767578125,
-    "coins": 1
-  },
-  {
-    "name": "Coin522",
-    "type": "Coin_C",
-    "area": "DLC2_FinalBoss",
-    "lat": -14732.8544921875,
-    "lng": -27839.41015625,
-    "alt": 6357.1533203125,
-    "coins": 1
-  },
-  {
-    "name": "Coin523",
-    "type": "Coin_C",
-    "area": "DLC2_FinalBoss",
-    "lat": -14772.21484375,
-    "lng": -27780.34375,
-    "alt": 6371.6953125,
-    "coins": 1
-  },
-  {
-    "name": "Coin524",
-    "type": "Coin_C",
-    "area": "DLC2_FinalBoss",
-    "lat": -14753.955078125,
-    "lng": -27811.55859375,
-    "alt": 6384.95703125,
-    "coins": 1
-  },
-  {
-    "name": "Coin525",
-    "type": "Coin_C",
-    "area": "DLC2_FinalBoss",
-    "lat": -14708.7119140625,
-    "lng": -27743.203125,
-    "alt": 6371.46484375,
-    "coins": 1
-  },
-  {
-    "name": "Coin526",
-    "type": "Coin_C",
-    "area": "DLC2_FinalBoss",
-    "lat": -14797.453125,
-    "lng": -27914.71875,
-    "alt": 6335.2841796875,
-    "coins": 1
-  },
-  {
-    "name": "Coin527",
-    "type": "Coin_C",
-    "area": "DLC2_FinalBoss",
-    "lat": -14804.2138671875,
-    "lng": -27919.7421875,
-    "alt": 6354.6318359375,
-    "coins": 1
-  },
-  {
-    "name": "Coin528",
-    "type": "Coin_C",
-    "area": "DLC2_FinalBoss",
-    "lat": -14792.837890625,
-    "lng": -27911.552734375,
-    "alt": 6373.345703125,
-    "coins": 1
-  },
-  {
-    "name": "Coin529",
-    "type": "Coin_C",
-    "area": "DLC2_FinalBoss",
-    "lat": -14793.751953125,
-    "lng": -27911.97265625,
-    "alt": 6390.89453125,
-    "coins": 1
-  },
-  {
-    "name": "Coin530",
-    "type": "Coin_C",
-    "area": "DLC2_FinalBoss",
-    "lat": -14781.68359375,
-    "lng": -27902.69921875,
-    "alt": 6409.951171875,
-    "coins": 1
-  },
-  {
-    "name": "Coin531",
-    "type": "Coin_C",
-    "area": "DLC2_FinalBoss",
-    "lat": -14797.57421875,
-    "lng": -27914.830078125,
-    "alt": 6427.4404296875,
-    "coins": 1
-  },
-  {
-    "name": "Coin532",
-    "type": "Coin_C",
-    "area": "DLC2_FinalBoss",
-    "lat": -14799.30078125,
-    "lng": -27916.123046875,
-    "alt": 6445.82763671875,
-    "coins": 1
-  },
-  {
-    "name": "Coin533",
-    "type": "Coin_C",
-    "area": "DLC2_FinalBoss",
-    "lat": -14527.783203125,
-    "lng": -27740.28515625,
-    "alt": 6335.2841796875,
-    "coins": 1
-  },
-  {
-    "name": "Coin534",
-    "type": "Coin_C",
-    "area": "DLC2_FinalBoss",
-    "lat": -14531.6103515625,
-    "lng": -27732.6640625,
-    "alt": 6354.6318359375,
-    "coins": 1
-  },
-  {
-    "name": "Coin535",
-    "type": "Coin_C",
-    "area": "DLC2_FinalBoss",
-    "lat": -14525.513671875,
-    "lng": -27745.146484375,
-    "alt": 6373.345703125,
-    "coins": 1
-  },
-  {
-    "name": "Coin536",
-    "type": "Coin_C",
-    "area": "DLC2_FinalBoss",
-    "lat": -14522.5400390625,
-    "lng": -27750.95703125,
-    "alt": 6390.89453125,
-    "coins": 1
-  },
-  {
-    "name": "Coin537",
-    "type": "Coin_C",
-    "area": "DLC2_FinalBoss",
-    "lat": -14519.12890625,
-    "lng": -27757.984375,
-    "alt": 6409.951171875,
-    "coins": 1
-  },
-  {
-    "name": "Coin538",
-    "type": "Coin_C",
-    "area": "DLC2_FinalBoss",
-    "lat": -14528.0126953125,
-    "lng": -27740.166015625,
-    "alt": 6427.4404296875,
-    "coins": 1
-  },
-  {
-    "name": "Coin539",
-    "type": "Coin_C",
-    "area": "DLC2_FinalBoss",
-    "lat": -14524.1826171875,
-    "lng": -27747.541015625,
-    "alt": 6445.82763671875,
-    "coins": 1
-  },
-  {
-    "name": "Coin540",
-    "type": "Coin_C",
-    "area": "DLC2_FinalBoss",
-    "lat": -14676.158203125,
-    "lng": -27782.46875,
-    "alt": 6386.2724609375,
-    "coins": 1
-  },
-  {
-    "name": "Coin541",
-    "type": "Coin_C",
-    "area": "DLC2_FinalBoss",
-    "lat": -14688.126953125,
-    "lng": -27782.9296875,
-    "alt": 6408.919921875,
-    "coins": 1
-  },
-  {
-    "name": "Coin542",
-    "type": "Coin_C",
-    "area": "DLC2_FinalBoss",
-    "lat": -14687.958984375,
-    "lng": -27783.890625,
-    "alt": 6428.625,
-    "coins": 1
-  },
-  {
-    "name": "Coin543",
-    "type": "Coin_C",
-    "area": "DLC2_FinalBoss",
-    "lat": -14694.2626953125,
-    "lng": -27783.556640625,
-    "alt": 6449.76708984375,
-    "coins": 1
-  },
-  {
-    "name": "Coin544",
-    "type": "Coin_C",
-    "area": "DLC2_FinalBoss",
-    "lat": -14686.3134765625,
-    "lng": -27784.12109375,
-    "alt": 6468.25048828125,
-    "coins": 1
-  },
-  {
-    "name": "Coin576",
-    "type": "Coin_C",
-    "area": "DLC2_FinalBoss",
-    "lat": -24936.634765625,
-    "lng": -24468.0625,
-    "alt": 8089.82470703125,
-    "coins": 1
-  },
-  {
-    "name": "Coin577",
-    "type": "Coin_C",
-    "area": "DLC2_FinalBoss",
-    "lat": -24952.8984375,
-    "lng": -24594.494140625,
-    "alt": 8131.80859375,
-    "coins": 1
-  },
-  {
-    "name": "Coin578",
-    "type": "Coin_C",
-    "area": "DLC2_FinalBoss",
-    "lat": -24975.9609375,
-    "lng": -24527.138671875,
-    "alt": 8146.37841796875,
-    "coins": 1
-  },
-  {
-    "name": "Coin579",
-    "type": "Coin_C",
-    "area": "DLC2_FinalBoss",
-    "lat": -24966.0703125,
-    "lng": -24562.162109375,
-    "alt": 8159.6123046875,
-    "coins": 1
-  },
-  {
-    "name": "Coin580",
-    "type": "Coin_C",
-    "area": "DLC2_FinalBoss",
-    "lat": -24904.64453125,
-    "lng": -24507.818359375,
-    "alt": 8146.1201171875,
-    "coins": 1
-  },
-  {
-    "name": "Coin588",
-    "type": "Coin_C",
-    "area": "DLC2_FinalBoss",
-    "lat": -24777.87109375,
-    "lng": -24676.77734375,
-    "alt": 8109.666015625,
-    "coins": 1
-  },
-  {
-    "name": "Coin589",
-    "type": "Coin_C",
-    "area": "DLC2_FinalBoss",
-    "lat": -24784.25390625,
-    "lng": -24671.29296875,
-    "alt": 8129.013671875,
-    "coins": 1
-  },
-  {
-    "name": "Coin590",
-    "type": "Coin_C",
-    "area": "DLC2_FinalBoss",
-    "lat": -24773.6953125,
-    "lng": -24680.408203125,
-    "alt": 8147.7275390625,
-    "coins": 1
-  },
-  {
-    "name": "Coin591",
-    "type": "Coin_C",
-    "area": "DLC2_FinalBoss",
-    "lat": -24769.01953125,
-    "lng": -24684.39453125,
-    "alt": 8165.2763671875,
-    "coins": 1
-  },
-  {
-    "name": "Coin595",
-    "type": "Coin_C",
-    "area": "DLC2_FinalBoss",
-    "lat": -24883.375,
-    "lng": -24554.25390625,
-    "alt": 8160.927734375,
-    "coins": 1
-  },
-  {
-    "name": "Coin596",
-    "type": "Coin_C",
-    "area": "DLC2_FinalBoss",
-    "lat": -24895.0390625,
-    "lng": -24551.53125,
-    "alt": 8183.5751953125,
-    "coins": 1
-  },
-  {
-    "name": "Coin597",
-    "type": "Coin_C",
-    "area": "DLC2_FinalBoss",
-    "lat": -24895.109375,
-    "lng": -24552.55859375,
-    "alt": 8203.28125,
-    "coins": 1
-  },
-  {
     "name": "Coin_2",
     "type": "Coin_C",
     "area": "DLC2_FinalBoss",
@@ -22444,42 +20498,6 @@
     "lng": -23767.23046875,
     "alt": 8300.0,
     "coins": 1
-  },
-  {
-    "name": "CoinBig10",
-    "type": "CoinBig_C",
-    "area": "DLC2_FinalBoss",
-    "lat": -24885.220703125,
-    "lng": -24509.2734375,
-    "alt": 8116.0361328125,
-    "coins": 10
-  },
-  {
-    "name": "CoinBig5_2",
-    "type": "CoinBig_C",
-    "area": "DLC2_FinalBoss",
-    "lat": -18555.423828125,
-    "lng": -27527.796875,
-    "alt": 6010.31298828125,
-    "coins": 10
-  },
-  {
-    "name": "CoinBig7",
-    "type": "CoinBig_C",
-    "area": "DLC2_FinalBoss",
-    "lat": -23629.9765625,
-    "lng": -23236.64453125,
-    "alt": 8615.5625,
-    "coins": 10
-  },
-  {
-    "name": "CoinBig8",
-    "type": "CoinBig_C",
-    "area": "DLC2_FinalBoss",
-    "lat": -14689.4736328125,
-    "lng": -27739.650390625,
-    "alt": 6341.380859375,
-    "coins": 10
   },
   {
     "name": "BossPuzzle0_Door1",
@@ -30198,5 +28216,124 @@
     "lng": -1026.892822265625,
     "alt": 3441.56689453125,
     "variant": "blue"
+  },
+  {
+    "name": "CoinStack2",
+    "type": "_CoinStack_C",
+    "area": "DLC2_Complete",
+    "lat": -11773.792887369791,
+    "lng": 31361.255696614582,
+    "alt": 1986.7969970703125,
+    "coins": "12"
+  },
+  {
+    "name": "CoinStack3",
+    "type": "_CoinStack_C",
+    "area": "DLC2_Complete",
+    "lat": -33279.49951171875,
+    "lng": -44445.385009765625,
+    "alt": 9845.82260131836,
+    "coins": "41"
+  },
+  {
+    "name": "CoinStack4",
+    "type": "_CoinStack_C",
+    "area": "DLC2_Complete",
+    "lat": -15310.972330729166,
+    "lng": -31607.178385416668,
+    "alt": 22277.963975694445,
+    "coins": "27"
+  },
+  {
+    "name": "CoinStack5",
+    "type": "_CoinStack_C",
+    "area": "DLC2_Complete",
+    "lat": -15475.355050223214,
+    "lng": -31859.72265625,
+    "alt": 22269.348493303572,
+    "coins": "7"
+  },
+  {
+    "name": "CoinStack6",
+    "type": "_CoinStack_C",
+    "area": "DLC2_Complete",
+    "lat": -19431.100952148438,
+    "lng": -40536.53662109375,
+    "alt": 10413.350769042969,
+    "coins": "25"
+  },
+  {
+    "name": "CoinStack7",
+    "type": "_CoinStack_C",
+    "area": "DLC2_Complete",
+    "lat": -13026.1240234375,
+    "lng": -60437.747514204544,
+    "alt": 10948.085138494318,
+    "coins": "20"
+  },
+  {
+    "name": "CoinStack8",
+    "type": "_CoinStack_C",
+    "area": "DLC2_Complete",
+    "lat": -26875.67009943182,
+    "lng": -56601.142045454544,
+    "alt": 14772.022283380682,
+    "coins": "20"
+  },
+  {
+    "name": "CoinStack9",
+    "type": "_CoinStack_C",
+    "area": "DLC2_Complete",
+    "lat": -26465.654296875,
+    "lng": -56396.78850446428,
+    "alt": 14781.181222098214,
+    "coins": "7"
+  },
+  {
+    "name": "CoinStack10",
+    "type": "_CoinStack_C",
+    "area": "DLC2_Complete",
+    "lat": -8670.092502170139,
+    "lng": -37896.791666666664,
+    "alt": 16195.762641059027,
+    "coins": "27"
+  },
+  {
+    "name": "CoinStack11",
+    "type": "_CoinStack_C",
+    "area": "DLC2_FinalBoss",
+    "lat": -18428.279140625,
+    "lng": -27557.50796875,
+    "alt": 6059.17349609375,
+    "coins": "34"
+  },
+  {
+    "name": "CoinStack12",
+    "type": "_CoinStack_C",
+    "area": "DLC2_FinalBoss",
+    "lat": -23502.833671875,
+    "lng": -23266.354765625,
+    "alt": 8664.4217578125,
+    "coins": "34",
+    "yt_video": "DmxnGCJRPXw",
+    "yt_start": "0"
+  },
+  {
+    "name": "CoinStack13",
+    "type": "_CoinStack_C",
+    "area": "DLC2_FinalBoss",
+    "lat": -14683.462890625,
+    "lng": -27805.948984375,
+    "alt": 6390.2401953125,
+    "coins": "34"
+  },
+  {
+    "name": "CoinStack14",
+    "type": "_CoinStack_C",
+    "area": "DLC2_FinalBoss",
+    "lat": -24876.90715144231,
+    "lng": -24580.01277043269,
+    "alt": 8145.326772836538,
+    "coins": "22"
   }
 ]

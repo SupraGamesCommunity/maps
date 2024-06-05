@@ -11,7 +11,8 @@ from math import *
 import logging, gc, json, gc, os, sys, csv, re, argparse, tempfile
 import numpy as np
 from sklearn.neighbors import KDTree
-
+import networkx as nx
+from libpysal import weights
 
 stripUnusedClasses = False      # strip any instances that have a type we don't explicitly support in gameClasses.js  
 stripUnusedProperties = True    # strip any properties we don't explicitly require from all objects (defined in exported_properties)
@@ -587,6 +588,8 @@ def cleanup_objects(game, classes_found, data_lookup, data):
                 o['linetype'] = 'trigger'
                 o['targets'] = targets
 
+    create_coinstacks(data_lookup, data)
+
     # Strip properties we don't need to export
     if stripUnusedProperties:
         for o in data:
@@ -621,6 +624,58 @@ def cleanup_objects(game, classes_found, data_lookup, data):
     # Make the filter of unused properties optional (debug)
     # *** Update main.js to deal with new data
     # *** check integration of main with Joric code (in MapCompare)
+
+
+# Goes through all the non-rotating coins and looks for groups of more than 3 to combine into coinstacks
+# Adds the new stack objects to our collection and removes the original coins
+def create_coinstacks(data_lookup, data):
+
+    threshold = 200
+
+    # Positions of all non-rotating coins and their corresponding indices in data
+    points = []
+    dataidx = []
+    for idx, o in enumerate(data):
+        if o['type'] in ['Coin_C', 'CoinBig_C'] and o.get('is_doesnt_rotate'):
+            points.append([o['lng'], o['lat'], o['alt']])
+            dataidx.append(idx)
+
+    if len(points) == 0:
+        return
+
+    # Creates a graph of connected elements that are within the distance threshold ie sets of
+    # points that all fit within a sphere of max radius 'threshold' 
+    graph = weights.DistanceBand.from_array(points, threshold=threshold, silence_warnings=True).to_networkx()
+
+    # Create an array of new stack objects to add and a list of old coin indices to remove
+    stackId = 0
+    stacks = []
+    delobj = []
+    for cc in nx.connected_components(graph):
+        stackId += 1
+        if len(cc) > 3:
+            coins = 0
+            for idx in cc:
+                o = data[dataidx[idx]]
+                coins += o['coins']
+                area = o['area']
+                delobj.append(data[dataidx[idx]])
+            c = np.r_[points][list(cc)].mean(axis=0)
+            stacks.append({
+                'name': f'CoinStack{stackId}', 'type': '_CoinStack_C', 'area': area,
+                'lat': c[1], 'lng': c[0], 'alt': c[2], 'coins': str(coins)
+                })
+
+    # Delete the old coins and add the new ones - we don't bother clearing out data_lookup
+    delcount = len(delobj)
+    for o in delobj:
+        data.remove(o)
+
+    for stack in stacks:
+        data.append(stack)
+        data_lookup[':'.join((stack['area'], stack['name']))] = stack
+
+    print(f'Replaced {delcount} coins with {len(stacks)} stacks')
 
 
 def read_game_classes(fn = '..\\js\\gameClasses.js'):
