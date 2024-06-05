@@ -456,6 +456,7 @@ exported_properties = [
     'cost', 'price_type',                           # cost when purchased (shops, quests...) and units (defaults to coins)
     'icon',                                         # explicit icon override
     'variant',                                      # variant allows change of marker
+    'friendly',                                     # Friendly name for the marker
     'linetype',                                     # Trigger, red/blue pad, pipe
     'startpos',                                     # where to draw lines from (if not lat/lng/alt)
     'target',                                       # where to draw line to for pipes and pads
@@ -677,6 +678,19 @@ def create_coinstacks(data_lookup, data):
 
     print(f'Replaced {delcount} coins with {len(stacks)} stacks')
 
+# Somewhat hacky code to convert class name to a more friendly name
+def friendly_name(cls):
+    n = re.sub(r'(?:_C$)|(?:^BP_)|(?:Purchase)|(?:Buy)|_|DLC2|DLC|New', '', cls)
+    n = n.replace('pct', '%')
+    n = re.sub(r'x([0-9])', r'*\1', n)
+    n = re.sub(r'([A-Z+-]+)', r'.\1', n)
+    n = re.sub(r'([a-z])([0-9])', r'\1.\2', n)
+    n = re.sub(r'([0-9])([a-z]{2,20})', r'\1.\2', n)
+    n = n.replace('Smashdown', 'Stomp')
+    n = n.replace('*', 'x')
+    n = n.rstrip('.').lstrip('.')
+
+    return n 
 
 def read_game_classes(fn = '..\\js\\gameClasses.js'):
 
@@ -742,10 +756,12 @@ def read_game_classes(fn = '..\\js\\gameClasses.js'):
         while i < len(keys)+1:
             entry[keys[i-1]] = defaults[i-1]
             i += 1
-    
+
         next_idx += 1
         classes[key]=entry
         class_count += 1
+
+
 
     print(f'Success: {class_count} classes read with {len(keys)} members each')
     return classes
