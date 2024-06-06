@@ -50,7 +50,7 @@ const gameClasses = {
     'BarrelRed_C'                             : new GameClass('Red Barrel',                       'barrel_red',               'misc',     'collectable'),
     'BarrelClosed_Blueprint_C'                : new GameClass('Gold Barrel',                      'barrel_gold',              'misc',     'collectable'),
     'Bones_C'                                 : new GameClass('Bones',                            'bones',                    'misc',     'collectable'),
-    'BuyArmor1_C'                             : new GameClass('Armor 1',                          'armor',                    'upgrades', 'shop'),
+    'BuyArmor1_C'                             : new GameClass('Armor',                            'armor',                    'upgrades', 'shop'),
     'BuyBeltRepel_C'                          : new GameClass('Belt Repel',                       'belt',                     'upgrades', 'shop'),
     'BuyBelt_C'                               : new GameClass('Magnet Belt',                      'belt',                     'upgrades', 'shop'),
     'BuyBelt_DLC2_C'                          : new GameClass('Magnet Belt',                      'belt',                     'upgrades', 'shop'),
