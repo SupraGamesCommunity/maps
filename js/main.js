@@ -29,6 +29,8 @@ let mapCenter;
 let mapParam = {};      // Parameters extracted from map URL
 let searchControl = {}; // Leaflet control for searching
 
+console.log(navigator.userAgent)
+
 // Hard coded map data extracted from the games
 var maps = {
   // data taken from the MapWorld* nodes
@@ -238,7 +240,14 @@ function loadMap(id) {
 
   // L.tileLayer.canvas() is much faster than L.tileLayer() but requires a L.TileLayer.Canvas plugin
   // canvas also fixes a visible line between tiles
-  let baseLayer = L.tileLayer.canvas(tilesDir+'/base/{z}/{x}/{y}.jpg', layerOptions).addTo(map);
+  // However on Firefox it makes the lines much worsel, so we choose based on which browser
+  const isFirefox = navigator.userAgent.toLowerCase().includes('firefox');
+
+  let baseLayer;
+  if(isFirefox)
+    baseLayer = L.tileLayer(tilesDir+'/base/{z}/{x}/{y}.jpg', layerOptions).addTo(map);
+  else
+    baseLayer = L.tileLayer.canvas(tilesDir+'/base/{z}/{x}/{y}.jpg', layerOptions).addTo(map);
 
   for (let id in maps) {
     var title = maps[id].title;
@@ -249,7 +258,11 @@ function loadMap(id) {
 
   // Add overlay image map layers 
   layerConfigs.forEachOfType(mapId, "tiles", (layerId, layerConfig) => {
-    let layer = L.tileLayer.canvas(tilesDir+'/'+layerId+'/{z}/{x}/{y}.png', layerOptions);
+    let layer;
+    if(isFirefox)
+      layer = L.tileLayer(tilesDir+'/'+layerId+'/{z}/{x}/{y}.png', layerOptions);
+    else
+      layer = L.tileLayer.canvas(tilesDir+'/'+layerId+'/{z}/{x}/{y}.png', layerOptions);
     layer.id = layerId;
     if (settings.activeLayers[layerId]) {
       layer.addTo(map);
@@ -666,12 +679,6 @@ function resizeIcons() {
         let icon = layer.options.icon;
         if (icon.options.iconUrl!='marker-icon.png') {
           let s = getIconSize(map.getZoom());
-
-          // For small coins, shrink them down to half the size 
-          // TODO: This is a nasty hack hard coding the icon and assuming we only use it for small coins
-          if(icon.options.iconUrl.includes("coin_small")) {
-            s = s >> 1
-          }
           let c = s >> 1;
           icon.options.iconSize = [s,s];
           icon.options.iconAnchor = [c,c];
