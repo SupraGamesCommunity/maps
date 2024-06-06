@@ -374,13 +374,20 @@ function loadMap(id) {
 
     // it's not "found" but rather "removed" (e.g. BuySword2_2 in the beginning of Crash DLC)
     text += '<br><br><input type="checkbox" id="'+markerId+'" '+value+' onclick=window.markItemFound("'+markerId+'",this.checked)><label for="'+markerId+'">Found</label>';
-    e.popup.setContent(text);
 
     if(o.yt_video) {
-      let yt_start = o.yt_start || 0
-      let url = 'https://youtu.be/'+o.yt_video+'&?t='+yt_start;
-      e.popup.setContent(text + '<br><br><a href="'+url+'" target=_blank>'+url+'</a>');
+      let ytSrc = 'https://www.youtube.com/embed/' + o.yt_video + '?controls=0';
+      if (o.yt_start) ytSrc += '&start=' + o.yt_start;
+      if (o.yt_end) ytSrc += '&end=' + o.yt_end;
+
+      text = text + '<iframe width="250" height="140.625" src="' + ytSrc
+        + '" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
+
+      //let yt_start = o.yt_start || 0
+      //let url = 'https://youtu.be/'+o.yt_video+'&?t='+yt_start;
+      // text = text + '<br><br><a href="'+url+'" target=_blank>'+url+'</a>');
     }
+    e.popup.setContent(text);
   }
 
   const price_types = {
