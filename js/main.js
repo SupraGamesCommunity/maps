@@ -29,8 +29,6 @@ let mapCenter;
 let mapParam = {};      // Parameters extracted from map URL
 let searchControl = {}; // Leaflet control for searching
 
-console.log(navigator.userAgent)
-
 // Hard coded map data extracted from the games
 var maps = {
   // data taken from the MapWorld* nodes
@@ -88,7 +86,7 @@ function copyToClipboard(text) {
   input.select();
   document.execCommand('copy');
   input.parentNode.removeChild(input);
-  console.log(text + ' copied to clipboard');
+  //console.log(text + ' copied to clipboard');
 }
 
 function openLoadFileDialog() {
@@ -782,7 +780,7 @@ window.loadSaveFile = function () {
       loadedSave = new UESaveObject(evt.target.result);
       evt.target.value = null;
     } catch(e) {
-      console.log(e);
+      //console.log(e);
       alert('Could not load file, incompatible format.');
       return;
     }
@@ -828,7 +826,7 @@ window.loadSaveFile = function () {
     }
 
     //setTimeout(function(){alert('Loaded successfully. Marked ' + Object.keys(settings.markedItems).length + ' items')},250);
-    console.log('Marked ' + Object.keys(settings.markedItems).length + ' items');
+    //console.log('Marked ' + Object.keys(settings.markedItems).length + ' items');
 
     markItems();
     saveSettings();
@@ -842,7 +840,7 @@ window.loadSaveFile = function () {
 }
 
 window.onhashchange = function(e) { 
-  console.log(location.hash)
+  //console.log(location.hash)
   if (location.hash.length > 1 && map) {
     let p = map.getCenter();
     mapParam = {mapId:mapId, lat:Math.round(p.lat), lng:Math.round(p.lng), zoom:map.getZoom()};
