@@ -177,7 +177,7 @@ const gameClasses = {
     'SpawnEnemy3_C'                           : new GameClass('Spawn Enemy 3',                    null,                       'extra'),
     'Stone_C'                                 : new GameClass('Stone',                            null,                       'extra'),
     'UpgradeHappiness_C'                      : new GameClass('Happiness',                        'happiness',                'upgrades', 'shop'),
-    'ValveCarriable_C'                        : new GameClass('Valve Carriable',                  'valve',                    'misc',     'collectable'),
+    'ValveCarriable_C'                        : new GameClass('Valve Carriable',                  'valve',                    'extra'),
     'ValveSlot_C'                             : new GameClass('Valve Slot',                       'valve',                    'extra'),
     'Valve_C'                                 : new GameClass('Valve',                            'valve',                    'extra'),
     'HealingStation_C'                        : new GameClass('Healing Station',                  'supradoh',                 'extra'),
