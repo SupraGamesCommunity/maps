@@ -45,4 +45,4 @@ echo generating tiles for %game%
 
 # need map.jpg, 8192x8192, you can make it from exported textures
 
-%python% gentiles.py -t jpg -w 512 %game%map.jpg 0-4 tiles_dir
+%python% gentiles.py -t jpg -w 512 %game%map.png 0-4 tiles_dir
