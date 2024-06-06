@@ -1,4 +1,4 @@
-# install UE4Parse module: pip install git+https://github.com/joric/pyUE4Parse.git
+# install UE4Parse module: pip install UE4Parse[tex]git+https://github.com/joric/pyUE4Parse.git
 # This was previously: pip install UE4Parse[tex]@git+https://github.com/MinshuG/pyUE4Parse.git
 # install dependencies: pip install mathutils aes numpy scikit-learn
 
