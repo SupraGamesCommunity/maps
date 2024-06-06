@@ -169,6 +169,7 @@ function loadMap(id) {
     maxZoom: 8,
     maxBounds: mapBoundsWithGap, // elastic-y bounds
     zoomControl: false,
+    doubleClickZoom: false,
   });
 
   L.control.zoom({ position: 'bottomright'}).addTo(map);
