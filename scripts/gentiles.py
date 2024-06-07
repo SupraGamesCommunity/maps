@@ -143,10 +143,12 @@ def generate(image, outpath, zoom_level, resize_width, format='png'):
             tile = image.crop([left, top, right, bottom])
             tile = tile.resize([resize_width, resize_width])
             tile_path = outpath.joinpath(f'{x}/{y}.'+format)
-            #tile.save(tile_path, quality=95)
-            tile.save(tile_path)
+            tile.save(tile_path, quality=85)
+            #tile.save(tile_path)
             print('.', end='')
             sys.stdout.flush()
+            # Note on quality: We were using about 75 but it comes out with lots of JPG compression artefacts
+            # 95 is pretty much perfect. 85 is a fair compromise
     print('')
 
     LOG.info('- done!')
