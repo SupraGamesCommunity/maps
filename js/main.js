@@ -18,7 +18,7 @@ const localDataName = 'supgragamescommunity_maps';
 let localData = JSON.parse(localStorage.getItem(localDataName)) || {};
 
 let layers = {};        // Leaflet layerGroup array, one for each collection of markers
-let icons = {};         // Dict of Leaflet icon objects keyed by our icon file basename + size
+let icons = {};         // Dict of Leaflet icon obj, defSize, size  keyed by our icon file basename + size
 let playerStart;        // Position of first player start instance found in map data
 let playerMarker;       // Leaflet marker object for current player start (or dragged position)
 
@@ -197,8 +197,11 @@ function loadMap(id) {
     settings.center = [map.getCenter().lat, map.getCenter().lng]; // avoid circular refs here
     settings.zoom = map.getZoom();
     saveSettings();
+    if(e.type == 'zoomend'){
+      resizeIcons();
     updatePolylines();
     markItems();
+    }
 });
 
   map.on('baselayerchange', function(e) {
@@ -269,7 +272,7 @@ function loadMap(id) {
     layerControl.addOverlay(layer, layerConfig.name);
   });
 
-  L.control.mousePosition({numDigits:1, lngFirst:true}).addTo(map);
+  L.control.mousePosition({numDigits:0, lngFirst:true}).addTo(map);
 
   if (mapParam.lat && mapParam.lng && mapParam.zoom) {
     map.setView([mapParam.lat, mapParam.lng], mapParam.zoom);
@@ -439,7 +442,7 @@ function loadMap(id) {
           title += ' of ' + o.type;
 
           const defaultIcon = 'question_mark';
-          
+
           if(c.nospoiler && enabledLayers[c.nospoiler])
           {
             const layer = c.nospoiler
@@ -660,41 +663,47 @@ function reloadMap(id) {
   }
 }
 
-function getIconSize(zoom) {
-  let s = [32];
-  return s[Math.round(Math.min(zoom,s.length-1))];
+// Equation: pow(2, zoom * (log2(y0) / z1)) * y0
+// z1 is the zoom level where we want scale to be 1:1
+// s0 is the scale factor when zoom is 0
+const z1 = 3, s0 = 0.5;   // p = 0.33 for z1=3/s0=0.5; p=0.25 for z1=4/s0=0.5
+const p = -Math.log2(s0) / z1;
+function getIconSize(size, zoom) {
+  return Math.round(size * Math.pow(2, zoom * p) * s0);;
 }
+  //Original solution
+  //let scaleForZoom = [0.5,0.5,0.75,1,1,1,1.5,1.5,2];
+  //let scaleForZoom = [0.5,0.63,0.79,1,1.26,1.59,2,2.52,3.17]
+  //zoom = zoom < 0 ? 0 : zoom < scaleForZoom.length ? zoom : scaleForZoom.length-1;
+  //return Math.round(size * scaleForZoom[zoom]);
 
+// Returns leaflet object corresponding to icon base name + default size
 function getIcon(icon, size=32) {
-  let iconObj = icons[icon+size.toString()];
+  const iconCls = icon + size.toString();
+  let iconObj = icons[iconCls] && icons[iconCls].obj;
   if (!iconObj) {
-    let s = size ? size : getIconSize(map.getZoom()); // size now always set so zoom ignored for now
+    let s = getIconSize(size, map.getZoom());
+    let c = Math.round(s * 0.5);
 
-    let c = s >> 1;
-    iconObj = L.icon({iconUrl: 'img/markers/'+icon+'.png', iconSize: [s,s], iconAnchor: [c,c]});
-    icons[icon+size.toString()] = iconObj;
+    iconObj = L.icon({iconUrl: 'img/markers/'+icon+'.png', iconSize: [s,s], iconAnchor: [c,c], className:iconCls});
+
+    icons[iconCls] = {obj: iconObj, baseSize: size, size: s};
   }
   return iconObj;
 }
 
-/*
 function resizeIcons() {
-    map.eachLayer(function(layer) {
-      if (layer instanceof L.Marker) {
-        //let icon = layer.getIcon(); // undefined in 1.3
-        let icon = layer.options.icon;
-        if (icon.options.iconUrl!='marker-icon.png') {
-          let s = getIconSize(map.getZoom());
-          let c = s >> 1;
-          icon.options.iconSize = [s,s];
-          icon.options.iconAnchor = [c,c];
-          layer.setIcon(icon);
-        }
-      }
-   });
+  zoom = map.getZoom();
+  for([iconCls, iconData] of Object.entries(icons)){
+    size = getIconSize(iconData.baseSize, zoom);
+    if(size != iconData.size) {
+      iconData.size = size;
+      s = iconData.size.toString() + 'px';
+      $('#map .'+iconCls).css({'width':s, 'height':s});
+    }
   }
-  */
-
+}
+  
 window.markItemFound = function (id, found=true, save=true) {
   var divs = document.querySelectorAll('*[alt="' + id + '"]');
 
