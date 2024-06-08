@@ -229,6 +229,7 @@ function loadMap(id) {
     updatePolylines();
     markItems();
     saveSettings();
+    resizeIcons(true);
 
     // let's maybe clear search on layer change just to avoid confusion
     clearFilter();
@@ -697,11 +698,11 @@ function getIcon(icon, size=32) {
   return iconObj;
 }
 
-function resizeIcons() {
+function resizeIcons(force) {
   zoom = map.getZoom();
   for([iconCls, iconData] of Object.entries(icons)){
     size = getIconSize(iconData.baseSize, zoom);
-    if(!iconData.size || iconData.size != size) {
+    if(force || !iconData.size || iconData.size != size) {
       iconData.size = size;
       iconData.obj.options.popupAnchor = [0, -(size >> 1)];   // Top center relative to the marker icon center
       s = size.toString() + 'px';
