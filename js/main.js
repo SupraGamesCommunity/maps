@@ -122,6 +122,7 @@ function loadMap(id) {
 
   settings = localData[mapId];
 
+  icons = {}
   //console.log(localData);
 
   var mapSize = {width: 8192, height: 8192}
@@ -359,13 +360,15 @@ function loadMap(id) {
   }
 
   function onPopupOpen(e) {
+    // We don't need to use _source as target and sourceTarget both point at the marker object
+
     let x = e.popup._source._latlng.lng;
     let y = e.popup._source._latlng.lat;
     let markerId = e.popup._source.options.alt;
 
     let res = null;
     let o = e.popup._source.options.o;
-
+    
     let text = JSON.stringify(o, null, 2).replaceAll('\n','<br>').replaceAll(' ','&nbsp;');
     let found = settings.markedItems[markerId]==true
     let value = found ? 'checked' : '';
@@ -390,6 +393,7 @@ function loadMap(id) {
       //let url = 'https://youtu.be/'+o.yt_video+'&?t='+yt_start;
       // text = text + '<br><br><a href="'+url+'" target=_blank>'+url+'</a>');
     }
+//    e.target.setIcon(e.target.options.icon);
     e.popup.setContent(text);
   }
 
@@ -545,6 +549,7 @@ function loadMap(id) {
             }).addTo(layers['coordinate'])
         }
 
+        resizeIcons();
         updatePolylines();
         markItems();
     });
@@ -682,13 +687,12 @@ function getIcon(icon, size=32) {
   const iconCls = icon + size.toString();
   let iconObj = icons[iconCls] && icons[iconCls].obj;
   if (!iconObj) {
-    let s = getIconSize(size, map.getZoom());
-    let c = Math.round(s * 0.5);
+    // We set the iconSize and iconAnchor via CSS in resizeIcons, when we also set the popupAnchor
+    iconObj = L.icon({iconUrl: 'img/markers/'+icon+'.png', className:iconCls});
 
-    iconObj = L.icon({iconUrl: 'img/markers/'+icon+'.png', iconSize: [s,s], iconAnchor: [c,c], className:iconCls});
-
-    icons[iconCls] = {obj: iconObj, baseSize: size, size: s};
-  }
+    // We will also set size entry to the zoom based size of the icon in resizeIcons
+    icons[iconCls] = {obj: iconObj, baseSize: size};
+}
   return iconObj;
 }
 
@@ -696,10 +700,12 @@ function resizeIcons() {
   zoom = map.getZoom();
   for([iconCls, iconData] of Object.entries(icons)){
     size = getIconSize(iconData.baseSize, zoom);
-    if(size != iconData.size) {
+    if(!iconData.size || iconData.size != size) {
       iconData.size = size;
-      s = iconData.size.toString() + 'px';
-      $('#map .'+iconCls).css({'width':s, 'height':s});
+      iconData.obj.options.popupAnchor = [0, -(size >> 1)];   // Top center relative to the marker icon center
+      s = size.toString() + 'px';
+      c = '-' + (size >> 1).toString() + 'px';
+      $('#map .'+iconCls).css({'width':s, 'height':s, 'margin-left':c, 'margin-top':c});
     }
   }
 }
