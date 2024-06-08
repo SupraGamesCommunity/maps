@@ -167,6 +167,7 @@ function loadMap(id) {
   map = new L.Map('map', {
     crs: crs,
     fadeAnimation: false,
+	minZoom: 1,
     maxZoom: 8,
     maxBounds: mapBoundsWithGap, // elastic-y bounds
     zoomControl: false,
