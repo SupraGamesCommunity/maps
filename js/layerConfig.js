@@ -18,8 +18,8 @@ const layerConfigs = {
     data: new Map([
         //['pipes',       new LayerConfig('tiles',   'Pipe Lines Map', null,            false, [                  ])],
         //['pads',        new LayerConfig('tiles',   'Pad Lines Map',  null,            false, [                  ])],
-        ['pipesys',     new LayerConfig('markers', 'Pipe System',    null,            false, ['sl', 'slc', 'siu'])],
-        ['jumppads',    new LayerConfig('markers', 'Pads System',    null,            false, ['sl', 'slc', 'siu'])],
+        ['pipesys',     new LayerConfig('markers', 'Pipe System',    'pipe',          false, ['sl', 'slc', 'siu'])],
+        ['jumppads',    new LayerConfig('markers', 'Pads System',    'jumppad',       false, ['sl', 'slc', 'siu'])],
         ['closedChest', new LayerConfig('markers', 'Chests',         'chest',         true,  ['sl', 'slc', 'siu'])],
         ['shop',        new LayerConfig('markers', 'Shop',           'shop',          true,  ['sl', 'slc', 'siu'])],
         ['collectable', new LayerConfig('markers', 'Collectables',   'question_mark', true,  ['sl', 'slc', 'siu'])],
