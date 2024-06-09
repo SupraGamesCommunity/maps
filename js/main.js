@@ -186,7 +186,7 @@ function loadMap(id) {
       maxNativeZoom: 4,
       nativeZooms: [0, 1, 2, 3, 4],
       bounds: mapBounds,
-      attribution: '<a href="https://github.com/SupraGamesCommunity/SupraMaps" target="_blank">SupraGames Community</a>',
+      attribution: '<a href="https://github.com/SupraGamesCommunity/maps" target="_blank">SupraGames Community</a>',
   };
 
   let layerControl = L.control.layers({}, {}, {

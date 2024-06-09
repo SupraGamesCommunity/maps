@@ -2,8 +2,8 @@
 
 * Interactive maps for Supraland, Supraland Crash (DLC) and Supraland: Six Inches Under
 
-* Repository: https://github.com/SupraGamesCommunity/SupraMaps
-* Live map: https://supragamescommunity.github.io/SupraMaps/
+* Repository: https://github.com/SupraGamesCommunity/maps
+* Live map: https://supragamescommunity.github.io/maps/
 
 # Credits
 
@@ -13,18 +13,18 @@ Complete rewrite based on game data extraction and merge of 3 maps by Joric (htt
 Fork of Joric's map to SupraMaps project and tweaks to finish in preparation for Supra World by [Supra Games Community]
 
 Credits:
-   Cal, Egasuas, Joric, Jules, KoenigsKind, LewisPattJr
+   Cal, Joric, Jules, KoenigsKind, LewisPattJr
 
 Additional support from: 
-  Anna, BenVlodgi, David, Norabseven, TJ999M and Zookster 
+  Anna, BenVlodgi, David, Derpy, Norabseven, TJ999M and Zookster 
 
 # Features
 
 * Supports all games (Supraland, Supraland Crash, Supraland Six Inches Under).
 * Supports URL for map zoom, location and base map selection
 * Supports save file uploading to show/hide items you collected (or not collected yet) for all games.
-* Crash Map kindly exported by BenVlodgi and upscaled/fogged by Egasuas
-* Game maps and items extracted from game data files see [scripts](https://github.com/SupraGamesCommunity/SupraMaps/tree/main/scripts) directory)
+* Crash Map kindly exported by BenVlodgi and upscaled/fogged by Cal
+* Game maps and items extracted from game data files see [scripts](https://github.com/SupraGamesCommunity/maps/tree/main/scripts) directory)
 
 # Assets and Dependencies
 
@@ -50,14 +50,12 @@ Voidtools Everything (https://www.voidtools.com/downloads/) - fast file search.
 
 This project uses some code Joric's Supraland project, the original SupraGamesCommunity map code and media files. Most of the media content is copyrighted by David Münnich. Joric developed scripts to import data from the original game and fixed some bugs. This project is an unlicensed public domain, feel free to copy, sell and modify.
 
-See See [LICENSE](https://github.com/SupraGamesCommunity/SupraMaps/blob/main/LICENSE) for details.
+See See [LICENSE](https://github.com/SupraGamesCommunity/maps/blob/main/LICENSE) for details.
 
 # Other Maps
 
-https://supragamescommunity.github.io/map-sl (Supraland)
-https://supragamescommunity.github.io/map-slc (Supraland Crash)
-https://supragamescommunity.github.io/map-siu (Supraland Six Inches Under)
 https://joric.github.io/supraland (Joric's combined map)
+https://joric.github.io/supraland/3d/ (Joric's experimental 3D map)
 
 # How to use documentation
 
@@ -65,16 +63,16 @@ https://joric.github.io/supraland (Joric's combined map)
 
 The current map can be found here:
 
-https://supragamescommunity.github.io/SupraMaps
+https://supragamescommunity.github.io/maps
 
 You can link to individual maps by adding #{map id} (one of sl, slc or siu), for example:
 
-https://supragamescommunity.github.io/SupraMaps#sl
-https://supragamescommunity.github.io/SupraMaps/#siu
+https://supragamescommunity.github.io/maps#sl
+https://supragamescommunity.github.io/maps/#siu
 
 In addition you can share a link to a specific map, zoom level and position:
 
-https://supragamescommunity.github.io/SupraMaps/#mapId={map}&lat={lat}&lng={lng}&zoom={zoom}
+https://supragamescommunity.github.io/maps/#mapId={map}&lat={lat}&lng={lng}&zoom={zoom}
 
 zoom is 0-4 where 0 is all the way zoomed out
 lat/lng are the X Y position on the map
@@ -83,7 +81,7 @@ map is one of sl, slc or siu
 
 # Technical Documentation
 
-See [technicalnotes.md](https://github.com/SupraGamesCommunity/SupraMaps/blob/main/doc/technicalnotes.md)
+See [technicalnotes.md](https://github.com/SupraGamesCommunity/maps/blob/main/doc/technicalnotes.md)
 
 See [Joric's Supraland Map Wiki](https://github.com/joric/supraland/wiki) for some details of the system
 
