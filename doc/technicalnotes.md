@@ -7,10 +7,9 @@ LICENSE			License terms for use of original code/data
 index.html		Maps root html page - runs main.js
 
 /tiles			Map tile hierarchy for each game. Each tile is a 512x512 jpg
-				{sl|slc|siu}/{base|pads|pipes}/{z}/{x}/{y}.jpg
+				{sl|slc|siu}/{base}/{z}/{x}/{y}.jpg
 				where z=zoom [0-4] x/y tile pos within map
 				Full maps are 8k. Zoom 0 is 1x1 - Zoom 4 is 16x16
-				Only Supraland has pad and pipe maps
 
 /scripts		Utility scripts for working with the data during development
 	gentiles.py			Generates map tile hierarchy from a full resolution map image

@@ -16,8 +16,6 @@ class LayerConfig {
 /* exported layerConfigs */
 const layerConfigs = {
     data: new Map([
-        //['pipes',       new LayerConfig('tiles',   'Pipe Lines Map', null,            false, [                  ])],
-        //['pads',        new LayerConfig('tiles',   'Pad Lines Map',  null,            false, [                  ])],
         ['pipesys',     new LayerConfig('markers', 'Pipe System',    'pipe',          false, ['sl', 'slc', 'siu'])],
         ['jumppads',    new LayerConfig('markers', 'Pads System',    'jumppad',       false, ['sl', 'slc', 'siu'])],
         ['closedChest', new LayerConfig('markers', 'Chests',         'chest',         true,  ['sl', 'slc', 'siu'])],
