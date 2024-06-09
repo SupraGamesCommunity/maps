@@ -480,9 +480,9 @@ function loadMap(id) {
             let endxys = o.linetype != 'trigger' ? [o.target] : o.targets;
 
             let [addMarker, color, opacity, weight, offset, dist] = {
-                pipe:         [true,  '#4DFF00', 1,   3, '0%', 1000],
-                jumppad_red:  [true,  '#FF0000', 1,   3, '0%',   100],
-                jumppad_blue: [true,  '#1E90FF', 1,   3, '0%',   100],
+                pipe:         [true,  '#4DFF00', 1,   5, '0%', 1000],
+                jumppad_red:  [true,  '#FF0000', 1,   5, '0%',   100],
+                jumppad_blue: [true,  '#1E90FF', 1,   5, '0%',   100],
                 trigger:      [false, '#FFFFFF', 0.5, 2, '50%',  0],
             } [o.linetype]
 
@@ -495,7 +495,7 @@ function loadMap(id) {
               if ((Math.sqrt(Math.pow(start[0] - endxy.y, 2) + Math.pow(start[1] - endxy.x, 2))) > dist) {  
                 // polylineDecorator doesn't support end arrow offset so we use start offset, reverse the line and reverse the arrow using headAngle
                 L.polylineDecorator(line,{patterns:[{offset:offset, repeat:0, symbol:
-                  L.Symbol.arrowHead({pixelSize:radius*2, headAngle: -290, pathOptions:
+                  L.Symbol.arrowHead({pixelSize:radius*3, headAngle: -290, pathOptions:
                     {opacity: opacity, fillOpacity: opacity, weight: 0, color: color, interactive: false, title:' ', alt:alt}})}],})
                       .addTo(layers[c.lines]);
               }
