@@ -8806,7 +8806,7 @@
   },
   {
     "name": "Waldo1",
-    "type": "RedGuy_C",
+    "type": "WaldoGuy_C",
     "area": "Crash",
     "lat": -1302.878173828125,
     "lng": 9700.1767578125,
@@ -8814,7 +8814,7 @@
   },
   {
     "name": "Waldo10",
-    "type": "RedGuy_C",
+    "type": "WaldoGuy_C",
     "area": "Crash",
     "lat": -12511.935546875,
     "lng": -6169.396484375,
@@ -8822,7 +8822,7 @@
   },
   {
     "name": "Waldo11",
-    "type": "RedGuy_C",
+    "type": "WaldoGuy_C",
     "area": "Crash",
     "lat": 3320.3291015625,
     "lng": 36755.16796875,
@@ -8830,7 +8830,7 @@
   },
   {
     "name": "Waldo12",
-    "type": "RedGuy_C",
+    "type": "WaldoGuy_C",
     "area": "Crash",
     "lat": -4230.71875,
     "lng": 55588.8984375,
@@ -8838,7 +8838,7 @@
   },
   {
     "name": "Waldo13",
-    "type": "RedGuy_C",
+    "type": "WaldoGuy_C",
     "area": "Crash",
     "lat": -11604.3115234375,
     "lng": -6697.8095703125,
@@ -8846,7 +8846,7 @@
   },
   {
     "name": "Waldo14",
-    "type": "RedGuy_C",
+    "type": "WaldoGuy_C",
     "area": "Crash",
     "lat": 9790.607421875,
     "lng": 38125.30859375,
@@ -8854,7 +8854,7 @@
   },
   {
     "name": "Waldo15",
-    "type": "RedGuy_C",
+    "type": "WaldoGuy_C",
     "area": "Crash",
     "lat": 3733.261962890625,
     "lng": 6577.84375,
@@ -8862,7 +8862,7 @@
   },
   {
     "name": "Waldo16",
-    "type": "RedGuy_C",
+    "type": "WaldoGuy_C",
     "area": "Crash",
     "lat": -1492.8365478515625,
     "lng": 11356.1201171875,
@@ -8870,7 +8870,7 @@
   },
   {
     "name": "Waldo17",
-    "type": "RedGuy_C",
+    "type": "WaldoGuy_C",
     "area": "Crash",
     "lat": -5213.79443359375,
     "lng": 1416.1790771484375,
@@ -8878,7 +8878,7 @@
   },
   {
     "name": "Waldo18",
-    "type": "RedGuy_C",
+    "type": "WaldoGuy_C",
     "area": "Crash",
     "lat": -10070.5224609375,
     "lng": -8153.84716796875,
@@ -8886,7 +8886,7 @@
   },
   {
     "name": "Waldo19",
-    "type": "RedGuy_C",
+    "type": "WaldoGuy_C",
     "area": "Crash",
     "lat": -9878.0517578125,
     "lng": 788.1539306640625,
@@ -8894,7 +8894,7 @@
   },
   {
     "name": "Waldo2",
-    "type": "RedGuy_C",
+    "type": "WaldoGuy_C",
     "area": "Crash",
     "lat": -2282.3583984375,
     "lng": 26416.396484375,
@@ -8902,7 +8902,7 @@
   },
   {
     "name": "Waldo20",
-    "type": "RedGuy_C",
+    "type": "WaldoGuy_C",
     "area": "Crash",
     "lat": 16033.9970703125,
     "lng": -2414.2236328125,
@@ -8910,7 +8910,7 @@
   },
   {
     "name": "Waldo21",
-    "type": "RedGuy_C",
+    "type": "WaldoGuy_C",
     "area": "Crash",
     "lat": 15980.818359375,
     "lng": 36405.2109375,
@@ -8918,7 +8918,7 @@
   },
   {
     "name": "Waldo22",
-    "type": "RedGuy_C",
+    "type": "WaldoGuy_C",
     "area": "Crash",
     "lat": -3625.287841796875,
     "lng": 42525.51171875,
@@ -8926,7 +8926,7 @@
   },
   {
     "name": "Waldo23",
-    "type": "RedGuy_C",
+    "type": "WaldoGuy_C",
     "area": "Crash",
     "lat": -14901.0380859375,
     "lng": -32474.921875,
@@ -8934,7 +8934,7 @@
   },
   {
     "name": "Waldo3",
-    "type": "RedGuy_C",
+    "type": "WaldoGuy_C",
     "area": "Crash",
     "lat": -16908.98046875,
     "lng": 32753.623046875,
@@ -8942,7 +8942,7 @@
   },
   {
     "name": "Waldo4",
-    "type": "RedGuy_C",
+    "type": "WaldoGuy_C",
     "area": "Crash",
     "lat": -14904.7763671875,
     "lng": 47957.58984375,
@@ -8950,7 +8950,7 @@
   },
   {
     "name": "Waldo5",
-    "type": "RedGuy_C",
+    "type": "WaldoGuy_C",
     "area": "Crash",
     "lat": 14210.5458984375,
     "lng": 47276.31640625,
@@ -8958,7 +8958,7 @@
   },
   {
     "name": "Waldo6",
-    "type": "RedGuy_C",
+    "type": "WaldoGuy_C",
     "area": "Crash",
     "lat": -4848.24462890625,
     "lng": -6715.67333984375,
@@ -8966,7 +8966,7 @@
   },
   {
     "name": "Waldo7",
-    "type": "RedGuy_C",
+    "type": "WaldoGuy_C",
     "area": "Crash",
     "lat": 13545.09765625,
     "lng": -7547.048828125,
@@ -8974,7 +8974,7 @@
   },
   {
     "name": "Waldo8",
-    "type": "RedGuy_C",
+    "type": "WaldoGuy_C",
     "area": "Crash",
     "lat": 15140.2548828125,
     "lng": 12442.453125,
@@ -8982,7 +8982,7 @@
   },
   {
     "name": "Waldo9",
-    "type": "RedGuy_C",
+    "type": "WaldoGuy_C",
     "area": "Crash",
     "lat": 10815.6279296875,
     "lng": 25486.37109375,
