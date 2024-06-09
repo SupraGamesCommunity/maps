@@ -2391,7 +2391,7 @@
   },
   {
     "name": "BuyTranslocator_7",
-    "type": "BuyTranslocator_C",
+    "type": "SL1:BuyTranslocator_C",
     "area": "Map",
     "lat": 3745.630615234375,
     "lng": 42324.7734375,

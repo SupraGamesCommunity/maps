@@ -3758,7 +3758,7 @@
     "lat": -56919.7578125,
     "lng": 56439.578125,
     "alt": 5936.94091796875,
-    "spawns": "BuyTranslocator_C",
+    "spawns": "SIU:BuyTranslocator_C",
     "yt_video": "5KkEVBgFW3U",
     "yt_start": "2998"
   },

@@ -2029,7 +2029,7 @@
   },
   {
     "name": "BuyTranslocator2_2",
-    "type": "BuyTranslocator_C",
+    "type": "SL1:BuyTranslocator_C",
     "area": "Crash",
     "lat": -14789.55078125,
     "lng": 43677.890625,
@@ -2037,7 +2037,7 @@
   },
   {
     "name": "BuyTranslocator_2",
-    "type": "BuyTranslocator_C",
+    "type": "SL1:BuyTranslocator_C",
     "area": "Crash",
     "lat": 2838.224853515625,
     "lng": 38368.72265625,
