@@ -10,12 +10,14 @@ path[alt=''] { opacity: 100% }
 
 .leaflet-control-search .search-input {
   width: 230px;
+  border-radius: 45px;
 }
 
 .leaflet-control-search .search-tooltip {
   width: 285px;
   max-height: 207px;
   margin-top: 2px;
+  
 }
 
 .leaflet-control-search .search-tip {
