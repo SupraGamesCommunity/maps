@@ -425,7 +425,7 @@ function loadMap(id) {
           let text = ''; // Set it on demand in onPopupOpen (as it's potentially slow for now)
           let alt = o.area + ':' + o.name
           let title = o.name;
-          let radius = 6; // polyline dots
+          let radius = 6; // polyline Triangles
 
           // can't have duplicate titles in search (loses items) clarify duplicate titles
           title = titles[title] ? alt : title;
@@ -480,16 +480,11 @@ function loadMap(id) {
             let endxys = o.linetype != 'trigger' ? [o.target] : o.targets;
 
             let [addMarker, color, opacity, weight, offset, dist] = {
-                pipe:         [true,  '#4DFF00', 1,   3, radius, 1000],
+                pipe:         [true,  '#4DFF00', 1,   3, '0%', 1000],
                 jumppad_red:  [true,  '#FF0000', 1,   3, '0%',   100],
                 jumppad_blue: [true,  '#1E90FF', 1,   3, '0%',   100],
                 trigger:      [false, '#FFFFFF', 0.5, 2, '50%',  0],
             } [o.linetype]
-
-            if(addMarker) {
-              L.circleMarker(start, {radius: radius, fillOpacity: opacity, weight: 0, fillColor: color, title: title, o:o, alt: alt})
-                .addTo(layers[c.lines]).bindPopup('').on('popupopen', onPopupOpen).on('contextmenu',onContextMenu);
-            }
 
             for(let endxy of endxys) {
               // need to add title as a single space (leaflet search issue), but not the full title so it doesn't appear in search
