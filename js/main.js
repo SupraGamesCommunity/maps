@@ -147,8 +147,8 @@ function loadMap(id) {
 
   let gap = p.MapWorldSize/2;
   let mapBoundsWithGap = [
-    [ p.MapWorldUpperLeft.Y - gap*0, p.MapWorldUpperLeft.X - gap ],
-    [ p.MapWorldLowerRight.Y + gap*0, p.MapWorldLowerRight.X + gap ]
+    [ p.MapWorldUpperLeft.Y*0- gap, p.MapWorldUpperLeft.X - gap ],
+    [ p.MapWorldLowerRight.Y*0 + gap, p.MapWorldLowerRight.X + gap ]
   ];
 
   var m = p.MapWorldSize / mapSize.width;
@@ -480,10 +480,11 @@ function loadMap(id) {
             let endxys = o.linetype != 'trigger' ? [o.target] : o.targets;
 
             let [addMarker, color, opacity, weight, offset, dist] = {
-                pipe:         [true,  '#4DFF00', 1,   5, '0%', 1000],
+                pipe:         [true,  '#4DFF00', 1,   5, '0%',  1000],
                 jumppad_red:  [true,  '#FF0000', 1,   5, '0%',   100],
                 jumppad_blue: [true,  '#1E90FF', 1,   5, '0%',   100],
                 trigger:      [false, '#FFFFFF', 0.5, 2, '50%',  0],
+                player_aim:   [true,  '#FFFFFF', 1,   5, '0%',   0],
             } [o.linetype]
 
             for(let endxy of endxys) {
@@ -492,7 +493,7 @@ function loadMap(id) {
               let line = L.polyline([[endxy.y, endxy.x], start], {weight: weight, title:' ', alt:alt, opacity: opacity, color: color, interactive: false})
                 .addTo(layers[c.lines]);
               
-              if ((Math.sqrt(Math.pow(start[0] - endxy.y, 2) + Math.pow(start[1] - endxy.x, 2))) > dist) {  
+              if ((Math.sqrt(Math.pow(start[1] - endxy.y, 2) + Math.pow(start[1] - endxy.x, 2))) > dist) {  
                 // polylineDecorator doesn't support end arrow offset so we use start offset, reverse the line and reverse the arrow using headAngle
                 L.polylineDecorator(line,{patterns:[{offset:offset, repeat:0, symbol:
                   L.Symbol.arrowHead({pixelSize:radius*2, headAngle: -290, pathOptions:
