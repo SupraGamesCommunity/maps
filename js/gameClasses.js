@@ -135,8 +135,7 @@ const gameClasses = {
     'BuyTranslocatorModule_C'                 : new GameClass('Translocator Module',              'translocator_cooldown',    'upgrades', 'shop'),
     'BuyTranslocatorShotForce_C'              : new GameClass('Translocator Shot Force',          'translocator_distance',    'upgrades', 'shop'),
     'BuyTranslocatorWeight_C'                 : new GameClass('Translocator Weight',              'translocator_damage',      'upgrades', 'shop'),
-    'SIU:BuyTranslocator_C'                   : new GameClass('Translocator',                     'translocator_siu',         'upgrades', 'shop'),
-    'SL1:BuyTranslocator_C'                   : new GameClass('Translocator',                     'translocator',             'upgrades', 'shop'),
+    'BuyTranslocator_C'                       : new GameClass('Translocator',                     'translocator:g',           'upgrades', 'shop'),
     'BuyTranslocator_Fake_C'                  : new GameClass('Translocator Fake',                null,                       'upgrades', 'shop'),
     'BuyTripleJump_C'                         : new GameClass('Triple Jump',                      'triple_jump',              'upgrades', 'shop'),
     'BuyUpgradeChestNum_C'                    : new GameClass('Upgrade Chest Num',                'see_chest_count',          'upgrades', 'shop'),
@@ -151,8 +150,7 @@ const gameClasses = {
     'Coin:DestroyablePots_C'                  : new GameClass('Destroyable Pots',                 'pots',                     'coin'),
     'GoldBlock_C'                             : new GameClass('Gold Block',                       null,                       null,       null,           null),
     'GoldNugget_C'                            : new GameClass('Gold Nugget',                      null,                       null,       null,           null),
-    'Red:Jumppad_C'                           : new GameClass('Jumppad',                          'jumppad_red',              'jumppads',       'jumppads',           'jumppads'),
-    'Blue:Jumppad_C'                          : new GameClass('Jumppad',                          'jumppad_blue',             'jumppads',       'jumppads',           'jumppads'),
+    'Jumppad_C'                               : new GameClass('Jumppad',                          'jumppad:v',                'jumppads', null,           'jumppads'),
     'Jumppillow_C'                            : new GameClass('Jump Mattress',                    null,                       null,       null,           null),
     'LotsOfCoins1_C'                          : new GameClass('Lots Of Coins 1',                  'chest_coin',               'coin'),
     'LotsOfCoins10_C'                         : new GameClass('Lots Of Coins 10',                 'chest_coin',               'coin'),
@@ -244,7 +242,7 @@ const gameClasses = {
     'MatchBox_C'                              : new GameClass('Match Box',                        'matchbox',                 'extra'),
     'PhysicalCoin_C'                          : new GameClass('Physical Coin',                    'coin',                     'coin'),
     'RedGuy_C'                                : new GameClass('Red Guy',                          'guy:v',                    'extra'),
-    'Waldo:RedGuy_C'                          : new GameClass('Waldo',                            'waldo:v',                  'misc', 'collectable'),
+    'Waldo:RedGuy_C'                          : new GameClass('Waldo',                            'waldo',                    'misc',     'collectable'),
     'BP_UnlockMap_C'                          : new GameClass('Unlock Map',                       'map',                      'upgrades', 'shop'),
     'MinecraftBrick_C'                        : new GameClass('Minecraft Brick',                  'brick:v',                  'extra'),
     'MinecraftBrickRespawnable_C'             : new GameClass('Minecraft Brick',                  'brick:v',                  'extra'),
@@ -263,13 +261,15 @@ const gameClasses = {
 
 // Returns the [icon, size] based on the decorated icon name plus a variant if supplied
 /* exported decodeIconName */
-function decodeIconName(icon, variant = null) {
+function decodeIconName(icon, game, variant = null) {
     let size = 32
     let ci = icon.indexOf(':');
     if(ci >= 0) {
         let flags = icon.substring(ci+1);
         icon = icon.substring(0, ci);
 
+        if(game && flags.indexof('g') >= 0)
+            icon += '_'+game;
         if(variant && flags.indexOf('v') >= 0)
             icon += '_'+variant;
         let n = flags.replace(/[^0-9]/g,"");

@@ -1,6 +1,6 @@
 # install UE4Parse module: pip install UE4Parse[tex]git+https://github.com/joric/pyUE4Parse.git
 # This was previously: pip install UE4Parse[tex]@git+https://github.com/MinshuG/pyUE4Parse.git
-# install dependencies: pip install mathutils aes numpy scikit-learn
+# install dependencies: pip install mathutils aes numpy scikit-learn libpysal
 
 from UE4Parse.Assets.Objects.FGuid import FGuid
 from UE4Parse.Provider import DefaultFileProvider, MappingProvider
@@ -553,6 +553,10 @@ def cleanup_objects(game, classes_found, data_lookup, data):
         if o['type'] == 'PlayerStart':
             o['variant'] = 'blue' if game == 'siu' else 'red'
 
+        # Deal with Waldo's in SLC
+        if o['type'] == 'RedGuy_C' and o['name'].startswith('Waldo'):
+            o['type'] = 'Waldo:'+o['type']  
+
         # Allow things with colors can have variants (minecraft bricks have type and colour)
         if o.get('variant') is None:
             color = o.get('color') or o.get('original_color')
@@ -578,7 +582,12 @@ def cleanup_objects(game, classes_found, data_lookup, data):
                 o['startpos'] = get_xyz(data_lookup[o['nearest_cap']])
             o['target'] = get_nc_xyz(data_lookup[o['other_pipe']])
         elif o['type'] == 'Jumppad_C':
-            o['linetype'] = 'jumppad_blue' if (o.get('allow_stomp') or o.get('disable_movement_in_air') == False) else 'jumppad_red'
+            if o.get('allow_stomp') or o.get('disable_movement_in_air') == False:
+                o['linetype'] = 'jumppad_blue' 
+                o['variant'] = 'blue'
+            else:
+                o['linetype'] = 'jumppad_red' 
+                o['variant'] = 'red'
         elif o.get('actors'):
             targets = []
             for actor in o['actors']:

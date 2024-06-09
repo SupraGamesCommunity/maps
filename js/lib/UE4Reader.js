@@ -30,6 +30,10 @@ class UESaveObject {
   }
 }
 
+if (typeof window === 'undefined') {
+  module.exports = UESaveObject;
+}
+
 class UEReadHelper {
   constructor(binstr) {
     this.src = new TextDecoder("latin1").decode(binstr);
