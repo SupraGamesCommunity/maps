@@ -9174,7 +9174,7 @@
   },
   {
     "name": "Jumppad10_2",
-    "type": "Jumppad_C",
+    "type": "Red:Jumppad_C",
     "area": "DLC2_Complete",
     "lat": 6073.7109375,
     "lng": 17775.4453125,
@@ -9188,7 +9188,7 @@
   },
   {
     "name": "Jumppad11_2",
-    "type": "Jumppad_C",
+    "type": "Blue:Jumppad_C",
     "area": "DLC2_Complete",
     "lat": -43150.7421875,
     "lng": 5635.47119140625,
@@ -9202,7 +9202,7 @@
   },
   {
     "name": "Jumppad12",
-    "type": "Jumppad_C",
+    "type": "Red:Jumppad_C",
     "area": "DLC2_Complete",
     "lat": -41541.0,
     "lng": -275.865234375,
@@ -9216,7 +9216,7 @@
   },
   {
     "name": "Jumppad13",
-    "type": "Jumppad_C",
+    "type": "Red:Jumppad_C",
     "area": "DLC2_Complete",
     "lat": 11236.0361328125,
     "lng": 25533.75,
@@ -9230,7 +9230,7 @@
   },
   {
     "name": "Jumppad14",
-    "type": "Jumppad_C",
+    "type": "Red:Jumppad_C",
     "area": "DLC2_Complete",
     "lat": -57239.609375,
     "lng": 53700.4453125,
@@ -9244,7 +9244,7 @@
   },
   {
     "name": "Jumppad15",
-    "type": "Jumppad_C",
+    "type": "Red:Jumppad_C",
     "area": "DLC2_Complete",
     "lat": -58911.76171875,
     "lng": 53013.69921875,
@@ -9258,7 +9258,7 @@
   },
   {
     "name": "Jumppad16",
-    "type": "Jumppad_C",
+    "type": "Red:Jumppad_C",
     "area": "DLC2_Complete",
     "lat": -52478.375,
     "lng": 51697.90625,
@@ -9272,7 +9272,7 @@
   },
   {
     "name": "Jumppad17",
-    "type": "Jumppad_C",
+    "type": "Red:Jumppad_C",
     "area": "DLC2_Complete",
     "lat": -58719.88671875,
     "lng": 53063.578125,
@@ -9286,7 +9286,7 @@
   },
   {
     "name": "Jumppad18",
-    "type": "Jumppad_C",
+    "type": "Blue:Jumppad_C",
     "area": "DLC2_Complete",
     "lat": -49784.45703125,
     "lng": 3275.899169921875,
@@ -9300,7 +9300,7 @@
   },
   {
     "name": "Jumppad19_2",
-    "type": "Jumppad_C",
+    "type": "Blue:Jumppad_C",
     "area": "DLC2_Complete",
     "lat": -29318.4765625,
     "lng": -48241.37109375,
@@ -9314,7 +9314,7 @@
   },
   {
     "name": "Jumppad20",
-    "type": "Jumppad_C",
+    "type": "Red:Jumppad_C",
     "area": "DLC2_Complete",
     "lat": -46658.4140625,
     "lng": 41889.8515625,
@@ -9328,7 +9328,7 @@
   },
   {
     "name": "Jumppad21",
-    "type": "Jumppad_C",
+    "type": "Red:Jumppad_C",
     "area": "DLC2_Complete",
     "lat": -12873.2890625,
     "lng": 19814.46484375,
@@ -9342,7 +9342,7 @@
   },
   {
     "name": "Jumppad22_2",
-    "type": "Jumppad_C",
+    "type": "Red:Jumppad_C",
     "area": "DLC2_Complete",
     "lat": -65327.3671875,
     "lng": 42971.5078125,
@@ -9356,7 +9356,7 @@
   },
   {
     "name": "Jumppad23_3",
-    "type": "Jumppad_C",
+    "type": "Red:Jumppad_C",
     "area": "DLC2_Complete",
     "lat": -19581.373046875,
     "lng": 31702.646484375,
@@ -9370,7 +9370,7 @@
   },
   {
     "name": "Jumppad24_2",
-    "type": "Jumppad_C",
+    "type": "Blue:Jumppad_C",
     "area": "DLC2_Complete",
     "lat": -39366.8984375,
     "lng": 30833.41796875,
@@ -9384,7 +9384,7 @@
   },
   {
     "name": "Jumppad25",
-    "type": "Jumppad_C",
+    "type": "Blue:Jumppad_C",
     "area": "DLC2_Complete",
     "lat": -36764.671875,
     "lng": 35262.24609375,
@@ -9398,7 +9398,7 @@
   },
   {
     "name": "Jumppad26",
-    "type": "Jumppad_C",
+    "type": "Blue:Jumppad_C",
     "area": "DLC2_Complete",
     "lat": 1039.43408203125,
     "lng": 40478.515625,
@@ -9412,7 +9412,7 @@
   },
   {
     "name": "Jumppad27",
-    "type": "Jumppad_C",
+    "type": "Blue:Jumppad_C",
     "area": "DLC2_Complete",
     "lat": -51438.91796875,
     "lng": 64113.53515625,
@@ -9426,7 +9426,7 @@
   },
   {
     "name": "Jumppad28",
-    "type": "Jumppad_C",
+    "type": "Blue:Jumppad_C",
     "area": "DLC2_Complete",
     "lat": -58610.859375,
     "lng": 62445.37109375,
@@ -9440,7 +9440,7 @@
   },
   {
     "name": "Jumppad29",
-    "type": "Jumppad_C",
+    "type": "Red:Jumppad_C",
     "area": "DLC2_Complete",
     "lat": -8002.98779296875,
     "lng": -58051.7734375,
@@ -9454,7 +9454,7 @@
   },
   {
     "name": "Jumppad2_2",
-    "type": "Jumppad_C",
+    "type": "Red:Jumppad_C",
     "area": "DLC2_Complete",
     "lat": -25500.7734375,
     "lng": 17354.271484375,
@@ -9468,7 +9468,7 @@
   },
   {
     "name": "Jumppad30_2",
-    "type": "Jumppad_C",
+    "type": "Red:Jumppad_C",
     "area": "DLC2_Complete",
     "lat": -45936.65625,
     "lng": 45890.671875,
@@ -9482,7 +9482,7 @@
   },
   {
     "name": "Jumppad31_2",
-    "type": "Jumppad_C",
+    "type": "Red:Jumppad_C",
     "area": "DLC2_Complete",
     "lat": -49544.36328125,
     "lng": 53220.69921875,
@@ -9496,7 +9496,7 @@
   },
   {
     "name": "Jumppad3_2",
-    "type": "Jumppad_C",
+    "type": "Red:Jumppad_C",
     "area": "DLC2_Complete",
     "lat": 8546.908203125,
     "lng": 17938.09765625,
@@ -9510,7 +9510,7 @@
   },
   {
     "name": "Jumppad4_2",
-    "type": "Jumppad_C",
+    "type": "Red:Jumppad_C",
     "area": "DLC2_Complete",
     "lat": -10834.64453125,
     "lng": 58047.2109375,
@@ -9524,7 +9524,7 @@
   },
   {
     "name": "Jumppad5_2",
-    "type": "Jumppad_C",
+    "type": "Red:Jumppad_C",
     "area": "DLC2_Complete",
     "lat": 6396.71826171875,
     "lng": 30354.216796875,
@@ -9552,7 +9552,7 @@
   },
   {
     "name": "Jumppad7",
-    "type": "Jumppad_C",
+    "type": "Blue:Jumppad_C",
     "area": "DLC2_Complete",
     "lat": -15603.8349609375,
     "lng": 55923.72265625,
@@ -9566,7 +9566,7 @@
   },
   {
     "name": "Jumppad8",
-    "type": "Jumppad_C",
+    "type": "Blue:Jumppad_C",
     "area": "DLC2_Complete",
     "lat": -21646.8125,
     "lng": 50827.7734375,
@@ -9580,7 +9580,7 @@
   },
   {
     "name": "Jumppad9",
-    "type": "Jumppad_C",
+    "type": "Red:Jumppad_C",
     "area": "DLC2_Complete",
     "lat": -14800.46875,
     "lng": 63497.81640625,
@@ -9594,7 +9594,7 @@
   },
   {
     "name": "Jumppad_2",
-    "type": "Jumppad_C",
+    "type": "Red:Jumppad_C",
     "area": "DLC2_Complete",
     "lat": 2970.6826171875,
     "lng": 16209.8173828125,
@@ -20685,7 +20685,7 @@
   },
   {
     "name": "Jumppad2_2",
-    "type": "Jumppad_C",
+    "type": "Red:Jumppad_C",
     "area": "DLC2_FinalBoss",
     "lat": -12697.01171875,
     "lng": -21377.443359375,
@@ -23747,7 +23747,7 @@
   },
   {
     "name": "Jumppad",
-    "type": "Jumppad_C",
+    "type": "Blue:Jumppad_C",
     "area": "DLC2_SecretLavaArea",
     "lat": 7389.45263671875,
     "lng": 1531.5936279296875,
@@ -23761,7 +23761,7 @@
   },
   {
     "name": "Jumppad2_2",
-    "type": "Jumppad_C",
+    "type": "Blue:Jumppad_C",
     "area": "DLC2_SecretLavaArea",
     "lat": 1964.4383544921875,
     "lng": -15567.2978515625,
@@ -26639,7 +26639,7 @@
   },
   {
     "name": "Jumppad2_2",
-    "type": "Jumppad_C",
+    "type": "Blue:Jumppad_C",
     "area": "DLC2_PostRainbow",
     "lat": -44543.8828125,
     "lng": -46408.5859375,
@@ -26653,7 +26653,7 @@
   },
   {
     "name": "Jumppad3_5",
-    "type": "Jumppad_C",
+    "type": "Blue:Jumppad_C",
     "area": "DLC2_PostRainbow",
     "lat": -42061.2734375,
     "lng": -51595.203125,
@@ -26667,7 +26667,7 @@
   },
   {
     "name": "Jumppad_2",
-    "type": "Jumppad_C",
+    "type": "Blue:Jumppad_C",
     "area": "DLC2_PostRainbow",
     "lat": -38515.31640625,
     "lng": -47201.06640625,

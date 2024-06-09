@@ -14305,7 +14305,7 @@
   },
   {
     "name": "Jumppad10",
-    "type": "Jumppad_C",
+    "type": "Red:Jumppad_C",
     "area": "Map",
     "lat": 43153.69140625,
     "lng": -40441.78125,
@@ -14319,7 +14319,7 @@
   },
   {
     "name": "Jumppad11_1342",
-    "type": "Jumppad_C",
+    "type": "Red:Jumppad_C",
     "area": "Map",
     "lat": -40968.60546875,
     "lng": 6927.02490234375,
@@ -14333,7 +14333,7 @@
   },
   {
     "name": "Jumppad12_1472",
-    "type": "Jumppad_C",
+    "type": "Red:Jumppad_C",
     "area": "Map",
     "lat": -930.0,
     "lng": -18986.234375,
@@ -14347,7 +14347,7 @@
   },
   {
     "name": "Jumppad13_972",
-    "type": "Jumppad_C",
+    "type": "Red:Jumppad_C",
     "area": "Map",
     "lat": -11788.5810546875,
     "lng": -28320.197265625,
@@ -14361,7 +14361,7 @@
   },
   {
     "name": "Jumppad14_7215",
-    "type": "Jumppad_C",
+    "type": "Red:Jumppad_C",
     "area": "Map",
     "lat": -10152.76953125,
     "lng": 6939.50927734375,
@@ -14375,7 +14375,7 @@
   },
   {
     "name": "Jumppad15_762",
-    "type": "Jumppad_C",
+    "type": "Red:Jumppad_C",
     "area": "Map",
     "lat": -11914.76171875,
     "lng": -24982.04296875,
@@ -14389,7 +14389,7 @@
   },
   {
     "name": "Jumppad16",
-    "type": "Jumppad_C",
+    "type": "Red:Jumppad_C",
     "area": "Map",
     "lat": -26726.357421875,
     "lng": 25940.681640625,
@@ -14403,7 +14403,7 @@
   },
   {
     "name": "Jumppad17_13105",
-    "type": "Jumppad_C",
+    "type": "Blue:Jumppad_C",
     "area": "Map",
     "lat": -24867.41015625,
     "lng": -38368.94921875,
@@ -14417,7 +14417,7 @@
   },
   {
     "name": "Jumppad18",
-    "type": "Jumppad_C",
+    "type": "Blue:Jumppad_C",
     "area": "Map",
     "lat": -24097.64453125,
     "lng": -31647.798828125,
@@ -14431,7 +14431,7 @@
   },
   {
     "name": "Jumppad19",
-    "type": "Jumppad_C",
+    "type": "Blue:Jumppad_C",
     "area": "Map",
     "lat": -21995.822265625,
     "lng": -38368.94921875,
@@ -14445,7 +14445,7 @@
   },
   {
     "name": "Jumppad20_2",
-    "type": "Jumppad_C",
+    "type": "Red:Jumppad_C",
     "area": "Map",
     "lat": -8998.3740234375,
     "lng": 67418.7734375,
@@ -14459,7 +14459,7 @@
   },
   {
     "name": "Jumppad21_2",
-    "type": "Jumppad_C",
+    "type": "Red:Jumppad_C",
     "area": "Map",
     "lat": 16833.087890625,
     "lng": -48074.046875,
@@ -14473,7 +14473,7 @@
   },
   {
     "name": "Jumppad22_1179",
-    "type": "Jumppad_C",
+    "type": "Red:Jumppad_C",
     "area": "Map",
     "lat": -20527.89453125,
     "lng": -17644.560546875,
@@ -14487,7 +14487,7 @@
   },
   {
     "name": "Jumppad23_3162",
-    "type": "Jumppad_C",
+    "type": "Red:Jumppad_C",
     "area": "Map",
     "lat": -38028.48046875,
     "lng": -3131.210205078125,
@@ -14501,7 +14501,7 @@
   },
   {
     "name": "Jumppad24",
-    "type": "Jumppad_C",
+    "type": "Red:Jumppad_C",
     "area": "Map",
     "lat": -33632.13671875,
     "lng": -9403.6337890625,
@@ -14515,7 +14515,7 @@
   },
   {
     "name": "Jumppad25_11306",
-    "type": "Jumppad_C",
+    "type": "Red:Jumppad_C",
     "area": "Map",
     "lat": -23489.306640625,
     "lng": -25678.37109375,
@@ -14529,7 +14529,7 @@
   },
   {
     "name": "Jumppad26",
-    "type": "Jumppad_C",
+    "type": "Blue:Jumppad_C",
     "area": "Map",
     "lat": -41676.1171875,
     "lng": -33508.28125,
@@ -14543,7 +14543,7 @@
   },
   {
     "name": "Jumppad27_1960",
-    "type": "Jumppad_C",
+    "type": "Blue:Jumppad_C",
     "area": "Map",
     "lat": -10129.4580078125,
     "lng": 10072.9677734375,
@@ -14557,7 +14557,7 @@
   },
   {
     "name": "Jumppad28_8720",
-    "type": "Jumppad_C",
+    "type": "Red:Jumppad_C",
     "area": "Map",
     "lat": -28726.1171875,
     "lng": -39562.5390625,
@@ -14571,7 +14571,7 @@
   },
   {
     "name": "Jumppad29_13926",
-    "type": "Jumppad_C",
+    "type": "Red:Jumppad_C",
     "area": "Map",
     "lat": -28636.791015625,
     "lng": -38368.828125,
@@ -14585,7 +14585,7 @@
   },
   {
     "name": "Jumppad2_49",
-    "type": "Jumppad_C",
+    "type": "Blue:Jumppad_C",
     "area": "Map",
     "lat": -30098.595703125,
     "lng": 2520.616455078125,
@@ -14599,7 +14599,7 @@
   },
   {
     "name": "Jumppad30_17845",
-    "type": "Jumppad_C",
+    "type": "Red:Jumppad_C",
     "area": "Map",
     "lat": -27850.0,
     "lng": -35370.0,
@@ -14613,7 +14613,7 @@
   },
   {
     "name": "Jumppad31_1993",
-    "type": "Jumppad_C",
+    "type": "Blue:Jumppad_C",
     "area": "Map",
     "lat": -37780.0,
     "lng": -26690.0,
@@ -14627,7 +14627,7 @@
   },
   {
     "name": "Jumppad32_9265",
-    "type": "Jumppad_C",
+    "type": "Red:Jumppad_C",
     "area": "Map",
     "lat": -42354.9765625,
     "lng": -52705.58203125,
@@ -14641,7 +14641,7 @@
   },
   {
     "name": "Jumppad33_1894",
-    "type": "Jumppad_C",
+    "type": "Red:Jumppad_C",
     "area": "Map",
     "lat": -27370.982421875,
     "lng": -1650.08447265625,
@@ -14655,7 +14655,7 @@
   },
   {
     "name": "Jumppad34_2191",
-    "type": "Jumppad_C",
+    "type": "Blue:Jumppad_C",
     "area": "Map",
     "lat": -42906.3125,
     "lng": -21078.736328125,
@@ -14669,7 +14669,7 @@
   },
   {
     "name": "Jumppad35",
-    "type": "Jumppad_C",
+    "type": "Blue:Jumppad_C",
     "area": "Map",
     "lat": -33811.9609375,
     "lng": -9830.8046875,
@@ -14683,7 +14683,7 @@
   },
   {
     "name": "Jumppad36_6503",
-    "type": "Jumppad_C",
+    "type": "Blue:Jumppad_C",
     "area": "Map",
     "lat": -29110.439453125,
     "lng": 21452.93359375,
@@ -14697,7 +14697,7 @@
   },
   {
     "name": "Jumppad37_8255",
-    "type": "Jumppad_C",
+    "type": "Red:Jumppad_C",
     "area": "Map",
     "lat": -42703.7109375,
     "lng": -31951.298828125,
@@ -14711,7 +14711,7 @@
   },
   {
     "name": "Jumppad38_2356",
-    "type": "Jumppad_C",
+    "type": "Red:Jumppad_C",
     "area": "Map",
     "lat": -26315.85546875,
     "lng": -30735.97265625,
@@ -14725,7 +14725,7 @@
   },
   {
     "name": "Jumppad39_2367",
-    "type": "Jumppad_C",
+    "type": "Red:Jumppad_C",
     "area": "Map",
     "lat": 24302.015625,
     "lng": -12198.673828125,
@@ -14739,7 +14739,7 @@
   },
   {
     "name": "Jumppad3_522",
-    "type": "Jumppad_C",
+    "type": "Blue:Jumppad_C",
     "area": "Map",
     "lat": -26071.716796875,
     "lng": 4081.52490234375,
@@ -14753,7 +14753,7 @@
   },
   {
     "name": "Jumppad40_8816",
-    "type": "Jumppad_C",
+    "type": "Red:Jumppad_C",
     "area": "Map",
     "lat": -43213.19921875,
     "lng": -49859.80078125,
@@ -14767,7 +14767,7 @@
   },
   {
     "name": "Jumppad41",
-    "type": "Jumppad_C",
+    "type": "Red:Jumppad_C",
     "area": "Map",
     "lat": -48507.28125,
     "lng": -51536.77734375,
@@ -14781,7 +14781,7 @@
   },
   {
     "name": "Jumppad42",
-    "type": "Jumppad_C",
+    "type": "Blue:Jumppad_C",
     "area": "Map",
     "lat": -23698.416015625,
     "lng": 18563.1953125,
@@ -14795,7 +14795,7 @@
   },
   {
     "name": "Jumppad43_2",
-    "type": "Jumppad_C",
+    "type": "Blue:Jumppad_C",
     "area": "Map",
     "lat": -8406.546875,
     "lng": 63599.31640625,
@@ -14809,7 +14809,7 @@
   },
   {
     "name": "Jumppad44",
-    "type": "Jumppad_C",
+    "type": "Red:Jumppad_C",
     "area": "Map",
     "lat": -13163.5205078125,
     "lng": -29786.62890625,
@@ -14823,7 +14823,7 @@
   },
   {
     "name": "Jumppad45",
-    "type": "Jumppad_C",
+    "type": "Red:Jumppad_C",
     "area": "Map",
     "lat": -33100.11328125,
     "lng": -10392.947265625,
@@ -14837,7 +14837,7 @@
   },
   {
     "name": "Jumppad46_2543",
-    "type": "Jumppad_C",
+    "type": "Red:Jumppad_C",
     "area": "Map",
     "lat": -11933.14453125,
     "lng": -110.72685241699219,
@@ -14851,7 +14851,7 @@
   },
   {
     "name": "Jumppad47",
-    "type": "Jumppad_C",
+    "type": "Red:Jumppad_C",
     "area": "Map",
     "lat": -23239.681640625,
     "lng": -9610.2705078125,
@@ -14865,7 +14865,7 @@
   },
   {
     "name": "Jumppad48",
-    "type": "Jumppad_C",
+    "type": "Red:Jumppad_C",
     "area": "Map",
     "lat": -27533.306640625,
     "lng": 3068.1103515625,
@@ -14879,7 +14879,7 @@
   },
   {
     "name": "Jumppad49_2147",
-    "type": "Jumppad_C",
+    "type": "Blue:Jumppad_C",
     "area": "Map",
     "lat": 29487.25,
     "lng": 6287.68505859375,
@@ -14893,7 +14893,7 @@
   },
   {
     "name": "Jumppad4_1222",
-    "type": "Jumppad_C",
+    "type": "Blue:Jumppad_C",
     "area": "Map",
     "lat": -25006.853515625,
     "lng": 24044.64453125,
@@ -14907,7 +14907,7 @@
   },
   {
     "name": "Jumppad50",
-    "type": "Jumppad_C",
+    "type": "Red:Jumppad_C",
     "area": "Map",
     "lat": 27081.2734375,
     "lng": 5950.91748046875,
@@ -14921,7 +14921,7 @@
   },
   {
     "name": "Jumppad51",
-    "type": "Jumppad_C",
+    "type": "Blue:Jumppad_C",
     "area": "Map",
     "lat": 29068.08984375,
     "lng": -26924.81640625,
@@ -14935,7 +14935,7 @@
   },
   {
     "name": "Jumppad52",
-    "type": "Jumppad_C",
+    "type": "Red:Jumppad_C",
     "area": "Map",
     "lat": 27537.8046875,
     "lng": -21289.65234375,
@@ -14949,7 +14949,7 @@
   },
   {
     "name": "Jumppad53",
-    "type": "Jumppad_C",
+    "type": "Blue:Jumppad_C",
     "area": "Map",
     "lat": 28866.14453125,
     "lng": -26924.81640625,
@@ -14963,7 +14963,7 @@
   },
   {
     "name": "Jumppad54_1487",
-    "type": "Jumppad_C",
+    "type": "Red:Jumppad_C",
     "area": "Map",
     "lat": 41574.59765625,
     "lng": -12513.8740234375,
@@ -14977,7 +14977,7 @@
   },
   {
     "name": "Jumppad55",
-    "type": "Jumppad_C",
+    "type": "Red:Jumppad_C",
     "area": "Map",
     "lat": 36053.7578125,
     "lng": -24524.12890625,
@@ -14991,7 +14991,7 @@
   },
   {
     "name": "Jumppad56",
-    "type": "Jumppad_C",
+    "type": "Red:Jumppad_C",
     "area": "Map",
     "lat": 43012.23046875,
     "lng": -42677.80078125,
@@ -15005,7 +15005,7 @@
   },
   {
     "name": "Jumppad57",
-    "type": "Jumppad_C",
+    "type": "Red:Jumppad_C",
     "area": "Map",
     "lat": 46321.93359375,
     "lng": -25151.51953125,
@@ -15019,7 +15019,7 @@
   },
   {
     "name": "Jumppad58",
-    "type": "Jumppad_C",
+    "type": "Blue:Jumppad_C",
     "area": "Map",
     "lat": 50760.51953125,
     "lng": -45152.98046875,
@@ -15033,7 +15033,7 @@
   },
   {
     "name": "Jumppad59_1564",
-    "type": "Jumppad_C",
+    "type": "Red:Jumppad_C",
     "area": "Map",
     "lat": 4645.07470703125,
     "lng": 19442.513671875,
@@ -15047,7 +15047,7 @@
   },
   {
     "name": "Jumppad5_4135",
-    "type": "Jumppad_C",
+    "type": "Blue:Jumppad_C",
     "area": "Map",
     "lat": -28540.0,
     "lng": 22860.0,
@@ -15061,7 +15061,7 @@
   },
   {
     "name": "Jumppad6",
-    "type": "Jumppad_C",
+    "type": "Blue:Jumppad_C",
     "area": "Map",
     "lat": -27031.51171875,
     "lng": 5738.78125,
@@ -15075,7 +15075,7 @@
   },
   {
     "name": "Jumppad60",
-    "type": "Jumppad_C",
+    "type": "Red:Jumppad_C",
     "area": "Map",
     "lat": 54675.1328125,
     "lng": -43557.62109375,
@@ -15089,7 +15089,7 @@
   },
   {
     "name": "Jumppad61",
-    "type": "Jumppad_C",
+    "type": "Red:Jumppad_C",
     "area": "Map",
     "lat": 28683.08203125,
     "lng": -552.713623046875,
@@ -15103,7 +15103,7 @@
   },
   {
     "name": "Jumppad62_2279",
-    "type": "Jumppad_C",
+    "type": "Red:Jumppad_C",
     "area": "Map",
     "lat": 18192.294921875,
     "lng": 13143.015625,
@@ -15117,7 +15117,7 @@
   },
   {
     "name": "Jumppad63",
-    "type": "Jumppad_C",
+    "type": "Red:Jumppad_C",
     "area": "Map",
     "lat": 14391.498046875,
     "lng": 11639.30859375,
@@ -15131,7 +15131,7 @@
   },
   {
     "name": "Jumppad64_1993",
-    "type": "Jumppad_C",
+    "type": "Red:Jumppad_C",
     "area": "Map",
     "lat": 45283.1328125,
     "lng": -63796.23828125,
@@ -15145,7 +15145,7 @@
   },
   {
     "name": "Jumppad65",
-    "type": "Jumppad_C",
+    "type": "Red:Jumppad_C",
     "area": "Map",
     "lat": 44810.15625,
     "lng": -63796.23828125,
@@ -15159,7 +15159,7 @@
   },
   {
     "name": "Jumppad66",
-    "type": "Jumppad_C",
+    "type": "Red:Jumppad_C",
     "area": "Map",
     "lat": 44274.20703125,
     "lng": -63796.23828125,
@@ -15173,7 +15173,7 @@
   },
   {
     "name": "Jumppad67",
-    "type": "Jumppad_C",
+    "type": "Red:Jumppad_C",
     "area": "Map",
     "lat": 50969.33203125,
     "lng": -54670.35546875,
@@ -15187,7 +15187,7 @@
   },
   {
     "name": "Jumppad68",
-    "type": "Jumppad_C",
+    "type": "Red:Jumppad_C",
     "area": "Map",
     "lat": 57341.48046875,
     "lng": -55587.50390625,
@@ -15201,7 +15201,7 @@
   },
   {
     "name": "Jumppad7",
-    "type": "Jumppad_C",
+    "type": "Blue:Jumppad_C",
     "area": "Map",
     "lat": -2363.6796875,
     "lng": 14497.19921875,
@@ -15215,7 +15215,7 @@
   },
   {
     "name": "Jumppad70",
-    "type": "Jumppad_C",
+    "type": "Red:Jumppad_C",
     "area": "Map",
     "lat": -19236.2109375,
     "lng": 44777.67578125,
@@ -15229,7 +15229,7 @@
   },
   {
     "name": "Jumppad71_9499",
-    "type": "Jumppad_C",
+    "type": "Red:Jumppad_C",
     "area": "Map",
     "lat": 61237.2265625,
     "lng": -42297.578125,
@@ -15243,7 +15243,7 @@
   },
   {
     "name": "Jumppad72",
-    "type": "Jumppad_C",
+    "type": "Red:Jumppad_C",
     "area": "Map",
     "lat": 42413.24609375,
     "lng": -16532.533203125,
@@ -15257,7 +15257,7 @@
   },
   {
     "name": "Jumppad73",
-    "type": "Jumppad_C",
+    "type": "Red:Jumppad_C",
     "area": "Map",
     "lat": 52016.296875,
     "lng": -65323.69140625,
@@ -15271,7 +15271,7 @@
   },
   {
     "name": "Jumppad74",
-    "type": "Jumppad_C",
+    "type": "Red:Jumppad_C",
     "area": "Map",
     "lat": 15400.98046875,
     "lng": -11921.138671875,
@@ -15285,7 +15285,7 @@
   },
   {
     "name": "Jumppad75",
-    "type": "Jumppad_C",
+    "type": "Red:Jumppad_C",
     "area": "Map",
     "lat": -23191.125,
     "lng": -17283.203125,
@@ -15299,7 +15299,7 @@
   },
   {
     "name": "Jumppad76",
-    "type": "Jumppad_C",
+    "type": "Red:Jumppad_C",
     "area": "Map",
     "lat": 13696.99609375,
     "lng": 13189.1064453125,
@@ -15313,7 +15313,7 @@
   },
   {
     "name": "Jumppad77",
-    "type": "Jumppad_C",
+    "type": "Red:Jumppad_C",
     "area": "Map",
     "lat": 17308.708984375,
     "lng": 25803.701171875,
@@ -15327,7 +15327,7 @@
   },
   {
     "name": "Jumppad78",
-    "type": "Jumppad_C",
+    "type": "Red:Jumppad_C",
     "area": "Map",
     "lat": 20561.2734375,
     "lng": 25570.3046875,
@@ -15341,7 +15341,7 @@
   },
   {
     "name": "Jumppad79",
-    "type": "Jumppad_C",
+    "type": "Red:Jumppad_C",
     "area": "Map",
     "lat": -11600.5205078125,
     "lng": 13031.2021484375,
@@ -15355,7 +15355,7 @@
   },
   {
     "name": "Jumppad8",
-    "type": "Jumppad_C",
+    "type": "Blue:Jumppad_C",
     "area": "Map",
     "lat": 1791.294189453125,
     "lng": 3225.965576171875,
@@ -15369,7 +15369,7 @@
   },
   {
     "name": "Jumppad80",
-    "type": "Jumppad_C",
+    "type": "Red:Jumppad_C",
     "area": "Map",
     "lat": 28549.54296875,
     "lng": 24421.96875,
@@ -15383,7 +15383,7 @@
   },
   {
     "name": "Jumppad81",
-    "type": "Jumppad_C",
+    "type": "Red:Jumppad_C",
     "area": "Map",
     "lat": -12931.7978515625,
     "lng": 37931.4453125,
@@ -15397,7 +15397,7 @@
   },
   {
     "name": "Jumppad82",
-    "type": "Jumppad_C",
+    "type": "Red:Jumppad_C",
     "area": "Map",
     "lat": -1435.73876953125,
     "lng": 48096.5625,
@@ -15411,7 +15411,7 @@
   },
   {
     "name": "Jumppad83",
-    "type": "Jumppad_C",
+    "type": "Red:Jumppad_C",
     "area": "Map",
     "lat": 5824.7353515625,
     "lng": 15024.869140625,
@@ -15425,7 +15425,7 @@
   },
   {
     "name": "Jumppad84",
-    "type": "Jumppad_C",
+    "type": "Red:Jumppad_C",
     "area": "Map",
     "lat": -1679.1309814453125,
     "lng": 48096.5625,
@@ -15439,7 +15439,7 @@
   },
   {
     "name": "Jumppad85",
-    "type": "Jumppad_C",
+    "type": "Red:Jumppad_C",
     "area": "Map",
     "lat": 26780.978515625,
     "lng": 43209.37890625,
@@ -15453,7 +15453,7 @@
   },
   {
     "name": "Jumppad86",
-    "type": "Jumppad_C",
+    "type": "Red:Jumppad_C",
     "area": "Map",
     "lat": 27173.25390625,
     "lng": 57068.85546875,
@@ -15467,7 +15467,7 @@
   },
   {
     "name": "Jumppad87",
-    "type": "Jumppad_C",
+    "type": "Red:Jumppad_C",
     "area": "Map",
     "lat": 35565.73046875,
     "lng": 65191.08984375,
@@ -15481,7 +15481,7 @@
   },
   {
     "name": "Jumppad88",
-    "type": "Jumppad_C",
+    "type": "Red:Jumppad_C",
     "area": "Map",
     "lat": 549.6739501953125,
     "lng": 52843.875,
@@ -15495,7 +15495,7 @@
   },
   {
     "name": "Jumppad89",
-    "type": "Jumppad_C",
+    "type": "Red:Jumppad_C",
     "area": "Map",
     "lat": -5299.93359375,
     "lng": 44291.62890625,
@@ -15509,7 +15509,7 @@
   },
   {
     "name": "Jumppad90",
-    "type": "Jumppad_C",
+    "type": "Red:Jumppad_C",
     "area": "Map",
     "lat": 337.01141357421875,
     "lng": 10858.4326171875,
@@ -15523,7 +15523,7 @@
   },
   {
     "name": "Jumppad91",
-    "type": "Jumppad_C",
+    "type": "Red:Jumppad_C",
     "area": "Map",
     "lat": 23644.978515625,
     "lng": 39829.37890625,
@@ -15537,7 +15537,7 @@
   },
   {
     "name": "Jumppad92",
-    "type": "Jumppad_C",
+    "type": "Red:Jumppad_C",
     "area": "Map",
     "lat": 13277.2421875,
     "lng": -47961.94921875,
@@ -15551,7 +15551,7 @@
   },
   {
     "name": "Jumppad93",
-    "type": "Jumppad_C",
+    "type": "Red:Jumppad_C",
     "area": "Map",
     "lat": 13386.439453125,
     "lng": -12094.759765625,
@@ -15565,7 +15565,7 @@
   },
   {
     "name": "Jumppad94",
-    "type": "Jumppad_C",
+    "type": "Blue:Jumppad_C",
     "area": "Map",
     "lat": -34001.74609375,
     "lng": 38969.359375,
@@ -15579,7 +15579,7 @@
   },
   {
     "name": "Jumppad95",
-    "type": "Jumppad_C",
+    "type": "Red:Jumppad_C",
     "area": "Map",
     "lat": 13536.853515625,
     "lng": 46836.70703125,
@@ -15593,7 +15593,7 @@
   },
   {
     "name": "Jumppad96",
-    "type": "Jumppad_C",
+    "type": "Red:Jumppad_C",
     "area": "Map",
     "lat": -10249.4150390625,
     "lng": -30676.283203125,
@@ -15607,7 +15607,7 @@
   },
   {
     "name": "Jumppad97",
-    "type": "Jumppad_C",
+    "type": "Red:Jumppad_C",
     "area": "Map",
     "lat": 58023.26953125,
     "lng": -58992.2421875,
@@ -15621,7 +15621,7 @@
   },
   {
     "name": "Jumppad98_2",
-    "type": "Jumppad_C",
+    "type": "Blue:Jumppad_C",
     "area": "Map",
     "lat": 43634.921875,
     "lng": -62275.48046875,
@@ -15635,7 +15635,7 @@
   },
   {
     "name": "Jumppad99",
-    "type": "Jumppad_C",
+    "type": "Blue:Jumppad_C",
     "area": "Map",
     "lat": 43552.6171875,
     "lng": -40175.44921875,
@@ -15649,7 +15649,7 @@
   },
   {
     "name": "Jumppad9_1454",
-    "type": "Jumppad_C",
+    "type": "Red:Jumppad_C",
     "area": "Map",
     "lat": 43123.2265625,
     "lng": -33327.89453125,
@@ -15663,7 +15663,7 @@
   },
   {
     "name": "Jumppad_266",
-    "type": "Jumppad_C",
+    "type": "Blue:Jumppad_C",
     "area": "Map",
     "lat": -6931.44287109375,
     "lng": 13439.556640625,
