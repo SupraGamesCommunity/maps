@@ -261,7 +261,7 @@ if(args.values.compare)
     let dump_markers = new Set([...inbase, ...incomp]);
 }
 
-const outputFileName = `${game}.marker_names.txt`
+const outputFileName = `$saveextract.{game}.txt`
 let count = dump_markers.size;
 fs.writeFileSync(outputFileName, Array.from(dump_markers).join('\r\n') + '\r\n')
 

@@ -242,7 +242,7 @@ const gameClasses = {
     'MatchBox_C'                              : new GameClass('Match Box',                        'matchbox',                 'extra'),
     'PhysicalCoin_C'                          : new GameClass('Physical Coin',                    'coin',                     'coin'),
     'RedGuy_C'                                : new GameClass('Red Guy',                          'guy:v',                    'extra'),
-    'Waldo:RedGuy_C'                          : new GameClass('Waldo',                            'waldo',                    'misc',     'collectable'),
+    'Waldo:RedGuy_C'                          : new GameClass('Waldo',                            'waldo',                    'misc',     'collectable',  'misc'),
     'BP_UnlockMap_C'                          : new GameClass('Unlock Map',                       'map',                      'upgrades', 'shop'),
     'MinecraftBrick_C'                        : new GameClass('Minecraft Brick',                  'brick:v',                  'extra'),
     'MinecraftBrickRespawnable_C'             : new GameClass('Minecraft Brick',                  'brick:v',                  'extra'),

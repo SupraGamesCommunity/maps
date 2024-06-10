@@ -362,8 +362,8 @@
     "lng": 22141.173828125,
     "alt": 3200.79296875,
     "cost": 10,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "361"
+    "yt_start": "361",
+    "yt_video": "5KkEVBgFW3U"
   },
   {
     "name": "A2_YellowBldgExitTrigger",
@@ -3375,7 +3375,8 @@
     "lng": 55088.7265625,
     "alt": 1660.006591796875,
     "spawns": "BP_BuyGunRechargeTime-50pct_C",
-    "yt_video": "5KkEVBgFW3U"
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "9713"
   },
   {
     "name": "ChestArea4_54",
@@ -3758,7 +3759,7 @@
     "lat": -56919.7578125,
     "lng": 56439.578125,
     "alt": 5936.94091796875,
-    "spawns": "SIU:BuyTranslocator_C",
+    "spawns": "BuyTranslocator_C",
     "yt_video": "5KkEVBgFW3U",
     "yt_start": "2998"
   },
@@ -9174,7 +9175,7 @@
   },
   {
     "name": "Jumppad10_2",
-    "type": "Red:Jumppad_C",
+    "type": "Jumppad_C",
     "area": "DLC2_Complete",
     "lat": 6073.7109375,
     "lng": 17775.4453125,
@@ -9184,11 +9185,12 @@
       "y": 9674.555170192809,
       "z": 3012.703165088927
     },
-    "linetype": "jumppad_red"
+    "linetype": "jumppad_red",
+    "variant": "red"
   },
   {
     "name": "Jumppad11_2",
-    "type": "Blue:Jumppad_C",
+    "type": "Jumppad_C",
     "area": "DLC2_Complete",
     "lat": -43150.7421875,
     "lng": 5635.47119140625,
@@ -9198,11 +9200,12 @@
       "y": -44148.766766786575,
       "z": 1841.2778794670132
     },
-    "linetype": "jumppad_blue"
+    "linetype": "jumppad_blue",
+    "variant": "blue"
   },
   {
     "name": "Jumppad12",
-    "type": "Red:Jumppad_C",
+    "type": "Jumppad_C",
     "area": "DLC2_Complete",
     "lat": -41541.0,
     "lng": -275.865234375,
@@ -9212,11 +9215,12 @@
       "y": -41541.0,
       "z": 1537.3007000000075
     },
-    "linetype": "jumppad_red"
+    "linetype": "jumppad_red",
+    "variant": "red"
   },
   {
     "name": "Jumppad13",
-    "type": "Red:Jumppad_C",
+    "type": "Jumppad_C",
     "area": "DLC2_Complete",
     "lat": 11236.0361328125,
     "lng": 25533.75,
@@ -9226,11 +9230,12 @@
       "y": 7566.019125074148,
       "z": 4280.895351481686
     },
-    "linetype": "jumppad_red"
+    "linetype": "jumppad_red",
+    "variant": "red"
   },
   {
     "name": "Jumppad14",
-    "type": "Red:Jumppad_C",
+    "type": "Jumppad_C",
     "area": "DLC2_Complete",
     "lat": -57239.609375,
     "lng": 53700.4453125,
@@ -9240,11 +9245,12 @@
       "y": -57326.26488622767,
       "z": 3632.829624840237
     },
-    "linetype": "jumppad_red"
+    "linetype": "jumppad_red",
+    "variant": "red"
   },
   {
     "name": "Jumppad15",
-    "type": "Red:Jumppad_C",
+    "type": "Jumppad_C",
     "area": "DLC2_Complete",
     "lat": -58911.76171875,
     "lng": 53013.69921875,
@@ -9254,11 +9260,12 @@
       "y": -57209.263392641384,
       "z": 3989.94711954647
     },
-    "linetype": "jumppad_red"
+    "linetype": "jumppad_red",
+    "variant": "red"
   },
   {
     "name": "Jumppad16",
-    "type": "Red:Jumppad_C",
+    "type": "Jumppad_C",
     "area": "DLC2_Complete",
     "lat": -52478.375,
     "lng": 51697.90625,
@@ -9268,11 +9275,12 @@
       "y": -46082.46520662308,
       "z": 2858.1061725933573
     },
-    "linetype": "jumppad_red"
+    "linetype": "jumppad_red",
+    "variant": "red"
   },
   {
     "name": "Jumppad17",
-    "type": "Red:Jumppad_C",
+    "type": "Jumppad_C",
     "area": "DLC2_Complete",
     "lat": -58719.88671875,
     "lng": 53063.578125,
@@ -9282,11 +9290,12 @@
       "y": -56922.40829971002,
       "z": 3363.8518379013385
     },
-    "linetype": "jumppad_red"
+    "linetype": "jumppad_red",
+    "variant": "red"
   },
   {
     "name": "Jumppad18",
-    "type": "Blue:Jumppad_C",
+    "type": "Jumppad_C",
     "area": "DLC2_Complete",
     "lat": -49784.45703125,
     "lng": 3275.899169921875,
@@ -9296,11 +9305,12 @@
       "y": -48199.97091627121,
       "z": 3612.226288531508
     },
-    "linetype": "jumppad_blue"
+    "linetype": "jumppad_blue",
+    "variant": "blue"
   },
   {
     "name": "Jumppad19_2",
-    "type": "Blue:Jumppad_C",
+    "type": "Jumppad_C",
     "area": "DLC2_Complete",
     "lat": -29318.4765625,
     "lng": -48241.37109375,
@@ -9310,11 +9320,12 @@
       "y": -29318.4765625,
       "z": 17278.455754882933
     },
-    "linetype": "jumppad_blue"
+    "linetype": "jumppad_blue",
+    "variant": "blue"
   },
   {
     "name": "Jumppad20",
-    "type": "Red:Jumppad_C",
+    "type": "Jumppad_C",
     "area": "DLC2_Complete",
     "lat": -46658.4140625,
     "lng": 41889.8515625,
@@ -9324,11 +9335,12 @@
       "y": -46469.87075870647,
       "z": 1956.9633269438623
     },
-    "linetype": "jumppad_red"
+    "linetype": "jumppad_red",
+    "variant": "red"
   },
   {
     "name": "Jumppad21",
-    "type": "Red:Jumppad_C",
+    "type": "Jumppad_C",
     "area": "DLC2_Complete",
     "lat": -12873.2890625,
     "lng": 19814.46484375,
@@ -9338,11 +9350,12 @@
       "y": -12621.077338470146,
       "z": 6426.271630319637
     },
-    "linetype": "jumppad_red"
+    "linetype": "jumppad_red",
+    "variant": "red"
   },
   {
     "name": "Jumppad22_2",
-    "type": "Red:Jumppad_C",
+    "type": "Jumppad_C",
     "area": "DLC2_Complete",
     "lat": -65327.3671875,
     "lng": 42971.5078125,
@@ -9352,11 +9365,12 @@
       "y": -62234.34711894393,
       "z": 3596.892885325683
     },
-    "linetype": "jumppad_red"
+    "linetype": "jumppad_red",
+    "variant": "red"
   },
   {
     "name": "Jumppad23_3",
-    "type": "Red:Jumppad_C",
+    "type": "Jumppad_C",
     "area": "DLC2_Complete",
     "lat": -19581.373046875,
     "lng": 31702.646484375,
@@ -9366,11 +9380,12 @@
       "y": -20878.332082956473,
       "z": -574.5178262213146
     },
-    "linetype": "jumppad_red"
+    "linetype": "jumppad_red",
+    "variant": "red"
   },
   {
     "name": "Jumppad24_2",
-    "type": "Blue:Jumppad_C",
+    "type": "Jumppad_C",
     "area": "DLC2_Complete",
     "lat": -39366.8984375,
     "lng": 30833.41796875,
@@ -9380,11 +9395,12 @@
       "y": -38576.38218438625,
       "z": 8.11873171846559
     },
-    "linetype": "jumppad_blue"
+    "linetype": "jumppad_blue",
+    "variant": "blue"
   },
   {
     "name": "Jumppad25",
-    "type": "Blue:Jumppad_C",
+    "type": "Jumppad_C",
     "area": "DLC2_Complete",
     "lat": -36764.671875,
     "lng": 35262.24609375,
@@ -9394,11 +9410,12 @@
       "y": -36810.17817503214,
       "z": 1334.54142870331
     },
-    "linetype": "jumppad_blue"
+    "linetype": "jumppad_blue",
+    "variant": "blue"
   },
   {
     "name": "Jumppad26",
-    "type": "Blue:Jumppad_C",
+    "type": "Jumppad_C",
     "area": "DLC2_Complete",
     "lat": 1039.43408203125,
     "lng": 40478.515625,
@@ -9408,11 +9425,12 @@
       "y": 59.48750174045563,
       "z": 2915.193866773613
     },
-    "linetype": "jumppad_blue"
+    "linetype": "jumppad_blue",
+    "variant": "blue"
   },
   {
     "name": "Jumppad27",
-    "type": "Blue:Jumppad_C",
+    "type": "Jumppad_C",
     "area": "DLC2_Complete",
     "lat": -51438.91796875,
     "lng": 64113.53515625,
@@ -9422,11 +9440,12 @@
       "y": -51968.58205842972,
       "z": 948.956336237336
     },
-    "linetype": "jumppad_blue"
+    "linetype": "jumppad_blue",
+    "variant": "blue"
   },
   {
     "name": "Jumppad28",
-    "type": "Blue:Jumppad_C",
+    "type": "Jumppad_C",
     "area": "DLC2_Complete",
     "lat": -58610.859375,
     "lng": 62445.37109375,
@@ -9436,11 +9455,12 @@
       "y": -57781.06739163399,
       "z": 885.5064770919812
     },
-    "linetype": "jumppad_blue"
+    "linetype": "jumppad_blue",
+    "variant": "blue"
   },
   {
     "name": "Jumppad29",
-    "type": "Red:Jumppad_C",
+    "type": "Jumppad_C",
     "area": "DLC2_Complete",
     "lat": -8002.98779296875,
     "lng": -58051.7734375,
@@ -9450,11 +9470,12 @@
       "y": -7749.5596142578115,
       "z": 8209.546333671393
     },
-    "linetype": "jumppad_red"
+    "linetype": "jumppad_red",
+    "variant": "red"
   },
   {
     "name": "Jumppad2_2",
-    "type": "Red:Jumppad_C",
+    "type": "Jumppad_C",
     "area": "DLC2_Complete",
     "lat": -25500.7734375,
     "lng": 17354.271484375,
@@ -9464,11 +9485,12 @@
       "y": -30297.698989090422,
       "z": 3127.4266638576696
     },
-    "linetype": "jumppad_red"
+    "linetype": "jumppad_red",
+    "variant": "red"
   },
   {
     "name": "Jumppad30_2",
-    "type": "Red:Jumppad_C",
+    "type": "Jumppad_C",
     "area": "DLC2_Complete",
     "lat": -45936.65625,
     "lng": 45890.671875,
@@ -9478,11 +9500,12 @@
       "y": -13530.767711073953,
       "z": 2394.5231876747735
     },
-    "linetype": "jumppad_red"
+    "linetype": "jumppad_red",
+    "variant": "red"
   },
   {
     "name": "Jumppad31_2",
-    "type": "Red:Jumppad_C",
+    "type": "Jumppad_C",
     "area": "DLC2_Complete",
     "lat": -49544.36328125,
     "lng": 53220.69921875,
@@ -9492,11 +9515,12 @@
       "y": -50063.12952530384,
       "z": 2002.1459562820478
     },
-    "linetype": "jumppad_red"
+    "linetype": "jumppad_red",
+    "variant": "red"
   },
   {
     "name": "Jumppad3_2",
-    "type": "Red:Jumppad_C",
+    "type": "Jumppad_C",
     "area": "DLC2_Complete",
     "lat": 8546.908203125,
     "lng": 17938.09765625,
@@ -9506,11 +9530,12 @@
       "y": 6087.466474533081,
       "z": 3121.879009395511
     },
-    "linetype": "jumppad_red"
+    "linetype": "jumppad_red",
+    "variant": "red"
   },
   {
     "name": "Jumppad4_2",
-    "type": "Red:Jumppad_C",
+    "type": "Jumppad_C",
     "area": "DLC2_Complete",
     "lat": -10834.64453125,
     "lng": 58047.2109375,
@@ -9520,11 +9545,12 @@
       "y": -8396.942240834236,
       "z": 4178.786001182602
     },
-    "linetype": "jumppad_red"
+    "linetype": "jumppad_red",
+    "variant": "red"
   },
   {
     "name": "Jumppad5_2",
-    "type": "Red:Jumppad_C",
+    "type": "Jumppad_C",
     "area": "DLC2_Complete",
     "lat": 6396.71826171875,
     "lng": 30354.216796875,
@@ -9534,7 +9560,8 @@
       "y": 6697.642567820847,
       "z": 3879.613840326224
     },
-    "linetype": "jumppad_red"
+    "linetype": "jumppad_red",
+    "variant": "red"
   },
   {
     "name": "Jumppad6_4",
@@ -9548,11 +9575,12 @@
       "y": -21278.50295674801,
       "z": 3955.866425557553
     },
-    "linetype": "jumppad_blue"
+    "linetype": "jumppad_blue",
+    "variant": "blue"
   },
   {
     "name": "Jumppad7",
-    "type": "Blue:Jumppad_C",
+    "type": "Jumppad_C",
     "area": "DLC2_Complete",
     "lat": -15603.8349609375,
     "lng": 55923.72265625,
@@ -9562,11 +9590,12 @@
       "y": -11328.57043504715,
       "z": 4059.383512495493
     },
-    "linetype": "jumppad_blue"
+    "linetype": "jumppad_blue",
+    "variant": "blue"
   },
   {
     "name": "Jumppad8",
-    "type": "Blue:Jumppad_C",
+    "type": "Jumppad_C",
     "area": "DLC2_Complete",
     "lat": -21646.8125,
     "lng": 50827.7734375,
@@ -9576,11 +9605,12 @@
       "y": -14722.990203857422,
       "z": 515.5642811279581
     },
-    "linetype": "jumppad_blue"
+    "linetype": "jumppad_blue",
+    "variant": "blue"
   },
   {
     "name": "Jumppad9",
-    "type": "Red:Jumppad_C",
+    "type": "Jumppad_C",
     "area": "DLC2_Complete",
     "lat": -14800.46875,
     "lng": 63497.81640625,
@@ -9590,11 +9620,12 @@
       "y": -15478.529125452042,
       "z": 1237.2883128268352
     },
-    "linetype": "jumppad_red"
+    "linetype": "jumppad_red",
+    "variant": "red"
   },
   {
     "name": "Jumppad_2",
-    "type": "Red:Jumppad_C",
+    "type": "Jumppad_C",
     "area": "DLC2_Complete",
     "lat": 2970.6826171875,
     "lng": 16209.8173828125,
@@ -9604,7 +9635,8 @@
       "y": 3162.3744308054447,
       "z": 3087.5984727153923
     },
-    "linetype": "jumppad_red"
+    "linetype": "jumppad_red",
+    "variant": "red"
   },
   {
     "name": "Jumppillow_2",
@@ -20685,7 +20717,7 @@
   },
   {
     "name": "Jumppad2_2",
-    "type": "Red:Jumppad_C",
+    "type": "Jumppad_C",
     "area": "DLC2_FinalBoss",
     "lat": -12697.01171875,
     "lng": -21377.443359375,
@@ -20695,7 +20727,8 @@
       "y": -18981.44090050459,
       "z": 6158.970264184437
     },
-    "linetype": "jumppad_red"
+    "linetype": "jumppad_red",
+    "variant": "red"
   },
   {
     "name": "BossPuzzleEnd1_KeyLockPlastic",
@@ -23747,7 +23780,7 @@
   },
   {
     "name": "Jumppad",
-    "type": "Blue:Jumppad_C",
+    "type": "Jumppad_C",
     "area": "DLC2_SecretLavaArea",
     "lat": 7389.45263671875,
     "lng": 1531.5936279296875,
@@ -23757,11 +23790,12 @@
       "y": 7076.49394261837,
       "z": 533.2360745754241
     },
-    "linetype": "jumppad_blue"
+    "linetype": "jumppad_blue",
+    "variant": "blue"
   },
   {
     "name": "Jumppad2_2",
-    "type": "Blue:Jumppad_C",
+    "type": "Jumppad_C",
     "area": "DLC2_SecretLavaArea",
     "lat": 1964.4383544921875,
     "lng": -15567.2978515625,
@@ -23771,7 +23805,8 @@
       "y": -789.3889227062464,
       "z": 3014.413952122942
     },
-    "linetype": "jumppad_blue"
+    "linetype": "jumppad_blue",
+    "variant": "blue"
   },
   {
     "name": "Lever17_2",
@@ -26639,7 +26674,7 @@
   },
   {
     "name": "Jumppad2_2",
-    "type": "Blue:Jumppad_C",
+    "type": "Jumppad_C",
     "area": "DLC2_PostRainbow",
     "lat": -44543.8828125,
     "lng": -46408.5859375,
@@ -26649,11 +26684,12 @@
       "y": -40573.52105388278,
       "z": 5108.342033183615
     },
-    "linetype": "jumppad_blue"
+    "linetype": "jumppad_blue",
+    "variant": "blue"
   },
   {
     "name": "Jumppad3_5",
-    "type": "Blue:Jumppad_C",
+    "type": "Jumppad_C",
     "area": "DLC2_PostRainbow",
     "lat": -42061.2734375,
     "lng": -51595.203125,
@@ -26663,11 +26699,12 @@
       "y": -42940.384558200836,
       "z": 5273.056977980615
     },
-    "linetype": "jumppad_blue"
+    "linetype": "jumppad_blue",
+    "variant": "blue"
   },
   {
     "name": "Jumppad_2",
-    "type": "Blue:Jumppad_C",
+    "type": "Jumppad_C",
     "area": "DLC2_PostRainbow",
     "lat": -38515.31640625,
     "lng": -47201.06640625,
@@ -26677,7 +26714,8 @@
       "y": -39061.84923744202,
       "z": 11348.466173575593
     },
-    "linetype": "jumppad_blue"
+    "linetype": "jumppad_blue",
+    "variant": "blue"
   },
   {
     "name": "Lever_2",

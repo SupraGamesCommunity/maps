@@ -462,7 +462,7 @@ exported_properties = [
     'target',                                       # where to draw line to for pipes and pads
     'targets',                                      # array of dictionaries 'type' and target position
                                                     # pipe, jumppad_red, jumppad_blue, trigger 
-    'image', 'yt_video', 'yt_end',                  # data pulled from matched legacy data
+    'image', 'yt_video', 'yt_start', 'yt_end',      # data pulled from matched legacy data
 ]
 
 # The purpose of this code is to walk through all the objects we've gathered and prepare them for
@@ -502,7 +502,7 @@ def cleanup_objects(game, classes_found, data_lookup, data):
             else:
                 if not o:
                     o = {}
-                    data_lookup['id'] = o
+                    data_lookup[id] = o
                     data.append(o)
                 for prop, value in jo.items():
                     if value == '!':
