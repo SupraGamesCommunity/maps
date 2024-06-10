@@ -2,77 +2,103 @@
   {
     "name": "Juicer2",
     "area": "Map",
-    "variant": "yellow"
+    "spawns": "BP_DoubleHealthLoot_C",
+    "variant": "red"
   },
   {
     "name": "Juicer3",
     "area": "Map",
-    "variant": "red"
+    "spawns": "_BuyHealth+10_C",
+    "variant": "green"
   },
   {
     "name": "Juicer_286",
     "area": "Map",
-    "variant": "green"
+    "spawns": "BP_A3_StrengthQuest_C",
+    "variant": "yellow"
   },
   {
     "name": "DeadHero2Austin",
     "area": "Map",
-    "variant": "spy-glasses"
+    "variant": "spy-glasses",
+    "yt_video": "FNZt6RPxqLo",
+    "yt_start": "460"
   },
   {
     "name": "DeadHero2Link",
     "area": "Map",
-    "variant": "adventure-kid"
-  },
+    "variant": "adventure-kid",
+    "yt_video": "FNZt6RPxqLo",
+    "yt_start": "256"  },
   {
     "name": "DeadHero3Heman",
     "area": "Map",
-    "variant": "him-guy"
+    "variant": "him-guy",
+    "yt_video": "FNZt6RPxqLo",
+    "yt_start": "5"
   },
   {
     "name": "DeadHero3Pokemon",
     "area": "Map",
-    "variant": "catch-hat"
+    "variant": "catch-hat",
+    "yt_video": "FNZt6RPxqLo",
+    "yt_start": "45"
   },
   {
     "name": "DeadHero4Picard",
     "area": "Map",
-    "variant": "commander"
+    "variant": "commander",
+    "yt_video": "FNZt6RPxqLo",
+    "yt_start": "552"
   },
   {
     "name": "DeadHero4Santa",
     "area": "Map",
-    "variant": "santa"
+    "variant": "santa",
+    "yt_video": "FNZt6RPxqLo",
+    "yt_start": "195"
   },
   {
     "name": "DeadHero4Santa2",
     "area": "Map",
-    "variant": "vault-toy"
+    "variant": "vault-toy",
+    "yt_video": "FNZt6RPxqLo",
+    "yt_start": "229"
   },
   {
     "name": "DeadHero4Santa3",
     "area": "Map",
-    "variant": "hans-yolo"
+    "variant": "hans-yolo",
+    "yt_video": "FNZt6RPxqLo",
+    "yt_start": "614"
   },
   {
     "name": "DeadHero_3",
     "area": "Map",
-    "variant": "magic-boy"
+    "variant": "magic-boy",
+    "yt_video": "FNZt6RPxqLo",
+    "yt_start": "335"
   },
   {
     "name": "DeadHeroGoku",
     "area": "Map",
-    "variant": "power-hair"
+    "variant": "power-hair",
+    "yt_video": "FNZt6RPxqLo",
+    "yt_start": "392"
   },
   {
     "name": "DeadHeroGuybrush",
     "area": "Map",
-    "variant": "murray"
+    "variant": "murray",
+    "yt_video": "FNZt6RPxqLo",
+    "yt_start": "102"
   },
   {
     "name": "DeadHeroIndy",
     "area": "Map",
-    "variant": "adventure-hat"
+    "variant": "adventure-hat",
+    "yt_video": "FNZt6RPxqLo",
+    "yt_start": "372"
   },
   {
     "name": "BuyDoubleJump_786",
@@ -84,24 +110,6 @@
     "area": "Map",
     "cost": 6,
     "price_type":7 
-  },
-  {
-    "name": "BuySwordDamage+11",
-    "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "198"
-  },
-  {
-    "name": "BuySpeedx2_206",
-    "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "197"
-},
-  {
-    "name": "BuySwordDamage+10_2",
-    "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "200"
   },
   {
     "name": "BuySpeedx15_2",
@@ -122,9 +130,21 @@
     "yt_start": "!"
   },
   {
-    "name": "BuyStats",
+    "name": "BuySwordDamage+11",
     "area": "Map",
-    "yt_video": "nWigHgcWFCE",
-    "yt_start": "371"
+    "yt_video": "ReN380PXV-A",
+    "yt_start": "198"
+  },
+  {
+    "name": "BuySpeedx2_206",
+    "area": "Map",
+    "yt_video": "ReN380PXV-A",
+    "yt_start": "197"
+  },
+  {
+    "name": "BuySwordDamage+10_2",
+    "area": "Map",
+    "yt_video": "ReN380PXV-A",
+    "yt_start": "200"
   }
 ] 

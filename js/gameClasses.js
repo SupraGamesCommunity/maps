@@ -90,6 +90,7 @@ const gameClasses = {
     'BuyGunSpeedx2_C'                         : new GameClass('Gun Speed x2',                     'gun_upgrade',              'upgrades', 'shop'),
     'BuyGunSplashDamage_C'                    : new GameClass('Gun Splash Damage',                'gun_upgrade',              'upgrades', 'shop'),
     'BuyHealth+15_C'                          : new GameClass('Health +15',                       'health',                   'upgrades', 'shop'),
+    '_BuyHealth+10_C'                         : new GameClass('Health +10',                       'health',                   'upgrades', 'shop'),
     'BuyHealth+2_C'                           : new GameClass('Health +2',                        'health',                   'upgrades', 'shop'),
     'BuyHealth+5_C'                           : new GameClass('Health +5',                        'health',                   'upgrades', 'shop'),
     'BuyHealthRegenMax+1_C'                   : new GameClass('Health Regen Max +1',              'health_regen_max',         'upgrades', 'shop'),

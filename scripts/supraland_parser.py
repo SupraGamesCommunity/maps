@@ -796,7 +796,8 @@ def combine_legacy(game, classes, data):
         {'file':'chests',      'types':['coin', 'powerup'],     'nospoiler':'closedChest', 'layer': '-'},
         {'file':'shops',       'types':['powerup'],             'nospoiler':'shop',        'layer': '-'},
         {'file':'collectables','types':['coin'],                'nospoiler':'-',           'layer': 'coin'},
-        {'file':'collectables','types':['collectable', 'grave'],'nospoiler':'collectable', 'layer': '-'},
+        {'file':'collectables','types':['collectable'],         'nospoiler':'collectable', 'layer': '-'},
+        {'file':'collectables','types':['grave'],               'nospoiler':'-',           'layer': 'graves'},
     ]
 
     print('Reading legacy files...');

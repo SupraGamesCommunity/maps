@@ -495,7 +495,7 @@ function loadMap(id) {
               
               if ((Math.sqrt(Math.pow(start[0] - endxy.y, 2) + Math.pow(start[1] - endxy.x, 2))) > dist) {  
                 // polylineDecorator doesn't support end arrow offset so we use start offset, reverse the line and reverse the arrow using headAngle
-                L.polylineDecorator(line,{patterns:[{offset:offset, repeat:0, symbol:
+                L.polylineDecorator(line,{patterns:[{offset:offset, repeat:200, symbol:
                   L.Symbol.arrowHead({pixelSize:radius*2, headAngle: -290, pathOptions:
                     {opacity: opacity, fillOpacity: opacity, weight: 0, color: color, interactive: false, title:' ', alt:alt}})}],})
                       .addTo(layers[c.lines]);  
