@@ -231,3 +231,5 @@ BP_TriggerVolume_C,trigger_volume,misc
 Lighttrigger_C,trigger_light,misc
 Lighttrigger2_C,trigger_light,misc
 BuyHeartLuck_C,health,upgrades
+UpgradeSwordDamageX2_716,sword_damage,upgrades
+UpgradeHappiness_C,happiness,upgrades

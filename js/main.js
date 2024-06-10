@@ -167,7 +167,7 @@ function loadMap(id) {
   map = new L.Map('map', {
     crs: crs,
     fadeAnimation: false,
-	minZoom: 1,
+  	minZoom: 1,
     maxZoom: 8,
     maxBounds: mapBoundsWithGap, // elastic-y bounds + elastic-x bounds
     zoomControl: false,
@@ -625,6 +625,12 @@ function loadMap(id) {
         [].forEach.call(divs, function(div) {
           div.addEventListener('click', function (e) { clickItem(e.target.innerText); e.preventDefault(); })
           div.addEventListener('dblclick', function (e) { clickItem(e.target.innerText, true); e.preventDefault(); })
+          // mark discovered items grey
+          if (loc = searchControl._getLocation(div.innerText)) {
+            if (settings.markedItems[loc.layer.options.alt]) {
+              div.style.color = '#bbb';
+            }
+          }
         })
       }, 1500)
     }
@@ -718,7 +724,7 @@ window.markItemFound = function (id, found=true, save=true) {
       div.classList.remove('found');
     }
   });
-
+  
   if (found) {
     settings.markedItems[id] = true;
   } else {
