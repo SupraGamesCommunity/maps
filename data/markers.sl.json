@@ -10748,7 +10748,9 @@
     "lat": -24418.181640625,
     "lng": -20585.35546875,
     "alt": -1591.1373291015625,
-    "variant": "spy-glasses"
+    "variant": "spy-glasses",
+    "yt_video": "FNZt6RPxqLo",
+    "yt_start": "460"
   },
   {
     "name": "DeadHero2Link",
@@ -10757,7 +10759,9 @@
     "lat": -23135.16015625,
     "lng": 4564.794921875,
     "alt": -2384.99853515625,
-    "variant": "adventure-kid"
+    "variant": "adventure-kid",
+    "yt_video": "FNZt6RPxqLo",
+    "yt_start": "256"
   },
   {
     "name": "DeadHero3Heman",
@@ -10766,7 +10770,9 @@
     "lat": -439.22943115234375,
     "lng": 15613.9072265625,
     "alt": 1111.8966064453125,
-    "variant": "him-guy"
+    "variant": "him-guy",
+    "yt_video": "FNZt6RPxqLo",
+    "yt_start": "5"
   },
   {
     "name": "DeadHero3Pokemon",
@@ -10775,7 +10781,9 @@
     "lat": -48328.56640625,
     "lng": -55477.125,
     "alt": -992.7392578125,
-    "variant": "catch-hat"
+    "variant": "catch-hat",
+    "yt_video": "FNZt6RPxqLo",
+    "yt_start": "45"
   },
   {
     "name": "DeadHero4Picard",
@@ -10784,7 +10792,9 @@
     "lat": -27029.568359375,
     "lng": -2318.379638671875,
     "alt": 4676.68994140625,
-    "variant": "commander"
+    "variant": "commander",
+    "yt_video": "FNZt6RPxqLo",
+    "yt_start": "552"
   },
   {
     "name": "DeadHero4Santa",
@@ -10793,7 +10803,9 @@
     "lat": 39865.1796875,
     "lng": -18197.59765625,
     "alt": 1653.1673583984375,
-    "variant": "santa"
+    "variant": "santa",
+    "yt_video": "FNZt6RPxqLo",
+    "yt_start": "195"
   },
   {
     "name": "DeadHero4Santa2",
@@ -10802,7 +10814,9 @@
     "lat": 46699.7578125,
     "lng": -12555.7216796875,
     "alt": -2097.4404296875,
-    "variant": "vault-toy"
+    "variant": "vault-toy",
+    "yt_video": "FNZt6RPxqLo",
+    "yt_start": "229"
   },
   {
     "name": "DeadHero4Santa3",
@@ -10811,7 +10825,9 @@
     "lat": 21242.36328125,
     "lng": 79090.609375,
     "alt": 3173.107421875,
-    "variant": "hans-yolo"
+    "variant": "hans-yolo",
+    "yt_video": "FNZt6RPxqLo",
+    "yt_start": "614"
   },
   {
     "name": "DeadHero_3",
@@ -10820,7 +10836,9 @@
     "lat": 19405.27734375,
     "lng": 19217.87890625,
     "alt": 1954.299560546875,
-    "variant": "magic-boy"
+    "variant": "magic-boy",
+    "yt_video": "FNZt6RPxqLo",
+    "yt_start": "335"
   },
   {
     "name": "DeadHeroGoku",
@@ -10829,7 +10847,9 @@
     "lat": -21799.44140625,
     "lng": 54035.484375,
     "alt": 3155.189697265625,
-    "variant": "power-hair"
+    "variant": "power-hair",
+    "yt_video": "FNZt6RPxqLo",
+    "yt_start": "392"
   },
   {
     "name": "DeadHeroGuybrush",
@@ -10838,7 +10858,9 @@
     "lat": -29871.169921875,
     "lng": -23258.443359375,
     "alt": -1600.89990234375,
-    "variant": "murray"
+    "variant": "murray",
+    "yt_video": "FNZt6RPxqLo",
+    "yt_start": "102"
   },
   {
     "name": "DeadHeroIndy",
@@ -10847,7 +10869,9 @@
     "lat": -27025.787109375,
     "lng": 21980.921875,
     "alt": 163.25143432617188,
-    "variant": "adventure-hat"
+    "variant": "adventure-hat",
+    "yt_video": "FNZt6RPxqLo",
+    "yt_start": "372"
   },
   {
     "name": "DestroyablePots2",
