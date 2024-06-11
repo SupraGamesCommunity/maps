@@ -384,7 +384,8 @@ function loadMap(id) {
     text += '<br><br><input type="checkbox" id="'+markerId+'" '+value+' onclick=window.markItemFound("'+markerId+'",this.checked)><label for="'+markerId+'">Found</label>';
 
     if(o.yt_video) {
-      let ytSrc = 'https://www.youtube.com/embed/' + o.yt_video + '?controls=0';
+      //let ytSrc = 'https://www.youtube.com/embed/' + o.yt_video + '?controls=0';
+      let ytSrc = 'https://www.youtube-nocookie.com/embed/' + o.yt_video + '?controls=0';
       if (o.yt_start) ytSrc += '&start=' + o.yt_start;
       if (o.yt_end) ytSrc += '&end=' + o.yt_end;
 
