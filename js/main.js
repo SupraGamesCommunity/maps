@@ -232,7 +232,7 @@ function loadMap(id) {
     resizeIcons(true);
 
     // let's maybe clear search on layer change just to avoid confusion
-    clearFilter();
+    // clearFilter(); // can't really do that, search also opens layers
   });
 
   map.on('overlayremove', function(e) {
@@ -602,6 +602,7 @@ function loadMap(id) {
       saveSettings();
       markItems();
       this._input.select();
+      clickItem(this._input.value, false);
     }
 
     document.querySelector('.search-cancel').addEventListener('click', clearFilter);
@@ -824,8 +825,31 @@ window.loadSaveFile = function () {
           let name = x.split(".").pop();
           let area = x.split("/").pop().split('.')[0];
           if (name != "None") {
+
+            // ok this is weird but looks like Shell2_1957 appears as shell2_1957 in the save file
+            // so we better capitalize class names here
+            name = name.charAt(0).toUpperCase() + name.slice(1);
+
             let id = area + ':' + name;
-            settings.markedItems[id] = true;
+            found = true;
+
+            // a little hack here about volcano spawners (EnemySpawn3_C, graves layer)
+            // they are activated in ThingsToActivate but destroyed only in ThingsToOpenForever
+            if (o = objects[id]) {
+              if (o.type=='EnemySpawn3_C') {
+                found = section=='ThingsToOpenForever';
+              }
+              // another hack, DeadHeroIndy opens at ThingsToOpenForever
+              // but doesn't count as 100% until it arrives at ThingsToActivate
+              // it's barely visible (red on red) but the found flag gives it up
+              if (name == 'DeadHeroIndy') {
+                found = section=='ThingsToActivate';
+              }
+            }
+
+            if (found) {
+              settings.markedItems[id] = true;
+            }
           }
         }
       }
