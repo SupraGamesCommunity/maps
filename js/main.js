@@ -453,7 +453,7 @@ function loadMap(id) {
           {
             const layer = c.nospoiler
             const layerConfig = layerConfigs.get(layer);
-            const [icon, size] = decodeIconName(layerConfig.defaultIcon || defaultIcon);
+            const [icon, size] = decodeIconName(layerConfig.defaultIcon || defaultIcon, mapId, o.variant);
             const zIndexOffset = 10 * layerConfig.index;
 
             L.marker([o.lat, o.lng], {icon: getIcon(icon, size), title: title, zIndexOffset: zIndexOffset, alt: alt, o:o, layerId:layer })
@@ -467,7 +467,7 @@ function loadMap(id) {
           {
             const layer = sc.layer
             const layerConfig = layerConfigs.get(layer);
-            const [icon, size] = decodeIconName((o.icon || sc.icon || layerConfig.defaultIcon || defaultIcon), o.variant);
+            const [icon, size] = decodeIconName((o.icon || sc.icon || layerConfig.defaultIcon || defaultIcon), mapId, o.variant);
             const zIndexOffset = 10 * layerConfig.index;
 
             L.marker([o.lat, o.lng], {icon: getIcon(icon, size), title: title, zIndexOffset: zIndexOffset, alt: alt, o:o, layerId:layer })
@@ -506,7 +506,7 @@ function loadMap(id) {
           // add dynamic player marker on top of PlayerStart icon (moves with load save game) 
           if (o.type == 'PlayerStart' && !playerMarker) {
             const pc = gameClasses['_PlayerPosition'];
-            const [icon, size] = getClassIcon(pc, o['variant']);
+            const [icon, size] = getClassIcon(pc, mapId, o['variant']);
             const addto = pc.layer ? layers[pc.layer] : map
             playerStart = [o.lat, o.lng, o.alt];
             let title = 'PlayerPosition';

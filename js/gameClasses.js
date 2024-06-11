@@ -275,7 +275,7 @@ function decodeIconName(icon, game, variant = null) {
         let flags = icon.substring(ci+1);
         icon = icon.substring(0, ci);
 
-        if(game && flags.indexof('g') >= 0)
+        if(game && flags.indexOf('g') >= 0)
             icon += '_'+game;
         if(variant && flags.indexOf('v') >= 0)
             icon += '_'+variant;
@@ -289,20 +289,20 @@ function decodeIconName(icon, game, variant = null) {
 // Returns the [icon, size] for the given class. If variant is not supplied it
 // is treated as null.
 /* exported getClassIcon */
-function getClassIcon(cls, variant = null)
+function getClassIcon(cls, game, variant = null)
 {
-    return decodeIconName(cls.icon ? cls.icon : 'question_mark', variant)
+    return decodeIconName(cls.icon ? cls.icon : 'question_mark', game, variant)
 }
 
 // Returns [icon, size] for the given object. If variant not supplied its taken
 // from the object.
 /* exported getObjectIcon */
-function getObjectIcon(object, variant = null)
+function getObjectIcon(object, game, variant = null)
 {
     variant = variant ? variant : object.variant;
     if(object.icon)
         return decodeIconName(object.icon, variant);
     else
-        return getClassIcon(object.type, variant)    
+        return getClassIcon(object.type, game, variant)    
 }
 
