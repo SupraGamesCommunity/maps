@@ -76,6 +76,8 @@ marker_types = {
   # siu
   'HealingStation_C','BP_EngagementCup_Base_C','SlumBurningQuest_C','Trash_C',
   'SecretFound_C',
+  'BP_Area2_Uncloged_Quest_C', 'BathGuyVolume_C', 'BP_A3_RobBoss_C', 'BP_Area2_FatGuyQuest_C',
+  'BP_ParanoidQuest_C', 'BP_A3_BBQ_C', 'Purchase_SlumHouse1_C', 'BP_RebuildSlum_C'         
 }
 
 starts_with = {

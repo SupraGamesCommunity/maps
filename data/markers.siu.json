@@ -80,6 +80,17 @@
     "alt": 1246.7735595703125
   },
   {
+    "name": "BathGuyVolume_2",
+    "type": "BathGuyVolume_C",
+    "area": "DLC2_Complete",
+    "lat": 2163.7373046875,
+    "lng": 10409.3681640625,
+    "alt": 2817.6240234375,
+    "spawns": "BP_PurchaseHealth+1_C",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "5819"
+  },
+  {
     "name": "BatteryExplosionDetector_2",
     "type": "BatteryExplosionDetector_C",
     "area": "DLC2_Complete",
@@ -138,6 +149,26 @@
     "yt_start": "5851"
   },
   {
+    "name": "BP_A3_BBQ2",
+    "type": "Coin:BP_A3_BBQ_C",
+    "area": "DLC2_Complete",
+    "lat": -46420.46484375,
+    "lng": 6186.591796875,
+    "alt": 3302.95703125,
+    "coins": 3
+  },
+  {
+    "name": "BP_A3_RobBoss_2",
+    "type": "BP_A3_RobBoss_C",
+    "area": "DLC2_Complete",
+    "lat": -43828.8515625,
+    "lng": 7263.4423828125,
+    "alt": 1807.8572998046875,
+    "spawns": "BP_PurchaseHealth+1_C",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "8096"
+  },
+  {
     "name": "BP_A3_StrengthQuest_2",
     "type": "BP_A3_StrengthQuest_C",
     "area": "DLC2_Complete",
@@ -146,6 +177,28 @@
     "alt": 2595.6064453125,
     "yt_video": "5KkEVBgFW3U",
     "yt_start": "2341"
+  },
+  {
+    "name": "BP_Area2_FatGuyQuest_2",
+    "type": "Coin:BP_Area2_FatGuyQuest_C",
+    "area": "DLC2_Complete",
+    "lat": -11983.7578125,
+    "lng": 64093.80859375,
+    "alt": 4094.28271484375,
+    "coins": 30,
+    "image": "5KkEVBgFW3U",
+    "yt_video": "7529"
+  },
+  {
+    "name": "BP_Area2_Uncloged_Quest_10",
+    "type": "Coin:BP_Area2_Uncloged_Quest_C",
+    "area": "DLC2_Complete",
+    "lat": -6840,
+    "lng": 60404,
+    "alt": 4265.0,
+    "coins": 30,
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "7311"
   },
   {
     "name": "BP_BoneDetector_2",
@@ -295,6 +348,17 @@
     "yt_start": "8450"
   },
   {
+    "name": "BP_ParanoidQuest_2",
+    "type": "BP_ParanoidQuest_C",
+    "area": "DLC2_Complete",
+    "lat": -28347.85546875,
+    "lng": 14974.4609375,
+    "alt": -152.20645141601562,
+    "spawns": "BP_PurchaseHealth+1_C",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "6393"
+  },
+  {
     "name": "BP_Purchase_Crouch_2",
     "type": "BP_Purchase_Crouch_C",
     "area": "DLC2_Complete",
@@ -363,7 +427,15 @@
     "alt": 3200.79296875,
     "cost": 10,
     "yt_video": "5KkEVBgFW3U",
-    "yt_start": "5819"
+    "yt_start": "359"
+  },
+  {
+    "name": "BP_RebuildSlum_2",
+    "type": "BP_RebuildSlum_C",
+    "area": "DLC2_Complete",
+    "lat": -28511.005859375,
+    "lng": 11402.515625,
+    "alt": -70.26774597167969
   },
   {
     "name": "A2_YellowBldgExitTrigger",
@@ -1813,7 +1885,7 @@
       }
     ],
     "yt_video": "5KkEVBgFW3U",
-    "yt_start": "6393"
+    "yt_start": "2552"
   },
   {
     "name": "ButtonFloor-FatNPC2",
@@ -2502,7 +2574,7 @@
     "alt": 1815.2095947265625,
     "spawns": "BuyElectricGun_C",
     "yt_video": "5KkEVBgFW3U",
-    "yt_start": "8096"
+    "yt_start": "2064"
   },
   {
     "name": "Chest17",
@@ -3079,7 +3151,7 @@
     "alt": 2963.65966796875,
     "spawns": "BP_PurchaseHealth+1_C",
     "yt_video": "5KkEVBgFW3U",
-    "yt_start": "7311"
+    "yt_start": "7734"
   },
   {
     "name": "ChestArea2_67",
@@ -6543,9 +6615,7 @@
     "lat": -11802.7734375,
     "lng": 64118.96484375,
     "alt": 2125.69921875,
-    "coins": 1,
-    "image": "5KkEVBgFW3U",
-    "yt_video": "7529"
+    "coins": 1
   },
   {
     "name": "Coin453",
@@ -9541,9 +9611,9 @@
     "lng": 58047.2109375,
     "alt": 510.0,
     "target": {
-      "x": 60484.95093977451,
-      "y": -8396.942240834236,
-      "z": 4178.786001182602
+      "x": 60446.518101900816,
+      "y": -8435.374484151602,
+      "z": 4263.341230443238
     },
     "linetype": "jumppad_red",
     "variant": "red"
@@ -16559,6 +16629,8 @@
     "lat": -28398.265625,
     "lng": 11155.4501953125,
     "alt": -148.50311279296875,
+    "spawns": "BP_Purchase_FasterPickaxe_C",
+    "cost": 50,
     "yt_video": "5KkEVBgFW3U",
     "yt_start": "8944"
   },

@@ -191,9 +191,9 @@ function readSavFile(file) {
         'SwordCriticalDamageChance',
         'SwordDamage',
         'SwordRefireRate',
-        //'ThingsToActivate',
-        //'ThingsToOpenForever',
-        //'ThingsToRemove',
+        'ThingsToActivate',
+        'ThingsToOpenForever',
+        'ThingsToRemove',
         'bShowMenuEngagementCups',
         'playerBodyType',
     ];
@@ -258,10 +258,10 @@ if(args.values.compare)
     const incomp = setDifference(compare_markers, base_markers);
     console.log(`Base not Comp ${inbase.size}`);
     console.log(`Comp not Base ${incomp.size}`);
-    let dump_markers = new Set([...inbase, ...incomp]);
+    dump_markers = new Set([...inbase, ...incomp]);
 }
 
-const outputFileName = `$saveextract.{game}.txt`
+const outputFileName = `saveextract.${game}.txt`
 let count = dump_markers.size;
 fs.writeFileSync(outputFileName, Array.from(dump_markers).join('\r\n') + '\r\n')
 

@@ -40,5 +40,46 @@
     "name": "Coin328",
     "area": "DLC2_Complete",
     "icon": "coin:48"
+  },
+  {
+    "name": "BP_Area2_Uncloged_Quest_10",
+    "area": "DLC2_Complete",
+    "lat": -6840,
+    "lng": 60404,
+    "spawns": "Coin:Chest_C",
+    "coins": 30
+  },
+  {
+    "name": "BathGuyVolume_2",
+    "area": "DLC2_Complete",
+    "spawns": "BP_PurchaseHealth+1_C"
+  },
+  {
+    "name": "BP_A3_RobBoss_2",
+    "area": "DLC2_Complete",
+    "spawns": "BP_PurchaseHealth+1_C"
+  },
+  {
+    "name": "Purchase_SlumHouse1_2",
+    "area": "DLC2_Complete",
+    "lat": -28398.265625,
+    "lng": 11155.4501953125,
+    "spawns": "BP_Purchase_FasterPickaxe_C",
+    "cost": 50
+  },
+  {
+    "name": "BP_Area2_FatGuyQuest_2",
+    "area": "DLC2_Complete",
+    "coins": 30
+  },
+  {
+    "name": "BP_ParanoidQuest_2",
+    "area": "DLC2_Complete",
+    "spawns": "BP_PurchaseHealth+1_C"
+  },
+  {
+    "name": "BP_A3_BBQ2",
+    "area": "DLC2_Complete",
+    "coins": 3
   }
 ]

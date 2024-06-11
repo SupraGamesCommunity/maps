@@ -172,9 +172,7 @@ const gameClasses = {
     'Purchase_IronPickaxe_C'                  : new GameClass('Iron Pickaxe',                     'pickaxe_metal',            'upgrades', 'shop'),
     'Purchase_StonePickaxe_C'                 : new GameClass('Stone Pickaxe',                    'pickaxe_stone',            'upgrades', 'shop'),
     'Purchase_WoodPickaxe_C'                  : new GameClass('Wood Pickaxe',                     'pickaxe_wood',             'upgrades', 'shop'),
-    'Purchase_SlumHouse1_C'                   : new GameClass('Slum House 1',                     'awesome',                  'upgrades', 'shop'),
     'Scrap_C'                                 : new GameClass('Scrap',                            'scrap',                    'misc',     'collectable'),
-    'SlumBurningQuest_C'                      : new GameClass('Slum Burning Quest',               'shop',                     'upgrades', 'shop'),
     'SpawnEnemy3_C'                           : new GameClass('Spawn Enemy 3',                    null,                       'extra'),
     'Stone_C'                                 : new GameClass('Stone',                            null,                       'extra'),
     'UpgradeHappiness_C'                      : new GameClass('Happiness',                        'happiness',                'upgrades', 'shop'),
@@ -258,6 +256,14 @@ const gameClasses = {
     'BP_TriggerVolume_C'                      : new GameClass('Trigger Volume',                   'trigger_volume',           'extra'),
     'Lighttrigger_C'                          : new GameClass('Lighttrigger',                     'trigger_light',            'extra'),
     'Lighttrigger2_C'                         : new GameClass('Lighttrigger 2',                   'trigger_light',            'extra'),
+    'Coin:BP_Area2_Uncloged_Quest_C'          : new GameClass('Valve Quest (10)',                 'chest_coin',               'coin',     'closedChest'),
+    'BathGuyVolume_C'                         : new GameClass('Too Hot Quest (H+1)',              'health',                   'upgrades', 'shop'),
+    'BP_A3_RobBoss_C'                         : new GameClass('Rob Quest (H+1)',                  'chest',                    null,       'closedChest'),
+    'Coin:BP_Area2_FatGuyQuest_C'             : new GameClass('BBQ Quest (30)',                   'meat',                     'coin'),
+    'BP_ParanoidQuest_C'                      : new GameClass('Candle Quest',                     'health',                   'upgrades', 'shop'),
+    'BP_A3_BBQ_C'                             : new GameClass('BBQ Quest (3)',                    'meat',                     'coin'),
+    'Purchase_SlumHouse1_C'                   : new GameClass('Purchase Slum',                    'pickaxe_cooldown',         'upgrades', 'shop'),
+    'BP_RebuildSlum_C'                        : new GameClass('Rebuild Slum',                     'pickaxe_cooldown',         'upgrades', 'shop'),
 }
 
 // Returns the [icon, size] based on the decorated icon name plus a variant if supplied
