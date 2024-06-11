@@ -449,6 +449,8 @@ function loadMap(id) {
 
           const defaultIcon = 'question_mark';
 
+          let start = 'startpos' in o ? [o.startpos.y, o.startpos.x] : [o.lat, o.lng];
+
           if(c.nospoiler && enabledLayers[c.nospoiler])
           {
             const layer = c.nospoiler
@@ -456,27 +458,37 @@ function loadMap(id) {
             const [icon, size] = decodeIconName(layerConfig.defaultIcon || defaultIcon, mapId, o.variant);
             const zIndexOffset = 10 * layerConfig.index;
 
-            L.marker([o.lat, o.lng], {icon: getIcon(icon, size), title: title, zIndexOffset: zIndexOffset, alt: alt, o:o, layerId:layer })
+            L.marker(start, {icon: getIcon(icon, size), title: title, zIndexOffset: zIndexOffset, alt: alt, o:o, layerId:layer })
+              .addTo(layers[layer]).bindPopup(text).on('popupopen', onPopupOpen).on('contextmenu', onContextMenu);
+          }
+  
+          // If there is a normal layer specified then add it to that
+          if(c.layer && enabledLayers[c.layer])
+          {
+            const layer = c.layer
+            const layerConfig = layerConfigs.get(layer);
+            const [icon, size] = decodeIconName((o.icon || c.icon || layerConfig.defaultIcon || defaultIcon), mapId, o.variant);
+            const zIndexOffset = 10 * layerConfig.index;
+
+            L.marker(start, {icon: getIcon(icon, size), title: title, zIndexOffset: zIndexOffset, alt: alt, o:o, layerId:layer })
               .addTo(layers[layer]).bindPopup(text).on('popupopen', onPopupOpen).on('contextmenu', onContextMenu);
           }
 
-          // For the spoiler version the marker config is based on the spawned data if it spawns and otherwise normal
-          // Thus coinchest goes on coinchest config, but chest containing upgrade goes on upgrade layer
-          let sc = o.spawns ? (gameClasses[o.spawns] || defaultGameClass) : c
-          if(sc.layer && enabledLayers[sc.layer])
+          // Deal with layer for whatever it spawns. Normally things that spawn something don't have a spoiler layer
+          let sc = o.spawns ? (gameClasses[o.spawns] || defaultGameClass) : null;
+          if(sc && sc.layer && enabledLayers[sc.layer])
           {
             const layer = sc.layer
             const layerConfig = layerConfigs.get(layer);
             const [icon, size] = decodeIconName((o.icon || sc.icon || layerConfig.defaultIcon || defaultIcon), mapId, o.variant);
             const zIndexOffset = 10 * layerConfig.index;
 
-            L.marker([o.lat, o.lng], {icon: getIcon(icon, size), title: title, zIndexOffset: zIndexOffset, alt: alt, o:o, layerId:layer })
+            L.marker(start, {icon: getIcon(icon, size), title: title, zIndexOffset: zIndexOffset, alt: alt, o:o, layerId:layer })
               .addTo(layers[layer]).bindPopup(text).on('popupopen', onPopupOpen).on('contextmenu', onContextMenu);
           }
 
           // Add a polyline to the appropriate layer
           if(c.lines && enabledLayers[c.lines] && o.linetype) {
-            let start = 'startpos' in o ? [o.startpos.y, o.startpos.x] : [o.lat, o.lng]; 
             let endxys = o.linetype != 'trigger' ? [o.target] : o.targets;
 
             let [addMarker, color, opacity, weight, offset, dist] = {
