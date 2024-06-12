@@ -100,7 +100,7 @@ properties = [
     'RelativeVelocity', 'AllowStomp', 'DisableMovementInAir', 'RelativeVelocity?', 'CenterActor', # jumpppad_c
     'Achievement?','Achievement Name', # trigger volumes
     'Contains Coin', # DestroyablePots_C
-    'bDoesntRotate', # Coin_C, BigCoin_C
+    'bDoesntRotate', # Coin_C, CoinBig_C
 ]
 
 actions = {

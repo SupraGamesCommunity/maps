@@ -28,6 +28,7 @@ let settings;           // Reference to localData[mapId]
 let mapCenter;
 let mapParam = {};      // Parameters extracted from map URL
 let objects = {};
+let coin2stack = {};    // Map from coin name to coin stack
 let searchControl = {}; // Leaflet control for searching
 
 let currentMarkerReference;             // Current marker we're editing in Build Mode
@@ -129,8 +130,8 @@ function commitCurrentBuildModeChanges() {
 }
 
 function exportBuildChanges() {
+  // It might be worth accummulating the changes in this structure as we make them, but this works
   let jsonobj = {}
-
   Object.getOwnPropertyNames(buildModeChangeList).filter(function(e) { return e !== 'length' }).forEach(
     function(k){
       let alt, prop, area, name;
@@ -145,11 +146,6 @@ function exportBuildChanges() {
   });
   jsonobj = Object.values(jsonobj);
 
-//  Object.getOwnPropertyNames(buildModeChangeList).filter(function(e) { return e !== 'length' }).forEach(
-//    function (i) {
-//      t += i.replaceAll('|','\t') + '\t' + buildModeChangeList[i] + '\r\n';
-//    }
-//  );
   console.log(buildModeChangeList);
   let t = JSON.stringify(jsonobj, null, 2)
   copyToClipboard(t);
@@ -533,6 +529,7 @@ function loadMap(id) {
       .then((j) => {
         let titles = {};
         objects = {};
+        coin2stack = {};
 
         let enabledLayers = layerConfigs.getEnabledLayers(mapId) 
         for(let o of j) {
@@ -567,6 +564,13 @@ function loadMap(id) {
             //title += ` (${o.spawns.slice(o.spawns.startsWith("_") ? 1 : 0)})`;    // Remove leading _
             //title += ` (${o.spawns.split(':').reverse()[0]})`;                    // Remove subclass
             title += ` (${o.spawns})`
+          }
+
+          // For coin stacks we add each old_coin to a look up table
+          if(o.old_coins){
+            for(let c of Object.keys(o.old_coins)){
+              coin2stack[o.area+':'+c] = o;
+            }
           }
 
           // add class name to title
@@ -910,6 +914,11 @@ function unmarkItems() {
     [].forEach.call(divs, function(div) {
       div.classList.remove('found');
     });
+  
+    // If it's a coin stack remove the list of found coins
+    if(objects[id].coins_found) {
+      delete object[id].coins_found;
+    } 
   }
   settings.markedItems={};
   settings.playerPosition = playerStart;
@@ -978,8 +987,20 @@ window.loadSaveFile = function () {
             name = name.charAt(0).toUpperCase() + name.slice(1);
 
             let id = area + ':' + name;
-            found = true;
+ 
+            let cs;
+            if(name.startsWith('Coin') && (cs = coin2stack[id])){
+              if(!cs.coins_found)
+                cs.coins_found = new Set();
+              cs.coins_found.add(name);
+              if(cs.coins_found.size == Object.keys(cs.old_coins).length) {
+                settings.markedItems[cs.area+':'+cs.name] = true;
+              }
+              continue;
+            }
 
+            let found = true;
+ 
             // a little hack here about volcano spawners (EnemySpawn3_C, graves layer)
             // they are activated in ThingsToActivate but destroyed only in ThingsToOpenForever
             if (o = objects[id]) {
