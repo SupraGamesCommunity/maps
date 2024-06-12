@@ -54,215 +54,157 @@ for(const o of jsonData) {
     jsonMap[alt] = o;
 }
 
+function fileBaseName(f){
+    return f.replace(/^.*[\\/]/, '').replace(/\..*$/, '')
+}
+
 function readSavFile(file) {
-    let baseName = file.replace(/^.*[\\/]/, '').replace(/\..*$/, '')
+    let baseName = fileBaseName(file);
     let data = fs.readFileSync(file);
     let buffer = data.buffer.slice(data.byteOffset, data.byteOffset + data.byteLength);
     let loadedSave = new UESaveObject(buffer);
-    let markers = new Set();
+    let markers = {};
+
+    console.log(`Reading ${baseName}`);
+
     let dupCount = 0;
-    let sections = [
-        //'ActorSaveData',
-        //'ActorSaveDataStructs',
-        //'AllNPCSettings',
-        //'BackupSlots',
-        'BodyType',
-        'BoomeraxeStats',
-        'EDLC2Area',
-        'EOF',
-        'ElectricityGunStats',
-        'FireGunStats',
-        'GunCriticalDamageChance',
-        'HasBrokenPipeDetector',
-        'Loop',
-        //'None',
-        'Percent',
-        'Pickaxe',
-        'Player Position',
-        'PlayerAmmoRegenSpeed',
-        'PlayerArea',
-        'PlayerArmor',
-        'PlayerBeamElastic',
-        'PlayerBones',
-        'PlayerCoinMagnet',
-        'PlayerCoins',
-        'PlayerComboDamage',
-        'PlayerCrashLoop',
-        'PlayerCritChance',
-        'PlayerCrouchCount',
-        'PlayerCubesSpawned',
-        'PlayerCurrentMusic',
-        'PlayerCurrentMusicVolumeV2',
-        'PlayerDeathCount',
-        'PlayerDoubleHealth',
-        'PlayerDoubleLoot',
-        'PlayerDrankHealthPlusJuice',
-        'PlayerEndgame',
-        'PlayerEnemiesLoot',
-        'PlayerForceCubeStomp',
-        'PlayerForceCubeStompJump',
-        'PlayerGameTime',
-        'PlayerGametime',
-        'PlayerGrappleForceCube',
-        'PlayerGrappleGold',
-        'PlayerGunAltDamage',
-        'PlayerGunKillGrave1',
-        'PlayerGunKillGrave2',
-        'PlayerGunPicksUpCoins',
-        'PlayerGunRefireRate',
-        'PlayerHappy',
-        'PlayerHasBelt',
-        'PlayerHasBoneDetector',
-        'PlayerHasChestDetector',
-        'PlayerHasCrouch',
-        'PlayerHasDamageNumberRising',
-        'PlayerHasElectricGun',
-        'PlayerHasFireGun',
-        'PlayerHasForceCube',
-        'PlayerHasForceCubeTelefrag',
-        'PlayerHasGrapple',
-        'PlayerHasGraveDetector',
-        'PlayerHasGun',
-        'PlayerHasGunAlt',
-        'PlayerHasGunCriticalDamage',
-        'PlayerHasMultijump1',
-        'PlayerHasMultijump2',
-        'PlayerHasPickaxe',
-        'PlayerHasSeeChestNum',
-        'PlayerHasSeeGraveNum',
-        'PlayerHasSmashDown',
-        'PlayerHasSpeedx15',
-        'PlayerHasSpeedx2',
-        'PlayerHasSword',
-        'PlayerHasSword2',
-        'PlayerHasSwordCriticalDamage',
-        'PlayerHasSwordKillGrave1',
-        'PlayerHasSwordKillGrave2',
-        'PlayerHasTranslocator',
-        'PlayerHasTrophyDetector',
-        'PlayerHealth',
-        'PlayerHealthRegen',
-        'PlayerHealthRegenSpeed',
-        'PlayerHealthRegenToX',
-        'PlayerJumpCount',
-        'PlayerJumpHeightPlus',
-        'PlayerKillCount',
-        'PlayerKilledArchers',
-        'PlayerKilledDemonBomb',
-        'PlayerKilledDemonGrunts',
-        'PlayerKilledFatty',
-        'PlayerKilledGrunts',
-        'PlayerKilledKings',
-        'PlayerKilledMage',
-        'PlayerKilledWarrior',
-        'PlayerLootHealthLuck',
-        'PlayerMagnetRepel',
-        'PlayerMapUnlocks',
-        'PlayerMaxChestRadius',
-        'PlayerMaxCoins',
-        'PlayerMaxHealth',
-        'PlayerMaxJumps',
-        'PlayerProgressPoints',
-        'PlayerProjectile1Damage',
-        'PlayerProjectile1Radius',
-        'PlayerProjectile1Speed',
-        'PlayerRedCoins',
-        'PlayerScrap',
-        'PlayerShieldBreaker',
-        'PlayerShowHealthBar',
-        'PlayerShowProgressPoints',
-        'PlayerSilentFeet',
-        'PlayerSkillKillGrave3',
-        'PlayerSmashDownDamage',
-        'PlayerSmashDownRadius',
-        'PlayerStats',
-        'PlayerStrong',
-        'PlayerSwingCount',
-        'PlayerSwordRange',
-        'PlayerTranslocatorCooldown',
-        'PlayerTranslocatorDamage',
-        'PlayerTranslocatorMassFactor',
-        'PlayerTranslocatorModule',
-        'PlayerTranslocatorThrowForce',
-        'PlayerTutorialDone',
-        'PlayerTwistOver',
-        'Quest',
-        //'SavedVersions',
-        'SwordCriticalDamageChance',
-        'SwordDamage',
-        'SwordRefireRate',
-        'ThingsToActivate',
-        'ThingsToOpenForever',
-        'ThingsToRemove',
-        'bShowMenuEngagementCups',
-        'playerBodyType',
-    ];
-    let newSections = new Set();
+    let inCount = 0;
+    let outCount = 0;
 
-    for (const section of sections) {
-        let inCount = 0;
-        let outCount = 0;
-        for (let o of loadedSave.Properties) {
-            if (o.name != section) {
-                if(!sections.includes(o.name))
-                    newSections.add(o.name);
-                continue;
-            }
-            if(!o.value) {
-                continue;
-            }
-            if(!o.value.value || o.name == 'Quest' || o.value.innerType && o.value.innerType == 'StructProperty') {
-                markers.add(section+':'+JSON.stringify(o.value));
-                continue;
-            }
-            for(let x of o.value.value) {
-                if(x == 'None')
-                    continue;
-                // map '/Game/FirstPersonBP/Maps/DLC2_Complete.DLC2_Complete:PersistentLevel.Coin442_41' to 'DLC2_Complete:Coin442_41'
-                let name = x.split(".").pop();
-                let area = x.split("/").pop().split('.')[0];
-                let alt = `${area}:${name}`;
+    for (let o of loadedSave.Properties) {
+        // Skip things we don't understand
+        if(!o.type || !o.name || o.name == 'None' || o.name == 'EOF')
+        {
+            console.log(`Skipping: No name or type: ${Object.entries(o)}`)
+            continue;
+        }
+        if(o.type == 'MapProperty') {
+            console.log(`Skipping: ${o.name}: MapProperty: entries: ${o.length} `)
+            continue;
+        }
+        if(o.type == 'ArrayProperty' && o.value.innerType && o.value.innerType == 'StructProperty') {
+            console.log(`Skipping: ${o.name}: Array of StructProperty: Entries: ${o.length} `)
+            continue;
+        }
+        o.name.replace(' ', '_');
 
-                if(markers.has(section+':'+alt))
-                    dupCount += 1;
-                markers.add(section+':'+alt);
-                if(alt in jsonMap){
-                    inCount += 1;
-                }
-                else {
-                    outCount += 1;
-                }
+        // No value it's type is it's value - likely enumeration
+        if(!o.value) {
+            if(markers[o.name]) {
+                dupCount += 1;
+            }
+            markers[o.name] = o.type;
+            continue;
+        }       
+
+        // Value is just the area/object name
+        if(o.type == 'ObjectProperty') {
+            let name = o.value.split(".").pop();
+            let area = o.value.split("/").pop().split('.')[0];
+            let alt = `${area}:${name}`;
+
+            if(markers[o.name]) {
+                dupCount += 1;
+            }
+
+            markers[o.name] = alt;
+            if(alt in jsonMap){
+                inCount += 1;
+            }
+            else {
+                outCount += 1;
+            }
+            continue;
+        }
+
+        // Any type but array it's an int or bool or similar
+        // Note: PlayerArea is a ByteProperty and comes out blank
+        if(o.type != 'ArrayProperty')
+        {
+            if(markers[o.name]) {
+                dupCount += 1;
+            }
+            markers[o.name] = o.value;
+            continue;
+        }
+
+        for(let x of o.value.value) {
+            if(x == 'None')
+                continue;
+            if(!markers[o.name])
+                markers[o.name] = [];
+
+            // map '/Game/FirstPersonBP/Maps/DLC2_Complete.DLC2_Complete:PersistentLevel.Coin442_41' to 'DLC2_Complete:Coin442_41'
+            let name = x.split(".").pop();
+            let area = x.split("/").pop().split('.')[0];
+
+            // For some reason capitalisation is inconsistent for Shell2_1957
+            name = name.charAt(0).toUpperCase() + name.slice(1)
+            let alt = `${area}:${name}`;
+
+            if(markers[o.name].includes(alt)) {
+                dupCount += 1;
+                continue;
+            }
+            markers[o.name].push(alt);
+
+            if(alt in jsonMap){
+                inCount += 1;
+            }
+            else {
+                outCount += 1;
             }
         }
-        if(inCount > 0 || outCount > 0)
-            console.log(`${baseName}:${section} in: ${inCount} out: ${outCount}`)
     }
-    console.log(`Skipped Sections: ${Array.from(newSections)}`);
     console.log(`Duplicates count: ${dupCount}`);
+    console.log(`Entries found in JSON extract: ${inCount} not found: ${outCount}`)
     return markers;
 }
 
-function setDifference(a, b)
+function compareMarkers(a, b)
 {
-    return new Set([...a].filter(x => !b.has(x)));
+    let c = {}
+    for(const [k,v] of Object.entries(a)) {
+        if(!Array.isArray(v)) {
+            if(b[k] && JSON.stringify(b[k]) != JSON.stringify(v)) {
+                c[k] = v;
+            }
+        }
+        else {
+            if(!Array.isArray(b[k])){
+                c[k] = v;
+            }
+            else {
+                c[k] = [];
+                for(const e of v){
+                    if(!b[k].includes(e)){
+                        c[k].push(e);
+                    }
+                }
+                if(c[k].length == 0)
+                    delete c[k];
+            }
+        }
+    }
+    return c;
+//    return a.filter(x => !b.includes(x));
 }
+
+const outputFileName = `saveextract.${game}.txt`
 
 let base_markers = readSavFile(saveFileName);
 let dump_markers = base_markers;
 
-let compare_markers;
 if(args.values.compare)
 {
-    compare_markers = readSavFile(args.values.compare);
-    const inbase = setDifference(base_markers, compare_markers);
-    const incomp = setDifference(compare_markers, base_markers);
-    console.log(`Base not Comp ${inbase.size}`);
-    console.log(`Comp not Base ${incomp.size}`);
-    dump_markers = new Set([...inbase, ...incomp]);
+    let compare_markers = readSavFile(args.values.compare);
+    dump_markers = {};
+    dump_markers [fileBaseName(saveFileName)] = compareMarkers(base_markers, compare_markers);
+    dump_markers [fileBaseName(args.values.compare)] = compareMarkers(compare_markers, base_markers);
 }
 
-const outputFileName = `saveextract.${game}.txt`
-let count = dump_markers.size;
-fs.writeFileSync(outputFileName, Array.from(dump_markers).join('\r\n') + '\r\n')
+let json = JSON.stringify(dump_markers, null, 2);
+let count = json.split(/\r\n|\r|\n/).length;
+fs.writeFileSync(outputFileName, json);
 
-console.log(`${count} object names written to "${outputFileName}"`)
+console.log(`${count} lines written to "${outputFileName}"`)
