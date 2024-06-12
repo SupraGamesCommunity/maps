@@ -1917,6 +1917,8 @@
     "lng": 20230.7265625,
     "alt": 803.8145141601562,
     "cost": 120,
+    "yt_video": "ReN380PXV-A",
+    "yt_start": "16196",
     "linetype": "trigger",
     "targets": [
       {
@@ -1924,9 +1926,7 @@
         "y": 17433.591796875,
         "z": 823.5670166015625
       }
-    ],
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "16196"
+    ]
   },
   {
     "name": "BuyChestDetector_30",
@@ -1966,9 +1966,9 @@
     "lat": -33901.05859375,
     "lng": -14.856106758117676,
     "alt": -208.23614501953125,
-    "cost": 36,
     "yt_video": "ReN380PXV-A",
-    "yt_start": "882"
+    "yt_start": "882",
+    "cost": 36
   },
   {
     "name": "BuyForceBeamGold",
@@ -2491,6 +2491,8 @@
     "lat": -17035.396484375,
     "lng": 22532.78515625,
     "alt": 1523.2869873046875,
+    "yt_video": "ReN380PXV-A",
+    "yt_start": "1532",
     "linetype": "trigger",
     "targets": [
       {
@@ -2498,9 +2500,7 @@
         "y": -17249.248046875,
         "z": 1545.64404296875
       }
-    ],
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "1532"
+    ]
   },
   {
     "name": "Chest100_2221",
@@ -2601,9 +2601,9 @@
     "lat": 4425.0,
     "lng": -4040.0,
     "alt": -1315.0,
-    "coins": 15,
     "yt_video": "ReN380PXV-A",
-    "yt_start": "2851"
+    "yt_start": "2851",
+    "coins": 15
   },
   {
     "name": "Chest110",
@@ -2648,9 +2648,9 @@
     "lat": 34034.94140625,
     "lng": 25784.552734375,
     "alt": 1173.0,
-    "coins": "varies",
     "yt_video": "ReN380PXV-A",
-    "yt_start": "17953"
+    "yt_start": "17953",
+    "coins": "varies"
   },
   {
     "name": "Chest115_4",
@@ -2802,9 +2802,9 @@
     "lat": 51090.31640625,
     "lng": -41244.4921875,
     "alt": 1406.1898193359375,
-    "coins": 50,
     "yt_video": "ReN380PXV-A",
-    "yt_start": "15562"
+    "yt_start": "15562",
+    "coins": 50
   },
   {
     "name": "Chest12_686",
@@ -3393,9 +3393,9 @@
     "lat": 8539.5283203125,
     "lng": -6211.3154296875,
     "alt": 251.29544067382812,
-    "coins": 15,
     "yt_video": "ReN380PXV-A",
-    "yt_start": "3025"
+    "yt_start": "3025",
+    "coins": 15
   },
   {
     "name": "Chest31_9005",
@@ -3404,9 +3404,9 @@
     "lat": -21894.640625,
     "lng": 16576.66015625,
     "alt": 2472.776123046875,
-    "spawns": "BP_PurchaseHealth+1_C",
     "yt_video": "ReN380PXV-A",
-    "yt_start": "2054"
+    "yt_start": "2054",
+    "spawns": "BP_PurchaseHealth+1_C"
   },
   {
     "name": "Chest32_1454",
@@ -3433,9 +3433,9 @@
     "lat": -32485.2421875,
     "lng": -473.9959716796875,
     "alt": -46.821571350097656,
-    "coins": 10,
     "yt_video": "nWigHgcWFCE",
-    "yt_start": "317"
+    "yt_start": "317",
+    "coins": 10
   },
   {
     "name": "Chest35_2137",
@@ -3522,9 +3522,9 @@
     "lat": 3515.743408203125,
     "lng": -22074.646484375,
     "alt": -667.5899047851562,
-    "coins": 10,
     "yt_video": "ReN380PXV-A",
-    "yt_start": "3129"
+    "yt_start": "3129",
+    "coins": 10
   },
   {
     "name": "Chest43",
@@ -3589,9 +3589,9 @@
     "lat": -24188.359375,
     "lng": -35370.546875,
     "alt": -996.1937866210938,
-    "coins": 50,
     "yt_video": "ReN380PXV-A",
-    "yt_start": "4716"
+    "yt_start": "4716",
+    "coins": 50
   },
   {
     "name": "Chest4_1544",
@@ -3627,9 +3627,9 @@
     "lat": -19937.205078125,
     "lng": 352.684326171875,
     "alt": -2011.9208984375,
-    "coins": 10,
     "yt_video": "nWigHgcWFCE",
-    "yt_start": "142"
+    "yt_start": "142",
+    "coins": 10
   },
   {
     "name": "Chest53_1192",
@@ -3799,9 +3799,9 @@
     "lat": -27714.396484375,
     "lng": 1661.13134765625,
     "alt": -31.19489288330078,
-    "coins": 5,
     "yt_video": "ReN380PXV-A",
-    "yt_start": "1250"
+    "yt_start": "1250",
+    "coins": 5
   },
   {
     "name": "Chest6_710",
@@ -4134,9 +4134,9 @@
     "lat": -18495.890625,
     "lng": 12047.7880859375,
     "alt": -88.48363494873047,
-    "coins": 10,
     "yt_video": "ReN380PXV-A",
-    "yt_start": "964"
+    "yt_start": "964",
+    "coins": 10
   },
   {
     "name": "Coin10",
@@ -10751,9 +10751,9 @@
     "lat": -24418.181640625,
     "lng": -20585.35546875,
     "alt": -1591.1373291015625,
-    "variant": "spy-glasses",
     "yt_video": "FNZt6RPxqLo",
-    "yt_start": "460"
+    "yt_start": "460",
+    "variant": "spy-glasses"
   },
   {
     "name": "DeadHero2Link",
@@ -10762,9 +10762,9 @@
     "lat": -23135.16015625,
     "lng": 4564.794921875,
     "alt": -2384.99853515625,
-    "variant": "adventure-kid",
     "yt_video": "FNZt6RPxqLo",
-    "yt_start": "256"
+    "yt_start": "256",
+    "variant": "adventure-kid"
   },
   {
     "name": "DeadHero3Heman",
@@ -10773,9 +10773,9 @@
     "lat": -439.22943115234375,
     "lng": 15613.9072265625,
     "alt": 1111.8966064453125,
-    "variant": "him-guy",
     "yt_video": "FNZt6RPxqLo",
-    "yt_start": "5"
+    "yt_start": "5",
+    "variant": "him-guy"
   },
   {
     "name": "DeadHero3Pokemon",
@@ -10784,9 +10784,9 @@
     "lat": -48328.56640625,
     "lng": -55477.125,
     "alt": -992.7392578125,
-    "variant": "catch-hat",
     "yt_video": "FNZt6RPxqLo",
-    "yt_start": "45"
+    "yt_start": "45",
+    "variant": "catch-hat"
   },
   {
     "name": "DeadHero4Picard",
@@ -10795,9 +10795,9 @@
     "lat": -27029.568359375,
     "lng": -2318.379638671875,
     "alt": 4676.68994140625,
-    "variant": "commander",
     "yt_video": "FNZt6RPxqLo",
-    "yt_start": "552"
+    "yt_start": "552",
+    "variant": "commander"
   },
   {
     "name": "DeadHero4Santa",
@@ -10806,9 +10806,9 @@
     "lat": 39865.1796875,
     "lng": -18197.59765625,
     "alt": 1653.1673583984375,
-    "variant": "santa",
     "yt_video": "FNZt6RPxqLo",
-    "yt_start": "195"
+    "yt_start": "195",
+    "variant": "santa"
   },
   {
     "name": "DeadHero4Santa2",
@@ -10817,9 +10817,9 @@
     "lat": 46699.7578125,
     "lng": -12555.7216796875,
     "alt": -2097.4404296875,
-    "variant": "vault-toy",
     "yt_video": "FNZt6RPxqLo",
-    "yt_start": "229"
+    "yt_start": "229",
+    "variant": "vault-toy"
   },
   {
     "name": "DeadHero4Santa3",
@@ -10828,9 +10828,9 @@
     "lat": 21242.36328125,
     "lng": 79090.609375,
     "alt": 3173.107421875,
-    "variant": "hans-yolo",
     "yt_video": "FNZt6RPxqLo",
-    "yt_start": "614"
+    "yt_start": "614",
+    "variant": "hans-yolo"
   },
   {
     "name": "DeadHero_3",
@@ -10839,9 +10839,9 @@
     "lat": 19405.27734375,
     "lng": 19217.87890625,
     "alt": 1954.299560546875,
-    "variant": "magic-boy",
     "yt_video": "FNZt6RPxqLo",
-    "yt_start": "335"
+    "yt_start": "335",
+    "variant": "magic-boy"
   },
   {
     "name": "DeadHeroGoku",
@@ -10850,9 +10850,9 @@
     "lat": -21799.44140625,
     "lng": 54035.484375,
     "alt": 3155.189697265625,
-    "variant": "power-hair",
     "yt_video": "FNZt6RPxqLo",
-    "yt_start": "392"
+    "yt_start": "392",
+    "variant": "power-hair"
   },
   {
     "name": "DeadHeroGuybrush",
@@ -10861,9 +10861,9 @@
     "lat": -29871.169921875,
     "lng": -23258.443359375,
     "alt": -1600.89990234375,
-    "variant": "murray",
     "yt_video": "FNZt6RPxqLo",
-    "yt_start": "102"
+    "yt_start": "102",
+    "variant": "murray"
   },
   {
     "name": "DeadHeroIndy",
@@ -10872,9 +10872,9 @@
     "lat": -27025.787109375,
     "lng": 21980.921875,
     "alt": 163.25143432617188,
-    "variant": "adventure-hat",
     "yt_video": "FNZt6RPxqLo",
-    "yt_start": "372"
+    "yt_start": "372",
+    "variant": "adventure-hat"
   },
   {
     "name": "DestroyablePots2",
@@ -14320,10 +14320,10 @@
     "lat": -36991.19921875,
     "lng": -4023.167236328125,
     "alt": 127.11111450195312,
-    "spawns": "_BuyHealth+10_C",
-    "variant": "green",
     "yt_video": "nWigHgcWFCE",
-    "yt_start": "371"
+    "yt_start": "371",
+    "spawns": "_BuyHealth+10_C",
+    "variant": "green"
   },
   {
     "name": "Juicer_286",
@@ -14332,10 +14332,10 @@
     "lat": 55691.06640625,
     "lng": -63200.2578125,
     "alt": 455.5135803222656,
-    "spawns": "BP_A3_StrengthQuest_C",
-    "variant": "yellow",
     "yt_video": "ReN380PXV-A",
-    "yt_start": "14321"
+    "yt_start": "14321",
+    "spawns": "BP_A3_StrengthQuest_C",
+    "variant": "yellow"
   },
   {
     "name": "Jumppad10",

@@ -110,41 +110,5 @@
     "area": "Map",
     "cost": 6,
     "price_type":7 
-  },
-  {
-    "name": "BuySpeedx15_2",
-    "area": "Map",
-    "yt_video": "!",
-    "yt_start": "!"
-  },
-  {
-    "name": "UpgradeHappiness2_2",
-    "area": "Map",
-    "yt_video": "!",
-    "yt_start": "!"
-  },
-  {
-    "name": "BuyHealth+15_765",
-    "area": "Map",
-    "yt_video": "!",
-    "yt_start": "!"
-  },
-  {
-    "name": "BuySwordDamage+11",
-    "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "198"
-  },
-  {
-    "name": "BuySpeedx2_206",
-    "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "197"
-  },
-  {
-    "name": "BuySwordDamage+10_2",
-    "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "200"
   }
-] 
+]

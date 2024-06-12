@@ -1,17 +1,5 @@
 [
   {
-    "name": "ChestArea4_48",
-    "area": "DLC2_Complete",
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "9713"
-  },
-  {
-    "name": "ChestArea4_55",
-    "area": "DLC2_Complete",
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "9667"
-  },    
-  {
     "name": "BP_MonsterChest2_2",
     "area": "DLC2_Complete",
     "spawns": "BuyEnemiesLoot_C"

@@ -86,9 +86,9 @@
     "lat": 2163.7373046875,
     "lng": 10409.3681640625,
     "alt": 2817.6240234375,
-    "spawns": "BP_PurchaseHealth+1_C",
     "yt_video": "5KkEVBgFW3U",
-    "yt_start": "5819"
+    "yt_start": "5819",
+    "spawns": "BP_PurchaseHealth+1_C"
   },
   {
     "name": "BatteryExplosionDetector_2",
@@ -150,7 +150,7 @@
   },
   {
     "name": "BP_A3_BBQ2",
-    "type": "Coin:BP_A3_BBQ_C",
+    "type": "BP_A3_BBQ_C",
     "area": "DLC2_Complete",
     "lat": -46420.46484375,
     "lng": 6186.591796875,
@@ -164,9 +164,9 @@
     "lat": -43828.8515625,
     "lng": 7263.4423828125,
     "alt": 1807.8572998046875,
-    "spawns": "BP_PurchaseHealth+1_C",
     "yt_video": "5KkEVBgFW3U",
-    "yt_start": "8096"
+    "yt_start": "8096",
+    "spawns": "BP_PurchaseHealth+1_C"
   },
   {
     "name": "BP_A3_StrengthQuest_2",
@@ -180,25 +180,26 @@
   },
   {
     "name": "BP_Area2_FatGuyQuest_2",
-    "type": "Coin:BP_Area2_FatGuyQuest_C",
+    "type": "BP_Area2_FatGuyQuest_C",
     "area": "DLC2_Complete",
     "lat": -11983.7578125,
     "lng": 64093.80859375,
     "alt": 4094.28271484375,
-    "coins": 30,
     "image": "5KkEVBgFW3U",
-    "yt_video": "7529"
+    "yt_video": "7529",
+    "coins": 30
   },
   {
     "name": "BP_Area2_Uncloged_Quest_10",
-    "type": "Coin:BP_Area2_Uncloged_Quest_C",
+    "type": "BP_Area2_Uncloged_Quest_C",
     "area": "DLC2_Complete",
     "lat": -6840,
     "lng": 60404,
     "alt": 4265.0,
-    "coins": 30,
     "yt_video": "5KkEVBgFW3U",
-    "yt_start": "7311"
+    "yt_start": "7311",
+    "spawns": "Coin:Chest_C",
+    "coins": 30
   },
   {
     "name": "BP_BoneDetector_2",
@@ -321,9 +322,9 @@
     "lat": -9945.6474609375,
     "lng": 17196.806640625,
     "alt": 3408.571533203125,
-    "spawns": "BuyEnemiesLoot_C",
     "yt_video": "5KkEVBgFW3U",
-    "yt_start": "5891"
+    "yt_start": "5891",
+    "spawns": "BuyEnemiesLoot_C"
   },
   {
     "name": "BP_MonsterChest3_2",
@@ -332,9 +333,9 @@
     "lat": -48014.71484375,
     "lng": 43832.578125,
     "alt": 251.35140991210938,
-    "spawns": "BP_PurchaseHealth+1_C",
     "yt_video": "5KkEVBgFW3U",
-    "yt_start": "9267"
+    "yt_start": "9267",
+    "spawns": "BP_PurchaseHealth+1_C"
   },
   {
     "name": "BP_MonsterChest_2",
@@ -343,9 +344,9 @@
     "lat": -42638.0,
     "lng": 3219.0,
     "alt": 2383.774169921875,
-    "spawns": "BP_DoubleHealthLoot_C",
     "yt_video": "5KkEVBgFW3U",
-    "yt_start": "8450"
+    "yt_start": "8450",
+    "spawns": "BP_DoubleHealthLoot_C"
   },
   {
     "name": "BP_ParanoidQuest_2",
@@ -354,9 +355,9 @@
     "lat": -28347.85546875,
     "lng": 14974.4609375,
     "alt": -152.20645141601562,
-    "spawns": "BP_PurchaseHealth+1_C",
     "yt_video": "5KkEVBgFW3U",
-    "yt_start": "6393"
+    "yt_start": "6393",
+    "spawns": "BP_PurchaseHealth+1_C"
   },
   {
     "name": "BP_Purchase_Crouch_2",
@@ -365,9 +366,9 @@
     "lat": 15517.7568359375,
     "lng": 22243.890625,
     "alt": 3172.55419921875,
-    "cost": 10,
     "yt_video": "5KkEVBgFW3U",
-    "yt_start": "416"
+    "yt_start": "416",
+    "cost": 10
   },
   {
     "name": "BP_Purchase_FasterPickaxe_2",
@@ -433,9 +434,13 @@
     "name": "BP_RebuildSlum_2",
     "type": "BP_RebuildSlum_C",
     "area": "DLC2_Complete",
-    "lat": -28511.005859375,
-    "lng": 11402.515625,
-    "alt": -70.26774597167969
+    "lat": -28398.265625,
+    "lng": 11155.4501953125,
+    "alt": -70.26774597167969,
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "8944",
+    "spawns": "BP_Purchase_FasterPickaxe_C",
+    "cost": 50
   },
   {
     "name": "A2_YellowBldgExitTrigger",
@@ -1864,9 +1869,9 @@
     "lat": -49300.0,
     "lng": -61380.0,
     "alt": 10070.0,
-    "cost": 500,
     "yt_video": "5KkEVBgFW3U",
-    "yt_start": "12876"
+    "yt_start": "12876",
+    "cost": 500
   },
   {
     "name": "BP_UnlockMap_2",
@@ -3326,8 +3331,8 @@
     "lng": 42204.96875,
     "alt": 3214.12646484375,
     "spawns": "BuyQuintupleJump_C",
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "9441"
+    "yt_video": "sdkhgbmawHM",
+    "yt_start": "331"
   },
   {
     "name": "ChestArea4_29",
@@ -5921,8 +5926,8 @@
     "lat": -44921.73828125,
     "lng": 2834.04248046875,
     "alt": 3922.484619140625,
-    "icon": "coin:48",
-    "coins": 100
+    "coins": 100,
+    "icon": "coin:48"
   },
   {
     "name": "Coin329",
@@ -16628,11 +16633,7 @@
     "area": "DLC2_Complete",
     "lat": -28398.265625,
     "lng": 11155.4501953125,
-    "alt": -148.50311279296875,
-    "spawns": "BP_Purchase_FasterPickaxe_C",
-    "cost": 50,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "8944"
+    "alt": -148.50311279296875
   },
   {
     "name": "Purchase_StonePickaxe_8",
