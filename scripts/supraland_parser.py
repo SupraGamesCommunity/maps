@@ -464,6 +464,7 @@ exported_properties = [
     'target',                                       # where to draw line to for pipes and pads
     'targets',                                      # array of dictionaries 'type' and target position
                                                     # pipe, jumppad_red, jumppad_blue, trigger 
+    'old_coins',                                    # For _CoinStack_C's a dictionary of old coin name to value (for save game handling) 
     'image', 'yt_video', 'yt_start', 'yt_end',      # data pulled from matched legacy data
 ]
 
@@ -652,15 +653,18 @@ def create_coinstacks(data_lookup, data):
         stackId += 1
         if len(cc) > 3:
             coins = 0
+            old_coins = {}
             for idx in cc:
                 o = data[dataidx[idx]]
                 coins += o['coins']
+                old_coins[o['name']] = o['coins']
                 area = o['area']
                 delobj.append(data[dataidx[idx]])
             c = np.r_[points][list(cc)].mean(axis=0)
+
             stacks.append({
                 'name': f'CoinStack{stackId}', 'type': '_CoinStack_C', 'area': area,
-                'lat': c[1], 'lng': c[0], 'alt': c[2], 'coins': str(coins)
+                'lat': c[1], 'lng': c[0], 'alt': c[2], 'coins': str(coins), 'old_coins': old_coins
                 })
 
     # Delete the old coins and add the new ones - we don't bother clearing out data_lookup
@@ -757,111 +761,8 @@ def read_game_classes(fn = '..\\js\\gameClasses.js'):
         classes[key]=entry
         class_count += 1
 
-
-
     print(f'Success: {class_count} classes read with {len(keys)} members each')
     return classes
-
-
-# Read the specified legacy CSV
-def read_legacy_csv(game, file):
-    filename = '..\\data\\legacy\\{}\\{}.csv'.format(game, file)
-    rows = []
-    with open(filename, 'r', encoding='utf-8-sig') as csv_fh:
-        csv_reader = csv.DictReader(csv_fh, delimiter=',')
-        for row in csv_reader:
-            rows.append(row)
-            rows[-1]['file'] = file;
-    return rows
-
-# Go through all the objects we have found and look for match with the objects in the legacy file
-# Generates a CSV as a report ({game}-legacycomp.csv)
-def combine_legacy(game, classes, data):
-
-    # Specifies which layer classes to check for the file
-    filelayers = [
-        {'file':'chests',      'types':['coin', 'powerup'],     'nospoiler':'closedChest', 'layer': '-'},
-        {'file':'shops',       'types':['powerup'],             'nospoiler':'shop',        'layer': '-'},
-        {'file':'collectables','types':['coin'],                'nospoiler':'-',           'layer': 'coin'},
-        {'file':'collectables','types':['collectable'],         'nospoiler':'collectable', 'layer': '-'},
-        {'file':'collectables','types':['grave'],               'nospoiler':'-',           'layer': 'graves'},
-    ]
-
-    print('Reading legacy files...');
-    print(f'Writing cross-check report ({game}-legacycomp.csv)')
-
-    suss_count = 0
-    suss_dist = 250.0
-    longest_d = (0.0, -1)
-
-    with open(game+'-legacycomp.csv', 'w') as fh:
-
-        nkeys = ['area', 'name', 'type', 'spawns', 'coins', 'cost']
-        lkeys = ['icon', 'item', 'id', 'price', 'file', 'type', 'ytStart']
-
-        # Write CSV header with column names
-        fh.write('dist,url,'+','.join(str(k) for k in nkeys+lkeys)+'\n')
-
-        for filelayer in filelayers:
-            ldata = read_legacy_csv(game, filelayer['file'])
-            ldata = [ lo for lo in ldata if lo['type'] in filelayer['types']]
-
-            if len(ldata) <= 0:
-                continue
-
-            # Create a list of the objects that are likely to match with items in this file based on layer
-            ndata = []
-            for no in data:
-                typeid = no['type']
-                if typeid in classes:
-                    layer = classes[typeid]['layer']
-                    nospoiler = classes[typeid]['nospoiler']
-                    if layer == filelayer['layer'] or nospoiler == filelayer['nospoiler']: 
-                        ndata.append(no)
-
-            # Use KD Tree of extracted object points to query legacy points 
-            npt = [(nd['lng'], nd['lat']) for nd in ndata]
-            lpt = [(ld['x'],   ld['y'])   for ld in ldata]
-
-            kdtree = KDTree(npt)
-
-            (dist, nidx) = kdtree.query(lpt, k=1)
-
-            for li, da in enumerate(dist):
-
-                # Track longest and shortest distances
-                d = da[0]
-                if(d > longest_d[0]):
-                    longest_d = (d, li)
-                if d > suss_dist:
-                    suss_count += 1
-
-                lo = ldata[li]
-                ni = nidx[li][0]
-                no = ndata[ni]
-
-                # lo is a legacy object (with file type added)
-                # no is an extracted object
-
-                # Write distance between the points and the url to the new map
-                fh.write(f'{d},https://supragamescommunity.github.io/maps/#mapId={game}&lat={lo['y']}&lng={lo['x']}&zoom=5')
-
-                # Merge in the data from the legacy object we've matched
-                for k in ['image', 'ytVideo', 'ytStart', 'ytEnd']:
-                    if (v := lo.get(k)):
-                        nk = camel_to_snake(k)
-                        if not no.get(nk):              # Don't override properties we already set (could be from custom data)
-                            no[camel_to_snake(k)] = v
-
-                for k in nkeys:
-                    fh.write(f',{no.get(k, '')}')
-                for k in lkeys:
-                    fh.write(f',{lo.get(k, '')}')
-                fh.write('\n')
-
-    print(f'All entries from legacy CSV files checked')
-    print(f'Max separation: {longest_d[0]:.4g} Median {np.median(dist):.4g}')
-    print(f'Suspcious items {suss_count} (distance > {suss_dist:.4g})')
 
 
 def export_textures(game, cache_dir):
