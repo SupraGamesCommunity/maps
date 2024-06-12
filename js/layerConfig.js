@@ -26,7 +26,7 @@ const layerConfigs = {
         ['coin',        new LayerConfig('markers', 'Coins',          'awesome',       false, ['sl', 'slc', 'siu'])],
         ['graves',      new LayerConfig('markers', 'Graves',         'question_mark', false, ['sl'              ])],
         ['coordinate',  new LayerConfig('markers', 'XY',             null,            false, ['sl', 'slc', 'siu'])],
-        ['extra',       new LayerConfig('markers', 'Extras',         'question_mark', false, ['sl', 'slc', 'siu'])],
+        //['extra',       new LayerConfig('markers', 'Extras',         'question_mark', false, ['sl', 'slc', 'siu'])],
     ]),
 
     // Initialise any procedural data - store index based on position in Map
