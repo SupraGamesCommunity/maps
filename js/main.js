@@ -27,6 +27,7 @@ let reloading;          // Flag used to prevent triggering reloading while alrea
 let settings;           // Reference to localData[mapId]
 let mapCenter;
 let mapParam = {};      // Parameters extracted from map URL
+let objects = {};
 let searchControl = {}; // Leaflet control for searching
 
 let currentMarkerReference;             // Current marker we're editing in Build Mode
@@ -514,6 +515,7 @@ function loadMap(id) {
       .then((response) => response.json())
       .then((j) => {
         let titles = {};
+        objects = {};
 
         let enabledLayers = layerConfigs.getEnabledLayers(mapId) 
         for(let o of j) {
@@ -529,6 +531,9 @@ function loadMap(id) {
           let alt = o.area + ':' + o.name
           let title = o.name;
           let radius = 6; // polyline Triangles
+
+          // Collect objects for cross-reference in save file loading
+          objects[alt] = o;
 
           // can't have duplicate titles in search (loses items) clarify duplicate titles
           title = titles[title] ? alt : title;
@@ -930,8 +935,18 @@ window.loadSaveFile = function () {
 
     //console.log(loadedSave);
 
+
     for (let section of ["ThingsToRemove", "ThingsToActivate", "ThingsToOpenForever"]) {
       for (let o of loadedSave.Properties) {
+        propertyMap = {
+          PlayerDoubleHealth: "Map:Juicer2", 
+          PlayerDrankHealthPlusJuice: "Map:Juicer3", 
+          PlayerStrong: "Map:Juicer_286"
+        }
+        if(o.name && propertyMap[o.name]){
+          settings.markedItems[propertyMap[o.name]] = true;
+        }
+
         if (o.name != section) {
           continue;
         }

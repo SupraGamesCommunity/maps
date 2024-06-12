@@ -262,7 +262,6 @@ const gameClasses = {
     'Coin:BP_Area2_FatGuyQuest_C'             : new GameClass('BBQ Quest (30)',                   'meat',                     'coin'),
     'BP_ParanoidQuest_C'                      : new GameClass('Candle Quest',                     'health',                   'upgrades', 'shop'),
     'BP_A3_BBQ_C'                             : new GameClass('BBQ Quest (3)',                    'meat',                     'coin'),
-    'Purchase_SlumHouse1_C'                   : new GameClass('Purchase Slum',                    'pickaxe_cooldown',         'upgrades', 'shop'),
     'BP_RebuildSlum_C'                        : new GameClass('Rebuild Slum',                     'pickaxe_cooldown',         'upgrades', 'shop'),
 }
 

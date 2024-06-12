@@ -60,7 +60,7 @@
     "spawns": "BP_PurchaseHealth+1_C"
   },
   {
-    "name": "Purchase_SlumHouse1_2",
+    "name": "BP_RebuildSlum_2",
     "area": "DLC2_Complete",
     "lat": -28398.265625,
     "lng": 11155.4501953125,
