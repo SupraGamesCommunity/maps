@@ -29,6 +29,11 @@ let mapCenter;
 let mapParam = {};      // Parameters extracted from map URL
 let searchControl = {}; // Leaflet control for searching
 
+let currentMarkerReference;             // Current marker we're editing in Build Mode
+let currentBuildReference;              // Current object we're editing in Build Mode
+let currentBuildReferenceChanges = [];  // Current object's changed values before they are committed to the list
+let buildModeChangeList = [];           // Changes made in the current Build Mode session
+
 // Hard coded map data extracted from the games
 var maps = {
   // data taken from the MapWorld* nodes
@@ -80,7 +85,7 @@ function getViewURL() {
 }
 
 function copyToClipboard(text) {
-  let input = document.body.appendChild(document.createElement("input"));
+  let input = document.body.appendChild(document.createElement("textarea"));    //Changed from input to textarea so it honors newline characters
   input.value = text;
   input.focus();
   input.select();
@@ -93,6 +98,45 @@ function openLoadFileDialog() {
   document.querySelector('#file').value = null;
   document.querySelector('#file').accept = '.sav';
   document.querySelector('#file').click();
+}
+
+function toggleBuildMode() {
+  if(!settings.buildMode){ settings.buildMode = false }
+  settings.buildMode = !settings.buildMode;
+  alert('Build mode is now set to ' + settings.buildMode + '.');
+}
+
+function updateBuildModeValue() {
+  let el = window.event.srcElement;
+  currentBuildReference[el.id] = el.value;
+  currentBuildReferenceChanges[currentBuildReference.name + '|' + el.id] = el.value;
+  //alert(currentBuildReference.name + ' property ' + el.id + ' changed from ' + el.defaultValue + ' to ' + el.value + '.');
+}
+
+function commitCurrentBuildModeChanges() {
+  Object.getOwnPropertyNames(currentBuildReferenceChanges).forEach(
+    function (i) {
+      buildModeChangeList[i] = currentBuildReferenceChanges[i];
+    }
+  );
+  newLat = currentBuildReference.lat;
+  newLng = currentBuildReference.lng;
+
+  currentMarkerReference.setLatLng(new L.LatLng(newLat, newLng)).update();
+  currentBuildReferenceChanges = [];
+  map.closePopup();
+}
+
+function exportBuildChanges() {
+  t = '';
+  Object.getOwnPropertyNames(buildModeChangeList).filter(function(e) { return e !== 'length' }).forEach(
+    function (i) {
+      t += i.replaceAll('|','\t') + '\t' + buildModeChangeList[i] + '\r\n';
+    }
+  );
+  console.log(buildModeChangeList);
+  copyToClipboard(t);
+  alert('Build mode changes have been placed on the clipboard.');
 }
 
 // Called when Window loads and when base map changes, loads currently select mapId
@@ -114,6 +158,9 @@ function loadMap(id) {
     }
     if (!localData[id].activeLayers) {
       localData[id].activeLayers = layerConfigs.getDefaultActive(mapId);
+    }
+    if (!localData[id].buildMode) {
+      localData[id].buildMode = false;
     }
   }
 
@@ -294,6 +341,33 @@ function loadMap(id) {
   new L.Toolbar2.Control({
       position: 'bottomleft',
       actions: [
+        // build mode button
+        L.Toolbar2.Action.extend({
+          options: {
+            toolbarIcon:{html: '&#128295;&#x1F527;', tooltip: 'Build Mode'},
+            subToolbar: new L.Toolbar2({ 
+              actions: [
+                subAction.extend({
+                  options:{toolbarIcon:{html:'Toggle', tooltip: 'Toggles Map Build mode on or off'}},
+                  addHooks:function() {
+                    toggleBuildMode();
+                    subAction.prototype.addHooks.call(this); // closes sub-action
+                  }
+                }),
+                subAction.extend({
+                  options:{toolbarIcon:{html:'Show Changes', tooltip: 'Display changes made in this session'}},
+                  addHooks:function() {
+                    exportBuildChanges();
+                    subAction.prototype.addHooks.call(this); // closes sub-action
+                  }
+                }),
+                subAction.extend({
+                  options:{toolbarIcon:{html:'&times;', tooltip: 'Close'}}
+                }),
+              ],
+            })
+          }
+        }),
         // share button
         L.Toolbar2.Action.extend({
           options: {
@@ -370,8 +444,23 @@ function loadMap(id) {
 
     let res = null;
     let o = e.popup._source.options.o;
+
+    currentMarkerReference = e.popup._source;
+    currentBuildReference = o;
     
-    let text = JSON.stringify(o, null, 2).replaceAll('\n','<br>').replaceAll(' ','&nbsp;');
+    
+    //let text = JSON.stringify(o, null, 2).replaceAll('\n','<br>').replaceAll(' ','&nbsp;');
+    let text = ''
+    text += '<div class="marker-popup-heading">' + o.name + '</div>'
+    text += '<div class="marker-popup-subheading">' + o.area + '</div><br>'
+    text += '<div class="marker-popup-text"><b>Type:</b> ' + o.type + '</div>'
+    text += '<div class="marker-popup-text">'
+    if(o.coins){ text += 'Contains ' + o.coins + ' coins' }
+    if(o.spawns){ text += 'Contains ' + o.spawns }
+    if(o.variant){ text += o.variant }
+    text += '</div>'
+    text += '<br><br><div class="marker-popup-footnote">Lat: ' + o.lat + '<br>Lng: ' + o.lng + '<br>Alt: ' + o.alt + '</div>'
+
     let found = settings.markedItems[markerId]==true
     let value = found ? 'checked' : '';
 
@@ -396,6 +485,19 @@ function loadMap(id) {
       //let url = 'https://youtu.be/'+o.yt_video+'&?t='+yt_start;
       // text = text + '<br><br><a href="'+url+'" target=_blank>'+url+'</a>');
     }
+
+    if(settings.buildMode) {
+      text += '<hr>';
+      Object.getOwnPropertyNames(o).forEach(
+        function (propName) {
+          text += '<br>' + propName + ': <input type="text" id="' + propName + '" onchange="updateBuildModeValue();" value="' + o[propName] + '"></input>';
+        }
+      );
+      if(!o.yt_video){ text += '<br>yt_video: <input type="text" id="yt_video" onchange="updateBuildModeValue();" value=""></input>'; };
+      if(!o.yt_start){ text += '<br>yt_start: <input type="text" id="yt_start" onchange="updateBuildModeValue();" value=""></input>'; };
+      text += '<button onclick="commitCurrentBuildModeChanges();">Save</button>';
+    }
+
 //    e.target.setIcon(e.target.options.icon);
     e.popup.setContent(text);
   }
@@ -977,6 +1079,7 @@ window.onload = function(event) {
     if (e.target.id.startsWith('searchtext')) {
       return;
     }
+    if (settings.buildMode) { return; }
     pressed[e.code] = true;
     switch (e.code) {
       case 'KeyF':        // F (no ctrl) to toggle fullscreen

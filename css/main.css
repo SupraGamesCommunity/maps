@@ -34,3 +34,24 @@ path[alt=''] { opacity: 100% }
   //color: #333;
 }
 
+.marker-popup-heading {
+  background-color: lightblue;
+  text-color: black;
+  text-align: center;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.marker-popup-subheading {
+  text-color: black;
+  text-align: center;
+  font-weight: bold;
+}
+
+.marker-popup-text {
+  
+}
+
+.marker-popup-footnote {
+  font-size: .75em;
+}
