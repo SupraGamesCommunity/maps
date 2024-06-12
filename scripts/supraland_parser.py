@@ -488,39 +488,10 @@ def cleanup_objects(game, classes_found, data_lookup, data):
             for c in sorted(classes_to_filter):
                 fh.write("    '{:<36}: new GameClass(),\n".format(c))
 
-    def parse_json(j, justdel = False):
-        # Custom markers is an array of dictionaries which must have name/area declared
-        # if 'del': True then we delete the whole instance
-        # otherwise we take the remaining members
-        # and merge: 'property': new value
-        # or delete: '!property': anything
-        count = 0
-        for jo in j:
-            id = ':'.join((jo['area'], jo['name']))
-            o = data_lookup.get(id)
-            count += 1
-            if jo.get('del'):
-                if o: data.remove(o)
-            else:
-                if not o:
-                    o = {}
-                    data_lookup[id] = o
-                    data.append(o)
-                for prop, value in jo.items():
-                    if value == '!':
-                        o.pop(prop, None)
-                    elif not justdel:
-                        o[prop] = value
-        return count
-    
-    # Read custom markers and merge them  in
-    cfn = f'custom-markers.{game}.json'
-    if os.path.isfile(cfn):
-        count = parse_json(json.load(open(cfn)))
-        print(f'Processed {count} instances read from {cfn}')
-
     # Walk the remaining instances and fix up entries
     for o in data:
+        if not o.get('type'):
+           print(f'{o}')
         # Merge the various gold properties into one (we'll remove the properties later)
         # and deal with defaults for all coin or coin spawning classes
         # also takes care of DestroyablePots_C
@@ -600,14 +571,8 @@ def cleanup_objects(game, classes_found, data_lookup, data):
                 o['linetype'] = 'trigger'
                 o['targets'] = targets
 
+    # Convert piles of non-rotating coins to stack markers
     create_coinstacks(data_lookup, data)
-
-    # Strip properties we don't need to export
-    if stripUnusedProperties:
-        for o in data:
-            for prop in list(o.keys()):
-                if not prop in exported_properties:
-                    del o[prop]
 
     # Remove entries that match the specified set of classes
     # note they still exist in data_lookup if needed (for references)
@@ -616,39 +581,46 @@ def cleanup_objects(game, classes_found, data_lookup, data):
         print(f'lengths {i} {len(data_lookup.values())}')
         for o in data_lookup.values():
             if o['type'] in classes_to_filter:
-                data.remove(o)
+                data.remove(o)  
         print(f'Removed {i - len(data)} instances of {len(classes_to_filter)} classes')
 
-    # Merge in legacy data but don't override if it already exists
-    combine_legacy(game, classes, data)
+    # Strip properties we don't need to export
+    if stripUnusedProperties:
+        for o in data:
+            for prop in list(o.keys()):
+                if not prop in exported_properties:
+                    del o[prop]
 
-    # Legacy combine might have added properties custom data says to delete, so re-run but delete only
-    cfn = f'custom-markers.{game}.json'
-    if os.path.isfile(cfn):
-        count = parse_json(json.load(open(cfn)), justdel = True)
+    def parse_json(j):
+        # Custom markers is an array of dictionaries which must have name/area declared
+        # if 'del': True then we delete the whole instance
+        # otherwise we take the remaining members
+        # and merge: 'property': new value
+        # or delete: '!property': anything
+        count = 0
+        for jo in j:
+            id = ':'.join((jo['area'], jo['name']))
+            o = data_lookup.get(id)
+            count += 1
+            if jo.get('del'):
+                if o: data.remove(o)
+            else:
+                if not o:
+                    o = {}
+                    data_lookup[id] = o
+                    data.append(o)
+                for prop, value in jo.items():
+                    if value == '!':
+                        o.pop(prop, None)
+                    else:
+                        o[prop] = value
+        return count
 
-    legacy_keys = ['image', 'yt_video', 'yt_start', 'yt_end']
-    ytdata = []
-    for m in data:
-        yto = {'name': m['name'], 'area': m['area']}
-        for key in legacy_keys:
-            if m.get(key):
-                yto[key] = m[key]
-        if len(yto) > 2:
-            ytdata.append(yto)
-
-    ytdata_file = f'legacy-ytdata.{game}.json'
-    json.dump(ytdata, open(ytdata_file,'w'), indent=2)
-
-    # Merge non-rotating coins together (bDoesntRotate)
-    # Add all coins and big coins that have the bDoesntRotate and use this algorithm
-    # https://stackoverflow.com/questions/78484486/how-to-group-3d-points-closer-than-a-distance-threshold-in-python/78485350#78485350
-    # Remove the coins found and replace with custom coinstack marker
-
-    # Make the filter of Joric classes optional (debug)
-    # Make the filter of unused properties optional (debug)
-    # *** Update main.js to deal with new data
-    # *** check integration of main with Joric code (in MapCompare)
+    # Read legacy YouTube data then custom markers and merge them in, that way custom-markers can fix legacy data
+    for cfn in [f'legacy-ytdata.{game}.json', f'custom-markers.{game}.json']:
+        if os.path.isfile(cfn):
+            count = parse_json(json.load(open(cfn)))
+            print(f'Processed {count} instances read from {cfn}')
 
 
 # Goes through all the non-rotating coins and looks for groups of more than 3 to combine into coinstacks
