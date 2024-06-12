@@ -1,0 +1,1152 @@
+[
+  {
+    "name": "BathGuyVolume_2",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "5819"
+  },
+  {
+    "name": "Bones2",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "7693"
+  },
+  {
+    "name": "Bones3_3",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "8827"
+  },
+  {
+    "name": "Bones4_2",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "9163"
+  },
+  {
+    "name": "Bones5_3",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "3984"
+  },
+  {
+    "name": "Bones_2",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "5851"
+  },
+  {
+    "name": "BP_A3_RobBoss_2",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "8096"
+  },
+  {
+    "name": "BP_A3_StrengthQuest_2",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "2341"
+  },
+  {
+    "name": "BP_Area2_FatGuyQuest_2",
+    "area": "DLC2_Complete",
+    "image": "5KkEVBgFW3U",
+    "yt_video": "7529"
+  },
+  {
+    "name": "BP_Area2_Uncloged_Quest_10",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "7311"
+  },
+  {
+    "name": "BP_BoneDetector_2",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "11697"
+  },
+  {
+    "name": "BP_BuyBeamElasticity_2",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "11639"
+  },
+  {
+    "name": "BP_BuyGunDamage+100pct_2",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "2484"
+  },
+  {
+    "name": "BP_MonsterChest2_2",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "5891"
+  },
+  {
+    "name": "BP_MonsterChest3_2",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "9267"
+  },
+  {
+    "name": "BP_MonsterChest_2",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "8450"
+  },
+  {
+    "name": "BP_ParanoidQuest_2",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "6393"
+  },
+  {
+    "name": "BP_Purchase_Crouch_2",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "416"
+  },
+  {
+    "name": "BP_Purchase_FasterPickaxe_2",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "2484"
+  },
+  {
+    "name": "BP_PickaxeDamage+1_2",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "2552"
+  },
+  {
+    "name": "Shop_Health_5",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "2552"
+  },
+  {
+    "name": "BP_PurchaseJumpHeightPlus_2",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "359"
+  },
+  {
+    "name": "BP_RebuildSlum_2",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "8944"
+  },
+  {
+    "name": "BP_TrophyDetector_2",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "12876"
+  },
+  {
+    "name": "BP_UnlockMap_2",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "2552"
+  },
+  {
+    "name": "BuyBrokenPipeDetector_2",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "7311"
+  },
+  {
+    "name": "BuyChestDetectorRadius_2",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "5012"
+  },
+  {
+    "name": "BuyCritChance+5_2",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "2484"
+  },
+  {
+    "name": "BuyCritChance+6",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "2484"
+  },
+  {
+    "name": "BP_BuyHealthRegenMax1",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "2484"
+  },
+  {
+    "name": "Shop_Health_regen",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "2552"
+  },
+  {
+    "name": "BuyStats_2",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "4303"
+  },
+  {
+    "name": "BP_Purchase_MagnetRepelPlus_2",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "11639"
+  },
+  {
+    "name": "BuyUpgradeChestNum_2",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "4303"
+  },
+  {
+    "name": "Chest10_11",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "9361"
+  },
+  {
+    "name": "Chest11_2",
+    "area": "DLC2_Complete",
+    "yt_video": "L17Xur9-BMg",
+    "yt_start": "61"
+  },
+  {
+    "name": "Chest12_17",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "9236"
+  },
+  {
+    "name": "Chest13_20",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "9222"
+  },
+  {
+    "name": "Chest14_2",
+    "area": "DLC2_Complete",
+    "yt_video": "L17Xur9-BMg",
+    "yt_start": "222"
+  },
+  {
+    "name": "Chest16",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "2064"
+  },
+  {
+    "name": "Chest17",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "8133"
+  },
+  {
+    "name": "Chest2_2",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "6100"
+  },
+  {
+    "name": "Chest3_2",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "1604"
+  },
+  {
+    "name": "Chest4_2",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "8368"
+  },
+  {
+    "name": "Chest5_2",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "9361"
+  },
+  {
+    "name": "Chest6_5",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "9361"
+  },
+  {
+    "name": "Chest7_8",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "9204"
+  },
+  {
+    "name": "Chest8_5",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "4950"
+  },
+  {
+    "name": "Chest9_8",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "9970"
+  },
+  {
+    "name": "Chest_6",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "8916"
+  },
+  {
+    "name": "Chest_GoldBeam",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "2318"
+  },
+  {
+    "name": "ChestArea1",
+    "area": "DLC2_Complete",
+    "image": "MiningArea_03Coins_27781_11080.jpg",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "5130"
+  },
+  {
+    "name": "ChestArea11",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "8303"
+  },
+  {
+    "name": "ChestArea12",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "2178"
+  },
+  {
+    "name": "ChestArea13",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "8278"
+  },
+  {
+    "name": "ChestArea14",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "8278"
+  },
+  {
+    "name": "ChestArea15",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "8173"
+  },
+  {
+    "name": "ChestArea1_0",
+    "area": "DLC2_Complete",
+    "image": "MiningArea_10Coins_18115_20434.jpg",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "5085"
+  },
+  {
+    "name": "ChestArea1_1",
+    "area": "DLC2_Complete",
+    "image": "MiningArea_Health+1_5453_4777.jpg",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "5231"
+  },
+  {
+    "name": "ChestArea1_10",
+    "area": "DLC2_Complete",
+    "image": "MiningArea_15Coins_21157_07001.jpg",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "5641"
+  },
+  {
+    "name": "ChestArea1_12",
+    "area": "DLC2_Complete",
+    "image": "MiningArea_03Coins_10586_11461.jpg",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "5671"
+  },
+  {
+    "name": "ChestArea1_13",
+    "area": "DLC2_Complete",
+    "image": "MiningArea_20Coins_19119_04689.jpg",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "5619"
+  },
+  {
+    "name": "ChestArea1_14",
+    "area": "DLC2_Complete",
+    "image": "MiningArea_10Coins_29876_08049.jpg",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "5285"
+  },
+  {
+    "name": "ChestArea1_15",
+    "area": "DLC2_Complete",
+    "image": "MiningArea_02Coins_13047_11365.jpg",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "432"
+  },
+  {
+    "name": "ChestArea1_3",
+    "area": "DLC2_Complete",
+    "image": "MiningArea_04Coins_25710_06531.jpg",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "643"
+  },
+  {
+    "name": "ChestArea1_4",
+    "area": "DLC2_Complete",
+    "image": "MiningArea_Health+1_5316_4410.jpg",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "5590"
+  },
+  {
+    "name": "ChestArea1_46",
+    "area": "DLC2_Complete",
+    "image": "MiningFireGunArea_15Coins_26657_08250.jpg",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "5558"
+  },
+  {
+    "name": "ChestArea1_5",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "7926"
+  },
+  {
+    "name": "ChestArea1_52",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "5872"
+  },
+  {
+    "name": "ChestArea1_6",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "7144"
+  },
+  {
+    "name": "ChestArea1_63",
+    "area": "DLC2_Complete",
+    "image": "MiningFireGunArea_Health+1_6080_4356.jpg",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "5377"
+  },
+  {
+    "name": "ChestArea1_69",
+    "area": "DLC2_Complete",
+    "image": "MiningFireGunArea_ThrowSpeed+_5970_4601.jpg",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "5541"
+  },
+  {
+    "name": "ChestArea1_7",
+    "area": "DLC2_Complete",
+    "image": "MiningArea_03Coins_19971_19796.jpg",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "330"
+  },
+  {
+    "name": "ChestArea1_79",
+    "area": "DLC2_Complete",
+    "image": "MiningArea_05Coins_27564_11198.jpg",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "5130"
+  },
+  {
+    "name": "ChestArea1_8",
+    "area": "DLC2_Complete",
+    "image": "MiningArea_02Coins_23262_09784.jpg",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "643"
+  },
+  {
+    "name": "ChestArea2",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "7182"
+  },
+  {
+    "name": "ChestArea2_1",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "7754"
+  },
+  {
+    "name": "ChestArea2_11",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "7802"
+  },
+  {
+    "name": "ChestArea2_16",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "7182"
+  },
+  {
+    "name": "ChestArea2_17",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "7182"
+  },
+  {
+    "name": "ChestArea2_2",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "6996"
+  },
+  {
+    "name": "ChestArea2_3",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "7692"
+  },
+  {
+    "name": "ChestArea2_39",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "6914"
+  },
+  {
+    "name": "ChestArea2_4",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "7034"
+  },
+  {
+    "name": "ChestArea2_5",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "7034"
+  },
+  {
+    "name": "ChestArea2_57",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "7265"
+  },
+  {
+    "name": "ChestArea2_58",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "6980"
+  },
+  {
+    "name": "ChestArea2_59",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "7802"
+  },
+  {
+    "name": "ChestArea2_6",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "7095"
+  },
+  {
+    "name": "ChestArea2_60",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "7279"
+  },
+  {
+    "name": "ChestArea2_65",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "7734"
+  },
+  {
+    "name": "ChestArea2_67",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "7981"
+  },
+  {
+    "name": "ChestArea2_68",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "7981"
+  },
+  {
+    "name": "ChestArea2_7",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "7774"
+  },
+  {
+    "name": "ChestArea2_80",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "7235"
+  },
+  {
+    "name": "ChestArea3",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "8552"
+  },
+  {
+    "name": "ChestArea3_21",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "8866"
+  },
+  {
+    "name": "ChestArea3_22",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "8552"
+  },
+  {
+    "name": "ChestArea3_23",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "8552"
+  },
+  {
+    "name": "ChestArea3_25",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "8390"
+  },
+  {
+    "name": "ChestArea3_26",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "8405"
+  },
+  {
+    "name": "ChestArea3_27",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "8772"
+  },
+  {
+    "name": "ChestArea3_44",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "8866"
+  },
+  {
+    "name": "ChestArea3_53",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "8246"
+  },
+  {
+    "name": "ChestArea3_62",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "8748"
+  },
+  {
+    "name": "ChestArea3_70",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "8552"
+  },
+  {
+    "name": "ChestArea4",
+    "area": "DLC2_Complete",
+    "yt_video": "sdkhgbmawHM",
+    "yt_start": "331"
+  },
+  {
+    "name": "ChestArea4_29",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "9010"
+  },
+  {
+    "name": "ChestArea4_32",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "9085"
+  },
+  {
+    "name": "ChestArea4_33",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "9085"
+  },
+  {
+    "name": "ChestArea4_34",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "9302"
+  },
+  {
+    "name": "ChestArea4_35",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "9882"
+  },
+  {
+    "name": "ChestArea4_36",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "2808"
+  },
+  {
+    "name": "ChestArea4_37",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "9941"
+  },
+  {
+    "name": "ChestArea4_38",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "9988"
+  },
+  {
+    "name": "ChestArea4_41",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "9138"
+  },
+  {
+    "name": "ChestArea4_45",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "9321"
+  },
+  {
+    "name": "ChestArea4_48",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "9713"
+  },
+  {
+    "name": "ChestArea4_54",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "9595"
+  },
+  {
+    "name": "ChestArea4_55",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "9667"
+  },
+  {
+    "name": "ChestArea4_56",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "9529"
+  },
+  {
+    "name": "ChestArea4_71",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "9841"
+  },
+  {
+    "name": "ChestArea4_72",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "9595"
+  },
+  {
+    "name": "ChestArea4Firegunonly",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "9740"
+  },
+  {
+    "name": "ChestArea5",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "9897"
+  },
+  {
+    "name": "ChestAreaEnd2",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "4557"
+  },
+  {
+    "name": "ChestAreaEnd_73",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "4670"
+  },
+  {
+    "name": "ChestAreaEnd_74",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "4780"
+  },
+  {
+    "name": "ChestAreaEnd_75",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "4642"
+  },
+  {
+    "name": "ChestAreaEnd_76",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "4428"
+  },
+  {
+    "name": "ChestAreaEnd_78",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "4476"
+  },
+  {
+    "name": "ChestFiregun",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "5392"
+  },
+  {
+    "name": "ChestRepel",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "1460"
+  },
+  {
+    "name": "ChestTown",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "6801"
+  },
+  {
+    "name": "ChestTown2",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "6244"
+  },
+  {
+    "name": "ChestTown3",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "958"
+  },
+  {
+    "name": "ChestTown4",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "6244"
+  },
+  {
+    "name": "ChestTown_10",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "6079"
+  },
+  {
+    "name": "ChestTown_18",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "5995"
+  },
+  {
+    "name": "ChestTown_24",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "6712"
+  },
+  {
+    "name": "ChestTown_3",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "6244"
+  },
+  {
+    "name": "ChestTown_40",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "6862"
+  },
+  {
+    "name": "ChestTown_49",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "1152"
+  },
+  {
+    "name": "ChestTown_50",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "6862"
+  },
+  {
+    "name": "ChestTown_51",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "6215"
+  },
+  {
+    "name": "ChestTown_61",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "6698"
+  },
+  {
+    "name": "ChestTown_64",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "1059"
+  },
+  {
+    "name": "ChestTown_66",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "6680"
+  },
+  {
+    "name": "ChestTown_8",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "6600"
+  },
+  {
+    "name": "ChestTown_81",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "6759"
+  },
+  {
+    "name": "ChestTown_9",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "6346"
+  },
+  {
+    "name": "ChestTownFiregunonly",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "6576"
+  },
+  {
+    "name": "ChestTranslocator",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "2998"
+  },
+  {
+    "name": "Purchase_DiamondPickaxe_2",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "2552"
+  },
+  {
+    "name": "Purchase_IronPickaxe_2",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "1830"
+  },
+  {
+    "name": "Purchase_StonePickaxe_8",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "952"
+  },
+  {
+    "name": "Purchase_WoodPickaxe_2",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "416"
+  },
+  {
+    "name": "Scrap182_11",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "9441"
+  },
+  {
+    "name": "Chest2_2",
+    "area": "DLC2_FinalBoss",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "10143"
+  },
+  {
+    "name": "Chest_2",
+    "area": "DLC2_FinalBoss",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "10166"
+  },
+  {
+    "name": "Bones_2",
+    "area": "DLC2_SecretLavaArea",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "10853"
+  },
+  {
+    "name": "Chest2_2",
+    "area": "DLC2_SecretLavaArea",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "10855"
+  },
+  {
+    "name": "Chest3",
+    "area": "DLC2_SecretLavaArea",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "10855"
+  },
+  {
+    "name": "Chest4_2",
+    "area": "DLC2_SecretLavaArea",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "11533"
+  },
+  {
+    "name": "Chest_2",
+    "area": "DLC2_SecretLavaArea",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "10374"
+  },
+  {
+    "name": "SecretLavaArea_Chest01_1",
+    "area": "DLC2_SecretLavaArea",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "10446"
+  },
+  {
+    "name": "SecretLavaArea_Chest02",
+    "area": "DLC2_SecretLavaArea",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "10623"
+  },
+  {
+    "name": "SecretLavaArea_Chest04",
+    "area": "DLC2_SecretLavaArea",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "10684"
+  },
+  {
+    "name": "SecretLavaArea_Chest06",
+    "area": "DLC2_SecretLavaArea",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "11219"
+  },
+  {
+    "name": "SecretLavaArea_Chest07",
+    "area": "DLC2_SecretLavaArea",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "11455"
+  },
+  {
+    "name": "SecretLavaArea_Chest08",
+    "area": "DLC2_SecretLavaArea",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "11455"
+  },
+  {
+    "name": "SecretLavaArea_Chest09",
+    "area": "DLC2_SecretLavaArea",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "11487"
+  },
+  {
+    "name": "SecretLavaArea_Chest10",
+    "area": "DLC2_SecretLavaArea",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "11158"
+  },
+  {
+    "name": "SecretLavaArea_Chest11",
+    "area": "DLC2_SecretLavaArea",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "11083"
+  },
+  {
+    "name": "SecretLavaArea_Chest12",
+    "area": "DLC2_SecretLavaArea",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "10855"
+  },
+  {
+    "name": "SecretLavaArea_Chest12_6",
+    "area": "DLC2_SecretLavaArea",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "10855"
+  },
+  {
+    "name": "BP_EngagementCup_Base12_37",
+    "area": "DLC2_PostRainbow",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "12765"
+  },
+  {
+    "name": "BP_EngagementCup_Base13_40",
+    "area": "DLC2_PostRainbow",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "11914"
+  },
+  {
+    "name": "BP_EngagementCup_Base2_7",
+    "area": "DLC2_PostRainbow",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "12880"
+  },
+  {
+    "name": "BP_EngagementCup_Base3_10",
+    "area": "DLC2_PostRainbow",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "12005"
+  },
+  {
+    "name": "BP_EngagementCup_Base4_13",
+    "area": "DLC2_PostRainbow",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "12046"
+  },
+  {
+    "name": "BP_EngagementCup_Base5_16",
+    "area": "DLC2_PostRainbow",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "12320"
+  },
+  {
+    "name": "BP_EngagementCup_Base6_19",
+    "area": "DLC2_PostRainbow",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "12560"
+  },
+  {
+    "name": "BP_EngagementCup_Base7_22",
+    "area": "DLC2_PostRainbow",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "12620"
+  },
+  {
+    "name": "BP_EngagementCup_Base9_28",
+    "area": "DLC2_PostRainbow",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "12370"
+  },
+  {
+    "name": "BP_EngagementCup_Base_2",
+    "area": "DLC2_PostRainbow",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "12990"
+  },
+  {
+    "name": "Chest2_2",
+    "area": "DLC2_PostRainbow",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "12578"
+  },
+  {
+    "name": "Chest3_9",
+    "area": "DLC2_PostRainbow",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "12384"
+  },
+  {
+    "name": "CoinStack10",
+    "area": "DLC2_FinalBoss",
+    "yt_video": "DmxnGCJRPXw",
+    "yt_start": "0"
+  }
+]

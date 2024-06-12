@@ -627,6 +627,19 @@ def cleanup_objects(game, classes_found, data_lookup, data):
     if os.path.isfile(cfn):
         count = parse_json(json.load(open(cfn)), justdel = True)
 
+    legacy_keys = ['image', 'yt_video', 'yt_start', 'yt_end']
+    ytdata = []
+    for m in data:
+        yto = {'name': m['name'], 'area': m['area']}
+        for key in legacy_keys:
+            if m.get(key):
+                yto[key] = m[key]
+        if len(yto) > 2:
+            ytdata.append(yto)
+
+    ytdata_file = f'legacy-ytdata.{game}.json'
+    json.dump(ytdata, open(ytdata_file,'w'), indent=2)
+
     # Merge non-rotating coins together (bDoesntRotate)
     # Add all coins and big coins that have the bDoesntRotate and use this algorithm
     # https://stackoverflow.com/questions/78484486/how-to-group-3d-points-closer-than-a-distance-threshold-in-python/78485350#78485350
@@ -812,7 +825,7 @@ def combine_legacy(game, classes, data):
     with open(game+'-legacycomp.csv', 'w') as fh:
 
         nkeys = ['area', 'name', 'type', 'spawns', 'coins', 'cost']
-        lkeys = ['icon', 'item', 'id', 'price', 'file', 'type']
+        lkeys = ['icon', 'item', 'id', 'price', 'file', 'type', 'ytStart']
 
         # Write CSV header with column names
         fh.write('dist,url,'+','.join(str(k) for k in nkeys+lkeys)+'\n')
@@ -859,7 +872,7 @@ def combine_legacy(game, classes, data):
                 # no is an extracted object
 
                 # Write distance between the points and the url to the new map
-                fh.write(f'{d},https://supragamescommunity.github.io/SupraMaps/#mapId={game}&lat={lo['y']}&lng={lo['x']}&zoom=5')
+                fh.write(f'{d},https://supragamescommunity.github.io/maps/#mapId={game}&lat={lo['y']}&lng={lo['x']}&zoom=5')
 
                 # Merge in the data from the legacy object we've matched
                 for k in ['image', 'ytVideo', 'ytStart', 'ytEnd']:
