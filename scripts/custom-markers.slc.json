@@ -11,5 +11,10 @@
         "z": 2472.301513671875
       },
       "linetype": "player_aim"
+  },
+  {
+    "name": "BuyTranslocator2_2",
+    "area": "Crash",
+    "friendly": "Henrietta"
   }
 ]
