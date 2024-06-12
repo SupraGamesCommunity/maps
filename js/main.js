@@ -110,7 +110,7 @@ function toggleBuildMode() {
 function updateBuildModeValue() {
   let el = window.event.srcElement;
   currentBuildReference[el.id] = el.value;
-  currentBuildReferenceChanges[currentBuildReference.name + '|' + el.id] = el.value;
+  currentBuildReferenceChanges[currentBuildReference.area + ':'+ currentBuildReference.name + '|' + el.id] = el.value;
   //alert(currentBuildReference.name + ' property ' + el.id + ' changed from ' + el.defaultValue + ' to ' + el.value + '.');
 }
 
@@ -129,13 +129,29 @@ function commitCurrentBuildModeChanges() {
 }
 
 function exportBuildChanges() {
-  t = '';
+  let jsonobj = {}
+
   Object.getOwnPropertyNames(buildModeChangeList).filter(function(e) { return e !== 'length' }).forEach(
-    function (i) {
-      t += i.replaceAll('|','\t') + '\t' + buildModeChangeList[i] + '\r\n';
-    }
-  );
+    function(k){
+      let alt, prop, area, name;
+      [alt, prop] = k.split('|');
+      [area, name] = alt.split(':');
+      if(!jsonobj[alt]){
+        jsonobj[alt] = {}
+      }
+      jsonobj[alt][name] = name;
+      jsonobj[alt][area] = area;
+      jsonobj[alt][prop] = buildModeChangeList[k];
+  });
+  jsonobj = Object.values(jsonobj);
+
+//  Object.getOwnPropertyNames(buildModeChangeList).filter(function(e) { return e !== 'length' }).forEach(
+//    function (i) {
+//      t += i.replaceAll('|','\t') + '\t' + buildModeChangeList[i] + '\r\n';
+//    }
+//  );
   console.log(buildModeChangeList);
+  let t = JSON.stringify(jsonobj, null, 2)
   copyToClipboard(t);
   alert('Build mode changes have been placed on the clipboard.');
 }
@@ -491,7 +507,8 @@ function loadMap(id) {
       text += '<hr>';
       Object.getOwnPropertyNames(o).forEach(
         function (propName) {
-          text += '<br>' + propName + ': <input type="text" id="' + propName + '" onchange="updateBuildModeValue();" value="' + o[propName] + '"></input>';
+          if(propName != 'name' && propName != 'area')
+            text += '<br>' + propName + ': <input type="text" id="' + propName + '" onchange="updateBuildModeValue();" value="' + o[propName] + '"></input>';
         }
       );
       if(!o.yt_video){ text += '<br>yt_video: <input type="text" id="yt_video" onchange="updateBuildModeValue();" value=""></input>'; };
