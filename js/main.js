@@ -567,7 +567,13 @@ function loadMap(id) {
         for(let co of cmj){
           let alt = co.area + ':' + co.name;
           let o = objects[alt];
-          mergeDeep(o, co);
+          if(o){
+            mergeDeep(o, co);
+          }
+          else{
+            objects[alt] = co;
+            j.push(co)
+          }
         }
 
         let enabledLayers = layerConfigs.getEnabledLayers(mapId) 
