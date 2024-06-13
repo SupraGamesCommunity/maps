@@ -586,26 +586,45 @@ function loadMap(id) {
           }
 
           let c = gameClasses[o.type] || defaultGameClass;
+          let sc = o.spawns ? (gameClasses[o.spawns] || defaultGameClass) : null;
           let text = ''; // Set it on demand in onPopupOpen (as it's potentially slow for now)
           let alt = o.area + ':' + o.name;
-          let title = o.name;
           let radius = 6; // polyline Triangles
 
-          // can't have duplicate titles in search (loses items) clarify duplicate titles
-          title = titles[title] ? alt : title;
-          titles[title] = title;
+          let debugtitle = false;
+          let title;
+          if(debugtitle){
+            // Ensure the object name is unique
+            title = titles[title] ? alt : o.name;
+            titles[title] = title;
 
-          // Add price, coins or spawns to title
+            // Add what it spawns
+            if(o.spawns) {
+              title += ` (${o.spawns})`
+            }
+          }
+          else {
+            title = o.friendly || c.friendly || o.type;
+            if(sc) {
+              title += ` (${sc.friendly || o.spawns})`; 
+            }
+          }
+          // Shouldn't be coins and spawns: so this is saying what's in it
+          if(o.coins) {
+            title += ` (${o.coins} coin${o.coins > 1 ? "s":""})`;
+          }
+          // Can have spawns and cost
           if(o.cost) {
             let price_type = (o.price_type in price_types ? o.price_type : 0);
-            title += ` (${o.cost} ${price_types[price_type]}${o.cost != 1 && price_type != 5 ? 's':''})`  // No s on plural of scrap
+            title += ` [${o.cost} ${price_types[price_type]}${o.cost != 1 && price_type != 5 ? 's':''}]`  // No s on plural of scrap
           }
-          else if(o.coins) {
-            title += ` [${o.coins} coin${o.coins > 1 ? "s":""}]`;
-          } else if(o.spawns) {
-            //title += ` (${o.spawns.slice(o.spawns.startsWith("_") ? 1 : 0)})`;    // Remove leading _
-            //title += ` (${o.spawns.split(':').reverse()[0]})`;                    // Remove subclass
-            title += ` (${o.spawns})`
+
+          if(debugtitle) {
+            // Add the type
+            title += ' of ' + o.type;
+          } else {
+            // XY position is added to ensure it's unique
+            title += ` (${o.lng.toFixed(0)},${o.lat.toFixed(0)})`
           }
 
           // For coin stacks we add each old_coin to a look up table
@@ -614,9 +633,6 @@ function loadMap(id) {
               coin2stack[o.area+':'+c] = o;
             }
           }
-
-          // add class name to title
-          title += ' of ' + o.type;
 
           const defaultIcon = 'question_mark';
 
@@ -646,7 +662,6 @@ function loadMap(id) {
           }
 
           // Deal with layer for whatever it spawns. Normally things that spawn something don't have a spoiler layer
-          let sc = o.spawns ? (gameClasses[o.spawns] || defaultGameClass) : null;
           if(sc && sc.layer && enabledLayers[sc.layer])
           {
             const layer = sc.layer
