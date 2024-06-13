@@ -815,9 +815,9 @@ function reloadMap(id) {
 }
 
 // Equation: pow(2, zoom * (log2(y0) / z1)) * y0
-// z1 is the zoom level where we want scale to be 1:1
-// s0 is the scale factor when zoom is 0
-const z1 = 3, s0 = 0.5;   // p = 0.33 for z1=3/s0=0.5; p=0.25 for z1=4/s0=0.5
+// z1 is the zoom level where we want scale to be 1:1 (so bigger it is the bigger icons are on higher zooms)
+// s0 is the scale factor when zoom is 0 (so bigger it is bgger icons are overall)
+const z1 = 5, s0 = 0.75;   // p = 0.33 for z1=3/s0=0.5; p=0.25 for z1=4/s0=0.5
 const p = -Math.log2(s0) / z1;
 function getIconSize(size, zoom) {
   return Math.round(size * Math.pow(2, zoom * p) * s0);;
