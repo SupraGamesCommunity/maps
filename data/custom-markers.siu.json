@@ -69,5 +69,304 @@
     "name": "BP_A3_BBQ2",
     "area": "DLC2_Complete",
     "coins": 3
+  },
+  {
+    "name": "Jumppad30_2",
+    "type": "Jumppad_FT",
+    "area": "DLC2_Complete",
+    "lat": -45936.65625,
+    "lng": 45890.671875,
+    "alt": 884.2994995117188,
+    "target": {
+      "x": 2889.304918349312,
+      "y": -13530.767711073953,
+      "z": 2394.5231876747735
+    },
+    "linetype": "jumppad_red",
+    "variant": "red"
+  },
+  {
+    "name": "Area1_FastTravelPipe",
+    "type": "Pipesystem_FT",
+    "area": "DLC2_Complete",
+    "lat": 14537.7373046875,
+    "lng": 20063.669921875,
+    "alt": 3337.74609375,
+    "linetype": "pipe",
+    "startpos": {
+      "x": 20652.861328125,
+      "y": 15560.884765625,
+      "z": 3572.840087890625
+    },
+    "target": {
+      "x": 17408.404296875,
+      "y": -32586.25390625,
+      "z": 379.67572021484375
+    }
+  },
+  {
+    "name": "Area2ShortcutPipe",
+    "type": "Pipesystem_FT",
+    "area": "DLC2_Complete",
+    "lat": -6527.8447265625,
+    "lng": 62033.18359375,
+    "alt": 4430.0,
+    "linetype": "pipe",
+    "startpos": {
+      "x": 61197.86328125,
+      "y": -7363.88330078125,
+      "z": 4666.0
+    },
+    "target": {
+      "x": 17980.796875,
+      "y": -32588.25390625,
+      "z": 382.5982666015625
+    }
+  },
+  {
+    "name": "DLC3_upstairsPipe",
+    "type": "Pipesystem_FT",
+    "area": "DLC2_Complete",
+    "lat": -44234.078125,
+    "lng": 9774.3837890625,
+    "alt": 2226.891357421875,
+    "linetype": "pipe",
+    "startpos": {
+      "x": 8937.830078125,
+      "y": -43396.73046875,
+      "z": 2463.414306640625
+    },
+    "target": {
+      "x": 18539.6328125,
+      "y": -32586.25390625,
+      "z": 381.9172668457031
+    }
+  },
+  {
+    "name": "Pipesystem_Area4",
+    "type": "Pipesystem_FT",
+    "area": "DLC2_Complete",
+    "lat": -60760.12109375,
+    "lng": 58695.98828125,
+    "alt": 1034.8792724609375,
+    "linetype": "pipe",
+    "startpos": {
+      "x": 57716.53125,
+      "y": -60099.109375,
+      "z": 1278.751220703125
+    },
+    "target": {
+      "x": 19086.947265625,
+      "y": -32586.25390625,
+      "z": 380.5115661621094
+    }
+  },
+  {
+    "name": "PipesystemNewDLC_BathToSecretLavaAreaToBath1",
+    "type": "Pipesystem_FT",
+    "area": "DLC2_Complete",
+    "lat": 1614.123046875,
+    "lng": 10273.6982421875,
+    "alt": 3074.8310546875,
+    "linetype": "pipe",
+    "target": {
+      "x": 7443.4892578125,
+      "y": 585.74365234375,
+      "z": 180.625732421875
+    }
+  },
+  {
+    "name": "PipesystemNewDLC_BathToSecretLavaAreaToBath2",
+    "type": "Pipesystem_FT",
+    "area": "DLC2_SecretLavaArea",
+    "lat": 585.74365234375,
+    "lng": 7443.4892578125,
+    "alt": 180.625732421875,
+    "linetype": "pipe",
+    "target": {
+      "x": 10273.6982421875,
+      "y": 1614.123046875,
+      "z": 3074.8310546875
+    }
+  },
+  {
+    "name": "PipesystemNewDLC_FastTravelLavaToBeam1",
+    "type": "Pipesystem_FT",
+    "area": "DLC2_SecretLavaArea",
+    "lat": 3448.9765625,
+    "lng": 9152.3671875,
+    "alt": -7087.57666015625,
+    "linetype": "pipe",
+    "startpos": {
+      "x": 9448.2138671875,
+      "y": 2676.927734375,
+      "z": -7585.2919921875
+    },
+    "target": {
+      "x": 16856.8203125,
+      "y": -22388.76171875,
+      "z": -2829.70068359375
+    }
+  },
+  {
+    "name": "PipesystemNewDLC_FastTravelLavaToBeam2",
+    "type": "Pipesystem_FT",
+    "area": "DLC2_SecretLavaArea",
+    "lat": -23284.6796875,
+    "lng": 17185.609375,
+    "alt": -2970.29345703125,
+    "linetype": "pipe",
+    "startpos": {
+      "x": 16856.8203125,
+      "y": -22388.76171875,
+      "z": -2829.70068359375
+    },
+    "target": {
+      "x": 9448.2138671875,
+      "y": 2676.927734375,
+      "z": -7585.2919921875
+    }
+  },
+  {
+    "name": "PipeToArea1",
+    "type": "Pipesystem_FT",
+    "area": "DLC2_Complete",
+    "lat": -33236.0,
+    "lng": 17410.0,
+    "alt": 842.0,
+    "linetype": "pipe",
+    "startpos": {
+      "x": 17408.404296875,
+      "y": -32586.25390625,
+      "z": 379.67572021484375
+    },
+    "target": {
+      "x": 20652.861328125,
+      "y": 15560.884765625,
+      "z": 3572.840087890625
+    }
+  },
+  {
+    "name": "PipeToArea2",
+    "type": "Pipesystem_FT",
+    "area": "DLC2_Complete",
+    "lat": -33236.0,
+    "lng": 17984.0,
+    "alt": 842.0,
+    "linetype": "pipe",
+    "startpos": {
+      "x": 17980.796875,
+      "y": -32588.25390625,
+      "z": 382.5982666015625
+    },
+    "target": {
+      "x": 61197.86328125,
+      "y": -7363.88330078125,
+      "z": 4666.0
+    }
+  },
+  {
+    "name": "PipeToArea3",
+    "type": "Pipesystem_FT",
+    "area": "DLC2_Complete",
+    "lat": -33236.0,
+    "lng": 18543.0,
+    "alt": 842.0,
+    "linetype": "pipe",
+    "startpos": {
+      "x": 18539.6328125,
+      "y": -32586.25390625,
+      "z": 381.9172668457031
+    },
+    "target": {
+      "x": 8937.830078125,
+      "y": -43396.73046875,
+      "z": 2463.414306640625
+    }
+  },
+  {
+    "name": "PipeToArea4",
+    "type": "Pipesystem_FT",
+    "area": "DLC2_Complete",
+    "lat": -33236.0,
+    "lng": 19089.0,
+    "alt": 842.0,
+    "linetype": "pipe",
+    "startpos": {
+      "x": 19086.947265625,
+      "y": -32586.25390625,
+      "z": 380.5115661621094
+    },
+    "target": {
+      "x": 57716.53125,
+      "y": -60099.109375,
+      "z": 1278.751220703125
+    }
+  },
+  {
+    "name": "PipeToAreaBoss2",
+    "type": "Pipesystem_FT",
+    "area": "DLC2_Complete",
+    "lat": -31966.03125,
+    "lng": 20665.326171875,
+    "alt": -456.35546875,
+    "linetype": "pipe",
+    "startpos": {
+      "x": 20148.083984375,
+      "y": -31964.537109375,
+      "z": 287.7752990722656
+    },
+    "target": {
+      "x": -32291.802734375,
+      "y": -20788.62890625,
+      "z": 5625.8564453125
+    }
+  },
+  {
+    "name": "PipeToAreaSpecial",
+    "type": "Pipesystem_FT",
+    "area": "DLC2_Complete",
+    "lat": -33236.0,
+    "lng": 19643.0,
+    "alt": 842.0,
+    "linetype": "pipe",
+    "startpos": {
+      "x": 19641.314453125,
+      "y": -32586.25390625,
+      "z": 380.9241027832031
+    },
+    "target": {
+      "x": -67755.71875,
+      "y": -20467.703125,
+      "z": 9166.0439453125
+    }
+  },
+  {
+    "name": "PipesystemNewDLC_CombatExitPipe",
+    "type": "Pipesystem_FT",
+    "area": "DLC2_Complete",
+    "lat": -20788.62890625,
+    "lng": -32291.802734375,
+    "alt": 5625.8564453125,
+    "linetype": "pipe",
+    "target": {
+      "x": 20148.083984375,
+      "y": -31964.537109375,
+      "z": 287.7752990722656
+    }
+  },
+  {
+    "name": "RainbowTownShortcutPipe",
+    "type": "Pipesystem_FT",
+    "area": "DLC2_Complete",
+    "lat": -20467.703125,
+    "lng": -67755.71875,
+    "alt": 9166.0439453125,
+    "linetype": "pipe",
+    "target": {
+      "x": 19641.314453125,
+      "y": -32586.25390625,
+      "z": 380.9241027832031
+    }
   }
 ]
