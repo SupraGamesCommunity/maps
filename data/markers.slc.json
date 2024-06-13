@@ -2033,7 +2033,8 @@
     "area": "Crash",
     "lat": -14789.55078125,
     "lng": 43677.890625,
-    "alt": 816.798583984375
+    "alt": 816.798583984375,
+    "friendly": "Henrietta"
   },
   {
     "name": "BuyTranslocator_2",
