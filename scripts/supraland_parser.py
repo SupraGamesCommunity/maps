@@ -465,7 +465,8 @@ exported_properties = [
     'targets',                                      # array of dictionaries 'type' and target position
                                                     # pipe, jumppad_red, jumppad_blue, trigger 
     'old_coins',                                    # For _CoinStack_C's a dictionary of old coin name to value (for save game handling) 
-    'image', 'yt_video', 'yt_start', 'yt_end',      # data pulled from matched legacy data
+    #'image',
+    'yt_video', 'yt_start', 'yt_end',      # data pulled from matched legacy data
 ]
 
 # The purpose of this code is to walk through all the objects we've gathered and prepare them for
