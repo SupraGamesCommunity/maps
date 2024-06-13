@@ -484,43 +484,59 @@ function loadMap(id) {
 
     currentMarkerReference = e.popup._source;
     currentBuildReference = o;
-    
-    
-    //let text = JSON.stringify(o, null, 2).replaceAll('\n','<br>').replaceAll(' ','&nbsp;');
-    let text = ''
-    text += '<div class="marker-popup-heading">' + o.name + '</div>'
-    text += '<div class="marker-popup-subheading">' + o.area + '</div><br>'
-    text += '<div class="marker-popup-text"><b>Type:</b> ' + o.type + '</div>'
-    text += '<div class="marker-popup-text">'
-    if(o.coins){ text += 'Contains ' + o.coins + ' coins' }
-    if(o.spawns){ text += 'Contains ' + o.spawns }
-    if(o.variant){ text += o.variant }
-    text += '</div>'
-    text += '<br><br><div class="marker-popup-footnote">Lat: ' + o.lat + '<br>Lng: ' + o.lng + '<br>Alt: ' + o.alt + '</div>'
 
-    let found = settings.markedItems[markerId]==true
+    let c = gameClasses[o.type] || defaultGameClass;
+    let sc = o.spawns ? (gameClasses[o.spawns] || defaultGameClass) : null;
+
+    let text = ''
+    text += `<div class="marker-popup-heading">${o.friendly || c.friendly || o.type}</div>`
+    text += '<div class="marker-popup-text">'
+    if(sc) {
+      text += `<br><span class="marker-popup-col">Spawns:</span>${sc.friendly || o.spawns}`;
+    }
+    if(o.coins) {
+      text += `<br><span class="marker-popup-col">Coins:</span>${o.coins} coin${o.coins > 1 ? "s":""}`;
+    }
+    if(o.cost) {
+      let price_type = (o.price_type in price_types ? o.price_type : 0);
+      text += `<br><span class="marker-popup-col">Price:</span>${o.cost} ${price_types[price_type]}${o.cost != 1 && price_type != 5 ? 's':''}`;  // No s on plural of scrap
+    }
+    if(o.variant) {
+      text += `<br><span class="marker-popup-col">Variant:</span>${o.variant}`;
+    }
+    text += `<br><span class="marker-popup-col">XY Pos:</span>(${o.lng.toFixed(0)}, ${o.lat.toFixed(0)})`
+    text += '<br><br></div>'
+
+    if(o.yt_video) {
+      let ytSrc = 'https://www.youtube-nocookie.com/embed/' + o.yt_video + '?controls=0';
+      if (o.yt_start) ytSrc += '&start=' + o.yt_start;
+      if (o.yt_end) ytSrc += '&end=' + o.yt_end;
+
+      text = text + '<iframe width="265" height="149.0625" src="' + ytSrc
+        + '" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
+    }
+
+    //text += '<div class="marker-popup-subheading">' + o.area + '</div><br>'
+    //text += '<br><br><div class="marker-popup-footnote">Lat: ' + o.lat + '<br>Lng: ' + o.lng + '<br>Alt: ' + o.alt + '</div>'
+    //<p><span class="a">foo</span>  <span class="b">=</span>  <span class="c">"abcDeveloper"</span>
+
+    // it's not "found" but rather "removed" (e.g. BuySword2_2 in the beginning of Crash DLC)
+    let found = (settings.markedItems[markerId] == true);
     let value = found ? 'checked' : '';
+    text += '<div class="marker-popup-found">';
+    text += `<input type="checkbox" id="${markerId}" '${value}' onclick=window.markItemFound("${markerId}",this.checked)><label for="${markerId}">`
+    text += 'Found</label></div>';
 
     //let base = window.location.href.replace(/#.*$/,'');
     //let vars = {mapId:mapId, lat:Math.round(map.getCenter().lat), lng:Math.round(map.getCenter().lng), zoom:map.getZoom()};
     //let url = base +'#' + Object.entries(vars).map(e=>e[0]+'='+encodeURIComponent(e[1])).join('&');
     //let a = '<a href="'+url+'" onclick="return false">Map URL</a>';
 
-    // it's not "found" but rather "removed" (e.g. BuySword2_2 in the beginning of Crash DLC)
-    text += '<br><br><input type="checkbox" id="'+markerId+'" '+value+' onclick=window.markItemFound("'+markerId+'",this.checked)><label for="'+markerId+'">Found</label>';
-
-    if(o.yt_video) {
-      //let ytSrc = 'https://www.youtube.com/embed/' + o.yt_video + '?controls=0';
-      let ytSrc = 'https://www.youtube-nocookie.com/embed/' + o.yt_video + '?controls=0';
-      if (o.yt_start) ytSrc += '&start=' + o.yt_start;
-      if (o.yt_end) ytSrc += '&end=' + o.yt_end;
-
-      text = text + '<iframe width="250" height="140.625" src="' + ytSrc
-        + '" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
-
-      //let yt_start = o.yt_start || 0
-      //let url = 'https://youtu.be/'+o.yt_video+'&?t='+yt_start;
-      // text = text + '<br><br><a href="'+url+'" target=_blank>'+url+'</a>');
+    if(settings.buildMode) {
+      let json = JSON.stringify(o, null, 2)
+      json = json.substring(json.indexOf('\n'), json.lastIndexOf('}'));
+      json = json.replaceAll('\n','<br>').replaceAll(' ','&nbsp;');
+      text +=  '<div class="marker-popup-debug">' + json + '</div><br>'
     }
 
     if(settings.buildMode) {
@@ -591,9 +607,8 @@ function loadMap(id) {
           let alt = o.area + ':' + o.name;
           let radius = 6; // polyline Triangles
 
-          let debugtitle = false;
           let title;
-          if(debugtitle){
+          if(settings.buildMode){
             // Ensure the object name is unique
             title = titles[title] ? alt : o.name;
             titles[title] = title;
@@ -619,7 +634,7 @@ function loadMap(id) {
             title += ` [${o.cost} ${price_types[price_type]}${o.cost != 1 && price_type != 5 ? 's':''}]`  // No s on plural of scrap
           }
 
-          if(debugtitle) {
+          if(settings.buildMode) {
             // Add the type
             title += ' of ' + o.type;
           } else {

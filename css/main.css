@@ -48,10 +48,22 @@ path[alt=''] { opacity: 100% }
   font-weight: bold;
 }
 
+.marker-popup-col { display: inline-block; width: 60px; font-weight: bold }
+
 .marker-popup-text {
   
 }
 
+.marker-popup-found {
+  background-color: lightblue;
+  text-color: black;
+  text-align: center;
+  font-weight: bold;
+}
 .marker-popup-footnote {
+  font-size: .75em;
+}
+
+.marker-popup-debug {
   font-size: .75em;
 }

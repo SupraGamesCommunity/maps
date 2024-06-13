@@ -1967,8 +1967,7 @@
     "lng": -14.856106758117676,
     "alt": -208.23614501953125,
     "yt_video": "ReN380PXV-A",
-    "yt_start": "882",
-    "cost": 36
+    "yt_start": "882"
   },
   {
     "name": "BuyForceBeamGold",
@@ -2310,9 +2309,7 @@
     "area": "Map",
     "lat": 9486.4990234375,
     "lng": 17819.99609375,
-    "alt": 589.0853271484375,
-    "cost": 6,
-    "price_type": 7
+    "alt": 589.0853271484375
   },
   {
     "name": "BuySword_695",
@@ -10752,8 +10749,7 @@
     "lng": -20585.35546875,
     "alt": -1591.1373291015625,
     "yt_video": "FNZt6RPxqLo",
-    "yt_start": "460",
-    "variant": "spy-glasses"
+    "yt_start": "460"
   },
   {
     "name": "DeadHero2Link",
@@ -10763,8 +10759,7 @@
     "lng": 4564.794921875,
     "alt": -2384.99853515625,
     "yt_video": "FNZt6RPxqLo",
-    "yt_start": "256",
-    "variant": "adventure-kid"
+    "yt_start": "256"
   },
   {
     "name": "DeadHero3Heman",
@@ -10774,8 +10769,7 @@
     "lng": 15613.9072265625,
     "alt": 1111.8966064453125,
     "yt_video": "FNZt6RPxqLo",
-    "yt_start": "5",
-    "variant": "him-guy"
+    "yt_start": "5"
   },
   {
     "name": "DeadHero3Pokemon",
@@ -10785,8 +10779,7 @@
     "lng": -55477.125,
     "alt": -992.7392578125,
     "yt_video": "FNZt6RPxqLo",
-    "yt_start": "45",
-    "variant": "catch-hat"
+    "yt_start": "45"
   },
   {
     "name": "DeadHero4Picard",
@@ -10796,8 +10789,7 @@
     "lng": -2318.379638671875,
     "alt": 4676.68994140625,
     "yt_video": "FNZt6RPxqLo",
-    "yt_start": "552",
-    "variant": "commander"
+    "yt_start": "552"
   },
   {
     "name": "DeadHero4Santa",
@@ -10807,8 +10799,7 @@
     "lng": -18197.59765625,
     "alt": 1653.1673583984375,
     "yt_video": "FNZt6RPxqLo",
-    "yt_start": "195",
-    "variant": "santa"
+    "yt_start": "195"
   },
   {
     "name": "DeadHero4Santa2",
@@ -10818,8 +10809,7 @@
     "lng": -12555.7216796875,
     "alt": -2097.4404296875,
     "yt_video": "FNZt6RPxqLo",
-    "yt_start": "229",
-    "variant": "vault-toy"
+    "yt_start": "229"
   },
   {
     "name": "DeadHero4Santa3",
@@ -10829,8 +10819,7 @@
     "lng": 79090.609375,
     "alt": 3173.107421875,
     "yt_video": "FNZt6RPxqLo",
-    "yt_start": "614",
-    "variant": "hans-yolo"
+    "yt_start": "614"
   },
   {
     "name": "DeadHero_3",
@@ -10840,8 +10829,7 @@
     "lng": 19217.87890625,
     "alt": 1954.299560546875,
     "yt_video": "FNZt6RPxqLo",
-    "yt_start": "335",
-    "variant": "magic-boy"
+    "yt_start": "335"
   },
   {
     "name": "DeadHeroGoku",
@@ -10851,8 +10839,7 @@
     "lng": 54035.484375,
     "alt": 3155.189697265625,
     "yt_video": "FNZt6RPxqLo",
-    "yt_start": "392",
-    "variant": "power-hair"
+    "yt_start": "392"
   },
   {
     "name": "DeadHeroGuybrush",
@@ -10862,8 +10849,7 @@
     "lng": -23258.443359375,
     "alt": -1600.89990234375,
     "yt_video": "FNZt6RPxqLo",
-    "yt_start": "102",
-    "variant": "murray"
+    "yt_start": "102"
   },
   {
     "name": "DeadHeroIndy",
@@ -10873,8 +10859,7 @@
     "lng": 21980.921875,
     "alt": 163.25143432617188,
     "yt_video": "FNZt6RPxqLo",
-    "yt_start": "372",
-    "variant": "adventure-hat"
+    "yt_start": "372"
   },
   {
     "name": "DestroyablePots2",
@@ -14309,9 +14294,7 @@
     "area": "Map",
     "lat": 3312.6201171875,
     "lng": -5619.06591796875,
-    "alt": -1384.2301025390625,
-    "spawns": "BP_DoubleHealthLoot_C",
-    "variant": "red"
+    "alt": -1384.2301025390625
   },
   {
     "name": "Juicer3",
@@ -14321,9 +14304,7 @@
     "lng": -4023.167236328125,
     "alt": 127.11111450195312,
     "yt_video": "nWigHgcWFCE",
-    "yt_start": "371",
-    "spawns": "_BuyHealth+10_C",
-    "variant": "green"
+    "yt_start": "371"
   },
   {
     "name": "Juicer_286",
@@ -14333,9 +14314,7 @@
     "lng": -63200.2578125,
     "alt": 455.5135803222656,
     "yt_video": "ReN380PXV-A",
-    "yt_start": "14321",
-    "spawns": "BP_A3_StrengthQuest_C",
-    "variant": "yellow"
+    "yt_start": "14321"
   },
   {
     "name": "Jumppad10",
