@@ -64,6 +64,30 @@ var maps = {
    },
 };
 
+function isObject(item) {
+  return (item && typeof item === 'object' && !Array.isArray(item));
+}
+
+function mergeDeep(target, ...sources) {
+  if (!sources.length) return target;
+  const source = sources.shift();
+
+  if (isObject(target) && isObject(source)) {
+    for (const key in source) {
+      if (isObject(source[key])) {
+        if (!target[key])
+          Object.assign(target, { [key]: {} });
+        mergeDeep(target[key], source[key]);
+      } else {
+        Object.assign(target, { [key]: source[key] });
+      }
+    }
+  }
+
+  return mergeDeep(target, ...sources);
+}
+
+
 // Save the local state data we track to the window local storage
 function saveSettings() {
   localStorage.setItem(localDataName, JSON.stringify(localData));
@@ -524,12 +548,27 @@ function loadMap(id) {
   }
 
   function loadMarkers() {
-    fetch('data/markers.'+mapId+'.json')
-      .then((response) => response.json())
-      .then((j) => {
+    Promise.all([
+        fetch(`data/markers.${mapId}.json`),
+        fetch(`data/custom-markers.${mapId}.json`)])
+      .then(res => Promise.all(res.map(r => r.json())) )
+      .then(([j, cmj]) => {
         let titles = {};
         objects = {};
         coin2stack = {};
+
+        // Build a look up table from alt id to objects 
+        for(let o of j){
+          let id = o.area + ':' + o.name;
+          objects[id] = o;
+        }
+
+        // Merge the custom markers into the base objects
+        for(let co of cmj){
+          let alt = co.area + ':' + co.name;
+          let o = objects[alt];
+          mergeDeep(o, co);
+        }
 
         let enabledLayers = layerConfigs.getEnabledLayers(mapId) 
         for(let o of j) {
@@ -542,12 +581,9 @@ function loadMap(id) {
 
           let c = gameClasses[o.type] || defaultGameClass;
           let text = ''; // Set it on demand in onPopupOpen (as it's potentially slow for now)
-          let alt = o.area + ':' + o.name
+          let alt = o.area + ':' + o.name;
           let title = o.name;
           let radius = 6; // polyline Triangles
-
-          // Collect objects for cross-reference in save file loading
-          objects[alt] = o;
 
           // can't have duplicate titles in search (loses items) clarify duplicate titles
           title = titles[title] ? alt : title;
