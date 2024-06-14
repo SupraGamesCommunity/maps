@@ -113,212 +113,212 @@
   },  
   {
     "name": "Jumppad7",
-    "type": "Jumppad_FT",
+    "type": "FT:Jumppad_C",
     "area": "Map"
   },
   {
     "name": "Jumppad8",
-    "type": "Jumppad_FT",
+    "type": "FT:Jumppad_C",
     "area": "Map"
   },
   {
     "name": "Jumppad23_3162",
-    "type": "Jumppad_FT",
+    "type": "FT:Jumppad_C",
     "area": "Map"
   },
   {
     "name": "Jumppad24",
-    "type": "Jumppad_FT",
+    "type": "FT:Jumppad_C",
     "area": "Map"
   },
   {
     "name": "Jumppad26",
-    "type": "Jumppad_FT",
+    "type": "FT:Jumppad_C",
     "area": "Map"
   },
   {
     "name": "Jumppad35",
-    "type": "Jumppad_FT",
+    "type": "FT:Jumppad_C",
     "area": "Map"
   },
   {
     "name": "Jumppad43_2",
-    "type": "Jumppad_FT",
+    "type": "FT:Jumppad_C",
     "area": "Map"
   },
   {
     "name": "Jumppad44",
-    "type": "Jumppad_FT",
+    "type": "FT:Jumppad_C",
     "area": "Map"
   },
   {
     "name": "Jumppad45",
-    "type": "Jumppad_FT",
+    "type": "FT:Jumppad_C",
     "area": "Map"
   },
   {
     "name": "Jumppad59_1564",
-    "type": "Jumppad_FT",
+    "type": "FT:Jumppad_C",
     "area": "Map"
   },
   {
     "name": "Jumppad61",
-    "type": "Jumppad_FT",
+    "type": "FT:Jumppad_C",
     "area": "Map"
   },
   {
     "name": "Jumppad72",
-    "type": "Jumppad_FT",
+    "type": "FT:Jumppad_C",
     "area": "Map"
   },
   {
     "name": "Jumppad73",
-    "type": "Jumppad_FT",
+    "type": "FT:Jumppad_C",
     "area": "Map"
   },
   {
     "name": "Jumppad83",
-    "type": "Jumppad_FT",
+    "type": "FT:Jumppad_C",
     "area": "Map"
   },
   {
     "name": "Jumppad85",
-    "type": "Jumppad_FT",
+    "type": "FT:Jumppad_C",
     "area": "Map"
   },
   {
     "name": "Jumppad89",
-    "type": "Jumppad_FT",
+    "type": "FT:Jumppad_C",
     "area": "Map"
   },
   {
     "name": "Jumppad90",
-    "type": "Jumppad_FT",
+    "type": "FT:Jumppad_C",
     "area": "Map"
   },
   {
     "name": "Jumppad91",
-    "type": "Jumppad_FT",
+    "type": "FT:Jumppad_C",
     "area": "Map"
   },
   {
     "name": "Jumppad96",
-    "type": "Jumppad_FT",
+    "type": "FT:Jumppad_C",
     "area": "Map"
   },
   {
     "name": "Jumppad97",
-    "type": "Jumppad_FT",
+    "type": "FT:Jumppad_C",
     "area": "Map"
   },
   {
     "name": "Jumppad2_49",
-    "type": "Jumppad_FT",
+    "type": "FT:Jumppad_C",
     "area": "Map"
   },
   {
     "name": "Jumppad_266",
-    "type": "Jumppad_FT",
+    "type": "FT:Jumppad_C",
     "area": "Map"
   },
   {
     "name": "Jumppad13_972",
-    "type": "Jumppad_FT",
+    "type": "FT:Jumppad_C",
     "area": "Map"
   },
   {
     "name": "Jumppad14_7215",
-    "type": "Jumppad_FT",
+    "type": "FT:Jumppad_C",
     "area": "Map"
   },
   {
     "name": "PipesystemNew21_1352",
-    "type": "Pipesystem_FT",
+    "type": "FT:Pipesystem_C",
     "area": "Map"
   },
   {
     "name": "PipesystemNew22",
-    "type": "Pipesystem_FT",
+    "type": "FT:Pipesystem_C",
     "area": "Map"
   },
   {
     "name": "PipesystemNew23",
-    "type": "Pipesystem_FT",
+    "type": "FT:Pipesystem_C",
     "area": "Map"
   },
   {
     "name": "PipesystemNew24",
-    "type": "Pipesystem_FT",
+    "type": "FT:Pipesystem_C",
     "area": "Map"
   },
   {
     "name": "PipesystemNew27",
-    "type": "Pipesystem_FT",
+    "type": "FT:Pipesystem_C",
     "area": "Map"
   },
   {
     "name": "PipesystemNew28",
-    "type": "Pipesystem_FT",
+    "type": "FT:Pipesystem_C",
     "area": "Map"
   },
   {
     "name": "PipesystemNew32",
-    "type": "Pipesystem_FT",
+    "type": "FT:Pipesystem_C",
     "area": "Map"
   },
   {
     "name": "PipesystemNew33",
-    "type": "Pipesystem_FT",
+    "type": "FT:Pipesystem_C",
     "area": "Map"
   },
   {
     "name": "PipesystemNew34",
-    "type": "Pipesystem_FT",
+    "type": "FT:Pipesystem_C",
     "area": "Map"
   },
   {
     "name": "PipesystemNew35",
-    "type": "Pipesystem_FT",
+    "type": "FT:Pipesystem_C",
     "area": "Map"
   },
   {
     "name": "PipesystemNew36",
-    "type": "Pipesystem_FT",
+    "type": "FT:Pipesystem_C",
     "area": "Map"
   },
   {
     "name": "PipesystemNew37",
-    "type": "Pipesystem_FT",
+    "type": "FT:Pipesystem_C",
     "area": "Map"
   },
   {
     "name": "PipesystemNew40",
-    "type": "Pipesystem_FT",
+    "type": "FT:Pipesystem_C",
     "area": "Map"
   },
   {
     "name": "PipesystemNew41",
-    "type": "Pipesystem_FT",
+    "type": "FT:Pipesystem_C",
     "area": "Map"
   },
   {
     "name": "PipesystemNew48",
-    "type": "Pipesystem_FT",
+    "type": "FT:Pipesystem_C",
     "area": "Map"
   },
   {
     "name": "PipesystemNew49",
-    "type": "Pipesystem_FT",
+    "type": "FT:Pipesystem_C",
     "area": "Map"
   },
   {
     "name": "PipesystemNew52",
-    "type": "Pipesystem_FT",
+    "type": "FT:Pipesystem_C",
     "area": "Map"
   },
   {
     "name": "PipesystemNew53",
-    "type": "Pipesystem_FT",
+    "type": "FT:Pipesystem_C",
     "area": "Map"
   }
 ]

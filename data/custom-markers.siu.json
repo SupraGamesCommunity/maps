@@ -77,87 +77,87 @@
   },
   {
     "name": "Jumppad30_2",
-    "type": "Jumppad_FT",
+    "type": "FT:Jumppad_C",
     "area": "DLC2_Complete"
   },
   {
     "name": "Area1_FastTravelPipe",
-    "type": "Pipesystem_FT",
+    "type": "FT:Pipesystem_C",
     "area": "DLC2_Complete"
   },
   {
     "name": "Area2ShortcutPipe",
-    "type": "Pipesystem_FT",
+    "type": "FT:Pipesystem_C",
     "area": "DLC2_Complete"
   },
   {
     "name": "DLC3_upstairsPipe",
-    "type": "Pipesystem_FT",
+    "type": "FT:Pipesystem_C",
     "area": "DLC2_Complete"
   },
   {
     "name": "Pipesystem_Area4",
-    "type": "Pipesystem_FT",
+    "type": "FT:Pipesystem_C",
     "area": "DLC2_Complete"
   },
   {
     "name": "PipesystemNewDLC_BathToSecretLavaAreaToBath1",
-    "type": "Pipesystem_FT",
+    "type": "FT:Pipesystem_C",
     "area": "DLC2_Complete"
   },
   {
     "name": "PipesystemNewDLC_BathToSecretLavaAreaToBath2",
-    "type": "Pipesystem_FT",
+    "type": "FT:Pipesystem_C",
     "area": "DLC2_SecretLavaArea"
   },
   {
     "name": "PipesystemNewDLC_FastTravelLavaToBeam1",
-    "type": "Pipesystem_FT",
+    "type": "FT:Pipesystem_C",
     "area": "DLC2_SecretLavaArea"
   },
   {
     "name": "PipesystemNewDLC_FastTravelLavaToBeam2",
-    "type": "Pipesystem_FT",
+    "type": "FT:Pipesystem_C",
     "area": "DLC2_SecretLavaArea"
   },
   {
     "name": "PipeToArea1",
-    "type": "Pipesystem_FT",
+    "type": "FT:Pipesystem_C",
     "area": "DLC2_Complete"
   },
   {
     "name": "PipeToArea2",
-    "type": "Pipesystem_FT",
+    "type": "FT:Pipesystem_C",
     "area": "DLC2_Complete"
   },
   {
     "name": "PipeToArea3",
-    "type": "Pipesystem_FT",
+    "type": "FT:Pipesystem_C",
     "area": "DLC2_Complete"
   },
   {
     "name": "PipeToArea4",
-    "type": "Pipesystem_FT",
+    "type": "FT:Pipesystem_C",
     "area": "DLC2_Complete"
   },
   {
     "name": "PipeToAreaBoss2",
-    "type": "Pipesystem_FT",
+    "type": "FT:Pipesystem_C",
     "area": "DLC2_Complete"
   },
   {
     "name": "PipeToAreaSpecial",
-    "type": "Pipesystem_FT",
+    "type": "FT:Pipesystem_C",
     "area": "DLC2_Complete"
   },
   {
     "name": "PipesystemNewDLC_CombatExitPipe",
-    "type": "Pipesystem_FT",
+    "type": "FT:Pipesystem_C",
     "area": "DLC2_Complete"
   },
   {
     "name": "RainbowTownShortcutPipe",
-    "type": "Pipesystem_FT",
+    "type": "FT:Pipesystem_C",
     "area": "DLC2_Complete"
   }
 ]

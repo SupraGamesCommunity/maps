@@ -27,113 +27,113 @@
   },
   {
     "name": "BuySwordDoorKnocker_2",
-    "type": "BuySwordDoorKnocker_CGONE",
+    "type": "Hide:BuySwordDoorKnocker_C",
     "area": "Crash"
   },
   {
     "name": "BuyTranslocator_2",
-    "type": "BuyTranslocator_CGONE",
+    "type": "Hide:BuyTranslocator_C",
     "area": "Crash"
   },
   {
     "name": "BuyGunAlt3_2",
-    "type": "BuyGunAlt_CGONE",
+    "type": "Hide:BuyGunAlt_C",
     "area": "Crash"
   },
   {
     "name": "BuyGunAlt_2",
-    "type": "BuyGunAlt_CGONE",
+    "type": "Hide:BuyGunAlt_C",
     "area": "Crash"
   },
   {
     "name": "BuyForceBeam2_2",
-    "type": "BuyForceBeam_CGONE",
+    "type": "Hide:BuyForceBeam_C",
     "area": "Crash"
   },
   {
     "name": "BuySword2_2",
-    "type": "BuySword2_CGONE",
+    "type": "Hide:BuySword2_C",
     "area": "Crash"
   },
   {
     "name": "BuyBelt_2",
-    "type": "BuyBelt_CGONE",
+    "type": "Hide:BuyBelt_C",
     "area": "Crash"
   },
   {
     "name": "BuyForceBeam3_2",
-    "type": "BuyForceBeam_CGONE",
+    "type": "Hide:BuyForceBeam_C",
     "area": "Crash"
   },
 
   {
     "name": "Scrap177_2",
-    "type": "Scrap_CGONE",
+    "type": "Hide:Scrap_C",
     "area": "Crash"
   },
   {
     "name": "Scrap178",
-    "type": "Scrap_CGONE",
+    "type": "Hide:Scrap_C",
     "area": "Crash"
   },
   {
     "name": "Scrap179",
-    "type": "Scrap_CGONE",
+    "type": "Hide:Scrap_C",
     "area": "Crash"
   },
   {
     "name": "Scrap180",
-    "type": "Scrap_CGONE",
+    "type": "Hide:Scrap_C",
     "area": "Crash"
   },
   {
     "name": "Scrap181_9",
-    "type": "Scrap_CGONE",
+    "type": "Hide:Scrap_C",
     "area": "Crash"
   },
   {
     "name": "Scrap182_11",
-    "type": "Scrap_CGONE",
+    "type": "Hide:Scrap_C",
     "area": "Crash"
   },
   {
     "name": "Scrap183",
-    "type": "Scrap_CGONE",
+    "type": "Hide:Scrap_C",
     "area": "Crash"
   },
   {
     "name": "Scrap184",
-    "type": "Scrap_CGONE",
+    "type": "Hide:Scrap_C",
     "area": "Crash"
   },
   {
     "name": "Scrap185",
-    "type": "Scrap_CGONE",
+    "type": "Hide:Scrap_C",
     "area": "Crash"
   },
   {
     "name": "Scrap186",
-    "type": "Scrap_CGONE",
+    "type": "Hide:Scrap_C",
     "area": "Crash"
   },
   {
     "name": "Scrap187",
-    "type": "Scrap_CGONE",
+    "type": "Hide:Scrap_C",
     "area": "Crash"
   },
   {
     "name": "Scrap188",
-    "type": "Scrap_CGONE",
+    "type": "Hide:Scrap_C",
     "area": "Crash"
   },
   {
     "name": "Scrap189",
-    "type": "Scrap_CGONE",
+    "type": "Hide:Scrap_C",
     "area": "Crash"
   },
   {
     "name": "Scrap190",
-    "type": "Scrap_CGONE",
+    "type": "Hide:Scrap_C",
     "area": "Crash"
   },
   {
@@ -210,47 +210,47 @@
   },
   {
     "name": "Jumppad3",
-    "type": "Jumppad_FT",
+    "type": "FT:Jumppad_C",
     "area": "Crash"
   },
   {
     "name": "Jumppad4",
-    "type": "Jumppad_FT",
+    "type": "FT:Jumppad_C",
     "area": "Crash"
   },
   {
     "name": "Jumppad21",
-    "type": "Jumppad_FT",
+    "type": "FT:Jumppad_C",
     "area": "Crash"
   },
   {
     "name": "Jumppad23_2",
-    "type": "Jumppad_FT",
+    "type": "FT:Jumppad_C",
     "area": "Crash"
   },
   {
     "name": "Jumppad24",
-    "type": "Jumppad_FT",
+    "type": "FT:Jumppad_C",
     "area": "Crash"
   },
   {
     "name": "Jumppad25",
-    "type": "Jumppad_FT",
+    "type": "FT:Jumppad_C",
     "area": "Crash"
   },
   {
     "name": "Jumppad26",
-    "type": "Jumppad_FT",
+    "type": "FT:Jumppad_C",
     "area": "Crash"
   },
   {
     "name": "Jumppad34_2",
-    "type": "Jumppad_FT",
+    "type": "FT:Jumppad_C",
     "area": "Crash"
   },
   {
     "name": "Jumppad35",
-    "type": "Jumppad_FT",
+    "type": "FT:Jumppad_C",
     "area": "Crash"
   }
 ]
