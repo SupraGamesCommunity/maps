@@ -2,7 +2,12 @@
   {
     "name": "BP_MonsterChest2_2",
     "area": "DLC2_Complete",
-    "spawns": "BuyEnemiesLoot_C"
+    "spawns": "BuyShowHealthbar_C"
+  },
+  {
+    "name": "BP_BuyHealthRegenMax1",
+    "area": "DLC2_Complete",
+    "friendly": "Regeneration Ceiling +1"
   },
   {
     "name": "BP_MonsterChest3_2",

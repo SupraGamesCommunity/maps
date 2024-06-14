@@ -589,7 +589,7 @@
     "name": "ChestArea3",
     "area": "DLC2_Complete",
     "yt_video": "5KkEVBgFW3U",
-    "yt_start": "8552"
+    "yt_start": "8653"
   },
   {
     "name": "ChestArea3_21",
@@ -601,13 +601,13 @@
     "name": "ChestArea3_22",
     "area": "DLC2_Complete",
     "yt_video": "5KkEVBgFW3U",
-    "yt_start": "8552"
+    "yt_start": "8679"
   },
   {
     "name": "ChestArea3_23",
     "area": "DLC2_Complete",
     "yt_video": "5KkEVBgFW3U",
-    "yt_start": "8552"
+    "yt_start": "8664"
   },
   {
     "name": "ChestArea3_25",
@@ -955,10 +955,109 @@
     "name": "Purchase_WoodPickaxe_2",
     "area": "DLC2_Complete",
     "yt_video": "5KkEVBgFW3U",
-    "yt_start": "416"
+    "yt_start": "619"
+  },
+  {
+    "name": "Scrap177_2",
+    "type": "Scrap_C",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "9441"
+  },
+  {
+    "name": "Scrap178",
+    "type": "Scrap_C",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "9441"
+  },
+  {
+    "name": "Scrap179",
+    "type": "Scrap_C",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "9441"
+  },
+  {
+    "name": "Scrap180",
+    "type": "Scrap_C",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "9441"
+  },
+  {
+    "name": "Scrap181_9",
+    "type": "Scrap_C",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "9441"
   },
   {
     "name": "Scrap182_11",
+    "type": "Scrap_C",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "9441"
+  },
+  {
+    "name": "Scrap183",
+    "type": "Scrap_C",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "9441"
+  },
+  {
+    "name": "Scrap184",
+    "type": "Scrap_C",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "9441"
+  },
+  {
+    "name": "Scrap185",
+    "type": "Scrap_C",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "9441"
+  },
+  {
+    "name": "Scrap186",
+    "type": "Scrap_C",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "9441"
+  },
+  {
+    "name": "Scrap187",
+    "type": "Scrap_C",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "9441"
+  },
+  {
+    "name": "Scrap188",
+    "type": "Scrap_C",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "9441"
+  },
+  {
+    "name": "Scrap189",
+    "type": "Scrap_C",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "9441"
+  },
+  {
+    "name": "Scrap190",
+    "type": "Scrap_C",
+    "area": "DLC2_Complete",
+    "yt_video": "5KkEVBgFW3U",
+    "yt_start": "9441"
+  },
+  {
+    "name": "Scrap_2",
+    "type": "Scrap_C",
     "area": "DLC2_Complete",
     "yt_video": "5KkEVBgFW3U",
     "yt_start": "9441"
@@ -979,19 +1078,19 @@
     "name": "Bones_2",
     "area": "DLC2_SecretLavaArea",
     "yt_video": "5KkEVBgFW3U",
-    "yt_start": "10853"
+    "yt_start": "10882"
   },
   {
     "name": "Chest2_2",
     "area": "DLC2_SecretLavaArea",
     "yt_video": "5KkEVBgFW3U",
-    "yt_start": "10855"
+    "yt_start": "10877"
   },
   {
     "name": "Chest3",
     "area": "DLC2_SecretLavaArea",
     "yt_video": "5KkEVBgFW3U",
-    "yt_start": "10855"
+    "yt_start": "10877"
   },
   {
     "name": "Chest4_2",
