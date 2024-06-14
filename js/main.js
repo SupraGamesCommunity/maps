@@ -504,7 +504,7 @@ function loadMap(id) {
     if(o.variant) {
       text += `<br><span class="marker-popup-col">Variant:</span>${o.variant}`;
     }
-    text += `<br><span class="marker-popup-col">XY Pos:</span>(${o.lng.toFixed(0)}, ${o.lat.toFixed(0)})`
+    text += `<br><span class="marker-popup-col">XYZ pos:</span>(${o.lng.toFixed(0)}, ${o.lat.toFixed(0)}, ${o.alt.toFixed(0)})`
     text += '<br><br></div>'
 
     if(o.yt_video) {
