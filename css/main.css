@@ -22,7 +22,6 @@ path[alt=''] { opacity: 100% }
 
 .leaflet-control-search .search-tip {
   margin: 1px;
-  border-radius: 45px;
 }
 
 .search-tip-select {
