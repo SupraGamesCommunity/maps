@@ -10,7 +10,7 @@
 
 All credit for these amazing games goes to [David Münnich](http://www.david-m.org) and the [Supra Games Team](https://store.steampowered.com/developer/SupraGames).  
 Original maps and data created by [Supra Games Community](https://github.com/supragamescommunity).  
-Complete rewrite based on game data extraction and merge of 3 maps by Joric (https://github.com/joric/supraland).  
+Complete rewrite based on game data extraction and merge of [3 maps by Joric](https://github.com/joric/supraland).  
 Fork of Joric's map to SupraMaps project and tweaks to finish in preparation for Supra World by [Supra Games Community](https://github.com/SupraGamesCommunity/).  
 
 ### Credits
