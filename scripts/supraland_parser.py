@@ -336,7 +336,7 @@ def calc_pads(data):
     # traces parabolic path and find z of an intersection with a plane defined by 3 closest points
 
     #allowed_points = lambda o: True # not recommended, bugs with coins, etc.
-    allowed_points = lambda o: o['type'] not in ('Coin_C') # testing
+    allowed_points = lambda o: o['type'] not in ('Coin_C', 'BP_TriggerVolume_C', 'Button_C', 'Door_C', 'Chest_C') # testing
     #allowed_points = lambda o: o['type'] in ('Jumppad_C') # jump pads only
 
     points = [(o['lng'], o['lat'], o['alt']) for o in data if allowed_points(o)]
@@ -348,10 +348,14 @@ def calc_pads(data):
         return
 
     tree = KDTree(points)
+    jumppads = []
+    matches = {};
 
     for i,o in enumerate(data):
         if o['type'] != 'Jumppad_C':
             continue
+        jumppads.append(o)
+        matches[':'.join((o['area'], o['name']))] = {'obj': o, 'targets': []}
 
         x,y,z = o['lng'],o['lat'],o['alt']
         k = o.get('relative_velocity', 1000)
@@ -396,6 +400,69 @@ def calc_pads(data):
 
         #print('pad', o['name'], 'velocity', vx,vy,vz, 'target', x,y,z)
         data[i].update({'target':{'x':x, 'y':y, 'z': z}})
+
+    # Now we try to find pairs of jumppads. For each jump pad, find all the other jumppads close to the target
+    # If two jumppads are both in each other's lists then we can consider merging
+
+    def getdir(o):
+        v = o.get('direction',{'x':0,'y':0,'z':0})
+        vx = -v['x']
+        vy = -v['y']
+        vz =  v['z']
+
+        if (v:=o.get('velocity')) and o.get('allow_stomp'):
+            vx = v['x']
+            vy = v['y']
+            vz = v['z']
+        return Vector((vx, vy, vz)).normalized()
+
+    for o in jumppads:
+        if abs(getdir(o).z) > 0.99: continue
+
+        ov = Vector((o['lng'], o['lat'], 0));
+        otv = Vector((o['target']['x'], o['target']['y'], 0));
+        do = (otv - ov).normalized()
+
+        tdist = (otv - ov).length    # Distance between object and its target
+
+        for tj in jumppads:
+            if tj is o: continue 
+            if abs(getdir(tj).z) > 0.99: continue
+
+            jv = Vector((tj['lng'], tj['lat'], 0))
+            jtv = Vector((tj['target']['x'], tj['target']['y'], 0));
+            dt = (jtv - jv).normalized()
+
+            no2j = (jv - ov).normalized();
+            dist = (otv - jv).length;            # distance between target and prospective match
+
+            # Distance threshold is compared to the distance between the pads
+            # Check that the pads are pointing in opposite directions
+            # And that the pads are facing each other (rather than opposite directions)
+            if dist < 0.3 * tdist and do.dot(dt) < -0.98 and no2j.dot(do) > 0.97 and no2j.dot(dt) < -0.97:
+                #print(o['name'], tj['name'], do.dot(dt), no2j.dot(do), no2j.dot(-dt), round(dist/tdist,2))
+                alt = ':'.join((o['area'], o['name']))
+                matches[alt]['targets'].append(tj)
+
+    plist = {}
+    for m in matches.values():
+        o = m['obj']
+        for t in m['targets']:
+            if t is o:
+                continue
+            alt = ':'.join((t['area'], t['name']))
+            for tt in matches[alt]['targets']:
+                if tt is o:
+                    if not plist.get(o['name']) and not plist.get(t['name']):
+                        plist[o['name']] = t['name']
+                        o['target']['x'] = t['lng']
+                        o['target']['y'] = t['lat']
+                        o['target']['z'] = t['alt']
+                        t['target']['x'] = o['lng']
+                        t['target']['y'] = o['lat']
+                        t['target']['z'] = o['alt']
+                        print(f'Merging Jumppads {o['name']} and {t['name']}')
+
 
 def get_z(x, y, triangle):
     v1, v2, v3 = triangle
