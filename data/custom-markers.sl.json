@@ -22,83 +22,96 @@
     "area": "Map",
     "variant": "spy-glasses",
     "yt_video": "FNZt6RPxqLo",
-    "yt_start": "460"
+    "yt_start": "460",
+    "friendly": "Spy glasses"
   },
   {
     "name": "DeadHero2Link",
     "area": "Map",
     "variant": "adventure-kid",
     "yt_video": "FNZt6RPxqLo",
-    "yt_start": "256"  },
+    "yt_start": "256",
+    "friendly": "Spy glasses"
+  },
   {
     "name": "DeadHero3Heman",
     "area": "Map",
     "variant": "him-guy",
     "yt_video": "FNZt6RPxqLo",
-    "yt_start": "5"
+    "yt_start": "5",
+    "friendly": "Hair of Him-Guy"
   },
   {
     "name": "DeadHero3Pokemon",
     "area": "Map",
     "variant": "catch-hat",
     "yt_video": "FNZt6RPxqLo",
-    "yt_start": "45"
+    "yt_start": "45",
+    "friendly": "Catch-Hat"
   },
   {
     "name": "DeadHero4Picard",
     "area": "Map",
     "variant": "commander",
     "yt_video": "FNZt6RPxqLo",
-    "yt_start": "552"
+    "yt_start": "552",
+    "friendly": "Space commander toy"
   },
   {
     "name": "DeadHero4Santa",
     "area": "Map",
     "variant": "santa",
     "yt_video": "FNZt6RPxqLo",
-    "yt_start": "195"
+    "yt_start": "195",
+    "friendly": "Hat and fake beard"
   },
   {
     "name": "DeadHero4Santa2",
     "area": "Map",
     "variant": "vault-toy",
     "yt_video": "FNZt6RPxqLo",
-    "yt_start": "229"
+    "yt_start": "229",
+    "friendly": "Vault Toy"
   },
   {
     "name": "DeadHero4Santa3",
     "area": "Map",
     "variant": "hans-yolo",
     "yt_video": "FNZt6RPxqLo",
-    "yt_start": "614"
+    "yt_start": "614",
+    "friendly": "Hans Yolo"
   },
   {
     "name": "DeadHero_3",
     "area": "Map",
     "variant": "magic-boy",
     "yt_video": "FNZt6RPxqLo",
-    "yt_start": "335"
+    "yt_start": "335",
+    "friendly": "Magic Boy"
   },
   {
     "name": "DeadHeroGoku",
     "area": "Map",
     "variant": "power-hair",
     "yt_video": "FNZt6RPxqLo",
-    "yt_start": "392"
+    "yt_start": "392",
+    "friendly": "Power Hair"
   },
   {
     "name": "DeadHeroGuybrush",
     "area": "Map",
     "variant": "murray",
     "yt_video": "FNZt6RPxqLo",
-    "yt_start": "102"
+    "yt_start": "102",
+    "friendly": "Murray"
   },
   {
     "name": "DeadHeroIndy",
     "area": "Map",
     "variant": "adventure-hat",
     "yt_video": "FNZt6RPxqLo",
-    "yt_start": "372"
+    "yt_start": "372",
+    "friendly": "Adventure Hat"
   },
   {
     "name": "BuyDoubleJump_786",
