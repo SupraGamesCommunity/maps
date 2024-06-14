@@ -16,8 +16,8 @@ class LayerConfig {
 /* exported layerConfigs */
 const layerConfigs = {
     data: new Map([
-        ['pipesys',     new LayerConfig('markers', 'Pipes',          'pipe',          false, ['sl', 'slc', 'siu'])],
-        ['jumppads',    new LayerConfig('markers', 'Pads',           'jumppad',       false, ['sl', 'slc', 'siu'])],
+        ['pipesys',     new LayerConfig('markers', 'Pipes',          'pipe',          false, ['sl',      , 'siu'])],
+        ['jumppads',    new LayerConfig('markers', 'Pads',           'jumppad',       false, ['sl', 'slc',      ])],
         ['closedChest', new LayerConfig('markers', 'Chests',         'chest',         true,  ['sl', 'slc', 'siu'])],
         ['shop',        new LayerConfig('markers', 'Shop',           'shop',          true,  ['sl', 'slc', 'siu'])],
         ['collectable', new LayerConfig('markers', 'Collectables',   'question_mark', true,  ['sl', 'slc', 'siu'])],
@@ -27,6 +27,7 @@ const layerConfigs = {
         ['graves',      new LayerConfig('markers', 'Graves',         'question_mark', false, ['sl'              ])],
         ['coordinate',  new LayerConfig('markers', 'XY',             null,            false, ['sl', 'slc', 'siu'])],
         //['extra',       new LayerConfig('markers', 'Extras',         'question_mark', false, ['sl', 'slc', 'siu'])],
+        //['dev',         new LayerConfig('markers', 'Dev',            'question_mark', false, ['sl', 'slc', 'siu'])],
     ]),
 
     // Initialise any procedural data - store index based on position in Map

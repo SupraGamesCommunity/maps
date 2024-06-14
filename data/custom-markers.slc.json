@@ -18,6 +18,199 @@
     "friendly": "Henrietta"
   },
   {
+    "name": "BP_A3_StrengthQuest_SLC",
+    "type": "BP_A3_StrengthQuest_C",
+    "area": "crash",
+    "lat": -7001.41015625,
+    "lng": 63221.513671875,
+    "alt": 13169.60546875
+  },
+  {
+    "name": "BuySwordDoorKnocker_2",
+    "type": "BuySwordDoorKnocker_CGONE",
+    "area": "Crash",
+    "lat": 2805.856689453125,
+    "lng": 38489.24609375,
+    "alt": -122.82959747314453,
+    "cost": 999
+  },
+  {
+    "name": "BuyTranslocator_2",
+    "type": "BuyTranslocator_CGONE",
+    "area": "Crash",
+    "lat": 2838.224853515625,
+    "lng": 38368.72265625,
+    "alt": -122.61809539794922,
+    "cost": 2999
+  },
+  {
+    "name": "BuyGunAlt3_2",
+    "type": "BuyGunAlt_CGONE",
+    "area": "Crash",
+    "lat": -479.3745422363281,
+    "lng": 44144.2578125,
+    "alt": 177.77708435058594,
+    "cost": 555
+  },
+  {
+    "name": "BuyGunAlt_2",
+    "type": "BuyGunAlt_CGONE",
+    "area": "Crash",
+    "lat": 2830.557373046875,
+    "lng": 38227.96484375,
+    "alt": -82.00233459472656,
+    "cost": 1999
+  },
+  {
+    "name": "BuyForceBeam2_2",
+    "type": "BuyForceBeam_CGONE",
+    "area": "Crash",
+    "lat": 2804.151123046875,
+    "lng": 38120.84765625,
+    "alt": -122.85015869140625,
+    "cost": 2499
+  },
+  {
+    "name": "BuySword2_2",
+    "type": "BuySword2_CGONE",
+    "area": "Crash",
+    "lat": 50.918731689453125,
+    "lng": 44884.0625,
+    "alt": 18.51580047607422,
+    "cost": 555
+  },
+  {
+    "name": "BuyBelt_2",
+    "type": "BuyBelt_CGONE",
+    "area": "Crash",
+    "lat": -225.03927612304688,
+    "lng": 43248.484375,
+    "alt": 107.03009033203125,
+    "cost": 555
+  },
+  {
+    "name": "BuyForceBeam3_2",
+    "type": "BuyForceBeam_CGONE",
+    "area": "Crash",
+    "lat": 825.46630859375,
+    "lng": 41974.7890625,
+    "alt": 122.74449920654297,
+    "cost": 555
+  },
+
+  {
+    "name": "Scrap177_2",
+    "type": "Scrap_CGONE",
+    "area": "Crash",
+    "lat": 6113.7490234375,
+    "lng": 24954.79296875,
+    "alt": -1350.866943359375
+  },
+  {
+    "name": "Scrap178",
+    "type": "Scrap_CGONE",
+    "area": "Crash",
+    "lat": 5962.533203125,
+    "lng": 25042.90234375,
+    "alt": -1344.60302734375
+  },
+  {
+    "name": "Scrap179",
+    "type": "Scrap_CGONE",
+    "area": "Crash",
+    "lat": 6011.43798828125,
+    "lng": 24906.783203125,
+    "alt": -1351.070068359375
+  },
+  {
+    "name": "Scrap180",
+    "type": "Scrap_CGONE",
+    "area": "Crash",
+    "lat": 6059.55224609375,
+    "lng": 24771.931640625,
+    "alt": -1365.494140625
+  },
+  {
+    "name": "Scrap181_9",
+    "type": "Scrap_CGONE",
+    "area": "Crash",
+    "lat": 6055.998046875,
+    "lng": 24850.38671875,
+    "alt": -1351.070068359375
+  },
+  {
+    "name": "Scrap182_11",
+    "type": "Scrap_CGONE",
+    "area": "Crash",
+    "lat": 6097.8876953125,
+    "lng": 24694.93359375,
+    "alt": -1329.55126953125
+  },
+  {
+    "name": "Scrap183",
+    "type": "Scrap_CGONE",
+    "area": "Crash",
+    "lat": 6175.54736328125,
+    "lng": 24794.994140625,
+    "alt": -1334.7962646484375
+  },
+  {
+    "name": "Scrap184",
+    "type": "Scrap_CGONE",
+    "area": "Crash",
+    "lat": 6146.47314453125,
+    "lng": 24874.048828125,
+    "alt": -1351.070068359375
+  },
+  {
+    "name": "Scrap185",
+    "type": "Scrap_CGONE",
+    "area": "Crash",
+    "lat": 6121.21533203125,
+    "lng": 24590.658203125,
+    "alt": -1325.376220703125
+  },
+  {
+    "name": "Scrap186",
+    "type": "Scrap_CGONE",
+    "area": "Crash",
+    "lat": 6199.416015625,
+    "lng": 24676.642578125,
+    "alt": -1311.6981201171875
+  },
+  {
+    "name": "Scrap187",
+    "type": "Scrap_CGONE",
+    "area": "Crash",
+    "lat": 6116.12255859375,
+    "lng": 24341.51953125,
+    "alt": -1294.724609375
+  },
+  {
+    "name": "Scrap188",
+    "type": "Scrap_CGONE",
+    "area": "Crash",
+    "lat": 6145.0302734375,
+    "lng": 24489.16796875,
+    "alt": -1289.858154296875
+  },
+  {
+    "name": "Scrap189",
+    "type": "Scrap_CGONE",
+    "area": "Crash",
+    "lat": 6214.78369140625,
+    "lng": 24580.283203125,
+    "alt": -1325.70068359375
+  },
+  {
+    "name": "Scrap190",
+    "type": "Scrap_CGONE",
+    "area": "Crash",
+    "lat": 6064.02685546875,
+    "lng": 25011.939453125,
+    "alt": -1344.60302734375
+  },
+  {
     "name": "PipesystemNew2",
     "area": "Crash",
     "lat": -13362.640625,
@@ -88,5 +281,140 @@
       "y": 16600.419921875,
       "z": 2474.070068359375
     }
+  },
+  {
+    "name": "Jumppad3",
+    "type": "Jumppad_FT",
+    "area": "Crash",
+    "lat": -3956.05712890625,
+    "lng": 42525.00390625,
+    "alt": 214.08114624023438,
+    "target": {
+      "x": 39032.158850193024,
+      "y": 2093.7543449401855,
+      "z": 82.25937206880559
+    },
+    "linetype": "jumppad_blue",
+    "variant": "blue"
+  },
+  {
+    "name": "Jumppad4",
+    "type": "Jumppad_FT",
+    "area": "Crash",
+    "lat": 2255.711181640625,
+    "lng": 39244.76171875,
+    "alt": 38.915157318115234,
+    "target": {
+      "x": 40819.72864806652,
+      "y": -2179.4074189662933,
+      "z": 709.622071631632
+    },
+    "linetype": "jumppad_blue",
+    "variant": "blue"
+  },
+  {
+    "name": "Jumppad21",
+    "type": "Jumppad_FT",
+    "area": "Crash",
+    "lat": -3948.655517578125,
+    "lng": 63789.046875,
+    "alt": 13585.060546875,
+    "target": {
+      "x": 39310.736275076866,
+      "y": 1807.0895431637764,
+      "z": -54.5680064829872
+    },
+    "linetype": "jumppad_red",
+    "variant": "red"
+  },
+  {
+    "name": "Jumppad23_2",
+    "type": "Jumppad_FT",
+    "area": "Crash",
+    "lat": -4425.12158203125,
+    "lng": 2340.3779296875,
+    "alt": 121.77313232421875,
+    "target": {
+      "x": -1549.0243524312973,
+      "y": 14999.048257112503,
+      "z": 2410.880440656058
+    },
+    "linetype": "jumppad_red",
+    "variant": "red"
+  },
+  {
+    "name": "Jumppad24",
+    "type": "Jumppad_FT",
+    "area": "Crash",
+    "lat": -4052.68701171875,
+    "lng": 4071.03125,
+    "alt": 121.77325439453125,
+    "target": {
+      "x": 10370.625274419785,
+      "y": 13838.641957521311,
+      "z": 2294.2568921967954
+    },
+    "linetype": "jumppad_red",
+    "variant": "red"
+  },
+  {
+    "name": "Jumppad25",
+    "type": "Jumppad_FT",
+    "area": "Crash",
+    "lat": 14826.3271484375,
+    "lng": -2160.57275390625,
+    "alt": 2443.18408203125,
+    "target": {
+      "x": 3027.0063952312607,
+      "y": -4261.263552192198,
+      "z": -12.459569105884228
+    },
+    "linetype": "jumppad_red",
+    "variant": "red"
+  },
+  {
+    "name": "Jumppad26",
+    "type": "Jumppad_FT",
+    "area": "Crash",
+    "lat": 12107.671875,
+    "lng": 11691.7373046875,
+    "alt": 2231.88525390625,
+    "target": {
+      "x": 3403.0975093366305,
+      "y": -3447.5010759114402,
+      "z": 104.19611316542641
+    },
+    "linetype": "jumppad_red",
+    "variant": "red"
+  },
+  {
+    "name": "Jumppad34_2",
+    "type": "Jumppad_FT",
+    "area": "Crash",
+    "lat": -3081.643798828125,
+    "lng": 44590.4140625,
+    "alt": 838.6304321289062,
+    "target": {
+      "x": 1887.0476619005203,
+      "y": -3081.643798828125,
+      "z": 90.21943295054399
+    },
+    "linetype": "jumppad_red",
+    "variant": "red"
+  },
+  {
+    "name": "Jumppad35",
+    "type": "Jumppad_FT",
+    "area": "Crash",
+    "lat": -3077.98388671875,
+    "lng": -2412.840087890625,
+    "alt": 235.77540588378906,
+    "target": {
+      "x": 37692.44174194336,
+      "y": -4182.456672906876,
+      "z": 366.9412826539381
+    },
+    "linetype": "jumppad_red",
+    "variant": "red"
   }
 ]
