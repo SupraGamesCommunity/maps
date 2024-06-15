@@ -507,6 +507,9 @@ function loadMap(id) {
       text += `<br><span class="marker-popup-col">Variant:</span>${o.variant}`;
     }
     text += `<br><span class="marker-popup-col">XYZ pos:</span>(${o.lng.toFixed(0)}, ${o.lat.toFixed(0)}, ${o.alt.toFixed(0)})`
+    if(o.comment) {
+      text += `<br><span class="marker-popup-col">Comment:</span>${o.comment}`;
+    }
     text += '<br><br></div>'
 
     if(o.yt_video) {
