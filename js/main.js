@@ -29,7 +29,7 @@ let mapCenter;
 let mapParam = {};      // Parameters extracted from map URL
 let objects = {};
 let coin2stack = {};    // Map from coin name to coin stack
-let searchControl = {}; // Leaflet control for searching
+let searchControl;      // Leaflet control for searching
 
 let currentMarkerReference;             // Current marker we're editing in Build Mode
 let currentBuildReference;              // Current object we're editing in Build Mode
