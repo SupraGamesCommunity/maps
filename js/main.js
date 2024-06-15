@@ -655,9 +655,14 @@ function loadMap(id) {
 
           let start = 'startpos' in o ? [o.startpos.y, o.startpos.x] : [o.lat, o.lng];
 
-          if(c.nospoiler && enabledLayers[c.nospoiler])
+          // I feel like this is a bit of a hack because it requires awareness of the layer names which
+          // is supposed to be just data but I can't think of a better way to do it.
+          // If an class is marked as shop channel but doesn't have a price in coins, bones or scrap
+          // it wants to be on the collectable layer not the shop layer 
+          nospoiler = c.nospoiler != 'shop' || (o.coins && o.price_type != 7) ? c.nospoiler : 'collectable';
+          if(nospoiler && enabledLayers[nospoiler])
           {
-            const layer = c.nospoiler
+            const layer = nospoiler
             const layerConfig = layerConfigs.get(layer);
             const [icon, size] = decodeIconName(layerConfig.defaultIcon || defaultIcon, mapId, o.variant);
             const zIndexOffset = 10 * layerConfig.index;
