@@ -78,4 +78,29 @@ path[alt=''] { opacity: 100% }
 
 .marker-popup-debug {
   font-size: .75em;
+  word-wrap: break-word;
+}
+
+.line-jumppad {
+  stroke-width: 5;
+}
+.line-jumppad-shadow {
+  stroke-width: 6;
+}
+
+.line-pipe {
+  stroke-width: 5;
+}
+.line-pipe-shadow {
+  stroke-width: 6;
+}
+
+.line-player_aim {
+  stroke-width: 2;
+}
+
+.line-trigger {
+  stroke-width: 5;
+  opacity: 50%;
+  fill-opacity: 50%;
 }

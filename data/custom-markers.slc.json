@@ -24,7 +24,7 @@
     "lat": -7001.41015625,
     "lng": 63221.513671875,
     "alt": 13169.60546875,
-    "comment": "Doesn't save"
+    "comment": "This does not get saved and will not be marked as found when uploading a save file."
   },
   {
     "name": "Bones72_6",
