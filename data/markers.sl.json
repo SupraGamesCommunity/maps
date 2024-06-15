@@ -14328,7 +14328,7 @@
       "y": 43153.69140625,
       "z": -1924.7456597305281
     },
-    "linetype": "jumppad_red",
+    "linetype": "jumppad",
     "variant": "red"
   },
   {
@@ -14343,7 +14343,7 @@
       "y": -38845.474194288254,
       "z": -238.20753923785134
     },
-    "linetype": "jumppad_red",
+    "linetype": "jumppad",
     "variant": "red"
   },
   {
@@ -14358,7 +14358,7 @@
       "y": -930.0,
       "z": -738.9729825451525
     },
-    "linetype": "jumppad_red",
+    "linetype": "jumppad",
     "variant": "red"
   },
   {
@@ -14373,7 +14373,8 @@
       "y": -10152.76953125,
       "z": 267.7165832519531
     },
-    "linetype": "jumppad_red",
+    "twoway": true,
+    "linetype": "jumppad",
     "variant": "red"
   },
   {
@@ -14388,7 +14389,7 @@
       "y": -11788.5810546875,
       "z": 1339.5185546875
     },
-    "linetype": "jumppad_red",
+    "linetype": "jumppad",
     "variant": "red"
   },
   {
@@ -14403,7 +14404,7 @@
       "y": -12672.365786075592,
       "z": -1272.9794668596269
     },
-    "linetype": "jumppad_red",
+    "linetype": "jumppad",
     "variant": "red"
   },
   {
@@ -14418,7 +14419,7 @@
       "y": -26726.357421875,
       "z": 3184.2342674522683
     },
-    "linetype": "jumppad_red",
+    "linetype": "jumppad",
     "variant": "red"
   },
   {
@@ -14433,7 +14434,7 @@
       "y": -24867.41069233419,
       "z": 174.69389135374905
     },
-    "linetype": "jumppad_blue",
+    "linetype": "jumppad",
     "variant": "blue"
   },
   {
@@ -14448,7 +14449,7 @@
       "y": -24097.64678440489,
       "z": -1295.0379147473336
     },
-    "linetype": "jumppad_blue",
+    "linetype": "jumppad",
     "variant": "blue"
   },
   {
@@ -14463,7 +14464,7 @@
       "y": -24569.426456581165,
       "z": 18.313908319505977
     },
-    "linetype": "jumppad_blue",
+    "linetype": "jumppad",
     "variant": "blue"
   },
   {
@@ -14478,7 +14479,7 @@
       "y": -8349.079652130604,
       "z": 5444.113209551239
     },
-    "linetype": "jumppad_red",
+    "linetype": "jumppad",
     "variant": "red"
   },
   {
@@ -14493,7 +14494,7 @@
       "y": 16833.087343255345,
       "z": 1207.6530797208163
     },
-    "linetype": "jumppad_red",
+    "linetype": "jumppad",
     "variant": "red"
   },
   {
@@ -14508,7 +14509,7 @@
       "y": -20527.89453125,
       "z": -558.763455273426
     },
-    "linetype": "jumppad_red",
+    "linetype": "jumppad",
     "variant": "red"
   },
   {
@@ -14523,7 +14524,8 @@
       "y": -33632.13671875,
       "z": -32.774322509765625
     },
-    "linetype": "jumppad_red",
+    "twoway": true,
+    "linetype": "jumppad",
     "variant": "red"
   },
   {
@@ -14538,7 +14540,7 @@
       "y": -38028.48046875,
       "z": 281.1507568359375
     },
-    "linetype": "jumppad_red",
+    "linetype": "jumppad",
     "variant": "red"
   },
   {
@@ -14553,7 +14555,7 @@
       "y": -22155.31758904457,
       "z": 446.51799368120504
     },
-    "linetype": "jumppad_red",
+    "linetype": "jumppad",
     "variant": "red"
   },
   {
@@ -14568,7 +14570,8 @@
       "y": -33811.9609375,
       "z": -219.3920135498047
     },
-    "linetype": "jumppad_blue",
+    "twoway": true,
+    "linetype": "jumppad",
     "variant": "blue"
   },
   {
@@ -14583,7 +14586,7 @@
       "y": -10129.4580078125,
       "z": -686.8130236816099
     },
-    "linetype": "jumppad_blue",
+    "linetype": "jumppad",
     "variant": "blue"
   },
   {
@@ -14598,7 +14601,7 @@
       "y": -28976.1171875,
       "z": 1560.212948056528
     },
-    "linetype": "jumppad_red",
+    "linetype": "jumppad",
     "variant": "red"
   },
   {
@@ -14613,7 +14616,7 @@
       "y": -28636.791015625,
       "z": 613.3996174601723
     },
-    "linetype": "jumppad_red",
+    "linetype": "jumppad",
     "variant": "red"
   },
   {
@@ -14628,7 +14631,8 @@
       "y": -6931.44287109375,
       "z": -446.81304931640625
     },
-    "linetype": "jumppad_blue",
+    "twoway": true,
+    "linetype": "jumppad",
     "variant": "blue"
   },
   {
@@ -14643,7 +14647,7 @@
       "y": -27850.0,
       "z": 577.0840174125864
     },
-    "linetype": "jumppad_red",
+    "linetype": "jumppad",
     "variant": "red"
   },
   {
@@ -14658,7 +14662,7 @@
       "y": -37780.0,
       "z": -1064.616799999986
     },
-    "linetype": "jumppad_blue",
+    "linetype": "jumppad",
     "variant": "blue"
   },
   {
@@ -14673,7 +14677,7 @@
       "y": -42244.360720306635,
       "z": -1345.605628297329
     },
-    "linetype": "jumppad_red",
+    "linetype": "jumppad",
     "variant": "red"
   },
   {
@@ -14688,7 +14692,7 @@
       "y": -28351.198473632336,
       "z": 424.4515617210417
     },
-    "linetype": "jumppad_red",
+    "linetype": "jumppad",
     "variant": "red"
   },
   {
@@ -14703,7 +14707,7 @@
       "y": -38352.16088628769,
       "z": -457.08981941373406
     },
-    "linetype": "jumppad_blue",
+    "linetype": "jumppad",
     "variant": "blue"
   },
   {
@@ -14718,7 +14722,7 @@
       "y": -41676.1171875,
       "z": -498.17327880859375
     },
-    "linetype": "jumppad_blue",
+    "linetype": "jumppad",
     "variant": "blue"
   },
   {
@@ -14733,7 +14737,7 @@
       "y": -29110.439453125,
       "z": -1253.1171450195043
     },
-    "linetype": "jumppad_blue",
+    "linetype": "jumppad",
     "variant": "blue"
   },
   {
@@ -14748,7 +14752,7 @@
       "y": -42703.7109375,
       "z": -437.3605151749278
     },
-    "linetype": "jumppad_red",
+    "linetype": "jumppad",
     "variant": "red"
   },
   {
@@ -14763,7 +14767,7 @@
       "y": -27078.59224280715,
       "z": 112.9784102301732
     },
-    "linetype": "jumppad_red",
+    "linetype": "jumppad",
     "variant": "red"
   },
   {
@@ -14778,7 +14782,7 @@
       "y": 24302.015625,
       "z": 310.8439550001399
     },
-    "linetype": "jumppad_red",
+    "linetype": "jumppad",
     "variant": "red"
   },
   {
@@ -14793,7 +14797,7 @@
       "y": -26071.716796875,
       "z": -702.7775302734125
     },
-    "linetype": "jumppad_blue",
+    "linetype": "jumppad",
     "variant": "blue"
   },
   {
@@ -14808,7 +14812,7 @@
       "y": -43213.19921875,
       "z": -548.9990607919603
     },
-    "linetype": "jumppad_red",
+    "linetype": "jumppad",
     "variant": "red"
   },
   {
@@ -14823,7 +14827,7 @@
       "y": -48446.24281322211,
       "z": -806.7662798614456
     },
-    "linetype": "jumppad_red",
+    "linetype": "jumppad",
     "variant": "red"
   },
   {
@@ -14838,7 +14842,7 @@
       "y": -23698.416015625,
       "z": -220.812893798795
     },
-    "linetype": "jumppad_blue",
+    "linetype": "jumppad",
     "variant": "blue"
   },
   {
@@ -14853,7 +14857,7 @@
       "y": -8406.546875,
       "z": 5673.8885486665595
     },
-    "linetype": "jumppad_blue",
+    "linetype": "jumppad",
     "variant": "blue"
   },
   {
@@ -14868,7 +14872,8 @@
       "y": -33100.11328125,
       "z": -457.6958923339844
     },
-    "linetype": "jumppad_red",
+    "twoway": true,
+    "linetype": "jumppad",
     "variant": "red"
   },
   {
@@ -14883,7 +14888,7 @@
       "y": -13163.5205078125,
       "z": -1082.0267333984375
     },
-    "linetype": "jumppad_red",
+    "linetype": "jumppad",
     "variant": "red"
   },
   {
@@ -14898,7 +14903,8 @@
       "y": -23239.681640625,
       "z": -1018.5819091796875
     },
-    "linetype": "jumppad_red",
+    "twoway": true,
+    "linetype": "jumppad",
     "variant": "red"
   },
   {
@@ -14913,7 +14919,7 @@
       "y": -11933.14453125,
       "z": 539.2427368164062
     },
-    "linetype": "jumppad_red",
+    "linetype": "jumppad",
     "variant": "red"
   },
   {
@@ -14928,7 +14934,7 @@
       "y": -27533.306640625,
       "z": 564.6428630859444
     },
-    "linetype": "jumppad_red",
+    "linetype": "jumppad",
     "variant": "red"
   },
   {
@@ -14943,7 +14949,7 @@
       "y": 29487.25,
       "z": -1376.279309765608
     },
-    "linetype": "jumppad_blue",
+    "linetype": "jumppad",
     "variant": "blue"
   },
   {
@@ -14958,7 +14964,7 @@
       "y": -25006.853515625,
       "z": 3336.541151953144
     },
-    "linetype": "jumppad_blue",
+    "linetype": "jumppad",
     "variant": "blue"
   },
   {
@@ -14973,7 +14979,7 @@
       "y": 27081.2734375,
       "z": -1147.872194138523
     },
-    "linetype": "jumppad_red",
+    "linetype": "jumppad",
     "variant": "red"
   },
   {
@@ -14988,7 +14994,7 @@
       "y": 29068.08984375,
       "z": 169.90890795901774
     },
-    "linetype": "jumppad_blue",
+    "linetype": "jumppad",
     "variant": "blue"
   },
   {
@@ -15003,7 +15009,7 @@
       "y": 27537.783813085174,
       "z": 347.4117506904852
     },
-    "linetype": "jumppad_red",
+    "linetype": "jumppad",
     "variant": "red"
   },
   {
@@ -15018,7 +15024,7 @@
       "y": 39195.621183395386,
       "z": 1287.5933030922401
     },
-    "linetype": "jumppad_blue",
+    "linetype": "jumppad",
     "variant": "blue"
   },
   {
@@ -15033,7 +15039,7 @@
       "y": 41574.59765625,
       "z": -2024.3995039421034
     },
-    "linetype": "jumppad_red",
+    "linetype": "jumppad",
     "variant": "red"
   },
   {
@@ -15048,7 +15054,7 @@
       "y": 39612.35578250885,
       "z": 586.4129915428398
     },
-    "linetype": "jumppad_red",
+    "linetype": "jumppad",
     "variant": "red"
   },
   {
@@ -15063,7 +15069,7 @@
       "y": 43725.418038502336,
       "z": 1537.2768162369848
     },
-    "linetype": "jumppad_red",
+    "linetype": "jumppad",
     "variant": "red"
   },
   {
@@ -15078,7 +15084,7 @@
       "y": 42890.6817047596,
       "z": 1606.5484357799658
     },
-    "linetype": "jumppad_red",
+    "linetype": "jumppad",
     "variant": "red"
   },
   {
@@ -15093,7 +15099,7 @@
       "y": 50532.276299372315,
       "z": 623.3629413444634
     },
-    "linetype": "jumppad_blue",
+    "linetype": "jumppad",
     "variant": "blue"
   },
   {
@@ -15108,7 +15114,8 @@
       "y": 28683.08203125,
       "z": 798.834716796875
     },
-    "linetype": "jumppad_red",
+    "twoway": true,
+    "linetype": "jumppad",
     "variant": "red"
   },
   {
@@ -15123,7 +15130,7 @@
       "y": -28540.0,
       "z": 563.3800000000308
     },
-    "linetype": "jumppad_blue",
+    "linetype": "jumppad",
     "variant": "blue"
   },
   {
@@ -15138,7 +15145,7 @@
       "y": -27031.51171875,
       "z": -1040.8514331054469
     },
-    "linetype": "jumppad_blue",
+    "linetype": "jumppad",
     "variant": "blue"
   },
   {
@@ -15153,7 +15160,7 @@
       "y": 54252.04976989515,
       "z": 2661.889030080113
     },
-    "linetype": "jumppad_red",
+    "linetype": "jumppad",
     "variant": "red"
   },
   {
@@ -15168,7 +15175,7 @@
       "y": 4645.07470703125,
       "z": 253.28604125976562
     },
-    "linetype": "jumppad_red",
+    "linetype": "jumppad",
     "variant": "red"
   },
   {
@@ -15183,7 +15190,7 @@
       "y": 17961.317520737648,
       "z": 39.74255587271047
     },
-    "linetype": "jumppad_red",
+    "linetype": "jumppad",
     "variant": "red"
   },
   {
@@ -15198,7 +15205,7 @@
       "y": 14599.356981873512,
       "z": 39.7434857495482
     },
-    "linetype": "jumppad_red",
+    "linetype": "jumppad",
     "variant": "red"
   },
   {
@@ -15213,7 +15220,7 @@
       "y": 45283.1328125,
       "z": 235.2717046875223
     },
-    "linetype": "jumppad_red",
+    "linetype": "jumppad",
     "variant": "red"
   },
   {
@@ -15228,7 +15235,7 @@
       "y": 44810.15625,
       "z": 228.72552148439962
     },
-    "linetype": "jumppad_red",
+    "linetype": "jumppad",
     "variant": "red"
   },
   {
@@ -15243,7 +15250,7 @@
       "y": 44274.20703125,
       "z": 240.1823369140917
     },
-    "linetype": "jumppad_red",
+    "linetype": "jumppad",
     "variant": "red"
   },
   {
@@ -15258,7 +15265,7 @@
       "y": 55021.39830690622,
       "z": 1940.9746081544467
     },
-    "linetype": "jumppad_red",
+    "linetype": "jumppad",
     "variant": "red"
   },
   {
@@ -15273,7 +15280,7 @@
       "y": 57346.59775693221,
       "z": 598.9876587188659
     },
-    "linetype": "jumppad_red",
+    "linetype": "jumppad",
     "variant": "red"
   },
   {
@@ -15288,7 +15295,8 @@
       "y": 1791.294189453125,
       "z": 120.24662780761719
     },
-    "linetype": "jumppad_blue",
+    "twoway": true,
+    "linetype": "jumppad",
     "variant": "blue"
   },
   {
@@ -15303,7 +15311,7 @@
       "y": -11614.55087929964,
       "z": 558.3810550704595
     },
-    "linetype": "jumppad_red",
+    "linetype": "jumppad",
     "variant": "red"
   },
   {
@@ -15318,7 +15326,7 @@
       "y": 61237.2265625,
       "z": 1017.8192135128766
     },
-    "linetype": "jumppad_red",
+    "linetype": "jumppad",
     "variant": "red"
   },
   {
@@ -15333,7 +15341,8 @@
       "y": 52016.296875,
       "z": 941.4310302734375
     },
-    "linetype": "jumppad_red",
+    "twoway": true,
+    "linetype": "jumppad",
     "variant": "red"
   },
   {
@@ -15348,7 +15357,7 @@
       "y": 42413.24609375,
       "z": 577.3323974609375
     },
-    "linetype": "jumppad_red",
+    "linetype": "jumppad",
     "variant": "red"
   },
   {
@@ -15363,7 +15372,7 @@
       "y": 12091.524427652359,
       "z": 4040.729747709691
     },
-    "linetype": "jumppad_red",
+    "linetype": "jumppad",
     "variant": "red"
   },
   {
@@ -15378,7 +15387,7 @@
       "y": -28687.904262852404,
       "z": -630.7840460853333
     },
-    "linetype": "jumppad_red",
+    "linetype": "jumppad",
     "variant": "red"
   },
   {
@@ -15393,7 +15402,7 @@
       "y": 13696.99609375,
       "z": 1791.7571191597235
     },
-    "linetype": "jumppad_red",
+    "linetype": "jumppad",
     "variant": "red"
   },
   {
@@ -15408,7 +15417,7 @@
       "y": 17308.69931983258,
       "z": 809.194823641789
     },
-    "linetype": "jumppad_red",
+    "linetype": "jumppad",
     "variant": "red"
   },
   {
@@ -15423,7 +15432,7 @@
       "y": 19814.69993352145,
       "z": 696.9133652350068
     },
-    "linetype": "jumppad_red",
+    "linetype": "jumppad",
     "variant": "red"
   },
   {
@@ -15438,7 +15447,7 @@
       "y": -11600.51947669416,
       "z": 454.93874322700833
     },
-    "linetype": "jumppad_red",
+    "linetype": "jumppad",
     "variant": "red"
   },
   {
@@ -15453,7 +15462,7 @@
       "y": -2363.6796875,
       "z": 375.2969970703125
     },
-    "linetype": "jumppad_blue",
+    "linetype": "jumppad",
     "variant": "blue"
   },
   {
@@ -15468,7 +15477,7 @@
       "y": 28549.54296875,
       "z": 1257.540206835956
     },
-    "linetype": "jumppad_red",
+    "linetype": "jumppad",
     "variant": "red"
   },
   {
@@ -15483,7 +15492,7 @@
       "y": -19359.69951057434,
       "z": 1142.3693937225585
     },
-    "linetype": "jumppad_red",
+    "linetype": "jumppad",
     "variant": "red"
   },
   {
@@ -15498,7 +15507,7 @@
       "y": -1435.73876953125,
       "z": 2855.254755859405
     },
-    "linetype": "jumppad_red",
+    "linetype": "jumppad",
     "variant": "red"
   },
   {
@@ -15513,7 +15522,7 @@
       "y": 20513.75878727436,
       "z": 8016.937144659315
     },
-    "linetype": "jumppad_red",
+    "linetype": "jumppad",
     "variant": "red"
   },
   {
@@ -15528,7 +15537,7 @@
       "y": 2275.3713569641113,
       "z": 2901.0733383941683
     },
-    "linetype": "jumppad_red",
+    "linetype": "jumppad",
     "variant": "red"
   },
   {
@@ -15543,7 +15552,7 @@
       "y": 5520.681376338005,
       "z": 17.71911196914899
     },
-    "linetype": "jumppad_red",
+    "linetype": "jumppad",
     "variant": "red"
   },
   {
@@ -15558,7 +15567,7 @@
       "y": 27173.25390625,
       "z": 1867.358381216448
     },
-    "linetype": "jumppad_red",
+    "linetype": "jumppad",
     "variant": "red"
   },
   {
@@ -15573,7 +15582,7 @@
       "y": 24973.352827643626,
       "z": 1873.6177513565592
     },
-    "linetype": "jumppad_red",
+    "linetype": "jumppad",
     "variant": "red"
   },
   {
@@ -15588,7 +15597,7 @@
       "y": -3305.7085448801517,
       "z": 5947.598941806719
     },
-    "linetype": "jumppad_red",
+    "linetype": "jumppad",
     "variant": "red"
   },
   {
@@ -15603,7 +15612,8 @@
       "y": 337.01141357421875,
       "z": 2612.117431640625
     },
-    "linetype": "jumppad_red",
+    "twoway": true,
+    "linetype": "jumppad",
     "variant": "red"
   },
   {
@@ -15618,7 +15628,7 @@
       "y": -5299.93359375,
       "z": 5888.71728515625
     },
-    "linetype": "jumppad_red",
+    "linetype": "jumppad",
     "variant": "red"
   },
   {
@@ -15633,7 +15643,7 @@
       "y": 19178.16547346115,
       "z": 5952.037109205646
     },
-    "linetype": "jumppad_red",
+    "linetype": "jumppad",
     "variant": "red"
   },
   {
@@ -15648,7 +15658,7 @@
       "y": 13527.2421875,
       "z": 1207.6529605115268
     },
-    "linetype": "jumppad_red",
+    "linetype": "jumppad",
     "variant": "red"
   },
   {
@@ -15663,7 +15673,7 @@
       "y": 13386.439453125,
       "z": 890.1377093381641
     },
-    "linetype": "jumppad_red",
+    "linetype": "jumppad",
     "variant": "red"
   },
   {
@@ -15678,7 +15688,7 @@
       "y": -34001.74609375,
       "z": -32.50601684567237
     },
-    "linetype": "jumppad_blue",
+    "linetype": "jumppad",
     "variant": "blue"
   },
   {
@@ -15693,7 +15703,7 @@
       "y": 15048.94123031944,
       "z": 3037.8447776408957
     },
-    "linetype": "jumppad_red",
+    "linetype": "jumppad",
     "variant": "red"
   },
   {
@@ -15708,7 +15718,8 @@
       "y": 58023.26953125,
       "z": 928.8194580078125
     },
-    "linetype": "jumppad_red",
+    "twoway": true,
+    "linetype": "jumppad",
     "variant": "red"
   },
   {
@@ -15723,7 +15734,7 @@
       "y": -10249.4150390625,
       "z": 118.1915054321289
     },
-    "linetype": "jumppad_red",
+    "linetype": "jumppad",
     "variant": "red"
   },
   {
@@ -15738,7 +15749,7 @@
       "y": 43634.921875,
       "z": -1219.1069193359172
     },
-    "linetype": "jumppad_blue",
+    "linetype": "jumppad",
     "variant": "blue"
   },
   {
@@ -15753,7 +15764,7 @@
       "y": 43552.6171875,
       "z": 382.41063951553224
     },
-    "linetype": "jumppad_blue",
+    "linetype": "jumppad",
     "variant": "blue"
   },
   {
@@ -15768,7 +15779,7 @@
       "y": 43123.2265625,
       "z": 203.14371120759296
     },
-    "linetype": "jumppad_red",
+    "linetype": "jumppad",
     "variant": "red"
   },
   {
@@ -15783,7 +15794,7 @@
       "y": -30098.595703125,
       "z": -266.2233581542969
     },
-    "linetype": "jumppad_blue",
+    "linetype": "jumppad",
     "variant": "blue"
   },
   {
@@ -17879,7 +17890,8 @@
       "x": -50061.35546875,
       "y": -46673.7734375,
       "z": -811.47607421875
-    }
+    },
+    "twoway": true
   },
   {
     "name": "PipesystemNew11",
@@ -17893,7 +17905,8 @@
       "x": -52597.55078125,
       "y": -43633.30859375,
       "z": -808.6051025390625
-    }
+    },
+    "twoway": true
   },
   {
     "name": "PipesystemNew12",
@@ -17907,7 +17920,8 @@
       "x": -52843.7265625,
       "y": -43858.23828125,
       "z": -808.6069946289062
-    }
+    },
+    "twoway": true
   },
   {
     "name": "PipesystemNew13_6600",
@@ -17921,7 +17935,8 @@
       "x": -52363.65234375,
       "y": -47646.33203125,
       "z": -808.5067138671875
-    }
+    },
+    "twoway": true
   },
   {
     "name": "PipesystemNew14",
@@ -17935,7 +17950,8 @@
       "x": -52363.65234375,
       "y": -47642.7421875,
       "z": -808.5067138671875
-    }
+    },
+    "twoway": true
   },
   {
     "name": "PipesystemNew15",
@@ -17949,7 +17965,8 @@
       "x": -52443.54296875,
       "y": -42108.953125,
       "z": -390.0661315917969
-    }
+    },
+    "twoway": true
   },
   {
     "name": "PipesystemNew16",
@@ -17963,7 +17980,8 @@
       "x": -52443.56640625,
       "y": -42333.8515625,
       "z": -636.0883178710938
-    }
+    },
+    "twoway": true
   },
   {
     "name": "PipesystemNew17",
@@ -17977,7 +17995,8 @@
       "x": -54342.28125,
       "y": -43883.20703125,
       "z": -1723.151611328125
-    }
+    },
+    "twoway": true
   },
   {
     "name": "PipesystemNew18",
@@ -17991,7 +18010,8 @@
       "x": -54340.36328125,
       "y": -43631.08984375,
       "z": -828.0423583984375
-    }
+    },
+    "twoway": true
   },
   {
     "name": "PipesystemNew19_1192",
@@ -18005,7 +18025,8 @@
       "x": -28769.99609375,
       "y": -22877.4140625,
       "z": 487.214111328125
-    }
+    },
+    "twoway": true
   },
   {
     "name": "PipesystemNew2",
@@ -18019,7 +18040,8 @@
       "x": -39272.2421875,
       "y": -45546.08984375,
       "z": 681.110107421875
-    }
+    },
+    "twoway": true
   },
   {
     "name": "PipesystemNew20",
@@ -18033,7 +18055,8 @@
       "x": -29638.9921875,
       "y": -22770.5390625,
       "z": -1069.1103515625
-    }
+    },
+    "twoway": true
   },
   {
     "name": "PipesystemNew21_1352",
@@ -18047,7 +18070,8 @@
       "x": 58.13136672973633,
       "y": -11445.072265625,
       "z": 820.5833129882812
-    }
+    },
+    "twoway": true
   },
   {
     "name": "PipesystemNew22",
@@ -18061,7 +18085,8 @@
       "x": 3485.644287109375,
       "y": -11445.072265625,
       "z": 902.7562866210938
-    }
+    },
+    "twoway": true
   },
   {
     "name": "PipesystemNew23",
@@ -18075,7 +18100,8 @@
       "x": -10401.720703125,
       "y": -11821.9716796875,
       "z": -748.558837890625
-    }
+    },
+    "twoway": true
   },
   {
     "name": "PipesystemNew24",
@@ -18089,7 +18115,8 @@
       "x": -8139.65673828125,
       "y": -16393.21875,
       "z": -153.00547790527344
-    }
+    },
+    "twoway": true
   },
   {
     "name": "PipesystemNew25_14338",
@@ -18103,7 +18130,8 @@
       "x": -46902.98046875,
       "y": -43482.26953125,
       "z": 1355.3355712890625
-    }
+    },
+    "twoway": true
   },
   {
     "name": "PipesystemNew26",
@@ -18117,7 +18145,8 @@
       "x": -50513.0,
       "y": -42675.88671875,
       "z": 1355.6444091796875
-    }
+    },
+    "twoway": true
   },
   {
     "name": "PipesystemNew27",
@@ -18131,7 +18160,8 @@
       "x": 12117.7578125,
       "y": -8020.4013671875,
       "z": -131.71551513671875
-    }
+    },
+    "twoway": true
   },
   {
     "name": "PipesystemNew28",
@@ -18145,7 +18175,8 @@
       "x": 28172.130859375,
       "y": -23548.01171875,
       "z": 569.4591674804688
-    }
+    },
+    "twoway": true
   },
   {
     "name": "PipesystemNew29",
@@ -18173,7 +18204,8 @@
       "x": -41006.4375,
       "y": 44691.10546875,
       "z": -7368.0341796875
-    }
+    },
+    "twoway": true
   },
   {
     "name": "PipesystemNew31",
@@ -18187,7 +18219,8 @@
       "x": -35766.68359375,
       "y": 40752.08984375,
       "z": -6822.90234375
-    }
+    },
+    "twoway": true
   },
   {
     "name": "PipesystemNew32",
@@ -18201,7 +18234,8 @@
       "x": -11313.72265625,
       "y": 33291.49609375,
       "z": 956.9715576171875
-    }
+    },
+    "twoway": true
   },
   {
     "name": "PipesystemNew33",
@@ -18215,7 +18249,8 @@
       "x": -19348.22265625,
       "y": 37942.97265625,
       "z": 844.5838012695312
-    }
+    },
+    "twoway": true
   },
   {
     "name": "PipesystemNew34",
@@ -18229,7 +18264,8 @@
       "x": -15564.5390625,
       "y": -222.67648315429688,
       "z": 704.6788940429688
-    }
+    },
+    "twoway": true
   },
   {
     "name": "PipesystemNew35",
@@ -18243,7 +18279,8 @@
       "x": -9021.7041015625,
       "y": 1001.8740234375,
       "z": 1174.731201171875
-    }
+    },
+    "twoway": true
   },
   {
     "name": "PipesystemNew36",
@@ -18257,7 +18294,8 @@
       "x": -2818.434814453125,
       "y": 13997.0615234375,
       "z": 1306.0714111328125
-    }
+    },
+    "twoway": true
   },
   {
     "name": "PipesystemNew37",
@@ -18271,7 +18309,8 @@
       "x": -3303.66259765625,
       "y": 6075.8603515625,
       "z": 588.470703125
-    }
+    },
+    "twoway": true
   },
   {
     "name": "PipesystemNew38",
@@ -18285,7 +18324,8 @@
       "x": -2075.85888671875,
       "y": -34920.0,
       "z": -2013.9991455078125
-    }
+    },
+    "twoway": true
   },
   {
     "name": "PipesystemNew39",
@@ -18299,7 +18339,8 @@
       "x": -2246.938720703125,
       "y": -34034.41796875,
       "z": -25.360198974609375
-    }
+    },
+    "twoway": true
   },
   {
     "name": "PipesystemNew3_20340",
@@ -18313,7 +18354,8 @@
       "x": -30131.025390625,
       "y": -41795.1171875,
       "z": -1380.234130859375
-    }
+    },
+    "twoway": true
   },
   {
     "name": "PipesystemNew4",
@@ -18327,7 +18369,8 @@
       "x": -31571.26171875,
       "y": -40052.6796875,
       "z": -1439.1903076171875
-    }
+    },
+    "twoway": true
   },
   {
     "name": "PipesystemNew40",
@@ -18341,7 +18384,8 @@
       "x": -62132.546875,
       "y": 57765.93359375,
       "z": 784.0267944335938
-    }
+    },
+    "twoway": true
   },
   {
     "name": "PipesystemNew41",
@@ -18355,7 +18399,8 @@
       "x": -61356.796875,
       "y": 41645.7265625,
       "z": 886.5266723632812
-    }
+    },
+    "twoway": true
   },
   {
     "name": "PipesystemNew42",
@@ -18369,7 +18414,8 @@
       "x": 81542.546875,
       "y": 32677.07421875,
       "z": 1786.5152587890625
-    }
+    },
+    "twoway": true
   },
   {
     "name": "PipesystemNew43_4",
@@ -18383,7 +18429,8 @@
       "x": 78773.25,
       "y": 32362.10546875,
       "z": 5144.212890625
-    }
+    },
+    "twoway": true
   },
   {
     "name": "PipesystemNew44",
@@ -18397,7 +18444,8 @@
       "x": 64554.55859375,
       "y": -7998.51953125,
       "z": 5894.67822265625
-    }
+    },
+    "twoway": true
   },
   {
     "name": "PipesystemNew45_2",
@@ -18411,7 +18459,8 @@
       "x": 82687.203125,
       "y": -4143.443359375,
       "z": 5737.39208984375
-    }
+    },
+    "twoway": true
   },
   {
     "name": "PipesystemNew46",
@@ -18425,7 +18474,8 @@
       "x": 83212.0,
       "y": -1527.0,
       "z": 5054.0
-    }
+    },
+    "twoway": true
   },
   {
     "name": "PipesystemNew47",
@@ -18439,7 +18489,8 @@
       "x": 69839.4296875,
       "y": -2637.1669921875,
       "z": 5770.134765625
-    }
+    },
+    "twoway": true
   },
   {
     "name": "PipesystemNew48",
@@ -18453,7 +18504,8 @@
       "x": 43074.0859375,
       "y": 25510.626953125,
       "z": 1720.2435302734375
-    }
+    },
+    "twoway": true
   },
   {
     "name": "PipesystemNew49",
@@ -18467,7 +18519,8 @@
       "x": 81016.7421875,
       "y": 4864.4716796875,
       "z": 6852.99365234375
-    }
+    },
+    "twoway": true
   },
   {
     "name": "PipesystemNew50",
@@ -18481,7 +18534,8 @@
       "x": 16360.7412109375,
       "y": 23793.748046875,
       "z": 3636.9287109375
-    }
+    },
+    "twoway": true
   },
   {
     "name": "PipesystemNew51",
@@ -18495,7 +18549,8 @@
       "x": 20876.578125,
       "y": 39564.94140625,
       "z": 1487.6585693359375
-    }
+    },
+    "twoway": true
   },
   {
     "name": "PipesystemNew52",
@@ -18509,7 +18564,8 @@
       "x": -14577.3984375,
       "y": 13383.0361328125,
       "z": 1073.6905517578125
-    }
+    },
+    "twoway": true
   },
   {
     "name": "PipesystemNew53",
@@ -18523,7 +18579,8 @@
       "x": -43471.80078125,
       "y": 13392.2333984375,
       "z": 1401.84619140625
-    }
+    },
+    "twoway": true
   },
   {
     "name": "PipesystemNew54",
@@ -18551,7 +18608,8 @@
       "x": 913.2150268554688,
       "y": -19968.634765625,
       "z": -5918.21044921875
-    }
+    },
+    "twoway": true
   },
   {
     "name": "PipesystemNew6",
@@ -18565,7 +18623,8 @@
       "x": -7623.994140625,
       "y": -12597.36328125,
       "z": 189.6727294921875
-    }
+    },
+    "twoway": true
   },
   {
     "name": "PipesystemNew7_1302",
@@ -18579,7 +18638,8 @@
       "x": -52843.72265625,
       "y": -46404.21875,
       "z": -808.61083984375
-    }
+    },
+    "twoway": true
   },
   {
     "name": "PipesystemNew8",
@@ -18593,7 +18653,8 @@
       "x": -52597.734375,
       "y": -46179.28515625,
       "z": -808.60595703125
-    }
+    },
+    "twoway": true
   },
   {
     "name": "PipesystemNew9",
@@ -18607,7 +18668,8 @@
       "x": -49836.4296875,
       "y": -46427.77734375,
       "z": -811.4808349609375
-    }
+    },
+    "twoway": true
   },
   {
     "name": "PipesystemNew_7546",
@@ -18621,7 +18683,8 @@
       "x": -38759.44140625,
       "y": -46679.64453125,
       "z": -2886.20556640625
-    }
+    },
+    "twoway": true
   },
   {
     "name": "PipesystemNewDLC2",
@@ -18635,7 +18698,8 @@
       "x": -32344.66796875,
       "y": -32069.55859375,
       "z": -1682.9599609375
-    }
+    },
+    "twoway": true
   },
   {
     "name": "PipesystemNewDLC_2",
@@ -18649,7 +18713,8 @@
       "x": -32894.3515625,
       "y": -31372.689453125,
       "z": 716.6857299804688
-    }
+    },
+    "twoway": true
   },
   {
     "name": "PlayerStart_2",

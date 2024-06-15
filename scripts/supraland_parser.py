@@ -461,7 +461,7 @@ def calc_pads(data):
                         t['target']['x'] = o['lng']
                         t['target']['y'] = o['lat']
                         t['target']['z'] = o['alt']
-                        print(f'Merging Jumppads {o['name']} and {t['name']}')
+                        o['twoway']=True
 
 
 def get_z(x, y, triangle):
@@ -526,11 +526,10 @@ exported_properties = [
     'icon',                                         # explicit icon override
     'variant',                                      # variant allows change of marker
     'friendly',                                     # Friendly name for the marker
-    'linetype',                                     # Trigger, red/blue pad, pipe
-    #'startpos',                                    # where to draw lines from (if not lat/lng/alt) - no longer used
+    'linetype',                                     # Trigger, pad, pipe, player_aim
+    'twoway',                                       # Pipe or bad is two way if True
     'target',                                       # where to draw line to for pipes and pads
     'targets',                                      # array of dictionaries 'type' and target position
-                                                    # pipe, jumppad_red, jumppad_blue, trigger 
     'old_coins',                                    # For _CoinStack_C's a dictionary of old coin name to value (for save game handling) 
     #'image',
     'yt_video', 'yt_start', 'yt_end',      # data pulled from matched legacy data
@@ -624,13 +623,15 @@ def cleanup_objects(game, classes_found, data_lookup, data):
                 # We used to put this in startpos but we just move the pipe now
                 nc = data_lookup[o['nearest_cap']]
                 o['lat'], o['lng'], o['alt'] = nc['lat'], nc['lng'], nc['alt']
-            o['target'] = get_nc_xyz(data_lookup[o['other_pipe']])
+            opo = data_lookup[o['other_pipe']]
+            o['target'] = get_nc_xyz(opo)
+            if ':'.join((o['area'], o['name'])) == opo.get('other_pipe'):
+                o['twoway'] = True
         elif o['type'] == 'Jumppad_C':
+            o['linetype'] = 'jumppad' 
             if o.get('allow_stomp') or o.get('disable_movement_in_air') == False:
-                o['linetype'] = 'jumppad_blue' 
                 o['variant'] = 'blue'
             else:
-                o['linetype'] = 'jumppad_red' 
                 o['variant'] = 'red'
         elif o.get('actors'):
             targets = []

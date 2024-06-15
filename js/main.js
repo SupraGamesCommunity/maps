@@ -705,11 +705,13 @@ function loadMap(id) {
 
             let [addMarker, color, opacity, weight, offset, dist] = {
                 pipe:         [true,  '#4DFF00', 1,   5, '0%',  1000],
-                jumppad_red:  [true,  '#FF0000', 1,   5, '0%',   100],
-                jumppad_blue: [true,  '#1E90FF', 1,   5, '0%',   100],
+                jumppad:      [true,  '#FF0000', 1,   5, '0%',   100],
                 trigger:      [false, '#FFFFFF', 0.5, 2, '50%',  0],
                 player_aim:   [true,  '#FFFFFF', 1,   5, '0%',   0],
             } [o.linetype]
+            if(o.linetype == 'jumppad' && o.variant == 'blue') {
+              color = '#1E90FF'
+            }
 
             for(let endxy of endxys) {
               // need to add title as a single space (leaflet search issue), but not the full title so it doesn't appear in search
