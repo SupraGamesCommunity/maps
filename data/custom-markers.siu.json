@@ -2,7 +2,8 @@
   {
     "name": "BP_MonsterChest2_2",
     "area": "DLC2_Complete",
-    "spawns": "BuyShowHealthbar_C"
+    "spawns": "BuyShowHealthbar_C",
+    "spawns_name": "Health Bars"
   },
   {
     "name": "BP_BuyHealthRegenMax1",
