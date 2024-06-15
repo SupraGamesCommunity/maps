@@ -190,6 +190,9 @@ function loadMap(id) {
     if (!localData[id].markedItems) {
       localData[id].markedItems = {};
     }
+    if (!localData[id].coinsFound) {
+      localData[id].coinsFound = {};
+    }
     if (!localData[id].searchText) {
       localData[id].searchText = '';
     }
@@ -474,7 +477,6 @@ function loadMap(id) {
 
   function onPopupOpen(e) {
     // We don't need to use _source as target and sourceTarget both point at the marker object
-
     let x = e.popup._source._latlng.lng;
     let y = e.popup._source._latlng.lat;
     let markerId = e.popup._source.options.alt;
@@ -717,35 +719,29 @@ function loadMap(id) {
           }
 
           // add dynamic player marker on top of PlayerStart icon (moves with load save game) 
-          if (o.type == 'PlayerStart' && !playerMarker) {
-            const pc = gameClasses['_PlayerPosition'];
-            const [icon, size] = getClassIcon(pc, mapId, o['variant']);
+          if ((o.type == 'PlayerStart' || o.type == '_PlayerPosition') && !playerMarker) {
+            o.type = '_PlayerPosition';
+
+            const pc = gameClasses[o.type];
+            const [icon, size] = getClassIcon(pc, mapId, o['variant']) || defaultIcon;
             const addto = pc.layer ? layers[pc.layer] : map
             playerStart = [o.lat, o.lng, o.alt];
-            let title = 'PlayerPosition';
+            let title = `Player Position (${o.lng.toFixed(0)},${o.lat.toFixed(0)})`;
             let t = new L.LatLng(o.lat, o.lng);
-            let p = settings.playerPosition
-            if (p) {
-              t = new L.LatLng(p[0], p[1]);
+            if (settings.playerPosition) {
+              t = new L.LatLng(settings.playerPosition[0], settings.playerPosition[1]);
+              [o.lat, o.lng, o.alt] = settings.playerPosition;
             }
             else {
               settings.playerPosition = playerStart;
             }
-            playerMarker = L.marker([t.lat, t.lng], {icon: getIcon(icon,size), zIndexOffset: 0, draggable: false, title: title, alt:'playerMarker'})
-            .bindPopup()
-            .on('popupopen', function(e) {
-                let marker = e.target;
-                let p = settings.playerPosition;
-                let t = {name: marker.options.title, lat:p[0], lng:p[1], alt:p[2]};
-                marker.setPopupContent(JSON.stringify(t, null, 2).replaceAll('\n','<br>').replaceAll(' ','&nbsp;'));
-                marker.openPopup();
-            }).addTo(addto)
-
+            playerMarker = L.marker([t.lat, t.lng], {icon: getIcon(icon,size), zIndexOffset: 0, draggable: false, title: title, alt:'playerMarker', o:o})
+              .bindPopup().on('popupopen', onPopupOpen).addTo(addto);
           } // end of player marker
         } // end of loop
 
         if(enabledLayers['coordinate']){
-          playerMarker = L.marker(mapCenter, {zIndexOffset: 10000, draggable: true, title: Math.round(mapCenter[1])+', '+Math.round(mapCenter[0]), alt:'XYMarker'})
+          L.marker(mapCenter, {zIndexOffset: 10000, draggable: true, title: Math.round(mapCenter[1])+', '+Math.round(mapCenter[0]), alt:'XYMarker'})
             .bindPopup()
             .on('moveend', function(e) {
               let marker = e.target;
@@ -986,16 +982,14 @@ function unmarkItems() {
     [].forEach.call(divs, function(div) {
       div.classList.remove('found');
     });
-  
-    // If it's a coin stack remove the list of found coins
-    if(objects[id].coins_found) {
-      delete object[id].coins_found;
-    } 
   }
   settings.markedItems={};
+  settings.coinsFound={};
   settings.playerPosition = playerStart;
   if (playerMarker) {
     playerMarker.setLatLng(new L.LatLng(playerStart[0], playerStart[1]));
+    [playerMarker.options.o['lat'], playerMarker.options.o['lng'], playerMarker.options.o['alt']] = playerStart;
+    playerMarker.title = `Player Position (${playerStart[1]},${playerStart[0]})` 
   }
 }
 
@@ -1062,11 +1056,13 @@ window.loadSaveFile = function () {
  
             let cs;
             if(name.startsWith('Coin') && (cs = coin2stack[id])){
-              if(!cs.coins_found)
-                cs.coins_found = new Set();
-              cs.coins_found.add(name);
-              if(cs.coins_found.size == Object.keys(cs.old_coins).length) {
-                settings.markedItems[cs.area+':'+cs.name] = true;
+              csAlt = cs.area+':'+cs.name;
+              if(!(csAlt in settings.coinsFound)){
+                settings.coinsFound[csAlt] = new Set();
+              }
+              settings.coinsFound[csAlt].add(name);
+              if(settings.coinsFound[csAlt].size == Object.keys(cs.old_coins).length) {
+                settings.markedItems[csAlt] = true;
               }
               continue;
             }
@@ -1109,6 +1105,8 @@ window.loadSaveFile = function () {
           //console.log('setting player position from file', mapId, latlng);
           playerMarker.setLatLng(latlng);
           settings.playerPosition = [p.y, p.x, p.z];
+          [playerMarker.options.o['lat'], playerMarker.options.o['lng'], playerMarker.options.o['alt']] = settings.playerPosition;
+          playerMarker.title = `Player Position (${p.x.toFixed(0)},${p.y.toFixed(0)})` 
         } else {
           console.log('cannot load player position from', JSON.stringify(o));
         }
