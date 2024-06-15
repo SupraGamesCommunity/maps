@@ -493,7 +493,7 @@ function loadMap(id) {
     let text = ''
     text += `<div class="marker-popup-heading">${o.friendly || c.friendly || o.type}</div>`
     text += '<div class="marker-popup-text">'
-    if(sc && (!(o.spawns_name in o) || o.spawns_name != '')) {
+    if(sc && (!('spawns_name' in o) || o.spawns_name != '')) {
       text += `<br><span class="marker-popup-col">Spawns:</span>${o.spawns_name || sc.friendly || o.spawns}`;
     }
     if(o.coins) {
@@ -621,7 +621,7 @@ function loadMap(id) {
 
             // Add what it spawns
             if(o.spawns) {
-              title += !(spawns_name in o) ? ` (${o.spawns})` : spawns_name != '' ? ` (${o.spawns_name})` : '';    
+              title += !('spawns_name' in o) ? ` (${o.spawns})` : o.spawns_name != '' ? ` (${o.spawns_name})` : '';    
             }
           }
           else {
@@ -657,7 +657,7 @@ function loadMap(id) {
 
           const defaultIcon = 'question_mark';
 
-          let start = 'startpos' in o ? [o.startpos.y, o.startpos.x] : [o.lat, o.lng];
+          let start = [o.lat, o.lng];
 
           // I feel like this is a bit of a hack because it requires awareness of the layer names which
           // is supposed to be just data but I can't think of a better way to do it.

@@ -57,7 +57,7 @@ path[alt=''] { opacity: 100% }
 
 .marker-popup-col2 {
   display: inline-block;
-  width: 100px;
+  width: 150px;
   word-wrap: break-word;
   vertical-align: top;
 }
