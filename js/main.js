@@ -253,12 +253,12 @@ function loadMap(id) {
   // Create the base map
   map = new L.Map('map', {
     crs: crs,
-    fadeAnimation: false,
+    fadeAnimation: true,
   	minZoom: 1,
     maxZoom: 8,
     maxBounds: mapBoundsWithGap, // elastic-y bounds + elastic-x bounds
     zoomControl: false,
-    doubleClickZoom: false,
+    doubleClickZoom: true,
   });
 
   L.control.zoom({ position: 'bottomright'}).addTo(map);
