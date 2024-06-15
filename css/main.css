@@ -47,7 +47,20 @@ path[alt=''] { opacity: 100% }
   font-weight: bold;
 }
 
-.marker-popup-col { display: inline-block; width: 65px; font-weight: bold }
+.marker-popup-col {
+  text-align: top;
+  display: inline-block;
+  width: 68px;
+  font-weight: bold;
+  vertical-align: top;
+}
+
+.marker-popup-col2 {
+  display: inline-block;
+  width: 100px;
+  word-wrap: break-word;
+  vertical-align: top;
+}
 
 .marker-popup-text {
   
