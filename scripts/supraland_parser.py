@@ -527,7 +527,7 @@ exported_properties = [
     'variant',                                      # variant allows change of marker
     'friendly',                                     # Friendly name for the marker
     'linetype',                                     # Trigger, red/blue pad, pipe
-    'startpos',                                     # where to draw lines from (if not lat/lng/alt)
+    #'startpos',                                    # where to draw lines from (if not lat/lng/alt) - no longer used
     'target',                                       # where to draw line to for pipes and pads
     'targets',                                      # array of dictionaries 'type' and target position
                                                     # pipe, jumppad_red, jumppad_blue, trigger 
@@ -620,8 +620,10 @@ def cleanup_objects(game, classes_found, data_lookup, data):
 
         if o.get('other_pipe'):
             o['linetype'] = 'pipe'
-            if o.get('nearest_cap'):    
-                o['startpos'] = get_xyz(data_lookup[o['nearest_cap']])
+            if o.get('nearest_cap'):
+                # We used to put this in startpos but we just move the pipe now
+                nc = data_lookup[o['nearest_cap']]
+                o['lat'], o['lng'], o['alt'] = nc['lat'], nc['lng'], nc['alt']
             o['target'] = get_nc_xyz(data_lookup[o['other_pipe']])
         elif o['type'] == 'Jumppad_C':
             if o.get('allow_stomp') or o.get('disable_movement_in_air') == False:
