@@ -73,6 +73,7 @@ const layerConfigs = {
                 ret[layerId] = true;
             }
         }
+        ret['_map'] = true;
         return ret;
     },
 

@@ -662,7 +662,7 @@ function loadMap(id) {
             const [icon, size] = decodeIconName(layerConfig.defaultIcon || defaultIcon, mapId, o.variant);
             const zIndexOffset = 10 * layerConfig.index;
 
-            L.marker(start, {icon: getIcon(icon, size), title: title, zIndexOffset: zIndexOffset, alt: alt, o:o, layerId:layer })
+            L.marker(start, {icon: getIcon(icon, size), title: title, zIndexOffset: zIndexOffset, alt: alt, o:o, layerId:layer})
               .addTo(layers[layer]).bindPopup(text).on('popupopen', onPopupOpen).on('contextmenu', onContextMenu);
           }
   
@@ -686,7 +686,7 @@ function loadMap(id) {
             const [icon, size] = decodeIconName((o.icon || sc.icon || layerConfig.defaultIcon || defaultIcon), mapId, o.variant);
             const zIndexOffset = 10 * layerConfig.index;
 
-            L.marker(start, {icon: getIcon(icon, size), title: title, zIndexOffset: zIndexOffset, alt: alt, o:o, layerId:layer })
+            L.marker(start, {icon: getIcon(icon, size), title: title, zIndexOffset: zIndexOffset, alt: alt, o:o, layerId:layer})
               .addTo(layers[layer]).bindPopup(text).on('popupopen', onPopupOpen).on('contextmenu', onContextMenu);
           }
 
@@ -705,7 +705,7 @@ function loadMap(id) {
             for(let endxy of endxys) {
               // need to add title as a single space (leaflet search issue), but not the full title so it doesn't appear in search
               // note draw the line backwards
-              let line = L.polyline([[endxy.y, endxy.x], start], {weight: weight, title:' ', alt:alt, opacity: opacity, color: color, interactive: false})
+              let line = L.polyline([[endxy.y, endxy.x], start], {weight: weight, title:' ', alt:alt, opacity: opacity, color: color, interactive: false, layerId:c.lines})
                 .addTo(layers[c.lines]);
               
               if ((Math.sqrt(Math.pow(start[0] - endxy.y, 2) + Math.pow(start[1] - endxy.x, 2))) > dist) {  
@@ -720,23 +720,24 @@ function loadMap(id) {
 
           // add dynamic player marker on top of PlayerStart icon (moves with load save game) 
           if ((o.type == 'PlayerStart' || o.type == '_PlayerPosition') && !playerMarker) {
-            o.type = '_PlayerPosition';
-
             const pc = gameClasses[o.type];
-            const [icon, size] = getClassIcon(pc, mapId, o['variant']) || defaultIcon;
-            const addto = pc.layer ? layers[pc.layer] : map
-            playerStart = [o.lat, o.lng, o.alt];
-            let title = `Player Position (${o.lng.toFixed(0)},${o.lat.toFixed(0)})`;
-            let t = new L.LatLng(o.lat, o.lng);
-            if (settings.playerPosition) {
-              t = new L.LatLng(settings.playerPosition[0], settings.playerPosition[1]);
-              [o.lat, o.lng, o.alt] = settings.playerPosition;
+            if(pc.layer && enabledLayers[pc.layer])
+            {
+              o.type = '_PlayerPosition';
+              const [icon, size] = getClassIcon(pc, mapId, o['variant']) || defaultIcon;
+              playerStart = [o.lat, o.lng, o.alt];
+              let title = `Player Position (${o.lng.toFixed(0)},${o.lat.toFixed(0)})`;
+              let t = new L.LatLng(o.lat, o.lng);
+              if (settings.playerPosition) {
+                t = new L.LatLng(settings.playerPosition[0], settings.playerPosition[1]);
+                [o.lat, o.lng, o.alt] = settings.playerPosition;
+              }
+              else {
+                settings.playerPosition = playerStart;
+              }
+              playerMarker = L.marker([t.lat, t.lng], {icon: getIcon(icon,size), zIndexOffset: 0, draggable: false, title: title, alt:'playerMarker', o:o, layerId:pc.layer})
+                .bindPopup().on('popupopen', onPopupOpen).addTo(layers[pc.layer]);
             }
-            else {
-              settings.playerPosition = playerStart;
-            }
-            playerMarker = L.marker([t.lat, t.lng], {icon: getIcon(icon,size), zIndexOffset: 0, draggable: false, title: title, alt:'playerMarker', o:o})
-              .bindPopup().on('popupopen', onPopupOpen).addTo(addto);
           } // end of player marker
         } // end of loop
 
@@ -784,6 +785,7 @@ function loadMap(id) {
       layerControl.addOverlay(layerObj, lc.name);
       searchLayers.push(layerObj);
     })
+    layers['_map'] = map;
 
     // search
     searchControl = new L.Control.Search({

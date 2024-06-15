@@ -166,7 +166,7 @@ const gameClasses = {
     'Coin:MinecraftBrick_C'                   : new GameClass('Gold Minecraft Brick',             'brick:v',                  'coin'),
     'MoonTake_C'                              : new GameClass('Green Moon',                       'moon_green',               'misc',     'collectable'),
     'PlayerStart'                             : new GameClass('Player Start',                     'awesome',                  'extra'),
-    '_PlayerPosition'                         : new GameClass('Player Position',                  'player:v48',               null),
+    '_PlayerPosition'                         : new GameClass('Player Position',                  'player:v48',               '_map'),
     'Plumbus_C'                               : new GameClass('Plumbus',                          'plumbus',                  'extra'),
     'Purchase_DiamondPickaxe_C'               : new GameClass('Diamond Pickaxe',                  'pickaxe_diamond',          'upgrades', 'shop'),
     'Purchase_ForceBeam_C'                    : new GameClass('Force Beam',                       'beam',                     'upgrades', 'shop'),
