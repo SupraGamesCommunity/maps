@@ -526,7 +526,7 @@ function loadMap(id) {
     let found = (settings.markedItems[markerId] == true);
     let value = found ? 'checked' : '';
     text += '<div class="marker-popup-found">';
-    text += `<input type="checkbox" id="${markerId}" '${value}' onclick=window.markItemFound("${markerId}",this.checked)><label for="${markerId}">`
+    text += `<input type="checkbox" id="${markerId}" ${value} onclick=window.markItemFound("${markerId}",this.checked)><label for="${markerId}">`
     text += 'Found</label></div>';
 
     //let base = window.location.href.replace(/#.*$/,'');
@@ -1031,7 +1031,7 @@ window.loadSaveFile = function () {
     for (let section of ["ThingsToRemove", "ThingsToActivate", "ThingsToOpenForever"]) {
       for (let o of loadedSave.Properties) {
         propertyMap = {
-          PlayerDoubleHealth: "Map:Juicer2", 
+          PlayerDoubleLoot: "Map:Juicer2", 
           PlayerDrankHealthPlusJuice: "Map:Juicer3", 
           PlayerStrong: "Map:Juicer_286"
         }
