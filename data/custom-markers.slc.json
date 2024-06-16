@@ -138,7 +138,31 @@
     "lat": -7001.41015625,
     "lng": 63221.513671875,
     "alt": 13169.60546875,
-    "comment": "This does not get saved and will not be marked as found when uploading a save file."
+    "comment": "This does not get saved and will not be marked as found when uploading a save file.",
+    "linetype": "trigger",
+    "targets": [
+      {
+        "x": 67231.403076171875,
+        "y": -1614.783203125,
+        "z": 13169.60546875
+      }
+    ]
+  },
+  {
+    "name": "BP_A3_StrengthQuest_SLC_Body",
+    "type": "BP_A3_StrengthQuest_C_Body",
+    "area": "Crash",
+    "lat": -1614.783203125,
+    "lng": 67231.403076171875,
+    "alt": 13169.60546875,
+    "linetype": "trigger",
+    "targets": [
+      {
+        "x": 63221.513671875,
+        "y": -7001.41015625,
+        "z": 13169.60546875
+      }
+    ]
   },
   {
     "name": "Bones72_6",
