@@ -1,16 +1,130 @@
 [
   {
+    "name": "Waldo1",
+    "area": "Crash",
+    "friendly": "Waldo: Above the Round Sandbox Ruins"
+  },
+  {
+    "name": "Waldo10",
+    "area": "Crash",
+    "friendly": "Waldo: Hidden wheelie good this one"
+  },
+  {
+    "name": "Waldo11",
+    "area": "Crash",
+    "friendly": "Waldo: Atop the Red Castle"
+  },
+  {
+    "name": "Waldo12",
+    "area": "Crash",
+    "friendly": "Waldo: View from the spa"
+  },
+  {
+    "name": "Waldo13",
+    "area": "Crash",
+    "friendly": "Waldo: Guarding the knockers"
+  },
+  {
+    "name": "Waldo14",
+    "area": "Crash",
+    "friendly": "Waldo: Plant lovers anonymous"
+  },
+  {
+    "name": "Waldo15",
+    "area": "Crash",
+    "friendly": "Waldo: Hiding from the USB's"
+  },
+  {
+    "name": "Waldo16",
+    "area": "Crash",
+    "friendly": "Waldo: Everyone's Round"
+  },
+  {
+    "name": "Waldo17",
+    "area": "Crash",
+    "friendly": "Waldo: Lady and the Watered Plants"
+  },
+  {
+    "name": "Waldo18",
+    "area": "Crash",
+    "friendly": "Waldo: Wheelie good time"
+  },
+  {
+    "name": "Waldo19",
+    "area": "Crash",
+    "friendly": "Waldo: Just watching the plants"
+  },
+  {
+    "name": "Waldo2",
+    "area": "Crash",
+    "friendly": "Waldo: Orange diving board champion"
+  },
+  {
+    "name": "Waldo20",
+    "area": "Crash",
+    "friendly": "Waldo: Hiding in the thieves bushes"
+  },
+  {
+    "name": "Waldo21",
+    "area": "Crash",
+    "friendly": "Waldo: Living in a box, cardboard box"
+  },
+  {
+    "name": "Waldo22",
+    "area": "Crash",
+    "friendly": "Waldo: The Traitor among the protesters"
+  },
+  {
     "name": "Waldo23",
     "area": "Crash",
-    "lat": -2668.0380859375,
-    "lng": 3375.921875,
+    "friendly": "Waldo: Just hangin'",
+    "lat": -2425.0380859375,
+    "lng": 3128.921875,
     "alt": 121.7822570800781,
     "target": {
-        "x": 4806.83984375,
-        "y": -3152.08203125,
+        "x": 4888.83984375,
+        "y": -3113.08203125,
         "z": 2472.301513671875
       },
       "linetype": "player_aim"
+  },
+  {
+    "name": "Waldo3",
+    "area": "Crash",
+    "friendly": "Waldo: The Locksmiths cliff"
+
+  },
+  {
+    "name": "Waldo4",
+    "area": "Crash",
+    "friendly": "Waldo: A Blind mans garden",
+    "lat": -14075.7763671875,
+    "lng": 48405.58984375
+  },
+  {
+    "name": "Waldo5",
+    "area": "Crash",
+    "friendly": "Waldo: Communists backyard bush lerker"
+  },
+  {
+    "name": "Waldo6",
+    "area": "Crash",
+    "friendly": "Waldo: The Workshops Palm Tree"
+  },
+  {
+    "name": "Waldo7",
+    "area": "Crash",
+    "friendly": "Waldo: The high race watcher the 2nd "
+  },
+  {
+    "name": "Waldo8",
+    "area": "Crash",
+    "friendly": "Waldo: Orange you glad he has a helmet"
+  },
+  {
+    "name": "Waldo9",
+    "area": "Crash",
+    "friendly": "Waldo: Watching over a blind mans blind friend"
   },
   {
     "name": "BuyTranslocator2_2",
@@ -24,7 +138,31 @@
     "lat": -7001.41015625,
     "lng": 63221.513671875,
     "alt": 13169.60546875,
-    "comment": "This does not get saved and will not be marked as found when uploading a save file."
+    "comment": "This does not get saved and will not be marked as found when uploading a save file.",
+    "linetype": "trigger",
+    "targets": [
+      {
+        "x": 67231.403076171875,
+        "y": -1614.783203125,
+        "z": 13169.60546875
+      }
+    ]
+  },
+  {
+    "name": "BP_A3_StrengthQuest_SLC_Body",
+    "type": "BP_A3_StrengthQuest_C_Body",
+    "area": "Crash",
+    "lat": -1614.783203125,
+    "lng": 67231.403076171875,
+    "alt": 13169.60546875,
+    "linetype": "trigger",
+    "targets": [
+      {
+        "x": 63221.513671875,
+        "y": -7001.41015625,
+        "z": 13169.60546875
+      }
+    ]
   },
   {
     "name": "Bones72_6",
