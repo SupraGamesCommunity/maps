@@ -576,10 +576,13 @@ function loadMap(id) {
     for(lt of ['jumppad red', 'jumppad blue', 'pipe', 'trigger', 'player_aim']) {
       const div = $("<div>").addClass(`line-${lt}`).appendTo(document.body);
       let lineProps = {}
-      for(p of ['stroke', 'fill', 'opacity', 'fill-opacity', '--arrow-size', '--arrow-angle', '--arrow-dist',
-          '--line-width', '--shadow-width', '--offset', '--offset-end', 'repeat']) {
-        if(div.css(p))
-          lineProps[p.replaceAll('-', '')] = div.css(p);
+      for(p of [/*'stroke', 'stroke-width', 'fill', 'opacity', 'fill-opacity',*/ '--arrow-size', '--arrow-angle', '--arrow-dist',
+          '--line-width', '--shadow-width', '--offset', '--offset-end', '--repeat']) {
+        if(div.css(p)) {
+          let val = div.css(p); 
+          val = !isNaN(val) ? Number(val) : val.endsWith('px') ? Number(val.substring(0,val.length-2)) : val;
+          lineProps[p.replaceAll('-', '')] = val;
+        }
       }
       lineTypeProps[lt.replace(' ', '_')] = lineProps;
       div.remove();
@@ -723,9 +726,10 @@ function loadMap(id) {
             let endxys = o.linetype != 'trigger' ? [o.target] : o.targets;
 
             // need to add title as a single space (leaflet search issue), but not the full title so it doesn't appear in search
-            let options = {title: ' ', interactive: false, alt: alt, o:o, layerId:c.lines}
+            let options = {title: ' ', interactive: false, alt: alt, o:o, layerId:c.lines, lineCap: 'butt'}
 
             ltp = lineTypeProps[o.linetype + (o.linetype == 'jumppad' ? '_'+o.variant : '')];
+
             if(ltp.shadowwidth) {
               options.zIndexOffset = 10 * layerConfig.index - 5;
               options.stroke = true;    // needed for arrow shadow, ignored for line shadow
@@ -735,27 +739,28 @@ function loadMap(id) {
                 options.className = `line-${o.linetype} shadow`
                 let line = L.polyline([start, [endxy.y, endxy.x]], options).addTo(layers[c.lines]);
 
-                if(ltp.arrowsize && !o.twoway && (Math.sqrt(Math.pow(start[0] - endxy.y, 2) + Math.pow(start[1] - endxy.x, 2))) > 100){
+                if(ltp.arrowsize && !o.twoway && (Math.sqrt(Math.pow(start[0] - endxy.y, 2) + Math.pow(start[1] - endxy.x, 2))) > ltp.arrowdist){
                   options.className = `line-${o.linetype} arrow shadow`;
                   // Arrow shadow
                   L.polylineDecorator(line, {patterns: [{offset: ltp.offset, endOffset: ltp.endoffset, repeat: ltp.repeat, symbol:
-                      L.Symbol.arrowHead({pixelSize:ltp.arrowsize, headAngle: ltp.arrowangle, pathOptions: options})}],})
+                      L.Symbol.arrowHead({pixelSize:ltp.arrowsize, headAngle: ltp.arrowangle, pathOptions: {...options}})}],})
                     .addTo(layers[c.lines]);
                 }
               }
-              delete options.stroke;
             }
 
+            options.stroke = true;
+            
             options.zIndexOffset = 10 * layerConfig.index - 3;
             for(let endxy of endxys) {
               // Line
               options.className = `line-${o.linetype}${o.linetype == 'jumppad' ? ' '+o.variant : ''}`;
               let line = L.polyline([start, [endxy.y, endxy.x]], options).addTo(layers[c.lines]);
-              if (ltp.arrowsize &&  !o.twoway && (Math.sqrt(Math.pow(start[0] - endxy.y, 2) + Math.pow(start[1] - endxy.x, 2))) > 100) {  
+              if (ltp.arrowsize &&  !o.twoway && (Math.sqrt(Math.pow(start[0] - endxy.y, 2) + Math.pow(start[1] - endxy.x, 2))) > ltp.arrowdist) {  
                 // Line arrow
                 options.className = `line-${o.linetype}${o.linetype == 'jumppad' ? ' '+o.variant : ''} arrow`;
                 L.polylineDecorator(line, {patterns: [{offset: ltp.offset, endOffset: ltp.endoffset, repeat: ltp.repeat, symbol:
-                    L.Symbol.arrowHead({pixelSize:ltp.arrowsize, headAngle: ltp.arrowangle, pathOptions: options})}],})
+                    L.Symbol.arrowHead({pixelSize:ltp.arrowsize, headAngle: ltp.arrowangle, pathOptions: {...options}})}],})
                   .addTo(layers[c.lines]);
               }
             }  
