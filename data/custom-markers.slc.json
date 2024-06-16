@@ -8,8 +8,7 @@
     "name": "Waldo10",
     "area": "Crash",
     "friendly": "Waldo: Hidden wheelie good this one",
-    "lat": -11604.3115234375,
-    "lng": -12512.921875
+    "lat": -11604.3115234375
   },
   {
     "name": "Waldo11",
@@ -69,7 +68,7 @@
   {
     "name": "Waldo21",
     "area": "Crash",
-    "friendly": "Waldo:  Living in a box, cardboard box"
+    "friendly": "Waldo: Living in a box, cardboard box"
   },
   {
     "name": "Waldo22",
@@ -79,13 +78,13 @@
   {
     "name": "Waldo23",
     "area": "Crash",
-    "friendly": "Waldo: ",
-    "lat": -2668.0380859375,
-    "lng": 3375.921875,
+    "friendly": "Waldo: Just hangin' around",
+    "lat": -2425.0380859375,
+    "lng": 3128.921875,
     "alt": 121.7822570800781,
     "target": {
-        "x": 4806.83984375,
-        "y": -3152.08203125,
+        "x": 4888.83984375,
+        "y": -3113.08203125,
         "z": 2472.301513671875
       },
       "linetype": "player_aim"
