@@ -570,6 +570,23 @@ function loadMap(id) {
   }
 
   function loadMarkers() {
+
+    // Line properties extracted from CSS
+    let lineTypeProps = {}
+    function getLineTypeProps(linetype){
+      if(!(linetype in lineTypeProps)) {
+        let el, style;
+        if ((el = document.querySelector('.line-'+linetype)) && (style = getComputedStyle(el))) {
+          lineProps = {}
+          for(p of ['--arrow-size', '--arrow-angle', '--line-width', '--shadow-width', '--offset', '--offset-end', 'repeat']) {
+            lineProps[p.replaceAll('-', '')] = style.getPropertyValue(p)
+          }
+          lineTypeProps[linetype] = lineProps;
+        }
+      }
+      return lineTypeProps[linetype];
+    }
+
     Promise.all([
         fetch(`data/markers.${mapId}.json`),
         fetch(`data/custom-markers.${mapId}.json`)])
@@ -611,7 +628,6 @@ function loadMap(id) {
           let sc = o.spawns ? (gameClasses[o.spawns] || defaultGameClass) : null;
           let text = ''; // Set it on demand in onPopupOpen (as it's potentially slow for now)
           let alt = o.area + ':' + o.name;
-          let radius = 6; // polyline Triangles
 
           let title;
           if(settings.buildMode){
@@ -701,32 +717,51 @@ function loadMap(id) {
 
           // Add a polyline to the appropriate layer
           if(c.lines && enabledLayers[c.lines] && o.linetype) {
+            const layerConfig = layerConfigs.get(c.lines);
+            if(o.name == 'Waldo23')
+              console.log("found him");
             let endxys = o.linetype != 'trigger' ? [o.target] : o.targets;
 
-            let [addMarker, color, opacity, weight, offset, dist] = {
-                pipe:         [true,  '#4DFF00', 1,   5, '0%',  1000],
-                jumppad:      [true,  '#FF0000', 1,   5, '0%',   100],
-                trigger:      [false, '#FFFFFF', 0.5, 2, '50%',  0],
-                player_aim:   [true,  '#FFFFFF', 1,   5, '0%',   0],
-            } [o.linetype]
-            if(o.linetype == 'jumppad' && o.variant == 'blue') {
-              color = '#1E90FF'
+            // need to add title as a single space (leaflet search issue), but not the full title so it doesn't appear in search
+            let options = {title: ' ', interactive: false, alt: alt, o:o, layerId:c.lines}
+
+            let shadow = {pipe: true, jumppad: true, trigger: false, player_aim: false}[o.linetype];
+            if(shadow) {
+              options.className = `line-${o.linetype} shadow`;
+              options.zIndexOffset = 10 * layerConfig.index - 5;
+              options.stroke = true;    // needed for arrow shadow, ignored for line shadow
+
+              for(let endxy of endxys) {
+                // Line shadow
+                options.className = `line-${o.linetype} shadow`
+                let line = L.polyline([start, [endxy.y, endxy.x]], options).addTo(layers[c.lines]);
+
+                let p = getLineTypeProps(o.linetype);
+                if(p.arrowsize && !o.twoway && (Math.sqrt(Math.pow(start[0] - endxy.y, 2) + Math.pow(start[1] - endxy.x, 2))) > 100){
+                  options.className = `line-${o.linetype} arrow shadow`;
+                  // Arrow shadow
+                  L.polylineDecorator(line, {patterns: [{offset: p.offset, endOffset: p.endoffset, repeat: p.repeat, symbol:
+                      L.Symbol.arrowHead({pixelSize:p.arrowsize, headAngle: p.arrowangle, pathOptions: options})}],})
+                    .addTo(layers[c.lines]);
+                }
+              }
+              delete options.stroke;
             }
 
+            options.zIndexOffset = 10 * layerConfig.index - 3;
             for(let endxy of endxys) {
-              // need to add title as a single space (leaflet search issue), but not the full title so it doesn't appear in search
-              // note draw the line backwards
-              let line = L.polyline([[endxy.y, endxy.x], start], {weight: weight, title:' ', alt:alt, opacity: opacity, color: color, interactive: false, layerId:c.lines})
-                .addTo(layers[c.lines]);
-              
-              if ((Math.sqrt(Math.pow(start[0] - endxy.y, 2) + Math.pow(start[1] - endxy.x, 2))) > dist) {  
-                // polylineDecorator doesn't support end arrow offset so we use start offset, reverse the line and reverse the arrow using headAngle
-                L.polylineDecorator(line,{patterns:[{offset:offset, repeat:200, symbol:
-                  L.Symbol.arrowHead({pixelSize:radius*2, headAngle: -290, pathOptions:
-                    {opacity: opacity, fillOpacity: opacity, weight: 0, color: color, interactive: false, title:' ', alt:alt}})}],})
-                      .addTo(layers[c.lines]);  
+              // Line
+              options.className = `line-${o.linetype}${o.linetype == 'jumppad' ? ' '+o.variant : ''}`;
+              let line = L.polyline([start, [endxy.y, endxy.x]], options).addTo(layers[c.lines]);
+              let p = getLineTypeProps(o.linetype);
+              if (p.arrowsize &&  !o.twoway && (Math.sqrt(Math.pow(start[0] - endxy.y, 2) + Math.pow(start[1] - endxy.x, 2))) > 100) {  
+                // Line arrow
+                options.className = `line-${o.linetype}${o.linetype == 'jumppad' ? ' '+o.variant : ''} arrow`;
+                L.polylineDecorator(line, {patterns: [{offset: p.offset, endOffset: p.endoffset, repeat: p.repeat, symbol:
+                    L.Symbol.arrowHead({pixelSize:p.arrowsize, headAngle: p.arrowangle, pathOptions: options})}],})
+                  .addTo(layers[c.lines]);
               }
-            }
+            }  
           }
 
           // add dynamic player marker on top of PlayerStart icon (moves with load save game) 
@@ -938,8 +973,11 @@ function resizeIcons(force) {
 }
   
 window.markItemFound = function (id, found=true, save=true) {
+  if(id == "Map:Jumppad85")
+    console.log("This one");
   var divs = document.querySelectorAll('*[alt="' + id + '"]');
-
+  if(divs.length > 2)
+    console.log("Many");
   [].forEach.call(divs, function(div) {
     if (found) {
       div.classList.add('found');

@@ -14389,6 +14389,7 @@
       "y": -11788.5810546875,
       "z": 1339.5185546875
     },
+    "twoway": true,
     "linetype": "jumppad",
     "variant": "red"
   },
@@ -14540,6 +14541,7 @@
       "y": -38028.48046875,
       "z": 281.1507568359375
     },
+    "twoway": true,
     "linetype": "jumppad",
     "variant": "red"
   },
@@ -14722,6 +14724,7 @@
       "y": -41676.1171875,
       "z": -498.17327880859375
     },
+    "twoway": true,
     "linetype": "jumppad",
     "variant": "blue"
   },
@@ -14888,6 +14891,7 @@
       "y": -13163.5205078125,
       "z": -1082.0267333984375
     },
+    "twoway": true,
     "linetype": "jumppad",
     "variant": "red"
   },
@@ -14919,6 +14923,7 @@
       "y": -11933.14453125,
       "z": 539.2427368164062
     },
+    "twoway": true,
     "linetype": "jumppad",
     "variant": "red"
   },
@@ -15175,6 +15180,7 @@
       "y": 4645.07470703125,
       "z": 253.28604125976562
     },
+    "twoway": true,
     "linetype": "jumppad",
     "variant": "red"
   },
@@ -15357,6 +15363,7 @@
       "y": 42413.24609375,
       "z": 577.3323974609375
     },
+    "twoway": true,
     "linetype": "jumppad",
     "variant": "red"
   },
@@ -15462,6 +15469,7 @@
       "y": -2363.6796875,
       "z": 375.2969970703125
     },
+    "twoway": true,
     "linetype": "jumppad",
     "variant": "blue"
   },
@@ -15628,6 +15636,7 @@
       "y": -5299.93359375,
       "z": 5888.71728515625
     },
+    "twoway": true,
     "linetype": "jumppad",
     "variant": "red"
   },
@@ -15734,6 +15743,7 @@
       "y": -10249.4150390625,
       "z": 118.1915054321289
     },
+    "twoway": true,
     "linetype": "jumppad",
     "variant": "red"
   },
@@ -15794,6 +15804,7 @@
       "y": -30098.595703125,
       "z": -266.2233581542969
     },
+    "twoway": true,
     "linetype": "jumppad",
     "variant": "blue"
   },

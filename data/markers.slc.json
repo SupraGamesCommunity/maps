@@ -4914,6 +4914,7 @@
       "y": -4425.12158203125,
       "z": 121.77313232421875
     },
+    "twoway": true,
     "linetype": "jumppad",
     "variant": "red"
   },
@@ -4929,6 +4930,7 @@
       "y": -4052.68701171875,
       "z": 121.77325439453125
     },
+    "twoway": true,
     "linetype": "jumppad",
     "variant": "red"
   },
@@ -5080,6 +5082,7 @@
       "y": -3081.643798828125,
       "z": 838.6304321289062
     },
+    "twoway": true,
     "linetype": "jumppad",
     "variant": "red"
   },

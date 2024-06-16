@@ -462,6 +462,8 @@ def calc_pads(data):
                         t['target']['y'] = o['lat']
                         t['target']['z'] = o['alt']
                         o['twoway']=True
+                        t['twoway']=True
+
 
 
 def get_z(x, y, triangle):
