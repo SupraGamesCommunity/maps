@@ -86,7 +86,7 @@ path[alt=''] { opacity: 100% }
   --arrow-size: 10;    /* Arrow head size, if not set no arrow drawn, only used for long one way lines */
   --arrow-angle: 40;   /* Angle arrow pointer will be drawn with */
   --line-width: 6;    /* Width of the basic line */
-  --shadow-width: 5;  /* Width of shadow border */
+  --shadow-width: 2.5;  /* Width of shadow border */
   --offset: 100%;     /* How far along line should first arrow appear, pixels also ok */
   --end-offset: 0;    /* How far from end should last arrow appear */
   --repeat: 1;        /* How many arrows should be drawn? */
@@ -122,7 +122,7 @@ path[alt=''] { opacity: 100% }
   --arrow-size: 5;
   --arrow-angle: 40;
   --line-width: 6;
-  --shadow-width: 5;
+  --shadow-width: 2.5;
   --offset: 100%;
   --end-offset: 0;
   --repeat: 1;
