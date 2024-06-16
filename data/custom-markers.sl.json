@@ -192,12 +192,24 @@
   {
     "name": "Jumppad83",
     "type": "FT:Jumppad_C",
-    "area": "Map"
+    "area": "Map",
+    "target": {
+      "x": 43209.37890625,
+      "y": 26780.978515625,
+      "z": 1306.9228515625
+    },
+    "twoway": true
   },
   {
     "name": "Jumppad85",
     "type": "FT:Jumppad_C",
-    "area": "Map"
+    "area": "Map",
+    "target": {
+      "x": 15024.869140625,
+      "y": 5824.7353515625,
+      "z": 33.81306076049805
+    },
+    "twoway": true
   },
   {
     "name": "Jumppad89",
@@ -212,7 +224,10 @@
   {
     "name": "Jumppad91",
     "type": "FT:Jumppad_C",
-    "area": "Map"
+    "area": "Map",
+    "target": {
+      "y": 15903.16547346115
+    }
   },
   {
     "name": "Jumppad96",
