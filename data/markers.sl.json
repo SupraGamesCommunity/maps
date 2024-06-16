@@ -279,9 +279,7 @@
     "area": "Map",
     "lat": -40321.04296875,
     "lng": -2233.955810546875,
-    "alt": 565.8482055664062,
-    "yt_video": "nWigHgcWFCE",
-    "yt_start": "405"
+    "alt": 565.8482055664062
   },
   {
     "name": "BarrelClosed_Blueprint_2",
@@ -1924,9 +1922,7 @@
         "y": 17433.591796875,
         "z": 823.5670166015625
       }
-    ],
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "16196"
+    ]
   },
   {
     "name": "BuyChestDetector_30",
@@ -1935,9 +1931,7 @@
     "lat": 27170.046875,
     "lng": 44738.703125,
     "alt": 1335.6939697265625,
-    "cost": 400,
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "22150"
+    "cost": 400
   },
   {
     "name": "BuyChestDetectorRadius",
@@ -1955,9 +1949,7 @@
     "lat": 17104.06640625,
     "lng": 20346.30078125,
     "alt": 804.4705200195312,
-    "cost": 15,
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "16196"
+    "cost": 15
   },
   {
     "name": "BuyDoubleJump_786",
@@ -1965,9 +1957,7 @@
     "area": "Map",
     "lat": -33901.05859375,
     "lng": -14.856106758117676,
-    "alt": -208.23614501953125,
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "882"
+    "alt": -208.23614501953125
   },
   {
     "name": "BuyForceBeamGold",
@@ -1976,9 +1966,7 @@
     "lat": 17283.3203125,
     "lng": 20384.515625,
     "alt": 802.7789306640625,
-    "cost": 5,
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "16196"
+    "cost": 5
   },
   {
     "name": "BuyForceBlock3",
@@ -1987,9 +1975,7 @@
     "lat": 16903.8125,
     "lng": 20281.40625,
     "alt": 803.8145141601562,
-    "cost": 40,
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "16196"
+    "cost": 40
   },
   {
     "name": "BuyForceBlock_695",
@@ -1998,9 +1984,7 @@
     "lat": -33724.125,
     "lng": 135.09010314941406,
     "alt": -208.89215087890625,
-    "cost": 20,
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "336"
+    "cost": 20
   },
   {
     "name": "BuyGun2_2",
@@ -2009,9 +1993,7 @@
     "lat": 16804.07421875,
     "lng": 20279.546875,
     "alt": 803.8143310546875,
-    "cost": 60,
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "16196"
+    "cost": 60
   },
   {
     "name": "BuyGunAlt_478",
@@ -2019,9 +2001,7 @@
     "area": "Map",
     "lat": -41463.0078125,
     "lng": -26882.900390625,
-    "alt": -1070.0,
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "5663"
+    "alt": -1070.0
   },
   {
     "name": "BuyGunCriticalDamage_1496",
@@ -2030,9 +2010,7 @@
     "lat": 2690.83251953125,
     "lng": -736.9744873046875,
     "alt": 128.9107666015625,
-    "cost": 25,
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "2806"
+    "cost": 25
   },
   {
     "name": "BuyGunCriticalDamageChance2_1856",
@@ -2041,9 +2019,7 @@
     "lat": -37136.22265625,
     "lng": -18338.43359375,
     "alt": -1138.0845947265625,
-    "cost": 10,
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "5528"
+    "cost": 10
   },
   {
     "name": "BuyGunCriticalDamageChance3_3189",
@@ -2052,9 +2028,7 @@
     "lat": 22096.912109375,
     "lng": 10155.486328125,
     "alt": -18.22405242919922,
-    "cost": 20,
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "8296"
+    "cost": 20
   },
   {
     "name": "BuyGunCriticalDamageChance4_198",
@@ -2063,9 +2037,7 @@
     "lat": 52516.84375,
     "lng": -67209.0859375,
     "alt": 1099.707763671875,
-    "cost": 20,
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "13100"
+    "cost": 20
   },
   {
     "name": "BuyGunCriticalDamageChance_1426",
@@ -2074,9 +2046,7 @@
     "lat": -11419.5537109375,
     "lng": -12802.7421875,
     "alt": -1690.3917236328125,
-    "cost": 10,
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "3397"
+    "cost": 10
   },
   {
     "name": "BuyGunDamage+15_1234",
@@ -2094,9 +2064,7 @@
     "lat": 21814.56640625,
     "lng": 9879.4658203125,
     "alt": -20.0,
-    "cost": 120,
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "8296"
+    "cost": 120
   },
   {
     "name": "BuyGunRefillSpeed+66_478",
@@ -2105,9 +2073,7 @@
     "lat": -36879.9140625,
     "lng": -18389.73828125,
     "alt": -1075.4705810546875,
-    "cost": 30,
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "5528"
+    "cost": 30
   },
   {
     "name": "BuyGunRefillSpeed+67_198",
@@ -2116,9 +2082,7 @@
     "lat": 52239.375,
     "lng": -67205.3515625,
     "alt": 1105.3001708984375,
-    "cost": 250,
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "13100"
+    "cost": 250
   },
   {
     "name": "BuyGunRefillSpeedx2_374",
@@ -2127,9 +2091,7 @@
     "lat": 21487.068359375,
     "lng": 9621.9853515625,
     "alt": -20.0,
-    "cost": 190,
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "8296"
+    "cost": 190
   },
   {
     "name": "BuySilentFeet2",
@@ -2138,9 +2100,7 @@
     "lat": -12392.7412109375,
     "lng": -23095.521484375,
     "alt": -1668.999755859375,
-    "cost": 40,
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "3980"
+    "cost": 40
   },
   {
     "name": "BuyGunRefireRate50_506",
@@ -2158,9 +2118,7 @@
     "lat": -12244.0947265625,
     "lng": -23095.03515625,
     "alt": -1722.1226806640625,
-    "cost": 40,
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "3838"
+    "cost": 40
   },
   {
     "name": "BuyGunSpeedx2_436",
@@ -2196,9 +2154,7 @@
     "lat": 21667.548828125,
     "lng": 9757.6328125,
     "alt": -20.0,
-    "cost": 150,
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "8296"
+    "cost": 150
   },
   {
     "name": "BuyHealth+5",
@@ -2207,9 +2163,7 @@
     "lat": 2127.868896484375,
     "lng": -583.0960083007812,
     "alt": 323.40106201171875,
-    "cost": 35,
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "2806"
+    "cost": 35
   },
   {
     "name": "BuyHealthRegen2_695",
@@ -2227,9 +2181,7 @@
     "lat": 21912.978515625,
     "lng": 9971.3427734375,
     "alt": -20.0,
-    "cost": 180,
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "8296"
+    "cost": 180
   },
   {
     "name": "BuyHealthRegenMax5_1162",
@@ -2238,9 +2190,7 @@
     "lat": 52018.39453125,
     "lng": -67206.46875,
     "alt": 1099.7083740234375,
-    "cost": 40,
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "13100"
+    "cost": 40
   },
   {
     "name": "BuyShieldBreaker_1026",
@@ -2249,9 +2199,7 @@
     "lat": -36682.95703125,
     "lng": -18442.462890625,
     "alt": -1137.511962890625,
-    "cost": 35,
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "5528"
+    "cost": 35
   },
   {
     "name": "BuyShowProgress2_2",
@@ -2260,9 +2208,7 @@
     "lat": 2154.03564453125,
     "lng": -584.609619140625,
     "alt": 194.14773559570312,
-    "cost": 1,
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "2806"
+    "cost": 1
   },
   {
     "name": "BuySmashdownDamage+33",
@@ -2271,9 +2217,7 @@
     "lat": 51529.32421875,
     "lng": -67252.4453125,
     "alt": 1072.819091796875,
-    "cost": 50,
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "13131"
+    "cost": 50
   },
   {
     "name": "BuySpeedx15_2",
@@ -2291,9 +2235,7 @@
     "lat": -33804.83203125,
     "lng": 80.78148651123047,
     "alt": -210.2398681640625,
-    "cost": 12,
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "197"
+    "cost": 12
   },
   {
     "name": "BuyStats",
@@ -2317,9 +2259,7 @@
     "area": "Map",
     "lat": -33098.06640625,
     "lng": -1988.6146240234375,
-    "alt": -2059.210205078125,
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "52"
+    "alt": -2059.210205078125
   },
   {
     "name": "BuySwordCriticalDamageChance2_2395",
@@ -2328,9 +2268,7 @@
     "lat": -36483.71875,
     "lng": -18478.12109375,
     "alt": -1062.850830078125,
-    "cost": 10,
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "5528"
+    "cost": 10
   },
   {
     "name": "BuySwordCriticalDamageChance3_296",
@@ -2339,9 +2277,7 @@
     "lat": 51767.75,
     "lng": -67199.3984375,
     "alt": 1104.100830078125,
-    "cost": 10,
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "13100"
+    "cost": 10
   },
   {
     "name": "BuySwordCriticalDamageChance_1657",
@@ -2350,9 +2286,7 @@
     "lat": 2393.044189453125,
     "lng": -733.5379638671875,
     "alt": 128.91061401367188,
-    "cost": 10,
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "2806"
+    "cost": 10
   },
   {
     "name": "BuySwordDamage+11",
@@ -2361,9 +2295,7 @@
     "lat": -33958.2890625,
     "lng": 16.502090454101562,
     "alt": -208.89187622070312,
-    "cost": 5,
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "198"
+    "cost": 5
   },
   {
     "name": "BuySwordDamage+10_2",
@@ -2372,9 +2304,7 @@
     "lat": -33530.83984375,
     "lng": 333.5240173339844,
     "alt": -208.89187622070312,
-    "cost": 65,
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "200"
+    "cost": 65
   },
   {
     "name": "UpgradeSwordDamageX2_716",
@@ -2383,9 +2313,7 @@
     "lat": -12066.693359375,
     "lng": -23106.603515625,
     "alt": -1670.8896484375,
-    "cost": 40,
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "3880"
+    "cost": 40
   },
   {
     "name": "BuyTranslocator_7",
@@ -2393,9 +2321,7 @@
     "area": "Map",
     "lat": 3745.630615234375,
     "lng": 42324.7734375,
-    "alt": 1429.6004638671875,
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "20527"
+    "alt": 1429.6004638671875
   },
   {
     "name": "BuyTripleJump2",
@@ -2404,9 +2330,7 @@
     "lat": 17041.91015625,
     "lng": 20299.1328125,
     "alt": 802.3577270507812,
-    "cost": 15,
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "16196"
+    "cost": 15
   },
   {
     "name": "BuyTripleJump_877",
@@ -2415,9 +2339,7 @@
     "lat": -33882.11328125,
     "lng": 55.43764877319336,
     "alt": -208.89208984375,
-    "cost": 30,
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "1429"
+    "cost": 30
   },
   {
     "name": "BuyUpgradeChestNum",
@@ -2435,9 +2357,7 @@
     "lat": -11426.935546875,
     "lng": -23135.169921875,
     "alt": -1728.2237548828125,
-    "cost": 15,
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "3836"
+    "cost": 15
   },
   {
     "name": "BuyWalletx16",
@@ -2446,9 +2366,7 @@
     "lat": 2225.852294921875,
     "lng": -322.3926696777344,
     "alt": 181.45103454589844,
-    "cost": 15,
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "2806"
+    "cost": 15
   },
   {
     "name": "BuyWalletx17_426",
@@ -2457,9 +2375,7 @@
     "lat": 52723.30078125,
     "lng": -67194.859375,
     "alt": 1071.166259765625,
-    "cost": 55,
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "13100"
+    "cost": 55
   },
   {
     "name": "BuyWallet+50_737",
@@ -2468,9 +2384,7 @@
     "lat": -33628.9296875,
     "lng": 201.7998504638672,
     "alt": -208.89208984375,
-    "cost": 24,
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "200"
+    "cost": 24
   },
   {
     "name": "BuyWallet+51",
@@ -2495,9 +2409,7 @@
         "y": -17249.248046875,
         "z": 1545.64404296875
       }
-    ],
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "1532"
+    ]
   },
   {
     "name": "Chest100_2221",
@@ -2524,9 +2436,7 @@
     "lat": 63076.5703125,
     "lng": -64200.48828125,
     "alt": 1378.385986328125,
-    "spawns": "BuyGunComboDamage+25_C",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "13582"
+    "spawns": "BuyGunComboDamage+25_C"
   },
   {
     "name": "Chest103_3711",
@@ -2598,9 +2508,7 @@
     "lat": 4425.0,
     "lng": -4040.0,
     "alt": -1315.0,
-    "coins": 15,
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "2851"
+    "coins": 15
   },
   {
     "name": "Chest110",
@@ -2645,9 +2553,7 @@
     "lat": 34034.94140625,
     "lng": 25784.552734375,
     "alt": 1173.0,
-    "coins": "varies",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "17953"
+    "coins": "varies"
   },
   {
     "name": "Chest115_4",
@@ -2683,9 +2589,7 @@
     "lat": 7147.97119140625,
     "lng": 51670.09375,
     "alt": 3556.567626953125,
-    "spawns": "BuyGunDamage+5_C",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "20157"
+    "spawns": "BuyGunDamage+5_C"
   },
   {
     "name": "Chest119_2",
@@ -2694,9 +2598,7 @@
     "lat": -19590.267578125,
     "lng": 44702.30859375,
     "alt": -587.1028442382812,
-    "spawns": "BuyForceCubeBeam_C",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "19312"
+    "spawns": "BuyForceCubeBeam_C"
   },
   {
     "name": "Chest11_13130",
@@ -2723,9 +2625,7 @@
     "lat": 10624.03125,
     "lng": 39585.828125,
     "alt": 3090.688720703125,
-    "spawns": "BuyTranslocatorDamagex3_C",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "20829"
+    "spawns": "BuyTranslocatorDamagex3_C"
   },
   {
     "name": "Chest122_2",
@@ -2734,9 +2634,7 @@
     "lat": 15619.4423828125,
     "lng": 51301.2734375,
     "alt": 3129.594970703125,
-    "spawns": "BuyTranslocatorShotForce_C",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "21259"
+    "spawns": "BuyTranslocatorShotForce_C"
   },
   {
     "name": "Chest123_5",
@@ -2799,9 +2697,7 @@
     "lat": 51090.31640625,
     "lng": -41244.4921875,
     "alt": 1406.1898193359375,
-    "coins": 50,
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "15562"
+    "coins": 50
   },
   {
     "name": "Chest12_686",
@@ -2963,9 +2859,7 @@
     "lat": -41458.19921875,
     "lng": -60588.0390625,
     "alt": -1552.3193359375,
-    "spawns": "BuyBelt_C",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "7754"
+    "spawns": "BuyBelt_C"
   },
   {
     "name": "Chest146_2",
@@ -3010,9 +2904,7 @@
     "lat": -28263.45703125,
     "lng": 23463.630859375,
     "alt": 5183.943359375,
-    "spawns": "BuyGun1_C",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "2234"
+    "spawns": "BuyGun1_C"
   },
   {
     "name": "Chest150",
@@ -3093,9 +2985,7 @@
     "lat": 75514.5,
     "lng": 16598.02734375,
     "alt": 3609.28369140625,
-    "spawns": "BuyUpgradeGraveNum_C",
-    "yt_video": "vuE52zzgGlo",
-    "yt_start": "8827"
+    "spawns": "BuyUpgradeGraveNum_C"
   },
   {
     "name": "Chest159_6",
@@ -3131,9 +3021,7 @@
     "lat": 27414.28125,
     "lng": 42711.47265625,
     "alt": 1831.2603759765625,
-    "spawns": "BuyMoreLoot_C",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "22024"
+    "spawns": "BuyMoreLoot_C"
   },
   {
     "name": "Chest162",
@@ -3214,9 +3102,7 @@
     "lat": -37346.328125,
     "lng": -36853.71484375,
     "alt": 735.130615234375,
-    "spawns": "BuyGunAltDamagex2_C",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "6329"
+    "spawns": "BuyGunAltDamagex2_C"
   },
   {
     "name": "Chest170",
@@ -3270,9 +3156,7 @@
     "lat": -16721.474609375,
     "lng": 23511.6640625,
     "alt": 643.7122802734375,
-    "spawns": "BuyForceBlockTelefrag_C",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "18653"
+    "spawns": "BuyForceBlockTelefrag_C"
   },
   {
     "name": "Chest2",
@@ -3281,9 +3165,7 @@
     "lat": -20440.513671875,
     "lng": 9824.7294921875,
     "alt": 1035.530029296875,
-    "spawns": "BuySwordDamage+1_C",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "1166"
+    "spawns": "BuySwordDamage+1_C"
   },
   {
     "name": "Chest20_9041",
@@ -3310,9 +3192,7 @@
     "lat": -24074.880859375,
     "lng": -3682.033935546875,
     "alt": -2113.833251953125,
-    "spawns": "BuyHealth+5_C",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "140"
+    "spawns": "BuyHealth+5_C"
   },
   {
     "name": "Chest23_14291",
@@ -3321,9 +3201,7 @@
     "lat": -27703.71484375,
     "lng": 29420.501953125,
     "alt": 1701.3138427734375,
-    "spawns": "BuySwordDamage+1_C",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "1916"
+    "spawns": "BuySwordDamage+1_C"
   },
   {
     "name": "Chest24_16178",
@@ -3332,9 +3210,7 @@
     "lat": -29514.26171875,
     "lng": 18011.08984375,
     "alt": -122.11679077148438,
-    "spawns": "BuyHealthRegenSpeed_C",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "1702"
+    "spawns": "BuyHealthRegenSpeed_C"
   },
   {
     "name": "Chest25_692",
@@ -3361,9 +3237,7 @@
     "lat": -38583.33203125,
     "lng": -2698.9853515625,
     "alt": 82.5428466796875,
-    "spawns": "BuyHealth+5_C",
-    "yt_video": "nWigHgcWFCE",
-    "yt_start": "390"
+    "spawns": "BuyHealth+5_C"
   },
   {
     "name": "Chest28_4997",
@@ -3390,9 +3264,7 @@
     "lat": 8539.5283203125,
     "lng": -6211.3154296875,
     "alt": 251.29544067382812,
-    "coins": 15,
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "3025"
+    "coins": 15
   },
   {
     "name": "Chest31_9005",
@@ -3401,9 +3273,7 @@
     "lat": -21894.640625,
     "lng": 16576.66015625,
     "alt": 2472.776123046875,
-    "spawns": "BP_PurchaseHealth+1_C",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "2054"
+    "spawns": "BP_PurchaseHealth+1_C"
   },
   {
     "name": "Chest32_1454",
@@ -3430,9 +3300,7 @@
     "lat": -32485.2421875,
     "lng": -473.9959716796875,
     "alt": -46.821571350097656,
-    "coins": 10,
-    "yt_video": "nWigHgcWFCE",
-    "yt_start": "317"
+    "coins": 10
   },
   {
     "name": "Chest35_2137",
@@ -3441,9 +3309,7 @@
     "lat": -19473.7734375,
     "lng": 3023.560546875,
     "alt": 46.30939483642578,
-    "spawns": "BuySwordCriticalDamage_C",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "530"
+    "spawns": "BuySwordCriticalDamage_C"
   },
   {
     "name": "Chest36_4639",
@@ -3452,9 +3318,7 @@
     "lat": -27931.107421875,
     "lng": 23444.71484375,
     "alt": 4392.32568359375,
-    "spawns": "BuyHealth+5_C",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "2168"
+    "spawns": "BuyHealth+5_C"
   },
   {
     "name": "Chest37_1815",
@@ -3463,9 +3327,7 @@
     "lat": -24664.7734375,
     "lng": 13408.8837890625,
     "alt": 986.7191162109375,
-    "spawns": "BuyEnemiesLoot_C",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "433"
+    "spawns": "BuyEnemiesLoot_C"
   },
   {
     "name": "Chest38_3995",
@@ -3519,9 +3381,7 @@
     "lat": 3515.743408203125,
     "lng": -22074.646484375,
     "alt": -667.5899047851562,
-    "coins": 10,
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "3129"
+    "coins": 10
   },
   {
     "name": "Chest43",
@@ -3539,9 +3399,7 @@
     "lat": -20127.658203125,
     "lng": -30162.654296875,
     "alt": -654.6292114257812,
-    "spawns": "BuySmashdown_C",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "4649"
+    "spawns": "BuySmashdown_C"
   },
   {
     "name": "Chest45_4075",
@@ -3586,9 +3444,7 @@
     "lat": -24188.359375,
     "lng": -35370.546875,
     "alt": -996.1937866210938,
-    "coins": 50,
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "4716"
+    "coins": 50
   },
   {
     "name": "Chest4_1544",
@@ -3624,9 +3480,7 @@
     "lat": -19937.205078125,
     "lng": 352.684326171875,
     "alt": -2011.9208984375,
-    "coins": 10,
-    "yt_video": "nWigHgcWFCE",
-    "yt_start": "142"
+    "coins": 10
   },
   {
     "name": "Chest53_1192",
@@ -3653,9 +3507,7 @@
     "lat": -15953.23828125,
     "lng": -2269.961669921875,
     "alt": -6484.873046875,
-    "spawns": "BuyGunDamage+5_C",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "5113"
+    "spawns": "BuyGunDamage+5_C"
   },
   {
     "name": "Chest56_5023",
@@ -3700,9 +3552,7 @@
     "lat": -12127.8095703125,
     "lng": 15246.1240234375,
     "alt": 36.17879867553711,
-    "spawns": "BuyShowHealthbar_C",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "752"
+    "spawns": "BuyShowHealthbar_C"
   },
   {
     "name": "Chest60_2151",
@@ -3720,9 +3570,7 @@
     "lat": -47549.59375,
     "lng": -10899.859375,
     "alt": -164.20887756347656,
-    "spawns": "BuyHealthRegenMax5_C",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "5909"
+    "spawns": "BuyHealthRegenMax5_C"
   },
   {
     "name": "Chest62_3729",
@@ -3740,9 +3588,7 @@
     "lat": -44794.40625,
     "lng": -38748.125,
     "alt": -2732.01123046875,
-    "spawns": "BuyHealthRegenMax5_C",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "6561"
+    "spawns": "BuyHealthRegenMax5_C"
   },
   {
     "name": "Chest64_1416",
@@ -3796,9 +3642,7 @@
     "lat": -27714.396484375,
     "lng": 1661.13134765625,
     "alt": -31.19489288330078,
-    "coins": 5,
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "1250"
+    "coins": 5
   },
   {
     "name": "Chest6_710",
@@ -3807,9 +3651,7 @@
     "lat": -21310.82421875,
     "lng": 23339.314453125,
     "alt": -554.9049682617188,
-    "spawns": "BuyArmor1_C",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "22585"
+    "spawns": "BuyArmor1_C"
   },
   {
     "name": "Chest70",
@@ -3827,9 +3669,7 @@
     "lat": -25946.32421875,
     "lng": 2982.635986328125,
     "alt": 2000.692138671875,
-    "spawns": "BuyHealth+5_C",
-    "yt_video": "nWigHgcWFCE",
-    "yt_start": "191"
+    "spawns": "BuyHealth+5_C"
   },
   {
     "name": "Chest72_2",
@@ -3865,9 +3705,7 @@
     "lat": -33032.78125,
     "lng": 23031.28125,
     "alt": -952.281982421875,
-    "spawns": "BuySmashdownDamage+33_C",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "22414"
+    "spawns": "BuySmashdownDamage+33_C"
   },
   {
     "name": "Chest76",
@@ -3885,9 +3723,7 @@
     "lat": 42475.23828125,
     "lng": -35746.15234375,
     "alt": -6859.37548828125,
-    "spawns": "BuyForceBeam_C",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "11506"
+    "spawns": "BuyForceBeam_C"
   },
   {
     "name": "Chest78_7640",
@@ -3896,9 +3732,7 @@
     "lat": -38364.1484375,
     "lng": -58152.453125,
     "alt": -2302.031494140625,
-    "spawns": "BuySwordDamage+02_C",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "7770"
+    "spawns": "BuySwordDamage+02_C"
   },
   {
     "name": "Chest79_2",
@@ -3934,9 +3768,7 @@
     "lat": 39385.26171875,
     "lng": -36217.89453125,
     "alt": -2993.778564453125,
-    "spawns": "BuyForceCubeStomp_C",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "11795"
+    "spawns": "BuyForceCubeStomp_C"
   },
   {
     "name": "Chest82_4377",
@@ -3954,9 +3786,7 @@
     "lat": 38106.7265625,
     "lng": -41437.0390625,
     "alt": 411.7832946777344,
-    "spawns": "BuySwordCriticalDamageChance_C",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "12104"
+    "spawns": "BuySwordCriticalDamageChance_C"
   },
   {
     "name": "Chest84_3197",
@@ -4001,9 +3831,7 @@
     "lat": 36871.31640625,
     "lng": -56068.81640625,
     "alt": 389.71917724609375,
-    "spawns": "BuyHealth+15_C",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "14549"
+    "spawns": "BuyHealth+15_C"
   },
   {
     "name": "Chest89_3036",
@@ -4093,9 +3921,7 @@
     "lat": 60180.21484375,
     "lng": -54282.6640625,
     "alt": 537.2112426757812,
-    "spawns": "BuySmashdownRadius+_C",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "13691"
+    "spawns": "BuySmashdownRadius+_C"
   },
   {
     "name": "Chest98_10407",
@@ -4131,9 +3957,7 @@
     "lat": -18495.890625,
     "lng": 12047.7880859375,
     "alt": -88.48363494873047,
-    "coins": 10,
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "964"
+    "coins": 10
   },
   {
     "name": "Coin10",
@@ -10747,9 +10571,7 @@
     "area": "Map",
     "lat": -24418.181640625,
     "lng": -20585.35546875,
-    "alt": -1591.1373291015625,
-    "yt_video": "FNZt6RPxqLo",
-    "yt_start": "460"
+    "alt": -1591.1373291015625
   },
   {
     "name": "DeadHero2Link",
@@ -10757,9 +10579,7 @@
     "area": "Map",
     "lat": -23135.16015625,
     "lng": 4564.794921875,
-    "alt": -2384.99853515625,
-    "yt_video": "FNZt6RPxqLo",
-    "yt_start": "256"
+    "alt": -2384.99853515625
   },
   {
     "name": "DeadHero3Heman",
@@ -10767,9 +10587,7 @@
     "area": "Map",
     "lat": -439.22943115234375,
     "lng": 15613.9072265625,
-    "alt": 1111.8966064453125,
-    "yt_video": "FNZt6RPxqLo",
-    "yt_start": "5"
+    "alt": 1111.8966064453125
   },
   {
     "name": "DeadHero3Pokemon",
@@ -10777,9 +10595,7 @@
     "area": "Map",
     "lat": -48328.56640625,
     "lng": -55477.125,
-    "alt": -992.7392578125,
-    "yt_video": "FNZt6RPxqLo",
-    "yt_start": "45"
+    "alt": -992.7392578125
   },
   {
     "name": "DeadHero4Picard",
@@ -10787,9 +10603,7 @@
     "area": "Map",
     "lat": -27029.568359375,
     "lng": -2318.379638671875,
-    "alt": 4676.68994140625,
-    "yt_video": "FNZt6RPxqLo",
-    "yt_start": "552"
+    "alt": 4676.68994140625
   },
   {
     "name": "DeadHero4Santa",
@@ -10797,9 +10611,7 @@
     "area": "Map",
     "lat": 39865.1796875,
     "lng": -18197.59765625,
-    "alt": 1653.1673583984375,
-    "yt_video": "FNZt6RPxqLo",
-    "yt_start": "195"
+    "alt": 1653.1673583984375
   },
   {
     "name": "DeadHero4Santa2",
@@ -10807,9 +10619,7 @@
     "area": "Map",
     "lat": 46699.7578125,
     "lng": -12555.7216796875,
-    "alt": -2097.4404296875,
-    "yt_video": "FNZt6RPxqLo",
-    "yt_start": "229"
+    "alt": -2097.4404296875
   },
   {
     "name": "DeadHero4Santa3",
@@ -10817,9 +10627,7 @@
     "area": "Map",
     "lat": 21242.36328125,
     "lng": 79090.609375,
-    "alt": 3173.107421875,
-    "yt_video": "FNZt6RPxqLo",
-    "yt_start": "614"
+    "alt": 3173.107421875
   },
   {
     "name": "DeadHero_3",
@@ -10827,9 +10635,7 @@
     "area": "Map",
     "lat": 19405.27734375,
     "lng": 19217.87890625,
-    "alt": 1954.299560546875,
-    "yt_video": "FNZt6RPxqLo",
-    "yt_start": "335"
+    "alt": 1954.299560546875
   },
   {
     "name": "DeadHeroGoku",
@@ -10837,9 +10643,7 @@
     "area": "Map",
     "lat": -21799.44140625,
     "lng": 54035.484375,
-    "alt": 3155.189697265625,
-    "yt_video": "FNZt6RPxqLo",
-    "yt_start": "392"
+    "alt": 3155.189697265625
   },
   {
     "name": "DeadHeroGuybrush",
@@ -10847,9 +10651,7 @@
     "area": "Map",
     "lat": -29871.169921875,
     "lng": -23258.443359375,
-    "alt": -1600.89990234375,
-    "yt_video": "FNZt6RPxqLo",
-    "yt_start": "102"
+    "alt": -1600.89990234375
   },
   {
     "name": "DeadHeroIndy",
@@ -10857,9 +10659,7 @@
     "area": "Map",
     "lat": -27025.787109375,
     "lng": 21980.921875,
-    "alt": 163.25143432617188,
-    "yt_video": "FNZt6RPxqLo",
-    "yt_start": "372"
+    "alt": 163.25143432617188
   },
   {
     "name": "DestroyablePots2",
@@ -14302,9 +14102,7 @@
     "area": "Map",
     "lat": -36991.19921875,
     "lng": -4023.167236328125,
-    "alt": 127.11111450195312,
-    "yt_video": "nWigHgcWFCE",
-    "yt_start": "371"
+    "alt": 127.11111450195312
   },
   {
     "name": "Juicer_286",
@@ -14312,9 +14110,7 @@
     "area": "Map",
     "lat": 55691.06640625,
     "lng": -63200.2578125,
-    "alt": 455.5135803222656,
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "14321"
+    "alt": 455.5135803222656
   },
   {
     "name": "Jumppad10",
@@ -23670,9 +23466,7 @@
     "area": "Map",
     "lat": -30310.697265625,
     "lng": 18402.51171875,
-    "alt": -179.83314514160156,
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "1696"
+    "alt": -179.83314514160156
   },
   {
     "name": "Shell16_5895",
@@ -23680,9 +23474,7 @@
     "area": "Map",
     "lat": -27676.451171875,
     "lng": 27871.296875,
-    "alt": 789.3646240234375,
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "1586"
+    "alt": 789.3646240234375
   },
   {
     "name": "Shell2_1957",

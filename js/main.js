@@ -571,27 +571,26 @@ function loadMap(id) {
 
   function loadMarkers() {
 
-    // Line properties extracted from CSS
+    // Extract line properties from CSS
     let lineTypeProps = {}
-    function getLineTypeProps(linetype){
-      if(!(linetype in lineTypeProps)) {
-        let el, style;
-        if ((el = document.querySelector('.line-'+linetype)) && (style = getComputedStyle(el))) {
-          lineProps = {}
-          for(p of ['--arrow-size', '--arrow-angle', '--line-width', '--shadow-width', '--offset', '--offset-end', 'repeat']) {
-            lineProps[p.replaceAll('-', '')] = style.getPropertyValue(p)
-          }
-          lineTypeProps[linetype] = lineProps;
-        }
+    for(lt of ['jumppad red', 'jumppad blue', 'pipe', 'trigger', 'player_aim']) {
+      const div = $("<div>").addClass(`line-${lt}`).appendTo(document.body);
+      let lineProps = {}
+      for(p of ['stroke', 'fill', 'opacity', 'fill-opacity', '--arrow-size', '--arrow-angle',
+          '--line-width', '--shadow-width', '--offset', '--offset-end', 'repeat']) {
+        if(div.css(p))
+          lineProps[p.replaceAll('-', '')] = div.css(p);
       }
-      return lineTypeProps[linetype];
+      lineTypeProps[lt.replace(' ', '_')] = lineProps;
+      div.remove();
     }
 
     Promise.all([
         fetch(`data/markers.${mapId}.json`),
+        fetch(`data/ytdata.${mapId}.json`),
         fetch(`data/custom-markers.${mapId}.json`)])
       .then(res => Promise.all(res.map(r => r.json())) )
-      .then(([j, cmj]) => {
+      .then(([j, cmjyt, cmj]) => {
         let titles = {};
         objects = {};
         coin2stack = {};
@@ -602,18 +601,21 @@ function loadMap(id) {
           objects[id] = o;
         }
 
-        // Merge the custom markers into the base objects
-        for(let co of cmj){
-          let alt = co.area + ':' + co.name;
-          let o = objects[alt];
-          if(o){
-            mergeDeep(o, co);
-          }
-          else{
-            objects[alt] = co;
-            j.push(co)
+        function merge_cm(cm) {
+          for(let co of cm){
+            let alt = co.area + ':' + co.name;
+            let o = objects[alt];
+            if(o){
+              mergeDeep(o, co);
+            }
+            else{
+              objects[alt] = co;
+              j.push(co)
+            }
           }
         }
+        merge_cm(cmjyt);
+        merge_cm(cmj);
 
         let enabledLayers = layerConfigs.getEnabledLayers(mapId) 
         for(let o of j) {
@@ -718,16 +720,13 @@ function loadMap(id) {
           // Add a polyline to the appropriate layer
           if(c.lines && enabledLayers[c.lines] && o.linetype) {
             const layerConfig = layerConfigs.get(c.lines);
-            if(o.name == 'Waldo23')
-              console.log("found him");
             let endxys = o.linetype != 'trigger' ? [o.target] : o.targets;
 
             // need to add title as a single space (leaflet search issue), but not the full title so it doesn't appear in search
             let options = {title: ' ', interactive: false, alt: alt, o:o, layerId:c.lines}
 
-            let shadow = {pipe: true, jumppad: true, trigger: false, player_aim: false}[o.linetype];
-            if(shadow) {
-              options.className = `line-${o.linetype} shadow`;
+            ltp = lineTypeProps[o.linetype + (o.linetype == 'jumppad' ? '_'+o.variant : '')];
+            if(ltp.shadowwidth) {
               options.zIndexOffset = 10 * layerConfig.index - 5;
               options.stroke = true;    // needed for arrow shadow, ignored for line shadow
 
@@ -736,12 +735,11 @@ function loadMap(id) {
                 options.className = `line-${o.linetype} shadow`
                 let line = L.polyline([start, [endxy.y, endxy.x]], options).addTo(layers[c.lines]);
 
-                let p = getLineTypeProps(o.linetype);
-                if(p.arrowsize && !o.twoway && (Math.sqrt(Math.pow(start[0] - endxy.y, 2) + Math.pow(start[1] - endxy.x, 2))) > 100){
+                if(ltp.arrowsize && !o.twoway && (Math.sqrt(Math.pow(start[0] - endxy.y, 2) + Math.pow(start[1] - endxy.x, 2))) > 100){
                   options.className = `line-${o.linetype} arrow shadow`;
                   // Arrow shadow
-                  L.polylineDecorator(line, {patterns: [{offset: p.offset, endOffset: p.endoffset, repeat: p.repeat, symbol:
-                      L.Symbol.arrowHead({pixelSize:p.arrowsize, headAngle: p.arrowangle, pathOptions: options})}],})
+                  L.polylineDecorator(line, {patterns: [{offset: ltp.offset, endOffset: ltp.endoffset, repeat: ltp.repeat, symbol:
+                      L.Symbol.arrowHead({pixelSize:ltp.arrowsize, headAngle: ltp.arrowangle, pathOptions: options})}],})
                     .addTo(layers[c.lines]);
                 }
               }
@@ -753,12 +751,11 @@ function loadMap(id) {
               // Line
               options.className = `line-${o.linetype}${o.linetype == 'jumppad' ? ' '+o.variant : ''}`;
               let line = L.polyline([start, [endxy.y, endxy.x]], options).addTo(layers[c.lines]);
-              let p = getLineTypeProps(o.linetype);
-              if (p.arrowsize &&  !o.twoway && (Math.sqrt(Math.pow(start[0] - endxy.y, 2) + Math.pow(start[1] - endxy.x, 2))) > 100) {  
+              if (ltp.arrowsize &&  !o.twoway && (Math.sqrt(Math.pow(start[0] - endxy.y, 2) + Math.pow(start[1] - endxy.x, 2))) > 100) {  
                 // Line arrow
                 options.className = `line-${o.linetype}${o.linetype == 'jumppad' ? ' '+o.variant : ''} arrow`;
-                L.polylineDecorator(line, {patterns: [{offset: p.offset, endOffset: p.endoffset, repeat: p.repeat, symbol:
-                    L.Symbol.arrowHead({pixelSize:p.arrowsize, headAngle: p.arrowangle, pathOptions: options})}],})
+                L.polylineDecorator(line, {patterns: [{offset: ltp.offset, endOffset: ltp.endoffset, repeat: ltp.repeat, symbol:
+                    L.Symbol.arrowHead({pixelSize:ltp.arrowsize, headAngle: ltp.arrowangle, pathOptions: options})}],})
                   .addTo(layers[c.lines]);
               }
             }  

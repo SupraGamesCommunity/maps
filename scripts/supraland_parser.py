@@ -690,8 +690,8 @@ def cleanup_objects(game, classes_found, data_lookup, data):
                         o[prop] = value
         return count
 
-    # Read legacy YouTube data and merge them in
-    for cfn in [f'legacy-ytdata.{game}.json']:
+    # Read in any build time custom data we'd like to merge
+    for cfn in [f'custom-data.{game}.json']:
         if os.path.isfile(cfn):
             count = parse_json(json.load(open(cfn)))
             print(f'Processed {count} instances read from {cfn}')

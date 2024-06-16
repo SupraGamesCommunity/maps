@@ -129,6 +129,7 @@ path[alt=''] { opacity: 100% }
 
   stroke-width: var(--line-width);
   stroke: #4DFF00;
+  fill: #000;
   opacity: 100%;
   fill-opacity: 100%;
 }
@@ -157,19 +158,18 @@ path[alt=''] { opacity: 100% }
 
   stroke-width: calc(var(--shadow-width) * 2 + var(--line-width));
   stroke: #fff;
+  fill: #000;
   opacity: 100%;
   fill-opacity: 100%;
 }
 /* .line-player_aim.shadow {
   stroke:#000;
-  fill: #000;
   stroke-width: calc(var(--shadow-width)*2 + var(--line-width));
 }
 .line-player_aim.arrow {
 }
 .line-player_aim.arrow.shadow {
   stroke: #000;
-  fill: #000;
   stroke-width: calc(var(--shadow-width)*2 + var(--line-width));
 }*/
 
@@ -185,19 +185,18 @@ path[alt=''] { opacity: 100% }
 
   stroke-width: calc(var(--shadow-width) * 2 + var(--line-width));
   stroke: #fff;
+  fill: #000;
   opacity: 100%;
   fill-opacity: 100%;
 }
 /* .line-trigger.shadow {
   stroke:#000;
-  fill: #000;
   stroke-width: calc(var(--shadow-width)*2 + var(--line-width));
 }
 .line-trigger.arrow {
 }
 .line-trigger.arrow.shadow {
   stroke: #000;
-  fill: #000;
   stroke-width: calc(var(--shadow-width)*2 + var(--line-width));
 }*/
 

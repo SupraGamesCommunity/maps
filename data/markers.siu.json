@@ -85,9 +85,7 @@
     "area": "DLC2_Complete",
     "lat": 2163.7373046875,
     "lng": 10409.3681640625,
-    "alt": 2817.6240234375,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "5819"
+    "alt": 2817.6240234375
   },
   {
     "name": "BatteryExplosionDetector_2",
@@ -103,9 +101,7 @@
     "area": "DLC2_Complete",
     "lat": -4597.06591796875,
     "lng": 66475.703125,
-    "alt": 8365.6240234375,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "7693"
+    "alt": 8365.6240234375
   },
   {
     "name": "Bones3_3",
@@ -113,9 +109,7 @@
     "area": "DLC2_Complete",
     "lat": -36309.24609375,
     "lng": -1789.670654296875,
-    "alt": 5049.31982421875,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "8827"
+    "alt": 5049.31982421875
   },
   {
     "name": "Bones4_2",
@@ -123,9 +117,7 @@
     "area": "DLC2_Complete",
     "lat": -49913.6875,
     "lng": 35007.5703125,
-    "alt": 1622.80078125,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "9163"
+    "alt": 1622.80078125
   },
   {
     "name": "Bones5_3",
@@ -133,9 +125,7 @@
     "area": "DLC2_Complete",
     "lat": -40465.0,
     "lng": 19963.0,
-    "alt": 2998.0,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "3984"
+    "alt": 2998.0
   },
   {
     "name": "Bones_2",
@@ -143,9 +133,7 @@
     "area": "DLC2_Complete",
     "lat": 2999.83837890625,
     "lng": 18522.703125,
-    "alt": 4653.763671875,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "5851"
+    "alt": 4653.763671875
   },
   {
     "name": "BP_A3_BBQ2",
@@ -161,9 +149,7 @@
     "area": "DLC2_Complete",
     "lat": -43828.8515625,
     "lng": 7263.4423828125,
-    "alt": 1807.8572998046875,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "8096"
+    "alt": 1807.8572998046875
   },
   {
     "name": "BP_A3_StrengthQuest_2",
@@ -171,9 +157,7 @@
     "area": "DLC2_Complete",
     "lat": -43490.41015625,
     "lng": -6546.513671875,
-    "alt": 2595.6064453125,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "2341"
+    "alt": 2595.6064453125
   },
   {
     "name": "BP_Area2_FatGuyQuest_2",
@@ -181,9 +165,7 @@
     "area": "DLC2_Complete",
     "lat": -11983.7578125,
     "lng": 64093.80859375,
-    "alt": 4094.28271484375,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "7529"
+    "alt": 4094.28271484375
   },
   {
     "name": "BP_Area2_Uncloged_Quest_10",
@@ -191,9 +173,7 @@
     "area": "DLC2_Complete",
     "lat": -8006.755859375,
     "lng": 60487.296875,
-    "alt": 4265.0,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "7311"
+    "alt": 4265.0
   },
   {
     "name": "BP_BoneDetector_2",
@@ -202,9 +182,7 @@
     "lat": -21770.58984375,
     "lng": -58072.6640625,
     "alt": 7850.2783203125,
-    "cost": 50,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "11697"
+    "cost": 50
   },
   {
     "name": "BP_BuyBeamElasticity_2",
@@ -214,9 +192,7 @@
     "lng": 21730.326171875,
     "alt": 3066.00439453125,
     "price_type": 5,
-    "cost": 15,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "11639"
+    "cost": 15
   },
   {
     "name": "BP_BuyGunDamage+100pct_2",
@@ -225,9 +201,7 @@
     "lat": -31459.77734375,
     "lng": 15039.345703125,
     "alt": 1457.178955078125,
-    "cost": 50,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "2484"
+    "cost": 50
   },
   {
     "name": "BP_CookableMeat10",
@@ -315,9 +289,7 @@
     "area": "DLC2_Complete",
     "lat": -9945.6474609375,
     "lng": 17196.806640625,
-    "alt": 3408.571533203125,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "5891"
+    "alt": 3408.571533203125
   },
   {
     "name": "BP_MonsterChest3_2",
@@ -325,9 +297,7 @@
     "area": "DLC2_Complete",
     "lat": -48014.71484375,
     "lng": 43832.578125,
-    "alt": 251.35140991210938,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "9267"
+    "alt": 251.35140991210938
   },
   {
     "name": "BP_MonsterChest_2",
@@ -335,9 +305,7 @@
     "area": "DLC2_Complete",
     "lat": -42638.0,
     "lng": 3219.0,
-    "alt": 2383.774169921875,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "8450"
+    "alt": 2383.774169921875
   },
   {
     "name": "BP_ParanoidQuest_2",
@@ -345,9 +313,7 @@
     "area": "DLC2_Complete",
     "lat": -28347.85546875,
     "lng": 14974.4609375,
-    "alt": -152.20645141601562,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "6393"
+    "alt": -152.20645141601562
   },
   {
     "name": "BP_Purchase_Crouch_2",
@@ -355,9 +321,7 @@
     "area": "DLC2_Complete",
     "lat": 15517.7568359375,
     "lng": 22243.890625,
-    "alt": 3172.55419921875,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "416"
+    "alt": 3172.55419921875
   },
   {
     "name": "BP_Purchase_FasterPickaxe_2",
@@ -366,9 +330,7 @@
     "lat": -31145.3984375,
     "lng": 14975.8818359375,
     "alt": 1455.8984375,
-    "cost": 50,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "2484"
+    "cost": 50
   },
   {
     "name": "BP_PickaxeDamage+1_2",
@@ -385,9 +347,7 @@
         "y": -32422.802734375,
         "z": 1445.0679931640625
       }
-    ],
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "2552"
+    ]
   },
   {
     "name": "Shop_Health_5",
@@ -404,9 +364,7 @@
         "y": -32422.802734375,
         "z": 1445.0679931640625
       }
-    ],
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "2552"
+    ]
   },
   {
     "name": "BP_PurchaseJumpHeightPlus_2",
@@ -415,9 +373,7 @@
     "lat": 15441.4248046875,
     "lng": 22141.173828125,
     "alt": 3200.79296875,
-    "cost": 10,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "359"
+    "cost": 10
   },
   {
     "name": "BP_RebuildSlum_2",
@@ -425,9 +381,7 @@
     "area": "DLC2_Complete",
     "lat": -28511.005859375,
     "lng": 11402.515625,
-    "alt": -70.26774597167969,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "8944"
+    "alt": -70.26774597167969
   },
   {
     "name": "A2_YellowBldgExitTrigger",
@@ -1855,9 +1809,7 @@
     "area": "DLC2_Complete",
     "lat": -49300.0,
     "lng": -61380.0,
-    "alt": 10070.0,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "12876"
+    "alt": 10070.0
   },
   {
     "name": "BP_UnlockMap_2",
@@ -1874,9 +1826,7 @@
         "y": -32422.802734375,
         "z": 1445.0679931640625
       }
-    ],
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "2552"
+    ]
   },
   {
     "name": "ButtonFloor-FatNPC2",
@@ -2391,9 +2341,7 @@
     "lat": -7222.57421875,
     "lng": 60659.140625,
     "alt": 4136.0,
-    "cost": 0,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "7311"
+    "cost": 0
   },
   {
     "name": "BuyChestDetectorRadius_2",
@@ -2402,9 +2350,7 @@
     "lat": -22132.296875,
     "lng": -58074.578125,
     "alt": 7836.95361328125,
-    "cost": 50,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "5012"
+    "cost": 50
   },
   {
     "name": "BuyCritChance+5_2",
@@ -2413,9 +2359,7 @@
     "lat": -31863.376953125,
     "lng": 15044.419921875,
     "alt": 1447.7059326171875,
-    "cost": 30,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "2484"
+    "cost": 30
   },
   {
     "name": "BuyCritChance+6",
@@ -2424,9 +2368,7 @@
     "lat": -31716.455078125,
     "lng": 15044.419921875,
     "alt": 1466.5433349609375,
-    "cost": 30,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "2484"
+    "cost": 30
   },
   {
     "name": "BP_BuyHealthRegenMax1",
@@ -2435,9 +2377,7 @@
     "lat": -32166.708984375,
     "lng": 14879.6865234375,
     "alt": 1476.6343994140625,
-    "cost": 40,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "2484"
+    "cost": 40
   },
   {
     "name": "Shop_Health_regen",
@@ -2454,9 +2394,7 @@
         "y": -32422.802734375,
         "z": 1445.0679931640625
       }
-    ],
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "2552"
+    ]
   },
   {
     "name": "BuyStats_2",
@@ -2465,9 +2403,7 @@
     "lat": -21885.55859375,
     "lng": -58066.796875,
     "alt": 7846.9169921875,
-    "cost": 10,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "4303"
+    "cost": 10
   },
   {
     "name": "BP_Purchase_MagnetRepelPlus_2",
@@ -2477,9 +2413,7 @@
     "lng": 21392.783203125,
     "alt": 3065.90185546875,
     "price_type": 6,
-    "cost": 6,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "11639"
+    "cost": 6
   },
   {
     "name": "BuyUpgradeChestNum_2",
@@ -2488,9 +2422,7 @@
     "lat": -22020.41796875,
     "lng": -58030.921875,
     "alt": 7861.43701171875,
-    "cost": 50,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "4303"
+    "cost": 50
   },
   {
     "name": "Chest10_11",
@@ -2499,9 +2431,7 @@
     "lat": -61867.5390625,
     "lng": 49862.84765625,
     "alt": 3331.96875,
-    "coins": 8,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "9361"
+    "coins": 8
   },
   {
     "name": "Chest11_2",
@@ -2510,9 +2440,7 @@
     "lat": 722.6304321289062,
     "lng": -59176.28515625,
     "alt": 1250.2861328125,
-    "spawns": "BuyJumpIncrease_C",
-    "yt_video": "L17Xur9-BMg",
-    "yt_start": "61"
+    "spawns": "BuyJumpIncrease_C"
   },
   {
     "name": "Chest12_17",
@@ -2521,9 +2449,7 @@
     "lat": -47385.1484375,
     "lng": 43071.546875,
     "alt": -601.6109008789062,
-    "coins": 3,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "9236"
+    "coins": 3
   },
   {
     "name": "Chest13_20",
@@ -2532,9 +2458,7 @@
     "lat": -51068.88671875,
     "lng": 39951.8203125,
     "alt": -500.0531005859375,
-    "coins": 3,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "9222"
+    "coins": 3
   },
   {
     "name": "Chest14_2",
@@ -2543,9 +2467,7 @@
     "lat": -36825.921875,
     "lng": -35361.01953125,
     "alt": 23564.826171875,
-    "spawns": "BuyJumpIncrease_C",
-    "yt_video": "L17Xur9-BMg",
-    "yt_start": "222"
+    "spawns": "BuyJumpIncrease_C"
   },
   {
     "name": "Chest15_2",
@@ -2563,9 +2485,7 @@
     "lat": -47689.83203125,
     "lng": 6018.63818359375,
     "alt": 1815.2095947265625,
-    "spawns": "BuyElectricGun_C",
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "2064"
+    "spawns": "BuyElectricGun_C"
   },
   {
     "name": "Chest17",
@@ -2574,9 +2494,7 @@
     "lat": -46094.8359375,
     "lng": 2748.828369140625,
     "alt": 3283.895263671875,
-    "coins": 23,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "8133"
+    "coins": 23
   },
   {
     "name": "Chest2_2",
@@ -2585,9 +2503,7 @@
     "lat": -11487.4755859375,
     "lng": 18744.62109375,
     "alt": 7127.9404296875,
-    "coins": 5,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "6100"
+    "coins": 5
   },
   {
     "name": "Chest3_2",
@@ -2596,9 +2512,7 @@
     "lat": -11486.0,
     "lng": 41127.0,
     "alt": 921.0,
-    "spawns": "BP_BuyBoomerAxe_C",
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "1604"
+    "spawns": "BP_BuyBoomerAxe_C"
   },
   {
     "name": "Chest4_2",
@@ -2607,9 +2521,7 @@
     "lat": -46992.61328125,
     "lng": -4894.13623046875,
     "alt": 1779.62060546875,
-    "coins": 10,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "8368"
+    "coins": 10
   },
   {
     "name": "Chest5_2",
@@ -2618,9 +2530,7 @@
     "lat": -60852.0,
     "lng": 50108.0,
     "alt": 2764.71826171875,
-    "spawns": "BP_DoubleHealthLoot_C",
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "9361"
+    "spawns": "BP_DoubleHealthLoot_C"
   },
   {
     "name": "Chest6_5",
@@ -2629,9 +2539,7 @@
     "lat": -61681.4609375,
     "lng": 48399.7890625,
     "alt": 906.4720458984375,
-    "coins": 10,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "9361"
+    "coins": 10
   },
   {
     "name": "Chest7_8",
@@ -2640,9 +2548,7 @@
     "lat": -47940.0,
     "lng": 34509.0,
     "alt": -472.0,
-    "coins": 10,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "9204"
+    "coins": 10
   },
   {
     "name": "Chest8_5",
@@ -2651,9 +2557,7 @@
     "lat": -29278.2109375,
     "lng": -49225.3125,
     "alt": 17556.3828125,
-    "coins": 10,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "4950"
+    "coins": 10
   },
   {
     "name": "Chest9_8",
@@ -2662,9 +2566,7 @@
     "lat": -46401.671875,
     "lng": 44491.24609375,
     "alt": 2059.972900390625,
-    "coins": 8,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "9970"
+    "coins": 8
   },
   {
     "name": "Chest_6",
@@ -2673,9 +2575,7 @@
     "lat": -33326.7890625,
     "lng": 16760.27734375,
     "alt": 1350.5830078125,
-    "coins": 5,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "8916"
+    "coins": 5
   },
   {
     "name": "Chest_GoldBeam",
@@ -2684,9 +2584,7 @@
     "lat": -43441.16015625,
     "lng": -661.9174194335938,
     "alt": 1769.9998779296875,
-    "spawns": "BuyForceBeamGold_C",
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "2318"
+    "spawns": "BuyForceBeamGold_C"
   },
   {
     "name": "ChestArea1",
@@ -2695,10 +2593,7 @@
     "lat": 11080.61328125,
     "lng": 27781.267578125,
     "alt": 3033.9365234375,
-    "coins": 3,
-    "image": "MiningArea_03Coins_27781_11080.jpg",
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "5130"
+    "coins": 3
   },
   {
     "name": "ChestArea11",
@@ -2707,9 +2602,7 @@
     "lat": -51696.421875,
     "lng": -1232.244384765625,
     "alt": 2670.432373046875,
-    "spawns": "BP_PurchaseHealth+1_C",
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "8303"
+    "spawns": "BP_PurchaseHealth+1_C"
   },
   {
     "name": "ChestArea12",
@@ -2718,9 +2611,7 @@
     "lat": -49982.94921875,
     "lng": 5240.755859375,
     "alt": 1837.6614990234375,
-    "coins": 1,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "2178"
+    "coins": 1
   },
   {
     "name": "ChestArea13",
@@ -2729,9 +2620,7 @@
     "lat": -47905.0546875,
     "lng": 2016.0516357421875,
     "alt": 1764.000244140625,
-    "coins": 20,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "8278"
+    "coins": 20
   },
   {
     "name": "ChestArea14",
@@ -2740,9 +2629,7 @@
     "lat": -51268.6484375,
     "lng": 5355.951171875,
     "alt": 2664.69873046875,
-    "spawns": "BP_PurchaseHealth+1_C",
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "8278"
+    "spawns": "BP_PurchaseHealth+1_C"
   },
   {
     "name": "ChestArea15",
@@ -2751,9 +2638,7 @@
     "lat": -46645.0,
     "lng": -2034.76171875,
     "alt": 3265.88232421875,
-    "spawns": "BP_PurchaseHealth+1_C",
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "8173"
+    "spawns": "BP_PurchaseHealth+1_C"
   },
   {
     "name": "ChestArea1_0",
@@ -2762,10 +2647,7 @@
     "lat": 20434.73046875,
     "lng": 18115.783203125,
     "alt": 4890.31005859375,
-    "coins": 10,
-    "image": "MiningArea_10Coins_18115_20434.jpg",
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "5085"
+    "coins": 10
   },
   {
     "name": "ChestArea1_1",
@@ -2774,10 +2656,7 @@
     "lat": 16827.134765625,
     "lng": 24559.958984375,
     "alt": 5468.384765625,
-    "spawns": "BP_PurchaseHealth+1_C",
-    "image": "MiningArea_Health+1_5453_4777.jpg",
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "5231"
+    "spawns": "BP_PurchaseHealth+1_C"
   },
   {
     "name": "ChestArea1_10",
@@ -2786,10 +2665,7 @@
     "lat": 7001.5498046875,
     "lng": 21157.369140625,
     "alt": 3065.947509765625,
-    "coins": 15,
-    "image": "MiningArea_15Coins_21157_07001.jpg",
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "5641"
+    "coins": 15
   },
   {
     "name": "ChestArea1_12",
@@ -2798,10 +2674,7 @@
     "lat": 11461.751953125,
     "lng": 10586.7353515625,
     "alt": 3223.093994140625,
-    "coins": 3,
-    "image": "MiningArea_03Coins_10586_11461.jpg",
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "5671"
+    "coins": 3
   },
   {
     "name": "ChestArea1_13",
@@ -2810,10 +2683,7 @@
     "lat": 4689.74560546875,
     "lng": 19119.388671875,
     "alt": 3106.062744140625,
-    "coins": 20,
-    "image": "MiningArea_20Coins_19119_04689.jpg",
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "5619"
+    "coins": 20
   },
   {
     "name": "ChestArea1_14",
@@ -2822,10 +2692,7 @@
     "lat": 8049.0263671875,
     "lng": 29876.6953125,
     "alt": 3510.5146484375,
-    "coins": 10,
-    "image": "MiningArea_10Coins_29876_08049.jpg",
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "5285"
+    "coins": 10
   },
   {
     "name": "ChestArea1_15",
@@ -2834,10 +2701,7 @@
     "lat": 11365.66015625,
     "lng": 13047.482421875,
     "alt": 2765.64013671875,
-    "coins": 2,
-    "image": "MiningArea_02Coins_13047_11365.jpg",
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "432"
+    "coins": 2
   },
   {
     "name": "ChestArea1_3",
@@ -2846,10 +2710,7 @@
     "lat": 6531.552734375,
     "lng": 25710.9296875,
     "alt": 3107.373779296875,
-    "coins": 4,
-    "image": "MiningArea_04Coins_25710_06531.jpg",
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "643"
+    "coins": 4
   },
   {
     "name": "ChestArea1_4",
@@ -2858,10 +2719,7 @@
     "lat": 10140.6435546875,
     "lng": 21921.6875,
     "alt": 3981.875244140625,
-    "spawns": "BP_PurchaseHealth+1_C",
-    "image": "MiningArea_Health+1_5316_4410.jpg",
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "5590"
+    "spawns": "BP_PurchaseHealth+1_C"
   },
   {
     "name": "ChestArea1_46",
@@ -2870,10 +2728,7 @@
     "lat": 8250.8759765625,
     "lng": 26657.373046875,
     "alt": 5473.9384765625,
-    "coins": 15,
-    "image": "MiningFireGunArea_15Coins_26657_08250.jpg",
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "5558"
+    "coins": 15
   },
   {
     "name": "ChestArea1_5",
@@ -2882,9 +2737,7 @@
     "lat": -19654.0390625,
     "lng": 58129.48828125,
     "alt": 547.089111328125,
-    "spawns": "BuyCritChance+5_C",
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "7926"
+    "spawns": "BuyCritChance+5_C"
   },
   {
     "name": "ChestArea1_52",
@@ -2893,9 +2746,7 @@
     "lat": -6965.6552734375,
     "lng": 17338.40234375,
     "alt": 6099.73486328125,
-    "spawns": "BP_PurchaseHealth+1_C",
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "5872"
+    "spawns": "BP_PurchaseHealth+1_C"
   },
   {
     "name": "ChestArea1_6",
@@ -2904,9 +2755,7 @@
     "lat": -10532.794921875,
     "lng": 71378.34375,
     "alt": 3988.556640625,
-    "spawns": "BuyCritChance+5_C",
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "7144"
+    "spawns": "BuyCritChance+5_C"
   },
   {
     "name": "ChestArea1_63",
@@ -2915,10 +2764,7 @@
     "lat": 9156.4189453125,
     "lng": 35667.55078125,
     "alt": 6210.43408203125,
-    "spawns": "BP_PurchaseHealth+1_C",
-    "image": "MiningFireGunArea_Health+1_6080_4356.jpg",
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "5377"
+    "spawns": "BP_PurchaseHealth+1_C"
   },
   {
     "name": "ChestArea1_69",
@@ -2927,10 +2773,7 @@
     "lat": 13468.8525390625,
     "lng": 33715.5078125,
     "alt": 3396.80322265625,
-    "spawns": "BP_BuyBoomeraxeThrowSpeed_C",
-    "image": "MiningFireGunArea_ThrowSpeed+_5970_4601.jpg",
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "5541"
+    "spawns": "BP_BuyBoomeraxeThrowSpeed_C"
   },
   {
     "name": "ChestArea1_7",
@@ -2939,10 +2782,7 @@
     "lat": 19796.314453125,
     "lng": 19971.494140625,
     "alt": 3093.31103515625,
-    "coins": 3,
-    "image": "MiningArea_03Coins_19971_19796.jpg",
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "330"
+    "coins": 3
   },
   {
     "name": "ChestArea1_79",
@@ -2951,10 +2791,7 @@
     "lat": 11198.02734375,
     "lng": 27564.93359375,
     "alt": 3825.784912109375,
-    "coins": 5,
-    "image": "MiningArea_05Coins_27564_11198.jpg",
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "5130"
+    "coins": 5
   },
   {
     "name": "ChestArea1_8",
@@ -2963,10 +2800,7 @@
     "lat": 9784.9345703125,
     "lng": 23262.181640625,
     "alt": 4240.3896484375,
-    "coins": 2,
-    "image": "MiningArea_02Coins_23262_09784.jpg",
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "643"
+    "coins": 2
   },
   {
     "name": "ChestArea2",
@@ -2975,9 +2809,7 @@
     "lat": -11787.9833984375,
     "lng": 63917.69921875,
     "alt": 1552.472412109375,
-    "coins": 10,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "7182"
+    "coins": 10
   },
   {
     "name": "ChestArea2_1",
@@ -2986,9 +2818,7 @@
     "lat": -10059.072265625,
     "lng": 56225.0390625,
     "alt": 2077.472900390625,
-    "coins": 10,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "7754"
+    "coins": 10
   },
   {
     "name": "ChestArea2_11",
@@ -2997,9 +2827,7 @@
     "lat": -25915.728515625,
     "lng": 49992.65234375,
     "alt": 2723.984375,
-    "spawns": "BP_DoubleHealthLoot_C",
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "7802"
+    "spawns": "BP_DoubleHealthLoot_C"
   },
   {
     "name": "ChestArea2_16",
@@ -3008,9 +2836,7 @@
     "lat": -13131.2265625,
     "lng": 64329.22265625,
     "alt": 439.3310546875,
-    "coins": 9,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "7182"
+    "coins": 9
   },
   {
     "name": "ChestArea2_17",
@@ -3019,9 +2845,7 @@
     "lat": -12285.3388671875,
     "lng": 65200.04296875,
     "alt": 1788.4366455078125,
-    "spawns": "BuyHealthRegenMax+1_C",
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "7182"
+    "spawns": "BuyHealthRegenMax+1_C"
   },
   {
     "name": "ChestArea2_2",
@@ -3030,9 +2854,7 @@
     "lat": -13120.728515625,
     "lng": 56670.515625,
     "alt": 1316.8594970703125,
-    "spawns": "BP_PurchaseHealth+1_C",
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "6996"
+    "spawns": "BP_PurchaseHealth+1_C"
   },
   {
     "name": "ChestArea2_3",
@@ -3041,9 +2863,7 @@
     "lat": -5262.11474609375,
     "lng": 65350.03125,
     "alt": 8355.6875,
-    "spawns": "BuyHealthRegenSpeed_C",
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "7692"
+    "spawns": "BuyHealthRegenSpeed_C"
   },
   {
     "name": "ChestArea2_39",
@@ -3052,9 +2872,7 @@
     "lat": -20489.509765625,
     "lng": 44655.1484375,
     "alt": 431.5622253417969,
-    "spawns": "BP_BuyGunCapacity+3shots_C",
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "6914"
+    "spawns": "BP_BuyGunCapacity+3shots_C"
   },
   {
     "name": "ChestArea2_4",
@@ -3063,9 +2881,7 @@
     "lat": -13330.7607421875,
     "lng": 60854.4609375,
     "alt": 480.95611572265625,
-    "spawns": "BP_BuyGunDuration+2s_C",
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "7034"
+    "spawns": "BP_BuyGunDuration+2s_C"
   },
   {
     "name": "ChestArea2_5",
@@ -3074,9 +2890,7 @@
     "lat": -16146.8369140625,
     "lng": 61325.90625,
     "alt": 431.8684997558594,
-    "coins": 10,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "7034"
+    "coins": 10
   },
   {
     "name": "ChestArea2_57",
@@ -3085,9 +2899,7 @@
     "lat": -8821.513671875,
     "lng": 58534.515625,
     "alt": 533.6048583984375,
-    "coins": 10,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "7265"
+    "coins": 10
   },
   {
     "name": "ChestArea2_58",
@@ -3096,9 +2908,7 @@
     "lat": -11552.0,
     "lng": 54248.0,
     "alt": 472.5650329589844,
-    "spawns": "BP_PurchaseHealth+1_C",
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "6980"
+    "spawns": "BP_PurchaseHealth+1_C"
   },
   {
     "name": "ChestArea2_59",
@@ -3107,9 +2917,7 @@
     "lat": -25058.0,
     "lng": 48902.0,
     "alt": 2714.283447265625,
-    "coins": 30,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "7802"
+    "coins": 30
   },
   {
     "name": "ChestArea2_6",
@@ -3118,9 +2926,7 @@
     "lat": -14887.921875,
     "lng": 59699.7734375,
     "alt": 3460.223876953125,
-    "coins": 20,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "7095"
+    "coins": 20
   },
   {
     "name": "ChestArea2_60",
@@ -3129,9 +2935,7 @@
     "lat": -9618.150390625,
     "lng": 60078.96484375,
     "alt": 3293.176025390625,
-    "spawns": "BP_Purchase_FasterPickaxe_C",
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "7279"
+    "spawns": "BP_Purchase_FasterPickaxe_C"
   },
   {
     "name": "ChestArea2_65",
@@ -3140,9 +2944,7 @@
     "lat": -5595.01220703125,
     "lng": 59550.203125,
     "alt": 2963.65966796875,
-    "spawns": "BP_PurchaseHealth+1_C",
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "7734"
+    "spawns": "BP_PurchaseHealth+1_C"
   },
   {
     "name": "ChestArea2_67",
@@ -3151,9 +2953,7 @@
     "lat": -23410.931640625,
     "lng": 36906.53515625,
     "alt": 5165.91455078125,
-    "spawns": "BP_BuyBoomeraxeThrowSpeed_C",
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "7981"
+    "spawns": "BP_BuyBoomeraxeThrowSpeed_C"
   },
   {
     "name": "ChestArea2_68",
@@ -3162,9 +2962,7 @@
     "lat": -18218.369140625,
     "lng": 35279.265625,
     "alt": 4323.58544921875,
-    "coins": 10,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "7981"
+    "coins": 10
   },
   {
     "name": "ChestArea2_7",
@@ -3173,9 +2971,7 @@
     "lat": -9572.064453125,
     "lng": 60790.2421875,
     "alt": 432.8233947753906,
-    "spawns": "BuyHealthRegenMax+1_C",
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "7774"
+    "spawns": "BuyHealthRegenMax+1_C"
   },
   {
     "name": "ChestArea2_80",
@@ -3184,9 +2980,7 @@
     "lat": -9639.0,
     "lng": 65765.0,
     "alt": 544.5811767578125,
-    "spawns": "BuyCritChance+5_C",
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "7235"
+    "spawns": "BuyCritChance+5_C"
   },
   {
     "name": "ChestArea3",
@@ -3195,9 +2989,7 @@
     "lat": -39650.0,
     "lng": 2697.0,
     "alt": 1755.0008544921875,
-    "spawns": "BP_BuyBoomeraxePenetration_C",
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "8653"
+    "spawns": "BP_BuyBoomeraxePenetration_C"
   },
   {
     "name": "ChestArea3_21",
@@ -3206,9 +2998,7 @@
     "lat": -35616.76953125,
     "lng": 8566.478515625,
     "alt": 1769.2197265625,
-    "spawns": "BuyHealthRegenMax+1_C",
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "8866"
+    "spawns": "BuyHealthRegenMax+1_C"
   },
   {
     "name": "ChestArea3_22",
@@ -3217,9 +3007,7 @@
     "lat": -36296.90625,
     "lng": -2190.2880859375,
     "alt": 3521.26953125,
-    "spawns": "BuyHealthRegenSpeed_C",
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "8679"
+    "spawns": "BuyHealthRegenSpeed_C"
   },
   {
     "name": "ChestArea3_23",
@@ -3228,9 +3016,7 @@
     "lat": -36520.05078125,
     "lng": -200.12841796875,
     "alt": 1754.0718994140625,
-    "spawns": "BP_BuyBoomeraxeDistance_C",
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "8664"
+    "spawns": "BP_BuyBoomeraxeDistance_C"
   },
   {
     "name": "ChestArea3_25",
@@ -3239,9 +3025,7 @@
     "lat": -37831.97265625,
     "lng": -2481.36181640625,
     "alt": 1755.0006103515625,
-    "spawns": "BuyCritChance+5_C",
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "8390"
+    "spawns": "BuyCritChance+5_C"
   },
   {
     "name": "ChestArea3_26",
@@ -3250,9 +3034,7 @@
     "lat": -40256.01171875,
     "lng": -147.4905548095703,
     "alt": 1777.0001220703125,
-    "spawns": "BP_BuyGunCapacity+3shots_C",
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "8405"
+    "spawns": "BP_BuyGunCapacity+3shots_C"
   },
   {
     "name": "ChestArea3_27",
@@ -3261,9 +3043,7 @@
     "lat": -36611.17578125,
     "lng": -1181.80078125,
     "alt": 4476.28955078125,
-    "spawns": "BP_PurchaseHealth+1_C",
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "8772"
+    "spawns": "BP_PurchaseHealth+1_C"
   },
   {
     "name": "ChestArea3_44",
@@ -3272,9 +3052,7 @@
     "lat": -36158.01171875,
     "lng": 7113.79150390625,
     "alt": 1854.066162109375,
-    "coins": 20,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "8866"
+    "coins": 20
   },
   {
     "name": "ChestArea3_53",
@@ -3283,9 +3061,7 @@
     "lat": -49097.5,
     "lng": -1796.4490966796875,
     "alt": 5183.84765625,
-    "coins": 15,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "8246"
+    "coins": 15
   },
   {
     "name": "ChestArea3_62",
@@ -3294,9 +3070,7 @@
     "lat": -39022.74609375,
     "lng": 8284.1396484375,
     "alt": 1755.0006103515625,
-    "spawns": "BP_BuyBoomeraxeThrowSpeed_C",
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "8748"
+    "spawns": "BP_BuyBoomeraxeThrowSpeed_C"
   },
   {
     "name": "ChestArea3_70",
@@ -3305,9 +3079,7 @@
     "lat": -39912.5390625,
     "lng": 7526.580078125,
     "alt": 1736.0,
-    "spawns": "BP_BuyGunDamage+100pct_C",
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "8552"
+    "spawns": "BP_BuyGunDamage+100pct_C"
   },
   {
     "name": "ChestArea4",
@@ -3316,9 +3088,7 @@
     "lat": -63987.8828125,
     "lng": 42204.96875,
     "alt": 3214.12646484375,
-    "spawns": "BuyQuintupleJump_C",
-    "yt_video": "sdkhgbmawHM",
-    "yt_start": "331"
+    "spawns": "BuyQuintupleJump_C"
   },
   {
     "name": "ChestArea4_29",
@@ -3327,9 +3097,7 @@
     "lat": -32578.466796875,
     "lng": 31313.287109375,
     "alt": 3236.86474609375,
-    "spawns": "BP_BuyGunRechargeTime-50pct_C",
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "9010"
+    "spawns": "BP_BuyGunRechargeTime-50pct_C"
   },
   {
     "name": "ChestArea4_32",
@@ -3338,9 +3106,7 @@
     "lat": -47550.0234375,
     "lng": 38427.8203125,
     "alt": 2214.948486328125,
-    "spawns": "BP_PurchaseHealth+1_C",
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "9085"
+    "spawns": "BP_PurchaseHealth+1_C"
   },
   {
     "name": "ChestArea4_33",
@@ -3349,9 +3115,7 @@
     "lat": -47416.8046875,
     "lng": 38265.48046875,
     "alt": 2483.51220703125,
-    "spawns": "BP_PurchaseHealth+1_C",
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "9085"
+    "spawns": "BP_PurchaseHealth+1_C"
   },
   {
     "name": "ChestArea4_34",
@@ -3360,9 +3124,7 @@
     "lat": -47735.1171875,
     "lng": 46173.5234375,
     "alt": 1991.3939208984375,
-    "coins": 10,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "9302"
+    "coins": 10
   },
   {
     "name": "ChestArea4_35",
@@ -3371,9 +3133,7 @@
     "lat": -42255.51953125,
     "lng": 51443.8046875,
     "alt": 1906.208251953125,
-    "spawns": "BP_PurchaseHealth+1_C",
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "9882"
+    "spawns": "BP_PurchaseHealth+1_C"
   },
   {
     "name": "ChestArea4_36",
@@ -3382,9 +3142,7 @@
     "lat": -46289.609375,
     "lng": 39644.296875,
     "alt": 2203.81640625,
-    "spawns": "Purchase_ForceCube_C",
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "2808"
+    "spawns": "Purchase_ForceCube_C"
   },
   {
     "name": "ChestArea4_37",
@@ -3393,9 +3151,7 @@
     "lat": -46995.421875,
     "lng": 50307.3828125,
     "alt": 1923.34033203125,
-    "coins": 20,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "9941"
+    "coins": 20
   },
   {
     "name": "ChestArea4_38",
@@ -3404,9 +3160,7 @@
     "lat": -46098.85546875,
     "lng": 47519.6640625,
     "alt": 1296.39404296875,
-    "spawns": "BuyCritChance+5_C",
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "9988"
+    "spawns": "BuyCritChance+5_C"
   },
   {
     "name": "ChestArea4_41",
@@ -3415,9 +3169,7 @@
     "lat": -41082.28515625,
     "lng": 39080.24609375,
     "alt": 3784.96923828125,
-    "coins": 15,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "9138"
+    "coins": 15
   },
   {
     "name": "ChestArea4_45",
@@ -3426,9 +3178,7 @@
     "lat": -57554.53125,
     "lng": 48658.8984375,
     "alt": 485.3988037109375,
-    "spawns": "BP_BuyGunCapacity+3shots_C",
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "9321"
+    "spawns": "BP_BuyGunCapacity+3shots_C"
   },
   {
     "name": "ChestArea4_48",
@@ -3437,9 +3187,7 @@
     "lat": -64008.4453125,
     "lng": 55088.7265625,
     "alt": 1660.006591796875,
-    "spawns": "BP_BuyGunRechargeTime-50pct_C",
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "9713"
+    "spawns": "BP_BuyGunRechargeTime-50pct_C"
   },
   {
     "name": "ChestArea4_54",
@@ -3448,9 +3196,7 @@
     "lat": -56443.5625,
     "lng": 58703.46875,
     "alt": 2905.64208984375,
-    "spawns": "BP_BuyGunCapacity+3shots_C",
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "9595"
+    "spawns": "BP_BuyGunCapacity+3shots_C"
   },
   {
     "name": "ChestArea4_55",
@@ -3459,9 +3205,7 @@
     "lat": -63962.8125,
     "lng": 55114.61328125,
     "alt": 4412.15576171875,
-    "spawns": "BP_BuyBoomeraxeDistance_C",
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "9667"
+    "spawns": "BP_BuyBoomeraxeDistance_C"
   },
   {
     "name": "ChestArea4_56",
@@ -3470,9 +3214,7 @@
     "lat": -52545.3125,
     "lng": 46677.8515625,
     "alt": 423.41107177734375,
-    "coins": 15,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "9529"
+    "coins": 15
   },
   {
     "name": "ChestArea4_71",
@@ -3481,9 +3223,7 @@
     "lat": -50250.59765625,
     "lng": 56237.2109375,
     "alt": 464.79656982421875,
-    "spawns": "BP_BuyBoomeraxeThrowSpeed_C",
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "9841"
+    "spawns": "BP_BuyBoomeraxeThrowSpeed_C"
   },
   {
     "name": "ChestArea4_72",
@@ -3492,9 +3232,7 @@
     "lat": -57680.3828125,
     "lng": 56384.890625,
     "alt": 3517.9443359375,
-    "spawns": "BuyHealthRegenMax+1_C",
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "9595"
+    "spawns": "BuyHealthRegenMax+1_C"
   },
   {
     "name": "ChestArea4Firegunonly",
@@ -3503,9 +3241,7 @@
     "lat": -55833.5390625,
     "lng": 65468.32421875,
     "alt": 689.518310546875,
-    "spawns": "BP_BuyFireGunAutoRecharge_C",
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "9740"
+    "spawns": "BP_BuyFireGunAutoRecharge_C"
   },
   {
     "name": "ChestArea5",
@@ -3514,9 +3250,7 @@
     "lat": -49058.26953125,
     "lng": 55007.984375,
     "alt": 2431.684326171875,
-    "spawns": "BP_PurchaseHealth+1_C",
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "9897"
+    "spawns": "BP_PurchaseHealth+1_C"
   },
   {
     "name": "ChestAreaEnd2",
@@ -3525,9 +3259,7 @@
     "lat": -6772.22119140625,
     "lng": -46943.0234375,
     "alt": 8593.8544921875,
-    "spawns": "BuyChestDetector_C",
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "4557"
+    "spawns": "BuyChestDetector_C"
   },
   {
     "name": "ChestAreaEnd_73",
@@ -3536,9 +3268,7 @@
     "lat": -4499.41748046875,
     "lng": -47164.0859375,
     "alt": 7553.7197265625,
-    "spawns": "BP_BuyGunCapacity+3shots_C",
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "4670"
+    "spawns": "BP_BuyGunCapacity+3shots_C"
   },
   {
     "name": "ChestAreaEnd_74",
@@ -3547,9 +3277,7 @@
     "lat": -6829.44287109375,
     "lng": -42515.0390625,
     "alt": 7058.92724609375,
-    "spawns": "BP_BuyBoomeraxeDistance_C",
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "4780"
+    "spawns": "BP_BuyBoomeraxeDistance_C"
   },
   {
     "name": "ChestAreaEnd_75",
@@ -3558,9 +3286,7 @@
     "lat": -5115.86572265625,
     "lng": -48166.1484375,
     "alt": 10269.296875,
-    "coins": 20,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "4642"
+    "coins": 20
   },
   {
     "name": "ChestAreaEnd_76",
@@ -3569,9 +3295,7 @@
     "lat": -1694.2796630859375,
     "lng": -50914.0859375,
     "alt": 8537.857421875,
-    "spawns": "BP_PurchaseHealth+1_C",
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "4428"
+    "spawns": "BP_PurchaseHealth+1_C"
   },
   {
     "name": "ChestAreaEnd_78",
@@ -3580,9 +3304,7 @@
     "lat": -11150.013671875,
     "lng": -58828.6640625,
     "alt": 7870.2666015625,
-    "coins": 5,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "4476"
+    "coins": 5
   },
   {
     "name": "ChestFiregun",
@@ -3591,9 +3313,7 @@
     "lat": 2188.890625,
     "lng": 36101.87109375,
     "alt": 2392.3896484375,
-    "spawns": "BuyFireGun_C",
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "5392"
+    "spawns": "BuyFireGun_C"
   },
   {
     "name": "ChestRepel",
@@ -3602,9 +3322,7 @@
     "lat": -10249.9091796875,
     "lng": 63738.71484375,
     "alt": 502.4501647949219,
-    "spawns": "BuyBeltRepel_C",
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "1460"
+    "spawns": "BuyBeltRepel_C"
   },
   {
     "name": "ChestTown",
@@ -3613,9 +3331,7 @@
     "lat": -18803.158203125,
     "lng": 26546.212890625,
     "alt": 1146.87646484375,
-    "spawns": "BP_PickaxeDamage+1_C",
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "6801"
+    "spawns": "BP_PickaxeDamage+1_C"
   },
   {
     "name": "ChestTown2",
@@ -3624,9 +3340,7 @@
     "lat": -24453.59765625,
     "lng": 18264.958984375,
     "alt": -2699.2568359375,
-    "spawns": "BuyCritChance+5_C",
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "6244"
+    "spawns": "BuyCritChance+5_C"
   },
   {
     "name": "ChestTown3",
@@ -3635,9 +3349,7 @@
     "lat": -26511.375,
     "lng": 24236.3359375,
     "alt": -2961.1064453125,
-    "spawns": "Purchase_ForceBeam_C",
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "958"
+    "spawns": "Purchase_ForceBeam_C"
   },
   {
     "name": "ChestTown4",
@@ -3646,9 +3358,7 @@
     "lat": -25829.046875,
     "lng": 24221.8984375,
     "alt": -1952.410400390625,
-    "spawns": "BuyHealthRegenMax+1_C",
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "6244"
+    "spawns": "BuyHealthRegenMax+1_C"
   },
   {
     "name": "ChestTown_10",
@@ -3657,9 +3367,7 @@
     "lat": -26128.767578125,
     "lng": 11920.294921875,
     "alt": 1218.8389892578125,
-    "spawns": "BP_BuyBoomeraxePenetration_C",
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "6079"
+    "spawns": "BP_BuyBoomeraxePenetration_C"
   },
   {
     "name": "ChestTown_18",
@@ -3668,9 +3376,7 @@
     "lat": -27292.66796875,
     "lng": -571.5170288085938,
     "alt": 1138.33642578125,
-    "spawns": "BP_Purchase_Pickaxe_Range+_C",
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "5995"
+    "spawns": "BP_Purchase_Pickaxe_Range+_C"
   },
   {
     "name": "ChestTown_24",
@@ -3679,9 +3385,7 @@
     "lat": -22548.998046875,
     "lng": 21105.736328125,
     "alt": 1360.9505615234375,
-    "spawns": "BP_BuyBoomeraxeDistance_C",
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "6712"
+    "spawns": "BP_BuyBoomeraxeDistance_C"
   },
   {
     "name": "ChestTown_3",
@@ -3690,9 +3394,7 @@
     "lat": -26330.03125,
     "lng": 17938.2734375,
     "alt": -2393.072265625,
-    "spawns": "BuyHealthRegenMax+1_C",
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "6244"
+    "spawns": "BuyHealthRegenMax+1_C"
   },
   {
     "name": "ChestTown_40",
@@ -3701,9 +3403,7 @@
     "lat": -28513.109375,
     "lng": 25499.1015625,
     "alt": 3.425640106201172,
-    "spawns": "BP_BuyBoomeraxePenetration_C",
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "6862"
+    "spawns": "BP_BuyBoomeraxePenetration_C"
   },
   {
     "name": "ChestTown_49",
@@ -3712,9 +3412,7 @@
     "lat": -15045.4951171875,
     "lng": 32297.8984375,
     "alt": -1023.7057495117188,
-    "spawns": "BuyBelt_DLC2_C",
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "1152"
+    "spawns": "BuyBelt_DLC2_C"
   },
   {
     "name": "ChestTown_50",
@@ -3723,9 +3421,7 @@
     "lat": -24510.294921875,
     "lng": 27405.30859375,
     "alt": 1503.9774169921875,
-    "spawns": "BP_PurchaseHealth+1_C",
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "6862"
+    "spawns": "BP_PurchaseHealth+1_C"
   },
   {
     "name": "ChestTown_51",
@@ -3734,9 +3430,7 @@
     "lat": -20486.009765625,
     "lng": 25518.431640625,
     "alt": 2795.59521484375,
-    "spawns": "BuyCritChance+5_C",
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "6215"
+    "spawns": "BuyCritChance+5_C"
   },
   {
     "name": "ChestTown_61",
@@ -3745,9 +3439,7 @@
     "lat": -22469.267578125,
     "lng": 19978.205078125,
     "alt": 1359.762451171875,
-    "spawns": "BP_BuyGunDuration+2s_C",
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "6698"
+    "spawns": "BP_BuyGunDuration+2s_C"
   },
   {
     "name": "ChestTown_64",
@@ -3756,9 +3448,7 @@
     "lat": -30185.478515625,
     "lng": 23811.302734375,
     "alt": -201.6133575439453,
-    "spawns": "BP_PickaxeDamage+1_C",
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "1059"
+    "spawns": "BP_PickaxeDamage+1_C"
   },
   {
     "name": "ChestTown_66",
@@ -3767,9 +3457,7 @@
     "lat": -30968.859375,
     "lng": 21850.021484375,
     "alt": 1363.51953125,
-    "spawns": "BP_BuyGunDuration+2s_C",
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "6680"
+    "spawns": "BP_BuyGunDuration+2s_C"
   },
   {
     "name": "ChestTown_8",
@@ -3778,9 +3466,7 @@
     "lat": -24160.162109375,
     "lng": 16547.00390625,
     "alt": -210.93675231933594,
-    "spawns": "BP_PurchaseHealth+1_C",
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "6600"
+    "spawns": "BP_PurchaseHealth+1_C"
   },
   {
     "name": "ChestTown_81",
@@ -3789,9 +3475,7 @@
     "lat": -22421.48828125,
     "lng": 23746.693359375,
     "alt": -446.87506103515625,
-    "spawns": "BP_PurchaseHealth+1_C",
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "6759"
+    "spawns": "BP_PurchaseHealth+1_C"
   },
   {
     "name": "ChestTown_9",
@@ -3800,9 +3484,7 @@
     "lat": -31713.19140625,
     "lng": 22077.9140625,
     "alt": -190.20057678222656,
-    "spawns": "BuyHealthRegenMax+1_C",
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "6346"
+    "spawns": "BuyHealthRegenMax+1_C"
   },
   {
     "name": "ChestTownFiregunonly",
@@ -3811,9 +3493,7 @@
     "lat": -28434.46875,
     "lng": 15623.9443359375,
     "alt": -134.3101043701172,
-    "spawns": "BP_Purchase_TranslocatorCooldown_C",
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "6576"
+    "spawns": "BP_Purchase_TranslocatorCooldown_C"
   },
   {
     "name": "ChestTranslocator",
@@ -3822,9 +3502,7 @@
     "lat": -56919.7578125,
     "lng": 56439.578125,
     "alt": 5936.94091796875,
-    "spawns": "BuyTranslocator_C",
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "2998"
+    "spawns": "BuyTranslocator_C"
   },
   {
     "name": "Coin10",
@@ -16540,9 +16218,7 @@
     "lng": 16464.306640625,
     "alt": -72.95669555664062,
     "price_type": 0,
-    "cost": 200,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "2552"
+    "cost": 200
   },
   {
     "name": "Purchase_IronPickaxe_2",
@@ -16552,9 +16228,7 @@
     "lng": 16443.494140625,
     "alt": -57.282127380371094,
     "price_type": 0,
-    "cost": 100,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "1830"
+    "cost": 100
   },
   {
     "name": "Purchase_SlumHouse1_2",
@@ -16571,9 +16245,7 @@
     "lat": -28170.8125,
     "lng": 16432.439453125,
     "alt": -77.56555938720703,
-    "cost": 20,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "952"
+    "cost": 20
   },
   {
     "name": "Purchase_WoodPickaxe_2",
@@ -16582,9 +16254,7 @@
     "lat": 15551.4541015625,
     "lng": 22349.587890625,
     "alt": 3223.587646484375,
-    "cost": 42,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "619"
+    "cost": 42
   },
   {
     "name": "A2_PipeGuy",
@@ -19252,9 +18922,7 @@
     "area": "DLC2_Complete",
     "lat": -63365.9765625,
     "lng": 41623.96875,
-    "alt": 3229.5244140625,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "9441"
+    "alt": 3229.5244140625
   },
   {
     "name": "Scrap178",
@@ -19262,9 +18930,7 @@
     "area": "DLC2_Complete",
     "lat": -63535.1953125,
     "lng": 41579.359375,
-    "alt": 3235.7880859375,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "9441"
+    "alt": 3235.7880859375
   },
   {
     "name": "Scrap179",
@@ -19272,9 +18938,7 @@
     "area": "DLC2_Complete",
     "lat": -63404.3984375,
     "lng": 41517.671875,
-    "alt": 3229.3212890625,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "9441"
+    "alt": 3229.3212890625
   },
   {
     "name": "Scrap180",
@@ -19282,9 +18946,7 @@
     "area": "DLC2_Complete",
     "lat": -63274.9609375,
     "lng": 41456.375,
-    "alt": 3214.8974609375,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "9441"
+    "alt": 3214.8974609375
   },
   {
     "name": "Scrap181_9",
@@ -19292,9 +18954,7 @@
     "area": "DLC2_Complete",
     "lat": -63333.0078125,
     "lng": 41509.296875,
-    "alt": 3229.3212890625,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "9441"
+    "alt": 3229.3212890625
   },
   {
     "name": "Scrap182_11",
@@ -19302,9 +18962,7 @@
     "area": "DLC2_Complete",
     "lat": -63193.3984375,
     "lng": 41429.015625,
-    "alt": 3250.84130859375,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "9441"
+    "alt": 3250.84130859375
   },
   {
     "name": "Scrap183",
@@ -19312,9 +18970,7 @@
     "area": "DLC2_Complete",
     "lat": -63209.3984375,
     "lng": 41554.734375,
-    "alt": 3245.59521484375,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "9441"
+    "alt": 3245.59521484375
   },
   {
     "name": "Scrap184",
@@ -19322,9 +18978,7 @@
     "area": "DLC2_Complete",
     "lat": -63285.7265625,
     "lng": 41590.0390625,
-    "alt": 3229.3212890625,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "9441"
+    "alt": 3229.3212890625
   },
   {
     "name": "Scrap185",
@@ -19332,9 +18986,7 @@
     "area": "DLC2_Complete",
     "lat": -63103.2109375,
     "lng": 41371.7890625,
-    "alt": 3255.01708984375,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "9441"
+    "alt": 3255.01708984375
   },
   {
     "name": "Scrap186",
@@ -19342,9 +18994,7 @@
     "area": "DLC2_Complete",
     "lat": -63108.6953125,
     "lng": 41487.875,
-    "alt": 3268.69287109375,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "9441"
+    "alt": 3268.69287109375
   },
   {
     "name": "Scrap187",
@@ -19352,9 +19002,7 @@
     "area": "DLC2_Complete",
     "lat": -62930.6484375,
     "lng": 41192.03515625,
-    "alt": 3285.66748046875,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "9441"
+    "alt": 3285.66748046875
   },
   {
     "name": "Scrap188",
@@ -19362,9 +19010,7 @@
     "area": "DLC2_Complete",
     "lat": -63014.7109375,
     "lng": 41316.88671875,
-    "alt": 3290.53271484375,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "9441"
+    "alt": 3290.53271484375
   },
   {
     "name": "Scrap189",
@@ -19372,9 +19018,7 @@
     "area": "DLC2_Complete",
     "lat": -63029.7578125,
     "lng": 41430.6328125,
-    "alt": 3254.69091796875,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "9441"
+    "alt": 3254.69091796875
   },
   {
     "name": "Scrap190",
@@ -19382,9 +19026,7 @@
     "area": "DLC2_Complete",
     "lat": -63441.5546875,
     "lng": 41629.234375,
-    "alt": 3235.7880859375,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "9441"
+    "alt": 3235.7880859375
   },
   {
     "name": "Scrap_2",
@@ -19392,9 +19034,7 @@
     "area": "DLC2_Complete",
     "lat": -63052.5078125,
     "lng": 41790.4921875,
-    "alt": 3271.39208984375,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "9441"
+    "alt": 3271.39208984375
   },
   {
     "name": "SecretFound10",
@@ -20519,9 +20159,7 @@
     "lat": -24798.21875,
     "lng": -21756.060546875,
     "alt": 5759.98876953125,
-    "spawns": "BP_PurchaseHealth+1_C",
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "10143"
+    "spawns": "BP_PurchaseHealth+1_C"
   },
   {
     "name": "Chest_2",
@@ -20530,9 +20168,7 @@
     "lat": -18593.673828125,
     "lng": -26222.0078125,
     "alt": 8395.099609375,
-    "spawns": "BP_PurchaseHealth+1_C",
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "10166"
+    "spawns": "BP_PurchaseHealth+1_C"
   },
   {
     "name": "Coin2",
@@ -22517,9 +22153,7 @@
     "area": "DLC2_SecretLavaArea",
     "lat": -1642.2034912109375,
     "lng": -16584.927734375,
-    "alt": 3105.4658203125,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "10882"
+    "alt": 3105.4658203125
   },
   {
     "name": "BP_TriggerVolume_2",
@@ -22584,9 +22218,7 @@
     "lat": -1614.1009521484375,
     "lng": -16381.2490234375,
     "alt": 3019.99951171875,
-    "coins": 30,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "10877"
+    "coins": 30
   },
   {
     "name": "Chest3",
@@ -22595,9 +22227,7 @@
     "lat": -1669.7728271484375,
     "lng": -16777.35546875,
     "alt": 3019.99951171875,
-    "spawns": "BuyHealthRegenMax+1_C",
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "10877"
+    "spawns": "BuyHealthRegenMax+1_C"
   },
   {
     "name": "Chest4_2",
@@ -22606,9 +22236,7 @@
     "lat": 5022.3935546875,
     "lng": 8731.47265625,
     "alt": -7659.04443359375,
-    "coins": 50,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "11533"
+    "coins": 50
   },
   {
     "name": "Chest_2",
@@ -22617,9 +22245,7 @@
     "lat": -3838.058837890625,
     "lng": 4182.0537109375,
     "alt": 915.64990234375,
-    "coins": 5,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "10374"
+    "coins": 5
   },
   {
     "name": "SecretLavaArea_Chest01_1",
@@ -22628,9 +22254,7 @@
     "lat": 1305.5433349609375,
     "lng": 7011.2158203125,
     "alt": -577.216796875,
-    "spawns": "BP_BuyGunCapacity+3shots_C",
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "10446"
+    "spawns": "BP_BuyGunCapacity+3shots_C"
   },
   {
     "name": "SecretLavaArea_Chest02",
@@ -22639,9 +22263,7 @@
     "lat": 6816.96044921875,
     "lng": -1548.90771484375,
     "alt": 286.0,
-    "spawns": "BP_BuyBoomeraxePenetration_C",
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "10623"
+    "spawns": "BP_BuyBoomeraxePenetration_C"
   },
   {
     "name": "SecretLavaArea_Chest04",
@@ -22650,9 +22272,7 @@
     "lat": 2452.45947265625,
     "lng": -727.2366943359375,
     "alt": 3825.66455078125,
-    "coins": 5,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "10684"
+    "coins": 5
   },
   {
     "name": "SecretLavaArea_Chest06",
@@ -22661,9 +22281,7 @@
     "lat": -5124.43896484375,
     "lng": -1243.85546875,
     "alt": 2273.03125,
-    "coins": 5,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "11219"
+    "coins": 5
   },
   {
     "name": "SecretLavaArea_Chest07",
@@ -22672,9 +22290,7 @@
     "lat": 11609.4189453125,
     "lng": -1078.1513671875,
     "alt": 2536.85595703125,
-    "spawns": "BP_BuyGunDamage+100pct_C",
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "11455"
+    "spawns": "BP_BuyGunDamage+100pct_C"
   },
   {
     "name": "SecretLavaArea_Chest08",
@@ -22683,9 +22299,7 @@
     "lat": 11354.96484375,
     "lng": -216.9453582763672,
     "alt": 2268.8955078125,
-    "coins": 10,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "11455"
+    "coins": 10
   },
   {
     "name": "SecretLavaArea_Chest09",
@@ -22694,9 +22308,7 @@
     "lat": 15620.0654296875,
     "lng": -466.2608337402344,
     "alt": 1840.1962890625,
-    "coins": 5,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "11487"
+    "coins": 5
   },
   {
     "name": "SecretLavaArea_Chest10",
@@ -22705,9 +22317,7 @@
     "lat": 720.5151977539062,
     "lng": -4530.2333984375,
     "alt": 2486.6982421875,
-    "spawns": "BuyCritChance+5_C",
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "11158"
+    "spawns": "BuyCritChance+5_C"
   },
   {
     "name": "SecretLavaArea_Chest11",
@@ -22716,9 +22326,7 @@
     "lat": -3179.64453125,
     "lng": -11262.60546875,
     "alt": 1452.5068359375,
-    "coins": 5,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "11083"
+    "coins": 5
   },
   {
     "name": "SecretLavaArea_Chest12",
@@ -22727,9 +22335,7 @@
     "lat": 2662.931640625,
     "lng": -14628.369140625,
     "alt": 714.7802734375,
-    "spawns": "BP_PurchaseHealth+1_C",
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "10855"
+    "spawns": "BP_PurchaseHealth+1_C"
   },
   {
     "name": "SecretLavaArea_Chest12_6",
@@ -22738,9 +22344,7 @@
     "lat": 1173.3306884765625,
     "lng": -12599.830078125,
     "alt": 2739.1748046875,
-    "coins": 5,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "10855"
+    "coins": 5
   },
   {
     "name": "Coin10",
@@ -25342,9 +24946,7 @@
     "area": "DLC2_PostRainbow",
     "lat": -42795.76953125,
     "lng": -54795.62109375,
-    "alt": 10242.5732421875,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "12765"
+    "alt": 10242.5732421875
   },
   {
     "name": "BP_EngagementCup_Base13_40",
@@ -25352,9 +24954,7 @@
     "area": "DLC2_PostRainbow",
     "lat": -39229.41015625,
     "lng": -55507.59375,
-    "alt": 10638.294921875,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "11914"
+    "alt": 10638.294921875
   },
   {
     "name": "BP_EngagementCup_Base2_7",
@@ -25362,9 +24962,7 @@
     "area": "DLC2_PostRainbow",
     "lat": -49362.65625,
     "lng": -60765.40234375,
-    "alt": 10026.068359375,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "12880"
+    "alt": 10026.068359375
   },
   {
     "name": "BP_EngagementCup_Base3_10",
@@ -25372,9 +24970,7 @@
     "area": "DLC2_PostRainbow",
     "lat": -43549.46484375,
     "lng": -69064.65625,
-    "alt": 11268.501953125,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "12005"
+    "alt": 11268.501953125
   },
   {
     "name": "BP_EngagementCup_Base4_13",
@@ -25382,9 +24978,7 @@
     "area": "DLC2_PostRainbow",
     "lat": -45132.640625,
     "lng": -73249.703125,
-    "alt": 9199.21875,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "12046"
+    "alt": 9199.21875
   },
   {
     "name": "BP_EngagementCup_Base5_16",
@@ -25392,9 +24986,7 @@
     "area": "DLC2_PostRainbow",
     "lat": -42060.140625,
     "lng": -52591.08984375,
-    "alt": 6896.06103515625,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "12320"
+    "alt": 6896.06103515625
   },
   {
     "name": "BP_EngagementCup_Base6_19",
@@ -25402,9 +24994,7 @@
     "area": "DLC2_PostRainbow",
     "lat": -44386.65234375,
     "lng": -52814.86328125,
-    "alt": 5472.169921875,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "12560"
+    "alt": 5472.169921875
   },
   {
     "name": "BP_EngagementCup_Base7_22",
@@ -25412,9 +25002,7 @@
     "area": "DLC2_PostRainbow",
     "lat": -42395.70703125,
     "lng": -57617.1875,
-    "alt": 9815.537109375,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "12620"
+    "alt": 9815.537109375
   },
   {
     "name": "BP_EngagementCup_Base9_28",
@@ -25422,9 +25010,7 @@
     "area": "DLC2_PostRainbow",
     "lat": -40833.21484375,
     "lng": -44295.66015625,
-    "alt": 6849.0,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "12370"
+    "alt": 6849.0
   },
   {
     "name": "BP_EngagementCup_Base_2",
@@ -25432,9 +25018,7 @@
     "area": "DLC2_PostRainbow",
     "lat": -47840.1328125,
     "lng": -49320.54296875,
-    "alt": 16208.3984375,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "12990"
+    "alt": 16208.3984375
   },
   {
     "name": "BP_TriggerVolume10_15",
@@ -25728,9 +25312,7 @@
     "lat": -44532.31640625,
     "lng": -58354.32421875,
     "alt": 4257.45947265625,
-    "coins": 1,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "12578"
+    "coins": 1
   },
   {
     "name": "Chest3_9",
@@ -25739,9 +25321,7 @@
     "lat": -48125.10546875,
     "lng": -48496.8125,
     "alt": 5605.970703125,
-    "coins": 10,
-    "yt_video": "5KkEVBgFW3U",
-    "yt_start": "12384"
+    "coins": 10
   },
   {
     "name": "Coin10_10",
@@ -28542,9 +28122,7 @@
       "Coin519": 1,
       "Coin520": 1,
       "CoinBig7": 10
-    },
-    "yt_video": "DmxnGCJRPXw",
-    "yt_start": "0"
+    }
   },
   {
     "name": "CoinStack11",
