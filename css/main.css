@@ -83,13 +83,14 @@ path[alt=''] { opacity: 100% }
 
 /* Jumppad line drawing */
 .line-jumppad {
-  --arrow-size: 10;    /* Arrow head size, if not set no arrow drawn, only used for long one way lines */
-  --arrow-angle: 40;   /* Angle arrow pointer will be drawn with */
-  --line-width: 6;    /* Width of the basic line */
+  --arrow-size: 10;     /* Arrow head size, if not set no arrow drawn, only used for long one way lines */
+  --arrow-angle: 40;    /* Angle arrow pointer will be drawn with */
+  --arrow-dist: 100;    /* If line is shorter than this distance, don't draw arrow */
+  --line-width: 6;      /* Width of the basic line */
   --shadow-width: 2.5;  /* Width of shadow border */
-  --offset: 100%;     /* How far along line should first arrow appear, pixels also ok */
-  --end-offset: 0;    /* How far from end should last arrow appear */
-  --repeat: 1;        /* How many arrows should be drawn? */
+  --offset: 100%;       /* How far along line should first arrow appear, pixels also ok */
+  --end-offset: 0;      /* How far from end should last arrow appear */
+  --repeat: 1;          /* How many arrows should be drawn? */
 
   stroke-width: var(--line-width);
   opacity: 100%;        /* inherited by arrows and arrow shadows */
@@ -121,6 +122,7 @@ path[alt=''] { opacity: 100% }
 .line-pipe {
   --arrow-size: 5;
   --arrow-angle: 40;
+  --arrow-dist: 100;
   --line-width: 6;
   --shadow-width: 2.5;
   --offset: 100%;
@@ -150,6 +152,7 @@ path[alt=''] { opacity: 100% }
 .line-player_aim {
   --arrow-size: 5;
   --arrow-angle: 40;
+  --arrow-dist: 100;
   --line-width: 3;
   --shadow-width: 0;
   --offset: 100%;
@@ -177,6 +180,7 @@ path[alt=''] { opacity: 100% }
 .line-trigger {
   --arrow-size: 5;
   --arrow-angle: 40;
+  --arrow-dist: 100;
   --line-width: 2;
   --shadow-width: 0;
   --offset: 100%;

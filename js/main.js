@@ -576,7 +576,7 @@ function loadMap(id) {
     for(lt of ['jumppad red', 'jumppad blue', 'pipe', 'trigger', 'player_aim']) {
       const div = $("<div>").addClass(`line-${lt}`).appendTo(document.body);
       let lineProps = {}
-      for(p of ['stroke', 'fill', 'opacity', 'fill-opacity', '--arrow-size', '--arrow-angle',
+      for(p of ['stroke', 'fill', 'opacity', 'fill-opacity', '--arrow-size', '--arrow-angle', '--arrow-dist',
           '--line-width', '--shadow-width', '--offset', '--offset-end', 'repeat']) {
         if(div.css(p))
           lineProps[p.replaceAll('-', '')] = div.css(p);
