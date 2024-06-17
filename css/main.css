@@ -1,6 +1,6 @@
 html, body, #map { width:100%; height:100%; margin:0; padding:0; z-index: 1; background: #000; }
 .leaflet-control { user-select: none;}
-.found { opacity: 30%; }
+.found { opacity: 25%; }
 .hidden { visibility: hidden; }
 
 path { opacity: 100%; fill-opacity: 100%; filter: brightness(100%) }
@@ -10,7 +10,8 @@ path[alt=''] { opacity: 100% }
 
 .leaflet-control-search .search-input {
   width: 230px;
-  border-radius: 45px;
+  margin-right: 2px;
+  border-radius: 4px;
 }
 
 .leaflet-control-search .search-tooltip {
