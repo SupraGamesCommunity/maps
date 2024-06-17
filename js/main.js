@@ -685,7 +685,7 @@ function loadMap(id) {
           // is supposed to be just data but I can't think of a better way to do it.
           // If an class is marked as shop channel but doesn't have a price in coins, bones or scrap
           // it wants to be on the collectable layer not the shop layer 
-          nospoiler = c.nospoiler != 'shop' || (o.coins && o.price_type != 7) ? c.nospoiler : 'collectable';
+          nospoiler = c.nospoiler != 'shop' || (o.cost && o.price_type != 7) ? c.nospoiler : 'collectable';
           if(nospoiler && enabledLayers[nospoiler])
           {
             const layer = nospoiler
