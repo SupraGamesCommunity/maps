@@ -1,5 +1,89 @@
 [
   {
+    "name": "BuyUpgradeChestNum",
+    "area": "Map",
+    "lat": -34084.0,
+    "lng": 48.0
+  },
+  {
+    "name": "BuyHealthRegen2_695",
+    "area": "Map",
+    "lat": -34003.71875,
+    "lng": -57.00196838378906
+  },
+  {
+    "name": "BuySwordDamage+11",
+    "area": "Map",
+    "lat": -33980.2890625,
+    "lng": 130.502090454101562
+  },
+  {
+    "name": "BuyDoubleJump_786",
+    "area": "Map",
+    "lat": -33901.05859375,
+    "lng": 27.856106758117676
+  },
+  {
+    "name": "BuyTripleJump_877",
+    "area": "Map",
+    "lat": -33870.11328125,
+    "lng": 210.43764877319336
+  },
+  {
+    "name": "BuySpeedx15_2",
+    "area": "Map",
+    "lat": -33800.21875,
+    "lng": 100.940216064453125
+  },
+  {
+    "name": "BuySpeedx2_206",
+    "area": "Map",
+    "lat": -33690.83203125,
+    "lng": 179.78148651123047
+  },
+  {
+    "name": "UpgradeHappiness2_2",
+    "area": "Map",
+    "lat": -33767.76171875,
+    "lng": 287.12112426757812
+  },
+  {
+    "name": "BuyChestDetectorRadius",
+    "area": "Map",
+    "lat": -33671.2265625,
+    "lng": 360.25746154785156
+  },
+  {
+    "name": "BuyForceBlock_695",
+    "area": "Map",
+    "lat": -33590.125,
+    "lng": 255.09010314941406
+  },
+  {
+    "name": "BuyWallet+50_737",
+    "area": "Map",
+    "lat": -33575.9296875,
+    "lng": 430.7998504638672
+  },
+  {
+    "name": "BuyWallet+51",
+    "area": "Map",
+    "lat": -33490.3203125,
+    "lng": 332.32745361328125
+  },
+  {
+    "name": "BuySwordDamage+10_2",
+    "area": "Map",
+    "lat": -33482.83984375,
+    "lng": 503.5240173339844
+  },
+  {
+    "name": "BuyHealth+15_765",
+    "area": "Map",
+    "lat": -33396.23046875,
+    "lng": 393.44390869140625
+  },
+  {
     "name": "Juicer2",
     "area": "Map",
     "spawns": "BP_DoubleHealthLoot_C",
