@@ -281,7 +281,8 @@
     "area": "Map",
     "yt_video": "ReN380PXV-A",
     "yt_start": "13582"
-  },  {
+  },  
+  {
     "name": "Chest103_3711",
     "area": "Map",
     "yt_video": "ReN380PXV-A",
@@ -304,7 +305,7 @@
     "area": "Map",
     "yt_video": "ReN380PXV-A",
     "yt_start": ""
-  }
+  },
   {
     "name": "Chest107_9218",
     "area": "Map",
@@ -370,6 +371,7 @@
     "area": "Map",
     "yt_video": "ReN380PXV-A",
     "yt_start": ""
+  },
   {
     "name": "Chest117_2",
     "area": "Map",
