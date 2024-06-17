@@ -519,7 +519,7 @@ function loadMap(id) {
       if (o.yt_start) ytSrc += '&start=' + o.yt_start;
       if (o.yt_end) ytSrc += '&end=' + o.yt_end;
 
-      text = text + '<iframe width="265" height="149.0625" src="' + ytSrc
+      text = text + '<iframe width="300" height="169" src="' + ytSrc
         + '" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
     }
 
