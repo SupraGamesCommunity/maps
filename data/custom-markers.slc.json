@@ -210,7 +210,16 @@
     "type": "Hide:BuyForceBeam_C",
     "area": "Crash"
   },
-
+  {
+    "name": "BuySmashdown2_2",
+    "type": "Hide:BuySmashdown_C",
+    "area": "Crash"
+  },
+  {
+    "name": "BuyForceBeam_2",
+    "type": "Hide:BuyForceBeam_C",
+    "area": "Crash"
+  },
   {
     "name": "Scrap177_2",
     "type": "Hide:Scrap_C",
