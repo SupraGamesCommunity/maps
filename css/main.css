@@ -83,14 +83,14 @@ path[alt=''] { opacity: 100% }
 
 /* Jumppad line drawing */
 .line-jumppad {
-  --arrow-size: 10;     /* Arrow head size, if not set no arrow drawn, only used for long one way lines */
-  --arrow-angle: 30;    /* Angle arrow pointer will be drawn with */
-  --arrow-dist: 100;    /* If line is shorter than this distance, don't draw arrow */
-  --line-width: 4;      /* Width of the basic line */
-  --shadow-width: 2.5;  /* Width of shadow border */
-  --offset: 100%;       /* How far along line should first arrow appear, pixels also ok */
-  --end-offset: 0;      /* How far from end should last arrow appear */
-  --repeat: 1;          /* How many arrows should be drawn? */
+  --arrow-size: 10px;     /* Arrow head size, if not set no arrow drawn, only used for long one way lines */
+  --arrow-angle: 30;      /* Angle arrow pointer will be drawn with */
+  --arrow-dist: 100;      /* If line is shorter than this distance, don't draw arrow */
+  --line-width: 4px;      /* Width of the basic line */
+  --shadow-width: 2.5px;  /* Width of shadow border */
+  --offset: 100%;         /* How far along line should first arrow appear, pixels also ok */
+  --end-offset: 0;        /* How far from end should last arrow appear */
+  --repeat: 1;            /* How many arrows should be drawn? */
 
   stroke-width: var(--line-width);
 }
@@ -105,7 +105,7 @@ path[alt=''] { opacity: 100% }
 .line-jumppad.shadow {
   stroke:#000;
   fill: #000;       /* inherited by shadow arrow */
-  stroke-width: calc(var(--shadow-width)*2 + var(--line-width));
+  stroke-width: calc(var(--shadow-width) * 2 + var(--line-width));
 }
 .line-jumppad.red.arrow {
 }
@@ -118,13 +118,13 @@ path[alt=''] { opacity: 100% }
 }
 
 .line-pipe {
-  --arrow-size: 5;
+  --arrow-size: 5px;
   --arrow-angle: 40;
   --arrow-dist: 100;
-  --line-width: 4;
-  --shadow-width: 2.5;
+  --line-width: 4px;
+  --shadow-width: 2.5px;
   --offset: 100%;
-  --end-offset: 0;
+  --end-offset: 0px;
   --repeat: 1;
 
   stroke-width: var(--line-width);
@@ -136,23 +136,23 @@ path[alt=''] { opacity: 100% }
 .line-pipe.shadow {
   stroke:#000;
   fill: #000;
-  stroke-width: calc(var(--shadow-width)*2 + var(--line-width));
+  stroke-width: calc(var(--shadow-width) * 2 + var(--line-width));
 }
 .line-pipe.arrow {
 }
 .line-pipe.arrow.shadow {
   stroke: #000;
   fill: #000;
-  stroke-width: calc(var(--shadow-width)*2 + var(--line-width));
+  stroke-width: calc(var(--shadow-width) * 2 + var(--line-width));
 }
 
 
 .line-player_aim {
-  --arrow-size: 5;
+  --arrow-size: 5px;
   --arrow-angle: 40;
   --arrow-dist: 100;
-  --line-width: 3;
-  --shadow-width: 0;
+  --line-width: 3px;
+  --shadow-width: 0px;
   --offset: 100%;
   --end-offset: 0;
   --repeat: 1;
@@ -176,13 +176,13 @@ path[alt=''] { opacity: 100% }
 
 
 .line-trigger {
-  --arrow-size: 5;
+  --arrow-size: 5px;
   --arrow-angle: 40;
   --arrow-dist: 100;
-  --line-width: 2;
-  --shadow-width: 0;
+  --line-width: 2px;
+  --shadow-width: 0px;
   --offset: 100%;
-  --end-offset: 0;
+  --end-offset: 0px;
   --repeat: 1;
 
   stroke-width: calc(var(--shadow-width) * 2 + var(--line-width));
@@ -193,12 +193,12 @@ path[alt=''] { opacity: 100% }
 }
 /* .line-trigger.shadow {
   stroke:#000;
-  stroke-width: calc(var(--shadow-width)*2 + var(--line-width));
+  stroke-width: calc(var(--shadow-width) * 2 + var(--line-width));
 }
 .line-trigger.arrow {
 }
 .line-trigger.arrow.shadow {
   stroke: #000;
-  stroke-width: calc(var(--shadow-width)*2 + var(--line-width));
+  stroke-width: calc(var(--shadow-width) * 2 + var(--line-width));
 }*/
 
