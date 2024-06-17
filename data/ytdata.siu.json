@@ -1247,5 +1247,71 @@
     "area": "DLC2_FinalBoss",
     "yt_video": "DmxnGCJRPXw",
     "yt_start": "0"
+  },
+  {
+    "name": "CoinStack2",
+    "area": "DLC2_Complete",
+    "yt_video": "khbpt5YDn_k",
+    "yt_start": "105"
+  },
+  {
+    "name": "CoinStack3",
+    "area": "DLC2_Complete",
+    "yt_video": "khbpt5YDn_k",
+    "yt_start": "12"
+  },
+  {
+    "name": "CoinStack4",
+    "area": "DLC2_Complete",
+    "yt_video": "khbpt5YDn_k",
+    "yt_start": "1"
+  },
+  {
+    "name": "CoinStack5",
+    "area": "DLC2_Complete",
+    "yt_video": "khbpt5YDn_k",
+    "yt_start": "74"
+  },
+  {
+    "name": "CoinStack6",
+    "area": "DLC2_Complete",
+    "yt_video": "khbpt5YDn_k",
+    "yt_start": "88"
+  },
+  {
+    "name": "CoinStack7",
+    "area": "DLC2_Complete",
+    "yt_video": "khbpt5YDn_k",
+    "yt_start": ""
+  },
+  {
+    "name": "CoinStack8",
+    "area": "DLC2_Complete",
+    "yt_video": "khbpt5YDn_k",
+    "yt_start": "119"
+  },
+  {
+    "name": "CoinStack9",
+    "area": "DLC2_Complete",
+    "yt_video": "khbpt5YDn_k",
+    "yt_start": "55"
+  },
+  {
+    "name": "CoinStack10",
+    "area": "DLC2_Complete",
+    "yt_video": "khbpt5YDn_k",
+    "yt_start": "39"
+  },
+  {
+    "name": "CoinStack11",
+    "area": "DLC2_Complete",
+    "yt_video": "khbpt5YDn_k",
+    "yt_start": "65"
+  },
+  {
+    "name": "CoinStack12",
+    "area": "DLC2_Complete",
+    "yt_video": "khbpt5YDn_k",
+    "yt_start": "26"
   }
 ]

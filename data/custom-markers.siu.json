@@ -1,5 +1,35 @@
 [
   {
+    "name": "Coin288",
+    "type": "Hide:Coin_C",
+    "area": "DLC2_Complete"
+  },
+  {
+    "name": "Coin217_2",
+    "type": "Hide:Coin_C",
+    "area": "DLC2_Complete"
+  },
+  {
+    "name": "Coin612_23",
+    "type": "Hide:Coin_C",
+    "area": "DLC2_Complete"
+  },
+  {
+    "name": "Coin619_25",
+    "type": "Hide:Coin_C",
+    "area": "DLC2_Complete"
+  },
+  {
+    "name": "Coin620_27",
+    "type": "Hide:Coin_C",
+    "area": "DLC2_Complete"
+  },
+  {
+    "name": "Coin621_29",
+    "type": "Hide:Coin_C",
+    "area": "DLC2_Complete"
+  },
+  {
     "name": "BP_MonsterChest2_2",
     "area": "DLC2_Complete",
     "spawns": "BuyShowHealthbar_C",
@@ -160,5 +190,33 @@
     "name": "RainbowTownShortcutPipe",
     "type": "FT:Pipesystem_C",
     "area": "DLC2_Complete"
+  },
+  
+  {
+    "name": "CoinStack3",
+    "area": "DLC2_Complete",
+    "coins": "42",
+    "old_coins": {
+      "Coin217_2": 1
+    }
+  },
+  {
+    "name": "CoinStack4",
+    "area": "DLC2_Complete",
+    "coins": "35",
+    "old_coins": {
+      "Coin228": 1
+    }
+  },
+  {
+    "name": "CoinStack6",
+    "area": "DLC2_Complete",
+    "coins": "24",
+    "old_coins": {
+      "Coin612_23": 1,
+      "Coin619_25": 1,
+      "Coin620_27": 1,
+      "Coin621_29": 1
+    }
   }
 ]
