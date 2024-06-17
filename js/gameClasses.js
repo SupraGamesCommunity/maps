@@ -260,7 +260,7 @@ const gameClasses = {
     'BP_TriggerVolume_C'                      : new GameClass('Trigger Volume',                   'trigger_volume',           'extra'),
     'Lighttrigger_C'                          : new GameClass('Lighttrigger',                     'trigger_light',            'extra'),
     'Lighttrigger2_C'                         : new GameClass('Lighttrigger 2',                   'trigger_light',            'extra'),
-    'Coin:BP_Area2_Uncloged_Quest_C'          : new GameClass('Valve Quest',                      'chest_coin',               'coin',     'closedChest'),
+    'BP_Area2_Uncloged_Quest_C'               : new GameClass('Valve Quest',                      'chest_coin',               'coin',     'closedChest'),
     'BathGuyVolume_C'                         : new GameClass('Too Hot Quest',                    'health',                   'upgrades', 'collectable'),
     'BP_A3_RobBoss_C'                         : new GameClass('Rob Quest',                        'chest',                    null,       'closedChest'),
     'BP_Area2_FatGuyQuest_C'                  : new GameClass('BBQ Quest',                        'meat',                     'coin'),
