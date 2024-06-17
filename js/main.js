@@ -145,8 +145,8 @@ function commitCurrentBuildModeChanges() {
       buildModeChangeList[i] = currentBuildReferenceChanges[i];
     }
   );
-  newLat = currentBuildReference.lat;
-  newLng = currentBuildReference.lng;
+  let newLat = currentBuildReference.lat;
+  let newLng = currentBuildReference.lng;
 
   currentMarkerReference.setLatLng(new L.LatLng(newLat, newLng)).update();
   currentBuildReferenceChanges = [];
@@ -306,7 +306,6 @@ function loadMap(id) {
     // set alt for polylines (attributes are not populated to paths)
     for (const m of Object.values(map._layers)) {
       if ((p = m._path)) {
-        
         p.setAttribute('alt', m.options.alt);
       }
     }
@@ -478,11 +477,10 @@ function loadMap(id) {
 
   function onPopupOpen(e) {
     // We don't need to use _source as target and sourceTarget both point at the marker object
-    let x = e.popup._source._latlng.lng;
-    let y = e.popup._source._latlng.lat;
+    //let x = e.popup._source._latlng.lng;
+    //let y = e.popup._source._latlng.lat;
     let markerId = e.popup._source.options.alt;
 
-    let res = null;
     let o = e.popup._source.options.o;
 
     currentMarkerReference = e.popup._source;
@@ -574,7 +572,7 @@ function loadMap(id) {
 
     // Extract line properties from CSS
     let lineTypeProps = {}
-    for(lt of ['jumppad red', 'jumppad blue', 'pipe', 'trigger', 'player_aim']) {
+    for(let lt of ['jumppad red', 'jumppad blue', 'pipe', 'trigger', 'player_aim']) {
       const div = $("<div>").addClass(`line-${lt}`).appendTo(document.body);
       let lineProps = {}
       for(p of [/*'stroke', 'stroke-width', 'fill', 'opacity', 'fill-opacity',*/ '--arrow-size', '--arrow-angle', '--arrow-dist',
@@ -685,7 +683,7 @@ function loadMap(id) {
           // is supposed to be just data but I can't think of a better way to do it.
           // If an class is marked as shop channel but doesn't have a price in coins, bones or scrap
           // it wants to be on the collectable layer not the shop layer 
-          nospoiler = c.nospoiler != 'shop' || (o.cost && o.price_type != 7) ? c.nospoiler : 'collectable';
+          let nospoiler = c.nospoiler != 'shop' || (o.cost && o.price_type != 7) ? c.nospoiler : 'collectable';
           if(nospoiler && enabledLayers[nospoiler])
           {
             const layer = nospoiler
@@ -729,7 +727,7 @@ function loadMap(id) {
             // need to add title as a single space (leaflet search issue), but not the full title so it doesn't appear in search
             let options = {title: ' ', interactive: false, alt: alt, o:o, layerId:c.lines, lineCap: 'butt'}
 
-            ltp = lineTypeProps[o.linetype + (o.linetype == 'jumppad' ? '_'+o.variant : '')];
+            let ltp = lineTypeProps[o.linetype + (o.linetype == 'jumppad' ? '_'+o.variant : '')];
 
             if(ltp.shadowwidth) {
               options.zIndexOffset = 10 * layerConfig.index - 5;
@@ -887,7 +885,8 @@ function loadMap(id) {
           div.addEventListener('click', function (e) { clickItem(e.target.innerText); e.preventDefault(); })
           div.addEventListener('dblclick', function (e) { clickItem(e.target.innerText, true); e.preventDefault(); })
           // mark discovered items grey
-          if (loc = searchControl._getLocation(div.innerText)) {
+          let loc;
+          if ((loc = searchControl._getLocation(div.innerText))) {
             if (settings.markedItems[loc.layer.options.alt]) {
               div.style.color = '#bbb';
             }
@@ -962,14 +961,14 @@ function getIcon(icon, size=32) {
 }
 
 function resizeIcons(force) {
-  zoom = map.getZoom();
-  for([iconCls, iconData] of Object.entries(icons)){
-    size = getIconSize(iconData.baseSize, zoom);
+  let zoom = map.getZoom();
+  for(let [iconCls, iconData] of Object.entries(icons)){
+    let size = getIconSize(iconData.baseSize, zoom);
     if(force || !iconData.size || iconData.size != size) {
       iconData.size = size;
       iconData.obj.options.popupAnchor = [0, -(size >> 1)];   // Top center relative to the marker icon center
-      s = size.toString() + 'px';
-      c = '-' + (size >> 1).toString() + 'px';
+      let s = size.toString() + 'px';
+      let c = '-' + (size >> 1).toString() + 'px';
       $('#map .'+iconCls).css({'width':s, 'height':s, 'margin-left':c, 'margin-top':c});
     }
   }
@@ -1031,7 +1030,7 @@ function markItems() {
 }
 
 function unmarkItems() {
-  for (const[id,value] of Object.entries(settings.markedItems)) {
+  for (const[id, value] of Object.entries(settings.markedItems)) {
     var divs = document.querySelectorAll('*[alt="' + id + '"]');
     [].forEach.call(divs, function(div) {
       div.classList.remove('found');
@@ -1084,7 +1083,7 @@ window.loadSaveFile = function () {
 
     for (let section of ["ThingsToRemove", "ThingsToActivate", "ThingsToOpenForever"]) {
       for (let o of loadedSave.Properties) {
-        propertyMap = {
+        const propertyMap = {
           PlayerDoubleLoot: "Map:Juicer2", 
           PlayerDrankHealthPlusJuice: "Map:Juicer3", 
           PlayerStrong: "Map:Juicer_286"
@@ -1110,7 +1109,7 @@ window.loadSaveFile = function () {
  
             let cs;
             if(name.startsWith('Coin') && (cs = coin2stack[id])){
-              csAlt = cs.area+':'+cs.name;
+              let csAlt = cs.area+':'+cs.name;
               if(!(csAlt in settings.coinsFound)){
                 settings.coinsFound[csAlt] = new Set();
               }
@@ -1125,7 +1124,7 @@ window.loadSaveFile = function () {
  
             // a little hack here about volcano spawners (EnemySpawn3_C, graves layer)
             // they are activated in ThingsToActivate but destroyed only in ThingsToOpenForever
-            if (o = objects[id]) {
+            if ((o = objects[id])) {
               if (o.type=='EnemySpawn3_C') {
                 found = section=='ThingsToOpenForever';
               }
