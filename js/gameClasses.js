@@ -263,7 +263,7 @@ const gameClasses = {
     'Coin:BP_Area2_Uncloged_Quest_C'          : new GameClass('Valve Quest',                      'chest_coin',               'coin',     'closedChest'),
     'BathGuyVolume_C'                         : new GameClass('Too Hot Quest',                    'health',                   'upgrades', 'collectable'),
     'BP_A3_RobBoss_C'                         : new GameClass('Rob Quest',                        'chest',                    null,       'closedChest'),
-    'Coin:BP_Area2_FatGuyQuest_C'             : new GameClass('BBQ Quest',                        'meat',                     'coin'),
+    'BP_Area2_FatGuyQuest_C'                  : new GameClass('BBQ Quest',                        'meat',                     'coin'),
     'BP_ParanoidQuest_C'                      : new GameClass('Candle Quest',                     'health',                   'upgrades', 'collectable'),
     'BP_A3_BBQ_C'                             : new GameClass('BBQ Quest',                        'meat',                     'coin'),
     'BP_RebuildSlum_C'                        : new GameClass('Rebuild Slum',                     'pickaxe_cooldown',         'upgrades', 'shop'),
