@@ -552,7 +552,8 @@ def cleanup_objects(game, classes_found, data_lookup, data):
     # Write out a file for optional insertion into gameClasses.js
     classes_to_filter = []
     if stripUnusedClasses:
-        classes_to_filter = [ k for k in classes_found if k not in classes or classes[k]['layer'] == 'extra' ]
+        classes_to_filter = [ k for k in classes_found if k not in classes or classes[k]['layer'] == 'extra'
+                             or not classes[k]['layer'] and not classes[k]['nospoiler'] ]
         print(f'Writing {len(classes_to_filter)} gameClasses to "filtered_classes.js"')
         with open('filtered_classes.js', 'w') as fh:
             for c in sorted(classes_to_filter):
