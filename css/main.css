@@ -35,14 +35,14 @@ path[alt=''] { opacity: 100% }
 
 .marker-popup-heading {
   background-color: lightblue;
-  text-color: black;
+  color: black;
   text-align: center;
   font-size: 1.5em;
   font-weight: bold;
 }
 
 .marker-popup-subheading {
-  text-color: black;
+  color: black;
   text-align: center;
   font-weight: bold;
 }
@@ -68,7 +68,7 @@ path[alt=''] { opacity: 100% }
 
 .marker-popup-found {
   background-color: lightblue;
-  text-color: black;
+  color: black;
   text-align: center;
   font-weight: bold;
 }
