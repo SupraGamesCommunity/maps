@@ -306,6 +306,7 @@ function loadMap(id) {
     // set alt for polylines (attributes are not populated to paths)
     for (const m of Object.values(map._layers)) {
       if ((p = m._path)) {
+        
         p.setAttribute('alt', m.options.alt);
       }
     }
@@ -1290,5 +1291,5 @@ window.onload = function(event) {
   }
 
   window.requestAnimationFrame(update);
-  window.addEventListener('contextmenu', function(e) { e.stopPropagation()}, true); // enable default context menu
+//  window.addEventListener('contextmenu', function(e) { e.stopPropagation()}, true); // enable default context menu
 }

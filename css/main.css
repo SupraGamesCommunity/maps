@@ -3,8 +3,8 @@ html, body, #map { width:100%; height:100%; margin:0; padding:0; z-index: 1; bac
 .found { opacity: 30%; }
 .hidden { visibility: hidden; }
 
-path { filter: brightness(100%) }
-path.found { filter: brightness(50%)}
+path { opacity: 100%; fill-opacity: 100%; filter: brightness(100%) }
+path.found { opacity: 100%; fill-opacity: 100%; filter: brightness(50%)}
 
 path[alt=''] { opacity: 100% }
 
@@ -84,7 +84,7 @@ path[alt=''] { opacity: 100% }
 /* Jumppad line drawing */
 .line-jumppad {
   --arrow-size: 10;     /* Arrow head size, if not set no arrow drawn, only used for long one way lines */
-  --arrow-angle: 40;    /* Angle arrow pointer will be drawn with */
+  --arrow-angle: 30;    /* Angle arrow pointer will be drawn with */
   --arrow-dist: 100;    /* If line is shorter than this distance, don't draw arrow */
   --line-width: 6;      /* Width of the basic line */
   --shadow-width: 2.5;  /* Width of shadow border */
