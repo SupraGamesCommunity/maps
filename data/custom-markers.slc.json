@@ -378,7 +378,11 @@
   {
     "name": "Jumppad4",
     "type": "FT:Jumppad_C",
-    "area": "Crash"
+    "area": "Crash",
+    "target": {
+      "x": 41100.89888970554,
+      "y": -2934.6540611684322
+        }
   },
   {
     "name": "Jumppad21",
