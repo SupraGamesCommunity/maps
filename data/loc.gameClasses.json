@@ -2,831 +2,831 @@
     {
         "type": "BP_A3_StrengthQuest_C",
         "name loc": "83F2084C4D5B9E41C735488EFBF39CD2",
-        "des loc": ""
+        "desc_key": ""
     },
     {
         "type": "BP_A3_StrengthQuest_C_Body",
-        "loc key": "", 
-        "des loc": ""
+        "name_key": "", 
+        "desc_key": ""
     },
     {
         "type": "BP_BoneDetector_C",
-        "loc key": "5E814CF44120E8FFA88BF0978A7FE81C", 
-        "des loc": ""
+        "name_key": "5E814CF44120E8FFA88BF0978A7FE81C", 
+        "desc_key": ""
     },
     {
         "type": "BP_BuyBeamElasticity_C",
-        "loc key": "7FA8E1694082474FAE18D0AB29751359", 
-        "des loc": ""
+        "name_key": "7FA8E1694082474FAE18D0AB29751359", 
+        "desc_key": ""
     },
     {
         "type": "BP_BuyBoomerAxe_C",
-        "loc key": "898C20EE4D61110707EE3597CD23F011", 
-        "des loc": ""
+        "name_key": "898C20EE4D61110707EE3597CD23F011", 
+        "desc_key": ""
     },
     {
         "type": "BP_BuyBoomeraxeDistance_C",
-        "loc key": "0C6A4EB04F28C1CA4D7CDC89328C7D84", 
-        "des loc": ""
+        "name_key": "0C6A4EB04F28C1CA4D7CDC89328C7D84", 
+        "desc_key": ""
     },
     {
         "type": "BP_BuyBoomeraxePenetration_C",
-        "loc key": "D22BB7804B1D64F39A032680C2581913", 
-        "des loc": ""
+        "name_key": "D22BB7804B1D64F39A032680C2581913", 
+        "desc_key": ""
     },
     {
         "type": "BP_BuyBoomeraxeThrowSpeed_C",
-        "loc key": "47ED54E04CBBE957A272D1A525CDFAE8", 
-        "des loc": ""
+        "name_key": "47ED54E04CBBE957A272D1A525CDFAE8", 
+        "desc_key": ""
     },
     {
         "type": "BP_BuyFireGunAutoRecharge_C",
-        "loc key": "6EDC76E343703B8B64BEB2A36855690D", 
-        "des loc": ""
+        "name_key": "6EDC76E343703B8B64BEB2A36855690D", 
+        "desc_key": ""
     },
     {
         "type": "BP_BuyGunCapacity+3shots_C",
-        "loc key": "50330A9940EE32814E0C6B8B4FBDF219", 
-        "des loc": ""
+        "name_key": "50330A9940EE32814E0C6B8B4FBDF219", 
+        "desc_key": ""
     },
     {
         "type": "BP_BuyGunDamage+100pct_C",
-        "loc key": "710E33A44149266CB086FFBE78A7057D", 
-        "des loc": ""
+        "name_key": "710E33A44149266CB086FFBE78A7057D", 
+        "desc_key": ""
     },
     {
         "type": "BP_BuyGunDuration+2s_C",
-        "loc key": "027203044F55498F5A8C75AD5CDC2A41", 
-        "des loc": "",
+        "name_key": "027203044F55498F5A8C75AD5CDC2A41", 
+        "desc_key": "",
         "notes for dev": "this loc key has a weird string"
     },
     {
         "type": "BP_BuyGunRechargeTime-50pct_C",
-        "loc key": "064A10C541CE3006D02472A0298F4717", 
-        "des loc": "",
+        "name_key": "064A10C541CE3006D02472A0298F4717", 
+        "desc_key": "",
         "notes for dev": "this loc key has a weird string"
     },
     {
         "type": "BP_CookableMeat_C",
-        "loc key": "", 
-        "des loc": ""
+        "name_key": "", 
+        "desc_key": ""
     },
     {
         "type": "BP_DoubleHealthLoot_C",
-        "loc key": "177CB8514A22D91EA0351BB92BD2FA7C", 
-        "des loc": ""
+        "name_key": "177CB8514A22D91EA0351BB92BD2FA7C", 
+        "desc_key": ""
     },
     {
         "type": "BP_EngagementCup_Base_C",
-        "loc key": "AE5250E14D3F52D7D410F888B7BD8AE4", 
-        "des loc": ""
+        "name_key": "AE5250E14D3F52D7D410F888B7BD8AE4", 
+        "desc_key": ""
     },
     {
         "type": "BP_MonsterChest_C",
-        "loc key": "", 
-        "des loc": ""
+        "name_key": "", 
+        "desc_key": ""
     },
     {
         "type": "BP_PickaxeDamage+1_C",
-        "loc key": "C9514A6C40E28A13B777E586678B7B40", 
-        "des loc": "",
+        "name_key": "C9514A6C40E28A13B777E586678B7B40", 
+        "desc_key": "",
         "notes for dev": "this loc key has a weird string"
     },
     {
         "type": "BP_PurchaseHealth+1_C",
-        "loc key": "4438193548085763700FA384CDC42490", 
-        "des loc": ""
+        "name_key": "4438193548085763700FA384CDC42490", 
+        "desc_key": ""
     },
     {
         "type": "BP_PurchaseJumpHeightPlus_C",
-        "loc key": "6B39BBA544178D8791FE299DB1B72150", 
-        "des loc": ""
+        "name_key": "6B39BBA544178D8791FE299DB1B72150", 
+        "desc_key": ""
     },
     {
         "type": "BP_PurchaseSpeedx2_C",
-        "loc key": "19716BFB47BC6B499634A1BC33EF133B", 
-        "des loc": ""
+        "name_key": "19716BFB47BC6B499634A1BC33EF133B", 
+        "desc_key": ""
     },
     {
         "type": "BP_Purchase_Crouch_C",
-        "loc key": "66A7DABE48D345D63702ACA760E9B0F9", 
-        "des loc": ""
+        "name_key": "66A7DABE48D345D63702ACA760E9B0F9", 
+        "desc_key": ""
     },
     {
         "type": "BP_Purchase_FasterPickaxe_C",
-        "loc key": "880501CD46A4DF481F78CA8F2C494890", 
-        "des loc": ""
+        "name_key": "880501CD46A4DF481F78CA8F2C494890", 
+        "desc_key": ""
     },
     {
         "type": "BP_Purchase_Pickaxe_Range+_C",
-        "loc key": "AF6B6DDD4A67E62C5AED3BA50927650D", 
-        "des loc": ""
+        "name_key": "AF6B6DDD4A67E62C5AED3BA50927650D", 
+        "desc_key": ""
     },
     {
         "type": "BP_Purchase_TranslocatorCooldown_C",
-        "loc key": "0CB3861A42F9E0900F03768FE129401D", 
-        "des loc": ""
+        "name_key": "0CB3861A42F9E0900F03768FE129401D", 
+        "desc_key": ""
     },
     {
         "type": "BP_TrophyDetector_C",
-        "loc key": "C311B9C44794840C3A532784400BF1A8", 
-        "des loc": ""
+        "name_key": "C311B9C44794840C3A532784400BF1A8", 
+        "desc_key": ""
     },
     {
         "type": "BarrelColor_C",
-        "loc key": "", 
-        "des loc": ""
+        "name_key": "", 
+        "desc_key": ""
     },
     {
         "type": "BarrelRed_C",
-        "loc key": "", 
-        "des loc": ""
+        "name_key": "", 
+        "desc_key": ""
     },
     {
         "type": "BarrelClosed_Blueprint_C",
-        "loc key": "", 
-        "des loc": ""
+        "name_key": "", 
+        "desc_key": ""
     },
     {
         "type": "Bones_C",
-        "loc key": "", 
-        "des loc": ""
+        "name_key": "", 
+        "desc_key": ""
     },
     {
         "type": "BuyArmor1_C",
-        "loc key": "71C408CC4DA956CA166F35A37892C704", 
-        "des loc": ""
+        "name_key": "71C408CC4DA956CA166F35A37892C704", 
+        "desc_key": ""
     },
     {
         "type": "BuyBeltRepel_C",
-        "loc key": "C9E9A980457559253158538AB894AC1B", 
-        "des loc": ""
+        "name_key": "C9E9A980457559253158538AB894AC1B", 
+        "desc_key": ""
     },
     {
         "type": "BuyBelt_C",
-        "loc key": "7149A6494BA4C9484C154F84E2E82A0D", 
-        "des loc": ""
+        "name_key": "7149A6494BA4C9484C154F84E2E82A0D", 
+        "desc_key": ""
     },
     {
         "type": "BuyBelt_DLC2_C",
-        "loc key": "55998AEA49B7B69A2196DA9770234AAD", 
-        "des loc": ""
+        "name_key": "55998AEA49B7B69A2196DA9770234AAD", 
+        "desc_key": ""
     },
     {
         "type": "BuyBrokenPipeDetector_C",
-        "loc key": "333A26DE4BB5BCFC274D96B8A18A5955", 
-        "des loc": ""
+        "name_key": "333A26DE4BB5BCFC274D96B8A18A5955", 
+        "desc_key": ""
     },
     {
         "type": "BuyChestDetectorRadius_C",
-        "loc key": "FEDFD783433BA9693507998D47B0D10F", 
-        "des loc": ""
+        "name_key": "FEDFD783433BA9693507998D47B0D10F", 
+        "desc_key": ""
     },
     {
         "type": "BuyChestDetector_C",
-        "loc key": "A65CB48A460A54837A2CCCADC56BBD53", 
-        "des loc": ""
+        "name_key": "A65CB48A460A54837A2CCCADC56BBD53", 
+        "desc_key": ""
     },
     {
         "type": "BuyCoinMagnet_C",
-        "loc key": "DE46374D40C90C39F5EF01892951C3D1", 
-        "des loc": ""
+        "name_key": "DE46374D40C90C39F5EF01892951C3D1", 
+        "desc_key": ""
     },
     {
         "type": "BuyCritChance+5_C",
-        "loc key": "F1E845B94CD432605EA6C7A502B08463", 
-        "des loc": ""
+        "name_key": "F1E845B94CD432605EA6C7A502B08463", 
+        "desc_key": ""
     },
     {
         "type": "BuyCrystal_C",
-        "loc key": "571621A1492B4D450EDEEEAF999C310B", 
-        "des loc": ""
+        "name_key": "571621A1492B4D450EDEEEAF999C310B", 
+        "desc_key": ""
     },
     {
         "type": "BuyDoubleJump_C",
-        "loc key": "CAACD93B44B32D6A147421BBECC14FFF", 
-        "des loc": ""
+        "name_key": "CAACD93B44B32D6A147421BBECC14FFF", 
+        "desc_key": ""
     },
     {
         "type": "BuyElectricGun_C",
-        "loc key": "64884E9E4FE32FC6FB0ECCAC941F611D", 
-        "des loc": ""
+        "name_key": "64884E9E4FE32FC6FB0ECCAC941F611D", 
+        "desc_key": ""
     },
     {
         "type": "BuyEnemiesLoot_C",
-        "loc key": "3384727C4059588A15BFDFB3380301E1", 
-        "des loc": ""
+        "name_key": "3384727C4059588A15BFDFB3380301E1", 
+        "desc_key": ""
     },
     {
         "type": "BuyFireGun_C",
-        "loc key": "F7279DEE411B8C689FF0099274E4195E", 
-        "des loc": ""
+        "name_key": "F7279DEE411B8C689FF0099274E4195E", 
+        "desc_key": ""
     },
     {
         "type": "BuyForceBeamGold_C",
-        "loc key": "6B2623D84351A7BAE55FC398A1C8B45B", 
-        "des loc": ""
+        "name_key": "6B2623D84351A7BAE55FC398A1C8B45B", 
+        "desc_key": ""
     },
     {
         "type": "BuyForceBeam_C",
-        "loc key": "D5A212FC463DC190FEC86AB923E72466", 
-        "des loc": ""
+        "name_key": "D5A212FC463DC190FEC86AB923E72466", 
+        "desc_key": ""
     },
     {
         "type": "BuyForceBlockTelefrag_C",
-        "loc key": "2ECA3F4D4E2454AD0EC1A7A8E3D32D17", 
-        "des loc": ""
+        "name_key": "2ECA3F4D4E2454AD0EC1A7A8E3D32D17", 
+        "desc_key": ""
     },
     {
         "type": "BuyForceBlock_C",
-        "loc key": "EFB25833407252098417179FA47CDD08", 
-        "des loc": ""
+        "name_key": "EFB25833407252098417179FA47CDD08", 
+        "desc_key": ""
     },
     {
         "type": "BuyForceCubeBeam_C",
-        "loc key": "6676C08146D8B3404DCE6F97B106B0BF", 
-        "des loc": ""
+        "name_key": "6676C08146D8B3404DCE6F97B106B0BF", 
+        "desc_key": ""
     },
     {
         "type": "BuyForceCubeStompGrave3_C",
-        "loc key": "4F5047DB4EA6F5253BDB6FA1E6A56828", 
-        "des loc": ""
+        "name_key": "4F5047DB4EA6F5253BDB6FA1E6A56828", 
+        "desc_key": ""
     },
     {
         "type": "BuyForceCubeStompJump_C",
-        "loc key": "928CA8AE48287F0F9CBAFEAFE8268EC4", 
-        "des loc": ""
+        "name_key": "928CA8AE48287F0F9CBAFEAFE8268EC4", 
+        "desc_key": ""
     },
     {
         "type": "BuyForceCubeStomp_C",
-        "loc key": "185DEBF54F6E51BBC01FE1B13D4BE992", 
-        "des loc": ""
+        "name_key": "185DEBF54F6E51BBC01FE1B13D4BE992", 
+        "desc_key": ""
     },
     {
         "type": "BuyGraveDetector_C",
-        "loc key": "6244080F497E4EC92F5B6DB13218D914", 
-        "des loc": ""
+        "name_key": "6244080F497E4EC92F5B6DB13218D914", 
+        "desc_key": ""
     },
     {
         "type": "BuyGun1_C",
-        "loc key": "1D6A9C954A3A42B91B9461B272FBB885", 
-        "des loc": ""
+        "name_key": "1D6A9C954A3A42B91B9461B272FBB885", 
+        "desc_key": ""
     },
     {
         "type": "BuyGunAltDamagex2_C",
-        "loc key": "FF9D1B894D5CAAC473A9968FBAECA329", 
-        "des loc": ""
+        "name_key": "FF9D1B894D5CAAC473A9968FBAECA329", 
+        "desc_key": ""
     },
     {
         "type": "BuyGunAlt_C",
-        "loc key": "", 
-        "des loc": ""
+        "name_key": "", 
+        "desc_key": ""
     },
     {
         "type": "BuyGunCoin_C",
-        "loc key": "A06C9BA04C735AEDC2FF4287F5533BEA", 
-        "des loc": ""
+        "name_key": "A06C9BA04C735AEDC2FF4287F5533BEA", 
+        "desc_key": ""
     },
     {
         "type": "BuyGunComboDamage+25_C",
-        "loc key": "BF9F168041ED46121ABB4E9906284FA4", 
-        "des loc": ""
+        "name_key": "BF9F168041ED46121ABB4E9906284FA4", 
+        "desc_key": ""
     },
     {
         "type": "BuyGunCriticalDamageChance_C",
-        "loc key": "E406D7244A30DEBF591F09A24D633DF2", 
-        "des loc": ""
+        "name_key": "E406D7244A30DEBF591F09A24D633DF2", 
+        "desc_key": ""
     },
     {
         "type": "BuyGunCriticalDamage_C",
-        "loc key": "291FCE0C42DCE17272B4289CB994D5F0", 
-        "des loc": ""
+        "name_key": "291FCE0C42DCE17272B4289CB994D5F0", 
+        "desc_key": ""
     },
     {
         "type": "BuyGunDamage+15_C",
-        "loc key": "764B020B44BFDD86962C588EC7E31EE3", 
-        "des loc": ""
+        "name_key": "764B020B44BFDD86962C588EC7E31EE3", 
+        "desc_key": ""
     },
     {
         "type": "BuyGunDamage+1_C",
-        "loc key": "D07C12834F1A99772A3B758CB68D67D4", 
-        "des loc": ""
+        "name_key": "D07C12834F1A99772A3B758CB68D67D4", 
+        "desc_key": ""
     },
     {
         "type": "BuyGunDamage+5_C",
-        "loc key": "8964176A421F0FA289979DB5008B07FB", 
-        "des loc": ""
+        "name_key": "8964176A421F0FA289979DB5008B07FB", 
+        "desc_key": ""
     },
     {
         "type": "BuyGunHoly1_C",
-        "loc key": "937367B0437DE4662B6AD0B09607E7BF", 
-        "des loc": ""
+        "name_key": "937367B0437DE4662B6AD0B09607E7BF", 
+        "desc_key": ""
     },
     {
         "type": "BuyGunHoly2_C",
-        "loc key": "1D620DA1422334C89DEAB38FEBA49482", 
-        "des loc": ""
+        "name_key": "1D620DA1422334C89DEAB38FEBA49482", 
+        "desc_key": ""
     },
     {
         "type": "BuyGunRefillSpeed+66_C",
-        "loc key": "48A5C00340AEF37776DAD391B656CCC8", 
-        "des loc": ""
+        "name_key": "48A5C00340AEF37776DAD391B656CCC8", 
+        "desc_key": ""
     },
     {
         "type": "BuyGunRefireRate50_C",
-        "loc key": "DC752FA6411151DAA78FD8B37E5F097F", 
-        "des loc": ""
+        "name_key": "DC752FA6411151DAA78FD8B37E5F097F", 
+        "desc_key": ""
     },
     {
         "type": "BuyGunSpeedx2_C",
-        "loc key": "", 
-        "des loc": ""
+        "name_key": "", 
+        "desc_key": ""
     },
     {
         "type": "BuyGunSplashDamage_C",
-        "loc key": "BB479657428F530619B0B08D89F8CCEC", 
-        "des loc": ""
+        "name_key": "BB479657428F530619B0B08D89F8CCEC", 
+        "desc_key": ""
     },
     {
         "type": "BuyHealth+15_C",
-        "loc key": "", 
-        "des loc": "3C5342934039DBADD58154897D06655A"
+        "name_key": "", 
+        "desc_key": "3C5342934039DBADD58154897D06655A"
     },
     {
         "type": "_BuyHealth+10_C",
-        "loc key": "506F1CDD45F5589616C6AFB7D8FB293A", 
-        "des loc": "C68E2E5F40A2C55B40393B8FD2BEA3E4"
+        "name_key": "506F1CDD45F5589616C6AFB7D8FB293A", 
+        "desc_key": "C68E2E5F40A2C55B40393B8FD2BEA3E4"
     },
     {
         "type": "BuyHealth+2_C",
-        "loc key": "", 
-        "des loc": "35AA438B4B93736793B5E883EDAFE677"
+        "name_key": "", 
+        "desc_key": "35AA438B4B93736793B5E883EDAFE677"
     },
     {
         "type": "BuyHealth+5_C",
-        "loc key": "FB58DFD74AB70BF777E86E8B7DF0FAAB", 
-        "des loc": "B1DC717F43D25A72C24438A42B775761"
+        "name_key": "FB58DFD74AB70BF777E86E8B7DF0FAAB", 
+        "desc_key": "B1DC717F43D25A72C24438A42B775761"
     },
     {
         "type": "BuyHealthRegenMax+1_C",
-        "loc key": "A55045254B8059B2FA9608BD3124E7E0", 
-        "des loc": ""
+        "name_key": "A55045254B8059B2FA9608BD3124E7E0", 
+        "desc_key": ""
     },
     {
         "type": "BuyHealthRegenMax10_C",
-        "loc key": "85220AD7486DDECE8633A786F2F0886A", 
-        "des loc": ""
+        "name_key": "85220AD7486DDECE8633A786F2F0886A", 
+        "desc_key": ""
     },
     {
         "type": "BuyHealthRegenMax15_C",
-        "loc key": "66B927104ACBD83532775B9B3959C563", 
-        "des loc": ""
+        "name_key": "66B927104ACBD83532775B9B3959C563", 
+        "desc_key": ""
     },
     {
         "type": "BuyHealthRegenMax5_C",
-        "loc key": "1344E4AC4883410F4E371980B429B194", 
-        "des loc": ""
+        "name_key": "1344E4AC4883410F4E371980B429B194", 
+        "desc_key": ""
     },
     {
         "type": "BuyHealthRegenSpeed_C",
-        "loc key": "222192B4475EBDC9E0957BBC8BFB9EA1", 
-        "des loc": ""
+        "name_key": "222192B4475EBDC9E0957BBC8BFB9EA1", 
+        "desc_key": ""
     },
     {
         "type": "BuyHealthRegen_C",
-        "loc key": "761D2E35427EE64323E13F87AFC02E44", 
-        "des loc": ""
+        "name_key": "761D2E35427EE64323E13F87AFC02E44", 
+        "desc_key": ""
     },
     {
         "type": "BuyHeartLuck_C",
-        "loc key": "1A25CC99430B47D3CB63F888E291FDC6", 
-        "des loc": ""
+        "name_key": "1A25CC99430B47D3CB63F888E291FDC6", 
+        "desc_key": ""
     },
     {
         "type": "BuyJumpHeightPlus_C",
-        "loc key": "6B39BBA544178D8791FE299DB1B72150", 
-        "des loc": ""
+        "name_key": "6B39BBA544178D8791FE299DB1B72150", 
+        "desc_key": ""
     },
     {
         "type": "BuyJumpIncrease_C",
-        "loc key": "72BBE6B247D619A24F8BF89E84E832DD", 
-        "des loc": ""
+        "name_key": "72BBE6B247D619A24F8BF89E84E832DD", 
+        "desc_key": ""
     },
     {
         "type": "BuyMoreLoot_C",
-        "loc key": "34950B504194011D3547C489C1437398", 
-        "des loc": ""
+        "name_key": "34950B504194011D3547C489C1437398", 
+        "desc_key": ""
     },
     {
         "type": "BuyNumberRising_C",
-        "loc key": "D82192584519F5842A1CD0A7321A19D0", 
-        "des loc": ""
+        "name_key": "D82192584519F5842A1CD0A7321A19D0", 
+        "desc_key": ""
     },
     {
         "type": "BuyQuintupleJump_C",
-        "loc key": "336639FC45B725E8BBE93BB6D9430FAF", 
-        "des loc": ""
+        "name_key": "336639FC45B725E8BBE93BB6D9430FAF", 
+        "desc_key": ""
     },
     {
         "type": "BuyShieldBreaker_C",
-        "loc key": "DFCD2A9542AE583EC7A419942E350CC8", 
-        "des loc": ""
+        "name_key": "DFCD2A9542AE583EC7A419942E350CC8", 
+        "desc_key": ""
     },
     {
         "type": "BuyShowHealthbar_C",
-        "loc key": "DC050DC346154B34DA1F3DA82F434648", 
-        "des loc": ""
+        "name_key": "DC050DC346154B34DA1F3DA82F434648", 
+        "desc_key": ""
     },
     {
         "type": "BuyShowProgress_C",
-        "loc key": "DE276F3A42B5E3A15AC7F2A4789DC31F", 
-        "des loc": ""
+        "name_key": "DE276F3A42B5E3A15AC7F2A4789DC31F", 
+        "desc_key": ""
     },
     {
         "type": "BuySilentFeet_C",
-        "loc key": "667CB43E4333FACC3B54A7A89B8C63AD", 
-        "des loc": ""
+        "name_key": "667CB43E4333FACC3B54A7A89B8C63AD", 
+        "desc_key": ""
     },
     {
         "type": "BuySmashdownDamage+100_C",
-        "loc key": "EE7DD0064ED3036E48003F86A5BEB539", 
-        "des loc": "",
+        "name_key": "EE7DD0064ED3036E48003F86A5BEB539", 
+        "desc_key": "",
         "notes for dev": "this loc has some missing we can add"
     },
     {
         "type": "BuySmashdownDamage+1_C",
-        "loc key": "642C0B0E44D028AD9530E0A9E4B31AB4", 
-        "des loc": "",
+        "name_key": "642C0B0E44D028AD9530E0A9E4B31AB4", 
+        "desc_key": "",
         "notes for dev": "this loc has some missing we can add"
     },
     {
         "type": "BuySmashdownDamage+33_C",
-        "loc key": "0FB1083A4EAD355D77809F9A9D6D2306", 
-        "des loc": ""
+        "name_key": "0FB1083A4EAD355D77809F9A9D6D2306", 
+        "desc_key": ""
     },
     {
         "type": "BuySmashdownDamage+3_C",
-        "loc key": "1BFF14774CE2E0092F08EBAB3BAB431A", 
-        "des loc": ""
+        "name_key": "1BFF14774CE2E0092F08EBAB3BAB431A", 
+        "desc_key": ""
     },
     {
         "type": "BuySmashdownRadius+5_C",
-        "loc key": "2E6D2A48424CC72CEF3C10A2B7489922", 
-        "des loc": ""
+        "name_key": "2E6D2A48424CC72CEF3C10A2B7489922", 
+        "desc_key": ""
     },
     {
         "type": "BuySmashdownRadius+_C",
-        "loc key": "", 
-        "des loc": ""
+        "name_key": "", 
+        "desc_key": ""
     },
     {
         "type": "BuySmashdown_C",
-        "loc key": "456A3F04440BD37F3B2F27AC1935E73B", 
-        "des loc": ""
+        "name_key": "456A3F04440BD37F3B2F27AC1935E73B", 
+        "desc_key": ""
     },
     {
         "type": "BuySpeedx15_C",
-        "loc key": "", 
-        "des loc": ""
+        "name_key": "", 
+        "desc_key": ""
     },
     {
         "type": "BuySpeedx2_C",
-        "loc key": "19716BFB47BC6B499634A1BC33EF133B", 
-        "des loc": ""
+        "name_key": "19716BFB47BC6B499634A1BC33EF133B", 
+        "desc_key": ""
     },
     {
         "type": "BuyStats_C",
-        "loc key": "69235D3249A5464CF476FCA53093CC9D", 
-        "des loc": ""
+        "name_key": "69235D3249A5464CF476FCA53093CC9D", 
+        "desc_key": ""
     },
     {
         "type": "BuySword2_C",
-        "loc key": "F2D529CD47182CA6BD8ADF9BE3011120", 
-        "des loc": ""
+        "name_key": "F2D529CD47182CA6BD8ADF9BE3011120", 
+        "desc_key": ""
     },
     {
         "type": "BuySwordCriticalDamageChance_C",
-        "loc key": "CD548FF04F30E9C65CADA1AF57652FC3", 
-        "des loc": ""
+        "name_key": "CD548FF04F30E9C65CADA1AF57652FC3", 
+        "desc_key": ""
     },
     {
         "type": "BuySwordCriticalDamage_C",
-        "loc key": "B77AC95941A12B97A8C37D9E0685D610", 
-        "des loc": ""
+        "name_key": "B77AC95941A12B97A8C37D9E0685D610", 
+        "desc_key": ""
     },
     {
         "type": "BuySwordDamage+02_C",
-        "loc key": "C968ED73453A46FF729281AD74A7DBC3", 
-        "des loc": ""
+        "name_key": "C968ED73453A46FF729281AD74A7DBC3", 
+        "desc_key": ""
     },
     {
         "type": "BuySwordDamage+1_C",
-        "loc key": "7B2C1457482033F69320C6BD853007E2", 
-        "des loc": ""
+        "name_key": "7B2C1457482033F69320C6BD853007E2", 
+        "desc_key": ""
     },
     {
         "type": "BuySwordDamage+3_C",
-        "loc key": "D003BED9407359DFA6613189CE011353", 
-        "des loc": ""
+        "name_key": "D003BED9407359DFA6613189CE011353", 
+        "desc_key": ""
     },
     {
         "type": "BuySwordDoorKnocker_C",
-        "loc key": "A5BB96AB4C503EFA19049AB50F76AD6E", 
-        "des loc": ""
+        "name_key": "A5BB96AB4C503EFA19049AB50F76AD6E", 
+        "desc_key": ""
     },
     {
         "type": "BuySwordHoly1_C",
-        "loc key": "", 
-        "des loc": ""
+        "name_key": "", 
+        "desc_key": ""
     },
     {
         "type": "BuySwordHoly2_C",
-        "loc key": "", 
-        "des loc": ""
+        "name_key": "", 
+        "desc_key": ""
     },
     {
         "type": "BuySwordRange25_C",
-        "loc key": "A9CBCFEA46AB265F798D34BFA01488E6", 
-        "des loc": ""
+        "name_key": "A9CBCFEA46AB265F798D34BFA01488E6", 
+        "desc_key": ""
     },
     {
         "type": "BuySwordRefireRate-33_C",
-        "loc key": "24D52BE54EF96ACD26D1D2BCDE25CDE7", 
-        "des loc": ""
+        "name_key": "24D52BE54EF96ACD26D1D2BCDE25CDE7", 
+        "desc_key": ""
     },
     {
         "type": "BuySword_C",
-        "loc key": "94248F8649FCBA2AC9E378B27F6FC8DF", 
-        "des loc": ""
+        "name_key": "94248F8649FCBA2AC9E378B27F6FC8DF", 
+        "desc_key": ""
     },
     {
         "type": "BuyTranslocatorCoolDownHalf_C",
-        "loc key": "", 
-        "des loc": ""
+        "name_key": "", 
+        "desc_key": ""
     },
     {
         "type": "BuyTranslocatorDamagex3_C",
-        "loc key": "", 
-        "des loc": ""
+        "name_key": "", 
+        "desc_key": ""
     },
     {
         "type": "BuyTranslocatorModule_C",
-        "loc key": "", 
-        "des loc": ""
+        "name_key": "", 
+        "desc_key": ""
     },
     {
         "type": "BuyTranslocatorShotForce_C",
-        "loc key": "E26CCFE942041E8F43653F94DE79D77A", 
-        "des loc": ""
+        "name_key": "E26CCFE942041E8F43653F94DE79D77A", 
+        "desc_key": ""
     },
     {
         "type": "BuyTranslocatorWeight_C",
-        "loc key": "", 
-        "des loc": ""
+        "name_key": "", 
+        "desc_key": ""
     },
     {
         "type": "BuyTranslocator_C",
-        "loc key": "EF4299614AC2A97E9BC1368EAB684BE8", 
-        "des loc": ""
+        "name_key": "EF4299614AC2A97E9BC1368EAB684BE8", 
+        "desc_key": ""
     },
     {
         "type": "BuyTripleJump_C",
-        "loc key": "D275B2044555996709C3F19085DC27AC", 
-        "des loc": ""
+        "name_key": "D275B2044555996709C3F19085DC27AC", 
+        "desc_key": ""
     },
     {
         "type": "BuyUpgradeChestNum_C",
-        "loc key": "4F26D5634AD2F60A9CCE17AD03C133C2", 
-        "des loc": ""
+        "name_key": "4F26D5634AD2F60A9CCE17AD03C133C2", 
+        "desc_key": ""
     },
     {
         "type": "BuyUpgradeGraveNum_C",
-        "loc key": "047AC8D644C8AA4C733A34918A9CAA13", 
-        "des loc": ""
+        "name_key": "047AC8D644C8AA4C733A34918A9CAA13", 
+        "desc_key": ""
     },
     {
         "type": "BuyWalletx15_C",
-        "loc key": "61B016784E8D2F97509D46BF34077694", 
-        "des loc": ""
+        "name_key": "61B016784E8D2F97509D46BF34077694", 
+        "desc_key": ""
     },
     {
         "type": "BuyWalletx2_C",
-        "loc key": "0BA1ABB34257179406330592DF3B64C7", 
-        "des loc": ""
+        "name_key": "0BA1ABB34257179406330592DF3B64C7", 
+        "desc_key": ""
     },
     {
         "type": "Chest_C",
-        "loc key": "", 
-        "des loc": ""
+        "name_key": "", 
+        "desc_key": ""
     },
     {
         "type": "CoinBig_C",
-        "loc key": "", 
-        "des loc": ""
+        "name_key": "", 
+        "desc_key": ""
     },
     {
         "type": "CoinRed_C",
-        "loc key": "", 
-        "des loc": ""
+        "name_key": "", 
+        "desc_key": ""
     },
     {
         "type": "Coin_C",
-        "loc key": "", 
-        "des loc": ""
+        "name_key": "", 
+        "desc_key": ""
     },
     {
         "type": "_CoinStack_C",
-        "loc key": "", 
-        "des loc": ""
+        "name_key": "", 
+        "desc_key": ""
     },
     {
         "type": "Coin:DestroyablePots_C",
-        "loc key": "", 
-        "des loc": ""
+        "name_key": "", 
+        "desc_key": ""
     },
     {
         "type": "FT:Jumppad_C",
-        "loc key": "", 
-        "des loc": ""
+        "name_key": "", 
+        "desc_key": ""
     },
     {
         "type": "LotsOfCoins1_C",
-        "loc key": "", 
-        "des loc": ""
+        "name_key": "", 
+        "desc_key": ""
     },
     {
         "type": "LotsOfCoins10_C",
-        "loc key": "", 
-        "des loc": ""
+        "name_key": "", 
+        "desc_key": ""
     },
     {
         "type": "LotsOfCoins15_C",
-        "loc key": "", 
-        "des loc": ""
+        "name_key": "", 
+        "desc_key": ""
     },
     {
         "type": "LotsOfCoins30_C",
-        "loc key": "", 
-        "des loc": ""
+        "name_key": "", 
+        "desc_key": ""
     },
     {
         "type": "LotsOfCoins50_C",
-        "loc key": "", 
-        "des loc": ""
+        "name_key": "", 
+        "desc_key": ""
     },
     {
         "type": "LotsOfCoins5_C",
-        "loc key": "", 
-        "des loc": ""
+        "name_key": "", 
+        "desc_key": ""
     },
     {
         "type": "LotsofCoins200_C",
-        "loc key": "", 
-        "des loc": ""
+        "name_key": "", 
+        "desc_key": ""
     },
     {
         "type": "Coin:Chest_C",
-        "loc key": "", 
-        "des loc": ""
+        "name_key": "", 
+        "desc_key": ""
     },
     {
         "type": "Coin:MinecraftBrick_C",
-        "loc key": "", 
-        "des loc": ""
+        "name_key": "", 
+        "desc_key": ""
     },
     {
         "type": "MoonTake_C",
-        "loc key": "", 
-        "des loc": ""
+        "name_key": "", 
+        "desc_key": ""
     },
     {
         "type": "_PlayerPosition",
-        "loc key": "", 
-        "des loc": ""
+        "name_key": "", 
+        "desc_key": ""
     },
     {
         "type": "Purchase_DiamondPickaxe_C",
-        "loc key": "253DB7A648D0518A5E63328E9B558AD1", 
-        "des loc": ""
+        "name_key": "253DB7A648D0518A5E63328E9B558AD1", 
+        "desc_key": ""
     },
     {
         "type": "Purchase_ForceBeam_C",
-        "loc key": "356F77B64E1CEF13D032EC94D1E1F17C", 
-        "des loc": ""
+        "name_key": "356F77B64E1CEF13D032EC94D1E1F17C", 
+        "desc_key": ""
     },
     {
         "type": "Purchase_ForceCube_C",
-        "loc key": "73BB805B421FFF82BD1B09A87A041855", 
-        "des loc": ""
+        "name_key": "73BB805B421FFF82BD1B09A87A041855", 
+        "desc_key": ""
     },
     {
         "type": "Purchase_IronPickaxe_C",
-        "loc key": "0EE7EB444F30FDA3ABE3F78FE24341C6", 
-        "des loc": ""
+        "name_key": "0EE7EB444F30FDA3ABE3F78FE24341C6", 
+        "desc_key": ""
     },
     {
         "type": "Purchase_StonePickaxe_C",
-        "loc key": "8B9D677B4857D9F97B40EF92E4617582", 
-        "des loc": ""
+        "name_key": "8B9D677B4857D9F97B40EF92E4617582", 
+        "desc_key": ""
     },
     {
         "type": "Purchase_WoodPickaxe_C",
-        "loc key": "C49BC3D647C0D7A14D7284AB2C9456EC", 
-        "des loc": ""
+        "name_key": "C49BC3D647C0D7A14D7284AB2C9456EC", 
+        "desc_key": ""
     },
     {
         "type": "Scrap_C",
-        "loc key": "", 
-        "des loc": ""
+        "name_key": "", 
+        "desc_key": ""
     },
     {
         "type": "UpgradeHappiness_C",
-        "loc key": "99B846BC45770CB3192D5D98379F5753", 
-        "des loc": ""
+        "name_key": "99B846BC45770CB3192D5D98379F5753", 
+        "desc_key": ""
     },
     {
         "type": "EnemySpawn1_C",
-        "loc key": "", 
-        "des loc": ""
+        "name_key": "", 
+        "desc_key": ""
     },
     {
         "type": "EnemySpawn2_C",
-        "loc key": "", 
-        "des loc": ""
+        "name_key": "", 
+        "desc_key": ""
     },
     {
         "type": "EnemySpawn3_C",
-        "loc key": "", 
-        "des loc": ""
+        "name_key": "", 
+        "desc_key": ""
     },
     {
         "type": "Shell_C",
-        "loc key": "", 
-        "des loc": ""
+        "name_key": "", 
+        "desc_key": ""
     },
     {
         "type": "DeadHero_C",
-        "loc key": "", 
-        "des loc": ""
+        "name_key": "", 
+        "desc_key": ""
     },
     {
         "type": "Juicer_C",
-        "loc key": "", 
-        "des loc": ""
+        "name_key": "", 
+        "desc_key": ""
     },
     {
         "type": "PhysicalCoin_C",
-        "loc key": "", 
-        "des loc": ""
+        "name_key": "", 
+        "desc_key": ""
     },
     {
         "type": "Waldo:RedGuy_C",
-        "loc key": "", 
-        "des loc": ""
+        "name_key": "", 
+        "desc_key": ""
     },
     {
         "type": "BP_UnlockMap_C",
-        "loc key": "", 
-        "des loc": ""
+        "name_key": "", 
+        "desc_key": ""
     },
     {
         "type": "FT:Pipesystem_C",
-        "loc key": "", 
-        "des loc": ""
+        "name_key": "", 
+        "desc_key": ""
     },
     {
         "type": "BP_Area2_Uncloged_Quest_C",
-        "loc key": "", 
-        "des loc": ""
+        "name_key": "", 
+        "desc_key": ""
     },
     {
         "type": "BathGuyVolume_C",
-        "loc key": "", 
-        "des loc": ""
+        "name_key": "", 
+        "desc_key": ""
     },
     {
         "type": "BP_A3_RobBoss_C",
-        "loc key": "", 
-        "des loc": ""
+        "name_key": "", 
+        "desc_key": ""
     },
     {
         "type": "BP_Area2_FatGuyQuest_C",
-        "loc key": "", 
-        "des loc": ""
+        "name_key": "", 
+        "desc_key": ""
     },
     {
         "type": "BP_ParanoidQuest_C",
-        "loc key": "", 
-        "des loc": ""
+        "name_key": "", 
+        "desc_key": ""
     },
     {
         "type": "BP_A3_BBQ_C",
-        "loc key": "", 
-        "des loc": ""
+        "name_key": "", 
+        "desc_key": ""
     },
     {
         "type": "BP_RebuildSlum_C",
-        "loc key": "", 
-        "des loc": ""
+        "name_key": "", 
+        "desc_key": ""
     }
 ]
