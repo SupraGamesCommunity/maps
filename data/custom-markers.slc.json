@@ -146,7 +146,8 @@
         "y": -1614.783203125,
         "z": 13169.60546875
       }
-    ]
+    ],
+    "twoway": true
   },
   {
     "name": "BP_A3_StrengthQuest_SLC_Body",
@@ -162,7 +163,8 @@
         "y": -7001.41015625,
         "z": 13169.60546875
       }
-    ]
+    ],
+    "twoway": true
   },
   {
     "name": "BuyForceBlock_2",

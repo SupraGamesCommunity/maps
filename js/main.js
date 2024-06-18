@@ -384,18 +384,18 @@ function loadMap(id) {
         // build mode button
         L.Toolbar2.Action.extend({
           options: {
-            toolbarIcon:{html: '&#128295;&#x1F527;', tooltip: 'Build Mode'},
+            toolbarIcon:{html: '&#128295;&#x1F527;', tooltip: 'Developer Mode'},
             subToolbar: new L.Toolbar2({ 
               actions: [
                 subAction.extend({
-                  options:{toolbarIcon:{html:'Toggle', tooltip: 'Toggles Map Build mode on or off'}},
+                  options:{toolbarIcon:{html:'Toggle', tooltip: 'Toggles Developer mode on or off'}},
                   addHooks:function() {
                     toggleBuildMode();
                     subAction.prototype.addHooks.call(this); // closes sub-action
                   }
                 }),
                 subAction.extend({
-                  options:{toolbarIcon:{html:'Show Changes', tooltip: 'Display changes made in this session'}},
+                  options:{toolbarIcon:{html:'Copy Changes', tooltip: 'Copies the changes made in this session to the Clipboard'}},
                   addHooks:function() {
                     exportBuildChanges();
                     subAction.prototype.addHooks.call(this); // closes sub-action
@@ -415,7 +415,7 @@ function loadMap(id) {
             subToolbar: new L.Toolbar2({ 
               actions: [
                 subAction.extend({
-                  options:{toolbarIcon:{html:'Copy Map View URL', tooltip: 'Copies View URL to Clipboard'}},
+                  options:{toolbarIcon:{html:'Copy Map View URL', tooltip: 'Copies View URL to the Clipboard'}},
                   addHooks:function() {
                     copyToClipboard(getViewURL());
                     subAction.prototype.addHooks.call(this); // closes sub-action
@@ -431,27 +431,27 @@ function loadMap(id) {
         // load game button
         L.Toolbar2.Action.extend({
           options: {
-            toolbarIcon:{html: '&#x1F4C1;', tooltip: 'Load Game'},
+            toolbarIcon:{html: '&#x1F4C1;', tooltip: 'Browse...'},
             subToolbar: new L.Toolbar2({ 
               actions: [
                 subAction.extend({
-                  options:{toolbarIcon:{html:'Load Game', tooltip: 'Load game save (*.sav) to mark collected items (Alt+R)'}},
+                  options:{toolbarIcon:{html:'Browse...', tooltip: 'Load game save (*.sav) to mark collected items (Alt+R)'}},
                   addHooks: function () {
                     openLoadFileDialog();
                     subAction.prototype.addHooks.call(this);
                   }
                 }),
                 subAction.extend({
-                  options:{toolbarIcon:{html:'Copy Path', tooltip: 'Copy default Windows game save file path to clipboard'}},
+                  options:{toolbarIcon:{html:'Copy File Path', tooltip: 'Copy default Windows game save file path to the Clipboard'}},
                   addHooks:function() {
                     copyToClipboard('%LocalAppData%\\Supraland'+(mapId=='siu' ? 'SIU':'')+'\\Saved\\SaveGames');
                     subAction.prototype.addHooks.call(this);
                   }
                 }),
                 subAction.extend({
-                  options:{toolbarIcon:{html:'Unmark All', tooltip: 'Unmark all items'}},
+                  options:{toolbarIcon:{html:'Unmark Found', tooltip: 'Unmark all found items'}},
                   addHooks: function () { 
-                    if (confirm('Are you sure to unmark all items?')) {
+                    if (confirm('Are you sure to unmark all found items?')) {
                       unmarkItems();
                       saveSettings();
                     }
