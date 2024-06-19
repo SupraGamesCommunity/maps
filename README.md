@@ -41,6 +41,7 @@ Fork of Joric's map to SupraMaps project and tweaks to finish in preparation for
 - [Benjamin Thomas Blodgett (BenVlodgi)](https://github.com/BenVlodgi) @SupraGames
 - [David Münnich (DavidM)](http://www.david-m.org) @SupraGames
 - [Stuart Baron (NorabSeven)](https://github.com/norab7) @SupraGames
+- Gludek
 - [TJ](https://github.com/TJ999M)
 - Zookster 
 
