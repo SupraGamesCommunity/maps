@@ -101,6 +101,7 @@ properties = [
     'Achievement?','Achievement Name', # trigger volumes
     'Contains Coin', # DestroyablePots_C
     'bDoesntRotate', # Coin_C, CoinBig_C
+    'Scrapamount', # Scrap_C
 ]
 
 actions = {
@@ -532,7 +533,8 @@ exported_properties = [
     'twoway',                                       # Pipe or bad is two way if True
     'target',                                       # where to draw line to for pipes and pads
     'targets',                                      # array of dictionaries 'type' and target position
-    'old_coins',                                    # For _CoinStack_C's a dictionary of old coin name to value (for save game handling) 
+    'old_coins',                                    # For _CoinStack_C's a dictionary of old coin name to value (for save game handling)
+    'scrapamount',                                  # For Scrap_C gives amount of scrap 
     #'image',
     'yt_video', 'yt_start', 'yt_end',      # data pulled from matched legacy data
 ]

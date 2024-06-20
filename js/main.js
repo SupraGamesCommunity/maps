@@ -498,12 +498,17 @@ function loadMap(id) {
     if(o.coins) {
       text += `<br><span class="marker-popup-col">Coins:</span>${o.coins} coin${o.coins > 1 ? "s":""}`;
     }
+    if(o.scrapamount) {
+      text += `<br><span class="marker-popup-col">Amount:</span>${o.scrapamount} scrap`;
+    }
     if(o.cost) {
       let price_type = (o.price_type in price_types ? o.price_type : 0);
       text += `<br><span class="marker-popup-col">Price:</span>${o.cost} ${price_types[price_type]}${o.cost != 1 && price_type != 5 ? 's':''}`;  // No s on plural of scrap
     }
-    if(o.variant) {
-      text += `<br><span class="marker-popup-col">Variant:</span>${o.variant}`;
+    for(let f of ['variant', 'loop', 'description']){
+      if(o[f]){
+        text += `<br><span class="marker-popup-col">${f.charAt(0).toUpperCase() + f.slice(1)}:</span>${o[f]}`;
+      }
     }
     text += `<br><span class="marker-popup-col">XYZ pos:</span>(${o.lng.toFixed(0)}, ${o.lat.toFixed(0)}, ${o.alt.toFixed(0)})`
     if(o.comment) {
