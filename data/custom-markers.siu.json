@@ -30,6 +30,11 @@
     "area": "DLC2_Complete"
   },
   {
+    "name": "CoinStack7",
+    "type": "Hide:_CoinStack_C",
+    "area": "DLC2_Complete"
+  },
+  {
     "name": "BP_MonsterChest2_2",
     "area": "DLC2_Complete",
     "spawns": "BuyShowHealthbar_C",

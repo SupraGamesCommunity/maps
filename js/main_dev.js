@@ -12,6 +12,11 @@
 var map = null;         // Leaflet map object containing current game map and all its markers
 var mapId = '';         // Current map selected (one of sl, slc or siu)
 
+var sidebar = null;     // Global sidebar object
+var baseLayer = null;   // Global object to hold reference to the current map base layer (to support opacity adjustment)
+var sidebarGameSelector = null;
+var sidebarLayerControl = null;
+
 // Data we store in the HTML Window localStorage property 
 // Current mapId, markedItems[{markerId}:true] (found), activeLayers[{layer}:true] and playerPosition
 const localDataName = 'supgragamescommunity_maps';
@@ -63,6 +68,9 @@ var maps = {
       "MapWorldLowerRight": { "X": 73728.0, "Y": 54728.0, "Z": 10000.0 },
    },
 };
+
+
+
 
 function isObject(item) {
   return (item && typeof item === 'object' && !Array.isArray(item));
@@ -264,6 +272,27 @@ function loadMap(id) {
   L.control.zoom({ position: 'bottomright'}).addTo(map);
   L.control.fullscreen({ position: 'bottomright', forceSeparateButton: true}).addTo(map);
 
+  // SIDEBAR:  This creates the sidebar object and attaches it to the map.  Note that the HTML DOM elements within the sidebar DO NOT CLEAR between map loads and should be cleared explcitly if necessary (e.g., layer controls).
+  sidebar = L.control.sidebar('sidebar').addTo(map);
+
+  // SIDEBAR:  Create game selector
+
+  if ( !sidebarGameSelector ) {
+    sidebarGameSelector = L.Control.styledLayerControl(null, null, { container_width : "100%", container_maxHeight : "100%", group_maxHeight : "100%", exclusive : true});
+    map.addControl(sidebarGameSelector);
+    sidebarGameSelector._container.remove();
+    document.getElementById('layers').appendChild(sidebarGameSelector.onAdd(map));
+   }
+
+
+  // SIDEBAR:  Create sidebar stylized layer control
+
+  if ( sidebarLayerControl ) {sidebarLayerControl._container.remove()};
+  sidebarLayerControl = L.Control.styledLayerControl(null, null, { container_width : "100%", container_maxHeight : "100%", group_maxHeight : "100%", exclusive : false});
+  map.addControl(sidebarLayerControl);
+  sidebarLayerControl._container.remove();
+  document.getElementById('layers').appendChild(sidebarLayerControl.onAdd(map));
+
   let layerOptions = {
       tileSize: L.point(tileSize.x, tileSize.y),
       noWrap: true,
@@ -335,7 +364,6 @@ function loadMap(id) {
   // However on Firefox it makes the lines much worsel, so we choose based on which browser
   const isFirefox = navigator.userAgent.toLowerCase().includes('firefox');
 
-  let baseLayer;
   if(isFirefox)
     baseLayer = L.tileLayer(tilesDir+'/base/{z}/{x}/{y}.jpg', layerOptions).addTo(map);
   else
@@ -346,8 +374,12 @@ function loadMap(id) {
     var layer = id==mapId ? baseLayer : L.layerGroup();
     layer.mapId = id;
     layerControl.addBaseLayer(layer, title);
+    // SIDEBAR Something is wrong here.  Adding the base layer to the stylized control (whether or not it is removed from the existing layerControl) makes some really strange stuff happen.
+    //sidebarGameSelector.addBaseLayer(layer, title, 'Game Selector');
   }
 
+// OLD
+/*
   // Add overlay image map layers 
   layerConfigs.forEachOfType(mapId, "tiles", (layerId, layerConfig) => {
     let layer;
@@ -361,7 +393,7 @@ function loadMap(id) {
     }
     layerControl.addOverlay(layer, layerConfig.name);
   });
-
+*/
   L.control.mousePosition({numDigits:0, lngFirst:true}).addTo(map);
 
   if (mapParam.lat && mapParam.lng && mapParam.zoom) {
@@ -568,19 +600,6 @@ function loadMap(id) {
     7: 'red moon',
   }
 
-  function parseRelativeOrAbsoluteValue(value) {
-    if (typeof value === 'string' && value.indexOf('%') !== -1) {
-        return {
-            value: parseFloat(value) / 100,
-            isInPixels: false,
-        };
-    }
-    const parsedValue = value ? parseFloat(value) : 0;
-    return {
-        value: parsedValue,
-        isInPixels: parsedValue > 0,
-    };
-}
   function loadMarkers() {
 
     // Extract line properties from CSS
@@ -588,17 +607,15 @@ function loadMap(id) {
     for(let lt of ['jumppad red', 'jumppad blue', 'pipe', 'trigger', 'player_aim']) {
       const div = $("<div>").addClass(`line-${lt}`).appendTo(document.body);
       let lineProps = {}
-      for(let p of ['stroke', 'fill', 'opacity', 'fill-opacity', '--arrow', '--arrow-size', '--arrow-angle', '--arrow-dist',
-            '--line-width', '--shadow-width', '--offset', '--end-offset']) {
+      for(p of [/*'stroke', 'stroke-width', 'fill', 'opacity', 'fill-opacity',*/ '--arrow-size', '--arrow-angle', '--arrow-dist',
+          '--line-width', '--shadow-width', '--offset', '--offset-end', '--repeat']) {
         if(div.css(p)) {
           let val = div.css(p); 
           val = !isNaN(val) ? Number(val) : val.endsWith('px') ? Number(val.substring(0,val.length-2)) : val;
-          val = typeof val == 'string' ? val.replace(/["']/g, '') : val;
           lineProps[p.replaceAll('-', '')] = val;
-          
         }
       }
-      lineTypeProps['line-'+lt.replace(' ', '_')] = lineProps;
+      lineTypeProps[lt.replace(' ', '_')] = lineProps;
       div.remove();
     }
 
@@ -742,28 +759,42 @@ function loadMap(id) {
             // need to add title as a single space (leaflet search issue), but not the full title so it doesn't appear in search
             let options = {title: ' ', interactive: false, alt: alt, o:o, layerId:c.lines, lineCap: 'butt'}
 
-            const className = 'line-' + o.linetype + (o.linetype == 'jumppad' ? '_'+o.variant : '');
-            let ltp = lineTypeProps[className];
+            let ltp = lineTypeProps[o.linetype + (o.linetype == 'jumppad' ? '_'+o.variant : '')];
 
-            options = {
-                className: className,
-                arrow: ltp.arrow ? ltp.arrow : 'none',
-                arrowSize: ltp.arrowSize ? ltp.arrowSize : 0,
-                arrowAngle: ltp.arrowngle ? ltp.arrowangle : 45,
-                lineWidth: ltp.linewidth ? ltp.linewidth : 5,
-                shadowWidth: ltp.shadowwidth ? ltp.shadowwidth : 3,
-                offset: ltp.offset ? ltp.offset : 0,
-                endOffset: ltp.endOffset ? ltp.endOffset : 0,
-                color: ltp.stroke ? ltp.stroke : '#000',
-                fillColor: ltp.fill ? ltp.fill : '#FFF',
-                zIndexOffset: 10 * layerConfig.index,
+            if(ltp.shadowwidth) {
+              options.zIndexOffset = 10 * layerConfig.index - 5;
+              options.stroke = true;    // needed for arrow shadow, ignored for line shadow
+
+              for(let endxy of endxys) {
+                // Line shadow
+                options.className = `line-${o.linetype} shadow`
+                let line = L.polyline([start, [endxy.y, endxy.x]], options).addTo(layers[c.lines]);
+
+                if(ltp.arrowsize && !o.twoway && (Math.sqrt(Math.pow(start[0] - endxy.y, 2) + Math.pow(start[1] - endxy.x, 2))) > ltp.arrowdist){
+                  options.className = `line-${o.linetype} arrow shadow`;
+                  // Arrow shadow
+                  L.polylineDecorator(line, {patterns: [{offset: ltp.offset, endOffset: ltp.endoffset, repeat: ltp.repeat, symbol:
+                      L.Symbol.arrowHead({pixelSize:ltp.arrowsize, headAngle: ltp.arrowangle, pathOptions: {...options}})}],})
+                    .addTo(layers[c.lines]);
+                }
+              }
             }
-            if(o.twoway){
-              options.arrow = 'none';
-            }
+
+            options.stroke = true;
+            
+            options.zIndexOffset = 10 * layerConfig.index - 3;
             for(let endxy of endxys) {
-              L.arrowLine(start, [endxy.y, endxy.x], options).addTo(map);
-            }
+              // Line
+              options.className = `line-${o.linetype}${o.linetype == 'jumppad' ? ' '+o.variant : ''}`;
+              let line = L.polyline([start, [endxy.y, endxy.x]], options).addTo(layers[c.lines]);
+              if (ltp.arrowsize &&  !o.twoway && (Math.sqrt(Math.pow(start[0] - endxy.y, 2) + Math.pow(start[1] - endxy.x, 2))) > ltp.arrowdist) {  
+                // Line arrow
+                options.className = `line-${o.linetype}${o.linetype == 'jumppad' ? ' '+o.variant : ''} arrow`;
+                L.polylineDecorator(line, {patterns: [{offset: ltp.offset, endOffset: ltp.endoffset, repeat: ltp.repeat, symbol:
+                    L.Symbol.arrowHead({pixelSize:ltp.arrowsize, headAngle: ltp.arrowangle, pathOptions: {...options}})}],})
+                  .addTo(layers[c.lines]);
+              }
+            }  
           }
 
           // add dynamic player marker on top of PlayerStart icon (moves with load save game) 
@@ -812,6 +843,7 @@ function loadMap(id) {
   }
 
   function loadLayers() {
+
     playerMarker = null;
 
     let activeLayers = [];
@@ -832,6 +864,12 @@ function loadMap(id) {
       layers[id] = layerObj;
       layerControl.addOverlay(layerObj, lc.name);
       searchLayers.push(layerObj);
+
+    // SIDEBAR: Add layer to stylized layer control
+      layers[id] = layerObj;
+      sidebarLayerControl.addOverlay(layerObj, lc.name, {groupName:lc.category, expanded:true} );
+      if( lc.defaultActive ) {sidebarLayerControl.selectLayer(layerObj)};
+
     })
     layers['_map'] = map;
 

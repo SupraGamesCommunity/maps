@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<title>Supraland Maps</title>
+
+<link rel="icon" type="image/png" href="img/favicon.png" sizes="250x250"/>
+
+<meta property="og:image" content="img/favicon.png" />
+<meta property="og:site_name" content="SupraMaps" />
+<meta property="og:type" content="object" />
+<meta property="og:title" content="SupraMaps" />
+<meta property="og:description" content="SupraGames Interactive Maps" />
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha384-1H217gwSVyLSIfaLxHbE7dRb3v4mYCKbpQvzx0cegeju1MVsGrX5xXxAvs/HgeFs" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/leaflet-toolbar@0.4.0-alpha.2/dist/leaflet.toolbar.min.css" integrity="sha384-2KKj7Qg5GzD7GqKFyzNlbNOUnKMDSFSS1YYQmjeYOTDq6u6SDWvJ9RYOmvPTzutf" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/leaflet-mouse-position@1.2.0/src/L.Control.MousePosition.css" integrity="sha384-XGQcA1WStLESSf/nuYD0jsiDKrJynA5NsHvssoIo8/YscEgxF+mgX+hk8VRp1x7e" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/leaflet.fullscreen@3.0.2/Control.FullScreen.css" integrity="sha384-PALxxXbG28eiE9bT7yKmsbjd4Ta3qKMLlzsrp6G+05f4Nltt4ktlg1l7e4RPeNEa" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/leaflet-search@4.0.0/dist/leaflet-search.min.css" integrity="sha384-hmGjQL+woE2q+PPiSWoyxr2OIxUwljVBnQsJUMxM9phtUCIDhJHicsFADtTMMoHj" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+
+<link rel="stylesheet" href="css/main.css"/>
+<link rel="stylesheet" href="css/styledLayerControl.css" />
+<link rel="stylesheet" href="css/sidebar.css" />
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/leaflet-toolbar@0.4.0-alpha.2/dist/leaflet.toolbar.min.js" integrity="sha384-jdx1Vm5o3IjWMiKCxPglnuY3o2XER8iDm+KK23hVZFCEKecy1lEAE2vpxIdSUxGB" crossorigin="anonymous"></script>
+<script src="js/lib/L.TileLayer.Canvas.min.js"></script>
+<script src="https://unpkg.com/leaflet.fullscreen@3.0.2/Control.FullScreen.js" integrity="sha384-l0YxV5zMlsDoa/OatH90j4WDu9eFcFTMBjn1+AZN39VXC/k+uKAu3RTciIg3Te2t" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/leaflet-search@4.0.0/dist/leaflet-search.min.js" integrity="sha384-R0LItKioY9lIP7pUbpLvkw3VYcmDSKW+mR5/8UKh8NiEtz0EUVgoJwzdVZl343Yz" crossorigin="anonymous"></script>
+<script src="js/lib/styledLayerControl.js"></script>
+
+<script src="js/lib/L.Control.MousePosition.js"></script>
+<script src="js/lib/leaflet.polylineDecorator.min.js"></script>
+<script src="js/lib/sidebar.js"></script>
+<script src="js/lib/UE4Reader.js"></script>
+
+<script src="js/gameClasses.js"></script>
+<script src="js/layerConfig_dev.js"></script>
+<script src="js/main_dev.js"></script>
+</head>
+<body>
+
+
+
+
+
+
+
+
+
+    <div id="sidebar" class="sidebar collapsed">
+        <!-- Nav tabs -->
+        <div class="sidebar-tabs">
+            <ul role="tablist">
+                <li><a href="#home" role="tab"><i class="fa fa-solid fa-house"></i></a></li>
+                <li><a href="#layers" role="tab"><i class="fa fa-layer-group"></i></a></li>
+                <li><a href="#savefile_load" role="tab"><i class="fa fa-cloud-arrow-up"></i></a></li>
+                <li><a href="#share" role="tab"><i class="fa fa-share-from-square"></i></a></li>
+                <li><a href="#discord" role="tab"><i class="fa fa-brands fa-discord"></i></a></li>
+            </ul>
+
+            <ul role="tablist">
+                <li><a href="#thanks" role="tab"><i class="fa fa-medal"></i></a></li>
+                <li><a href="#preferences" role="tab"><i class="fa fa-gears"></i></a></li>
+            </ul>
+        </div>
+
+        <!-- Tab panes -->
+        <div class="sidebar-content">
+            <div class="sidebar-pane" id="home">
+                <h1 class="sidebar-header">Supraland Community Map<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1><br>
+                This map is designed to:
+                <ul>
+                    <li>Show the location of every chest, coin, upgrade, collectable, shop item, grave, volcano, jump pad, and fast travel pipe on the map.</li>
+                    <li>Allow you to upload your save file to the map, which will remove the icon for every chest and coin you have already opened/collected.</li>
+                    <li>Allow you to get shareable URLs to bring others to the same location on the map as you are.</li>
+                </ul>
+            </div>
+            <div class="sidebar-pane" id="layers">
+                <h1 class="sidebar-header">Layers<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1><br>
+            </div>
+            <div class="sidebar-pane" id="savefile_load">
+                <h1 class="sidebar-header">Upload Save File<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1><br>
+                Save file uploading instructions and controls will go here.
+            </div>
+            <div class="sidebar-pane" id="share">
+                <h1 class="sidebar-header">Share Map View<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1><br>
+                URL sharing instructions will go here.
+            </div>
+            <div class="sidebar-pane" id="discord">
+                <h1 class="sidebar-header">Supraland Discord<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1><br>
+                Need more help or just want to chat with Supraland fans and developers?<p>Join the official Supraland discord <a href="https://discord.gg/DhWbSbfMqx" target="_blank">here</a>.</p>
+            </div>
+            <div class="sidebar-pane" id="thanks">
+                <h1 class="sidebar-header">Credits and Thanks<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1><br>
+                This map would not be possible without the support of:
+                <br>Credits</br>
+                <br>
+                <li>All credit for these amazing games goes to <a href="http://www.david-m.org/">David Münnich</a> and the <a href="https://store.steampowered.com/developer/SupraGames">Supra Games Team</a>
+                <li>Original maps and data created by <a href="https://github.com/supragamescommunity">Supra Games Community.</a>
+                <li>Complete rewrite based on game data extraction and merge of 3 maps by <a href="https://github.com/joric">Joric.</a>
+                <li>Fork of Joric's map to SupraMaps project and tweaks to finish in preparation for Supra World by <a href="https://github.com/supragamescommunity">Supra Games Community.</a>
+                <br></br>
+                This map was made by:
+                <li><a href="https://github.com/Egasuas">Cal (Egasuas)</a>
+                <li><a href="https://github.com/joric">Joric</a><br>
+                <li><a href="https://github.com/jules43">Jules</a><br>
+                <li><a href="https://github.com/KoenigsKind">KoenigsKind</a>
+                <li><a href="https://github.com/LewisPattJr">LewisPattJr</a>
+                <br></br>
+                Additional support from:
+                <li><a href="https://github.com/PrismAnna">Anna @SupraGames</a>
+                <li><a href="https://github.com/BenVlodgi">Benjamin Thomas Blodgett (BenVlodgi) @SupraGames</a>
+                <li><a href="http://www.david-m.org/">David Münnich (DavidM) @SupraGames</a>
+                <li>Gludek
+                <li><a href="https://github.com/norab7">Stuart Baron (NorabSeven) @SupraGames</a>
+                <li><a href="https://github.com/TJ999M">TJ999M</a>
+                <li>Zookster<br>
+            </div>
+            <div class="sidebar-pane" id="preferences">
+                <h1 class="sidebar-header">Preferences<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
+                <br>
+                <h1 class="sidebar-header">Language<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
+                <br>
+                Language: <select name="localisation" id="languages">
+                            <option value="zh-Hans">简体中文</option>
+                            <option value="zh-Hant">中國傳統的</option>
+                            <option value="sr">Српски</option>
+                            <option value="de">Deutsch</option>
+                            <option value="en">English</option>
+                            <option value="es">Español</option>
+                            <option value="fr">Français</option>
+                            <option value="it-IT">Italiano</option>
+                            <option value="ja">日本語</option>
+                            <option value="ko">한국인</option>
+                            <option value="hu">Magyar</option>
+                            <option value="pl">Polski</option>
+                            <option value="pt-PT">Português</option>
+                            <option value="ru">Русский</option>
+                            <option value="fi">Suomi</option>
+                            <option value="tr">Türkçe</option>
+                        </select>
+                <div></div>
+                <br>
+                <h1 class="sidebar-header">Accessibility<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
+                <br>
+                Dark Mode: <input type="checkbox"><div></div>
+                UI colours: Primary <input type="color"> Secondary <input type="color"> Tertiary <input type="color"><div></div>
+                Font colour: <input type="color"><div></div>
+                High contrast mode: <input type="checkbox"><div></div>
+                Replace icons with text: <input type="checkbox"><div></div>
+                Magnifying glass: <input type="checkbox"><div></div>
+                Place icon on left click: <input type="checkbox"><div></div>
+                <br>                <h1 class="sidebar-header">Opacity<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
+                <br>
+                Map: <div style="text-aligh:right"><input id="slider" type="range" min="0" max="1" step="0.05" value="1" oninput="baseLayer.setOpacity(this.value)"></div>
+                Sidebar: <div><input id="slider2" type="range" min="0.15" max="1" step="0.05" value="0.85" oninput="document.querySelector('.sidebar-content').style.backgroundColor = 'rgba(255, 255, 255, ' + this.value + ')'"></div>
+                Icons: <div><input id="slider" type="range" min="0" max="1" step="0.05" value="1" oninput="main.js(z1)"></div>
+                Polylines: <div><input id="slider" type="range" min="0" max="1" step="0.05" value="1" oninput="main.css()"></div>
+                Found Icons: <div><input id="slider" type="range" min="0" max="1" step="0.05" value="1" oninput="main.css()"></div>
+                <br>
+                <h1 class="sidebar-header">UI Scaling<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
+                <br>
+                Sidebar: <div><input id="slider" type="range" min="0" max="1" step="0.05" value="1" oninput="main.css()"></div>
+                Icons: <div><input id="slider" type="range" min="0" max="1" step="0.05" value="1" oninput="main.css()"></div>
+                Polylines: <div><input id="slider" type="range" min="0" max="1" step="0.05" value="1" oninput="main.css()"></div>
+                Font: <div><input id="slider" type="range" min="0" max="1" step="0.05" value="1" oninput="main.css()"></div>
+
+                <br>
+                <h1 class="sidebar-header">Keybindings<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
+                <br>
+                Pan left/right: <input type="text" id="panl" name="panl" value="A" size="1"><input type="text" id="panr" name="panr" value="D" size="1"><div></div>
+
+                Pan up/down: <input type="text" id="pand" name="panu" value="W" size="1"><input type="text" id="pand" name="pand" value="S" size="1"><div></div>
+                Zoom in/out: <input type="text" id="zoomi" name="zoomi" value="T" size="1"><input type="text" id="zoomo" name="zoomo" value="G" size="1"><div></div>
+                Search: <input type="text" id="" name="" value="Ctrl+F" size="1"><div></div>
+                Toggle full screen: <input type="text" id="fscreen" name="fscreen" value="F" size="1"><div></div>
+                move to player marker: <input type="text" id="toplayer" name="toplayer" value="R" size="1"><div></div>
+                open file dialog for loading a save: <input type="text" id="importsave" name="importsave" value="Alt+R" size="1"><div></div>
+                load SL map: <input type="text" id="loadsl" name="loadsl" value="1" size="1"><div></div>
+                load SLC map: <input type="text" id="loadslc" name="loadslc" value="2" size="1"><div></div>
+                load SIU map: <input type="text" id="loadsiu" name="loadsiu" value="3" size="1"><div></div>
+                <br>
+                <h1 class="sidebar-header">Reset map<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
+                <br>
+                Delete all data: <input type="reset" value="Delete"><div></div>            </div>
+        </div>
+    </div>
+<div id="map"></div>
+<input id="file" type='file' hidden>
+</body>
+</html>
