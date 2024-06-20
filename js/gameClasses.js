@@ -51,7 +51,7 @@ const gameClasses = {
     'BarrelRed_C'                             : new GameClass('Red Barrel',                       'barrel_red',               'misc',     'collectable'),
     'BarrelClosed_Blueprint_C'                : new GameClass('Gold Barrel',                      'barrel_gold',              'misc',     'collectable'),
     'Bones_C'                                 : new GameClass('Bones',                            'bones',                    'misc',     'collectable'),
-    'CrashEnemySpawner_C'                     : new GameClass('Skeleton',                         'bones',                    'misc',     'collectable'),
+    'CrashEnemySpawner_C'                     : new GameClass('Skeleton',                         'bones_monster',            'misc',     'collectable'),
     'BuyArmor1_C'                             : new GameClass('Armor',                            'armor',                    'upgrades', 'shop'),
     'BuyBeltRepel_C'                          : new GameClass('Magnet Repel',                     'belt',                     'upgrades', 'shop'),
     'BuyBelt_C'                               : new GameClass('Float Buckle',                     'belt',                     'upgrades', 'shop'),
