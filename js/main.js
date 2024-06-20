@@ -740,23 +740,22 @@ function loadMap(id) {
             let endxys = o.linetype != 'trigger' ? [o.target] : o.targets;
 
             // need to add title as a single space (leaflet search issue), but not the full title so it doesn't appear in search
-            let options = {title: ' ', interactive: false, alt: alt, o:o, layerId:c.lines, lineCap: 'butt'}
 
             const className = 'line-' + o.linetype + (o.linetype == 'jumppad' ? '_'+o.variant : '');
             let ltp = lineTypeProps[className];
 
-            options = {
-                className: className,
-                arrow: ltp.arrow ? ltp.arrow : 'none',
-                arrowSize: ltp.arrowSize ? ltp.arrowSize : 0,
-                arrowAngle: ltp.arrowngle ? ltp.arrowangle : 45,
-                lineWidth: ltp.linewidth ? ltp.linewidth : 5,
-                shadowWidth: ltp.shadowwidth ? ltp.shadowwidth : 3,
-                offset: ltp.offset ? ltp.offset : 0,
-                endOffset: ltp.endOffset ? ltp.endOffset : 0,
-                color: ltp.stroke ? ltp.stroke : '#000',
-                fillColor: ltp.fill ? ltp.fill : '#FFF',
-                zIndexOffset: 10 * layerConfig.index,
+            let options = {
+              title: ' ', interactive: false, alt: alt, o:o, layerId:c.lines, className: className,
+              arrow: ltp.arrow ? ltp.arrow : 'none',
+              arrowSize: ltp.arrowSize ? ltp.arrowSize : 0,
+              arrowAngle: ltp.arrowngle ? ltp.arrowangle : 45,
+              lineWidth: ltp.linewidth ? ltp.linewidth : 5,
+              shadowWidth: ltp.shadowwidth ? ltp.shadowwidth : 3,
+              offset: ltp.offset ? ltp.offset : 0,
+              endOffset: ltp.endOffset ? ltp.endOffset : 0,
+              color: ltp.stroke ? ltp.stroke : '#000',
+              fillColor: ltp.fill ? ltp.fill : '#FFF',
+              zIndexOffset: 10 * layerConfig.index,
             }
             if(o.twoway){
               options.arrow = 'none';
