@@ -83,122 +83,71 @@ path[alt=''] { opacity: 100% }
 
 /* Jumppad line drawing */
 .line-jumppad {
-  --arrow-size: 10px;     /* Arrow head size, if not set no arrow drawn, only used for long one way lines */
-  --arrow-angle: 30;      /* Angle arrow pointer will be drawn with */
-  --arrow-dist: 100;      /* If line is shorter than this distance, don't draw arrow */
-  --line-width: 4px;      /* Width of the basic line */
-  --shadow-width: 2.5px;  /* Width of shadow border */
-  --offset: 100%;         /* How far along line should first arrow appear, pixels also ok */
-  --end-offset: 0;        /* How far from end should last arrow appear */
-  --repeat: 1;            /* How many arrows should be drawn? */
+  --arrow: tip;         /* Can be 'tip', 'mid', 'none' */
+  --arrow-size: 5px;    /* Arrow head size, if not set no arrow drawn, only used for long one way lines */
+  --arrow-angle: 45;    /* Angle arrow pointer will be drawn with */
+  --arrow-dist: 100;    /* If line is shorter than this distance, don't draw arrow */
+  --line-width: 5px;    /* Width of the basic line */
+  --shadow-width: 3px;  /* Width of shadow border */
+  --offset: 0;          /* How far along line should first arrow appear, pixels also ok */
+  --end-offset: 0;      /* How far from end should last arrow appear */
 
-  stroke-width: var(--line-width);
-}
-.line-jumppad.red {
-  stroke: #F00;
-  fill: #f00;         /* inherited by arrow */
-}
-.line-jumppad.blue {
-  stroke: #1E90FF;
-  fill: #1E90FF;      /* inherited by arrow */
-}
-.line-jumppad.shadow {
-  stroke:#000;
-  fill: #000;       /* inherited by shadow arrow */
-  stroke-width: calc(var(--shadow-width) * 2 + var(--line-width));
-}
-.line-jumppad.red.arrow {
-}
-.line-jumppad.blue.arrow {
-}
-.line-jumppad.arrow.shadow {
-  stroke: #000;
-  fill: #000;
-  stroke-width: calc(var(--shadow-width) * 2 + var(--line-width));
-}
-
-.line-pipe {
-  --arrow-size: 5px;
-  --arrow-angle: 40;
-  --arrow-dist: 100;
-  --line-width: 4px;
-  --shadow-width: 2.5px;
-  --offset: 100%;
-  --end-offset: 0px;
-  --repeat: 1;
-
-  stroke-width: var(--line-width);
-  stroke: #4DFF00;
-  fill: #000;
   opacity: 100%;
   fill-opacity: 100%;
 }
-.line-pipe.shadow {
-  stroke:#000;
-  fill: #000;
-  stroke-width: calc(var(--shadow-width) * 2 + var(--line-width));
-}
-.line-pipe.arrow {
-}
-.line-pipe.arrow.shadow {
+.line-jumppad.red {
   stroke: #000;
-  fill: #000;
-  stroke-width: calc(var(--shadow-width) * 2 + var(--line-width));
+  fill: #f00;         /* inherited by arrow */
+}
+.line-jumppad.blue {
+  stroke: #000;
+  fill: #1E90FF;      /* inherited by arrow */
 }
 
+.line-pipe {
+  --arrow: tip;
+  --arrow-size: 3px;
+  --arrow-angle: 45;
+  --arrow-dist: 100;
+  --line-width: 5px;
+  --shadow-width: 3px;
+  --offset: 0;
+  --end-offset: 16px;
+
+  fill: #4DFF00;
+  fill-opacity: 100%;
+  stroke: #000;
+  opacity: 100%;
+}
 
 .line-player_aim {
+  --arrow: mid;
   --arrow-size: 5px;
   --arrow-angle: 40;
   --arrow-dist: 100;
   --line-width: 3px;
   --shadow-width: 0px;
-  --offset: 100%;
+  --offset: 0;
   --end-offset: 0;
-  --repeat: 1;
 
-  stroke-width: calc(var(--shadow-width) * 2 + var(--line-width));
-  stroke: #fff;
-  fill: #000;
-  opacity: 100%;
+  fill: #FFF;
   fill-opacity: 100%;
-}
-/* .line-player_aim.shadow {
-  stroke:#000;
-  stroke-width: calc(var(--shadow-width)*2 + var(--line-width));
-}
-.line-player_aim.arrow {
-}
-.line-player_aim.arrow.shadow {
   stroke: #000;
-  stroke-width: calc(var(--shadow-width)*2 + var(--line-width));
-}*/
-
+  opacity: 100%;
+}
 
 .line-trigger {
+  --arrow: tip;
   --arrow-size: 5px;
   --arrow-angle: 40;
   --arrow-dist: 100;
   --line-width: 2px;
   --shadow-width: 0px;
-  --offset: 100%;
+  --offset: 0;
   --end-offset: 0px;
-  --repeat: 1;
 
-  stroke-width: calc(var(--shadow-width) * 2 + var(--line-width));
-  stroke: #fff;
-  fill: #000;
-  opacity: 100%;
+  fill: #FFF;
   fill-opacity: 100%;
-}
-/* .line-trigger.shadow {
-  stroke:#000;
-  stroke-width: calc(var(--shadow-width) * 2 + var(--line-width));
-}
-.line-trigger.arrow {
-}
-.line-trigger.arrow.shadow {
   stroke: #000;
-  stroke-width: calc(var(--shadow-width) * 2 + var(--line-width));
-}*/
-
+  opacity: 100%;
+}

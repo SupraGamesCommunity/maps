@@ -568,6 +568,19 @@ function loadMap(id) {
     7: 'red moon',
   }
 
+  function parseRelativeOrAbsoluteValue(value) {
+    if (typeof value === 'string' && value.indexOf('%') !== -1) {
+        return {
+            value: parseFloat(value) / 100,
+            isInPixels: false,
+        };
+    }
+    const parsedValue = value ? parseFloat(value) : 0;
+    return {
+        value: parsedValue,
+        isInPixels: parsedValue > 0,
+    };
+}
   function loadMarkers() {
 
     // Extract line properties from CSS
@@ -575,15 +588,17 @@ function loadMap(id) {
     for(let lt of ['jumppad red', 'jumppad blue', 'pipe', 'trigger', 'player_aim']) {
       const div = $("<div>").addClass(`line-${lt}`).appendTo(document.body);
       let lineProps = {}
-      for(p of [/*'stroke', 'stroke-width', 'fill', 'opacity', 'fill-opacity',*/ '--arrow-size', '--arrow-angle', '--arrow-dist',
-          '--line-width', '--shadow-width', '--offset', '--offset-end', '--repeat']) {
+      for(let p of ['stroke', 'fill', 'opacity', 'fill-opacity', '--arrow', '--arrow-size', '--arrow-angle', '--arrow-dist',
+            '--line-width', '--shadow-width', '--offset', '--end-offset']) {
         if(div.css(p)) {
           let val = div.css(p); 
           val = !isNaN(val) ? Number(val) : val.endsWith('px') ? Number(val.substring(0,val.length-2)) : val;
+          val = typeof val == 'string' ? val.replace(/["']/g, '') : val;
           lineProps[p.replaceAll('-', '')] = val;
+          
         }
       }
-      lineTypeProps[lt.replace(' ', '_')] = lineProps;
+      lineTypeProps['line-'+lt.replace(' ', '_')] = lineProps;
       div.remove();
     }
 
@@ -727,42 +742,28 @@ function loadMap(id) {
             // need to add title as a single space (leaflet search issue), but not the full title so it doesn't appear in search
             let options = {title: ' ', interactive: false, alt: alt, o:o, layerId:c.lines, lineCap: 'butt'}
 
-            let ltp = lineTypeProps[o.linetype + (o.linetype == 'jumppad' ? '_'+o.variant : '')];
+            const className = 'line-' + o.linetype + (o.linetype == 'jumppad' ? '_'+o.variant : '');
+            let ltp = lineTypeProps[className];
 
-            if(ltp.shadowwidth) {
-              options.zIndexOffset = 10 * layerConfig.index - 5;
-              options.stroke = true;    // needed for arrow shadow, ignored for line shadow
-
-              for(let endxy of endxys) {
-                // Line shadow
-                options.className = `line-${o.linetype} shadow`
-                let line = L.polyline([start, [endxy.y, endxy.x]], options).addTo(layers[c.lines]);
-
-                if(ltp.arrowsize && !o.twoway && (Math.sqrt(Math.pow(start[0] - endxy.y, 2) + Math.pow(start[1] - endxy.x, 2))) > ltp.arrowdist){
-                  options.className = `line-${o.linetype} arrow shadow`;
-                  // Arrow shadow
-                  L.polylineDecorator(line, {patterns: [{offset: ltp.offset, endOffset: ltp.endoffset, repeat: ltp.repeat, symbol:
-                      L.Symbol.arrowHead({pixelSize:ltp.arrowsize, headAngle: ltp.arrowangle, pathOptions: {...options}})}],})
-                    .addTo(layers[c.lines]);
-                }
-              }
+            options = {
+                className: className,
+                arrow: ltp.arrow ? ltp.arrow : 'none',
+                arrowSize: ltp.arrowSize ? ltp.arrowSize : 0,
+                arrowAngle: ltp.arrowngle ? ltp.arrowangle : 45,
+                lineWidth: ltp.linewidth ? ltp.linewidth : 5,
+                shadowWidth: ltp.shadowwidth ? ltp.shadowwidth : 3,
+                offset: ltp.offset ? ltp.offset : 0,
+                endOffset: ltp.endOffset ? ltp.endOffset : 0,
+                color: ltp.stroke ? ltp.stroke : '#000',
+                fillColor: ltp.fill ? ltp.fill : '#FFF',
+                zIndexOffset: 10 * layerConfig.index,
             }
-
-            options.stroke = true;
-            
-            options.zIndexOffset = 10 * layerConfig.index - 3;
+            if(o.twoway){
+              options.arrow = 'none';
+            }
             for(let endxy of endxys) {
-              // Line
-              options.className = `line-${o.linetype}${o.linetype == 'jumppad' ? ' '+o.variant : ''}`;
-              let line = L.polyline([start, [endxy.y, endxy.x]], options).addTo(layers[c.lines]);
-              if (ltp.arrowsize &&  !o.twoway && (Math.sqrt(Math.pow(start[0] - endxy.y, 2) + Math.pow(start[1] - endxy.x, 2))) > ltp.arrowdist) {  
-                // Line arrow
-                options.className = `line-${o.linetype}${o.linetype == 'jumppad' ? ' '+o.variant : ''} arrow`;
-                L.polylineDecorator(line, {patterns: [{offset: ltp.offset, endOffset: ltp.endoffset, repeat: ltp.repeat, symbol:
-                    L.Symbol.arrowHead({pixelSize:ltp.arrowsize, headAngle: ltp.arrowangle, pathOptions: {...options}})}],})
-                  .addTo(layers[c.lines]);
-              }
-            }  
+              L.arrowLine(start, [endxy.y, endxy.x], options).addTo(map);
+            }
           }
 
           // add dynamic player marker on top of PlayerStart icon (moves with load save game) 
