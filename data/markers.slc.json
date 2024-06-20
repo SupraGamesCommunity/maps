@@ -3453,6 +3453,502 @@
     "alt": 746.592529296875
   },
   {
+    "name": "CrashEnemySpawner10",
+    "type": "CrashEnemySpawner_C",
+    "area": "Crash",
+    "lat": -8392.9462890625,
+    "lng": 45448.09375,
+    "alt": 203.16558837890625
+  },
+  {
+    "name": "CrashEnemySpawner11",
+    "type": "CrashEnemySpawner_C",
+    "area": "Crash",
+    "lat": -8678.5693359375,
+    "lng": 45250.515625,
+    "alt": 203.16558837890625
+  },
+  {
+    "name": "CrashEnemySpawner12",
+    "type": "CrashEnemySpawner_C",
+    "area": "Crash",
+    "lat": -14785.6201171875,
+    "lng": 32841.61328125,
+    "alt": -2585.454833984375
+  },
+  {
+    "name": "CrashEnemySpawner13",
+    "type": "CrashEnemySpawner_C",
+    "area": "Crash",
+    "lat": -14817.3896484375,
+    "lng": 33805.82421875,
+    "alt": -2585.454833984375
+  },
+  {
+    "name": "CrashEnemySpawner14",
+    "type": "CrashEnemySpawner_C",
+    "area": "Crash",
+    "lat": -14816.076171875,
+    "lng": 33319.34765625,
+    "alt": -2585.454833984375
+  },
+  {
+    "name": "CrashEnemySpawner15",
+    "type": "CrashEnemySpawner_C",
+    "area": "Crash",
+    "lat": -2861.43603515625,
+    "lng": 33229.39453125,
+    "alt": -2680.9013671875
+  },
+  {
+    "name": "CrashEnemySpawner16",
+    "type": "CrashEnemySpawner_C",
+    "area": "Crash",
+    "lat": -2563.359130859375,
+    "lng": 33323.88671875,
+    "alt": -2680.9013671875
+  },
+  {
+    "name": "CrashEnemySpawner17",
+    "type": "CrashEnemySpawner_C",
+    "area": "Crash",
+    "lat": -3325.4169921875,
+    "lng": 33120.13671875,
+    "alt": -2680.9013671875
+  },
+  {
+    "name": "CrashEnemySpawner18",
+    "type": "CrashEnemySpawner_C",
+    "area": "Crash",
+    "lat": -3271.75927734375,
+    "lng": 33537.4375,
+    "alt": -2680.9013671875
+  },
+  {
+    "name": "CrashEnemySpawner19",
+    "type": "CrashEnemySpawner_C",
+    "area": "Crash",
+    "lat": -2829.856201171875,
+    "lng": 33852.078125,
+    "alt": -2680.9013671875
+  },
+  {
+    "name": "CrashEnemySpawner2",
+    "type": "CrashEnemySpawner_C",
+    "area": "Crash",
+    "lat": -16251.8642578125,
+    "lng": 42091.47265625,
+    "alt": 815.5882568359375
+  },
+  {
+    "name": "CrashEnemySpawner20",
+    "type": "CrashEnemySpawner_C",
+    "area": "Crash",
+    "lat": -8816.798828125,
+    "lng": 33563.86328125,
+    "alt": -2680.9013671875
+  },
+  {
+    "name": "CrashEnemySpawner21",
+    "type": "CrashEnemySpawner_C",
+    "area": "Crash",
+    "lat": -8289.90625,
+    "lng": 33347.37890625,
+    "alt": -2680.9013671875
+  },
+  {
+    "name": "CrashEnemySpawner22",
+    "type": "CrashEnemySpawner_C",
+    "area": "Crash",
+    "lat": 6430.48828125,
+    "lng": 39326.33203125,
+    "alt": -2.0489501953125
+  },
+  {
+    "name": "CrashEnemySpawner23",
+    "type": "CrashEnemySpawner_C",
+    "area": "Crash",
+    "lat": 6478.15478515625,
+    "lng": 38596.93359375,
+    "alt": -2.048949956893921
+  },
+  {
+    "name": "CrashEnemySpawner24",
+    "type": "CrashEnemySpawner_C",
+    "area": "Crash",
+    "lat": -17168.98046875,
+    "lng": 51762.49609375,
+    "alt": 1263.322021484375
+  },
+  {
+    "name": "CrashEnemySpawner25",
+    "type": "CrashEnemySpawner_C",
+    "area": "Crash",
+    "lat": -17430.392578125,
+    "lng": 52017.375,
+    "alt": 1263.6673583984375
+  },
+  {
+    "name": "CrashEnemySpawner26",
+    "type": "CrashEnemySpawner_C",
+    "area": "Crash",
+    "lat": -17182.083984375,
+    "lng": 52001.90625,
+    "alt": 1263.796875
+  },
+  {
+    "name": "CrashEnemySpawner27",
+    "type": "CrashEnemySpawner_C",
+    "area": "Crash",
+    "lat": 14114.5048828125,
+    "lng": 18059.658203125,
+    "alt": 1623.9833984375
+  },
+  {
+    "name": "CrashEnemySpawner28",
+    "type": "CrashEnemySpawner_C",
+    "area": "Crash",
+    "lat": 13385.734375,
+    "lng": 17963.50390625,
+    "alt": 1623.9833984375
+  },
+  {
+    "name": "CrashEnemySpawner29",
+    "type": "CrashEnemySpawner_C",
+    "area": "Crash",
+    "lat": 14535.1181640625,
+    "lng": 17866.783203125,
+    "alt": 1623.9833984375
+  },
+  {
+    "name": "CrashEnemySpawner3",
+    "type": "CrashEnemySpawner_C",
+    "area": "Crash",
+    "lat": -16003.5625,
+    "lng": 42076.00390625,
+    "alt": 815.5882568359375
+  },
+  {
+    "name": "CrashEnemySpawner30",
+    "type": "CrashEnemySpawner_C",
+    "area": "Crash",
+    "lat": 13938.234375,
+    "lng": 17544.771484375,
+    "alt": 1623.9833984375
+  },
+  {
+    "name": "CrashEnemySpawner31",
+    "type": "CrashEnemySpawner_C",
+    "area": "Crash",
+    "lat": 14507.3330078125,
+    "lng": 17444.845703125,
+    "alt": 1623.9833984375
+  },
+  {
+    "name": "CrashEnemySpawner32",
+    "type": "CrashEnemySpawner_C",
+    "area": "Crash",
+    "lat": 14637.9248046875,
+    "lng": 16823.041015625,
+    "alt": 1623.9833984375
+  },
+  {
+    "name": "CrashEnemySpawner33",
+    "type": "CrashEnemySpawner_C",
+    "area": "Crash",
+    "lat": 14255.859375,
+    "lng": 16505.142578125,
+    "alt": 1623.9833984375
+  },
+  {
+    "name": "CrashEnemySpawner34",
+    "type": "CrashEnemySpawner_C",
+    "area": "Crash",
+    "lat": 14739.7119140625,
+    "lng": 16192.5888671875,
+    "alt": 1623.9833984375
+  },
+  {
+    "name": "CrashEnemySpawner35",
+    "type": "CrashEnemySpawner_C",
+    "area": "Crash",
+    "lat": 14414.515625,
+    "lng": 15962.8837890625,
+    "alt": 1623.9833984375
+  },
+  {
+    "name": "CrashEnemySpawner36",
+    "type": "CrashEnemySpawner_C",
+    "area": "Crash",
+    "lat": 14164.96875,
+    "lng": 16957.7109375,
+    "alt": 1623.9833984375
+  },
+  {
+    "name": "CrashEnemySpawner37",
+    "type": "CrashEnemySpawner_C",
+    "area": "Crash",
+    "lat": 13617.93359375,
+    "lng": 17933.208984375,
+    "alt": 1623.9833984375
+  },
+  {
+    "name": "CrashEnemySpawner38",
+    "type": "CrashEnemySpawner_C",
+    "area": "Crash",
+    "lat": 14647.4130859375,
+    "lng": 18526.771484375,
+    "alt": 1623.9833984375
+  },
+  {
+    "name": "CrashEnemySpawner39",
+    "type": "CrashEnemySpawner_C",
+    "area": "Crash",
+    "lat": -2456.3798828125,
+    "lng": 49060.48828125,
+    "alt": 1002.832275390625
+  },
+  {
+    "name": "CrashEnemySpawner4",
+    "type": "CrashEnemySpawner_C",
+    "area": "Crash",
+    "lat": -6044.9912109375,
+    "lng": 37743.65625,
+    "alt": 126.39247131347656
+  },
+  {
+    "name": "CrashEnemySpawner40",
+    "type": "CrashEnemySpawner_C",
+    "area": "Crash",
+    "lat": -1531.56494140625,
+    "lng": 49670.35546875,
+    "alt": 1002.832275390625
+  },
+  {
+    "name": "CrashEnemySpawner41",
+    "type": "CrashEnemySpawner_C",
+    "area": "Crash",
+    "lat": -2615.75,
+    "lng": 49551.140625,
+    "alt": 1002.832275390625
+  },
+  {
+    "name": "CrashEnemySpawner42",
+    "type": "CrashEnemySpawner_C",
+    "area": "Crash",
+    "lat": -1085.1634521484375,
+    "lng": 50598.78125,
+    "alt": 1056.6826171875
+  },
+  {
+    "name": "CrashEnemySpawner43",
+    "type": "CrashEnemySpawner_C",
+    "area": "Crash",
+    "lat": -1153.9344482421875,
+    "lng": 50320.3984375,
+    "alt": 1056.6826171875
+  },
+  {
+    "name": "CrashEnemySpawner44",
+    "type": "CrashEnemySpawner_C",
+    "area": "Crash",
+    "lat": 2031.87548828125,
+    "lng": 40073.75,
+    "alt": -185.26153564453125
+  },
+  {
+    "name": "CrashEnemySpawner45",
+    "type": "CrashEnemySpawner_C",
+    "area": "Crash",
+    "lat": 1720.7366943359375,
+    "lng": 40062.1796875,
+    "alt": -185.26153564453125
+  },
+  {
+    "name": "CrashEnemySpawner46",
+    "type": "CrashEnemySpawner_C",
+    "area": "Crash",
+    "lat": 1436.9879150390625,
+    "lng": 40239.703125,
+    "alt": -185.26153564453125
+  },
+  {
+    "name": "CrashEnemySpawner47",
+    "type": "CrashEnemySpawner_C",
+    "area": "Crash",
+    "lat": -3044.915771484375,
+    "lng": 33893.828125,
+    "alt": -2680.9013671875
+  },
+  {
+    "name": "CrashEnemySpawner48",
+    "type": "CrashEnemySpawner_C",
+    "area": "Crash",
+    "lat": -2503.25390625,
+    "lng": 33753.9375,
+    "alt": -2642.175048828125
+  },
+  {
+    "name": "CrashEnemySpawner49",
+    "type": "CrashEnemySpawner_C",
+    "area": "Crash",
+    "lat": -3152.237060546875,
+    "lng": 33301.015625,
+    "alt": -2642.175048828125
+  },
+  {
+    "name": "CrashEnemySpawner5",
+    "type": "CrashEnemySpawner_C",
+    "area": "Crash",
+    "lat": -5992.81982421875,
+    "lng": 37584.4140625,
+    "alt": 131.55496215820312
+  },
+  {
+    "name": "CrashEnemySpawner50",
+    "type": "CrashEnemySpawner_C",
+    "area": "Crash",
+    "lat": -14628.451171875,
+    "lng": 32731.51171875,
+    "alt": -2585.454833984375
+  },
+  {
+    "name": "CrashEnemySpawner51",
+    "type": "CrashEnemySpawner_C",
+    "area": "Crash",
+    "lat": -14748.939453125,
+    "lng": 33047.13671875,
+    "alt": -2585.454833984375
+  },
+  {
+    "name": "CrashEnemySpawner52",
+    "type": "CrashEnemySpawner_C",
+    "area": "Crash",
+    "lat": -14641.0810546875,
+    "lng": 33852.64453125,
+    "alt": -2585.454833984375
+  },
+  {
+    "name": "CrashEnemySpawner53",
+    "type": "CrashEnemySpawner_C",
+    "area": "Crash",
+    "lat": -12610.421875,
+    "lng": 32121.595703125,
+    "alt": -2427.603759765625
+  },
+  {
+    "name": "CrashEnemySpawner54",
+    "type": "CrashEnemySpawner_C",
+    "area": "Crash",
+    "lat": -8742.283203125,
+    "lng": 45501.83203125,
+    "alt": 203.16558837890625
+  },
+  {
+    "name": "CrashEnemySpawner55",
+    "type": "CrashEnemySpawner_C",
+    "area": "Crash",
+    "lat": -9016.7109375,
+    "lng": 45635.140625,
+    "alt": 203.16558837890625
+  },
+  {
+    "name": "CrashEnemySpawner56",
+    "type": "CrashEnemySpawner_C",
+    "area": "Crash",
+    "lat": -9686.951171875,
+    "lng": 42341.203125,
+    "alt": 329.2476501464844
+  },
+  {
+    "name": "CrashEnemySpawner57",
+    "type": "CrashEnemySpawner_C",
+    "area": "Crash",
+    "lat": -6625.88427734375,
+    "lng": 42893.47265625,
+    "alt": 106.27339172363281
+  },
+  {
+    "name": "CrashEnemySpawner58",
+    "type": "CrashEnemySpawner_C",
+    "area": "Crash",
+    "lat": -2670.367919921875,
+    "lng": 48390.15234375,
+    "alt": 1002.832275390625
+  },
+  {
+    "name": "CrashEnemySpawner59",
+    "type": "CrashEnemySpawner_C",
+    "area": "Crash",
+    "lat": 2273.45263671875,
+    "lng": 35203.1015625,
+    "alt": 90.64136505126953
+  },
+  {
+    "name": "CrashEnemySpawner6",
+    "type": "CrashEnemySpawner_C",
+    "area": "Crash",
+    "lat": -6719.47705078125,
+    "lng": 42800.125,
+    "alt": 1.356689453125
+  },
+  {
+    "name": "CrashEnemySpawner60_15",
+    "type": "CrashEnemySpawner_C",
+    "area": "Crash",
+    "lat": -15983.4326171875,
+    "lng": 57892.5234375,
+    "alt": 296.6331481933594
+  },
+  {
+    "name": "CrashEnemySpawner61",
+    "type": "CrashEnemySpawner_C",
+    "area": "Crash",
+    "lat": -16036.1357421875,
+    "lng": 57658.6171875,
+    "alt": 296.6331481933594
+  },
+  {
+    "name": "CrashEnemySpawner62",
+    "type": "CrashEnemySpawner_C",
+    "area": "Crash",
+    "lat": -16267.9462890625,
+    "lng": 57760.3671875,
+    "alt": 296.6331481933594
+  },
+  {
+    "name": "CrashEnemySpawner7",
+    "type": "CrashEnemySpawner_C",
+    "area": "Crash",
+    "lat": -6523.32763671875,
+    "lng": 42866.91796875,
+    "alt": 1.3566889762878418
+  },
+  {
+    "name": "CrashEnemySpawner8",
+    "type": "CrashEnemySpawner_C",
+    "area": "Crash",
+    "lat": 1161.22998046875,
+    "lng": 41661.8203125,
+    "alt": 155.6253662109375
+  },
+  {
+    "name": "CrashEnemySpawner9",
+    "type": "CrashEnemySpawner_C",
+    "area": "Crash",
+    "lat": -772.1448364257812,
+    "lng": 48319.671875,
+    "alt": 1002.832275390625
+  },
+  {
+    "name": "CrashEnemySpawner_5",
+    "type": "CrashEnemySpawner_C",
+    "area": "Crash",
+    "lat": -15990.4580078125,
+    "lng": 41836.59375,
+    "alt": 815.5882568359375
+  },
+  {
     "name": "DestroyablePots10",
     "type": "Coin:DestroyablePots_C",
     "area": "Crash",
@@ -4713,9 +5209,9 @@
     "lng": 18428.583984375,
     "alt": 2453.891845703125,
     "target": {
-      "x": 18428.52702063084,
-      "y": 16098.658516697586,
-      "z": 2441.579731305755
+      "x": 18428.516276579452,
+      "y": 15737.673804655671,
+      "z": 1615.229417558212
     },
     "linetype": "jumppad",
     "variant": "blue"
@@ -4728,9 +5224,9 @@
     "lng": 24611.232421875,
     "alt": 2693.482666015625,
     "target": {
-      "x": 17938.331930838776,
-      "y": 12838.076633956323,
-      "z": 3187.139725188347
+      "x": 17607.053183056836,
+      "y": 12826.55824765451,
+      "z": 2777.6153224522427
     },
     "linetype": "jumppad",
     "variant": "red"

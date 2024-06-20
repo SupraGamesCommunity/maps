@@ -84,6 +84,7 @@ starts_with = {
     'Pipesystem','Buy','BP_Buy','BP_Purchase','BP_Unlock', 'Purchase','Upgrade','Button','Smallbutton','Coin',
     'Lighttrigger','LotsOfCoins','EnemySpawn','Destroyable','BP_Pickaxe','Door','Key','ProjectileShooter',
     'MinecraftBrick', # can be MinecraftBrick_C and MinecraftBrickRespawnable_C
+    'CrashEnemySpawner_C',
 }
 
 ends_with = {
