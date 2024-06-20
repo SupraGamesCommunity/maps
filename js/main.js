@@ -761,7 +761,7 @@ function loadMap(id) {
               options.arrow = 'none';
             }
             for(let endxy of endxys) {
-              L.arrowLine(start, [endxy.y, endxy.x], options).addTo(map);
+              L.arrowLine(start, [endxy.y, endxy.x], options).addTo(layers[c.lines]);
             }
           }
 
