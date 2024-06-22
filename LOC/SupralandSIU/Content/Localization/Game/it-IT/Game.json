@@ -1,5 +1,4 @@
 {
-  "": {
     "C21E2D83483B8F6841F97DAA19BCCDCB": "Spettacolo! Potresti aiutarci con i fondi per ricostruire le abitazioni?",
     "DF1587324A1C6FF3197EAFB8F28925BF": "Anche basta con il blu. Mi ha mandato in una vasca gigante con questo... enorme mostro rosa che sguazzava come un pazzo.",
     "D2D33DD9463558C2AA482D91C1D3821E": "Principe, salvami!",
@@ -1543,9 +1542,4 @@
     "C7E3C7E540CB35698AC84899C76C2666": "per lanciare il tuo piccone",
     "D4E21B4447BDB6DF23B4969ACDB3CF33": "Parecchio wow!",
     "44446E8347375F320CB83E95E279547B": "L'acqua è freddissima..."
-  },
-  "SL_SIU_Objectives_": {
-    "rocketArrival_Description": "Presta servizio durante il lancio del razzo!",
-    "openingScene_Description": "Chi è che bussa?"
-  }
 }

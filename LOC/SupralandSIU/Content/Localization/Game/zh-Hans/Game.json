@@ -1,5 +1,4 @@
 {
-  "": {
     "C21E2D83483B8F6841F97DAA19BCCDCB": "很好!请资助我们好重建我们的小镇.",
     "DF1587324A1C6FF3197EAFB8F28925BF": "就不要再弄蓝色了. 它把我弄进了一个装满水的巨大白色浴缸. 还有...巨大的粉红怪兽.",
     "D2D33DD9463558C2AA482D91C1D3821E": "救我, 王子!",
@@ -1588,9 +1587,4 @@
     "D4E21B4447BDB6DF23B4969ACDB3CF33": "哇!",
     "44446E8347375F320CB83E95E279547B": "水好冷...",
     "925BB9A44F8AC4AA3F6E7E83EB3AFE5B": "*闻闻*"
-  },
-  "SL_SIU_Objectives_": {
-    "rocketArrival_Description": "参加火箭发射!",
-    "openingScene_Description": "是谁敲门?"
-  }
 }

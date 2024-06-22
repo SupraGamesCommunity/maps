@@ -1,5 +1,4 @@
 {
-  "": {
     "C21E2D83483B8F6841F97DAA19BCCDCB": "Niesamowite! Proszę pomóż nam sfinansować odbudowę naszego miasta.",
     "DF1587324A1C6FF3197EAFB8F28925BF": "Nie próbujmy znowu niebieskiego. Wrzucił mnie do wielkiej białej wanny wypełnionej wodą. Z tym... gigantycznym różowym potworem pluskającym się dookoła.",
     "D2D33DD9463558C2AA482D91C1D3821E": "Ratować księcia!",
@@ -1574,12 +1573,4 @@
     "D4E21B4447BDB6DF23B4969ACDB3CF33": "bardzo wow!",
     "44446E8347375F320CB83E95E279547B": "Woda jest zimna...",
     "925BB9A44F8AC4AA3F6E7E83EB3AFE5B": "~Wącha~"
-  },
-  "SL_SIU_Objectives_": {
-    "rocketArrival_Description": "Weź udział w uroczystym starcie rakiety!",
-    "openingScene_Description": "Kto puka?"
-  },
-  "UObjectCategory": {
-    "Deprecated": "Nieaktualny"
-  }
 }

@@ -1,5 +1,4 @@
 {
-  "": {
     "C21E2D83483B8F6841F97DAA19BCCDCB": "Wahnsinn! Bitte spende für den Wiederaufbau unseres Dorfs.",
     "DF1587324A1C6FF3197EAFB8F28925BF": "Nicht nochmal blau. Es hat mich in eine große weiße Wanne voller Wasser teleportiert. Mit diesem riesigen, pinken, planschenden Monster.",
     "D2D33DD9463558C2AA482D91C1D3821E": "Rette mich, Prinz!",
@@ -1485,9 +1484,4 @@
     "C7E3C7E540CB35698AC84899C76C2666": "um deine Spitzhacke zu werfen",
     "44446E8347375F320CB83E95E279547B": "Eiskaltes Wasser...",
     "925BB9A44F8AC4AA3F6E7E83EB3AFE5B": "~Schnupper schnupper~"
-  },
-  "SL_SIU_Objectives_": {
-    "rocketArrival_Description": "Geh zum Raketenstart!",
-    "openingScene_Description": "Wer ist da?"
-  }
 }

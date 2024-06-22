@@ -1,5 +1,4 @@
 {
-  "": {
     "C21E2D83483B8F6841F97DAA19BCCDCB": " Amazing! Please help fund us to rebuild our town.",
     "DF1587324A1C6FF3197EAFB8F28925BF": " Let's not do blue again. It put me in a vast white tub filled with water. With this... giant pink monster splashing about.",
     "D2D33DD9463558C2AA482D91C1D3821E": " Save me prince!",
@@ -1662,12 +1661,4 @@
     "3E158C8643DDF584EC60A18A8BDD56DF": "{Filtered} / {Total}",
     "B4AE555D46B2DD835CBD4D9727D9D731": "{filtered} / {total}",
     "925BB9A44F8AC4AA3F6E7E83EB3AFE5B": "~Sniff Sniff~"
-  },
-  "SL_SIU_Objectives_": {
-    "rocketArrival_Description": "Attend the rocket launch!",
-    "openingScene_Description": "Who's knocking?"
-  },
-  "UObjectCategory": {
-    "Deprecated": "Deprecated"
-  }
 }

@@ -1,5 +1,4 @@
 {
-  "": {
     "C21E2D83483B8F6841F97DAA19BCCDCB": "Impressionnant ! Aide nous à financer la reconstruction de notre ville s'il te plait.",
     "DF1587324A1C6FF3197EAFB8F28925BF": "Ne réessayons pas le bleu. Sinon je finirai encore dans une cuvette blanche gigantesque remplie d'eau. Avec ce... monstre rose géant qui barbote.",
     "D2D33DD9463558C2AA482D91C1D3821E": "Sauvez moi prince !",
@@ -1563,9 +1562,4 @@
     "C7E3C7E540CB35698AC84899C76C2666": "Lancer ta pioche",
     "D4E21B4447BDB6DF23B4969ACDB3CF33": "Such wow !",
     "44446E8347375F320CB83E95E279547B": "l'eau est froide..."
-  },
-  "SL_SIU_Objectives_": {
-    "rocketArrival_Description": "Va assister au lancer de la fusée !",
-    "openingScene_Description": "Qui c'est ?"
-  }
 }

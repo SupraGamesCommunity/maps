@@ -1,5 +1,4 @@
 {
-  "": {
     "C21E2D83483B8F6841F97DAA19BCCDCB": "すばらしい！ 町の再建の資金援助をしてほしい。",
     "DF1587324A1C6FF3197EAFB8F28925BF": "もう青はごめんだ。 水でいっぱいの白い浴槽に出てきた。 そこでは巨大なピンクも怪物がバシャバシャしてた。",
     "D2D33DD9463558C2AA482D91C1D3821E": "王子様、助けてくれ！",
@@ -1643,12 +1642,4 @@
     "D4E21B4447BDB6DF23B4969ACDB3CF33": "すっごい！",
     "44446E8347375F320CB83E95E279547B": "冷たい水だな…",
     "925BB9A44F8AC4AA3F6E7E83EB3AFE5B": "クンクン"
-  },
-  "SL_SIU_Objectives_": {
-    "rocketArrival_Description": "ロケットの発射を見よう！",
-    "openingScene_Description": "誰？"
-  },
-  "UObjectCategory": {
-    "Deprecated": "未使用"
-  }
 }

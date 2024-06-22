@@ -1,5 +1,4 @@
 {
-  "": {
     "C21E2D83483B8F6841F97DAA19BCCDCB": "놀라워요! 우리 마을을 재건할 수 있게 투자해주세요.",
     "DF1587324A1C6FF3197EAFB8F28925BF": "파란색은 그만하죠. 그것 때문에 물로 가득 찬 거대한 흰 욕조에 들어가게 되었어요. 물 장구를 치는... 거대한 핑크몬스터와 함께 말이에요.",
     "D2D33DD9463558C2AA482D91C1D3821E": "구해주세요 왕자님!",
@@ -1631,12 +1630,4 @@
     "44446E8347375F320CB83E95E279547B": "물이 너무 차가워요...",
     "3E158C8643DDF584EC60A18A8BDD56DF": "{필터 된} / {전체}",
     "925BB9A44F8AC4AA3F6E7E83EB3AFE5B": "~킁킁 킁킁~"
-  },
-  "SL_SIU_Objectives_": {
-    "rocketArrival_Description": "로켓발사식에 참가하세요!",
-    "openingScene_Description": "밖에 누구시죠?"
-  },
-  "UObjectCategory": {
-    "Deprecated": "-"
-  }
 }
