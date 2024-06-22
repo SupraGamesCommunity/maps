@@ -209,6 +209,11 @@
     "price_type":7 
   },  
   {
+    "name": "BuyHealth+5",
+    "area": "Map",
+    "lat": 2035
+  },
+  {
     "name": "Jumppad7",
     "type": "FT:Jumppad_C",
     "area": "Map"

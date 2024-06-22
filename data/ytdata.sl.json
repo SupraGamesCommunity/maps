@@ -3,1393 +3,1744 @@
     "name": "BarrelClosed_Blueprint6",
     "area": "Map",
     "yt_video": "nWigHgcWFCE",
-    "yt_start": "405"
+    "yt_start": "398",
+    "yt_end": "419"
+  },
+  {
+    "name": "BarrelClosed_Blueprint2_3",
+    "area": "Map",
+    "yt_video": "nWigHgcWFCE",
+    "yt_start": "544",
+    "yt_end": "601"
+  },
+  {
+    "name": "BarrelClosed_Blueprint3_5",
+    "area": "Map",
+    "yt_video": "nWigHgcWFCE",
+    "yt_start": "696",
+    "yt_end": "732"
+  },
+  {
+    "name": "BarrelClosed_Blueprint4",
+    "area": "Map",
+    "yt_video": "nWigHgcWFCE",
+    "yt_start": "1032",
+    "yt_end": "1116"
+  },
+  {
+    "name": "BarrelClosed_Blueprint5_2",
+    "area": "Map",
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
+  },
+  {
+    "name": "BarrelClosed_Blueprint_2",
+    "area": "Map",
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
+  },
+  {
+    "name": "BarrelRed2",
+    "area": "Map",
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
+  },
+  {
+    "name": "BarrelRed3",
+    "area": "Map",
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
+  },
+  {
+    "name": "BarrelRed4",
+    "area": "Map",
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
+  },
+  {
+    "name": "BarrelRed5",
+    "area": "Map",
+    "yt_video": "yw5fFlcbH0w",
+    "yt_start": "563",
+    "yt_end": "624"
+  },
+  {
+    "name": "BarrelRed6",
+    "area": "Map",
+    "yt_video": "yw5fFlcbH0w",
+    "yt_start": "627",
+    "yt_end": "641"
+  },
+  {
+    "name": "BarrelRed_2",
+    "area": "Map",
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
+  },
+  {
+    "name": "Shell13_3781",
+    "area": "Map",
+    "yt_video": "x62HgbqIhQY",
+    "yt_start": "389",
+    "yt_end": "419"
+  },
+  {
+    "name": "Shell16_5895",
+    "area": "Map",
+    "yt_video": "x62HgbqIhQY",
+    "yt_start": "1100",
+    "yt_end": "1111"
+  },
+  {
+    "name": "Shell2_1957",
+    "area": "Map",
+    "yt_video": "x62HgbqIhQY",
+    "yt_start": "372",
+    "yt_end": "387"
+  },
+  {
+    "name": "Shell5_1015",
+    "area": "Map",
+    "yt_video": "x62HgbqIhQY",
+    "yt_start": "1054",
+    "yt_end": "1069"
+  },
+  {
+    "name": "Shell9_2044",
+    "area": "Map",
+    "yt_video": "x62HgbqIhQY",
+    "yt_start": "613",
+    "yt_end": "632"
+  },
+  {
+    "name": "Shell_1483",
+    "area": "Map",
+    "yt_video": "x62HgbqIhQY",
+    "yt_start": "576",
+    "yt_end": "600"
   },
   {
     "name": "BuyBelt2_2",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "16196"
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "BuyChestDetector_30",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "22150"
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "BuyDoubleJump2",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "16196"
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "BuyDoubleJump_786",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "882"
+    "yt_video": "nWigHgcWFCE",
+    "yt_start": "696",
+    "yt_end": "732"
   },
   {
     "name": "BuyForceBeamGold",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "16196"
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "BuyForceBlock3",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "16196"
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "BuyForceBlock_695",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "336"
+    "yt_video": "nWigHgcWFCE",
+    "yt_start": "544",
+    "yt_end": "630"
   },
   {
     "name": "BuyGun2_2",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "16196"
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "BuyGunAlt_478",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "5663"
+    "yt_video": "yw5fFlcbH0w",
+    "yt_start": "1491",
+    "yt_end": "1550"
   },
   {
     "name": "BuyGunCriticalDamage_1496",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "2806"
+    "yt_video": "yw5fFlcbH0w",
+    "yt_start": "254",
+    "yt_end": "270"
   },
   {
     "name": "BuyGunCriticalDamageChance2_1856",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "5528"
+    "yt_video": "yw5fFlcbH0w",
+    "yt_start": "1221",
+    "yt_end": "1231"
   },
   {
     "name": "BuyGunCriticalDamageChance3_3189",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "8296"
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "BuyGunCriticalDamageChance4_198",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "13100"
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "BuyGunCriticalDamageChance_1426",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "3397"
+    "yt_video": "yw5fFlcbH0w",
+    "yt_start": "500",
+    "yt_end": "504"
   },
   {
     "name": "BuyGunDamage+5_235",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "8296"
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "BuyGunRefillSpeed+66_478",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "5528"
+    "yt_video": "yw5fFlcbH0w",
+    "yt_start": "1461",
+    "yt_end": "1466"
   },
   {
     "name": "BuyGunRefillSpeed+67_198",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "13100"
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "BuyGunRefillSpeedx2_374",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "8296"
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "BuySilentFeet2",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "3980"
+    "yt_video": "yw5fFlcbH0w",
+    "yt_start": "716",
+    "yt_end": "725"
   },
   {
     "name": "BuySilentFeet_902",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "3838"
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "BuyHealth+17",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "8296"
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "BuyHealth+5",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "2806"
+    "yt_video": "yw5fFlcbH0w",
+    "yt_start": "254",
+    "yt_end": "270"
   },
   {
     "name": "BuyHealthRegenMax10_330",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "8296"
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "BuyHealthRegenMax5_1162",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "13100"
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
+  },
+  {
+    "name": "BuyHealthRegen2_695",
+    "area": "Map",
+    "yt_video": "nWigHgcWFCE",
+    "yt_start": "466",
+    "yt_end": "473"
   },
   {
     "name": "BuyShieldBreaker_1026",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "5528"
+    "yt_video": "yw5fFlcbH0w",
+    "yt_start": "1221",
+    "yt_end": "1231"
   },
   {
     "name": "BuyShowProgress2_2",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "2806"
+    "yt_video": "yw5fFlcbH0w",
+    "yt_start": "254",
+    "yt_end": "270"
   },
   {
     "name": "BuySmashdownDamage+33",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "13131"
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "BuySpeedx2_206",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "197"
+    "yt_video": "nWigHgcWFCE",
+    "yt_start": "260",
+    "yt_end": "280"
   },
   {
     "name": "BuySword_695",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "52"
+    "yt_video": "nWigHgcWFCE",
+    "yt_start": "60",
+    "yt_end": "78"
   },
   {
     "name": "BuySwordCriticalDamageChance2_2395",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "5528"
+    "yt_video": "yw5fFlcbH0w",
+    "yt_start": "1221",
+    "yt_end": "1231"
   },
   {
     "name": "BuySwordCriticalDamageChance3_296",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "13100"
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "BuySwordCriticalDamageChance_1657",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "2806"
+    "yt_video": "yw5fFlcbH0w",
+    "yt_start": "254",
+    "yt_end": "270"
   },
   {
     "name": "BuySwordDamage+11",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "198"
+    "yt_video": "nWigHgcWFCE",
+    "yt_start": "296",
+    "yt_end": "309"
   },
   {
     "name": "BuySwordDamage+10_2",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "200"
+    "yt_video": "x62HgbqIhQY",
+    "yt_start": "1268",
+    "yt_end": "1274"
   },
   {
     "name": "UpgradeSwordDamageX2_716",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "3880"
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "BuyTranslocator_7",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "20527"
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "BuyTripleJump2",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "16196"
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "BuyTripleJump_877",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "1429"
+    "yt_video": "nWigHgcWFCE",
+    "yt_start": "1032",
+    "yt_end": "1116"
   },
   {
     "name": "BuyWalletx15",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "3836"
+    "yt_video": "yw5fFlcbH0w",
+    "yt_start": "588",
+    "yt_end": "594"
+  },
+  {
+    "name": "BuyWallet+51",
+    "area": "Map",
+    "yt_video": "nWigHgcWFCE",
+    "yt_start": "466",
+    "yt_end": "473"
   },
   {
     "name": "BuyWalletx16",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "2806"
+    "yt_video": "yw5fFlcbH0w",
+    "yt_start": "256",
+    "yt_end": "270"
   },
   {
     "name": "BuyWalletx17_426",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "13100"
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "BuyWallet+50_737",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "200"
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "BuyWalletx2_986",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "1532"
+    "yt_video": "x62HgbqIhQY",
+    "yt_start": "301",
+    "yt_end": "334"
   },
 
   {
     "name": "Chest100_2221",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest101_2025",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest102_2567",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "13582"
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },  
   {
     "name": "Chest103_3711",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest104_6073",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest105_6706",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest106_8060",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest107_9218",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest108_10670",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest109",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest10_1082",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "2851"
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest110",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest111_3",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest112",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest113",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest114",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "17953"
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest115_4",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest116",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest117_2",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest118_2",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "20157"
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest119_2",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "19312"
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest11_13130",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "nWigHgcWFCE",
+    "yt_start": "525",
+    "yt_end": "541"
   },
   {
     "name": "Chest120_2",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest121_2",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "20829"
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest122_2",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "21259"
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest123_5",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest124_8",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest125_2",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest126",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest127_2",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest128",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest129_6",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "15562"
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest12_686",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "nWigHgcWFCE",
+    "yt_start": "824",
+    "yt_end": "848"
   },
   {
     "name": "Chest130",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest131",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest132",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest133",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest134_13",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest135",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest136_3",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest137",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest138_5",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest139",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest13_410",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "nWigHgcWFCE",
+    "yt_start": "983",
+    "yt_end": "1024"
   },
   {
     "name": "Chest140",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest141_3",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest142",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest143",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest144",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest145_2",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "7754"
+    "yt_video": "",
+    "yt_start": "7754",
+    "yt_end": ""
   },
   {
     "name": "Chest146_2",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest147_2",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest148_5",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest149",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest14_1121",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "2234"
+    "yt_video": "x62HgbqIhQY",
+    "yt_start": "1002",
+    "yt_end": "1022"
   },
   {
     "name": "Chest150",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest151_3",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest152_6",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest153_9",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest154",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest155_2",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest156_2",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest157",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest158",
     "area": "Map",
-    "yt_video": "vuE52zzgGlo",
-    "yt_start": "8827"
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest159_6",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest15_2768",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "x62HgbqIhQY",
+    "yt_start": "784",
+    "yt_end": "809"
   },
   {
     "name": "Chest160",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest161_2",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "22024"
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest162",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest163",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest164",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest165",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest166",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest167",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest168",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest169",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "x62HgbqIhQY",
+    "yt_start": "236",
+    "yt_end": "246"
   },
   {
     "name": "Chest16_5090",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "6329"
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest170",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "x62HgbqIhQY",
+    "yt_start": "1054",
+    "yt_end": "1069"
   },
   {
     "name": "Chest171_2",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest172",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "nWigHgcWFCE",
+    "yt_start": "814",
+    "yt_end": "823"
   },
   {
     "name": "Chest17_812",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "x62HgbqIhQY",
+    "yt_start": "907",
+    "yt_end": "948"
   },
   {
     "name": "Chest18_812",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "x62HgbqIhQY",
+    "yt_start": "551",
+    "yt_end": "576"
   },
   {
     "name": "Chest19_6182",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "18653"
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest2",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "1166"
+    "yt_video": "nWigHgcWFCE",
+    "yt_start": "893",
+    "yt_end": "910"
   },
   {
     "name": "Chest20_9041",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest21_10208",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "x62HgbqIhQY",
+    "yt_start": "518",
+    "yt_end": "542"
   },
   {
     "name": "Chest22_11777",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "140"
+    "yt_video": "nWigHgcWFCE",
+    "yt_start": "163",
+    "yt_end": "197"
   },
   {
     "name": "Chest23_14291",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "1916"
+    "yt_video": "x62HgbqIhQY",
+    "yt_start": "700",
+    "yt_end": "736"
   },
   {
     "name": "Chest24_16178",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "1702"
+    "yt_video": "x62HgbqIhQY",
+    "yt_start": "389",
+    "yt_end": "419"
   },
   {
     "name": "Chest25_692",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "x62HgbqIhQY",
+    "yt_start": "887",
+    "yt_end": "905"
   },
   {
     "name": "Chest26_1739",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "nWigHgcWFCE",
+    "yt_start": "512",
+    "yt_end": "523"
   },
   {
     "name": "Chest27_4172",
     "area": "Map",
     "yt_video": "nWigHgcWFCE",
-    "yt_start": "390"
+    "yt_start": "386",
+    "yt_end": "396"
   },
   {
     "name": "Chest28_4997",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "yw5fFlcbH0w",
+    "yt_start": "74",
+    "yt_end": "94"
   },
   {
     "name": "Chest29_7214",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "x62HgbqIhQY",
+    "yt_start": "439",
+    "yt_end": "503"
   },
   {
     "name": "Chest30_2321",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "3025"
+    "yt_video": "yw5fFlcbH0w",
+    "yt_start": "361",
+    "yt_end": "382"
   },
   {
     "name": "Chest31_9005",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "2054"
+    "yt_video": "x62HgbqIhQY",
+    "yt_start": "764",
+    "yt_end": "782"
   },
   {
     "name": "Chest32_1454",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "x62HgbqIhQY",
+    "yt_start": "36",
+    "yt_end": "55"
   },
   {
     "name": "Chest33_1094",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest34_2175",
     "area": "Map",
     "yt_video": "nWigHgcWFCE",
-    "yt_start": "317"
+    "yt_start": "304",
+    "yt_end": "326"
   },
   {
     "name": "Chest35_2137",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "530"
+    "yt_video": "nWigHgcWFCE",
+    "yt_start": "868",
+    "yt_end": "886"
   },
   {
     "name": "Chest36_4639",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "2168"
+    "yt_video": "x62HgbqIhQY",
+    "yt_start": "952",
+    "yt_end": "983"
   },
   {
     "name": "Chest37_1815",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "433"
+    "yt_video": "nWigHgcWFCE",
+    "yt_start": "740",
+    "yt_end": "780"
   },
   {
     "name": "Chest38_3995",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest39_5860",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "x62HgbqIhQY",
+    "yt_start": "7",
+    "yt_end": "29"
   },
   {
     "name": "Chest3_1811",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest40_8",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest41_2",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest42_1521",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "3129"
+    "yt_video": "yw5fFlcbH0w",
+    "yt_start": "416",
+    "yt_end": "438"
   },
   {
     "name": "Chest43",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest44_2721",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "4649"
+    "yt_video": "yw5fFlcbH0w",
+    "yt_start": "1066",
+    "yt_end": "1099"
   },
   {
     "name": "Chest45_4075",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest46",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest47",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest48_4722",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest49_1234",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "4716"
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest4_1544",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "x62HgbqIhQY",
+    "yt_start": "69",
+    "yt_end": "103"
   },
   {
     "name": "Chest50_2182",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "yw5fFlcbH0w",
+    "yt_start": "1413",
+    "yt_end": "1439"
   },
   {
     "name": "Chest51_1360",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest52_10699",
     "area": "Map",
     "yt_video": "nWigHgcWFCE",
-    "yt_start": "142"
+    "yt_start": "129",
+    "yt_end": "150"
   },
   {
     "name": "Chest53_1192",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest54_8402",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest55_3907",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "5113"
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest56_5023",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest57_1073",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest58",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest59",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest5_1955",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "752"
+    "yt_video": "x62HgbqIhQY",
+    "yt_start": "247",
+    "yt_end": "269"
   },
   {
     "name": "Chest60_2151",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest61_2816",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "5909"
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest62_3729",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest63_1565",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "6561"
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest64_1416",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest65_5150",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest66_7106",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest67",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest68",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest69",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "1250"
+    "yt_video": "nWigHgcWFCE",
+    "yt_start": "633",
+    "yt_end": "673"
   },
   {
     "name": "Chest6_710",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "22585"
+    "yt_video": "x62HgbqIhQY",
+    "yt_start": "347",
+    "yt_end": "370"
   },
   {
     "name": "Chest70",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest71",
     "area": "Map",
-    "yt_video": "nWigHgcWFCE",
-    "yt_start": "191"
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest72_2",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest73_1605",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest74",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest75",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "22414"
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest76",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest77_4",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "11506"
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest78_7640",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "7770"
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest79_2",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest7_818",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "x62HgbqIhQY",
+    "yt_start": "211",
+    "yt_end": "230"
   },
   {
     "name": "Chest80_1332",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest81",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "11795"
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest82_4377",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest83_1920",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "12104"
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest84_3197",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest85_1892",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest86_2441",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest87",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest88_1696",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "14549"
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest89_3036",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest8_878",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest90_2137",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest91",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "yw5fFlcbH0w",
+    "yt_start": "909",
+    "yt_end": "973"
   },
   {
     "name": "Chest92",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest93_3307",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "x62HgbqIhQY",
+    "yt_start": "1113",
+    "yt_end": "1128"
   },
   {
     "name": "Chest94",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest95_6394",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest96_8035",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest97_9186",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "13691"
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest98_10407",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest99_2116",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest9_2231",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": ""
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "Chest_622",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "964"
+    "yt_video": "nWigHgcWFCE",
+    "yt_start": "915",
+    "yt_end": "933"
   },
   {
     "name": "DeadHero2Austin",
     "area": "Map",
-    "yt_video": "FNZt6RPxqLo",
-    "yt_start": "460"
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "DeadHero2Link",
     "area": "Map",
-    "yt_video": "FNZt6RPxqLo",
-    "yt_start": "256"
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "DeadHero3Heman",
     "area": "Map",
-    "yt_video": "FNZt6RPxqLo",
-    "yt_start": "5"
+    "yt_video": "yw5fFlcbH0w",
+    "yt_start": "103",
+    "yt_end": "123"
   },
   {
     "name": "DeadHero3Pokemon",
     "area": "Map",
-    "yt_video": "FNZt6RPxqLo",
-    "yt_start": "45"
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "DeadHero4Picard",
     "area": "Map",
-    "yt_video": "FNZt6RPxqLo",
-    "yt_start": "552"
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "DeadHero4Santa",
     "area": "Map",
-    "yt_video": "FNZt6RPxqLo",
-    "yt_start": "195"
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "DeadHero4Santa2",
     "area": "Map",
-    "yt_video": "FNZt6RPxqLo",
-    "yt_start": "229"
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "DeadHero4Santa3",
     "area": "Map",
-    "yt_video": "FNZt6RPxqLo",
-    "yt_start": "614"
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "DeadHero_3",
     "area": "Map",
-    "yt_video": "FNZt6RPxqLo",
-    "yt_start": "335"
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "DeadHeroGoku",
     "area": "Map",
-    "yt_video": "FNZt6RPxqLo",
-    "yt_start": "392"
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "DeadHeroGuybrush",
     "area": "Map",
-    "yt_video": "FNZt6RPxqLo",
-    "yt_start": "102"
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   },
   {
     "name": "DeadHeroIndy",
     "area": "Map",
-    "yt_video": "FNZt6RPxqLo",
-    "yt_start": "372"
+    "yt_video": "x62HgbqIhQY",
+    "yt_start": "1033",
+    "yt_end": "1054"
   },
   {
     "name": "Juicer3",
     "area": "Map",
     "yt_video": "nWigHgcWFCE",
-    "yt_start": "371"
+    "yt_start": "327",
+    "yt_end": "385"
   },
   {
     "name": "Juicer_286",
     "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "14321"
-  },
-  {
-    "name": "Shell13_3781",
-    "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "1696"
-  },
-  {
-    "name": "Shell16_5895",
-    "area": "Map",
-    "yt_video": "ReN380PXV-A",
-    "yt_start": "1586"
+    "yt_video": "",
+    "yt_start": "",
+    "yt_end": ""
   }
 ]

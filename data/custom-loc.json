@@ -1,9 +1,9 @@
 {
     "BP_A3_StrengthQuest_C": {
-      "friendly": "Strength",
-      "friendly_key": "",
-      "description": "",
-      "description_key": ""
+      "friendly": "Strong",
+      "friendly_key": "AB8A43CA4F1AE131FBD9C2A7592365FD",
+      "description": "You can lift heavy stuff and look ripped!",
+      "description_key": "3283A8C74FB7902A032316B71C678082"
     },
     "BP_A3_StrengthQuest_C_Body": {
       "friendly": "Strength",
@@ -12,10 +12,11 @@
       "description_key": ""
     },
     "BP_BuyGunDuration+2s_C": {
-      "friendly": "Stun duration + 2",
-      "friendly_key": "",
-      "description": "",
-      "description_key": ""
+      "friendly": "Stun duration + {duration}",
+      "friendly_key": "027203044F55498F5A8C75AD5CDC2A41",
+      "description": "Electric gun will stun for an extra {duration} second(s).",
+      "description_key": "774071B94BDD01A48A094BA56290F080",
+                    "notes for dev": "this friendly_key has a weird string"
     },
     "BP_CookableMeat_C": {
       "friendly": "Cookable Meat",
@@ -32,8 +33,8 @@
     "BP_Purchase_Crouch_C": {
       "friendly": "Knee bending",
       "friendly_key": "66A7DABE48D345D63702ACA760E9B0F9",
-      "description": "",
-      "description_key": ""
+      "description": "Bend your knees",
+      "description_key": "BA90BA004E008AD42AA4848B2971A119"
     },
     "BarrelColor_C": {
       "friendly": "Gold Barrel",
@@ -66,14 +67,15 @@
       "description_key": ""
     },
     "BuyArmor1_C": {
-      "friendly": "Armor",
+      "friendly": "Armor - Absorbs 3 Damage",
       "friendly_key": "71C408CC4DA956CA166F35A37892C704",
-      "description": "",
-      "description_key": ""
+      "friendly_key2": "B4C704424A400C705D6D709BC354F5B9",
+      "description": "Only damage that is higher than 3 can damage you now. Cactuses can no longer hurt you.",
+      "description_key": "58CD6D4F43A6E3D08B7C008CCFC9FD1E"
     },
     "BuyBelt_C": {
       "friendly": "Float Buckle",
-      "friendly_key": "",
+      "friendly_key": "7149A6494BA4C9484C154F84E2E82A0D",
       "description": "",
       "description_key": ""
     },
@@ -85,21 +87,21 @@
     },
     "BuyCrystal_C": {
       "friendly": "Red Moon",
-      "friendly_key": "",
+      "friendly_key": "571621A1492B4D450EDEEEAF999C310B",
       "description": "",
       "description_key": ""
     },
     "BuyDoubleJump_C": {
       "friendly": "Double Jump",
       "friendly_key": "CAACD93B44B32D6A147421BBECC14FFF",
-      "description": "",
-      "description_key": ""
+      "description": "You can now jump 2 times in a row. Enables you to jump around a corner.",
+      "description_key": "68DA51A34C6B1DD99D0A10AEF3C5CADC"
     },
     "BuyEnemiesLoot_C": {
       "friendly": "Loot",
       "friendly_key": "3384727C4059588A15BFDFB3380301E1",
-      "description": "",
-      "description_key": ""
+      "description": "Enemies now drop coins or health when killed. You get more coins if your health is full.",
+      "description_key": "62B06035449AEE4C9DA6F98BC671B9C7"
     },
     "BuyForceBeam_C": {
       "friendly": "Force Beam",
@@ -116,8 +118,8 @@
     "BuyForceBlock_C": {
       "friendly": "Force Cube",
       "friendly_key": "EFB25833407252098417179FA47CDD08",
-      "description": "",
-      "description_key": ""
+      "description": "Spawns a heavy cube",
+      "description_key": "BC01D4B5471D9455E6C0A3AEBB5B9BE5"
     },
     "BuyForceCubeBeam_C": {
       "friendly": "Force Beam/Cube Compatibility",
@@ -151,9 +153,9 @@
     },
     "BuyGun1_C": {
       "friendly": "Mighty MacGuffin",
-      "friendly_key": "",
-      "description": "",
-      "description_key": ""
+      "friendly_key": "1D6A9C954A3A42B91B9461B272FBB885",
+      "description": "Use it to kill enemies, to shoot buttons and more.",
+      "description_key": "890F425E418B5B335648B3AFDCC091FF"
     },
     "BuyGunAltDamagex2_C": {
       "friendly": "Gun Alt Damage x2",
@@ -162,10 +164,10 @@
       "description_key": ""
     },
     "BuyGunAlt_C": {
-      "friendly": "Gun 2nd Fire",
-      "friendly_key": "",
-      "description": "",
-      "description_key": ""
+      "friendly": "2nd Fire",
+      "friendly_key": "90C5D65844E2675D3BDE14AFC84B64FC",
+      "description": "Can shoot a beam. Use the beam to hit the 1st Fire projectile. This creates a 90° attack that is very powerful.",
+      "description_key": "A108FBD1454C1C0F2F2AFC8CE56925E8"
     },
     "BuyGunCoin_C": {
       "friendly": "Gun Picks Up Coins",
@@ -180,22 +182,22 @@
       "description_key": ""
     },
     "BuyGunCriticalDamageChance_C": {
-      "friendly": "Gun Critical Damage Chance +5%",
+      "friendly": "Gun Fire Critical Damage Chance +5%",
       "friendly_key": "E406D7244A30DEBF591F09A24D633DF2",
-      "description": "",
-      "description_key": ""
+      "description": "Increases your gun's critical damage chance by 5%. (Only has an effect if you own Critical Gun Damage). Your current critical % is: ",
+      "description_key": "1C5213B741CFCB5794CC628CA7844564"
     },
     "BuyGunCriticalDamage_C": {
       "friendly": "Gun Critical damage",
       "friendly_key": "2A7C79404B8D91BA3F187BAC1AFDE7E1",
-      "description": "",
-      "description_key": ""
+      "description": "Chance of your gun making double damage (first fire). The current % chance is: ",
+      "description_key": "3319902746B6B35EB3D9C9AFC55A5CE5"
     },
     "BuyGunDamage+15_C": {
       "friendly": "Gun damage +15",
       "friendly_key": "C7649B2646D3EE0931657AB63D497380",
-      "description": "",
-      "description_key": ""
+      "description": "Your gun now causes 15 more damage per shot!",
+      "description_key": "7C8FD5A741CC1D6F7CE3318304F32AD9"
     },
     "BuyGunDamage+1_C": {
       "friendly": "Gun damage +1",
@@ -206,8 +208,8 @@
     "BuyGunDamage+5_C": {
       "friendly": "Gun damage +5",
       "friendly_key": "F67CB76E42F640D7F43352B7EB5243BB",
-      "description": "",
-      "description_key": ""
+      "description": "Your gun now causes 5 more damage per shot!",
+      "description_key": "DEA0BC4F4A0B32BA68F7EE876AAA9369"
     },
     "BuyGunHoly1_C": {
       "friendly": "Holy Gun",
@@ -224,8 +226,8 @@
     "BuyGunRefillSpeed+66_C": {
       "friendly": "Ammo Refill Speed +66%",
       "friendly_key": "48A5C00340AEF37776DAD391B656CCC8",
-      "description": "",
-      "description_key": ""
+      "description": "Your gun ammo refills faster.",
+      "description_key": "FA5972584EF47F237DF3EE9D835081A3"
     },
     "BuyGunRefireRate50_C": {
       "friendly": "Gun cooldown halfed",
@@ -248,56 +250,56 @@
     "BuyHealth+15_C": {
       "friendly": "Max Health +15",
       "friendly_key": "F192E94A4A38A07C1B173692EE6F105A",
-      "description": "",
-      "description_key": ""
+      "description": "Your maximum health increased by 15.",
+      "description_key": "3C5342934039DBADD58154897D06655A"
     },
     "_BuyHealth+10_C": {
-      "friendly": "Max Health +10",
-      "friendly_key": "",
-      "description": "",
-      "description_key": ""
+      "friendly": "Health +10",
+      "friendly_key": "506F1CDD45F5589616C6AFB7D8FB293A",
+      "description": "Nom nom. Max Health increased by 10. Don't try this again! It only works once!",
+      "description_key": "9780F31E4D8CF914E9EA8DA3C01F68A0"
     },
     "BuyHealth+2_C": {
       "friendly": "Max Health +2",
       "friendly_key": "40654DC9487F523BE649BE99E5CA4B96",
-      "description": "",
-      "description_key": ""
+      "description": "Your maximum health increased by 2.",
+      "description_key": "35AA438B4B93736793B5E883EDAFE677"
     },
     "BuyHealth+5_C": {
       "friendly": "Max Health +5",
       "friendly_key": "47D6A98A43F4487C285FC78EC3814FA4",
-      "description": "",
-      "description_key": ""
+      "description": "Your maximum health increased by 5.",
+      "description_key": "B1DC717F43D25A72C24438A42B775761"
     },
     "BuyHealthRegenMax10_C": {
       "friendly": "Health Regeneration +10",
       "friendly_key": "85220AD7486DDECE8633A786F2F0886A",
-      "description": "",
-      "description_key": ""
+      "description": "Only has an effect if you own Health Regeneration. Raises health regeneration ceiling by 10.",
+      "description_key": "6C44216B4C4ECEC30EB91D862274B5FD"
     },
     "BuyHealthRegenMax15_C": {
       "friendly": "Health Regeneration +15",
       "friendly_key": "66B927104ACBD83532775B9B3959C563",
-      "description": "",
-      "description_key": ""
+      "description": "Only has an effect if you own Health Regeneration. Raises health regeneration ceiling by 15.",
+      "description_key": "6F85A9E74DE9141E5DD54D82A29A4FE8"
     },
     "BuyHealthRegenMax5_C": {
       "friendly": "Health Regeneration +5",
       "friendly_key": "1344E4AC4883410F4E371980B429B194",
-      "description": "",
-      "description_key": ""
+      "description": "Only has an effect if you own Health Regeneration. Raises health regeneration ceiling by 5.",
+      "description_key": "C2FB51844733FC7BFD002DA51488BDDA"
     },
     "BuyHealthRegen_C": {
       "friendly": "Health Regeneration",
       "friendly_key": "761D2E35427EE64323E13F87AFC02E44",
-      "description": "",
-      "description_key": ""
+      "description": "Health now regenerates automatically up to 10. Upgrades can increase how far it regenerates.",
+      "description_key": "D05C25C341F3B9E9F9316DB3EC89B99E"
     },
     "BuyHeartLuck_C": {
       "friendly": "Loot Luck",
       "friendly_key": "1A25CC99430B47D3CB63F888E291FDC6",
-      "description": "",
-      "description_key": ""
+      "description": "Enemies are now more likely to drop health (Only has an effect if you have the loot upgrade).",
+      "description_key": "5DA60CBD4BE361E728C15DBB5AF930C2"
     },
     "BuyJumpHeightPlus_C": {
       "friendly": "Jump Height Plus",
@@ -314,26 +316,26 @@
     "BuyNumberRising_C": {
       "friendly": "Enemy Health",
       "friendly_key": "1D21FEB14FD41470B837F58D590C237C",
-      "description": "",
-      "description_key": ""
+      "description": "See enemy health bars and how much damage you do to them.",
+      "description_key": "88EC1D8A4C1E5E0477DB66979C069535"
     },
     "BuyShieldBreaker_C": {
       "friendly": "Shield Breaker",
       "friendly_key": "DFCD2A9542AE583EC7A419942E350CC8",
-      "description": "",
-      "description_key": ""
+      "description": "Your projectiles no longer deflect from the skeleton warrior's shield!",
+      "description_key": "D96DC53E4BC955D08CC30B8DED7BA5C1"
     },
     "BuyShowHealthbar_C": {
       "friendly": "Health Bar",
       "friendly_key": "DC050DC346154B34DA1F3DA82F434648",
-      "description": "",
-      "description_key": ""
+      "description": "The latest innovation in technology - giving you a visual representation of your health status. Bright parts of the bar indicate how far your health automatically regenerates.",
+      "description_key": "BB5DF8434319B7EFB1FDE8BBB314961A"
     },
     "BuyShowProgress_C": {
       "friendly": "Awesome-Meter",
       "friendly_key": "DE276F3A42B5E3A15AC7F2A4789DC31F",
-      "description": "",
-      "description_key": ""
+      "description": "Shows how awesome you are! Every opened chest and bought item makes you more awesome.",
+      "description_key": "BB63C7C74168981DEBDE8492608A760A"
     },
     "BuySilentFeet_C": {
       "friendly": "Silent Shoes",
@@ -380,8 +382,8 @@
     "BuySmashdown_C": {
       "friendly": "Stomp Shoes",
       "friendly_key": "456A3F04440BD37F3B2F27AC1935E73B",
-      "description": "",
-      "description_key": ""
+      "description": "Stomp down while in the air to push down things and to destroy things or enemies.",
+      "description_key": "9DAC8ABD47F47D0115D9D1B5349EAAFE"
     },
     "BuySpeedx15_C": {
       "friendly": "Speed x1.5",
@@ -391,21 +393,21 @@
     },
     "BuySword2_C": {
       "friendly": "Supra Sword",
-      "friendly_key": "",
+      "friendly_key": "F2D529CD47182CA6BD8ADF9BE3011120",
       "description": "",
       "description_key": ""
     },
     "BuySwordCriticalDamageChance_C": {
-      "friendly": "Sword Critical Damage Chance +5%",
+      "friendly": "Critical Damage Chance +5%",
       "friendly_key": "CD548FF04F30E9C65CADA1AF57652FC3",
-      "description": "",
-      "description_key": ""
+      "description": "Increases chance of critical sword damage by 5%. Only applies if you have the critical damage upgrade. Your critical % is now: ",
+      "description_key": "395B206B420AE6BDA8F982834B469D73"
     },
     "BuySwordCriticalDamage_C": {
       "friendly": "Sword Critical Damage",
       "friendly_key": "B77AC95941A12B97A8C37D9E0685D610",
-      "description": "",
-      "description_key": ""
+      "description": "Your sword has a chance to make double damage. The current % chance is: ",
+      "description_key": "5F3250E84E1D4003F31431920894A24D"
     },
     "BuySwordDamage+02_C": {
       "friendly": "Sword Damage +2",
@@ -432,10 +434,11 @@
       "description_key": ""
     },
     "BuySwordHoly1_C": {
-      "friendly": "Holy Sword",
+      "friendly": "Holy Sword - Destroy Wooden Graves",
       "friendly_key": "DFFC8061460EEDD467DD87AFA17989B6",
-      "description": "",
-      "description_key": ""
+      "friendly_key2": "D832A161437C949958F80AB1CB5E2482",
+      "description": "You can now destroy wooden graves and prevent enemy respawning from these.",
+      "description_key": "227B821548B4AC4389E4F2B70652F3F8"
     },
     "BuySwordHoly2_C": {
       "friendly": "Holy Sword",
@@ -446,8 +449,8 @@
     "BuySwordRange25_C": {
       "friendly": "Sword Range +25%",
       "friendly_key": "A9CBCFEA46AB265F798D34BFA01488E6",
-      "description": "",
-      "description_key": ""
+      "description": "You can now hit enemies that are a bit farther away.",
+      "description_key": "8571A84A472E6942C1F28CA8D933FC32"
     },
     "BuySwordRefireRate-33_C": {
       "friendly": "Sword 33% faster",
@@ -456,10 +459,10 @@
       "description_key": ""
     },
     "BuySword_C": {
-      "friendly": "Take",
-      "friendly_key": "FD5ABF6C42EB8C6BAABD9F914C116963",
-      "description": "",
-      "description_key": ""
+      "friendly": "Sword",
+      "friendly_key": "94248F8649FCBA2AC9E378B27F6FC8DF",
+      "description": "Is not dangerous anymore if you have one of these!  Causes 2 damage.",
+      "description_key": "0F21C48B4720B3CD20D78190DDC59E44"
     },
     "BuyTranslocatorCoolDownHalf_C": {
       "friendly": "Half Cooldown",
@@ -487,21 +490,15 @@
     },
     "BuyTranslocator_C": {
       "friendly": "Translocator",
-      "friendly_key": "",
-      "description": "",
-      "description_key": ""
-    },
-    "BuyTranslocator_Fake_C": {
-      "friendly": "Fake Translocator",
-      "friendly_key": "",
+      "friendly_key": "EF4299614AC2A97E9BC1368EAB684BE8",
       "description": "",
       "description_key": ""
     },
     "BuyTripleJump_C": {
       "friendly": "Triple Jump",
       "friendly_key": "D275B2044555996709C3F19085DC27AC",
-      "description": "",
-      "description_key": ""
+      "description": "You can now jump 3 times in a row. Enough to get across big gaps and jump around corners.",
+      "description_key": "192C219D40B2899C4BE8928A4F155DF4"
     },
     "BuyUpgradeGraveNum_C": {
       "friendly": "See Grave Count",
@@ -512,14 +509,14 @@
     "BuyWalletx15_C": {
       "friendly": "Max Coins x1.5",
       "friendly_key": "DE4C6307451486AC524D45989BEBBEE8",
-      "description": "",
-      "description_key": ""
+      "description": "You can now carry more money!",
+      "description_key": "4ECC16424560B37ADE7C839C90B2036F"
     },
     "BuyWalletx2_C": {
       "friendly": "Max Coins x2",
       "friendly_key": "F17B892C41137D9F592623AC8F5E3E8F",
-      "description": "",
-      "description_key": ""
+      "description": "You can now carry twice as much money.",
+      "description_key": "FA08A26E4497FE87C707759170A73873"
     },
     "Chest_C": {
       "friendly": "Coin Chest",
@@ -541,7 +538,7 @@
     },
     "Coin_C": {
       "friendly": "Coin",
-      "friendly_key": "",
+      "friendly_key": "C3F51C364BA4EB24648FB2B32EDA3A04",
       "description": "",
       "description_key": ""
     },
@@ -559,18 +556,6 @@
     },
     "GoldBlock_C": {
       "friendly": "Gold Block",
-      "friendly_key": "",
-      "description": "",
-      "description_key": ""
-    },
-    "GoldNugget_C": {
-      "friendly": "Gold Nugget",
-      "friendly_key": "",
-      "description": "",
-      "description_key": ""
-    },
-    "Jumppillow_C": {
-      "friendly": "Bouncy Mattress",
       "friendly_key": "",
       "description": "",
       "description_key": ""
@@ -697,31 +682,27 @@
     },
     "Shell_C": {
       "friendly": "Shell",
-      "icon": "shell",
-      "layer": "misc",
-      "nospoiler": "collectable",
-      "lines": "extra"
+      "friendly_key": "",
+      "description": "",
+      "description_key": ""
     },
     "DeadHero_C": {
       "friendly": "Dead Hero",
-      "icon": "hero:v",
-      "layer": "misc",
-      "nospoiler": "collectable",
-      "lines": "extra"
+      "friendly_key": "",
+      "description": "",
+      "description_key": ""
     },
     "RedGuy_C": {
       "friendly": "Waldo",
-      "icon": "waldo",
-      "layer": "misc",
-      "nospoiler": "collectable",
-      "lines": "misc"
+      "friendly_key": "",
+      "description": "",
+      "description_key": ""
     },
     "Pipesystem_C": {
       "friendly": "Pipe",
-      "icon": "pipe",
-      "layer": "pipesys",
-      "nospoiler": null,
-      "lines": "pipesys"
+      "friendly_key": "",
+      "description": "",
+      "description_key": ""
     },
     "BP_Area2_Uncloged_Quest_C": {
       "friendly": "Valve Quest",
