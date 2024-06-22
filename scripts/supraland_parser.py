@@ -6,6 +6,9 @@ from UE4Parse.Assets.Objects.FGuid import FGuid
 from UE4Parse.Provider import DefaultFileProvider, MappingProvider
 from UE4Parse.Versions import EUEVersion, VersionContainer
 from UE4Parse.Encryption import FAESKey
+from UE4Parse.Assets.PackageReader import LegacyPackageReader
+from UE4Parse.BinaryReader import BinaryStream
+
 from mathutils import *
 from math import *
 import logging, gc, json, gc, os, sys, csv, re, argparse, tempfile
@@ -21,6 +24,7 @@ config = {
     'sl': {
         'path': 'C:/Program Files (x86)/Steam/steamapps/common/Supraland/Supraland/Content/Paks/',
         'prefix': 'Supraland/Content/FirstPersonBP/Maps/',
+        'blueprints': 'Supraland/Content/Blueprints/Levelobjects/',
         'maps': [
             'Map'
         ],
@@ -34,6 +38,7 @@ config = {
     'slc': {
         'path': 'C:/Program Files (x86)/Steam/steamapps/common/Supraland/Supraland/Content/Paks/',
         'prefix': 'Supraland/Content/FirstPersonBP/Maps/',
+        'blueprints': 'Supraland/Content/Blueprints/Levelobjects',
         'maps': [
             'Crash'
         ],
@@ -43,6 +48,9 @@ config = {
     'siu': {
         'path': 'C:/Program Files (x86)/Steam/steamapps/common/Supraland Six Inches Under/SupralandSIU/Content/Paks/',
         'prefix': 'SupralandSIU/Content/FirstPersonBP/Maps/',
+        'blueprints': '/Game/Blueprints/Levelobjects/',
+        #'blueprints': 'SupralandSIU/Content/Levelobjects/',
+        #/Game/Blueprints/Levelobjects/BuyHealthRegenMax+1
         'maps': [
             'DLC2_Complete',
             'DLC2_FinalBoss',
@@ -140,9 +148,86 @@ def export_levels(game, cache_dir):
         if package is not None:
             package_dict = package.get_dict()
             print('writing "%s" ...' % filename)
-            with open(filename, 'w') as f:
-                json.dump(package_dict, f, indent=2)
+            json.dump(package_dict, open(filename, 'w'), indent=2)
 
+
+def export_classes():
+    game_classes = read_game_classes(colonStrip=True);
+    with open("gameClasses.json", 'w') as f:
+        print("Writing classes to gameClasses.json...")
+        json.dump(game_classes, f, indent = 2)
+
+def export_class_loc():
+
+    game_classes = read_game_classes();
+
+    for game in ['sl', 'siu']:
+        with open('blueprints.'+game+'.json', 'r') as f:
+            blueprints = json.load(f)
+
+        def optKey(l, cls, k, v):
+            if v is not None:
+                if l.get(cls) is None:
+                    l[cls] = {}
+                l[cls][k] = v
+
+        for cls, bps in blueprints.items():
+            if cls in game_classes:
+                for bp in bps:
+                    t = bp.get("Type"); 
+                    if (t == 'TextRenderComponent' or t == cls) and bp.get('Properties'):
+                        props = bp['Properties']
+                        if props.get('Text'):
+        #                    optKey(game_classes, cls, 'Invariant',       props['Text'].get('CultureInvariantString'))
+                            optKey(game_classes, cls, 'friendly',        props['Text'].get('SourceString'))
+                            optKey(game_classes, cls, 'friendly_key',    props['Text'].get('Key'))
+                        if props.get('UpgradeName'):
+                            optKey(game_classes, cls, 'friendly',        props['UpgradeName'].get('SourceString'))
+                            optKey(game_classes, cls, 'friendly_key',    props['UpgradeName'].get('Key'))
+                        if props.get('UpgradeDescription'):
+                            optKey(game_classes, cls, 'description',     props['UpgradeDescription'].get('SourceString'))
+                            optKey(game_classes, cls, 'description_key', props['UpgradeDescription'].get('Key'))
+
+    with open("gameClasses.json", 'w') as f:
+        print("Writing loc data to gameClasses.json...")
+        json.dump(game_classes, f, indent = 2)
+
+def export_loc_files():
+
+    # Make a list of the keys that are referenced in the various files
+    keys = set()
+    key_files = ['gameClasses.json', 'layerConfigs.json', 'custom-loc.json',
+        'markers.sl.json', 'markers.slc.json', 'markers.siu.json',
+        'custom-markers.sl.json', 'custom-markers.slc.json', 'custom-markers.siu.json',
+    ]
+    print('Reading files to determine loc keys required...')
+    for fn in key_files:
+        path = '../data/'+fn
+        if os.path.exists(path):
+            data = json.load(open(path, 'r'));
+            for entry in data if type(data) is list else data.values():
+                for k in ['friendly_key', 'name_key', 'description_key', 'key']:
+                    if entry.get(k):
+                        keys.add(entry[k])
+
+    print(f'Found {len(keys)} keys')
+
+    loc_names = ['en', 'de', 'es', 'fi', 'fr', 'hu', 'it-IT', 'ja', 'ko', 'pl', 'pt-PT', 'ru', 'sr', 'tr', 'zh-Hans', 'zh-Hant'] 
+    print('Writing loc files to data directory')
+    for loc in loc_names:
+        newlocstr = {}
+        for siu in ['', 'SIU']:
+            fn = f'../LOC/Supraland{siu}/Content/Localization/Game/{loc}/Game.json'
+            locstr = json.load(open(fn, 'r', encoding='utf-8'))
+            for k in locstr.keys():
+                if k in keys:
+                    #if newlocstr.get(k) and newlocstr[k] != locstr[k]:
+                    #    print(f'SL  {newlocstr[k]}')
+                    #    print(f'SIU {locstr[k]}')
+                    newlocstr[k] = locstr[k]
+        print(f'Writing to ../data/loc/locstr-{loc}.json')
+        json.dump(newlocstr, open(f'../data/loc/locstr-{loc}.json', 'w', encoding='utf-8'), indent = 2)
+    
 def export_markers(game, cache_dir, marker_types=marker_types, marker_names=[]):
     data = []
     data_lookup = {}
@@ -769,7 +854,7 @@ def friendly_name(cls):
 
     return n 
 
-def read_game_classes(fn = '..\\js\\gameClasses.js'):
+def read_game_classes(fn = '..\\js\\gameClasses.js', colonStrip = False):
 
     print('Reading "'+fn+'"...')
 
@@ -819,7 +904,7 @@ def read_game_classes(fn = '..\\js\\gameClasses.js'):
 
             if grp := m.groups()[1]:
                 if not key:
-                    key = grp
+                    key = re.sub('^.*:', '', grp)
                 else:
                     entry[keys[i-1]] = grp
             elif not key:
@@ -875,6 +960,9 @@ def main():
     parser.add_argument('-t', '--textures', action='store_true', help='export textures')
     parser.add_argument('-l', '--levels', action='store_true', help='export json levels to cache directory')
     parser.add_argument('-m', '--markers', action='store_true', help='export markers as json (need json levels)')
+    parser.add_argument('-b', '--blueprints', action='store_true',  help='read blueprints and export loc json')
+    parser.add_argument('-c', '--classes', action='store_true',  help='export gameClasses.js as json')
+    parser.add_argument('-o', '--loc', action='store_true',  help='export gameClasses.js as json')
     args = parser.parse_args()
 
     try:
@@ -886,8 +974,14 @@ def main():
         export_markers(args.game, args.cache_dir)
     elif args.levels:
         export_levels(args.game, args.cache_dir)
+    elif args.blueprints:
+        export_class_loc()
     elif args.textures:
         export_textures(args.game, args.cache_dir)
+    elif args.classes:
+        export_classes()
+    elif args.loc:
+        export_loc_files()
     else:
         parser.print_help()
 
