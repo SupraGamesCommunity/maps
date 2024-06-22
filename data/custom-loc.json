@@ -1,0 +1,768 @@
+{
+    "BP_A3_StrengthQuest_C": {
+      "friendly": "Strength",
+      "friendly_key": "",
+      "description": "",
+      "description_key": ""
+    },
+    "BP_A3_StrengthQuest_C_Body": {
+      "friendly": "Strength",
+      "friendly_key": "",
+      "description": "",
+      "description_key": ""
+    },
+    "BP_BuyGunDuration+2s_C": {
+      "friendly": "Stun duration + 2",
+      "friendly_key": "",
+      "description": "",
+      "description_key": ""
+    },
+    "BP_CookableMeat_C": {
+      "friendly": "Cookable Meat",
+      "friendly_key": "",
+      "description": "",
+      "description_key": ""
+    },
+    "BP_MonsterChest_C": {
+      "friendly": "Monster Chest",
+      "friendly_key": "",
+      "description": "",
+      "description_key": ""
+    },
+    "BP_Purchase_Crouch_C": {
+      "friendly": "Knee bending",
+      "friendly_key": "66A7DABE48D345D63702ACA760E9B0F9",
+      "description": "",
+      "description_key": ""
+    },
+    "BarrelColor_C": {
+      "friendly": "Gold Barrel",
+      "friendly_key": "",
+      "description": "",
+      "description_key": ""
+    },
+    "BarrelRed_C": {
+      "friendly": "Red Barrel",
+      "friendly_key": "",
+      "description": "",
+      "description_key": ""
+    },
+    "BarrelClosed_Blueprint_C": {
+      "friendly": "Gold Barrel",
+      "friendly_key": "",
+      "description": "",
+      "description_key": ""
+    },
+    "Bones_C": {
+      "friendly": "Bones",
+      "friendly_key": "",
+      "description": "",
+      "description_key": ""
+    },
+    "CrashEnemySpawner_C": {
+      "friendly": "Skeleton",
+      "friendly_key": "",
+      "description": "",
+      "description_key": ""
+    },
+    "BuyArmor1_C": {
+      "friendly": "Armor",
+      "friendly_key": "71C408CC4DA956CA166F35A37892C704",
+      "description": "",
+      "description_key": ""
+    },
+    "BuyBelt_C": {
+      "friendly": "Float Buckle",
+      "friendly_key": "",
+      "description": "",
+      "description_key": ""
+    },
+    "BuyCoinMagnet_C": {
+      "friendly": "Coin Magnet",
+      "friendly_key": "B26FAD944272C6E98C720AB47B20DA83",
+      "description": "",
+      "description_key": ""
+    },
+    "BuyCrystal_C": {
+      "friendly": "Red Moon",
+      "friendly_key": "",
+      "description": "",
+      "description_key": ""
+    },
+    "BuyDoubleJump_C": {
+      "friendly": "Double Jump",
+      "friendly_key": "CAACD93B44B32D6A147421BBECC14FFF",
+      "description": "",
+      "description_key": ""
+    },
+    "BuyEnemiesLoot_C": {
+      "friendly": "Loot",
+      "friendly_key": "3384727C4059588A15BFDFB3380301E1",
+      "description": "",
+      "description_key": ""
+    },
+    "BuyForceBeam_C": {
+      "friendly": "Force Beam",
+      "friendly_key": "5177BDBB4AC3483C5FAC5A827B03DCC0",
+      "description": "",
+      "description_key": ""
+    },
+    "BuyForceBlockTelefrag_C": {
+      "friendly": "Force Cube Telefrag",
+      "friendly_key": "6C3FB7D94BF0D6FE6B5CDF9A2780C688",
+      "description": "",
+      "description_key": ""
+    },
+    "BuyForceBlock_C": {
+      "friendly": "Force Cube",
+      "friendly_key": "EFB25833407252098417179FA47CDD08",
+      "description": "",
+      "description_key": ""
+    },
+    "BuyForceCubeBeam_C": {
+      "friendly": "Force Beam/Cube Compatibility",
+      "friendly_key": "F8F8668341F2E815627C7BA1B55B10F1",
+      "description": "",
+      "description_key": ""
+    },
+    "BuyForceCubeStompGrave3_C": {
+      "friendly": "Volcano Sealer",
+      "friendly_key": "1FE2E542470C2D262AA7AA89972BA3A9",
+      "description": "",
+      "description_key": ""
+    },
+    "BuyForceCubeStompJump_C": {
+      "friendly": "Force Cube Stomp Jump",
+      "friendly_key": "928CA8AE48287F0F9CBAFEAFE8268EC4",
+      "description": "",
+      "description_key": ""
+    },
+    "BuyForceCubeStomp_C": {
+      "friendly": "Force Cube Stomp",
+      "friendly_key": "185DEBF54F6E51BBC01FE1B13D4BE992",
+      "description": "",
+      "description_key": ""
+    },
+    "BuyGraveDetector_C": {
+      "friendly": "Grave Detector",
+      "friendly_key": "C950773D4471E4CC1CF5D39005CD64F7",
+      "description": "",
+      "description_key": ""
+    },
+    "BuyGun1_C": {
+      "friendly": "Mighty MacGuffin",
+      "friendly_key": "",
+      "description": "",
+      "description_key": ""
+    },
+    "BuyGunAltDamagex2_C": {
+      "friendly": "Gun Alt Damage x2",
+      "friendly_key": "FF9D1B894D5CAAC473A9968FBAECA329",
+      "description": "",
+      "description_key": ""
+    },
+    "BuyGunAlt_C": {
+      "friendly": "Gun 2nd Fire",
+      "friendly_key": "",
+      "description": "",
+      "description_key": ""
+    },
+    "BuyGunCoin_C": {
+      "friendly": "Gun Picks Up Coins",
+      "friendly_key": "A06C9BA04C735AEDC2FF4287F5533BEA",
+      "description": "",
+      "description_key": ""
+    },
+    "BuyGunComboDamage+25_C": {
+      "friendly": "Combo Damage +25",
+      "friendly_key": "B937E76C496891FFB2D58EA5AD2F4AD3",
+      "description": "",
+      "description_key": ""
+    },
+    "BuyGunCriticalDamageChance_C": {
+      "friendly": "Gun Critical Damage Chance +5%",
+      "friendly_key": "E406D7244A30DEBF591F09A24D633DF2",
+      "description": "",
+      "description_key": ""
+    },
+    "BuyGunCriticalDamage_C": {
+      "friendly": "Gun Critical damage",
+      "friendly_key": "2A7C79404B8D91BA3F187BAC1AFDE7E1",
+      "description": "",
+      "description_key": ""
+    },
+    "BuyGunDamage+15_C": {
+      "friendly": "Gun damage +15",
+      "friendly_key": "C7649B2646D3EE0931657AB63D497380",
+      "description": "",
+      "description_key": ""
+    },
+    "BuyGunDamage+1_C": {
+      "friendly": "Gun damage +1",
+      "friendly_key": "D07C12834F1A99772A3B758CB68D67D4",
+      "description": "",
+      "description_key": ""
+    },
+    "BuyGunDamage+5_C": {
+      "friendly": "Gun damage +5",
+      "friendly_key": "F67CB76E42F640D7F43352B7EB5243BB",
+      "description": "",
+      "description_key": ""
+    },
+    "BuyGunHoly1_C": {
+      "friendly": "Holy Gun",
+      "friendly_key": "A4EEA0994A47894991E031B148C7DDFD",
+      "description": "",
+      "description_key": ""
+    },
+    "BuyGunHoly2_C": {
+      "friendly": "Holy Gun",
+      "friendly_key": "4E2D753A45BD0DE6B91338A868C4EE82",
+      "description": "",
+      "description_key": ""
+    },
+    "BuyGunRefillSpeed+66_C": {
+      "friendly": "Ammo Refill Speed +66%",
+      "friendly_key": "48A5C00340AEF37776DAD391B656CCC8",
+      "description": "",
+      "description_key": ""
+    },
+    "BuyGunRefireRate50_C": {
+      "friendly": "Gun cooldown halfed",
+      "friendly_key": "DC752FA6411151DAA78FD8B37E5F097F",
+      "description": "",
+      "description_key": ""
+    },
+    "BuyGunSpeedx2_C": {
+      "friendly": "Gun Projectile Speed x2",
+      "friendly_key": "E1CE957843EB5905979FEB9B39C06F97",
+      "description": "",
+      "description_key": ""
+    },
+    "BuyGunSplashDamage_C": {
+      "friendly": "Gun Splash Damage",
+      "friendly_key": "F456DECB4597A1AE739292A829065681",
+      "description": "",
+      "description_key": ""
+    },
+    "BuyHealth+15_C": {
+      "friendly": "Max Health +15",
+      "friendly_key": "F192E94A4A38A07C1B173692EE6F105A",
+      "description": "",
+      "description_key": ""
+    },
+    "_BuyHealth+10_C": {
+      "friendly": "Max Health +10",
+      "friendly_key": "",
+      "description": "",
+      "description_key": ""
+    },
+    "BuyHealth+2_C": {
+      "friendly": "Max Health +2",
+      "friendly_key": "40654DC9487F523BE649BE99E5CA4B96",
+      "description": "",
+      "description_key": ""
+    },
+    "BuyHealth+5_C": {
+      "friendly": "Max Health +5",
+      "friendly_key": "47D6A98A43F4487C285FC78EC3814FA4",
+      "description": "",
+      "description_key": ""
+    },
+    "BuyHealthRegenMax10_C": {
+      "friendly": "Health Regeneration +10",
+      "friendly_key": "85220AD7486DDECE8633A786F2F0886A",
+      "description": "",
+      "description_key": ""
+    },
+    "BuyHealthRegenMax15_C": {
+      "friendly": "Health Regeneration +15",
+      "friendly_key": "66B927104ACBD83532775B9B3959C563",
+      "description": "",
+      "description_key": ""
+    },
+    "BuyHealthRegenMax5_C": {
+      "friendly": "Health Regeneration +5",
+      "friendly_key": "1344E4AC4883410F4E371980B429B194",
+      "description": "",
+      "description_key": ""
+    },
+    "BuyHealthRegen_C": {
+      "friendly": "Health Regeneration",
+      "friendly_key": "761D2E35427EE64323E13F87AFC02E44",
+      "description": "",
+      "description_key": ""
+    },
+    "BuyHeartLuck_C": {
+      "friendly": "Loot Luck",
+      "friendly_key": "1A25CC99430B47D3CB63F888E291FDC6",
+      "description": "",
+      "description_key": ""
+    },
+    "BuyJumpHeightPlus_C": {
+      "friendly": "Jump Height Plus",
+      "friendly_key": "6B39BBA544178D8791FE299DB1B72150",
+      "description": "",
+      "description_key": ""
+    },
+    "BuyMoreLoot_C": {
+      "friendly": "More Loot",
+      "friendly_key": "DCFC0B2B4E2339BF05ADAEB979E6A8ED",
+      "description": "",
+      "description_key": ""
+    },
+    "BuyNumberRising_C": {
+      "friendly": "Enemy Health",
+      "friendly_key": "1D21FEB14FD41470B837F58D590C237C",
+      "description": "",
+      "description_key": ""
+    },
+    "BuyShieldBreaker_C": {
+      "friendly": "Shield Breaker",
+      "friendly_key": "DFCD2A9542AE583EC7A419942E350CC8",
+      "description": "",
+      "description_key": ""
+    },
+    "BuyShowHealthbar_C": {
+      "friendly": "Health Bar",
+      "friendly_key": "DC050DC346154B34DA1F3DA82F434648",
+      "description": "",
+      "description_key": ""
+    },
+    "BuyShowProgress_C": {
+      "friendly": "Awesome-Meter",
+      "friendly_key": "DE276F3A42B5E3A15AC7F2A4789DC31F",
+      "description": "",
+      "description_key": ""
+    },
+    "BuySilentFeet_C": {
+      "friendly": "Silent Shoes",
+      "friendly_key": "667CB43E4333FACC3B54A7A89B8C63AD",
+      "description": "",
+      "description_key": ""
+    },
+    "BuySmashdownDamage+100_C": {
+      "friendly": "Stomp Damage +100%",
+      "friendly_key": "EE7DD0064ED3036E48003F86A5BEB539",
+      "description": "",
+      "description_key": ""
+    },
+    "BuySmashdownDamage+1_C": {
+      "friendly": "Stomp Damage +1",
+      "friendly_key": "642C0B0E44D028AD9530E0A9E4B31AB4",
+      "description": "",
+      "description_key": ""
+    },
+    "BuySmashdownDamage+33_C": {
+      "friendly": "Stomp Damage +33%",
+      "friendly_key": "07F9D0314668FF0667D0D2BD34688E54",
+      "description": "",
+      "description_key": ""
+    },
+    "BuySmashdownDamage+3_C": {
+      "friendly": "Stomp Damage +3",
+      "friendly_key": "1BFF14774CE2E0092F08EBAB3BAB431A",
+      "description": "",
+      "description_key": ""
+    },
+    "BuySmashdownRadius+5_C": {
+      "friendly": "Stomp Radius +5m",
+      "friendly_key": "B1719A254CE02025EF93958E38475BB1",
+      "description": "",
+      "description_key": ""
+    },
+    "BuySmashdownRadius+_C": {
+      "friendly": "Stomp Radius +50cm",
+      "friendly_key": "05EC3B2E45249589B8BF2A98515F5C5F",
+      "description": "",
+      "description_key": ""
+    },
+    "BuySmashdown_C": {
+      "friendly": "Stomp Shoes",
+      "friendly_key": "456A3F04440BD37F3B2F27AC1935E73B",
+      "description": "",
+      "description_key": ""
+    },
+    "BuySpeedx15_C": {
+      "friendly": "Speed x1.5",
+      "friendly_key": "A57D1197427A90296227E1BDB2B3651B",
+      "description": "",
+      "description_key": ""
+    },
+    "BuySword2_C": {
+      "friendly": "Supra Sword",
+      "friendly_key": "",
+      "description": "",
+      "description_key": ""
+    },
+    "BuySwordCriticalDamageChance_C": {
+      "friendly": "Sword Critical Damage Chance +5%",
+      "friendly_key": "CD548FF04F30E9C65CADA1AF57652FC3",
+      "description": "",
+      "description_key": ""
+    },
+    "BuySwordCriticalDamage_C": {
+      "friendly": "Sword Critical Damage",
+      "friendly_key": "B77AC95941A12B97A8C37D9E0685D610",
+      "description": "",
+      "description_key": ""
+    },
+    "BuySwordDamage+02_C": {
+      "friendly": "Sword Damage +2",
+      "friendly_key": "C968ED73453A46FF729281AD74A7DBC3",
+      "description": "",
+      "description_key": ""
+    },
+    "BuySwordDamage+1_C": {
+      "friendly": "Sword Damage +1",
+      "friendly_key": "7B2C1457482033F69320C6BD853007E2",
+      "description": "",
+      "description_key": ""
+    },
+    "BuySwordDamage+3_C": {
+      "friendly": "Sword Damage +3",
+      "friendly_key": "D003BED9407359DFA6613189CE011353",
+      "description": "",
+      "description_key": ""
+    },
+    "BuySwordDoorKnocker_C": {
+      "friendly": "Door Knocker",
+      "friendly_key": "A5BB96AB4C503EFA19049AB50F76AD6E",
+      "description": "",
+      "description_key": ""
+    },
+    "BuySwordHoly1_C": {
+      "friendly": "Holy Sword",
+      "friendly_key": "DFFC8061460EEDD467DD87AFA17989B6",
+      "description": "",
+      "description_key": ""
+    },
+    "BuySwordHoly2_C": {
+      "friendly": "Holy Sword",
+      "friendly_key": "728A3CFA4C013A24881DC3849D321415",
+      "description": "",
+      "description_key": ""
+    },
+    "BuySwordRange25_C": {
+      "friendly": "Sword Range +25%",
+      "friendly_key": "A9CBCFEA46AB265F798D34BFA01488E6",
+      "description": "",
+      "description_key": ""
+    },
+    "BuySwordRefireRate-33_C": {
+      "friendly": "Sword 33% faster",
+      "friendly_key": "B443AB424D1FC633BFECAB8D9221B3E6",
+      "description": "",
+      "description_key": ""
+    },
+    "BuySword_C": {
+      "friendly": "Take",
+      "friendly_key": "FD5ABF6C42EB8C6BAABD9F914C116963",
+      "description": "",
+      "description_key": ""
+    },
+    "BuyTranslocatorCoolDownHalf_C": {
+      "friendly": "Half Cooldown",
+      "friendly_key": "B8254A1F45220C0F46A98195C13FE5F3",
+      "description": "",
+      "description_key": ""
+    },
+    "BuyTranslocatorDamagex3_C": {
+      "friendly": "Damage x2",
+      "friendly_key": "69056B4F47F7D31D13238E8196053458",
+      "description": "",
+      "description_key": ""
+    },
+    "BuyTranslocatorModule_C": {
+      "friendly": "Teleportation Module",
+      "friendly_key": "C9F3E82D4AA8E63743C844AB2731F9F5",
+      "description": "",
+      "description_key": ""
+    },
+    "BuyTranslocatorWeight_C": {
+      "friendly": "Weight x3",
+      "friendly_key": "82AD5DCF41360EDB1AF075B4F4D07A2C",
+      "description": "",
+      "description_key": ""
+    },
+    "BuyTranslocator_C": {
+      "friendly": "Translocator",
+      "friendly_key": "",
+      "description": "",
+      "description_key": ""
+    },
+    "BuyTranslocator_Fake_C": {
+      "friendly": "Fake Translocator",
+      "friendly_key": "",
+      "description": "",
+      "description_key": ""
+    },
+    "BuyTripleJump_C": {
+      "friendly": "Triple Jump",
+      "friendly_key": "D275B2044555996709C3F19085DC27AC",
+      "description": "",
+      "description_key": ""
+    },
+    "BuyUpgradeGraveNum_C": {
+      "friendly": "See Grave Count",
+      "friendly_key": "B6A26C7F431C50CEA9E5AD9A49696067",
+      "description": "",
+      "description_key": ""
+    },
+    "BuyWalletx15_C": {
+      "friendly": "Max Coins x1.5",
+      "friendly_key": "DE4C6307451486AC524D45989BEBBEE8",
+      "description": "",
+      "description_key": ""
+    },
+    "BuyWalletx2_C": {
+      "friendly": "Max Coins x2",
+      "friendly_key": "F17B892C41137D9F592623AC8F5E3E8F",
+      "description": "",
+      "description_key": ""
+    },
+    "Chest_C": {
+      "friendly": "Coin Chest",
+      "friendly_key": "",
+      "description": "",
+      "description_key": ""
+    },
+    "CoinBig_C": {
+      "friendly": "Big Coin",
+      "friendly_key": "",
+      "description": "",
+      "description_key": ""
+    },
+    "CoinRed_C": {
+      "friendly": "Red Coin",
+      "friendly_key": "",
+      "description": "",
+      "description_key": ""
+    },
+    "Coin_C": {
+      "friendly": "Coin",
+      "friendly_key": "",
+      "description": "",
+      "description_key": ""
+    },
+    "_CoinStack_C": {
+      "friendly": "Coin Stack",
+      "friendly_key": "",
+      "description": "",
+      "description_key": ""
+    },
+    "DestroyablePots_C": {
+      "friendly": "Destroyable Pots",
+      "friendly_key": "",
+      "description": "",
+      "description_key": ""
+    },
+    "GoldBlock_C": {
+      "friendly": "Gold Block",
+      "friendly_key": "",
+      "description": "",
+      "description_key": ""
+    },
+    "GoldNugget_C": {
+      "friendly": "Gold Nugget",
+      "friendly_key": "",
+      "description": "",
+      "description_key": ""
+    },
+    "Jumppillow_C": {
+      "friendly": "Bouncy Mattress",
+      "friendly_key": "",
+      "description": "",
+      "description_key": ""
+    },
+    "Jumppad_C": {
+      "friendly": "Jumppad",
+      "friendly_key": "",
+      "description": "",
+      "description_key": ""
+    },
+    "LotsOfCoins1_C": {
+      "friendly": "Lots Of Coins 1",
+      "friendly_key": "",
+      "description": "",
+      "description_key": ""
+    },
+    "LotsOfCoins10_C": {
+      "friendly": "Lots Of Coins 10",
+      "friendly_key": "",
+      "description": "",
+      "description_key": ""
+    },
+    "LotsOfCoins15_C": {
+      "friendly": "Lots Of Coins 15",
+      "friendly_key": "",
+      "description": "",
+      "description_key": ""
+    },
+    "LotsOfCoins30_C": {
+      "friendly": "Lots Of Coins 30",
+      "friendly_key": "",
+      "description": "",
+      "description_key": ""
+    },
+    "LotsOfCoins50_C": {
+      "friendly": "Lots Of Coins 50",
+      "friendly_key": "",
+      "description": "",
+      "description_key": ""
+    },
+    "LotsOfCoins5_C": {
+      "friendly": "Lots Of Coins 5",
+      "friendly_key": "",
+      "description": "",
+      "description_key": ""
+    },
+    "LotsofCoins200_C": {
+      "friendly": "Lotsof Coins 200",
+      "friendly_key": "",
+      "description": "",
+      "description_key": ""
+    },
+    "MinecraftBrick_C": {
+      "friendly": "Minecraft Brick",
+      "friendly_key": "",
+      "description": "",
+      "description_key": ""
+    },
+    "MoonTake_C": {
+      "friendly": "Green Moon",
+      "friendly_key": "",
+      "description": "",
+      "description_key": ""
+    },
+    "PlayerStart": {
+      "friendly": "Player Start",
+      "friendly_key": "",
+      "description": "",
+      "description_key": ""
+    },
+    "_PlayerPosition": {
+      "friendly": "Player Position",
+      "friendly_key": "",
+      "description": "",
+      "description_key": ""
+    },
+    "Purchase_DiamondPickaxe_C": {
+      "friendly": "Diamond Pickaxe",
+      "friendly_key": "253DB7A648D0518A5E63328E9B558AD1",
+      "description": "",
+      "description_key": ""
+    },
+    "Purchase_IronPickaxe_C": {
+      "friendly": "Iron Pickaxe",
+      "friendly_key": "0EE7EB444F30FDA3ABE3F78FE24341C6",
+      "description": "",
+      "description_key": ""
+    },
+    "Purchase_StonePickaxe_C": {
+      "friendly": "Stone Pickaxe",
+      "friendly_key": "8B9D677B4857D9F97B40EF92E4617582",
+      "description": "",
+      "description_key": ""
+    },
+    "Scrap_C": {
+      "friendly": "Scrap",
+      "friendly_key": "",
+      "description": "",
+      "description_key": ""
+    },
+    "UpgradeHappiness_C": {
+      "friendly": "Happiness",
+      "friendly_key": "99B846BC45770CB3192D5D98379F5753",
+      "description": "",
+      "description_key": ""
+    },
+    "EnemySpawn1_C": {
+      "friendly": "Wooden Cross",
+      "friendly_key": "",
+      "description": "",
+      "description_key": ""
+    },
+    "EnemySpawn2_C": {
+      "friendly": "Stone Grave",
+      "friendly_key": "",
+      "description": "",
+      "description_key": ""
+    },
+    "EnemySpawn3_C": {
+      "friendly": "Volcano",
+      "friendly_key": "",
+      "description": "",
+      "description_key": ""
+    },
+    "Shell_C": {
+      "friendly": "Shell",
+      "icon": "shell",
+      "layer": "misc",
+      "nospoiler": "collectable",
+      "lines": "extra"
+    },
+    "DeadHero_C": {
+      "friendly": "Dead Hero",
+      "icon": "hero:v",
+      "layer": "misc",
+      "nospoiler": "collectable",
+      "lines": "extra"
+    },
+    "RedGuy_C": {
+      "friendly": "Waldo",
+      "icon": "waldo",
+      "layer": "misc",
+      "nospoiler": "collectable",
+      "lines": "misc"
+    },
+    "Pipesystem_C": {
+      "friendly": "Pipe",
+      "icon": "pipe",
+      "layer": "pipesys",
+      "nospoiler": null,
+      "lines": "pipesys"
+    },
+    "BP_Area2_Uncloged_Quest_C": {
+      "friendly": "Valve Quest",
+      "friendly_key": "",
+      "description": "",
+      "description_key": ""
+    },
+    "BathGuyVolume_C": {
+      "friendly": "Too Hot Quest",
+      "friendly_key": "",
+      "description": "",
+      "description_key": ""
+    },
+    "BP_A3_RobBoss_C": {
+      "friendly": "Rob Quest",
+      "friendly_key": "",
+      "description": "",
+      "description_key": ""
+    },
+    "BP_Area2_FatGuyQuest_C": {
+      "friendly": "BBQ Quest",
+      "friendly_key": "",
+      "description": "",
+      "description_key": ""
+    },
+    "BP_ParanoidQuest_C": {
+      "friendly": "Candle Quest",
+      "friendly_key": "",
+      "description": "",
+      "description_key": ""
+    },
+    "BP_A3_BBQ_C": {
+      "friendly": "BBQ Quest",
+      "friendly_key": "",
+      "description": "",
+      "description_key": ""
+    },
+    "BP_RebuildSlum_C": {
+      "friendly": "Rebuild Slum",
+      "friendly_key": "",
+      "description": "",
+      "description_key": ""
+    }
+  }
