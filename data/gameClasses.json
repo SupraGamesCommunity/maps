@@ -272,7 +272,7 @@
   },
   "CrashEnemySpawner_C": {
     "friendly": "Skeleton",
-    "icon": "bones",
+    "icon": "bones_monster",
     "layer": "misc",
     "nospoiler": "collectable",
     "lines": "extra"
