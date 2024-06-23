@@ -151,11 +151,12 @@
   },
   {
     "name": "BP_A3_StrengthQuest_SLC_Body",
-    "type": "BP_A3_StrengthQuest_C_Body",
+    "type": "BP_A3_StrengthQuest_C",
     "area": "Crash",
     "lat": -1614.783203125,
     "lng": 67231.403076171875,
     "alt": 13169.60546875,
+    "icon": "strong_body",
     "linetype": "trigger",
     "targets": [
       {

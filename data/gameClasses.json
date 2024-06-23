@@ -6,13 +6,6 @@
     "nospoiler": "shop",
     "lines": "extra"
   },
-  "BP_A3_StrengthQuest_C_Body": {
-    "friendly": "Strength",
-    "icon": "strong_body",
-    "layer": "upgrades",
-    "nospoiler": "shop",
-    "lines": "extra"
-  },
   "BP_BoneDetector_C": {
     "friendly": "Bone Detector",
     "icon": "loot",
@@ -1048,9 +1041,9 @@
     "friendly_key": "F17B892C41137D9F592623AC8F5E3E8F"
   },
   "Chest_C": {
-    "friendly": "Coin Chest",
-    "icon": "chest_coin",
-    "layer": "coin",
+    "friendly": "Chest",
+    "icon": "chest",
+    "layer": null,
     "nospoiler": "closedChest",
     "lines": "extra"
   },
@@ -1085,6 +1078,13 @@
   "DestroyablePots_C": {
     "friendly": "Destroyable Pots",
     "icon": "pots",
+    "layer": null,
+    "nospoiler": null,
+    "lines": null
+  },
+  "Coin:DestroyablePots_C": {
+    "friendly": "Destroyable Pots",
+    "icon": "pots",
     "layer": "coin",
     "nospoiler": null,
     "lines": "extra"
@@ -1111,6 +1111,13 @@
     "lines": null
   },
   "Jumppad_C": {
+    "friendly": "Jumppad",
+    "icon": "jumppad:v",
+    "layer": "extra",
+    "nospoiler": null,
+    "lines": "extra"
+  },
+  "FT:Jumppad_C": {
     "friendly": "Jumppad",
     "icon": "jumppad:v",
     "layer": "jumppads",
@@ -1166,10 +1173,17 @@
     "nospoiler": null,
     "lines": "extra"
   },
-  "MinecraftBrick_C": {
-    "friendly": "Minecraft Brick",
+  "Coin:Chest_C": {
+    "friendly": "Coin Chest",
+    "icon": "chest_coin",
+    "layer": "coin",
+    "nospoiler": "closedChest",
+    "lines": "extra"
+  },
+  "Coin:MinecraftBrick_C": {
+    "friendly": "Gold Minecraft Brick",
     "icon": "brick:v",
-    "layer": "extra",
+    "layer": "coin",
     "nospoiler": null,
     "lines": "extra"
   },
@@ -1726,6 +1740,13 @@
     "lines": "extra"
   },
   "RedGuy_C": {
+    "friendly": "Red Guy",
+    "icon": "guy:v",
+    "layer": "extra",
+    "nospoiler": null,
+    "lines": "extra"
+  },
+  "Waldo:RedGuy_C": {
     "friendly": "Waldo",
     "icon": "waldo",
     "layer": "misc",
@@ -1741,6 +1762,13 @@
     "friendly_key": "B9EF88FE463AA4E25348E7AB79CCBD02",
     "description": "Drawing dicks on the map is strictly prohibited!",
     "description_key": "681E6A7E457814BD6F3411866C00F6E9"
+  },
+  "MinecraftBrick_C": {
+    "friendly": "Minecraft Brick",
+    "icon": "brick:v",
+    "layer": "extra",
+    "nospoiler": null,
+    "lines": "extra"
   },
   "MinecraftBrickRespawnable_C": {
     "friendly": "Minecraft Brick",
@@ -1771,6 +1799,13 @@
     "lines": null
   },
   "Pipesystem_C": {
+    "friendly": "Pipe",
+    "icon": "pipe",
+    "layer": "extra",
+    "nospoiler": null,
+    "lines": "extra"
+  },
+  "FT:Pipesystem_C": {
     "friendly": "Pipe",
     "icon": "pipe",
     "layer": "pipesys",

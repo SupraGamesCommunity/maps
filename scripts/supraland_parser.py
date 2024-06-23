@@ -152,7 +152,7 @@ def export_levels(game, cache_dir):
 
 
 def export_classes():
-    game_classes = read_game_classes(colonStrip=True);
+    game_classes = read_game_classes();
     with open("gameClasses.json", 'w') as f:
         print("Writing classes to gameClasses.json...")
         json.dump(game_classes, f, indent = 2)
@@ -177,16 +177,18 @@ def export_class_loc():
                     t = bp.get("Type"); 
                     if (t == 'TextRenderComponent' or t == cls) and bp.get('Properties'):
                         props = bp['Properties']
-                        if props.get('Text'):
-        #                    optKey(game_classes, cls, 'Invariant',       props['Text'].get('CultureInvariantString'))
-                            optKey(game_classes, cls, 'friendly',        props['Text'].get('SourceString'))
-                            optKey(game_classes, cls, 'friendly_key',    props['Text'].get('Key'))
-                        if props.get('UpgradeName'):
-                            optKey(game_classes, cls, 'friendly',        props['UpgradeName'].get('SourceString'))
-                            optKey(game_classes, cls, 'friendly_key',    props['UpgradeName'].get('Key'))
-                        if props.get('UpgradeDescription'):
-                            optKey(game_classes, cls, 'description',     props['UpgradeDescription'].get('SourceString'))
-                            optKey(game_classes, cls, 'description_key', props['UpgradeDescription'].get('Key'))
+                        for gcls in game_classes:
+                            if cls in gcls:
+                                if props.get('Text'):
+                #                    optKey(game_classes, gcls, 'Invariant',       props['Text'].get('CultureInvariantString'))
+                                    optKey(game_classes, gcls, 'friendly',        props['Text'].get('SourceString'))
+                                    optKey(game_classes, gcls, 'friendly_key',    props['Text'].get('Key'))
+                                if props.get('UpgradeName'):
+                                    optKey(game_classes, gcls, 'friendly',        props['UpgradeName'].get('SourceString'))
+                                    optKey(game_classes, gcls, 'friendly_key',    props['UpgradeName'].get('Key'))
+                                if props.get('UpgradeDescription'):
+                                    optKey(game_classes, gcls, 'description',     props['UpgradeDescription'].get('SourceString'))
+                                    optKey(game_classes, gcls, 'description_key', props['UpgradeDescription'].get('Key'))
 
     with open("gameClasses.json", 'w') as f:
         print("Writing loc data to gameClasses.json...")
@@ -904,7 +906,7 @@ def read_game_classes(fn = '..\\js\\gameClasses.js', colonStrip = False):
 
             if grp := m.groups()[1]:
                 if not key:
-                    key = re.sub('^.*:', '', grp)
+                    key = grp
                 else:
                     entry[keys[i-1]] = grp
             elif not key:

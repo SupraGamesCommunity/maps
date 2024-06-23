@@ -22,7 +22,6 @@ const defaultGameClass =                  new GameClass();
 /* exported gameClasses */
 const gameClasses = {
     'BP_A3_StrengthQuest_C'                   : new GameClass('Strength',                         'strong',                   'upgrades', 'shop'),
-    'BP_A3_StrengthQuest_C_Body'              : new GameClass('Strength',                         'strong_body',              'upgrades', 'shop'),
     'BP_BoneDetector_C'                       : new GameClass('Bone Detector',                    'loot',                     'upgrades', 'shop'),
     'BP_BuyBeamElasticity_C'                  : new GameClass('Beam Elasticity',                  'force_beam_upgrade',       'upgrades', 'shop'),
     'BP_BuyBoomerAxe_C'                       : new GameClass('Throw Pickaxe',                    'boomeraxe_speed',          'upgrades', 'shop'),
