@@ -1,5 +1,20 @@
 [
   {
+    "name": "BarrelClosed17",
+    "type": "EX:BarrelRed_C",
+    "area": "Map"
+  },
+  {
+    "name": "BarrelClosed2_2",
+    "type": "EX:BarrelRed_C",
+    "area": "Map"
+  },
+  {
+    "name": "BarrelColor_2",
+    "type": "EX:BarrelRed_C",
+    "area": "Map"
+  },
+  {
     "name": "BuyUpgradeChestNum",
     "area": "Map",
     "lat": -34084.0,
