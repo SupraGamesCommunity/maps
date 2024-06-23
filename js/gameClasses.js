@@ -9,9 +9,9 @@ let gameClasses = null;
 const defaultGameClass = {
     'friendly': null,
     'icon': 'question_mark',
-    'layer': 'extra',
+    'layer': 'dev',
     'nospoiler': null,
-    'lines': 'extra',
+    'lines': 'dev',
 }
 
 /* exported gameClassesInit */

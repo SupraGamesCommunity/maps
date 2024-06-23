@@ -90,8 +90,8 @@ path[alt=''] { opacity: 100% }
   --arrow-dist: 100;    /* If line is shorter than this distance, don't draw arrow */
   --line-width: 5px;    /* Width of the basic line */
   --shadow-width: 3px;  /* Width of shadow border */
-  --offset: 0;          /* How far along line should first arrow appear, pixels also ok */
-  --end-offset: 0;      /* How far from end should last arrow appear */
+  --offset: 0px;       /* How far along line should first arrow appear, pixels also ok */
+  --end-offset: 0px;    /* How far from end should last arrow appear */
 
   opacity: 100%;
   fill-opacity: 100%;
@@ -112,7 +112,7 @@ path[alt=''] { opacity: 100% }
   --arrow-dist: 100;
   --line-width: 5px;
   --shadow-width: 3px;
-  --offset: 0;
+  --offset: 0px;
   --end-offset: 16px;
 
   fill: #4DFF00;

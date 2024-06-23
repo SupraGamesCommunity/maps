@@ -145,7 +145,10 @@
         "name_key": "",
         "defaultIcon": "question_mark",
         "defaultActive": false,
-        "games": [
+        "games": [ 
+            "sl",
+            "slc",
+            "siu"
         ]
     },
     "dev": {

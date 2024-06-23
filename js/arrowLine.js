@@ -149,7 +149,7 @@ L.ArrowLine = L.Polygon.extend({
         let points;
 
         if((opts.arrow == 'tip' || opts.arrow == 'mid')
-                && (ad + opts.lineWidth + 2 * d) < 0.5 * (tx - bx)) {
+                && (ad + opts.lineWidth + 2 * d) < (tx - bx)) {
 
             // Arrow tip is drawn in slightly different place to just a line
             tx = lineLen - (opts.endOffset - d) * scale;         // Tip X (from start)

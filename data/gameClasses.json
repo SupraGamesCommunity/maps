@@ -4,14 +4,14 @@
     "icon": "strong",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "upgrades"
+    "lines": "dev"
   },
   "BP_BoneDetector_C": {
     "friendly": "Bone Detector",
     "icon": "loot",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "5E814CF44120E8FFA88BF0978A7FE81C",
     "description": "You can now detect bones!",
     "description_key": "BB8004A7442AC0FC870D309698F68FFA"
@@ -21,7 +21,7 @@
     "icon": "force_beam_upgrade",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "7FA8E1694082474FAE18D0AB29751359",
     "description": "Bounce on your beam",
     "description_key": "9E773A5D4E52106E612EB594CDBB1D5C"
@@ -31,7 +31,7 @@
     "icon": "boomeraxe_speed",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "898C20EE4D61110707EE3597CD23F011",
     "description": "Throw it like a boomerang. Causes half the damage of swinging the pickaxe.",
     "description_key": "3DFDE1964DC94BADC5CE68B8AF804493"
@@ -41,7 +41,7 @@
     "icon": "boomeraxe_throw_distance",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "0C6A4EB04F28C1CA4D7CDC89328C7D84",
     "description": "Thrown Pickaxe flies further",
     "description_key": "71D061EB42B98F8CB9B105B60A6A5EDA"
@@ -51,7 +51,7 @@
     "icon": "boomeraxe_penetration",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "D22BB7804B1D64F39A032680C2581913",
     "description": "Thrown Pickaxe penetrates more enemies!",
     "description_key": "6850E8CB4DDCD5E767D843BC420A1938"
@@ -61,7 +61,7 @@
     "icon": "boomeraxe_speed",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "47ED54E04CBBE957A272D1A525CDFAE8",
     "description": "Thrown Pickaxe flies faster and further",
     "description_key": "B3BD05D44EFA45AF7B42D2A8AB786DA8"
@@ -71,7 +71,7 @@
     "icon": "firegun_refill",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "6EDC76E343703B8B64BEB2A36855690D",
     "description": "Slowly drains heat from the surroundings to slowly recharge your fire gun over time.",
     "description_key": "FC66ACC74ADE1F0F82424D9AC9B43546"
@@ -81,7 +81,7 @@
     "icon": "gun_upgrade",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "50330A9940EE32814E0C6B8B4FBDF219",
     "description": "Your Gun's maximum ammo has increased!",
     "description_key": "EFE1080648741C285BDA7197730C2EF1"
@@ -91,7 +91,7 @@
     "icon": "gun_damage",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "710E33A44149266CB086FFBE78A7057D",
     "description": "Your gun shots now deal {damageNumber}% damage!",
     "description_key": "3A18B95947430563A744F2AE287CD88A"
@@ -101,14 +101,14 @@
     "icon": "loot",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra"
+    "lines": "dev"
   },
   "BP_BuyGunRechargeTime-50pct_C": {
     "friendly": "Reload time -{percentage}%",
     "icon": "loot",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "064A10C541CE3006D02472A0298F4717",
     "description": "Your guns recharge {percentage}% faster.",
     "description_key": "27B7C9DF4469656659B576869D82710A"
@@ -118,14 +118,14 @@
     "icon": "meat",
     "layer": "extra",
     "nospoiler": null,
-    "lines": "extra"
+    "lines": "dev"
   },
   "BP_DoubleHealthLoot_C": {
     "friendly": "Double Healing Drops",
     "icon": "health_drops_x2",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "177CB8514A22D91EA0351BB92BD2FA7C",
     "description": "Health drops from enemies now heal twice as much!",
     "description_key": "3A88693D4401A270614844BB958793A2"
@@ -135,7 +135,7 @@
     "icon": "trophy",
     "layer": "misc",
     "nospoiler": "collectable",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "AE5250E14D3F52D7D410F888B7BD8AE4",
     "description": "Engages players who have already finished the game!",
     "description_key": "C78B215D4B0E2D4169A5A0AD414970CB"
@@ -145,14 +145,14 @@
     "icon": "chest",
     "layer": null,
     "nospoiler": "closedChest",
-    "lines": "extra"
+    "lines": "dev"
   },
   "BP_PickaxeDamage+1_C": {
     "friendly": "Pickaxe Damage +{damageNumber}",
     "icon": "sword_damage",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "C9514A6C40E28A13B777E586678B7B40",
     "description": "Your pickaxe deals {damageNumber} more damage.",
     "description_key": "A71F9191406DFFA3A162E68B251EFAD8"
@@ -162,7 +162,7 @@
     "icon": "health",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "E9C965494E9EADDAC4609584271D5D31",
     "description": "Your maximum health increased by {healthIncrease}. \r\nYou now have a maximum of {#} health.",
     "description_key": "30BB3BA74AF303802E7DF89D9D4661F2"
@@ -172,7 +172,7 @@
     "icon": "stomp_damage",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "6B39BBA544178D8791FE299DB1B72150",
     "description": "You can jump much higher",
     "description_key": "C9990452471FA1B6CCD422A8E595300D"
@@ -182,7 +182,7 @@
     "icon": "speed",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "19716BFB47BC6B499634A1BC33EF133B",
     "description": "You can now run faster and jump twice as far.",
     "description_key": "0B9801814FD2B9D5A7094893D7384855"
@@ -192,7 +192,7 @@
     "icon": "loot",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "66A7DABE48D345D63702ACA760E9B0F9"
   },
   "BP_Purchase_FasterPickaxe_C": {
@@ -200,7 +200,7 @@
     "icon": "pickaxe_cooldown",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "880501CD46A4DF481F78CA8F2C494890",
     "description": "You can swing your pickaxe with less waiting time between each hit.",
     "description_key": "69D8FF944D0B114B371EB19BC9D8482A"
@@ -210,7 +210,7 @@
     "icon": "boomeraxe_range",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "AF6B6DDD4A67E62C5AED3BA50927650D",
     "description": "Increases your strike range",
     "description_key": "109B5C88403D87A65A95D3AA835D1BC3"
@@ -220,7 +220,7 @@
     "icon": "translocator_cooldown",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "0CB3861A42F9E0900F03768FE129401D",
     "description": "Cooldown reduced.",
     "description_key": "50231DBD401E4C570B229C9F762684AA"
@@ -230,7 +230,7 @@
     "icon": "loot",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "C311B9C44794840C3A532784400BF1A8",
     "description": "In case you're not engaged enough: this will help you find the last trophies.",
     "description_key": "E522107E43B6C366B702428E7BBA53C0"
@@ -240,7 +240,7 @@
     "icon": "barrel_gold",
     "layer": "extra",
     "nospoiler": "extra",
-    "lines": "extra"
+    "lines": "dev"
   },
   "BarrelRed_C": {
     "friendly": "Red Barrel",
@@ -248,20 +248,6 @@
     "layer": "quest",
     "nospoiler": "collectable",
     "lines": "quest"
-  },
-  "EX:BarrelColor_C": {
-    "friendly": "Gold Barrel",
-    "icon": "barrel_gold",
-    "layer": "extra",
-    "nospoiler": "extra",
-    "lines": "extra"
-  },
-  "EX:BarrelRed_C": {
-    "friendly": "Red Barrel",
-    "icon": "barrel_red",
-    "layer": "extra",
-    "nospoiler": "extra",
-    "lines": "extra"
   },
   "BarrelClosed_Blueprint_C": {
     "friendly": "Gold Barrel",
@@ -275,21 +261,21 @@
     "icon": "bones",
     "layer": "misc",
     "nospoiler": "collectable",
-    "lines": "extra"
+    "lines": "dev"
   },
   "CrashEnemySpawner_C": {
     "friendly": "Skeleton",
     "icon": "bones_monster",
     "layer": "misc",
     "nospoiler": "collectable",
-    "lines": "extra"
+    "lines": "dev"
   },
   "BuyArmor1_C": {
     "friendly": "Armor",
     "icon": "armor",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "71C408CC4DA956CA166F35A37892C704"
   },
   "BuyBeltRepel_C": {
@@ -297,7 +283,7 @@
     "icon": "belt",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "C9E9A980457559253158538AB894AC1B",
     "description": "While magnetized, press the repel button to launch forward.",
     "description_key": "B563ECE74B41CAF4E0517CA59B336446"
@@ -307,14 +293,14 @@
     "icon": "belt",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra"
+    "lines": "dev"
   },
   "BuyBelt_DLC2_C": {
     "friendly": "Float Buckle",
     "icon": "belt",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "55998AEA49B7B69A2196DA9770234AAD",
     "description": "Float near metallic surfaces and attract smaller metallic objects",
     "description_key": "7149A6494BA4C9484C154F84E2E82A0D"
@@ -324,7 +310,7 @@
     "icon": "pipe_detector",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "333A26DE4BB5BCFC274D96B8A18A5955",
     "description": "Beeps as you get closer to blocked pipes",
     "description_key": "76D8A8C044F2AD73EF555DA299B75B66"
@@ -334,7 +320,7 @@
     "icon": "see_chest_count",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "FEDFD783433BA9693507998D47B0D10F",
     "description": "Detects chests now in a radius of up to 100m",
     "description_key": "051C162B45AD4062A96EBFB2CB299CBD"
@@ -344,7 +330,7 @@
     "icon": "see_chest_count",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "A65CB48A460A54837A2CCCADC56BBD53",
     "description": "Beeps as you get closer to chests.",
     "description_key": "CAA1A27D4DBF495D2A63D3B772C25AE7"
@@ -354,7 +340,7 @@
     "icon": "loot",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "B26FAD944272C6E98C720AB47B20DA83"
   },
   "BuyCritChance+5_C": {
@@ -362,7 +348,7 @@
     "icon": "sword_damage",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "F1E845B94CD432605EA6C7A502B08463",
     "description": "You now have a  {percentage}% chance to deal a critical hit!\r\n",
     "description_key": "07553DC6490752DFBAB4C59B80887B57"
@@ -372,14 +358,14 @@
     "icon": "moon_red",
     "layer": "misc",
     "nospoiler": "collectable",
-    "lines": "extra"
+    "lines": "dev"
   },
   "BuyDoubleJump_C": {
     "friendly": "Double Jump",
     "icon": "double_jump",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "CAACD93B44B32D6A147421BBECC14FFF"
   },
   "BuyElectricGun_C": {
@@ -387,7 +373,7 @@
     "icon": "gun_electro",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "64884E9E4FE32FC6FB0ECCAC941F611D",
     "description": "Electricity goes zap",
     "description_key": "2295B11141F569FFDD29FF8BB3412489"
@@ -397,7 +383,7 @@
     "icon": "loot",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "3384727C4059588A15BFDFB3380301E1"
   },
   "BuyFireGun_C": {
@@ -405,7 +391,7 @@
     "icon": "gun_fire",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "F7279DEE411B8C689FF0099274E4195E",
     "description": "Flame goes woosh",
     "description_key": "186D54C4429417F3D009BBBC2EC54B36"
@@ -415,7 +401,7 @@
     "icon": "force_beam_upgrade",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "6B2623D84351A7BAE55FC398A1C8B45B",
     "description": "You can now also attach the beam to gold.",
     "description_key": "A9C2A7924323001EA00C54857ECF5BEF"
@@ -425,7 +411,7 @@
     "icon": "beam",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "5177BDBB4AC3483C5FAC5A827B03DCC0"
   },
   "BuyForceBlockTelefrag_C": {
@@ -433,7 +419,7 @@
     "icon": "force_cube",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "6C3FB7D94BF0D6FE6B5CDF9A2780C688"
   },
   "BuyForceBlock_C": {
@@ -441,7 +427,7 @@
     "icon": "force_cube",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "EFB25833407252098417179FA47CDD08"
   },
   "BuyForceCubeBeam_C": {
@@ -449,7 +435,7 @@
     "icon": "force_beam_upgrade",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "F8F8668341F2E815627C7BA1B55B10F1"
   },
   "BuyForceCubeStompGrave3_C": {
@@ -457,7 +443,7 @@
     "icon": "force_cube",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "1FE2E542470C2D262AA7AA89972BA3A9"
   },
   "BuyForceCubeStompJump_C": {
@@ -465,7 +451,7 @@
     "icon": "stomp_damage",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "928CA8AE48287F0F9CBAFEAFE8268EC4"
   },
   "BuyForceCubeStomp_C": {
@@ -473,7 +459,7 @@
     "icon": "force_cube",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "185DEBF54F6E51BBC01FE1B13D4BE992"
   },
   "BuyGraveDetector_C": {
@@ -481,7 +467,7 @@
     "icon": "see_grave_count",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "C950773D4471E4CC1CF5D39005CD64F7"
   },
   "BuyGun1_C": {
@@ -489,14 +475,14 @@
     "icon": "gun_red_wood",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra"
+    "lines": "dev"
   },
   "BuyGunAltDamagex2_C": {
     "friendly": "Gun AltFire Damage x2",
     "icon": "gun_upgrade",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "FF9D1B894D5CAAC473A9968FBAECA329"
   },
   "BuyGunAlt_C": {
@@ -504,14 +490,14 @@
     "icon": "gun_red",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra"
+    "lines": "dev"
   },
   "BuyGunCoin_C": {
     "friendly": "Gun Picks Up Coins",
     "icon": "gun_upgrade",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "A06C9BA04C735AEDC2FF4287F5533BEA"
   },
   "BuyGunComboDamage+25_C": {
@@ -519,7 +505,7 @@
     "icon": "gun_upgrade",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "B937E76C496891FFB2D58EA5AD2F4AD3"
   },
   "BuyGunCriticalDamageChance_C": {
@@ -527,7 +513,7 @@
     "icon": "gun_upgrade",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "E406D7244A30DEBF591F09A24D633DF2"
   },
   "BuyGunCriticalDamage_C": {
@@ -535,7 +521,7 @@
     "icon": "gun_upgrade",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "2A7C79404B8D91BA3F187BAC1AFDE7E1"
   },
   "BuyGunDamage+15_C": {
@@ -543,7 +529,7 @@
     "icon": "gun_damage",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "C7649B2646D3EE0931657AB63D497380"
   },
   "BuyGunDamage+1_C": {
@@ -551,7 +537,7 @@
     "icon": "gun_upgrade",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "D07C12834F1A99772A3B758CB68D67D4"
   },
   "BuyGunDamage+5_C": {
@@ -559,7 +545,7 @@
     "icon": "gun_upgrade",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "F67CB76E42F640D7F43352B7EB5243BB"
   },
   "BuyGunHoly1_C": {
@@ -567,7 +553,7 @@
     "icon": "gun_upgrade",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "A4EEA0994A47894991E031B148C7DDFD"
   },
   "BuyGunHoly2_C": {
@@ -575,7 +561,7 @@
     "icon": "gun_upgrade",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "4E2D753A45BD0DE6B91338A868C4EE82"
   },
   "BuyGunRefillSpeed+66_C": {
@@ -583,7 +569,7 @@
     "icon": "gun_upgrade",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "48A5C00340AEF37776DAD391B656CCC8"
   },
   "BuyGunRefireRate50_C": {
@@ -591,7 +577,7 @@
     "icon": "gun_upgrade",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "DC752FA6411151DAA78FD8B37E5F097F"
   },
   "BuyGunSpeedx2_C": {
@@ -599,7 +585,7 @@
     "icon": "gun_upgrade",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "E1CE957843EB5905979FEB9B39C06F97"
   },
   "BuyGunSplashDamage_C": {
@@ -607,7 +593,7 @@
     "icon": "gun_upgrade",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "F456DECB4597A1AE739292A829065681"
   },
   "BuyHealth+15_C": {
@@ -615,7 +601,7 @@
     "icon": "health",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "F192E94A4A38A07C1B173692EE6F105A",
     "description": "Your maximum health increased by {healthIncrease}. \r\nYou now have a maximum of {#} health.",
     "description_key": "30BB3BA74AF303802E7DF89D9D4661F2"
@@ -624,7 +610,7 @@
     "icon": "health",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly": "Health +{healthIncrease}",
     "friendly_key": "E9C965494E9EADDAC4609584271D5D31",
     "description": "Your maximum health increased by {healthIncrease}. \r\nYou now have a maximum of {#} health.",
@@ -635,7 +621,7 @@
     "icon": "health",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "40654DC9487F523BE649BE99E5CA4B96",
     "description": "Your maximum health increased by {healthIncrease}. \r\nYou now have a maximum of {#} health.",
     "description_key": "30BB3BA74AF303802E7DF89D9D4661F2"
@@ -645,7 +631,7 @@
     "icon": "health",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "47D6A98A43F4487C285FC78EC3814FA4",
     "description": "Your maximum health increased by {healthIncrease}. \r\nYou now have a maximum of {#} health.",
     "description_key": "30BB3BA74AF303802E7DF89D9D4661F2"
@@ -655,7 +641,7 @@
     "icon": "health_regen_max",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "A55045254B8059B2FA9608BD3124E7E0",
     "description": "Regenerates health up to {regenCeiling}.",
     "description_key": "1917BBAD4B24D28E23C62592615D2D82"
@@ -665,7 +651,7 @@
     "icon": "health_regen_max",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "85220AD7486DDECE8633A786F2F0886A"
   },
   "BuyHealthRegenMax15_C": {
@@ -673,7 +659,7 @@
     "icon": "health_regen_max",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "66B927104ACBD83532775B9B3959C563"
   },
   "BuyHealthRegenMax5_C": {
@@ -681,7 +667,7 @@
     "icon": "health_regen_max",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "1344E4AC4883410F4E371980B429B194"
   },
   "BuyHealthRegenSpeed_C": {
@@ -689,7 +675,7 @@
     "icon": "health_regen_speed",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "1E4BB7F34C64D9DB1FA27EBA0FAB4527",
     "description": "The speed of your automatic health Regeneration doubled. ",
     "description_key": "B2596A4E4AE4B43F87CFA8B38BDFB83A"
@@ -699,7 +685,7 @@
     "icon": "health_regen",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "761D2E35427EE64323E13F87AFC02E44"
   },
   "BuyHeartLuck_C": {
@@ -707,7 +693,7 @@
     "icon": "loot_luck",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "1A25CC99430B47D3CB63F888E291FDC6"
   },
   "BuyJumpHeightPlus_C": {
@@ -715,7 +701,7 @@
     "icon": "stomp_damage",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "6B39BBA544178D8791FE299DB1B72150"
   },
   "BuyJumpIncrease_C": {
@@ -723,7 +709,7 @@
     "icon": "double_jump",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "72BBE6B247D619A24F8BF89E84E832DD",
     "description": "Jump more times!",
     "description_key": "9BD5B37641DA05FDFC9409B5B7C10A8D"
@@ -733,7 +719,7 @@
     "icon": "loot",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "DCFC0B2B4E2339BF05ADAEB979E6A8ED"
   },
   "BuyNumberRising_C": {
@@ -741,7 +727,7 @@
     "icon": "see_enemy_health",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "1D21FEB14FD41470B837F58D590C237C"
   },
   "BuyQuintupleJump_C": {
@@ -749,7 +735,7 @@
     "icon": "triple_jump",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "336639FC45B725E8BBE93BB6D9430FAF",
     "description": "You were never supposed to get this.\r\nGo ahead, you can jump five times in a row.",
     "description_key": "2911CCC24A947B208023829B595A81D7"
@@ -759,7 +745,7 @@
     "icon": "shield_breaker",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "DFCD2A9542AE583EC7A419942E350CC8"
   },
   "BuyShowHealthbar_C": {
@@ -767,7 +753,7 @@
     "icon": "see_health_bar",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "DC050DC346154B34DA1F3DA82F434648"
   },
   "BuyShowProgress_C": {
@@ -775,7 +761,7 @@
     "icon": "awesome",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "DE276F3A42B5E3A15AC7F2A4789DC31F"
   },
   "BuySilentFeet_C": {
@@ -783,7 +769,7 @@
     "icon": "silent_shoes",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "667CB43E4333FACC3B54A7A89B8C63AD"
   },
   "BuySmashdownDamage+100_C": {
@@ -791,7 +777,7 @@
     "icon": "stomp_damage",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "EE7DD0064ED3036E48003F86A5BEB539"
   },
   "BuySmashdownDamage+1_C": {
@@ -799,7 +785,7 @@
     "icon": "stomp_damage",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "642C0B0E44D028AD9530E0A9E4B31AB4"
   },
   "BuySmashdownDamage+33_C": {
@@ -807,7 +793,7 @@
     "icon": "stomp_damage",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "07F9D0314668FF0667D0D2BD34688E54"
   },
   "BuySmashdownDamage+3_C": {
@@ -815,7 +801,7 @@
     "icon": "stomp_damage",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "1BFF14774CE2E0092F08EBAB3BAB431A"
   },
   "BuySmashdownRadius+5_C": {
@@ -823,7 +809,7 @@
     "icon": "stomp_damage",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "B1719A254CE02025EF93958E38475BB1"
   },
   "BuySmashdownRadius+_C": {
@@ -831,7 +817,7 @@
     "icon": "stomp_damage",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "05EC3B2E45249589B8BF2A98515F5C5F"
   },
   "BuySmashdown_C": {
@@ -839,7 +825,7 @@
     "icon": "shoes",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "456A3F04440BD37F3B2F27AC1935E73B"
   },
   "BuySpeedx15_C": {
@@ -847,7 +833,7 @@
     "icon": "speed",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "A57D1197427A90296227E1BDB2B3651B"
   },
   "BuySpeedx2_C": {
@@ -855,7 +841,7 @@
     "icon": "speed",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "19716BFB47BC6B499634A1BC33EF133B",
     "description": "You can now run faster and jump twice as far.",
     "description_key": "0B9801814FD2B9D5A7094893D7384855"
@@ -865,7 +851,7 @@
     "icon": "loot",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "E88D3EE34E3942ED9AA514A41B7D9AED",
     "description": "Shows you more funny stats in the menu",
     "description_key": "36CF910149A8B07AE32341B26FA471A7"
@@ -875,14 +861,14 @@
     "icon": "sword_red",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra"
+    "lines": "dev"
   },
   "BuySwordCriticalDamageChance_C": {
     "friendly": "Sword Critical Damage Chance +5%",
     "icon": "sword_damage",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "CD548FF04F30E9C65CADA1AF57652FC3"
   },
   "BuySwordCriticalDamage_C": {
@@ -890,7 +876,7 @@
     "icon": "sword_damage",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "B77AC95941A12B97A8C37D9E0685D610"
   },
   "BuySwordDamage+02_C": {
@@ -898,7 +884,7 @@
     "icon": "sword_damage",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "C968ED73453A46FF729281AD74A7DBC3"
   },
   "BuySwordDamage+1_C": {
@@ -906,7 +892,7 @@
     "icon": "sword_damage",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "7B2C1457482033F69320C6BD853007E2"
   },
   "BuySwordDamage+3_C": {
@@ -914,7 +900,7 @@
     "icon": "sword_damage",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "D003BED9407359DFA6613189CE011353"
   },
   "BuySwordDoorKnocker_C": {
@@ -922,7 +908,7 @@
     "icon": "sword",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "A5BB96AB4C503EFA19049AB50F76AD6E"
   },
   "BuySwordHoly1_C": {
@@ -930,7 +916,7 @@
     "icon": "sword_holy",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "DFFC8061460EEDD467DD87AFA17989B6"
   },
   "BuySwordHoly2_C": {
@@ -938,7 +924,7 @@
     "icon": "sword_holy",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "728A3CFA4C013A24881DC3849D321415"
   },
   "BuySwordRange25_C": {
@@ -946,7 +932,7 @@
     "icon": "sword_damage",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "A9CBCFEA46AB265F798D34BFA01488E6"
   },
   "BuySwordRefireRate-33_C": {
@@ -954,7 +940,7 @@
     "icon": "sword_speed",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "B443AB424D1FC633BFECAB8D9221B3E6"
   },
   "BuySword_C": {
@@ -962,7 +948,7 @@
     "icon": "sword",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "FD5ABF6C42EB8C6BAABD9F914C116963"
   },
   "BuyTranslocatorCoolDownHalf_C": {
@@ -970,7 +956,7 @@
     "icon": "translocator_cooldown",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "B8254A1F45220C0F46A98195C13FE5F3"
   },
   "BuyTranslocatorDamagex3_C": {
@@ -978,7 +964,7 @@
     "icon": "translocator_damage",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "69056B4F47F7D31D13238E8196053458"
   },
   "BuyTranslocatorModule_C": {
@@ -986,7 +972,7 @@
     "icon": "translocator_cooldown",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "C9F3E82D4AA8E63743C844AB2731F9F5"
   },
   "BuyTranslocatorShotForce_C": {
@@ -994,7 +980,7 @@
     "icon": "translocator_distance",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "E26CCFE942041E8F43653F94DE79D77A",
     "description": "Translocator will be shot twice as hard. Does a lot of ouchy.",
     "description_key": "DDD550E640AB9C9ECEC3F2BCC1474CCC"
@@ -1004,7 +990,7 @@
     "icon": "translocator_damage",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "82AD5DCF41360EDB1AF075B4F4D07A2C"
   },
   "BuyTranslocator_C": {
@@ -1012,21 +998,21 @@
     "icon": "translocator:g",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra"
+    "lines": "dev"
   },
   "BuyTranslocator_Fake_C": {
     "friendly": "Fake Translocator",
     "icon": null,
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra"
+    "lines": "dev"
   },
   "BuyTripleJump_C": {
     "friendly": "Triple Jump",
     "icon": "triple_jump",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "D275B2044555996709C3F19085DC27AC"
   },
   "BuyUpgradeChestNum_C": {
@@ -1034,7 +1020,7 @@
     "icon": "see_chest_count",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "4F26D5634AD2F60A9CCE17AD03C133C2",
     "description": "Adds chest, secret + pickup counters to the Menu, along with a remaining chest counter in-game!",
     "description_key": "403A09ED49B07B5DAC0E21ACB6D22747"
@@ -1044,7 +1030,7 @@
     "icon": "see_grave_count",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "B6A26C7F431C50CEA9E5AD9A49696067"
   },
   "BuyWalletx15_C": {
@@ -1052,7 +1038,7 @@
     "icon": "wallet",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "DE4C6307451486AC524D45989BEBBEE8"
   },
   "BuyWalletx2_C": {
@@ -1060,7 +1046,7 @@
     "icon": "wallet",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "F17B892C41137D9F592623AC8F5E3E8F"
   },
   "Chest_C": {
@@ -1068,49 +1054,49 @@
     "icon": "chest",
     "layer": null,
     "nospoiler": "closedChest",
-    "lines": "extra"
+    "lines": "dev"
   },
   "CoinBig_C": {
     "friendly": "Big Coin",
     "icon": "coin",
     "layer": "coin",
     "nospoiler": null,
-    "lines": "extra"
+    "lines": "dev"
   },
   "CoinRed_C": {
     "friendly": "Red Coin",
     "icon": "coinRed",
     "layer": "misc",
     "nospoiler": "collectable",
-    "lines": "extra"
+    "lines": "dev"
   },
   "Coin_C": {
     "friendly": "Coin",
     "icon": "coin:16",
     "layer": "coin",
     "nospoiler": null,
-    "lines": "extra"
+    "lines": "dev"
   },
   "_CoinStack_C": {
     "friendly": "Coin Stack",
     "icon": "coinStash2",
     "layer": "coin",
     "nospoiler": null,
-    "lines": "extra"
+    "lines": "dev"
   },
   "DestroyablePots_C": {
     "friendly": "Destroyable Pots",
     "icon": "pots",
-    "layer": null,
+    "layer": "dev",
     "nospoiler": null,
-    "lines": null
+    "lines": "dev"
   },
   "Coin:DestroyablePots_C": {
     "friendly": "Destroyable Pots",
     "icon": "pots",
     "layer": "coin",
     "nospoiler": null,
-    "lines": "extra"
+    "lines": "dev"
   },
   "GoldBlock_C": {
     "friendly": "Gold Block",
@@ -1152,98 +1138,98 @@
     "icon": "chest_coin",
     "layer": "coin",
     "nospoiler": null,
-    "lines": "extra"
+    "lines": "dev"
   },
   "LotsOfCoins10_C": {
     "friendly": "Lots Of Coins 10",
     "icon": "chest_coin",
     "layer": "coin",
     "nospoiler": null,
-    "lines": "extra"
+    "lines": "dev"
   },
   "LotsOfCoins15_C": {
     "friendly": "Lots Of Coins 15",
     "icon": "chest_coin",
     "layer": "coin",
     "nospoiler": null,
-    "lines": "extra"
+    "lines": "dev"
   },
   "LotsOfCoins30_C": {
     "friendly": "Lots Of Coins 30",
     "icon": "chest_coin",
     "layer": "coin",
     "nospoiler": null,
-    "lines": "extra"
+    "lines": "dev"
   },
   "LotsOfCoins50_C": {
     "friendly": "Lots Of Coins 50",
     "icon": "chest_coin",
     "layer": "coin",
     "nospoiler": null,
-    "lines": "extra"
+    "lines": "dev"
   },
   "LotsOfCoins5_C": {
     "friendly": "Lots Of Coins 5",
     "icon": "chest_coin",
     "layer": "coin",
     "nospoiler": null,
-    "lines": "extra"
+    "lines": "dev"
   },
   "LotsofCoins200_C": {
     "friendly": "Lotsof Coins 200",
     "icon": "chest_coin",
     "layer": "coin",
     "nospoiler": null,
-    "lines": "extra"
+    "lines": "dev"
   },
   "Coin:Chest_C": {
     "friendly": "Coin Chest",
     "icon": "chest_coin",
     "layer": "coin",
     "nospoiler": "closedChest",
-    "lines": "extra"
+    "lines": "dev"
   },
   "Coin:MinecraftBrick_C": {
     "friendly": "Gold Minecraft Brick",
     "icon": "brick:v",
     "layer": "coin",
     "nospoiler": null,
-    "lines": "extra"
+    "lines": "dev"
   },
   "MoonTake_C": {
     "friendly": "Green Moon",
     "icon": "moon_green",
     "layer": "misc",
     "nospoiler": "collectable",
-    "lines": "extra"
+    "lines": "dev"
   },
   "PlayerStart": {
     "friendly": "Player Start",
     "icon": "awesome",
     "layer": "extra",
     "nospoiler": null,
-    "lines": "extra"
+    "lines": "dev"
   },
   "_PlayerPosition": {
     "friendly": "Player Position",
     "icon": "player:v48",
     "layer": "_map",
     "nospoiler": null,
-    "lines": "extra"
+    "lines": "dev"
   },
   "Plumbus_C": {
     "friendly": "Plumbus",
     "icon": "plumbus",
-    "layer": "extra",
+    "layer": "dev",
     "nospoiler": null,
-    "lines": "extra"
+    "lines": "dev"
   },
   "Purchase_DiamondPickaxe_C": {
     "friendly": "Diamond Pickaxe",
     "icon": "pickaxe_diamond",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "253DB7A648D0518A5E63328E9B558AD1"
   },
   "Purchase_ForceBeam_C": {
@@ -1251,7 +1237,7 @@
     "icon": "beam",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "D5A212FC463DC190FEC86AB923E72466",
     "description": "A powerful tool used to create a beam between wooden objects",
     "description_key": "1F589D3C48DD80605F7076999B27CC2C"
@@ -1261,7 +1247,7 @@
     "icon": "force_cube",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "73BB805B421FFF82BD1B09A87A041855",
     "description": "Spawns a block that can push buttons and you can jump on.",
     "description_key": "57FAF852420F07E7A9EACA90493F832D"
@@ -1271,7 +1257,7 @@
     "icon": "pickaxe_metal",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "0EE7EB444F30FDA3ABE3F78FE24341C6"
   },
   "Purchase_StonePickaxe_C": {
@@ -1279,7 +1265,7 @@
     "icon": "pickaxe_stone",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "8B9D677B4857D9F97B40EF92E4617582"
   },
   "Purchase_WoodPickaxe_C": {
@@ -1287,7 +1273,7 @@
     "icon": "pickaxe_wood",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "C49BC3D647C0D7A14D7284AB2C9456EC",
     "description": "Breaks suspicious bricks and monsters.",
     "description_key": "C227AFDE42B59E396797C4965821BE65"
@@ -1297,78 +1283,78 @@
     "icon": "scrap",
     "layer": "misc",
     "nospoiler": "collectable",
-    "lines": "extra"
+    "lines": "dev"
   },
   "SpawnEnemy3_C": {
     "friendly": "Spawn Enemy 3",
     "icon": null,
-    "layer": "extra",
+    "layer": "dev",
     "nospoiler": null,
-    "lines": "extra"
+    "lines": "dev"
   },
   "Stone_C": {
     "friendly": "Stone",
     "icon": null,
-    "layer": "extra",
+    "layer": "dev",
     "nospoiler": null,
-    "lines": "extra"
+    "lines": "dev"
   },
   "UpgradeHappiness_C": {
     "friendly": "Happiness",
     "icon": "happiness",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "99B846BC45770CB3192D5D98379F5753"
   },
   "ValveCarriable_C": {
     "friendly": "Carriable Valve",
     "icon": "valve",
-    "layer": "extra",
+    "layer": "dev",
     "nospoiler": null,
-    "lines": "extra"
+    "lines": "dev"
   },
   "ValveSlot_C": {
     "friendly": "Valve Slot",
     "icon": "valve",
-    "layer": "extra",
+    "layer": "dev",
     "nospoiler": null,
-    "lines": "extra"
+    "lines": "dev"
   },
   "Valve_C": {
     "friendly": "Valve",
     "icon": "valve",
-    "layer": "extra",
+    "layer": "dev",
     "nospoiler": null,
-    "lines": "extra"
+    "lines": "dev"
   },
   "HealingStation_C": {
     "friendly": "Healing Station",
     "icon": "supradoh",
     "layer": "extra",
     "nospoiler": null,
-    "lines": "extra"
+    "lines": "dev"
   },
   "EnemySpawn1_C": {
     "friendly": "Wooden Cross",
     "icon": "grave_wood",
     "layer": "graves",
     "nospoiler": null,
-    "lines": "extra"
+    "lines": "dev"
   },
   "EnemySpawn2_C": {
     "friendly": "Stone Grave",
     "icon": "grave_stone",
     "layer": "graves",
     "nospoiler": null,
-    "lines": "extra"
+    "lines": "dev"
   },
   "EnemySpawn3_C": {
     "friendly": "Volcano",
     "icon": "grave_volcano",
     "layer": "graves",
     "nospoiler": null,
-    "lines": "extra"
+    "lines": "dev"
   },
   "Shell_C": {
     "friendly": "Shell",
@@ -1403,371 +1389,371 @@
     "icon": "bucket:v",
     "layer": "quest",
     "nospoiler": "collectable",
-    "lines": "extra"
+    "lines": "dev"
   },
   "Lever_C": {
     "friendly": "Lever",
     "icon": "lever",
-    "layer": "extra",
+    "layer": "dev",
     "nospoiler": null,
-    "lines": "extra"
+    "lines": "dev"
   },
   "Button_C": {
     "friendly": "Button",
     "icon": "button",
-    "layer": "extra",
+    "layer": "dev",
     "nospoiler": null,
-    "lines": "extra"
+    "lines": "dev"
   },
   "ButtonFloor_C": {
     "friendly": "Button Floor",
     "icon": "button_floor",
-    "layer": "extra",
+    "layer": "dev",
     "nospoiler": null,
-    "lines": "extra"
+    "lines": "dev"
   },
   "PedestalButton_C": {
     "friendly": "Pedestal Button",
     "icon": "button_pedestal",
-    "layer": "extra",
+    "layer": "dev",
     "nospoiler": null,
-    "lines": "extra"
+    "lines": "dev"
   },
   "BallButton_C": {
     "friendly": "Ball Button",
     "icon": "button_ball",
-    "layer": "extra",
+    "layer": "dev",
     "nospoiler": null,
-    "lines": "extra"
+    "lines": "dev"
   },
   "BigButton_C": {
     "friendly": "Big Button",
     "icon": "button_big",
-    "layer": "extra",
+    "layer": "dev",
     "nospoiler": null,
-    "lines": "extra"
+    "lines": "dev"
   },
   "BigButton2_C": {
     "friendly": "Big Button 2",
     "icon": "button_big",
-    "layer": "extra",
+    "layer": "dev",
     "nospoiler": null,
-    "lines": "extra"
+    "lines": "dev"
   },
   "BigButton2Once_C": {
     "friendly": "Big Button 2 Once",
     "icon": "button_big",
-    "layer": "extra",
+    "layer": "dev",
     "nospoiler": null,
-    "lines": "extra"
+    "lines": "dev"
   },
   "BigButtonWeight_C": {
     "friendly": "Big Button Weight",
     "icon": "button_big",
-    "layer": "extra",
+    "layer": "dev",
     "nospoiler": null,
-    "lines": "extra"
+    "lines": "dev"
   },
   "Smallbutton_C": {
     "friendly": "Smallbutton",
     "icon": "button",
-    "layer": "extra",
+    "layer": "dev",
     "nospoiler": null,
-    "lines": "extra"
+    "lines": "dev"
   },
   "Smallbutton2_C": {
     "friendly": "Smallbutton 2",
     "icon": "button",
-    "layer": "extra",
+    "layer": "dev",
     "nospoiler": null,
-    "lines": "extra"
+    "lines": "dev"
   },
   "SmallbuttonNINE_C": {
     "friendly": "Smallbutton NINE",
     "icon": "button",
-    "layer": "extra",
+    "layer": "dev",
     "nospoiler": null,
-    "lines": "extra"
+    "lines": "dev"
   },
   "SmallbuttonQuickOnoff_C": {
     "friendly": "Smallbutton Quick Onoff",
     "icon": "button",
-    "layer": "extra",
+    "layer": "dev",
     "nospoiler": null,
-    "lines": "extra"
+    "lines": "dev"
   },
   "SmallbuttonOpenClose_C": {
     "friendly": "Smallbutton Open Close",
     "icon": "button",
-    "layer": "extra",
+    "layer": "dev",
     "nospoiler": null,
-    "lines": "extra"
+    "lines": "dev"
   },
   "SmallbuttonMultipleActors_C": {
     "friendly": "Smallbutton Multiple Actors",
     "icon": "button",
-    "layer": "extra",
+    "layer": "dev",
     "nospoiler": null,
-    "lines": "extra"
+    "lines": "dev"
   },
   "SmallbuttonOnceMultipleActors_C": {
     "friendly": "Smallbutton Once Multiple Actors",
     "icon": "button",
-    "layer": "extra",
+    "layer": "dev",
     "nospoiler": null,
-    "lines": "extra"
+    "lines": "dev"
   },
   "SmallbuttonWhile_C": {
     "friendly": "Smallbutton While",
     "icon": "button",
-    "layer": "extra",
+    "layer": "dev",
     "nospoiler": null,
-    "lines": "extra"
+    "lines": "dev"
   },
   "SmallbuttonFlipFlop_C": {
     "friendly": "Smallbutton Flip Flop",
     "icon": "button",
-    "layer": "extra",
+    "layer": "dev",
     "nospoiler": null,
-    "lines": "extra"
+    "lines": "dev"
   },
   "Door_C": {
     "friendly": "Door",
     "icon": "door",
-    "layer": "extra",
+    "layer": "dev",
     "nospoiler": null,
-    "lines": "extra"
+    "lines": "dev"
   },
   "Door2_C": {
     "friendly": "Door 2",
     "icon": "door",
-    "layer": "extra",
+    "layer": "dev",
     "nospoiler": null,
-    "lines": "extra"
+    "lines": "dev"
   },
   "Door3_C": {
     "friendly": "Door 3",
     "icon": "door",
-    "layer": "extra",
+    "layer": "dev",
     "nospoiler": null,
-    "lines": "extra"
+    "lines": "dev"
   },
   "DoorAnna_C": {
     "friendly": "Door Anna",
     "icon": "door",
-    "layer": "extra",
+    "layer": "dev",
     "nospoiler": null,
-    "lines": "extra"
+    "lines": "dev"
   },
   "DoorStone_C": {
     "friendly": "Door Stone",
     "icon": "door",
-    "layer": "extra",
+    "layer": "dev",
     "nospoiler": null,
-    "lines": "extra"
+    "lines": "dev"
   },
   "JailDoor_C": {
     "friendly": "Jail Door",
     "icon": "door",
-    "layer": "extra",
+    "layer": "dev",
     "nospoiler": null,
-    "lines": "extra"
+    "lines": "dev"
   },
   "DoorLego_C": {
     "friendly": "Door Lego",
     "icon": "door",
-    "layer": "extra",
+    "layer": "dev",
     "nospoiler": null,
-    "lines": "extra"
+    "lines": "dev"
   },
   "DoorInverted_C": {
     "friendly": "Door Inverted",
     "icon": "door",
-    "layer": "extra",
+    "layer": "dev",
     "nospoiler": null,
-    "lines": "extra"
+    "lines": "dev"
   },
   "DoorPhysical_C": {
     "friendly": "Door Physical",
     "icon": "door",
-    "layer": "extra",
+    "layer": "dev",
     "nospoiler": null,
-    "lines": "extra"
+    "lines": "dev"
   },
   "BP_ElevatorDoor_C": {
     "friendly": "Elevator Door",
     "icon": "door",
-    "layer": "extra",
+    "layer": "dev",
     "nospoiler": null,
-    "lines": "extra"
+    "lines": "dev"
   },
   "BP_Fix_A4_CombatArenaDoor_C": {
     "friendly": "Fix A4 Combat Arena Door",
     "icon": "door",
-    "layer": "extra",
+    "layer": "dev",
     "nospoiler": null,
-    "lines": "extra"
+    "lines": "dev"
   },
   "SwingingDoor_C": {
     "friendly": "Swinging Door",
     "icon": "door",
-    "layer": "extra",
+    "layer": "dev",
     "nospoiler": null,
-    "lines": "extra"
+    "lines": "dev"
   },
   "SwingingDoorResetVolume_C": {
     "friendly": "Swinging Door Reset Volume",
     "icon": "door",
-    "layer": "extra",
+    "layer": "dev",
     "nospoiler": null,
-    "lines": "extra"
+    "lines": "dev"
   },
   "Battery_C": {
     "friendly": "Battery",
     "icon": "battery",
     "layer": "extra",
     "nospoiler": null,
-    "lines": "extra"
+    "lines": "dev"
   },
   "ExplodingBattery_C": {
     "friendly": "Exploding Battery",
     "icon": "battery",
     "layer": "extra",
     "nospoiler": null,
-    "lines": "extra"
+    "lines": "dev"
   },
   "Key_C": {
     "friendly": "Key",
     "icon": "key",
     "layer": "extra",
     "nospoiler": null,
-    "lines": "extra"
+    "lines": "dev"
   },
   "KeyLock_C": {
     "friendly": "Key Lock",
     "icon": "lock",
-    "layer": "extra",
+    "layer": "dev",
     "nospoiler": null,
-    "lines": "extra"
+    "lines": "dev"
   },
   "KeyPlastic_C": {
     "friendly": "Key Plastic",
     "icon": "key_plastic",
     "layer": "extra",
     "nospoiler": null,
-    "lines": "extra"
+    "lines": "dev"
   },
   "KeyLockPlastic_C": {
     "friendly": "Key Lock Plastic",
     "icon": "lock_plastic",
-    "layer": "extra",
+    "layer": "dev",
     "nospoiler": null,
-    "lines": "extra"
+    "lines": "dev"
   },
   "TalkingSpeaker_C": {
     "friendly": "Talking Speaker",
     "icon": "speaker",
-    "layer": "extra",
+    "layer": "dev",
     "nospoiler": null,
-    "lines": "extra"
+    "lines": "dev"
   },
   "KeycardColor_C": {
     "friendly": "Keycard Color",
     "icon": "keycard:v",
-    "layer": "extra",
+    "layer": "dev",
     "nospoiler": null,
-    "lines": "extra"
+    "lines": "dev"
   },
   "KeycardReader_C": {
     "friendly": "Keycard Reader",
     "icon": "keycard_reader",
-    "layer": "extra",
+    "layer": "dev",
     "nospoiler": null,
-    "lines": "extra"
+    "lines": "dev"
   },
   "MetalBall_C": {
     "friendly": "Metal Ball",
-    "icon": "metal_ball",
+    "icon": "metal_ball:24",
     "layer": "extra",
     "nospoiler": null,
-    "lines": "extra"
+    "lines": "dev"
   },
   "Anvil_C": {
     "friendly": "Anvil",
     "icon": "anvil",
     "layer": "extra",
     "nospoiler": null,
-    "lines": "extra"
+    "lines": "dev"
   },
   "Lift1_C": {
     "friendly": "Lift 1",
     "icon": "lift",
-    "layer": "extra",
+    "layer": "dev",
     "nospoiler": null,
-    "lines": "extra"
+    "lines": "dev"
   },
   "Sponge_C": {
     "friendly": "Sponge",
     "icon": "sponge",
     "layer": "extra",
     "nospoiler": null,
-    "lines": "extra"
+    "lines": "dev"
   },
   "Sponge_Large_C": {
     "friendly": "Sponge Large",
     "icon": "sponge",
     "layer": "extra",
     "nospoiler": null,
-    "lines": "extra"
+    "lines": "dev"
   },
   "Supraball_C": {
     "friendly": "Supraball",
     "icon": "supraball",
-    "layer": "extra",
+    "layer": "dev",
     "nospoiler": null,
-    "lines": "extra"
+    "lines": "dev"
   },
   "Seed_C": {
     "friendly": "Seed",
     "icon": "seed:v",
-    "layer": "extra",
+    "layer": "dev",
     "nospoiler": null,
-    "lines": "extra"
+    "lines": "dev"
   },
   "RingColorerFlower_C": {
     "friendly": "Flower",
     "icon": "flower:v",
-    "layer": "extra",
+    "layer": "dev",
     "nospoiler": null,
-    "lines": "extra"
+    "lines": "dev"
   },
   "Trash_C": {
     "friendly": "Trash",
     "icon": "trash",
-    "layer": "extra",
+    "layer": "dev",
     "nospoiler": null,
-    "lines": "extra"
+    "lines": "dev"
   },
   "MatchBox_C": {
     "friendly": "Match Box",
     "icon": "matchbox",
     "layer": "extra",
     "nospoiler": null,
-    "lines": "extra"
+    "lines": "dev"
   },
   "PhysicalCoin_C": {
     "friendly": "Physical Coin",
     "icon": "coin",
     "layer": "coin",
     "nospoiler": null,
-    "lines": "extra"
+    "lines": "dev"
   },
   "RedGuy_C": {
     "friendly": "Red Guy",
     "icon": "guy:v",
-    "layer": "extra",
+    "layer": "dev",
     "nospoiler": null,
-    "lines": "extra"
+    "lines": "dev"
   },
   "Waldo:RedGuy_C": {
     "friendly": "Waldo",
@@ -1781,7 +1767,7 @@
     "icon": "map",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra",
+    "lines": "dev",
     "friendly_key": "B9EF88FE463AA4E25348E7AB79CCBD02",
     "description": "Drawing dicks on the map is strictly prohibited!",
     "description_key": "681E6A7E457814BD6F3411866C00F6E9"
@@ -1789,30 +1775,30 @@
   "MinecraftBrick_C": {
     "friendly": "Minecraft Brick",
     "icon": "brick:v",
-    "layer": "extra",
+    "layer": "dev",
     "nospoiler": null,
-    "lines": "extra"
+    "lines": "dev"
   },
   "MinecraftBrickRespawnable_C": {
     "friendly": "Minecraft Brick",
     "icon": "brick:v",
-    "layer": "extra",
+    "layer": "dev",
     "nospoiler": null,
-    "lines": "extra"
+    "lines": "dev"
   },
   "SecretFound_C": {
     "friendly": "Secret Found",
     "icon": "secret:24",
     "layer": "extra",
     "nospoiler": null,
-    "lines": "extra"
+    "lines": "dev"
   },
   "CarryPipe_C": {
     "friendly": "Carry Pipe",
     "icon": "pipe",
-    "layer": "extra",
+    "layer": "dev",
     "nospoiler": null,
-    "lines": "extra"
+    "lines": "dev"
   },
   "PipeCap_C": {
     "friendly": "Pipe Cap",
@@ -1852,78 +1838,78 @@
   "TriggerVolume_C": {
     "friendly": "Trigger Volume",
     "icon": "trigger_volume",
-    "layer": "extra",
+    "layer": "dev",
     "nospoiler": null,
-    "lines": "extra"
+    "lines": "dev"
   },
   "BP_TriggerVolume_C": {
     "friendly": "Trigger Volume",
     "icon": "trigger_volume",
-    "layer": "extra",
+    "layer": "dev",
     "nospoiler": null,
-    "lines": "extra"
+    "lines": "dev"
   },
   "Lighttrigger_C": {
     "friendly": "Lighttrigger",
     "icon": "trigger_light",
-    "layer": "extra",
+    "layer": "dev",
     "nospoiler": null,
-    "lines": "extra"
+    "lines": "dev"
   },
   "Lighttrigger2_C": {
     "friendly": "Lighttrigger 2",
     "icon": "trigger_light",
-    "layer": "extra",
+    "layer": "dev",
     "nospoiler": null,
-    "lines": "extra"
+    "lines": "dev"
   },
   "BP_Area2_Uncloged_Quest_C": {
     "friendly": "Valve Quest",
     "icon": "chest_coin",
     "layer": "coin",
     "nospoiler": "closedChest",
-    "lines": "extra"
+    "lines": "dev"
   },
   "BathGuyVolume_C": {
     "friendly": "Too Hot Quest",
     "icon": "health",
     "layer": "upgrades",
     "nospoiler": "collectable",
-    "lines": "extra"
+    "lines": "dev"
   },
   "BP_A3_RobBoss_C": {
     "friendly": "Rob Quest",
     "icon": "chest",
     "layer": null,
     "nospoiler": "closedChest",
-    "lines": "extra"
+    "lines": "dev"
   },
   "BP_Area2_FatGuyQuest_C": {
     "friendly": "BBQ Quest",
     "icon": "meat",
     "layer": "coin",
     "nospoiler": null,
-    "lines": "extra"
+    "lines": "dev"
   },
   "BP_ParanoidQuest_C": {
     "friendly": "Candle Quest",
     "icon": "health",
     "layer": "upgrades",
     "nospoiler": "collectable",
-    "lines": "extra"
+    "lines": "dev"
   },
   "BP_A3_BBQ_C": {
     "friendly": "BBQ Quest",
     "icon": "meat",
     "layer": "coin",
     "nospoiler": null,
-    "lines": "extra"
+    "lines": "dev"
   },
   "BP_RebuildSlum_C": {
     "friendly": "Rebuild Slum",
     "icon": "pickaxe_cooldown",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra"
+    "lines": "dev"
   }
 }

@@ -758,7 +758,7 @@ function loadMap(id) {
               lineWidth: ltp.linewidth ? ltp.linewidth : 5,
               shadowWidth: ltp.shadowwidth ? ltp.shadowwidth : 3,
               offset: ltp.offset ? ltp.offset : 0,
-              endOffset: ltp.endOffset ? ltp.endOffset : 0,
+              endOffset: ltp.endoffset ? ltp.endoffset : 0,
               color: ltp.stroke ? ltp.stroke : '#000',
               fillColor: ltp.fill ? ltp.fill : '#FFF',
             }

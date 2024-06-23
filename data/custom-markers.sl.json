@@ -11,17 +11,17 @@
   },
   {
     "name": "BarrelClosed17",
-    "type": "EX:BarrelRed_C",
+    "type": "Hide:BarrelRed_C",
     "area": "Map"
   },
   {
     "name": "BarrelClosed2_2",
-    "type": "EX:BarrelRed_C",
+    "type": "Hide:BarrelRed_C",
     "area": "Map"
   },
   {
     "name": "BarrelColor_2",
-    "type": "EX:BarrelRed_C",
+    "type": "Hide:BarrelRed_C",
     "area": "Map"
   },
   {
@@ -503,6 +503,31 @@
   {
     "name": "PipesystemNew53",
     "type": "FT:Pipesystem_C",
+    "area": "Map"
+  },
+  {
+    "name": "MetalBall3",
+    "type": "Anvil_C",
+    "area": "Map"
+  },
+  {
+    "name": "MetalBall4",
+    "type": "Anvil_C",
+    "area": "Map"
+  },
+  {
+    "name": "MetalBall5",
+    "type": "Anvil_C",
+    "area": "Map"
+  },
+  {
+    "name": "MetalBall6",
+    "type": "Anvil_C",
+    "area": "Map"
+  },
+  {
+    "name": "MetalBall2_2186",
+    "type": "Anvil_C",
     "area": "Map"
   }
 ]
