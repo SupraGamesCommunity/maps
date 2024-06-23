@@ -119,6 +119,11 @@ L.ArrowLine = L.Polygon.extend({
         // Get length of arrow/line and the vector pointing forward along it
         const lineVec = endPt.subtract(startPt);
         const lineLen = _vecLength(lineVec);
+
+        if(lineLen < 0.0001){
+            return [[start], [end]];
+        }
+
         const fwd = lineVec.divideBy(lineLen);
 
         // Get scale to apply to elements of line based on zoom
