@@ -7,12 +7,6 @@
       "description_keySIU": "3283A8C74FB7902A032316B71C678082",
       "description_keySL1": "E5D2B6C24991B39DB6313DB926CD0CCA"
     },
-    "BP_A3_StrengthQuest_C_Body": {
-      "friendly": "Strength",
-      "friendly_key": "",
-      "description": "",
-      "description_key": ""
-    },
     "BP_DoubleHealthLoot_C": {
       "friendlySL1": "Double Health",
       "friendly_keySL1": "A89D939B4351B11D3C4E23A9805F962A",
@@ -29,14 +23,16 @@
     "BP_CookableMeat_C": {
       "friendly": "Cookable Meat",
       "friendly_key": "",
-      "description": "",
-      "description_key": ""
+      "description": "Where did this meat come from? It really makes you think.",
+      "description_key": "72FBAFCD487003662D5C40B3D8B9BD3F",
+                        "notes for dev": "this item has no description but this string works?"
     },
     "BP_MonsterChest_C": {
       "friendly": "Monster Chest",
       "friendly_key": "",
-      "description": "",
-      "description_key": ""
+      "description": "There was a freaky monster in there, man!",
+      "description_key": "23AF440F4C1F27100BFE5FB64B0F5155",
+                        "notes for dev": "this item has no description but this string works?"
     },
     "BP_Purchase_Crouch_C": {
       "friendly": "Knee bending",
@@ -44,35 +40,33 @@
       "description": "Bend your knees",
       "description_key": "BA90BA004E008AD42AA4848B2971A119"
     },
-    "BarrelColor_C": {
-      "friendly": "Gold Barrel",
-      "friendly_key": "",
-      "description": "",
-      "description_key": ""
-    },
     "BarrelRed_C": {
       "friendly": "Red Barrel",
       "friendly_key": "",
-      "description": "",
-      "description_key": ""
+      "description": "There is a barrel. Try to get it to the shop keeper for new upgrades!",
+      "description_key": "AB1A0C214D30F3A748159488B0945122",
+                        "notes for dev": "this item has no description but this string works?"
     },
     "BarrelClosed_Blueprint_C": {
       "friendly": "Gold Barrel",
       "friendly_key": "",
-      "description": "",
-      "description_key": ""
+      "description": "Bring golden barrels to the shop for powerups!",
+      "description_key": "DC11792742BC34F99E0E6B90D0C4FA5F",
+                        "notes for dev": "this item has no description but this string works?"
     },
     "Bones_C": {
       "friendly": "Bones",
       "friendly_key": "",
-      "description": "",
-      "description_key": ""
+      "description": "I needed those bones to fake my death! Now I'm screwed!",
+      "description_key": "B9BD805C49C44FD036A1D9B5649709A3",
+                        "notes for dev": "this item has no description but this string works?"
     },
     "CrashEnemySpawner_C": {
-      "friendly": "Skeleton",
+      "friendly": "Monster",
       "friendly_key": "",
-      "description": "",
-      "description_key": ""
+      "description": "First kill those monsters and pick up their bones, so they don't respawn!",
+      "description_key": "9F913BFA4BA617FEFADFF5A79EB2E915",
+                        "notes for dev": "this item has no description but this string works?"
     },
     "BuyArmor1_C": {
       "friendly": "Armor",
@@ -321,8 +315,8 @@
     "BuyJumpHeightPlus_C": {
       "friendly": "Jump Height Plus",
       "friendly_key": "6B39BBA544178D8791FE299DB1B72150",
-      "description": "",
-      "description_key": ""
+      "description": "You can jump much higher",
+      "description_key": "C9990452471FA1B6CCD422A8E595300D"
     },
     "BuyMoreLoot_C": {
       "friendly": "More Loot",
@@ -372,17 +366,10 @@
       "description": "Run 50% faster",
       "description_key": "02602F8447F444759944AFA7C96465EB"
     },
-    "BuySmashdownDamage+100_C": {
-      "friendly": "Stomp Damage +100%",
-      "friendly_key": "EE7DD0064ED3036E48003F86A5BEB539",
-      "description": "",
-      "description_key": ""
-    },
     "BuySmashdownDamage+1_C": {
       "friendly": "Stomp Damage +1",
       "friendly_key": "642C0B0E44D028AD9530E0A9E4B31AB4",
-      "description": "",
-      "description_key": ""
+      "notes for dev": "this item has no description and I can't find one that works, it doesn't need one anyway"
     },
     "BuySmashdownDamage+33_C": {
       "friendly": "Stomp Damage +33%",
@@ -393,14 +380,7 @@
     "BuySmashdownDamage+3_C": {
       "friendly": "Stomp Damage +3",
       "friendly_key": "1BFF14774CE2E0092F08EBAB3BAB431A",
-      "description": "",
-      "description_key": ""
-    },
-    "BuySmashdownRadius+5_C": {
-      "friendly": "Stomp Radius +5m",
-      "friendly_key": "B1719A254CE02025EF93958E38475BB1",
-      "description": "",
-      "description_key": ""
+                        "notes for dev": "this item has no description and I can't find one that works, it doesn't need one anyway"
     },
     "BuySmashdownRadius+_C": {
       "friendly": "Stomp Radius +50cm",
@@ -441,26 +421,23 @@
     "BuySwordDamage+02_C": {
       "friendly": "Sword Damage +2",
       "friendly_key": "C968ED73453A46FF729281AD74A7DBC3",
-      "description": "",
-      "description_key": ""
+                        "notes for dev": "this item has no description and I can't find one that works, it doesn't need one anyway"
     },
     "BuySwordDamage+1_C": {
       "friendly": "Sword Damage +1",
       "friendly_key": "7B2C1457482033F69320C6BD853007E2",
-      "description": "",
-      "description_key": ""
+                        "notes for dev": "this item has no description and I can't find one that works, it doesn't need one anyway"
     },
     "BuySwordDamage+3_C": {
       "friendly": "Sword Damage +3",
       "friendly_key": "D003BED9407359DFA6613189CE011353",
-      "description": "",
-      "description_key": ""
+                        "notes for dev": "this item has no description and I can't find one that works, it doesn't need one anyway"
     },
     "BuySwordDoorKnocker_C": {
       "friendly": "Door Knocker",
       "friendly_key": "A5BB96AB4C503EFA19049AB50F76AD6E",
-      "description": "",
-      "description_key": ""
+      "description": "Eventually opens closed doors.",
+      "description_key": "3FAEDC2B44A9463FD70C66A94506DA31"
     },
     "BuySwordHoly1_C": {
       "friendly": "Holy Sword",
@@ -515,14 +492,14 @@
     "BuyTranslocatorModule_C": {
       "friendly": "Teleportation Module",
       "friendly_key": "C9F3E82D4AA8E63743C844AB2731F9F5",
-      "description": "",
-      "description_key": ""
+      "description": "You can now teleport yourself to the ball.",
+      "description_key": "A40486FE4E345754EF09D9B803D8006B"
     },
     "BuyTranslocatorWeight_C": {
       "friendly": "Weight x3",
       "friendly_key": "82AD5DCF41360EDB1AF075B4F4D07A2C",
-      "description": "",
-      "description_key": ""
+      "description": "Makes the ball three times as heavy",
+      "description_key": "21D27E9D40A409762DB4CDB30BF31D5D"
     },
     "BuyTranslocator_C": {
       "friendly": "Translocator",
@@ -555,6 +532,12 @@
       "description_key": "FA08A26E4497FE87C707759170A73873"
     },
     "Chest_C": {
+      "friendly": "Chest",
+      "friendly_key": "",
+      "description": "",
+      "description_key": ""
+    },
+    "Chest_C": {
       "friendly": "Coin Chest",
       "friendly_key": "",
       "description": "",
@@ -563,32 +546,37 @@
     "CoinBig_C": {
       "friendly": "Big Coin",
       "friendly_key": "",
-      "description": "",
-      "description_key": ""
+      "description": "Give me more money!",
+      "description_key": "7CAC8391412558860821F688A217417F",
+                        "notes for dev": "this item has no description but this string works?"
     },
     "CoinRed_C": {
       "friendly": "Red Coin",
       "friendly_key": "",
-      "description": "",
-      "description_key": ""
+      "description": "You don't happen to have any more red coins, do you?",
+      "description_key": "134E18D74F2467FD31026DAA070FFE23",
+                        "notes for dev": "this item has no description but this string works?"
     },
     "Coin_C": {
       "friendly": "Coin",
       "friendly_key": "C3F51C364BA4EB24648FB2B32EDA3A04",
-      "description": "",
-      "description_key": ""
+      "description": "Give money!",
+      "description_key": "878190E24F32D791017C9992BB200C68",
+                        "notes for dev": "this item has no description but this string works?"
     },
     "_CoinStack_C": {
       "friendly": "Coin Stack",
       "friendly_key": "",
-      "description": "",
-      "description_key": ""
+      "description": "So much choice, so much money!",
+      "description_key": "691B5042411F948ED1F700AE20C71FEE",
+                        "notes for dev": "this item has no description but this string works?"
     },
     "DestroyablePots_C": {
       "friendly": "Destroyable Pots",
       "friendly_key": "",
-      "description": "",
-      "description_key": ""
+      "description": "Please not my pots...",
+      "description_key": "59B3FB1F40D23BF0ECB40880EFF28CE3",
+                        "notes for dev": "this item has no description but this string works?"
     },
     "GoldBlock_C": {
       "friendly": "Gold Block",
@@ -599,50 +587,9 @@
     "Jumppad_C": {
       "friendly": "Jumppad",
       "friendly_key": "",
-      "description": "",
-      "description_key": ""
-    },
-    "LotsOfCoins1_C": {
-      "friendly": "Lots Of Coins 1",
-      "friendly_key": "",
-      "description": "",
-      "description_key": ""
-    },
-    "LotsOfCoins10_C": {
-      "friendly": "Lots Of Coins 10",
-      "friendly_key": "",
-      "description": "",
-      "description_key": ""
-    },
-    "LotsOfCoins15_C": {
-      "friendly": "Lots Of Coins 15",
-      "friendly_key": "",
-      "description": "",
-      "description_key": ""
-    },
-    "LotsOfCoins30_C": {
-      "friendly": "Lots Of Coins 30",
-      "friendly_key": "",
-      "description": "",
-      "description_key": ""
-    },
-    "LotsOfCoins50_C": {
-      "friendly": "Lots Of Coins 50",
-      "friendly_key": "",
-      "description": "",
-      "description_key": ""
-    },
-    "LotsOfCoins5_C": {
-      "friendly": "Lots Of Coins 5",
-      "friendly_key": "",
-      "description": "",
-      "description_key": ""
-    },
-    "LotsofCoins200_C": {
-      "friendly": "Lotsof Coins 200",
-      "friendly_key": "",
-      "description": "",
-      "description_key": ""
+      "description": "Orange jumppads take mid air control away from you. Blue ones let you steer, jump or stomp.",
+      "description_key": "5A48FB83438C1DA2B9C68EB1D6A23492",
+                        "notes for dev": "this item has no description but this string works?, make sure it says Red instead of Orange in english at least.."
     },
     "MinecraftBrick_C": {
       "friendly": "Minecraft Brick",
@@ -656,41 +603,34 @@
       "description": "",
       "description_key": ""
     },
-    "PlayerStart": {
-      "friendly": "Player Start",
-      "friendly_key": "",
-      "description": "",
-      "description_key": ""
-    },
-    "_PlayerPosition": {
-      "friendly": "Player Position",
-      "friendly_key": "",
-      "description": "",
-      "description_key": ""
-    },
     "Purchase_DiamondPickaxe_C": {
       "friendly": "Diamond Pickaxe",
       "friendly_key": "253DB7A648D0518A5E63328E9B558AD1",
-      "description": "",
-      "description_key": ""
+      "description": "With each new pickaxe you can mine all kinds of new materials!",
+      "description_key": "C61C3CF74EBD08D7890E9181E57C2A55",
+                        "notes for dev": "this item has no description but this string works?"
+
     },
     "Purchase_IronPickaxe_C": {
       "friendly": "Iron Pickaxe",
       "friendly_key": "0EE7EB444F30FDA3ABE3F78FE24341C6",
-      "description": "",
-      "description_key": ""
+      "description": "With each new pickaxe you can mine all kinds of new materials!",
+      "description_key": "C61C3CF74EBD08D7890E9181E57C2A55",
+                        "notes for dev": "this item has no description but this string works?"
     },
     "Purchase_StonePickaxe_C": {
       "friendly": "Stone Pickaxe",
       "friendly_key": "8B9D677B4857D9F97B40EF92E4617582",
-      "description": "",
-      "description_key": ""
+      "description": "With each new pickaxe you can mine all kinds of new materials!",
+      "description_key": "C61C3CF74EBD08D7890E9181E57C2A55",
+                        "notes for dev": "this item has no description but this string works?"
     },
     "Scrap_C": {
       "friendly": "Scrap",
       "friendly_key": "",
-      "description": "",
-      "description_key": ""
+      "description": "I knew you couldn't resist a piece of scrap!",
+      "description_key": "59E03CF14552E9CD02D26F98EFCFE9B3",
+                        "notes for dev": "this item has no description but this string works?"
     },
     "UpgradeHappiness_C": {
       "friendly": "Happiness",
@@ -713,8 +653,9 @@
     "EnemySpawn3_C": {
       "friendly": "Volcano",
       "friendly_key": "",
-      "description": "",
-      "description_key": ""
+      "description": "Oh no, the volcano has errupted!",
+      "description_key": "0D97FFAC438DA451CD42E98D1F60B85D",
+                        "notes for dev": "this item has no description but this string works? correct erupted"
     },
     "Shell_C": {
       "friendly": "Shell",
@@ -737,49 +678,56 @@
     "Pipesystem_C": {
       "friendly": "Pipe",
       "friendly_key": "",
-      "description": "",
-      "description_key": ""
+      "description": "These pipes are shortcuts back to where you've been, if you want to explore more.",
+      "description_key": "CFAC9D6342F08C56ADF66896B960AEE3",
+                        "notes for dev": "this item has no description but this string works?"
     },
     "BP_Area2_Uncloged_Quest_C": {
       "friendly": "Valve Quest",
       "friendly_key": "",
-      "description": "",
-      "description_key": ""
-    },
+      "description": "There's a reward for you if you turn all the extra valves.",
+      "description_key": "EE7E52934004CFE59843808B33315549",
+                        "notes for dev": "this item has no description but this string works?"
+},
     "BathGuyVolume_C": {
-      "friendly": "Too Hot Quest",
-      "friendly_key": "",
-      "description": "",
-      "description_key": ""
+      "friendly": "TOO HOT!!!",
+      "friendly_key": "37455FB1476916E6E10583A78B3E41EE",
+      "description": "Have you any idea how a hot pool works? You can't just drop any old hot thing in it.",
+      "description_key": "D807E31349E0D7B361EAAD81070F8C89",
+                        "notes for dev": "this item has no description but this string works?"
     },
     "BP_A3_RobBoss_C": {
-      "friendly": "Rob Quest",
-      "friendly_key": "",
-      "description": "",
-      "description_key": ""
+      "friendly": "hello, my name is bob",
+      "friendly_key": "FFF302F74DC5751B3318C580E1C640EF",
+      "description": "How y'all doing today? i'm just gonna make a painting full of joy for you.",
+      "description_key": "1AF7D06F45C49A6F32BDA899E2EA03C9",
+                        "notes for dev": "this item has no description but this string works? capitalise name and i in I'm"
     },
     "BP_Area2_FatGuyQuest_C": {
-      "friendly": "BBQ Quest",
-      "friendly_key": "",
-      "description": "",
-      "description_key": ""
+      "friendly": "BBQ help needed!",
+      "friendly_key": "06D76A2A4DD2B89934061ABFBC1C64DC",
+      "description": "Where did this meat come from? It really makes you think.",
+      "description_key": "72FBAFCD487003662D5C40B3D8B9BD3F",
+                        "notes for dev": "this item has no description but this string works?"
     },
     "BP_ParanoidQuest_C": {
       "friendly": "Candle Quest",
       "friendly_key": "",
-      "description": "",
-      "description_key": ""
+      "description": "Help me light the four candles around the cage - we must overthrow the shallow state!",
+      "description_key": "F04BDA604D0D1F7FDCC54AB671B4C4B3"
     },
     "BP_A3_BBQ_C": {
-      "friendly": "BBQ Quest",
-      "friendly_key": "",
-      "description": "",
-      "description_key": ""
+      "friendly": "BBQ help needed!",
+      "friendly_key": "06D76A2A4DD2B89934061ABFBC1C64DC",
+      "description": "Where did this meat come from? It really makes you think.",
+      "description_key": "72FBAFCD487003662D5C40B3D8B9BD3F",
+                        "notes for dev": "this item has no description but this string works?"
     },
     "BP_RebuildSlum_C": {
-      "friendly": "Rebuild Slum",
-      "friendly_key": "",
-      "description": "",
-      "description_key": ""
+      "friendly": "Repair Slums",
+      "friendly_key": "B8E93932455A57D9B0E3578F76A638B7",
+      "description": "Can you help us rebuild our town?",
+      "description_key": "947D3A8E43FA45732B77529C63A65345",
+                        "notes for dev": "this item has no description but this string works?"
     }
   }
