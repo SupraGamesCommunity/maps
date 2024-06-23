@@ -21,9 +21,9 @@
             "siu"
         ]
     },
-    "spoilerfree": {
+    "noSpoiler": {
         "type": "markers",
-        "name": "Spoilers",
+        "name": "No Spoilers",
         "name_key": "",
         "defaultIcon": "question_mark",
         "defaultActive": true,
