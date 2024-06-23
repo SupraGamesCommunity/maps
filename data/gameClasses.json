@@ -4,7 +4,7 @@
     "icon": "strong",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra"
+    "lines": "upgrades"
   },
   "BP_BoneDetector_C": {
     "friendly": "Bone Detector",
@@ -238,37 +238,37 @@
   "BarrelColor_C": {
     "friendly": "Gold Barrel",
     "icon": "barrel_gold",
-    "layer": "misc",
-    "nospoiler": "collectable",
+    "layer": "extra",
+    "nospoiler": "extra",
     "lines": "extra"
   },
   "BarrelRed_C": {
     "friendly": "Red Barrel",
     "icon": "barrel_red",
-    "layer": "misc",
+    "layer": "quest",
     "nospoiler": "collectable",
-    "lines": "extra"
+    "lines": "quest"
   },
   "EX:BarrelColor_C": {
     "friendly": "Gold Barrel",
     "icon": "barrel_gold",
-    "layer": "misc",
-    "nospoiler": "collectable",
+    "layer": "extra",
+    "nospoiler": "extra",
     "lines": "extra"
   },
   "EX:BarrelRed_C": {
     "friendly": "Red Barrel",
     "icon": "barrel_red",
-    "layer": "misc",
-    "nospoiler": "collectable",
+    "layer": "extra",
+    "nospoiler": "extra",
     "lines": "extra"
   },
   "BarrelClosed_Blueprint_C": {
     "friendly": "Gold Barrel",
     "icon": "barrel_gold",
-    "layer": "misc",
+    "layer": "quest",
     "nospoiler": "collectable",
-    "lines": "extra"
+    "lines": "quest"
   },
   "Bones_C": {
     "friendly": "Bones",
@@ -1373,9 +1373,9 @@
   "Shell_C": {
     "friendly": "Shell",
     "icon": "shell",
-    "layer": "misc",
+    "layer": "quest",
     "nospoiler": "collectable",
-    "lines": "extra"
+    "lines": "quest"
   },
   "DeadHero_C": {
     "friendly": "Dead Hero",
@@ -1401,7 +1401,7 @@
   "Juicer_C": {
     "friendly": "Juicer",
     "icon": "bucket:v",
-    "layer": "upgrades",
+    "layer": "quest",
     "nospoiler": "collectable",
     "lines": "extra"
   },
