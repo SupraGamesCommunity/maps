@@ -13,6 +13,18 @@
 * Game maps and items extracted from game data files see [/scripts](https://github.com/SupraGamesCommunity/maps/tree/main/scripts) directory)
   
 ## How to Use & Documentation
+### Keyboard shortcuts
+Please note that these keyboard shortcuts are disabled when in build mode
+- `WASD` Pan up/down/left/right
+- `TG` Zoom in/out
+- `Ctrl+F` - Search
+- `F` - Toggle full screen
+- `R` - Move to player marker
+- `Alt+R` - Open file dialog for loading a save
+- `1` - Load sl map
+- `2` - Load SLC map
+- `3` - Load SIU map
+
 ### Map linking URL
 The current map can be found here:
 - [https://supragamescommunity.github.io/maps](https://supragamescommunity.github.io/maps)
