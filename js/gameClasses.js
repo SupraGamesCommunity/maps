@@ -118,7 +118,7 @@ const gameClasses = {
     'BuySmashdownRadius+5_C'                  : new GameClass('Stomp Radius +5',                  'stomp_damage',             'upgrades', 'shop'),
     'BuySmashdownRadius+_C'                   : new GameClass('Stomp Radius +50cm',               'stomp_damage',             'upgrades', 'shop'),
     'BuySmashdown_C'                          : new GameClass('Stomp Shoes',                      'shoes',                    'upgrades', 'shop'),
-    'BuySpeedx15_C'                           : new GameClass('Speed x15',                        'speed',                    'upgrades', 'shop'),
+    'BuySpeedx15_C'                           : new GameClass('Speed x 1.5',                      'speed',                    'upgrades', 'shop'),
     'BuySpeedx2_C'                            : new GameClass('Speed x2',                         'speed',                    'upgrades', 'shop'),
     'BuyStats_C'                              : new GameClass('Stats',                            'loot',                     'upgrades', 'shop'),
     'BuySword2_C'                             : new GameClass('Supra Sword',                      'sword_red',                'upgrades', 'shop'),
