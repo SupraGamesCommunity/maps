@@ -21,6 +21,18 @@
             "siu"
         ]
     },
+    "spoilerfree": {
+        "type": "markers",
+        "name": "Spoilers",
+        "name_key": "",
+        "defaultIcon": "question_mark",
+        "defaultActive": true,
+        "games": [
+            "sl",
+            "slc",
+            "siu"
+        ]
+    },
     "closedChest": {
         "type": "markers",
         "name": "Chests",
@@ -48,6 +60,18 @@
     "collectable": {
         "type": "markers",
         "name": "Collectables",
+        "name_key": "",
+        "defaultIcon": "question_mark",
+        "defaultActive": true,
+        "games": [
+            "sl",
+            "slc",
+            "siu"
+        ]
+    },
+    "quest": {
+        "type": "markers",
+        "name": "Quests",
         "name_key": "",
         "defaultIcon": "question_mark",
         "defaultActive": true,
