@@ -28,6 +28,7 @@ let settings;           // Reference to localData[mapId]
 let mapCenter;
 let mapParam = {};      // Parameters extracted from map URL
 let objects = {};
+let markers = {};
 let coin2stack = {};    // Map from coin name to coin stack
 let searchControl;      // Leaflet control for searching
 
@@ -615,6 +616,7 @@ function loadMap(id) {
       .then(([j, cmjyt, cmj]) => {
         let titles = {};
         objects = {};
+        markers = {};
         coin2stack = {};
 
         // Build a look up table from alt id to objects 
@@ -709,10 +711,10 @@ function loadMap(id) {
             const layer = nospoiler
             const layerConfig = layerConfigs.get(layer);
             const [icon, size] = decodeIconName(layerConfig.defaultIcon || defaultIcon, mapId, o.variant);
-            const zIndexOffset = 10 * layerConfig.index;
 
-            L.marker(start, {icon: getIcon(icon, size), title: title, zIndexOffset: zIndexOffset, alt: alt, o:o, layerId:layer})
+            const marker = L.marker(start, {icon: getIcon(icon, size), title: title, alt: alt, o:o, layerId:layer})
               .addTo(layers[layer]).bindPopup(text).on('popupopen', onPopupOpen).on('contextmenu', onContextMenu);
+            markers[alt] = markers[alt] ? [...markers[alt], marker] : [marker];
           }
   
           // If there is a normal layer specified then add it to that
@@ -721,11 +723,11 @@ function loadMap(id) {
             const layer = c.layer
             const layerConfig = layerConfigs.get(layer);
             const [icon, size] = decodeIconName((o.icon || c.icon || layerConfig.defaultIcon || defaultIcon), mapId, o.variant);
-            const zIndexOffset = 10 * layerConfig.index;
 
-            L.marker(start, {icon: getIcon(icon, size), title: title, zIndexOffset: zIndexOffset, alt: alt, o:o, layerId:layer })
+            const marker = L.marker(start, {icon: getIcon(icon, size), title: title, alt: alt, o:o, layerId:layer })
               .addTo(layers[layer]).bindPopup(text).on('popupopen', onPopupOpen).on('contextmenu', onContextMenu);
-          }
+            markers[alt] = markers[alt] ? [...markers[alt], marker] : [marker];
+            }
 
           // Deal with layer for whatever it spawns. Normally things that spawn something don't have a spoiler layer
           if(sc && sc.layer && enabledLayers[sc.layer])
@@ -733,15 +735,14 @@ function loadMap(id) {
             const layer = sc.layer
             const layerConfig = layerConfigs.get(layer);
             const [icon, size] = decodeIconName((o.icon || sc.icon || layerConfig.defaultIcon || defaultIcon), mapId, o.variant);
-            const zIndexOffset = 10 * layerConfig.index;
 
-            L.marker(start, {icon: getIcon(icon, size), title: title, zIndexOffset: zIndexOffset, alt: alt, o:o, layerId:layer})
+            const marker = L.marker(start, {icon: getIcon(icon, size), title: title, alt: alt, o:o, layerId:layer})
               .addTo(layers[layer]).bindPopup(text).on('popupopen', onPopupOpen).on('contextmenu', onContextMenu);
-          }
+            markers[alt] = markers[alt] ? [...markers[alt], marker] : [marker];
+            }
 
           // Add a polyline to the appropriate layer
           if(c.lines && enabledLayers[c.lines] && o.linetype) {
-            const layerConfig = layerConfigs.get(c.lines);
             let endxys = o.linetype != 'trigger' ? [o.target] : o.targets;
 
             // need to add title as a single space (leaflet search issue), but not the full title so it doesn't appear in search
@@ -760,7 +761,6 @@ function loadMap(id) {
               endOffset: ltp.endOffset ? ltp.endOffset : 0,
               color: ltp.stroke ? ltp.stroke : '#000',
               fillColor: ltp.fill ? ltp.fill : '#FFF',
-              zIndexOffset: 10 * layerConfig.index,
             }
             if(o.twoway){
               options.arrow = 'none';
@@ -787,7 +787,7 @@ function loadMap(id) {
               else {
                 settings.playerPosition = playerStart;
               }
-              playerMarker = L.marker([t.lat, t.lng], {icon: getIcon(icon,size), zIndexOffset: 0, draggable: false, title: title, alt:'playerMarker', o:o, layerId:pc.layer})
+              playerMarker = L.marker([t.lat, t.lng], {icon: getIcon(icon,size), zIndexOffset: -100000, draggable: false, title: title, alt:'playerMarker', o:o, layerId:pc.layer})
                 .bindPopup().on('popupopen', onPopupOpen).addTo(layers[pc.layer]);
             }
           } // end of player marker
@@ -980,11 +980,7 @@ function resizeIcons(force) {
 }
   
 window.markItemFound = function (id, found=true, save=true) {
-  if(id == "Map:Jumppad85")
-    console.log("This one");
   var divs = document.querySelectorAll('*[alt="' + id + '"]');
-  if(divs.length > 2)
-    console.log("Many");
   [].forEach.call(divs, function(div) {
     if (found) {
       div.classList.add('found');
@@ -992,7 +988,11 @@ window.markItemFound = function (id, found=true, save=true) {
       div.classList.remove('found');
     }
   });
-  
+
+  for(let m of markers[id]){
+    m.setZIndexOffset(found ? -100000 : 0);
+  }
+
   if (found) {
     settings.markedItems[id] = true;
   } else {
@@ -1010,6 +1010,11 @@ function markItems() {
     [].forEach.call(divs, function(div) {
       div.classList.add('found');
     });
+    if(markers[id]){
+      for(let m of markers[id]){
+        m.setZIndexOffset(-100000);
+      }
+    }
   }
 
   // filter by settings.searchText. caching is unreliable, just perform a full search here
@@ -1040,7 +1045,12 @@ function unmarkItems() {
     [].forEach.call(divs, function(div) {
       div.classList.remove('found');
     });
+    for(let m of markers[id]){
+      m.setZIndexOffset(0);
+    }  
   }
+
+
   settings.markedItems={};
   settings.coinsFound={};
   settings.playerPosition = playerStart;
