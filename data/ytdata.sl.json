@@ -44,23 +44,23 @@
   {
     "name": "BarrelRed2",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "Ve5OlE1NVO8",
+    "yt_start": "212",
+    "yt_end": "343"
   },
   {
     "name": "BarrelRed3",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "Ve5OlE1NVO8",
+    "yt_start": "710",
+    "yt_end": "774"
   },
   {
     "name": "BarrelRed4",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "Ve5OlE1NVO8",
+    "yt_start": "595",
+    "yt_end": "651"
   },
   {
     "name": "BarrelRed5",
@@ -79,9 +79,9 @@
   {
     "name": "BarrelRed_2",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "Ve5OlE1NVO8",
+    "yt_start": "489",
+    "yt_end": "523"
   },
   {
     "name": "Shell13_3781",
@@ -128,23 +128,23 @@
   {
     "name": "BuyBelt2_2",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "ba1kCEgaKuA",
+    "yt_start": "1108",
+    "yt_end": "1115"
   },
   {
     "name": "BuyChestDetector_30",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "rkyWN02mMyY",
+    "yt_start": "918",
+    "yt_end": "945"
   },
   {
     "name": "BuyDoubleJump2",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "ba1kCEgaKuA",
+    "yt_start": "579",
+    "yt_end": "590"
   },
   {
     "name": "BuyDoubleJump_786",
@@ -156,16 +156,16 @@
   {
     "name": "BuyForceBeamGold",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "ba1kCEgaKuA",
+    "yt_start": "362",
+    "yt_end": "368"
   },
   {
     "name": "BuyForceBlock3",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "ba1kCEgaKuA",
+    "yt_start": "763",
+    "yt_end": "769"
   },
   {
     "name": "BuyForceBlock_695",
@@ -177,9 +177,9 @@
   {
     "name": "BuyGun2_2",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "ba1kCEgaKuA",
+    "yt_start": "1010",
+    "yt_end": "1017"
   },
   {
     "name": "BuyGunAlt_478",
@@ -203,18 +203,32 @@
     "yt_end": "1231"
   },
   {
+    "name": "BuyGunSpeedx2_436",
+    "area": "Map",
+    "yt_video": "Ve5OlE1NVO8",
+    "yt_start": "212",
+    "yt_end": "343"
+  },
+  {
+    "name": "BuyGunRefireRate50_506",
+    "area": "Map",
+    "yt_video": "Ve5OlE1NVO8",
+    "yt_start": "489",
+    "yt_end": "523"
+  },
+  {
     "name": "BuyGunCriticalDamageChance3_3189",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "B0KR8f2OPVY",
+    "yt_start": "411",
+    "yt_end": "426"
   },
   {
     "name": "BuyGunCriticalDamageChance4_198",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "IJTvj-8yOTg",
+    "yt_start": "1163",
+    "yt_end": "1182"
   },
   {
     "name": "BuyGunCriticalDamageChance_1426",
@@ -222,6 +236,13 @@
     "yt_video": "yw5fFlcbH0w",
     "yt_start": "500",
     "yt_end": "504"
+  },
+  {
+    "name": "BuyGunDamage+15_1234",
+    "area": "Map",
+    "yt_video": "ba1kCEgaKuA",
+    "yt_start": "58",
+    "yt_end": "65"
   },
   {
     "name": "BuyGunDamage+5_235",
@@ -261,9 +282,16 @@
   {
     "name": "BuySilentFeet_902",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "Ve5OlE1NVO8",
+    "yt_start": "342",
+    "yt_end": "348"
+  },
+  {
+    "name": "BuyHealth+16_457",
+    "area": "Map",
+    "yt_video": "Ve5OlE1NVO8",
+    "yt_start": "595",
+    "yt_end": "651"
   },
   {
     "name": "BuyHealth+17",
@@ -289,9 +317,9 @@
   {
     "name": "BuyHealthRegenMax5_1162",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "IJTvj-8yOTg",
+    "yt_start": "1163",
+    "yt_end": "1182"
   },
   {
     "name": "BuyHealthRegen2_695",
@@ -317,9 +345,9 @@
   {
     "name": "BuySmashdownDamage+33",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "Loos0dyh4FA",
+    "yt_start": "795",
+    "yt_end": "804"
   },
   {
     "name": "BuySpeedx2_206",
@@ -345,9 +373,9 @@
   {
     "name": "BuySwordCriticalDamageChance3_296",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "IJTvj-8yOTg",
+    "yt_start": "1163",
+    "yt_end": "1182"
   },
   {
     "name": "BuySwordCriticalDamageChance_1657",
@@ -380,16 +408,16 @@
   {
     "name": "BuyTranslocator_7",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "sGDdOxpiMGM",
+    "yt_start": "1282",
+    "yt_end": "1328"
   },
   {
     "name": "BuyTripleJump2",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "ba1kCEgaKuA",
+    "yt_start": "579",
+    "yt_end": "590"
   },
   {
     "name": "BuyTripleJump_877",
@@ -422,9 +450,9 @@
   {
     "name": "BuyWalletx17_426",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "IJTvj-8yOTg",
+    "yt_start": "1163",
+    "yt_end": "1182"
   },
   {
     "name": "BuyWallet+50_737",
@@ -458,9 +486,9 @@
   {
     "name": "Chest102_2567",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "Loos0dyh4FA",
+    "yt_start": "78",
+    "yt_end": "126"
   },  
   {
     "name": "Chest103_3711",
@@ -486,9 +514,9 @@
   {
     "name": "Chest106_8060",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "-ycau3eMcaQ?t",
+    "yt_start": "1166",
+    "yt_end": "1227"
   },
   {
     "name": "Chest107_9218",
@@ -507,9 +535,9 @@
   {
     "name": "Chest109",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "rkyWN02mMyY",
+    "yt_start": "1206",
+    "yt_end": "1220"
   },
   {
     "name": "Chest10_1082",
@@ -521,44 +549,44 @@
   {
     "name": "Chest110",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "IJTvj-8yOTg",
+    "yt_start": "778",
+    "yt_end": "814"
   },
   {
     "name": "Chest111_3",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "-ycau3eMcaQ",
+    "yt_start": "1241",
+    "yt_end": "1279"
   },
   {
     "name": "Chest112",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "B0KR8f2OPVY",
+    "yt_start": "83",
+    "yt_end": "115"
   },
   {
     "name": "Chest113",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "B0KR8f2OPVY",
+    "yt_start": "126",
+    "yt_end": "164"
   },
   {
     "name": "Chest114",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "ba1kCEgaKuA",
+    "yt_start": "1050",
+    "yt_end": "1077"
   },
   {
     "name": "Chest115_4",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "Loos0dyh4FA",
+    "yt_start": "577",
+    "yt_end": "701"
   },
   {
     "name": "Chest116",
@@ -570,23 +598,23 @@
   {
     "name": "Chest117_2",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "ba1kCEgaKuA",
+    "yt_start": "565",
+    "yt_end": "575"
   },
   {
     "name": "Chest118_2",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "sGDdOxpiMGM",
+    "yt_start": "990",
+    "yt_end": "1046"
   },
   {
     "name": "Chest119_2",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "sGDdOxpiMGM",
+    "yt_start": "445",
+    "yt_end": "500"
   },
   {
     "name": "Chest11_13130",
@@ -605,44 +633,44 @@
   {
     "name": "Chest121_2",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "rkyWN02mMyY",
+    "yt_start": "14",
+    "yt_end": "67"
   },
   {
     "name": "Chest122_2",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "rkyWN02mMyY",
+    "yt_start": "288",
+    "yt_end": "349"
   },
   {
     "name": "Chest123_5",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "rkyWN02mMyY",
+    "yt_start": "435",
+    "yt_end": "459"
   },
   {
     "name": "Chest124_8",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "rkyWN02mMyY",
+    "yt_start": "98",
+    "yt_end": "130"
   },
   {
     "name": "Chest125_2",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "rkyWN02mMyY",
+    "yt_start": "734",
+    "yt_end": "747"
   },
   {
     "name": "Chest126",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "B0KR8f2OPVY",
+    "yt_start": "922",
+    "yt_end": "952"
   },
   {
     "name": "Chest127_2",
@@ -675,9 +703,9 @@
   {
     "name": "Chest130",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "rkyWN02mMyY",
+    "yt_start": "1959",
+    "yt_end": "1979"
   },
   {
     "name": "Chest131",
@@ -689,51 +717,51 @@
   {
     "name": "Chest132",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "B0KR8f2OPVY",
+    "yt_start": "272",
+    "yt_end": "322"
   },
   {
     "name": "Chest133",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "rkyWN02mMyY",
+    "yt_start": "469",
+    "yt_end": "515"
   },
   {
     "name": "Chest134_13",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "rkyWN02mMyY",
+    "yt_start": "1545",
+    "yt_end": "1578"
   },
   {
     "name": "Chest135",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "-ycau3eMcaQ",
+    "yt_start": "119",
+    "yt_end": "143"
   },
   {
     "name": "Chest136_3",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "rkyWN02mMyY",
+    "yt_start": "1639",
+    "yt_end": "1653"
   },
   {
     "name": "Chest137",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "rkyWN02mMyY",
+    "yt_start": "1713",
+    "yt_end": "1803"
   },
   {
     "name": "Chest138_5",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "rkyWN02mMyY",
+    "yt_start": "992",
+    "yt_end": "1014"
   },
   {
     "name": "Chest139",
@@ -773,30 +801,30 @@
   {
     "name": "Chest143",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "Ve5OlE1NVO8",
+    "yt_start": "390",
+    "yt_end": "436"
   },
   {
     "name": "Chest144",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "-ycau3eMcaQ",
+    "yt_start": "812",
+    "yt_end": "824"
   },
   {
     "name": "Chest145_2",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "7754",
-    "yt_end": ""
+    "yt_video": "-ycau3eMcaQ",
+    "yt_start": "826",
+    "yt_end": "921"
   },
   {
     "name": "Chest146_2",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "sGDdOxpiMGM",
+    "yt_start": "657",
+    "yt_end": "682"
   },
   {
     "name": "Chest147_2",
@@ -829,16 +857,16 @@
   {
     "name": "Chest150",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "ba1kCEgaKuA",
+    "yt_start": "1143",
+    "yt_end": "1189"
   },
   {
     "name": "Chest151_3",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "rkyWN02mMyY",
+    "yt_start": "1491",
+    "yt_end": "1527"
   },
   {
     "name": "Chest152_6",
@@ -864,16 +892,16 @@
   {
     "name": "Chest155_2",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "rkyWN02mMyY",
+    "yt_start": "1317",
+    "yt_end": "1362"
   },
   {
     "name": "Chest156_2",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "-ycau3eMcaQ",
+    "yt_start": "1349",
+    "yt_end": "1387"
   },
   {
     "name": "Chest157",
@@ -913,30 +941,30 @@
   {
     "name": "Chest161_2",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "rkyWN02mMyY",
+    "yt_start": "804",
+    "yt_end": "818"
   },
   {
     "name": "Chest162",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "rkyWN02mMyY",
+    "yt_start": "1232",
+    "yt_end": "1314"
   },
   {
     "name": "Chest163",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "Loos0dyh4FA",
+    "yt_start": "1575",
+    "yt_end": "1589"
   },
   {
     "name": "Chest164",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "rkyWN02mMyY",
+    "yt_start": "1713",
+    "yt_end": "1738"
   },
   {
     "name": "Chest165",
@@ -948,16 +976,16 @@
   {
     "name": "Chest166",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "IJTvj-8yOTg",
+    "yt_start": "264",
+    "yt_end": "272"
   },
   {
     "name": "Chest167",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "B0KR8f2OPVY",
+    "yt_start": "825",
+    "yt_end": "851"
   },
   {
     "name": "Chest168",
@@ -976,9 +1004,9 @@
   {
     "name": "Chest16_5090",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "-ycau3eMcaQ",
+    "yt_start": "150",
+    "yt_end": "183"
   },
   {
     "name": "Chest170",
@@ -1018,9 +1046,9 @@
   {
     "name": "Chest19_6182",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "sGDdOxpiMGM",
+    "yt_start": "148",
+    "yt_end": "165"
   },
   {
     "name": "Chest2",
@@ -1032,9 +1060,9 @@
   {
     "name": "Chest20_9041",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "rkyWN02mMyY",
+    "yt_start": "1317",
+    "yt_end": "1374"
   },
   {
     "name": "Chest21_10208",
@@ -1123,9 +1151,9 @@
   {
     "name": "Chest33_1094",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "rkyWN02mMyY",
+    "yt_start": "1169",
+    "yt_end": "1198"
   },
   {
     "name": "Chest34_2175",
@@ -1158,9 +1186,9 @@
   {
     "name": "Chest38_3995",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "rkyWN02mMyY",
+    "yt_start": "1380",
+    "yt_end": "1402"
   },
   {
     "name": "Chest39_5860",
@@ -1172,9 +1200,9 @@
   {
     "name": "Chest3_1811",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "Ve5OlE1NVO8",
+    "yt_start": "115",
+    "yt_end": "146"
   },
   {
     "name": "Chest40_8",
@@ -1200,9 +1228,9 @@
   {
     "name": "Chest43",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "sGDdOxpiMGM",
+    "yt_start": "124",
+    "yt_end": "145"
   },
   {
     "name": "Chest44_2721",
@@ -1214,37 +1242,37 @@
   {
     "name": "Chest45_4075",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "Ve5OlE1NVO8",
+    "yt_start": "8",
+    "yt_end": "20"
   },
   {
     "name": "Chest46",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "B0KR8f2OPVY",
+    "yt_start": "12",
+    "yt_end": "25"
   },
   {
     "name": "Chest47",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "Ve5OlE1NVO8",
+    "yt_start": "67",
+    "yt_end": "113"
   },
   {
     "name": "Chest48_4722",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "Ve5OlE1NVO8",
+    "yt_start": "822",
+    "yt_end": "850"
   },
   {
     "name": "Chest49_1234",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "Ve5OlE1NVO8",
+    "yt_start": "151",
+    "yt_end": "187"
   },
   {
     "name": "Chest4_1544",
@@ -1263,9 +1291,9 @@
   {
     "name": "Chest51_1360",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "Ve5OlE1NVO8",
+    "yt_start": "789",
+    "yt_end": "817"
   },
   {
     "name": "Chest52_10699",
@@ -1277,9 +1305,9 @@
   {
     "name": "Chest53_1192",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "-ycau3eMcaQ",
+    "yt_start": "668",
+    "yt_end": "687"
   },
   {
     "name": "Chest54_8402",
@@ -1298,9 +1326,9 @@
   {
     "name": "Chest56_5023",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "Ve5OlE1NVO8",
+    "yt_start": "212",
+    "yt_end": "273"
   },
   {
     "name": "Chest57_1073",
@@ -1312,16 +1340,16 @@
   {
     "name": "Chest58",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "B0KR8f2OPVY",
+    "yt_start": "83",
+    "yt_end": "95"
   },
   {
     "name": "Chest59",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "B0KR8f2OPVY",
+    "yt_start": "29",
+    "yt_end": "39"
   },
   {
     "name": "Chest5_1955",
@@ -1333,9 +1361,9 @@
   {
     "name": "Chest60_2151",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "rkyWN02mMyY",
+    "yt_start": "1531",
+    "yt_end": "1543"
   },
   {
     "name": "Chest61_2816",
@@ -1354,23 +1382,23 @@
   {
     "name": "Chest63_1565",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "-ycau3eMcaQ",
+    "yt_start": "235",
+    "yt_end": "303"
   },
   {
     "name": "Chest64_1416",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "-ycau3eMcaQ",
+    "yt_start": "517",
+    "yt_end": "566"
   },
   {
     "name": "Chest65_5150",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "-ycau3eMcaQ",
+    "yt_start": "1101",
+    "yt_end": "1116"
   },
   {
     "name": "Chest66_7106",
@@ -1382,16 +1410,16 @@
   {
     "name": "Chest67",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "B0KR8f2OPVY",
+    "yt_start": "167",
+    "yt_end": "180"
   },
   {
     "name": "Chest68",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "Ve5OlE1NVO8",
+    "yt_start": "998",
+    "yt_end": "1024"
   },
   {
     "name": "Chest69",
@@ -1410,9 +1438,9 @@
   {
     "name": "Chest70",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "-ycau3eMcaQ",
+    "yt_start": "1120",
+    "yt_end": "1158"
   },
   {
     "name": "Chest71",
@@ -1424,16 +1452,16 @@
   {
     "name": "Chest72_2",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "rkyWN02mMyY",
+    "yt_start": "1404",
+    "yt_end": "1475"
   },
   {
     "name": "Chest73_1605",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "B0KR8f2OPVY",
+    "yt_start": "564",
+    "yt_end": "626"
   },
   {
     "name": "Chest74",
@@ -1445,30 +1473,30 @@
   {
     "name": "Chest75",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "rkyWN02mMyY",
+    "yt_start": "1713",
+    "yt_end": "1765"
   },
   {
     "name": "Chest76",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "Ve5OlE1NVO8",
+    "yt_start": "1031",
+    "yt_end": "1052"
   },
   {
     "name": "Chest77_4",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "IJTvj-8yOTg",
+    "yt_start": "276",
+    "yt_end": "323"
   },
   {
     "name": "Chest78_7640",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "-ycau3eMcaQ",
+    "yt_start": "924",
+    "yt_end": "939"
   },
   {
     "name": "Chest79_2",
@@ -1494,44 +1522,44 @@
   {
     "name": "Chest81",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "IJTvj-8yOTg",
+    "yt_start": "431",
+    "yt_end": "487"
   },
   {
     "name": "Chest82_4377",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "Loos0dyh4FA",
+    "yt_start": "1340",
+    "yt_end": "1380"
   },
   {
     "name": "Chest83_1920",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "IJTvj-8yOTg",
+    "yt_start": "814",
+    "yt_end": "848"
   },
   {
     "name": "Chest84_3197",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "B0KR8f2OPVY",
+    "yt_start": "1195",
+    "yt_end": "1226"
   },
   {
     "name": "Chest85_1892",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "B0KR8f2OPVY",
+    "yt_start": "343",
+    "yt_end": "381"
   },
   {
     "name": "Chest86_2441",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "rkyWN02mMyY",
+    "yt_start": "1991",
+    "yt_end": "2010"
   },
   {
     "name": "Chest87",
@@ -1557,16 +1585,16 @@
   {
     "name": "Chest8_878",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "Ve5OlE1NVO8",
+    "yt_start": "896",
+    "yt_end": "969"
   },
   {
     "name": "Chest90_2137",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "IJTvj-8yOTg",
+    "yt_start": "406",
+    "yt_end": "425"
   },
   {
     "name": "Chest91",
@@ -1578,9 +1606,9 @@
   {
     "name": "Chest92",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "B0KR8f2OPVY",
+    "yt_start": "249",
+    "yt_end": "267"
   },
   {
     "name": "Chest93_3307",
@@ -1599,23 +1627,23 @@
   {
     "name": "Chest95_6394",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "-ycau3eMcaQ",
+    "yt_start": "1325",
+    "yt_end": "1341"
   },
   {
     "name": "Chest96_8035",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "-ycau3eMcaQ",
+    "yt_start": "1295",
+    "yt_end": "1317"
   },
   {
     "name": "Chest97_9186",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "Loos0dyh4FA",
+    "yt_start": "382",
+    "yt_end": "407"
   },
   {
     "name": "Chest98_10407",
@@ -1627,9 +1655,9 @@
   {
     "name": "Chest99_2116",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "Loos0dyh4FA",
+    "yt_start": "922",
+    "yt_end": "944"
   },
   {
     "name": "Chest9_2231",
@@ -1655,9 +1683,9 @@
   {
     "name": "DeadHero2Link",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "Ve5OlE1NVO8",
+    "yt_start": "896",
+    "yt_end": "969"
   },
   {
     "name": "DeadHero3Heman",
@@ -1669,9 +1697,9 @@
   {
     "name": "DeadHero3Pokemon",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "-ycau3eMcaQ",
+    "yt_start": "751",
+    "yt_end": "762"
   },
   {
     "name": "DeadHero4Picard",
@@ -1690,9 +1718,9 @@
   {
     "name": "DeadHero4Santa2",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "IJTvj-8yOTg",
+    "yt_start": "97",
+    "yt_end": "116"
   },
   {
     "name": "DeadHero4Santa3",
@@ -1704,16 +1732,16 @@
   {
     "name": "DeadHero_3",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "rkyWN02mMyY",
+    "yt_start": "1918",
+    "yt_end": "1940"
   },
   {
     "name": "DeadHeroGoku",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "sGDdOxpiMGM",
+    "yt_start": "586",
+    "yt_end": "650"
   },
   {
     "name": "DeadHeroGuybrush",
@@ -1739,8 +1767,8 @@
   {
     "name": "Juicer_286",
     "area": "Map",
-    "yt_video": "",
-    "yt_start": "",
-    "yt_end": ""
+    "yt_video": "Loos0dyh4FA",
+    "yt_start": "137",
+    "yt_end": "298"
   }
 ]

@@ -2,8 +2,10 @@
     "BP_A3_StrengthQuest_C": {
       "friendly": "Strong",
       "friendly_key": "AB8A43CA4F1AE131FBD9C2A7592365FD",
-      "description": "You can lift heavy stuff and look ripped!",
-      "description_key": "3283A8C74FB7902A032316B71C678082"
+      "descriptionSIU": "You can lift heavy stuff and look ripped!",
+      "descriptionSL1": "You can now destroy pixel blocks with your sword AND carry very heavy objects AND you got +5 sword damage.",
+      "description_keySIU": "3283A8C74FB7902A032316B71C678082",
+      "description_keySL1": "E5D2B6C24991B39DB6313DB926CD0CCA"
     },
     "BP_A3_StrengthQuest_C_Body": {
       "friendly": "Strength",
@@ -67,7 +69,8 @@
       "description_key": ""
     },
     "BuyArmor1_C": {
-      "friendly": "Armor - Absorbs 3 Damage",
+      "friendly": "Armor",
+      "friendly2": "Absorbs 3 Damage",
       "friendly_key": "71C408CC4DA956CA166F35A37892C704",
       "friendly_key2": "B4C704424A400C705D6D709BC354F5B9",
       "description": "Only damage that is higher than 3 can damage you now. Cactuses can no longer hurt you.",
@@ -76,20 +79,20 @@
     "BuyBelt_C": {
       "friendly": "Float Buckle",
       "friendly_key": "7149A6494BA4C9484C154F84E2E82A0D",
-      "description": "",
-      "description_key": ""
+      "description": "Be able to float near metallic surfaces. Light metallic objects can be attracted. ",
+      "description_key": "55998AEA49B7B69A2196DA9770234AAD"
     },
     "BuyCoinMagnet_C": {
       "friendly": "Coin Magnet",
       "friendly_key": "B26FAD944272C6E98C720AB47B20DA83",
-      "description": "",
-      "description_key": ""
+      "description": "Attracts loot coins from far away (steady spinning coins are not affected).",
+      "description_key": "129FC6F146AE25BFE56D22AE27C9961D"
     },
     "BuyCrystal_C": {
       "friendly": "Red Moon",
       "friendly_key": "571621A1492B4D450EDEEEAF999C310B",
-      "description": "",
-      "description_key": ""
+      "description": "Looks very valuable - can be used for something.",
+      "description_key": "622EB5CA40E1F930D11F41893FCE5899"
     },
     "BuyDoubleJump_C": {
       "friendly": "Double Jump",
@@ -106,14 +109,18 @@
     "BuyForceBeam_C": {
       "friendly": "Force Beam",
       "friendly_key": "5177BDBB4AC3483C5FAC5A827B03DCC0",
-      "description": "",
-      "description_key": ""
+      "description": "Connect things with a magical beam and have it contract.",
+      "description_key": "B936EE0C4AD80D15EEB6B9A2A3711DB8"
     },
+    "BuyForceBeamGold_C": {
+        "descriptionSL1": "You can now also attach the beam to gold. The beam can also conduct electricity from end to end.",
+        "description_keySL1": "296AA9CB45FBFB20C7966C971AE4B673"
+      },
     "BuyForceBlockTelefrag_C": {
       "friendly": "Force Cube Telefrag",
       "friendly_key": "6C3FB7D94BF0D6FE6B5CDF9A2780C688",
-      "description": "",
-      "description_key": ""
+      "description": "The next level of combat! Spawn the cube inside an enemy to kill it.",
+      "description_key": "490620AB402B9B7C543BAC8DF756E5C7"
     },
     "BuyForceBlock_C": {
       "friendly": "Force Cube",
@@ -124,8 +131,8 @@
     "BuyForceCubeBeam_C": {
       "friendly": "Force Beam/Cube Compatibility",
       "friendly_key": "F8F8668341F2E815627C7BA1B55B10F1",
-      "description": "",
-      "description_key": ""
+      "description": "You can now attach the force beam to the force cube.",
+      "description_key": "39B8A7E64D9F07F130378D9A2C8E433B"
     },
     "BuyForceCubeStompGrave3_C": {
       "friendly": "Volcano Sealer",
@@ -142,8 +149,8 @@
     "BuyForceCubeStomp_C": {
       "friendly": "Force Cube Stomp",
       "friendly_key": "185DEBF54F6E51BBC01FE1B13D4BE992",
-      "description": "",
-      "description_key": ""
+      "description": "Stomp onto your force cube to create a big explosion that does a lot of damage. Good when you are surrounded by enemies.",
+      "description_key": "A28AE6D4459BEB9D69D232A51ECF1952"
     },
     "BuyGraveDetector_C": {
       "friendly": "Grave Detector",
@@ -158,10 +165,10 @@
       "description_key": "890F425E418B5B335648B3AFDCC091FF"
     },
     "BuyGunAltDamagex2_C": {
-      "friendly": "Gun Alt Damage x2",
+      "friendly": "Gun Altfire Damage x2",
       "friendly_key": "FF9D1B894D5CAAC473A9968FBAECA329",
-      "description": "",
-      "description_key": ""
+      "description": "Doubles the damage of your Altfire gun mode",
+      "description_key": "DC61C12649ABDF719875E190F5E38045"
     },
     "BuyGunAlt_C": {
       "friendly": "2nd Fire",
@@ -178,8 +185,8 @@
     "BuyGunComboDamage+25_C": {
       "friendly": "Combo Damage +25",
       "friendly_key": "B937E76C496891FFB2D58EA5AD2F4AD3",
-      "description": "",
-      "description_key": ""
+      "description": "Your gun combo explosion now causes 25 more damage. New damage: ",
+      "description_key": "B860A0034B157DAC0FDF20995E3CAA76"
     },
     "BuyGunCriticalDamageChance_C": {
       "friendly": "Gun Fire Critical Damage Chance +5%",
@@ -202,8 +209,8 @@
     "BuyGunDamage+1_C": {
       "friendly": "Gun damage +1",
       "friendly_key": "D07C12834F1A99772A3B758CB68D67D4",
-      "description": "",
-      "description_key": ""
+      "description": "+1 damage? Is this a joke? Worst upgrade ever!",
+      "description_key": "591FDFC04C11E13853A67A97C8CB83CE"
     },
     "BuyGunDamage+5_C": {
       "friendly": "Gun damage +5",
@@ -213,7 +220,9 @@
     },
     "BuyGunHoly1_C": {
       "friendly": "Holy Gun",
+      "friendly2": "Destroy Wooden Graves",
       "friendly_key": "A4EEA0994A47894991E031B148C7DDFD",
+      "friendly_key2": "Gun Destroy Wooden Graves",
       "description": "",
       "description_key": ""
     },
@@ -232,20 +241,20 @@
     "BuyGunRefireRate50_C": {
       "friendly": "Gun cooldown halfed",
       "friendly_key": "DC752FA6411151DAA78FD8B37E5F097F",
-      "description": "",
-      "description_key": ""
+      "description": "Your gun now shoots twice as fast! Boom boom!",
+      "description_key": "59A1A1AC4C377C445C5C3C8BE1E5DAD4"
     },
     "BuyGunSpeedx2_C": {
       "friendly": "Gun Projectile Speed x2",
       "friendly_key": "E1CE957843EB5905979FEB9B39C06F97",
-      "description": "",
-      "description_key": ""
+      "description": "Your projectiles now fly twice as fast!",
+      "description_key": "5A5184CA4CCB65876DBECFACE4425C59"
     },
     "BuyGunSplashDamage_C": {
       "friendly": "Gun Splash Damage",
       "friendly_key": "F456DECB4597A1AE739292A829065681",
-      "description": "",
-      "description_key": ""
+      "description": "Your gun projectiles now cause splash damage, ranging about 3 meters.",
+      "description_key": "D93EB885402428C8D63560A8DD68029F"
     },
     "BuyHealth+15_C": {
       "friendly": "Max Health +15",
@@ -310,8 +319,8 @@
     "BuyMoreLoot_C": {
       "friendly": "More Loot",
       "friendly_key": "DCFC0B2B4E2339BF05ADAEB979E6A8ED",
-      "description": "",
-      "description_key": ""
+      "description": "Get more coins from enemies. Only has an effect if you have the basic loot upgrade. Keep in mind: you only loot coins if your health is nearly full.",
+      "description_key": "35453382461EE9F53F315A84B5FA08F4"
     },
     "BuyNumberRising_C": {
       "friendly": "Enemy Health",
@@ -338,10 +347,10 @@
       "description_key": "BB63C7C74168981DEBDE8492608A760A"
     },
     "BuySilentFeet_C": {
-      "friendly": "Silent Shoes",
+      "friendly": "Silent feet",
       "friendly_key": "667CB43E4333FACC3B54A7A89B8C63AD",
-      "description": "",
-      "description_key": ""
+      "description": "Your feet are now so soft, enemies will not hear you coming.",
+      "description_key": "BCE3CAD44BD8D91BE05E158D4CC1BFB1"
     },
     "BuySmashdownDamage+100_C": {
       "friendly": "Stomp Damage +100%",
@@ -358,8 +367,8 @@
     "BuySmashdownDamage+33_C": {
       "friendly": "Stomp Damage +33%",
       "friendly_key": "07F9D0314668FF0667D0D2BD34688E54",
-      "description": "",
-      "description_key": ""
+      "description": "Adds 33% to the damage of your stomp ability (if owned). Only affects enemies, not things.",
+      "description_key": "1D1B2B87440930D00E2E15AFD4AEEF3E"
     },
     "BuySmashdownDamage+3_C": {
       "friendly": "Stomp Damage +3",
@@ -376,8 +385,8 @@
     "BuySmashdownRadius+_C": {
       "friendly": "Stomp Radius +50cm",
       "friendly_key": "05EC3B2E45249589B8BF2A98515F5C5F",
-      "description": "",
-      "description_key": ""
+      "description": "Adds 50cm to the radius of the stomp attack, giving it a radius of: ",
+      "description_key": "A9A8ED2D494DE2C13C92BF9B9B8CA98D"
     },
     "BuySmashdown_C": {
       "friendly": "Stomp Shoes",
@@ -434,7 +443,8 @@
       "description_key": ""
     },
     "BuySwordHoly1_C": {
-      "friendly": "Holy Sword - Destroy Wooden Graves",
+      "friendly": "Holy Sword",
+      "friendly2": "Destroy Wooden Graves",
       "friendly_key": "DFFC8061460EEDD467DD87AFA17989B6",
       "friendly_key2": "D832A161437C949958F80AB1CB5E2482",
       "description": "You can now destroy wooden graves and prevent enemy respawning from these.",
@@ -442,9 +452,11 @@
     },
     "BuySwordHoly2_C": {
       "friendly": "Holy Sword",
+      "friendly2": "Destroy Stone Graves",
       "friendly_key": "728A3CFA4C013A24881DC3849D321415",
-      "description": "",
-      "description_key": ""
+      "friendly_key2": "0935FCD14D9DEF19E3E7A39450D416E9",
+      "description": "You can now destroy stone graves and prevent enemy respawning from these.",
+      "description_key": "0C027BD64E96E22D4E1985887A73C78A"
     },
     "BuySwordRange25_C": {
       "friendly": "Sword Range +25%",
@@ -455,8 +467,8 @@
     "BuySwordRefireRate-33_C": {
       "friendly": "Sword 33% faster",
       "friendly_key": "B443AB424D1FC633BFECAB8D9221B3E6",
-      "description": "",
-      "description_key": ""
+      "description": "You can swing your sword much faster now with less waiting time between each hit.",
+      "description_key": "5F87A7274E4810D831AAF5B31C497924"
     },
     "BuySword_C": {
       "friendly": "Sword",
@@ -467,15 +479,19 @@
     "BuyTranslocatorCoolDownHalf_C": {
       "friendly": "Half Cooldown",
       "friendly_key": "B8254A1F45220C0F46A98195C13FE5F3",
-      "description": "",
-      "description_key": ""
+      "description": "Translocator can be fired twice as often",
+      "description_key": "0E0EC9AC4D55DF273ED6708E3402330C"
     },
     "BuyTranslocatorDamagex3_C": {
       "friendly": "Damage x2",
       "friendly_key": "69056B4F47F7D31D13238E8196053458",
-      "description": "",
-      "description_key": ""
+      "description": "Translocator ball will cause twice as much damage",
+      "description_key": "FFC977C847C974421FD255AD5F818CEB"
     },
+    "BuyTranslocatorShotForce_C": {
+      "descriptionSL1": "Translocator will be fired twice as hard",
+      "description_keySL1": "CF117A1742D0D407C8C715991D536736"
+      },
     "BuyTranslocatorModule_C": {
       "friendly": "Teleportation Module",
       "friendly_key": "C9F3E82D4AA8E63743C844AB2731F9F5",
@@ -491,8 +507,8 @@
     "BuyTranslocator_C": {
       "friendly": "Translocator",
       "friendly_key": "EF4299614AC2A97E9BC1368EAB684BE8",
-      "description": "",
-      "description_key": ""
+      "description": "A green gun. What does it do?",
+      "description_key": "746179A74A234A479F5CE7B8B4EF3FE5"
     },
     "BuyTripleJump_C": {
       "friendly": "Triple Jump",
