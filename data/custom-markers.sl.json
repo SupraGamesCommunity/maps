@@ -112,7 +112,9 @@
     "name": "Juicer2",
     "area": "Map",
     "spawns": "BP_DoubleHealthLoot_C",
-    "variant": "red"
+    "variant": "red",
+    "spawns_name": "Double Health",
+    "icon": "health_drops_x2"
   },
   {
     "name": "Juicer3",
