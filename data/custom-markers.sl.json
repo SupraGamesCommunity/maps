@@ -529,5 +529,16 @@
     "name": "MetalBall2_2186",
     "type": "Anvil_C",
     "area": "Map"
+  },
+  {
+    "name": "MetalBall11_938",
+    "type": "Hide:MetalBall_C",
+    "area": "Map"
+  },
+  {
+    "name": "MetalBall7_209",
+    "type": "Hide:MetalBall_C",
+    "area": "Map"
   }
+  
 ]
