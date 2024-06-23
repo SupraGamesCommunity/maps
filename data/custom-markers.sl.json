@@ -1,5 +1,15 @@
 [  
   {
+    "name": "Chest50_2182",
+    "area": "Map",
+    "coins": 18
+  },
+  {
+    "name": "BuyStats",
+    "area": "Map",
+    "comment": "This is not available until after the credits."
+  },
+  {
     "name": "BarrelClosed17",
     "type": "EX:BarrelRed_C",
     "area": "Map"
@@ -144,8 +154,7 @@
     "area": "Map",
     "spawns": "BP_DoubleHealthLoot_C",
     "variant": "red",
-    "spawns_name": "Double Health",
-    "icon": "health_drops_x2"
+    "spawns_name": "Double Health"
   },
   {
     "name": "Juicer3",

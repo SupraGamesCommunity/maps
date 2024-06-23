@@ -53,7 +53,8 @@
   {
     "name": "BP_MonsterChest_2",
     "area": "DLC2_Complete",
-    "spawns": "BP_DoubleHealthLoot_C"
+    "spawns": "BP_DoubleHealthLoot_C",
+    "icon": "health"
   },
   {
     "name": "BP_TrophyDetector_2",

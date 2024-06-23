@@ -122,7 +122,7 @@
   },
   "BP_DoubleHealthLoot_C": {
     "friendly": "Double Healing Drops",
-    "icon": "health",
+    "icon": "health_drops_x2",
     "layer": "upgrades",
     "nospoiler": "shop",
     "lines": "extra",
@@ -1380,9 +1380,9 @@
   "DeadHero_C": {
     "friendly": "Dead Hero",
     "icon": "hero:v",
-    "layer": "misc",
+    "layer": "quest",
     "nospoiler": "collectable",
-    "lines": "extra"
+    "lines": "quest"
   },
   "EnemySpawner_C": {
     "friendly": "Enemy Spawner",
