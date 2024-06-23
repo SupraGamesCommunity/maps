@@ -1010,9 +1010,11 @@ function markItems() {
     [].forEach.call(divs, function(div) {
       div.classList.add('found');
     });
-    for(let m of markers[id]){
-      m.setZIndexOffset(-100000);
-    }  
+    if(markers[id]){
+      for(let m of markers[id]){
+        m.setZIndexOffset(-100000);
+      }
+    }
   }
 
   // filter by settings.searchText. caching is unreliable, just perform a full search here
