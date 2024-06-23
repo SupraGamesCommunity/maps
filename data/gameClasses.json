@@ -249,6 +249,20 @@
     "nospoiler": "collectable",
     "lines": "extra"
   },
+  "EX:BarrelColor_C": {
+    "friendly": "Gold Barrel",
+    "icon": "barrel_gold",
+    "layer": "misc",
+    "nospoiler": "collectable",
+    "lines": "extra"
+  },
+  "EX:BarrelRed_C": {
+    "friendly": "Red Barrel",
+    "icon": "barrel_red",
+    "layer": "misc",
+    "nospoiler": "collectable",
+    "lines": "extra"
+  },
   "BarrelClosed_Blueprint_C": {
     "friendly": "Gold Barrel",
     "icon": "barrel_gold",
@@ -478,7 +492,7 @@
     "lines": "extra"
   },
   "BuyGunAltDamagex2_C": {
-    "friendly": "Gun Alt Damage x2",
+    "friendly": "Gun AltFire Damage x2",
     "icon": "gun_upgrade",
     "layer": "upgrades",
     "nospoiler": "shop",
@@ -486,7 +500,7 @@
     "friendly_key": "FF9D1B894D5CAAC473A9968FBAECA329"
   },
   "BuyGunAlt_C": {
-    "friendly": "Gun 2nd Fire",
+    "friendly": "2nd Fire",
     "icon": "gun_red",
     "layer": "upgrades",
     "nospoiler": "shop",
@@ -509,7 +523,7 @@
     "friendly_key": "B937E76C496891FFB2D58EA5AD2F4AD3"
   },
   "BuyGunCriticalDamageChance_C": {
-    "friendly": "Gun Critical Damage Chance +5%",
+    "friendly": "Gun Fire Critical Damage Chance +5%",
     "icon": "gun_upgrade",
     "layer": "upgrades",
     "nospoiler": "shop",
@@ -602,14 +616,19 @@
     "layer": "upgrades",
     "nospoiler": "shop",
     "lines": "extra",
-    "friendly_key": "F192E94A4A38A07C1B173692EE6F105A"
+    "friendly_key": "F192E94A4A38A07C1B173692EE6F105A",
+    "description": "Your maximum health increased by {healthIncrease}. \r\nYou now have a maximum of {#} health.",
+    "description_key": "30BB3BA74AF303802E7DF89D9D4661F2"
   },
   "_BuyHealth+10_C": {
-    "friendly": "Max Health +10",
     "icon": "health",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra"
+    "lines": "extra",
+    "friendly": "Health +{healthIncrease}",
+    "friendly_key": "E9C965494E9EADDAC4609584271D5D31",
+    "description": "Your maximum health increased by {healthIncrease}. \r\nYou now have a maximum of {#} health.",
+    "description_key": "30BB3BA74AF303802E7DF89D9D4661F2"
   },
   "BuyHealth+2_C": {
     "friendly": "Max Health +2",
@@ -617,7 +636,9 @@
     "layer": "upgrades",
     "nospoiler": "shop",
     "lines": "extra",
-    "friendly_key": "40654DC9487F523BE649BE99E5CA4B96"
+    "friendly_key": "40654DC9487F523BE649BE99E5CA4B96",
+    "description": "Your maximum health increased by {healthIncrease}. \r\nYou now have a maximum of {#} health.",
+    "description_key": "30BB3BA74AF303802E7DF89D9D4661F2"
   },
   "BuyHealth+5_C": {
     "friendly": "Max Health +5",
@@ -625,7 +646,9 @@
     "layer": "upgrades",
     "nospoiler": "shop",
     "lines": "extra",
-    "friendly_key": "47D6A98A43F4487C285FC78EC3814FA4"
+    "friendly_key": "47D6A98A43F4487C285FC78EC3814FA4",
+    "description": "Your maximum health increased by {healthIncrease}. \r\nYou now have a maximum of {#} health.",
+    "description_key": "30BB3BA74AF303802E7DF89D9D4661F2"
   },
   "BuyHealthRegenMax+1_C": {
     "friendly": "Regeneration +",
@@ -654,7 +677,7 @@
     "friendly_key": "66B927104ACBD83532775B9B3959C563"
   },
   "BuyHealthRegenMax5_C": {
-    "friendly": "Health Regeneration +5",
+    "friendly": "Regeneration Ceiling +5",
     "icon": "health_regen_max",
     "layer": "upgrades",
     "nospoiler": "shop",
@@ -756,7 +779,7 @@
     "friendly_key": "DE276F3A42B5E3A15AC7F2A4789DC31F"
   },
   "BuySilentFeet_C": {
-    "friendly": "Silent Shoes",
+    "friendly": "Silent feet",
     "icon": "silent_shoes",
     "layer": "upgrades",
     "nospoiler": "shop",

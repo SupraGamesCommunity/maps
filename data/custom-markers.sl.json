@@ -84,6 +84,16 @@
     "lng": 393.44390869140625
   },
   {
+    "name": "Chest9_2231",
+    "area": "Map",
+    "lng": -1750.5399169921875
+  },
+  {
+    "name": "Chest76",
+    "area": "Map",
+    "lng": -1550.93603515625
+  },
+  {
     "name": "Juicer2",
     "area": "Map",
     "spawns": "BP_DoubleHealthLoot_C",
@@ -208,6 +218,11 @@
     "cost": 6,
     "price_type":7 
   },  
+  {
+    "name": "BuyHealth+5",
+    "area": "Map",
+    "lat": 2035
+  },
   {
     "name": "Jumppad7",
     "type": "FT:Jumppad_C",
