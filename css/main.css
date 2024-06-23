@@ -122,7 +122,7 @@ path[alt=''] { opacity: 100% }
 }
 
 .line-player_aim {
-  --arrow: mid;
+  --arrow: tip;
   --arrow-size: 5px;
   --arrow-angle: 40;
   --arrow-dist: 100;
@@ -131,7 +131,7 @@ path[alt=''] { opacity: 100% }
   --offset: 0;
   --end-offset: 0;
 
-  fill: #FFF;
+  fill: #ffffff;
   fill-opacity: 100%;
   stroke: #000;
   opacity: 100%;
