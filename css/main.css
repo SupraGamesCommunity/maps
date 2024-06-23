@@ -4,7 +4,7 @@ html, body, #map { width:100%; height:100%; margin:0; padding:0; z-index: 1; bac
 .hidden { visibility: hidden; }
 
 path { opacity: 100%; fill-opacity: 100%; filter: brightness(100%) }
-path.found { opacity: 100%; fill-opacity: 100%; filter: brightness(50%)}
+path.found { opacity: 20%; fill-opacity: 20%; filter: brightness(300%)}
 
 path[alt=''] { opacity: 100% }
 
