@@ -1,0 +1,136 @@
+{
+    "jumppads": {
+        "type": "markers",
+        "name": "Pads",
+        "name_key": "",
+        "defaultIcon": "jumppad",
+        "defaultActive": false,
+        "games": [
+            "sl",
+            "slc"
+        ]
+    },
+    "pipesys": {
+        "type": "markers",
+        "name": "Pipes",
+        "name_key": "",
+        "defaultIcon": "pipe",
+        "defaultActive": false,
+        "games": [
+            "sl",
+            "siu"
+        ]
+    },
+    "closedChest": {
+        "type": "markers",
+        "name": "Chests",
+        "name_key": "",
+        "defaultIcon": "chest",
+        "defaultActive": true,
+        "games": [
+            "sl",
+            "slc",
+            "siu"
+        ]
+    },
+    "shop": {
+        "type": "markers",
+        "name": "Shop",
+        "name_key": "",
+        "defaultIcon": "shop",
+        "defaultActive": true,
+        "games": [
+            "sl",
+            "slc",
+            "siu"
+        ]
+    },
+    "collectable": {
+        "type": "markers",
+        "name": "Collectables",
+        "name_key": "",
+        "defaultIcon": "question_mark",
+        "defaultActive": true,
+        "games": [
+            "sl",
+            "slc",
+            "siu"
+        ]
+    },
+    "upgrades": {
+        "type": "markers",
+        "name": "Upgrades",
+        "name_key": "",
+        "defaultIcon": "loot",
+        "defaultActive": false,
+        "games": [
+            "sl",
+            "slc",
+            "siu"
+        ]
+    },
+    "misc": {
+        "type": "markers",
+        "name": "Miscellaneous",
+        "name_key": "",
+        "defaultIcon": "question_mark",
+        "defaultActive": false,
+        "games": [
+            "sl",
+            "slc",
+            "siu"
+        ]
+    },
+    "coin": {
+        "type": "markers",
+        "name": "Coins",
+        "name_key": "",
+        "defaultIcon": "awesome",
+        "defaultActive": false,
+        "games": [
+            "sl",
+            "slc",
+            "siu"
+        ]
+    },
+    "graves": {
+        "type": "markers",
+        "name": "Graves",
+        "name_key": "",
+        "defaultIcon": "question_mark",
+        "defaultActive": false,
+        "games": [
+            "sl"
+        ]
+    },
+    "coordinate": {
+        "type": "markers",
+        "name": "XY",
+        "name_key": "",
+        "defaultIcon": null,
+        "defaultActive": false,
+        "games": [
+            "sl",
+            "slc",
+            "siu"
+        ]
+    },
+    "extra": {
+        "type": "markers",
+        "name": "Extras",
+        "name_key": "",
+        "defaultIcon": "question_mark",
+        "defaultActive": false,
+        "games": [
+        ]
+    },
+    "dev": {
+        "type": "markers",
+        "name": "Dev",
+        "name_key": "",
+        "defaultIcon": "question_mark",
+        "defaultActive": false,
+        "games": [
+        ]
+    }
+}

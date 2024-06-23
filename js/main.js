@@ -1,7 +1,7 @@
 /*eslint strict: ["error", "global"]*/
 /*global L, UESaveObject*/
 /*global layerConfigs*/
-/*global gameClasses,  defaultGameClass, decodeIconName, getClassIcon, getObjectIcon*/
+/*global gameClasses, gameClassesInit, defaultGameClass, decodeIconName, getClassIcon, getObjectIcon*/
 
 // Terminology,
 // Class - The type of object represented by marker. Based on UE4 classes/blueprints 
@@ -1207,7 +1207,7 @@ window.onhashchange = function(e) {
 }
 
 window.onload = function(event) {
-  if (location.hash.length>1) {
+  if (location.hash.length > 1) {
     for (const s of location.hash.slice(1).split('&')) {
       let [k,v] = s.split('=');
       mapParam[k] = v;
@@ -1217,83 +1217,87 @@ window.onload = function(event) {
   // clear location hash
   history.pushState('', document.title, window.location.pathname + window.location.search);
 
-  mapId = mapParam.mapId || localData.mapId || 'sl';
+  Promise.all([gameClassesInit(), layerConfigs.init()])
+    .then(() => {
+      mapId = mapParam.mapId || localData.mapId || 'sl';
 
-  loadMap(mapId);
+      loadMap(mapId);
 
-  // Keys mappings for pan and zoom map controls
-  let bindings = {
-    KeyA:['x',+1],KeyD:['x',-1],
-    KeyW:['y',+1],KeyS:['y',-1],
-    KeyT:['z',+1],KeyG:['z',-1],
-  };
+      // Keys mappings for pan and zoom map controls
+      let bindings = {
+        KeyA:['x',+1],KeyD:['x',-1],
+        KeyW:['y',+1],KeyS:['y',-1],
+        KeyT:['z',+1],KeyG:['z',-1],
+      };
 
-  // Keys currently pressed [code]=true
-  let pressed = {};
+      // Keys currently pressed [code]=true
+      let pressed = {};
 
-  // Called every browser animation timestep following call to requestAnimationFrame
-  function update(timestep) {
-    let step = 100;
-    let v = {};
-    for (let key of Object.keys(bindings)) {
-      if (pressed[key]) {
-        let [dir, step] = bindings[key];
-        v[dir] = (v[dir]||0) + step;
+      // Called every browser animation timestep following call to requestAnimationFrame
+      function update(timestep) {
+        let step = 100;
+        let v = {};
+        for (let key of Object.keys(bindings)) {
+          if (pressed[key]) {
+            let [dir, step] = bindings[key];
+            v[dir] = (v[dir]||0) + step;
+          }
+        }
+        (v.x || v.y) && map.panBy([(-v.x||0)*step, (-v.y||0)*step], {animation: false});
+        //v.z && map.setZoom(map.getZoom()+v.z/16, {duration: 1});
+        window.requestAnimationFrame(update);
       }
-    }
-    (v.x || v.y) && map.panBy([(-v.x||0)*step, (-v.y||0)*step], {animation: false});
-    //v.z && map.setZoom(map.getZoom()+v.z/16, {duration: 1});
-    window.requestAnimationFrame(update);
-  }
 
-  document.querySelector('#map').addEventListener('blur', function(e) {
-    pressed = {}; // prevent sticky keys
-  });
+      document.querySelector('#map').addEventListener('blur', function(e) {
+        pressed = {}; // prevent sticky keys
+      });
 
-  // When a key goes up remove it from the list 
-  window.addEventListener('keyup', (e) => {
-    delete pressed[e.code];
-  });
+      // When a key goes up remove it from the list 
+      window.addEventListener('keyup', (e) => {
+        delete pressed[e.code];
+      });
 
-  window.addEventListener("keydown",function (e) {
-    //console.log(e, e.code);
-    if (e.target.id.startsWith('searchtext')) {
-      return;
-    }
-    if (settings.buildMode) { return; }
-    pressed[e.code] = true;
-    switch (e.code) {
-      case 'KeyF':        // F (no ctrl) to toggle fullscreen
-        if (e.ctrlKey) {
-          searchControl.expand(true);
-          e.preventDefault();
-        } else {
-          map.toggleFullscreen();
+      window.addEventListener("keydown",function (e) {
+        //console.log(e, e.code);
+        if (e.target.id.startsWith('searchtext')) {
+          return;
         }
-        break;
-      case 'Slash':     // Ctrl+F or / to search
-        searchControl.expand(true);
-        e.preventDefault();
-        break;
-      case 'KeyR':
-        if (!e.ctrlKey && !e.altKey) {
-          map.flyTo(playerMarker ? playerMarker._latlng : mapCenter);
-        } else if (e.altKey) {
-          openLoadFileDialog();
+        if (settings.buildMode) { return; }
+        pressed[e.code] = true;
+        switch (e.code) {
+          case 'KeyF':        // F (no ctrl) to toggle fullscreen
+            if (e.ctrlKey) {
+              searchControl.expand(true);
+              e.preventDefault();
+            } else {
+              map.toggleFullscreen();
+            }
+            break;
+          case 'Slash':     // Ctrl+F or / to search
+            searchControl.expand(true);
+            e.preventDefault();
+            break;
+          case 'KeyR':
+            if (!e.ctrlKey && !e.altKey) {
+              map.flyTo(playerMarker ? playerMarker._latlng : mapCenter);
+            } else if (e.altKey) {
+              openLoadFileDialog();
+            }
+            break;
+        case 'Digit1': reloadMap('sl'); break;
+          case 'Digit2': reloadMap('slc'); break;
+          case 'Digit3': reloadMap('siu'); break;
+          case 'KeyT': map.zoomIn(1); break;
+          case 'KeyG': map.zoomOut(1); break;
         }
-        break;
-    case 'Digit1': reloadMap('sl'); break;
-      case 'Digit2': reloadMap('slc'); break;
-      case 'Digit3': reloadMap('siu'); break;
-      case 'KeyT': map.zoomIn(1); break;
-      case 'KeyG': map.zoomOut(1); break;
+      });
+
+      document.querySelector('#file').onchange = function(e) {
+        window.loadSaveFile();
+      }
+
+      window.requestAnimationFrame(update);
+      //window.addEventListener('contextmenu', function(e) { e.stopPropagation()}, true); // enable default context menu
     }
-  });
-
-  document.querySelector('#file').onchange = function(e) {
-    window.loadSaveFile();
-  }
-
-  window.requestAnimationFrame(update);
-//  window.addEventListener('contextmenu', function(e) { e.stopPropagation()}, true); // enable default context menu
+  );
 }
