@@ -1,4 +1,4 @@
-[
+[  
   {
     "name": "BarrelClosed17",
     "type": "EX:BarrelRed_C",
@@ -24,7 +24,8 @@
     "name": "BuyHealthRegen2_695",
     "area": "Map",
     "lat": -34003.71875,
-    "lng": -57.00196838378906
+    "lng": -57.00196838378906,
+    "comment": "Requires collecting 1/6 Gold Barrels"
   },
   {
     "name": "BuySwordDamage+11",
@@ -36,13 +37,15 @@
     "name": "BuyDoubleJump_786",
     "area": "Map",
     "lat": -33901.05859375,
-    "lng": 27.856106758117676
+    "lng": 27.856106758117676,
+    "comment": "Requires collecting 3/6 Gold Barrels"
   },
   {
     "name": "BuyTripleJump_877",
     "area": "Map",
     "lat": -33870.11328125,
-    "lng": 210.43764877319336
+    "lng": 210.43764877319336,
+    "comment": "Requires collecting 4/6 Gold Barrels"
   },
   {
     "name": "BuySpeedx15_2",
@@ -60,7 +63,8 @@
     "name": "UpgradeHappiness2_2",
     "area": "Map",
     "lat": -33767.76171875,
-    "lng": 287.12112426757812
+    "lng": 287.12112426757812,
+    "comment": "Requires collecting 6/6 Gold Barrels"
   },
   {
     "name": "BuyChestDetectorRadius",
@@ -72,7 +76,8 @@
     "name": "BuyForceBlock_695",
     "area": "Map",
     "lat": -33590.125,
-    "lng": 255.09010314941406
+    "lng": 255.09010314941406,
+    "comment": "Requires collecting 2/6 Gold Barrels"
   },
   {
     "name": "BuyWallet+50_737",
@@ -96,7 +101,33 @@
     "name": "BuyHealth+15_765",
     "area": "Map",
     "lat": -33396.23046875,
-    "lng": 393.44390869140625
+    "lng": 393.44390869140625,
+    "comment": "Requires collecting 5/6 Gold Barrels"
+  },
+  {
+    "name": "UpgradeSwordDamageX2_716",
+    "area": "Map",
+    "comment": "Requires collecting 2/5 Red Barrels"
+  },
+  {
+    "name": "BuySilentFeet2",
+    "area": "Map",
+    "comment": "Requires collecting 1/5 Red Barrels"
+  },
+  {
+    "name": "BuyGunRefireRate50_506",
+    "area": "Map",
+    "comment": "Requires collecting 3/5 Red Barrels"
+  },
+  {
+    "name": "BuyGunSpeedx2_436",
+    "area": "Map",
+    "comment": "Requires collecting 4/5 Red Barrels"
+  },
+  {
+    "name": "BuyGunDamage+15_1234",
+    "area": "Map",
+    "comment": "Requires collecting 5/5 Red Barrels"
   },
   {
     "name": "Chest9_2231",

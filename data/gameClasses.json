@@ -4,7 +4,7 @@
     "icon": "strong",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "extra"
+    "lines": "upgrades"
   },
   "BP_BoneDetector_C": {
     "friendly": "Bone Detector",
@@ -252,15 +252,15 @@
   "EX:BarrelColor_C": {
     "friendly": "Gold Barrel",
     "icon": "barrel_gold",
-    "layer": "misc",
-    "nospoiler": "collectable",
+    "layer": "extra",
+    "nospoiler": "extra",
     "lines": "extra"
   },
   "EX:BarrelRed_C": {
     "friendly": "Red Barrel",
     "icon": "barrel_red",
-    "layer": "misc",
-    "nospoiler": "collectable",
+    "layer": "extra",
+    "nospoiler": "extra",
     "lines": "extra"
   },
   "BarrelClosed_Blueprint_C": {
