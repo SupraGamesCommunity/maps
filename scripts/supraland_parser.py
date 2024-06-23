@@ -856,7 +856,7 @@ def friendly_name(cls):
 
     return n 
 
-def read_game_classes(fn = '..\\js\\gameClasses.js', colonStrip = False):
+def read_game_classes(fn = '..\\data\\gameClasses.json'):
 
     print('Reading "'+fn+'"...')
 
@@ -864,68 +864,9 @@ def read_game_classes(fn = '..\\js\\gameClasses.js', colonStrip = False):
     if not os.path.exists(fn):
         sys.exit(f'{fn} not found, exiting')
 
-    with open(fn, 'r', encoding='utf-8-sig') as fh:
-        gc_txt = fh.read()
+    with open(fn, 'r', encoding='utf-8') as f:
+        classes = json.load(f)
 
-    # Find constructor parameters and slice them out
-    if not (m := re.search('constructor *?\\( *', gc_txt)):
-        sys.exit('Unexpected format: Can\'t find "constructor("')
-
-    # First column is always 'type'
-    keys = []
-    defaults = []
-
-    # Extract the gameClasses dictionary keys
-    next_idx = m.span()[1]
-    while True:
-        m = re.search(" *([^ ,)]*) *= *(.*?) *([,\\)])", gc_txt[next_idx:], re.M)
-        if m is None: sys.exit('Unexpected format: Reading constructor arguments')
-        next_idx += m.span()[1]
-        keys.append(m.groups()[0])
-        defaults.append(m.groups()[1].strip('\'"'))
-        if defaults[-1] == 'null': defaults[-1]=None
-        if(m.groups()[2]!=','):
-            break;
-
-    # Find the initialiser
-    m = re.search('gameClasses *= *\\{ *\n', gc_txt[next_idx:], re.S)
-    next_idx += m.span()[1]
-
-    class_count = 0
-    classes = {}
-
-    # For each line of the initialiser until we hit the closing }
-    while gc_txt[next_idx:].lstrip()[0] != '}':
-        key = ''
-        entry = {}
-        i = 0
-        while i < len(keys)+1:
-            m = re.search('[^\n]*?(?:(null)|["\'](.*?)["\'])[, )]*', gc_txt[next_idx:])
-            if m is None or gc_txt[next_idx] == '\n':
-                break
-
-            if grp := m.groups()[1]:
-                if not key:
-                    key = grp
-                else:
-                    entry[keys[i-1]] = grp
-            elif not key:
-                sys.exit("Unexpected format: Reading class name")
-            else:
-                entry[keys[i-1]] = None
-
-            next_idx += m.span()[1]
-            i += 1
-
-        while i < len(keys)+1:
-            entry[keys[i-1]] = defaults[i-1]
-            i += 1
-
-        next_idx += 1
-        classes[key]=entry
-        class_count += 1
-
-    print(f'Success: {class_count} classes read with {len(keys)} members each')
     return classes
 
 
@@ -963,7 +904,6 @@ def main():
     parser.add_argument('-l', '--levels', action='store_true', help='export json levels to cache directory')
     parser.add_argument('-m', '--markers', action='store_true', help='export markers as json (need json levels)')
     parser.add_argument('-b', '--blueprints', action='store_true',  help='read blueprints and export loc json')
-    parser.add_argument('-c', '--classes', action='store_true',  help='export gameClasses.js as json')
     parser.add_argument('-o', '--loc', action='store_true',  help='export gameClasses.js as json')
     args = parser.parse_args()
 
@@ -980,8 +920,6 @@ def main():
         export_class_loc()
     elif args.textures:
         export_textures(args.game, args.cache_dir)
-    elif args.classes:
-        export_classes()
     elif args.loc:
         export_loc_files()
     else:
