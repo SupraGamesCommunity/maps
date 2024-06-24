@@ -1133,55 +1133,6 @@
     "nospoiler": null,
     "lines": "jumppads"
   },
-  "LotsOfCoins1_C": {
-    "friendly": "Lots Of Coins 1",
-    "icon": "chest_coin",
-    "layer": "coin",
-    "nospoiler": null,
-    "lines": "dev"
-  },
-  "LotsOfCoins10_C": {
-    "friendly": "Lots Of Coins 10",
-    "icon": "chest_coin",
-    "layer": "coin",
-    "nospoiler": null,
-    "lines": "dev"
-  },
-  "LotsOfCoins15_C": {
-    "friendly": "Lots Of Coins 15",
-    "icon": "chest_coin",
-    "layer": "coin",
-    "nospoiler": null,
-    "lines": "dev"
-  },
-  "LotsOfCoins30_C": {
-    "friendly": "Lots Of Coins 30",
-    "icon": "chest_coin",
-    "layer": "coin",
-    "nospoiler": null,
-    "lines": "dev"
-  },
-  "LotsOfCoins50_C": {
-    "friendly": "Lots Of Coins 50",
-    "icon": "chest_coin",
-    "layer": "coin",
-    "nospoiler": null,
-    "lines": "dev"
-  },
-  "LotsOfCoins5_C": {
-    "friendly": "Lots Of Coins 5",
-    "icon": "chest_coin",
-    "layer": "coin",
-    "nospoiler": null,
-    "lines": "dev"
-  },
-  "LotsofCoins200_C": {
-    "friendly": "Lotsof Coins 200",
-    "icon": "chest_coin",
-    "layer": "coin",
-    "nospoiler": null,
-    "lines": "dev"
-  },
   "Coin:Chest_C": {
     "friendly": "Coin Chest",
     "icon": "chest_coin",
