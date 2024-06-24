@@ -1,7 +1,7 @@
 /*eslint strict: ["error", "global"]*/
 /*global L, UESaveObject*/
 /*global layerConfigs*/
-/*global gameClasses, gameClassesInit, defaultGameClass, decodeIconName, getClassIcon, getObjectIcon*/
+/*global gameClasses, gameClassesInit, defaultGameClass, decodeIconName, getClassIcon, getObjectIcon, locStr*/
 
 // Terminology,
 // Class - The type of object represented by marker. Based on UE4 classes/blueprints 
@@ -487,14 +487,11 @@ function loadMap(id) {
     currentMarkerReference = e.popup._source;
     currentBuildReference = o;
 
-    let c = gameClasses[o.type] || defaultGameClass;
-    let sc = o.spawns ? (gameClasses[o.spawns] || defaultGameClass) : null;
-
     let text = ''
-    text += `<div class="marker-popup-heading">${o.friendly || c.friendly || o.type}</div>`
+    text += `<div class="marker-popup-heading">${locStr.friendly(o, o.type, mapId) || o.type}</div>`
     text += '<div class="marker-popup-text">'
-    if(sc && (!('spawns_name' in o) || o.spawns_name != '')) {
-      text += `<br><span class="marker-popup-col">Contains:</span>${o.spawns_name || sc.friendly || o.spawns}`;
+    if(o.spawns) {
+      text += `<br><span class="marker-popup-col">Contains:</span><span class="marker-popup-col2">${locStr.friendly(null, o.spawns, mapId) || o.spawns}</span>`;
     }
     if(o.coins) {
       text += `<br><span class="marker-popup-col">Coins:</span>${o.coins} coin${o.coins > 1 ? "s":""}`;
@@ -506,15 +503,18 @@ function loadMap(id) {
       let price_type = (o.price_type in price_types ? o.price_type : 0);
       text += `<br><span class="marker-popup-col">Price:</span>${o.cost} ${price_types[price_type]}${o.cost != 1 && price_type != 5 ? 's':''}`;  // No s on plural of scrap
     }
-    for(let f of ['variant', 'loop', 'description']){
+    for(let f of ['variant', 'loop']){
       if(o[f]){
         text += `<br><span class="marker-popup-col">${f.charAt(0).toUpperCase() + f.slice(1)}:</span>${o[f]}`;
       }
     }
-    text += `<br><span class="marker-popup-col">XYZ pos:</span>(${o.lng.toFixed(0)}, ${o.lat.toFixed(0)}, ${o.alt.toFixed(0)})`
+    if(o.description || (gameClasses[o.type] || defaultGameClass).description) {
+      text += `<br><span class="marker-popup-col">Description:</span><span class="marker-popup-col2">${locStr.description(o, o.type, mapId)}</span>`;
+    }
     if(o.comment) {
       text += `<br><span class="marker-popup-col">Comment:</span><span class="marker-popup-col2">${o.comment}</span>`;
     }
+    text += `<br><span class="marker-popup-col">XYZ pos:</span>(${o.lng.toFixed(0)}, ${o.lat.toFixed(0)}, ${o.alt.toFixed(0)})`
   
     text += '<br><br></div>'
 
@@ -591,7 +591,7 @@ function loadMap(id) {
 
     // Extract line properties from CSS
     let lineTypeProps = {}
-    for(let lt of ['jumppad red', 'jumppad blue', 'pipe', 'trigger', 'player_aim']) {
+    for(let lt of ['jumppad red', 'jumppad blue', 'pipe', 'trigger', 'target']) {
       const div = $("<div>").addClass(`line-${lt}`).appendTo(document.body);
       let lineProps = {}
       for(let p of ['stroke', 'fill', 'opacity', 'fill-opacity', '--arrow', '--arrow-size', '--arrow-angle', '--arrow-dist',
@@ -1233,7 +1233,7 @@ window.onload = function(event) {
   // clear location hash
   history.pushState('', document.title, window.location.pathname + window.location.search);
 
-  Promise.all([gameClassesInit(), layerConfigs.init()])
+  Promise.all([gameClassesInit(), layerConfigs.init(), locStr.init()])
     .then(() => {
       mapId = mapParam.mapId || localData.mapId || 'sl';
 

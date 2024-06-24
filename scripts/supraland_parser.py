@@ -166,10 +166,11 @@ def export_class_loc():
             blueprints = json.load(f)
 
         def optKey(l, cls, k, v):
-            if v is not None:
-                if l.get(cls) is None:
+            if v:
+                if cls not in l:
                     l[cls] = {}
-                l[cls][k] = v
+                if k not in l[cls]:
+                    l[cls][k] = v
 
         for cls, bps in blueprints.items():
             if cls in game_classes:
@@ -196,6 +197,14 @@ def export_class_loc():
 
 def export_loc_files():
 
+    # Merge custom-loc.json into gameClasses.json
+    print('Merging custom-loc.json into gameClasses.json...')
+    classes = json.load(open('../data/gameClasses.json', 'r', encoding='utf-8'))
+    customLoc = json.load(open('../data/custom-loc.json', 'r', encoding='utf-8'))
+    for c, d in customLoc.items():
+        classes[c] = classes[c] | d
+    json.dump(classes, open('gameClasses.json', 'w', encoding='utf-8'), indent = 2)
+    
     # Make a list of the keys that are referenced in the various files
     keys = set()
     key_files = ['gameClasses.json', 'layerConfigs.json', 'custom-loc.json',
@@ -229,6 +238,8 @@ def export_loc_files():
                     newlocstr[k] = locstr[k]
         print(f'Writing to ../data/loc/locstr-{loc}.json')
         json.dump(newlocstr, open(f'../data/loc/locstr-{loc}.json', 'w', encoding='utf-8'), indent = 2)
+
+    
     
 def export_markers(game, cache_dir, marker_types=marker_types, marker_names=[]):
     data = []
@@ -617,7 +628,7 @@ exported_properties = [
     'icon',                                         # explicit icon override
     'variant',                                      # variant allows change of marker
     'friendly',                                     # Friendly name for the marker
-    'linetype',                                     # Trigger, pad, pipe, player_aim
+    'linetype',                                     # Trigger, pad, pipe, target
     'twoway',                                       # Pipe or bad is two way if True
     'target',                                       # where to draw line to for pipes and pads
     'targets',                                      # array of dictionaries 'type' and target position

@@ -1,10 +1,15 @@
 {
   "BP_A3_StrengthQuest_C": {
-    "friendly": "Strength",
+    "friendly": "Strong",
     "icon": "strong",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "upgrades"
+    "lines": "upgrades",
+    "friendly_key": "AB8A43CA4F1AE131FBD9C2A7592365FD",
+    "description": "You can now destroy pixel blocks with your sword AND carry very heavy objects AND you got +5 sword damage.",
+    "description_key": "E5D2B6C24991B39DB6313DB926CD0CCA",
+    "descriptionSIU": "You can lift heavy stuff and look ripped!",
+    "descriptionSIU_key": "3283A8C74FB7902A032316B71C678082"
   },
   "BP_BoneDetector_C": {
     "friendly": "Bone Detector",
@@ -97,11 +102,15 @@
     "description_key": "3A18B95947430563A744F2AE287CD88A"
   },
   "BP_BuyGunDuration+2s_C": {
-    "friendly": "Stun duration + 2",
+    "friendly": "Stun duration + {duration}",
     "icon": "loot",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "dev"
+    "lines": "dev",
+    "friendly_key": "027203044F55498F5A8C75AD5CDC2A41",
+    "description": "Electric gun will stun for an extra {duration} second(s).",
+    "description_key": "774071B94BDD01A48A094BA56290F080",
+    "notes for dev": "this friendly_key has a weird string"
   },
   "BP_BuyGunRechargeTime-50pct_C": {
     "friendly": "Reload time -{percentage}%",
@@ -118,17 +127,21 @@
     "icon": "meat",
     "layer": "extra",
     "nospoiler": null,
-    "lines": "dev"
+    "lines": "dev",
+    "friendly_key": "",
+    "description": "Where did this meat come from? It really makes you think.",
+    "description_key": "72FBAFCD487003662D5C40B3D8B9BD3F",
+    "notes for dev": "this item has no description but this string works?"
   },
   "BP_DoubleHealthLoot_C": {
-    "friendly": "Double Healing Drops",
+    "friendly": "Double Health",
     "icon": "health_drops_x2",
     "layer": "upgrades",
     "nospoiler": "shop",
     "lines": "dev",
-    "friendly_key": "177CB8514A22D91EA0351BB92BD2FA7C",
-    "description": "Health drops from enemies now heal twice as much!",
-    "description_key": "3A88693D4401A270614844BB958793A2"
+    "friendly_key": "A89D939B4351B11D3C4E23A9805F962A",
+    "description": "Health fruits now give you 20 instead of 10 health!",
+    "description_key": "10CAB90D4A42FE6E0C8EDC9BE5ACBAF4"
   },
   "BP_EngagementCup_Base_C": {
     "friendly": "Engagement Trophy",
@@ -145,7 +158,11 @@
     "icon": "chest",
     "layer": null,
     "nospoiler": "closedChest",
-    "lines": "dev"
+    "lines": "dev",
+    "friendly_key": "",
+    "description": "There was a freaky monster in there, man!",
+    "description_key": "23AF440F4C1F27100BFE5FB64B0F5155",
+    "notes for dev": "this item has no description but this string works?"
   },
   "BP_PickaxeDamage+1_C": {
     "friendly": "Pickaxe Damage +{damageNumber}",
@@ -193,7 +210,9 @@
     "layer": "upgrades",
     "nospoiler": "shop",
     "lines": "dev",
-    "friendly_key": "66A7DABE48D345D63702ACA760E9B0F9"
+    "friendly_key": "66A7DABE48D345D63702ACA760E9B0F9",
+    "description": "Bend your knees",
+    "description_key": "BA90BA004E008AD42AA4848B2971A119"
   },
   "BP_Purchase_FasterPickaxe_C": {
     "friendly": "Pickaxe Cooldown-",
@@ -247,28 +266,44 @@
     "icon": "barrel_red",
     "layer": "quest",
     "nospoiler": "collectable",
-    "lines": "quest"
+    "lines": "quest",
+    "friendly_key": "",
+    "description": "There is a barrel. Try to get it to the shop keeper for new upgrades!",
+    "description_key": "AB1A0C214D30F3A748159488B0945122",
+    "notes for dev": "this item has no description but this string works?"
   },
   "BarrelClosed_Blueprint_C": {
     "friendly": "Gold Barrel",
     "icon": "barrel_gold",
     "layer": "quest",
     "nospoiler": "collectable",
-    "lines": "quest"
+    "lines": "quest",
+    "friendly_key": "",
+    "description": "Bring golden barrels to the shop for powerups!",
+    "description_key": "DC11792742BC34F99E0E6B90D0C4FA5F",
+    "notes for dev": "this item has no description but this string works?"
   },
   "Bones_C": {
     "friendly": "Bones",
     "icon": "bones",
     "layer": "misc",
     "nospoiler": "collectable",
-    "lines": "dev"
+    "lines": "dev",
+    "friendly_key": "",
+    "description": "I needed those bones to fake my death! Now I'm screwed!",
+    "description_key": "B9BD805C49C44FD036A1D9B5649709A3",
+    "notes for dev": "this item has no description but this string works?"
   },
   "CrashEnemySpawner_C": {
-    "friendly": "Skeleton",
+    "friendly": "Monster",
     "icon": "bones_monster",
     "layer": "misc",
     "nospoiler": "collectable",
-    "lines": "dev"
+    "lines": "dev",
+    "friendly_key": "",
+    "description": "First kill those monsters and pick up their bones, so they don't respawn!",
+    "description_key": "9F913BFA4BA617FEFADFF5A79EB2E915",
+    "notes for dev": "this item has no description but this string works?"
   },
   "BuyArmor1_C": {
     "friendly": "Armor",
@@ -276,7 +311,11 @@
     "layer": "upgrades",
     "nospoiler": "shop",
     "lines": "dev",
-    "friendly_key": "71C408CC4DA956CA166F35A37892C704"
+    "friendly_key": "71C408CC4DA956CA166F35A37892C704",
+    "friendly2": "Absorbs 3 Damage",
+    "friendly2_key": "B4C704424A400C705D6D709BC354F5B9",
+    "description": "Only damage that is higher than 3 can damage you now. Cactuses can no longer hurt you.",
+    "description_key": "58CD6D4F43A6E3D08B7C008CCFC9FD1E"
   },
   "BuyBeltRepel_C": {
     "friendly": "Magnet Repel",
@@ -293,7 +332,10 @@
     "icon": "belt",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "dev"
+    "lines": "dev",
+    "friendly_key": "7149A6494BA4C9484C154F84E2E82A0D",
+    "description": "Be able to float near metallic surfaces. Light metallic objects can be attracted. ",
+    "description_key": "55998AEA49B7B69A2196DA9770234AAD"
   },
   "BuyBelt_DLC2_C": {
     "friendly": "Float Buckle",
@@ -341,7 +383,9 @@
     "layer": "upgrades",
     "nospoiler": "shop",
     "lines": "dev",
-    "friendly_key": "B26FAD944272C6E98C720AB47B20DA83"
+    "friendly_key": "B26FAD944272C6E98C720AB47B20DA83",
+    "description": "Attracts loot coins from far away (steady spinning coins are not affected).",
+    "description_key": "129FC6F146AE25BFE56D22AE27C9961D"
   },
   "BuyCritChance+5_C": {
     "friendly": "Critical Chance +{percentage}%",
@@ -358,7 +402,10 @@
     "icon": "moon_red",
     "layer": "misc",
     "nospoiler": "collectable",
-    "lines": "dev"
+    "lines": "dev",
+    "friendly_key": "571621A1492B4D450EDEEEAF999C310B",
+    "description": "Looks very valuable - can be used for something.",
+    "description_key": "622EB5CA40E1F930D11F41893FCE5899"
   },
   "BuyDoubleJump_C": {
     "friendly": "Double Jump",
@@ -366,7 +413,9 @@
     "layer": "upgrades",
     "nospoiler": "shop",
     "lines": "dev",
-    "friendly_key": "CAACD93B44B32D6A147421BBECC14FFF"
+    "friendly_key": "CAACD93B44B32D6A147421BBECC14FFF",
+    "description": "You can now jump 2 times in a row. Enables you to jump around a corner.",
+    "description_key": "68DA51A34C6B1DD99D0A10AEF3C5CADC"
   },
   "BuyElectricGun_C": {
     "friendly": "Portable Tesla Coil",
@@ -384,7 +433,9 @@
     "layer": "upgrades",
     "nospoiler": "shop",
     "lines": "dev",
-    "friendly_key": "3384727C4059588A15BFDFB3380301E1"
+    "friendly_key": "3384727C4059588A15BFDFB3380301E1",
+    "description": "Enemies now drop coins or health when killed. You get more coins if your health is full.",
+    "description_key": "62B06035449AEE4C9DA6F98BC671B9C7"
   },
   "BuyFireGun_C": {
     "friendly": "Fire Redistributor",
@@ -403,8 +454,8 @@
     "nospoiler": "shop",
     "lines": "dev",
     "friendly_key": "6B2623D84351A7BAE55FC398A1C8B45B",
-    "description": "You can now also attach the beam to gold.",
-    "description_key": "A9C2A7924323001EA00C54857ECF5BEF"
+    "description": "You can now also attach the beam to gold. The beam can also conduct electricity from end to end.",
+    "description_key": "296AA9CB45FBFB20C7966C971AE4B673"
   },
   "BuyForceBeam_C": {
     "friendly": "Force Beam",
@@ -412,7 +463,9 @@
     "layer": "upgrades",
     "nospoiler": "shop",
     "lines": "dev",
-    "friendly_key": "5177BDBB4AC3483C5FAC5A827B03DCC0"
+    "friendly_key": "5177BDBB4AC3483C5FAC5A827B03DCC0",
+    "description": "Connect things with a magical beam and have it contract.",
+    "description_key": "B936EE0C4AD80D15EEB6B9A2A3711DB8"
   },
   "BuyForceBlockTelefrag_C": {
     "friendly": "Force Cube Telefrag",
@@ -420,7 +473,9 @@
     "layer": "upgrades",
     "nospoiler": "shop",
     "lines": "dev",
-    "friendly_key": "6C3FB7D94BF0D6FE6B5CDF9A2780C688"
+    "friendly_key": "6C3FB7D94BF0D6FE6B5CDF9A2780C688",
+    "description": "The next level of combat! Spawn the cube inside an enemy to kill it.",
+    "description_key": "490620AB402B9B7C543BAC8DF756E5C7"
   },
   "BuyForceBlock_C": {
     "friendly": "Force Cube",
@@ -428,7 +483,9 @@
     "layer": "upgrades",
     "nospoiler": "shop",
     "lines": "dev",
-    "friendly_key": "EFB25833407252098417179FA47CDD08"
+    "friendly_key": "EFB25833407252098417179FA47CDD08",
+    "description": "Spawns a heavy cube",
+    "description_key": "BC01D4B5471D9455E6C0A3AEBB5B9BE5"
   },
   "BuyForceCubeBeam_C": {
     "friendly": "Force Beam/Cube Compatibility",
@@ -436,7 +493,9 @@
     "layer": "upgrades",
     "nospoiler": "shop",
     "lines": "dev",
-    "friendly_key": "F8F8668341F2E815627C7BA1B55B10F1"
+    "friendly_key": "F8F8668341F2E815627C7BA1B55B10F1",
+    "description": "You can now attach the force beam to the force cube.",
+    "description_key": "39B8A7E64D9F07F130378D9A2C8E433B"
   },
   "BuyForceCubeStompGrave3_C": {
     "friendly": "Volcano Sealer",
@@ -444,7 +503,9 @@
     "layer": "upgrades",
     "nospoiler": "shop",
     "lines": "dev",
-    "friendly_key": "1FE2E542470C2D262AA7AA89972BA3A9"
+    "friendly_key": "1FE2E542470C2D262AA7AA89972BA3A9",
+    "description": "Place the Forcecube into a tiny volcano and stomp onto it in order to close it forever.",
+    "description_key": "FEB4B2F34493A5CC6F6883842904678C"
   },
   "BuyForceCubeStompJump_C": {
     "friendly": "Force Cube Stomp Jump",
@@ -452,7 +513,9 @@
     "layer": "upgrades",
     "nospoiler": "shop",
     "lines": "dev",
-    "friendly_key": "928CA8AE48287F0F9CBAFEAFE8268EC4"
+    "friendly_key": "928CA8AE48287F0F9CBAFEAFE8268EC4",
+    "description": "",
+    "description_key": ""
   },
   "BuyForceCubeStomp_C": {
     "friendly": "Force Cube Stomp",
@@ -460,7 +523,9 @@
     "layer": "upgrades",
     "nospoiler": "shop",
     "lines": "dev",
-    "friendly_key": "185DEBF54F6E51BBC01FE1B13D4BE992"
+    "friendly_key": "185DEBF54F6E51BBC01FE1B13D4BE992",
+    "description": "Stomp onto your force cube to create a big explosion that does a lot of damage. Good when you are surrounded by enemies.",
+    "description_key": "A28AE6D4459BEB9D69D232A51ECF1952"
   },
   "BuyGraveDetector_C": {
     "friendly": "Grave Detector",
@@ -468,29 +533,39 @@
     "layer": "upgrades",
     "nospoiler": "shop",
     "lines": "dev",
-    "friendly_key": "C950773D4471E4CC1CF5D39005CD64F7"
+    "friendly_key": "C950773D4471E4CC1CF5D39005CD64F7",
+    "description": "Grave module for the chest detector. It now also detects enemy spawn points. Doesn't work without owning the chest detector. Only detects grave that you have the ability to destroy.",
+    "description_key": "8E8AD1D14AF4831079F4F5BB147A087E"
   },
   "BuyGun1_C": {
     "friendly": "Mighty MacGuffin",
     "icon": "gun_red_wood",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "dev"
+    "lines": "dev",
+    "friendly_key": "1D6A9C954A3A42B91B9461B272FBB885",
+    "description": "Use it to kill enemies, to shoot buttons and more.",
+    "description_key": "890F425E418B5B335648B3AFDCC091FF"
   },
   "BuyGunAltDamagex2_C": {
-    "friendly": "Gun AltFire Damage x2",
+    "friendly": "Gun Altfire Damage x2",
     "icon": "gun_upgrade",
     "layer": "upgrades",
     "nospoiler": "shop",
     "lines": "dev",
-    "friendly_key": "FF9D1B894D5CAAC473A9968FBAECA329"
+    "friendly_key": "FF9D1B894D5CAAC473A9968FBAECA329",
+    "description": "Doubles the damage of your Altfire gun mode",
+    "description_key": "DC61C12649ABDF719875E190F5E38045"
   },
   "BuyGunAlt_C": {
     "friendly": "2nd Fire",
     "icon": "gun_red",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "dev"
+    "lines": "dev",
+    "friendly_key": "90C5D65844E2675D3BDE14AFC84B64FC",
+    "description": "Can shoot a beam. Use the beam to hit the 1st Fire projectile. This creates a 90\u00b0 attack that is very powerful.",
+    "description_key": "A108FBD1454C1C0F2F2AFC8CE56925E8"
   },
   "BuyGunCoin_C": {
     "friendly": "Gun Picks Up Coins",
@@ -498,7 +573,9 @@
     "layer": "upgrades",
     "nospoiler": "shop",
     "lines": "dev",
-    "friendly_key": "A06C9BA04C735AEDC2FF4287F5533BEA"
+    "friendly_key": "A06C9BA04C735AEDC2FF4287F5533BEA",
+    "description": "Your gun's projectile now picks up coins when it touches them. Big coins cannot be picked up with this.",
+    "description_key": "93ECA1794D30BDD2E6FDA989EFB50C9E"
   },
   "BuyGunComboDamage+25_C": {
     "friendly": "Combo Damage +25",
@@ -506,7 +583,9 @@
     "layer": "upgrades",
     "nospoiler": "shop",
     "lines": "dev",
-    "friendly_key": "B937E76C496891FFB2D58EA5AD2F4AD3"
+    "friendly_key": "B937E76C496891FFB2D58EA5AD2F4AD3",
+    "description": "Your gun combo explosion now causes 25 more damage. New damage: ",
+    "description_key": "B860A0034B157DAC0FDF20995E3CAA76"
   },
   "BuyGunCriticalDamageChance_C": {
     "friendly": "Gun Fire Critical Damage Chance +5%",
@@ -514,7 +593,9 @@
     "layer": "upgrades",
     "nospoiler": "shop",
     "lines": "dev",
-    "friendly_key": "E406D7244A30DEBF591F09A24D633DF2"
+    "friendly_key": "E406D7244A30DEBF591F09A24D633DF2",
+    "description": "Increases your gun's critical damage chance by 5%. (Only has an effect if you own Critical Gun Damage). Your current critical % is: ",
+    "description_key": "1C5213B741CFCB5794CC628CA7844564"
   },
   "BuyGunCriticalDamage_C": {
     "friendly": "Gun Critical damage",
@@ -522,7 +603,9 @@
     "layer": "upgrades",
     "nospoiler": "shop",
     "lines": "dev",
-    "friendly_key": "2A7C79404B8D91BA3F187BAC1AFDE7E1"
+    "friendly_key": "2A7C79404B8D91BA3F187BAC1AFDE7E1",
+    "description": "Chance of your gun making double damage (first fire). The current % chance is: ",
+    "description_key": "3319902746B6B35EB3D9C9AFC55A5CE5"
   },
   "BuyGunDamage+15_C": {
     "friendly": "Gun damage +15",
@@ -530,7 +613,9 @@
     "layer": "upgrades",
     "nospoiler": "shop",
     "lines": "dev",
-    "friendly_key": "C7649B2646D3EE0931657AB63D497380"
+    "friendly_key": "C7649B2646D3EE0931657AB63D497380",
+    "description": "Your gun now causes 15 more damage per shot!",
+    "description_key": "7C8FD5A741CC1D6F7CE3318304F32AD9"
   },
   "BuyGunDamage+1_C": {
     "friendly": "Gun damage +1",
@@ -538,7 +623,9 @@
     "layer": "upgrades",
     "nospoiler": "shop",
     "lines": "dev",
-    "friendly_key": "D07C12834F1A99772A3B758CB68D67D4"
+    "friendly_key": "D07C12834F1A99772A3B758CB68D67D4",
+    "description": "+1 damage? Is this a joke? Worst upgrade ever!",
+    "description_key": "591FDFC04C11E13853A67A97C8CB83CE"
   },
   "BuyGunDamage+5_C": {
     "friendly": "Gun damage +5",
@@ -546,7 +633,9 @@
     "layer": "upgrades",
     "nospoiler": "shop",
     "lines": "dev",
-    "friendly_key": "F67CB76E42F640D7F43352B7EB5243BB"
+    "friendly_key": "F67CB76E42F640D7F43352B7EB5243BB",
+    "description": "Your gun now causes 5 more damage per shot!",
+    "description_key": "DEA0BC4F4A0B32BA68F7EE876AAA9369"
   },
   "BuyGunHoly1_C": {
     "friendly": "Holy Gun",
@@ -554,7 +643,11 @@
     "layer": "upgrades",
     "nospoiler": "shop",
     "lines": "dev",
-    "friendly_key": "A4EEA0994A47894991E031B148C7DDFD"
+    "friendly_key": "A4EEA0994A47894991E031B148C7DDFD",
+    "friendly2": "Gun Destroy Wooden Graves",
+    "friendly2_key": "937367B0437DE4662B6AD0B09607E7BF",
+    "description": "Your gun can now destroy wooden graves.",
+    "description_key": "B67B92E749EDE1DF774BD8A22FEAD0F8"
   },
   "BuyGunHoly2_C": {
     "friendly": "Holy Gun",
@@ -562,7 +655,11 @@
     "layer": "upgrades",
     "nospoiler": "shop",
     "lines": "dev",
-    "friendly_key": "4E2D753A45BD0DE6B91338A868C4EE82"
+    "friendly_key": "4E2D753A45BD0DE6B91338A868C4EE82",
+    "friendly2": "Gun Destroy Stone Graves",
+    "friendly2_key": "1D620DA1422334C89DEAB38FEBA49482",
+    "description": "Your gun can now destroy stone graves.",
+    "description_key": "F527AD4F4561BCE7F59317BFDE7FD0FA"
   },
   "BuyGunRefillSpeed+66_C": {
     "friendly": "Ammo Refill Speed +66%",
@@ -570,7 +667,9 @@
     "layer": "upgrades",
     "nospoiler": "shop",
     "lines": "dev",
-    "friendly_key": "48A5C00340AEF37776DAD391B656CCC8"
+    "friendly_key": "48A5C00340AEF37776DAD391B656CCC8",
+    "description": "Your gun ammo refills faster.",
+    "description_key": "FA5972584EF47F237DF3EE9D835081A3"
   },
   "BuyGunRefireRate50_C": {
     "friendly": "Gun cooldown halfed",
@@ -578,7 +677,9 @@
     "layer": "upgrades",
     "nospoiler": "shop",
     "lines": "dev",
-    "friendly_key": "DC752FA6411151DAA78FD8B37E5F097F"
+    "friendly_key": "DC752FA6411151DAA78FD8B37E5F097F",
+    "description": "Your gun now shoots twice as fast! Boom boom!",
+    "description_key": "59A1A1AC4C377C445C5C3C8BE1E5DAD4"
   },
   "BuyGunSpeedx2_C": {
     "friendly": "Gun Projectile Speed x2",
@@ -586,7 +687,9 @@
     "layer": "upgrades",
     "nospoiler": "shop",
     "lines": "dev",
-    "friendly_key": "E1CE957843EB5905979FEB9B39C06F97"
+    "friendly_key": "E1CE957843EB5905979FEB9B39C06F97",
+    "description": "Your projectiles now fly twice as fast!",
+    "description_key": "5A5184CA4CCB65876DBECFACE4425C59"
   },
   "BuyGunSplashDamage_C": {
     "friendly": "Gun Splash Damage",
@@ -594,7 +697,9 @@
     "layer": "upgrades",
     "nospoiler": "shop",
     "lines": "dev",
-    "friendly_key": "F456DECB4597A1AE739292A829065681"
+    "friendly_key": "F456DECB4597A1AE739292A829065681",
+    "description": "Your gun projectiles now cause splash damage, ranging about 3 meters.",
+    "description_key": "D93EB885402428C8D63560A8DD68029F"
   },
   "BuyHealth+15_C": {
     "friendly": "Max Health +15",
@@ -603,18 +708,18 @@
     "nospoiler": "shop",
     "lines": "dev",
     "friendly_key": "F192E94A4A38A07C1B173692EE6F105A",
-    "description": "Your maximum health increased by {healthIncrease}. \r\nYou now have a maximum of {#} health.",
-    "description_key": "30BB3BA74AF303802E7DF89D9D4661F2"
+    "description": "Your maximum health increased by 15.",
+    "description_key": "3C5342934039DBADD58154897D06655A"
   },
   "_BuyHealth+10_C": {
     "icon": "health",
     "layer": "upgrades",
     "nospoiler": "shop",
     "lines": "dev",
-    "friendly": "Health +{healthIncrease}",
-    "friendly_key": "E9C965494E9EADDAC4609584271D5D31",
-    "description": "Your maximum health increased by {healthIncrease}. \r\nYou now have a maximum of {#} health.",
-    "description_key": "30BB3BA74AF303802E7DF89D9D4661F2"
+    "friendly": "Health +10",
+    "friendly_key": "506F1CDD45F5589616C6AFB7D8FB293A",
+    "description": "Nom nom. Max Health increased by 10. Don't try this again! It only works once!",
+    "description_key": "9780F31E4D8CF914E9EA8DA3C01F68A0"
   },
   "BuyHealth+2_C": {
     "friendly": "Max Health +2",
@@ -623,8 +728,8 @@
     "nospoiler": "shop",
     "lines": "dev",
     "friendly_key": "40654DC9487F523BE649BE99E5CA4B96",
-    "description": "Your maximum health increased by {healthIncrease}. \r\nYou now have a maximum of {#} health.",
-    "description_key": "30BB3BA74AF303802E7DF89D9D4661F2"
+    "description": "Your maximum health increased by 2.",
+    "description_key": "35AA438B4B93736793B5E883EDAFE677"
   },
   "BuyHealth+5_C": {
     "friendly": "Max Health +5",
@@ -633,11 +738,11 @@
     "nospoiler": "shop",
     "lines": "dev",
     "friendly_key": "47D6A98A43F4487C285FC78EC3814FA4",
-    "description": "Your maximum health increased by {healthIncrease}. \r\nYou now have a maximum of {#} health.",
-    "description_key": "30BB3BA74AF303802E7DF89D9D4661F2"
+    "description": "Your maximum health increased by 5.",
+    "description_key": "B1DC717F43D25A72C24438A42B775761"
   },
   "BuyHealthRegenMax+1_C": {
-    "friendly": "Regeneration +",
+    "friendly": "Regeneration +1",
     "icon": "health_regen_max",
     "layer": "upgrades",
     "nospoiler": "shop",
@@ -652,7 +757,9 @@
     "layer": "upgrades",
     "nospoiler": "shop",
     "lines": "dev",
-    "friendly_key": "85220AD7486DDECE8633A786F2F0886A"
+    "friendly_key": "85220AD7486DDECE8633A786F2F0886A",
+    "description": "Only has an effect if you own Health Regeneration. Raises health regeneration ceiling by 10.",
+    "description_key": "6C44216B4C4ECEC30EB91D862274B5FD"
   },
   "BuyHealthRegenMax15_C": {
     "friendly": "Health Regeneration +15",
@@ -660,15 +767,19 @@
     "layer": "upgrades",
     "nospoiler": "shop",
     "lines": "dev",
-    "friendly_key": "66B927104ACBD83532775B9B3959C563"
+    "friendly_key": "66B927104ACBD83532775B9B3959C563",
+    "description": "Only has an effect if you own Health Regeneration. Raises health regeneration ceiling by 15.",
+    "description_key": "6F85A9E74DE9141E5DD54D82A29A4FE8"
   },
   "BuyHealthRegenMax5_C": {
-    "friendly": "Regeneration Ceiling +5",
+    "friendly": "Health Regeneration +5",
     "icon": "health_regen_max",
     "layer": "upgrades",
     "nospoiler": "shop",
     "lines": "dev",
-    "friendly_key": "1344E4AC4883410F4E371980B429B194"
+    "friendly_key": "1344E4AC4883410F4E371980B429B194",
+    "description": "Only has an effect if you own Health Regeneration. Raises health regeneration ceiling by 5.",
+    "description_key": "C2FB51844733FC7BFD002DA51488BDDA"
   },
   "BuyHealthRegenSpeed_C": {
     "friendly": "Regeneration Speed x2",
@@ -686,7 +797,9 @@
     "layer": "upgrades",
     "nospoiler": "shop",
     "lines": "dev",
-    "friendly_key": "761D2E35427EE64323E13F87AFC02E44"
+    "friendly_key": "761D2E35427EE64323E13F87AFC02E44",
+    "description": "Health now regenerates automatically up to 10. Upgrades can increase how far it regenerates.",
+    "description_key": "D05C25C341F3B9E9F9316DB3EC89B99E"
   },
   "BuyHeartLuck_C": {
     "friendly": "Loot Luck",
@@ -694,7 +807,9 @@
     "layer": "upgrades",
     "nospoiler": "shop",
     "lines": "dev",
-    "friendly_key": "1A25CC99430B47D3CB63F888E291FDC6"
+    "friendly_key": "1A25CC99430B47D3CB63F888E291FDC6",
+    "description": "Enemies are now more likely to drop health (Only has an effect if you have the loot upgrade).",
+    "description_key": "5DA60CBD4BE361E728C15DBB5AF930C2"
   },
   "BuyJumpHeightPlus_C": {
     "friendly": "Jump Height Plus",
@@ -702,7 +817,9 @@
     "layer": "upgrades",
     "nospoiler": "shop",
     "lines": "dev",
-    "friendly_key": "6B39BBA544178D8791FE299DB1B72150"
+    "friendly_key": "6B39BBA544178D8791FE299DB1B72150",
+    "description": "You can jump much higher",
+    "description_key": "C9990452471FA1B6CCD422A8E595300D"
   },
   "BuyJumpIncrease_C": {
     "friendly": "Jump +1",
@@ -720,7 +837,9 @@
     "layer": "upgrades",
     "nospoiler": "shop",
     "lines": "dev",
-    "friendly_key": "DCFC0B2B4E2339BF05ADAEB979E6A8ED"
+    "friendly_key": "DCFC0B2B4E2339BF05ADAEB979E6A8ED",
+    "description": "Get more coins from enemies. Only has an effect if you have the basic loot upgrade. Keep in mind: you only loot coins if your health is nearly full.",
+    "description_key": "35453382461EE9F53F315A84B5FA08F4"
   },
   "BuyNumberRising_C": {
     "friendly": "Enemy Health",
@@ -728,7 +847,9 @@
     "layer": "upgrades",
     "nospoiler": "shop",
     "lines": "dev",
-    "friendly_key": "1D21FEB14FD41470B837F58D590C237C"
+    "friendly_key": "1D21FEB14FD41470B837F58D590C237C",
+    "description": "See enemy health bars and how much damage you do to them.",
+    "description_key": "88EC1D8A4C1E5E0477DB66979C069535"
   },
   "BuyQuintupleJump_C": {
     "friendly": "Quintuple Jump",
@@ -746,7 +867,9 @@
     "layer": "upgrades",
     "nospoiler": "shop",
     "lines": "dev",
-    "friendly_key": "DFCD2A9542AE583EC7A419942E350CC8"
+    "friendly_key": "DFCD2A9542AE583EC7A419942E350CC8",
+    "description": "Your projectiles no longer deflect from the skeleton warrior's shield!",
+    "description_key": "D96DC53E4BC955D08CC30B8DED7BA5C1"
   },
   "BuyShowHealthbar_C": {
     "friendly": "Health Bar",
@@ -754,7 +877,9 @@
     "layer": "upgrades",
     "nospoiler": "shop",
     "lines": "dev",
-    "friendly_key": "DC050DC346154B34DA1F3DA82F434648"
+    "friendly_key": "DC050DC346154B34DA1F3DA82F434648",
+    "description": "The latest innovation in technology - giving you a visual representation of your health status. Bright parts of the bar indicate how far your health automatically regenerates.",
+    "description_key": "BB5DF8434319B7EFB1FDE8BBB314961A"
   },
   "BuyShowProgress_C": {
     "friendly": "Awesome-Meter",
@@ -762,7 +887,9 @@
     "layer": "upgrades",
     "nospoiler": "shop",
     "lines": "dev",
-    "friendly_key": "DE276F3A42B5E3A15AC7F2A4789DC31F"
+    "friendly_key": "DE276F3A42B5E3A15AC7F2A4789DC31F",
+    "description": "Shows how awesome you are! Every opened chest and bought item makes you more awesome.",
+    "description_key": "BB63C7C74168981DEBDE8492608A760A"
   },
   "BuySilentFeet_C": {
     "friendly": "Silent feet",
@@ -770,7 +897,9 @@
     "layer": "upgrades",
     "nospoiler": "shop",
     "lines": "dev",
-    "friendly_key": "667CB43E4333FACC3B54A7A89B8C63AD"
+    "friendly_key": "667CB43E4333FACC3B54A7A89B8C63AD",
+    "description": "Your feet are now so soft, enemies will not hear you coming.",
+    "description_key": "BCE3CAD44BD8D91BE05E158D4CC1BFB1"
   },
   "BuySmashdownDamage+1_C": {
     "friendly": "Stomp Damage +1",
@@ -778,7 +907,8 @@
     "layer": "upgrades",
     "nospoiler": "shop",
     "lines": "dev",
-    "friendly_key": "642C0B0E44D028AD9530E0A9E4B31AB4"
+    "friendly_key": "642C0B0E44D028AD9530E0A9E4B31AB4",
+    "notes for dev": "this item has no description and I can't find one that works, it doesn't need one anyway"
   },
   "BuySmashdownDamage+33_C": {
     "friendly": "Stomp Damage +33%",
@@ -786,7 +916,9 @@
     "layer": "upgrades",
     "nospoiler": "shop",
     "lines": "dev",
-    "friendly_key": "07F9D0314668FF0667D0D2BD34688E54"
+    "friendly_key": "07F9D0314668FF0667D0D2BD34688E54",
+    "description": "Adds 33% to the damage of your stomp ability (if owned). Only affects enemies, not things.",
+    "description_key": "1D1B2B87440930D00E2E15AFD4AEEF3E"
   },
   "BuySmashdownDamage+3_C": {
     "friendly": "Stomp Damage +3",
@@ -794,7 +926,8 @@
     "layer": "upgrades",
     "nospoiler": "shop",
     "lines": "dev",
-    "friendly_key": "1BFF14774CE2E0092F08EBAB3BAB431A"
+    "friendly_key": "1BFF14774CE2E0092F08EBAB3BAB431A",
+    "notes for dev": "this item has no description and I can't find one that works, it doesn't need one anyway"
   },
   "BuySmashdownRadius+_C": {
     "friendly": "Stomp Radius +50cm",
@@ -802,7 +935,9 @@
     "layer": "upgrades",
     "nospoiler": "shop",
     "lines": "dev",
-    "friendly_key": "05EC3B2E45249589B8BF2A98515F5C5F"
+    "friendly_key": "05EC3B2E45249589B8BF2A98515F5C5F",
+    "description": "Adds 50cm to the radius of the stomp attack, giving it a radius of: ",
+    "description_key": "A9A8ED2D494DE2C13C92BF9B9B8CA98D"
   },
   "BuySmashdown_C": {
     "friendly": "Stomp Shoes",
@@ -810,7 +945,9 @@
     "layer": "upgrades",
     "nospoiler": "shop",
     "lines": "dev",
-    "friendly_key": "456A3F04440BD37F3B2F27AC1935E73B"
+    "friendly_key": "456A3F04440BD37F3B2F27AC1935E73B",
+    "description": "Stomp down while in the air to push down things and to destroy things or enemies.",
+    "description_key": "9DAC8ABD47F47D0115D9D1B5349EAAFE"
   },
   "BuySpeedx15_C": {
     "friendly": "Speed x1.5",
@@ -818,7 +955,9 @@
     "layer": "upgrades",
     "nospoiler": "shop",
     "lines": "dev",
-    "friendly_key": "A57D1197427A90296227E1BDB2B3651B"
+    "friendly_key": "A57D1197427A90296227E1BDB2B3651B",
+    "description": "Run 50% faster",
+    "description_key": "02602F8447F444759944AFA7C96465EB"
   },
   "BuySpeedx2_C": {
     "friendly": "Speed x2",
@@ -845,15 +984,20 @@
     "icon": "sword_red",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "dev"
+    "lines": "dev",
+    "friendly_key": "F2D529CD47182CA6BD8ADF9BE3011120",
+    "description": "Lots of damage! Fast swings!",
+    "description_key": "F40855BE4FFE8BB6BC60078E2A3624EC"
   },
   "BuySwordCriticalDamageChance_C": {
-    "friendly": "Sword Critical Damage Chance +5%",
+    "friendly": "Critical Damage Chance +5%",
     "icon": "sword_damage",
     "layer": "upgrades",
     "nospoiler": "shop",
     "lines": "dev",
-    "friendly_key": "CD548FF04F30E9C65CADA1AF57652FC3"
+    "friendly_key": "CD548FF04F30E9C65CADA1AF57652FC3",
+    "description": "Increases chance of critical sword damage by 5%. Only applies if you have the critical damage upgrade. Your critical % is now: ",
+    "description_key": "395B206B420AE6BDA8F982834B469D73"
   },
   "BuySwordCriticalDamage_C": {
     "friendly": "Sword Critical Damage",
@@ -861,7 +1005,9 @@
     "layer": "upgrades",
     "nospoiler": "shop",
     "lines": "dev",
-    "friendly_key": "B77AC95941A12B97A8C37D9E0685D610"
+    "friendly_key": "B77AC95941A12B97A8C37D9E0685D610",
+    "description": "Your sword has a chance to make double damage. The current % chance is: ",
+    "description_key": "5F3250E84E1D4003F31431920894A24D"
   },
   "BuySwordDamage+02_C": {
     "friendly": "Sword Damage +2",
@@ -869,7 +1015,8 @@
     "layer": "upgrades",
     "nospoiler": "shop",
     "lines": "dev",
-    "friendly_key": "C968ED73453A46FF729281AD74A7DBC3"
+    "friendly_key": "C968ED73453A46FF729281AD74A7DBC3",
+    "notes for dev": "this item has no description and I can't find one that works, it doesn't need one anyway"
   },
   "BuySwordDamage+1_C": {
     "friendly": "Sword Damage +1",
@@ -877,7 +1024,8 @@
     "layer": "upgrades",
     "nospoiler": "shop",
     "lines": "dev",
-    "friendly_key": "7B2C1457482033F69320C6BD853007E2"
+    "friendly_key": "7B2C1457482033F69320C6BD853007E2",
+    "notes for dev": "this item has no description and I can't find one that works, it doesn't need one anyway"
   },
   "BuySwordDamage+3_C": {
     "friendly": "Sword Damage +3",
@@ -885,7 +1033,8 @@
     "layer": "upgrades",
     "nospoiler": "shop",
     "lines": "dev",
-    "friendly_key": "D003BED9407359DFA6613189CE011353"
+    "friendly_key": "D003BED9407359DFA6613189CE011353",
+    "notes for dev": "this item has no description and I can't find one that works, it doesn't need one anyway"
   },
   "BuySwordDoorKnocker_C": {
     "friendly": "Door Knocker",
@@ -893,7 +1042,9 @@
     "layer": "upgrades",
     "nospoiler": "shop",
     "lines": "dev",
-    "friendly_key": "A5BB96AB4C503EFA19049AB50F76AD6E"
+    "friendly_key": "A5BB96AB4C503EFA19049AB50F76AD6E",
+    "description": "Eventually opens closed doors.",
+    "description_key": "3FAEDC2B44A9463FD70C66A94506DA31"
   },
   "BuySwordHoly1_C": {
     "friendly": "Holy Sword",
@@ -901,7 +1052,11 @@
     "layer": "upgrades",
     "nospoiler": "shop",
     "lines": "dev",
-    "friendly_key": "DFFC8061460EEDD467DD87AFA17989B6"
+    "friendly_key": "DFFC8061460EEDD467DD87AFA17989B6",
+    "friendly2": "Destroy Wooden Graves",
+    "friendly2_key": "D832A161437C949958F80AB1CB5E2482",
+    "description": "You can now destroy wooden graves and prevent enemy respawning from these.",
+    "description_key": "227B821548B4AC4389E4F2B70652F3F8"
   },
   "BuySwordHoly2_C": {
     "friendly": "Holy Sword",
@@ -909,7 +1064,11 @@
     "layer": "upgrades",
     "nospoiler": "shop",
     "lines": "dev",
-    "friendly_key": "728A3CFA4C013A24881DC3849D321415"
+    "friendly_key": "728A3CFA4C013A24881DC3849D321415",
+    "friendly2": "Destroy Stone Graves",
+    "friendly2_key": "0935FCD14D9DEF19E3E7A39450D416E9",
+    "description": "You can now destroy stone graves and prevent enemy respawning from these.",
+    "description_key": "0C027BD64E96E22D4E1985887A73C78A"
   },
   "BuySwordRange25_C": {
     "friendly": "Sword Range +25%",
@@ -917,7 +1076,9 @@
     "layer": "upgrades",
     "nospoiler": "shop",
     "lines": "dev",
-    "friendly_key": "A9CBCFEA46AB265F798D34BFA01488E6"
+    "friendly_key": "A9CBCFEA46AB265F798D34BFA01488E6",
+    "description": "You can now hit enemies that are a bit farther away.",
+    "description_key": "8571A84A472E6942C1F28CA8D933FC32"
   },
   "BuySwordRefireRate-33_C": {
     "friendly": "Sword 33% faster",
@@ -925,15 +1086,19 @@
     "layer": "upgrades",
     "nospoiler": "shop",
     "lines": "dev",
-    "friendly_key": "B443AB424D1FC633BFECAB8D9221B3E6"
+    "friendly_key": "B443AB424D1FC633BFECAB8D9221B3E6",
+    "description": "You can swing your sword much faster now with less waiting time between each hit.",
+    "description_key": "5F87A7274E4810D831AAF5B31C497924"
   },
   "BuySword_C": {
-    "friendly": "Take",
+    "friendly": "Sword",
     "icon": "sword",
     "layer": "upgrades",
     "nospoiler": "shop",
     "lines": "dev",
-    "friendly_key": "FD5ABF6C42EB8C6BAABD9F914C116963"
+    "friendly_key": "94248F8649FCBA2AC9E378B27F6FC8DF",
+    "description": "Is not dangerous anymore if you have one of these!  Causes 2 damage.",
+    "description_key": "0F21C48B4720B3CD20D78190DDC59E44"
   },
   "BuyTranslocatorCoolDownHalf_C": {
     "friendly": "Half Cooldown",
@@ -941,7 +1106,9 @@
     "layer": "upgrades",
     "nospoiler": "shop",
     "lines": "dev",
-    "friendly_key": "B8254A1F45220C0F46A98195C13FE5F3"
+    "friendly_key": "B8254A1F45220C0F46A98195C13FE5F3",
+    "description": "Translocator can be fired twice as often",
+    "description_key": "0E0EC9AC4D55DF273ED6708E3402330C"
   },
   "BuyTranslocatorDamagex3_C": {
     "friendly": "Damage x2",
@@ -949,7 +1116,9 @@
     "layer": "upgrades",
     "nospoiler": "shop",
     "lines": "dev",
-    "friendly_key": "69056B4F47F7D31D13238E8196053458"
+    "friendly_key": "69056B4F47F7D31D13238E8196053458",
+    "description": "Translocator ball will cause twice as much damage",
+    "description_key": "FFC977C847C974421FD255AD5F818CEB"
   },
   "BuyTranslocatorModule_C": {
     "friendly": "Teleportation Module",
@@ -957,7 +1126,9 @@
     "layer": "upgrades",
     "nospoiler": "shop",
     "lines": "dev",
-    "friendly_key": "C9F3E82D4AA8E63743C844AB2731F9F5"
+    "friendly_key": "C9F3E82D4AA8E63743C844AB2731F9F5",
+    "description": "You can now teleport yourself to the ball.",
+    "description_key": "A40486FE4E345754EF09D9B803D8006B"
   },
   "BuyTranslocatorShotForce_C": {
     "friendly": "Shot Force x2",
@@ -966,8 +1137,8 @@
     "nospoiler": "shop",
     "lines": "dev",
     "friendly_key": "E26CCFE942041E8F43653F94DE79D77A",
-    "description": "Translocator will be shot twice as hard. Does a lot of ouchy.",
-    "description_key": "DDD550E640AB9C9ECEC3F2BCC1474CCC"
+    "description": "Translocator will be fired twice as hard",
+    "description_key": "CF117A1742D0D407C8C715991D536736"
   },
   "BuyTranslocatorWeight_C": {
     "friendly": "Weight x3",
@@ -975,14 +1146,19 @@
     "layer": "upgrades",
     "nospoiler": "shop",
     "lines": "dev",
-    "friendly_key": "82AD5DCF41360EDB1AF075B4F4D07A2C"
+    "friendly_key": "82AD5DCF41360EDB1AF075B4F4D07A2C",
+    "description": "Makes the ball three times as heavy",
+    "description_key": "21D27E9D40A409762DB4CDB30BF31D5D"
   },
   "BuyTranslocator_C": {
     "friendly": "Translocator",
     "icon": "translocator:g",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "dev"
+    "lines": "dev",
+    "friendly_key": "EF4299614AC2A97E9BC1368EAB684BE8",
+    "description": "A green gun. What does it do?",
+    "description_key": "746179A74A234A479F5CE7B8B4EF3FE5"
   },
   "BuyTranslocator_Fake_C": {
     "friendly": "Fake Translocator",
@@ -997,16 +1173,18 @@
     "layer": "upgrades",
     "nospoiler": "shop",
     "lines": "dev",
-    "friendly_key": "D275B2044555996709C3F19085DC27AC"
+    "friendly_key": "D275B2044555996709C3F19085DC27AC",
+    "description": "You can now jump 3 times in a row. Enough to get across big gaps and jump around corners.",
+    "description_key": "192C219D40B2899C4BE8928A4F155DF4"
   },
   "BuyUpgradeChestNum_C": {
-    "friendly": "Remaining Chest Count",
+    "friendly": "See Chest Count",
     "icon": "see_chest_count",
     "layer": "upgrades",
     "nospoiler": "shop",
     "lines": "dev",
     "friendly_key": "4F26D5634AD2F60A9CCE17AD03C133C2",
-    "description": "Adds chest, secret + pickup counters to the Menu, along with a remaining chest counter in-game!",
+    "description": "You now see the remaining chests.",
     "description_key": "403A09ED49B07B5DAC0E21ACB6D22747"
   },
   "BuyUpgradeGraveNum_C": {
@@ -1015,7 +1193,9 @@
     "layer": "upgrades",
     "nospoiler": "shop",
     "lines": "dev",
-    "friendly_key": "B6A26C7F431C50CEA9E5AD9A49696067"
+    "friendly_key": "B6A26C7F431C50CEA9E5AD9A49696067",
+    "description": "You now see the number of remaining enemy spawn points (graves, hellholes).",
+    "description_key": "9E8CA4984F16E3E22366628EEC669EF8"
   },
   "BuyWalletx15_C": {
     "friendly": "Max Coins x1.5",
@@ -1023,7 +1203,9 @@
     "layer": "upgrades",
     "nospoiler": "shop",
     "lines": "dev",
-    "friendly_key": "DE4C6307451486AC524D45989BEBBEE8"
+    "friendly_key": "DE4C6307451486AC524D45989BEBBEE8",
+    "description": "You can now carry more money!",
+    "description_key": "4ECC16424560B37ADE7C839C90B2036F"
   },
   "BuyWalletx2_C": {
     "friendly": "Max Coins x2",
@@ -1031,63 +1213,95 @@
     "layer": "upgrades",
     "nospoiler": "shop",
     "lines": "dev",
-    "friendly_key": "F17B892C41137D9F592623AC8F5E3E8F"
+    "friendly_key": "F17B892C41137D9F592623AC8F5E3E8F",
+    "description": "You can now carry twice as much money.",
+    "description_key": "FA08A26E4497FE87C707759170A73873"
   },
   "Chest_C": {
     "friendly": "Chest",
     "icon": "chest",
     "layer": null,
     "nospoiler": "closedChest",
-    "lines": "dev"
+    "lines": "dev",
+    "friendly_key": "",
+    "description": "",
+    "description_key": ""
   },
   "CoinBig_C": {
     "friendly": "Big Coin",
     "icon": "coin",
     "layer": "coin",
     "nospoiler": null,
-    "lines": "dev"
+    "lines": "dev",
+    "friendly_key": "",
+    "description": "Give me more money!",
+    "description_key": "7CAC8391412558860821F688A217417F",
+    "notes for dev": "this item has no description but this string works?"
   },
   "CoinRed_C": {
     "friendly": "Red Coin",
     "icon": "coinRed",
     "layer": "misc",
     "nospoiler": "collectable",
-    "lines": "dev"
+    "lines": "dev",
+    "friendly_key": "",
+    "description": "You don't happen to have any more red coins, do you?",
+    "description_key": "134E18D74F2467FD31026DAA070FFE23",
+    "notes for dev": "this item has no description but this string works?"
   },
   "Coin_C": {
     "friendly": "Coin",
     "icon": "coin:16",
     "layer": "coin",
     "nospoiler": null,
-    "lines": "dev"
+    "lines": "dev",
+    "friendly_key": "C3F51C364BA4EB24648FB2B32EDA3A04",
+    "description": "Give money!",
+    "description_key": "878190E24F32D791017C9992BB200C68",
+    "notes for dev": "this item has no description but this string works?"
   },
   "_CoinStack_C": {
     "friendly": "Coin Stack",
     "icon": "coinStash2",
     "layer": "coin",
     "nospoiler": null,
-    "lines": "dev"
+    "lines": "dev",
+    "friendly_key": "",
+    "description": "So much choice, so much money!",
+    "description_key": "691B5042411F948ED1F700AE20C71FEE",
+    "notes for dev": "this item has no description but this string works?"
   },
   "DestroyablePots_C": {
     "friendly": "Destroyable Pots",
     "icon": "pots",
     "layer": "dev",
     "nospoiler": null,
-    "lines": "dev"
+    "lines": "dev",
+    "friendly_key": "",
+    "description": "Please not my pots...",
+    "description_key": "59B3FB1F40D23BF0ECB40880EFF28CE3",
+    "notes for dev": "this item has no description but this string works?"
   },
   "Coin:DestroyablePots_C": {
     "friendly": "Destroyable Pots",
     "icon": "pots",
     "layer": "coin",
     "nospoiler": null,
-    "lines": "dev"
+    "lines": "dev",
+    "friendly_key": "",
+    "description": "Please not my pots...",
+    "description_key": "59B3FB1F40D23BF0ECB40880EFF28CE3",
+    "notes for dev": "this item has no description but this string works?"
   },
   "GoldBlock_C": {
     "friendly": "Gold Block",
     "icon": null,
     "layer": null,
     "nospoiler": null,
-    "lines": null
+    "lines": null,
+    "friendly_key": "",
+    "description": "",
+    "description_key": ""
   },
   "GoldNugget_C": {
     "friendly": "Gold Nugget",
@@ -1108,35 +1322,52 @@
     "icon": "jumppad:v",
     "layer": "extra",
     "nospoiler": null,
-    "lines": "extra"
+    "lines": "extra",
+    "friendly_key": "",
+    "description": "Orange jumppads take mid air control away from you. Blue ones let you steer, jump or stomp.",
+    "description_key": "5A48FB83438C1DA2B9C68EB1D6A23492",
+    "notes for dev": "this item has no description but this string works?, make sure it says Red instead of Orange in english at least.."
   },
   "FT:Jumppad_C": {
     "friendly": "Jumppad",
     "icon": "jumppad:v",
     "layer": "jumppads",
     "nospoiler": null,
-    "lines": "jumppads"
+    "lines": "jumppads",
+    "friendly_key": "",
+    "description": "Orange jumppads take mid air control away from you. Blue ones let you steer, jump or stomp.",
+    "description_key": "5A48FB83438C1DA2B9C68EB1D6A23492",
+    "notes for dev": "this item has no description but this string works?, make sure it says Red instead of Orange in english at least.."
   },
   "Coin:Chest_C": {
     "friendly": "Coin Chest",
     "icon": "chest_coin",
     "layer": "coin",
     "nospoiler": "closedChest",
-    "lines": "dev"
+    "lines": "dev",
+    "friendly_key": "",
+    "description": "",
+    "description_key": ""
   },
   "Coin:MinecraftBrick_C": {
-    "friendly": "Gold Minecraft Brick",
+    "friendly": "Minecraft Brick",
     "icon": "brick:v",
     "layer": "coin",
     "nospoiler": null,
-    "lines": "dev"
+    "lines": "dev",
+    "friendly_key": "",
+    "description": "",
+    "description_key": ""
   },
   "MoonTake_C": {
     "friendly": "Green Moon",
     "icon": "moon_green",
     "layer": "misc",
     "nospoiler": "collectable",
-    "lines": "dev"
+    "lines": "dev",
+    "friendly_key": "",
+    "description": "",
+    "description_key": ""
   },
   "PlayerStart": {
     "friendly": "Player Start",
@@ -1165,7 +1396,10 @@
     "layer": "upgrades",
     "nospoiler": "shop",
     "lines": "dev",
-    "friendly_key": "253DB7A648D0518A5E63328E9B558AD1"
+    "friendly_key": "253DB7A648D0518A5E63328E9B558AD1",
+    "description": "With each new pickaxe you can mine all kinds of new materials!",
+    "description_key": "C61C3CF74EBD08D7890E9181E57C2A55",
+    "notes for dev": "this item has no description but this string works?"
   },
   "Purchase_ForceBeam_C": {
     "friendly": "Force Beam",
@@ -1193,7 +1427,10 @@
     "layer": "upgrades",
     "nospoiler": "shop",
     "lines": "dev",
-    "friendly_key": "0EE7EB444F30FDA3ABE3F78FE24341C6"
+    "friendly_key": "0EE7EB444F30FDA3ABE3F78FE24341C6",
+    "description": "With each new pickaxe you can mine all kinds of new materials!",
+    "description_key": "C61C3CF74EBD08D7890E9181E57C2A55",
+    "notes for dev": "this item has no description but this string works?"
   },
   "Purchase_StonePickaxe_C": {
     "friendly": "Stone Pickaxe",
@@ -1201,7 +1438,10 @@
     "layer": "upgrades",
     "nospoiler": "shop",
     "lines": "dev",
-    "friendly_key": "8B9D677B4857D9F97B40EF92E4617582"
+    "friendly_key": "8B9D677B4857D9F97B40EF92E4617582",
+    "description": "With each new pickaxe you can mine all kinds of new materials!",
+    "description_key": "C61C3CF74EBD08D7890E9181E57C2A55",
+    "notes for dev": "this item has no description but this string works?"
   },
   "Purchase_WoodPickaxe_C": {
     "friendly": "Wooden Pickaxe",
@@ -1218,7 +1458,11 @@
     "icon": "scrap",
     "layer": "misc",
     "nospoiler": "collectable",
-    "lines": "dev"
+    "lines": "dev",
+    "friendly_key": "",
+    "description": "I knew you couldn't resist a piece of scrap!",
+    "description_key": "59E03CF14552E9CD02D26F98EFCFE9B3",
+    "notes for dev": "this item has no description but this string works?"
   },
   "SpawnEnemy3_C": {
     "friendly": "Spawn Enemy 3",
@@ -1240,7 +1484,9 @@
     "layer": "upgrades",
     "nospoiler": "shop",
     "lines": "dev",
-    "friendly_key": "99B846BC45770CB3192D5D98379F5753"
+    "friendly_key": "99B846BC45770CB3192D5D98379F5753",
+    "description": "Lots of money and backtracking enabled you to buy happiness. You are now fulfilled and could jump for joy!",
+    "description_key": "158974F34F35E28038845D9FAC69253B"
   },
   "ValveCarriable_C": {
     "friendly": "Carriable Valve",
@@ -1275,35 +1521,51 @@
     "icon": "grave_wood",
     "layer": "graves",
     "nospoiler": null,
-    "lines": "dev"
+    "lines": "dev",
+    "friendly_key": "",
+    "description": "",
+    "description_key": ""
   },
   "EnemySpawn2_C": {
     "friendly": "Stone Grave",
     "icon": "grave_stone",
     "layer": "graves",
     "nospoiler": null,
-    "lines": "dev"
+    "lines": "dev",
+    "friendly_key": "",
+    "description": "",
+    "description_key": ""
   },
   "EnemySpawn3_C": {
     "friendly": "Volcano",
     "icon": "grave_volcano",
     "layer": "graves",
     "nospoiler": null,
-    "lines": "dev"
+    "lines": "dev",
+    "friendly_key": "",
+    "description": "Oh no, the volcano has errupted!",
+    "description_key": "0D97FFAC438DA451CD42E98D1F60B85D",
+    "notes for dev": "this item has no description but this string works? correct erupted"
   },
   "Shell_C": {
     "friendly": "Shell",
     "icon": "shell",
     "layer": "quest",
     "nospoiler": "collectable",
-    "lines": "quest"
+    "lines": "quest",
+    "friendly_key": "",
+    "description": "",
+    "description_key": ""
   },
   "DeadHero_C": {
     "friendly": "Dead Hero",
     "icon": "hero:v",
     "layer": "quest",
     "nospoiler": "collectable",
-    "lines": "quest"
+    "lines": "quest",
+    "friendly_key": "",
+    "description": "",
+    "description_key": ""
   },
   "EnemySpawner_C": {
     "friendly": "Enemy Spawner",
@@ -1695,7 +1957,10 @@
     "icon": "waldo",
     "layer": "misc",
     "nospoiler": "collectable",
-    "lines": "misc"
+    "lines": "misc",
+    "friendly_key": "",
+    "description": "",
+    "description_key": ""
   },
   "BP_UnlockMap_C": {
     "friendly": "Map",
@@ -1712,7 +1977,10 @@
     "icon": "brick:v",
     "layer": "dev",
     "nospoiler": null,
-    "lines": "dev"
+    "lines": "dev",
+    "friendly_key": "",
+    "description": "",
+    "description_key": ""
   },
   "MinecraftBrickRespawnable_C": {
     "friendly": "Minecraft Brick",
@@ -1747,14 +2015,22 @@
     "icon": "pipe",
     "layer": "extra",
     "nospoiler": null,
-    "lines": "extra"
+    "lines": "extra",
+    "friendly_key": "",
+    "description": "These pipes are shortcuts back to where you've been, if you want to explore more.",
+    "description_key": "CFAC9D6342F08C56ADF66896B960AEE3",
+    "notes for dev": "this item has no description but this string works?"
   },
   "FT:Pipesystem_C": {
     "friendly": "Pipe",
     "icon": "pipe",
     "layer": "pipesys",
     "nospoiler": null,
-    "lines": "pipesys"
+    "lines": "pipesys",
+    "friendly_key": "",
+    "description": "These pipes are shortcuts back to where you've been, if you want to explore more.",
+    "description_key": "CFAC9D6342F08C56ADF66896B960AEE3",
+    "notes for dev": "this item has no description but this string works?"
   },
   "PipesystemNew_C": {
     "friendly": "Pipe",
@@ -1803,48 +2079,75 @@
     "icon": "chest_coin",
     "layer": "coin",
     "nospoiler": "closedChest",
-    "lines": "dev"
+    "lines": "dev",
+    "friendly_key": "",
+    "description": "There's a reward for you if you turn all the extra valves.",
+    "description_key": "EE7E52934004CFE59843808B33315549",
+    "notes for dev": "this item has no description but this string works?"
   },
   "BathGuyVolume_C": {
-    "friendly": "Too Hot Quest",
+    "friendly": "TOO HOT!!!",
     "icon": "health",
     "layer": "upgrades",
     "nospoiler": "collectable",
-    "lines": "dev"
+    "lines": "dev",
+    "friendly_key": "37455FB1476916E6E10583A78B3E41EE",
+    "description": "Have you any idea how a hot pool works? You can't just drop any old hot thing in it.",
+    "description_key": "D807E31349E0D7B361EAAD81070F8C89",
+    "notes for dev": "this item has no description but this string works?"
   },
   "BP_A3_RobBoss_C": {
-    "friendly": "Rob Quest",
+    "friendly": "hello, my name is bob",
     "icon": "chest",
     "layer": null,
     "nospoiler": "closedChest",
-    "lines": "dev"
+    "lines": "dev",
+    "friendly_key": "FFF302F74DC5751B3318C580E1C640EF",
+    "description": "How y'all doing today? i'm just gonna make a painting full of joy for you.",
+    "description_key": "1AF7D06F45C49A6F32BDA899E2EA03C9",
+    "notes for dev": "this item has no description but this string works? capitalise name and i in I'm"
   },
   "BP_Area2_FatGuyQuest_C": {
-    "friendly": "BBQ Quest",
+    "friendly": "BBQ help needed!",
     "icon": "meat",
     "layer": "coin",
     "nospoiler": null,
-    "lines": "dev"
+    "lines": "dev",
+    "friendly_key": "06D76A2A4DD2B89934061ABFBC1C64DC",
+    "description": "Where did this meat come from? It really makes you think.",
+    "description_key": "72FBAFCD487003662D5C40B3D8B9BD3F",
+    "notes for dev": "this item has no description but this string works?"
   },
   "BP_ParanoidQuest_C": {
     "friendly": "Candle Quest",
     "icon": "health",
     "layer": "upgrades",
     "nospoiler": "collectable",
-    "lines": "dev"
+    "lines": "dev",
+    "friendly_key": "",
+    "description": "Help me light the four candles around the cage - we must overthrow the shallow state!",
+    "description_key": "F04BDA604D0D1F7FDCC54AB671B4C4B3"
   },
   "BP_A3_BBQ_C": {
-    "friendly": "BBQ Quest",
+    "friendly": "BBQ help needed!",
     "icon": "meat",
     "layer": "coin",
     "nospoiler": null,
-    "lines": "dev"
+    "lines": "dev",
+    "friendly_key": "06D76A2A4DD2B89934061ABFBC1C64DC",
+    "description": "Where did this meat come from? It really makes you think.",
+    "description_key": "72FBAFCD487003662D5C40B3D8B9BD3F",
+    "notes for dev": "this item has no description but this string works?"
   },
   "BP_RebuildSlum_C": {
-    "friendly": "Rebuild Slum",
+    "friendly": "Repair Slums",
     "icon": "pickaxe_cooldown",
     "layer": "upgrades",
     "nospoiler": "shop",
-    "lines": "dev"
+    "lines": "dev",
+    "friendly_key": "B8E93932455A57D9B0E3578F76A638B7",
+    "description": "Can you help us rebuild our town?",
+    "description_key": "947D3A8E43FA45732B77529C63A65345",
+    "notes for dev": "this item has no description but this string works?"
   }
 }

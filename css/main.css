@@ -121,7 +121,7 @@ path[alt=''] { opacity: 100% }
   opacity: 100%;
 }
 
-.line-player_aim {
+.line-target {
   --arrow: tip;
   --arrow-size: 5px;
   --arrow-angle: 40;
