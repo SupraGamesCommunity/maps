@@ -51,14 +51,14 @@ path[alt=''] { opacity: 100% }
 .marker-popup-col {
   text-align: top;
   display: inline-block;
-  width: 68px;
+  width: 75px;
   font-weight: bold;
   vertical-align: top;
 }
 
 .marker-popup-col2 {
   display: inline-block;
-  width: 232px;
+  width: 225px;
   word-wrap: break-word;
   vertical-align: top;
 }
