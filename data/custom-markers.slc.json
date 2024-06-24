@@ -86,7 +86,7 @@
         "y": -3113.08203125,
         "z": 2472.301513671875
       },
-      "linetype": "player_aim"
+      "linetype": "target"
   },
   {
     "name": "Waldo3",
@@ -148,14 +148,13 @@
     "lng": 67231.403076171875,
     "alt": 13169.60546875,
     "icon": "strong_body",
-    "linetype": "trigger",
-    "targets": [
+    "linetype": "target",
+    "target":
       {
         "x": 63221.513671875,
         "y": -7001.41015625,
         "z": 13169.60546875
       }
-    ]
   },
   {
     "name": "BuyForceBlock_2",
