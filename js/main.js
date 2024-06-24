@@ -494,7 +494,7 @@ function loadMap(id) {
     text += `<div class="marker-popup-heading">${o.friendly || c.friendly || o.type}</div>`
     text += '<div class="marker-popup-text">'
     if(sc && (!('spawns_name' in o) || o.spawns_name != '')) {
-      text += `<br><span class="marker-popup-col">Spawns:</span>${o.spawns_name || sc.friendly || o.spawns}`;
+      text += `<br><span class="marker-popup-col">Contains:</span>${o.spawns_name || sc.friendly || o.spawns}`;
     }
     if(o.coins) {
       text += `<br><span class="marker-popup-col">Coins:</span>${o.coins} coin${o.coins > 1 ? "s":""}`;
