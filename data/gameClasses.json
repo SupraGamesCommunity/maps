@@ -772,14 +772,6 @@
     "lines": "dev",
     "friendly_key": "667CB43E4333FACC3B54A7A89B8C63AD"
   },
-  "BuySmashdownDamage+100_C": {
-    "friendly": "Stomp Damage +100%",
-    "icon": "stomp_damage",
-    "layer": "upgrades",
-    "nospoiler": "shop",
-    "lines": "dev",
-    "friendly_key": "EE7DD0064ED3036E48003F86A5BEB539"
-  },
   "BuySmashdownDamage+1_C": {
     "friendly": "Stomp Damage +1",
     "icon": "stomp_damage",
@@ -803,14 +795,6 @@
     "nospoiler": "shop",
     "lines": "dev",
     "friendly_key": "1BFF14774CE2E0092F08EBAB3BAB431A"
-  },
-  "BuySmashdownRadius+5_C": {
-    "friendly": "Stomp Radius +5m",
-    "icon": "stomp_damage",
-    "layer": "upgrades",
-    "nospoiler": "shop",
-    "lines": "dev",
-    "friendly_key": "B1719A254CE02025EF93958E38475BB1"
   },
   "BuySmashdownRadius+_C": {
     "friendly": "Stomp Radius +50cm",
