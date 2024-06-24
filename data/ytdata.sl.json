@@ -1,5 +1,12 @@
 [
   {
+    "name": "BP_UnlockMap_2",
+    "area": "Map",
+    "yt_video": "VVY3mNkN_cc",
+    "yt_start": "1",
+    "yt_end": "21"
+  },
+  {
     "name": "BarrelClosed_Blueprint6",
     "area": "Map",
     "yt_video": "nWigHgcWFCE",
