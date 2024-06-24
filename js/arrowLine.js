@@ -51,7 +51,9 @@ L.ArrowLine = L.Polygon.extend({
         this.startLatLng = start;
         this.endLatLng = end;
 
-        L.Polygon.prototype.initialize(this, [start, end], this.options);
+        L.Polygon.prototype.initialize([start, end], this.options);
+        let bounds = this.getBounds();
+        let center = bounds.getCenter();
     },
 
     onAdd: function(map) {
