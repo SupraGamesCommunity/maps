@@ -1093,8 +1093,9 @@ window.loadSaveFile = function () {
       return;
     }
 
-    //console.log(loadedSave);
-
+    settings.markedItems={};
+    settings.coinsFound={};
+    settings.playerPosition = playerStart;
 
     for (let section of ["ThingsToRemove", "ThingsToActivate", "ThingsToOpenForever"]) {
       for (let o of loadedSave.Properties) {
