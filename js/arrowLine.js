@@ -67,8 +67,10 @@ L.ArrowLine = L.Polygon.extend({
     },
 
     _rebuildPolygon: function(){
-        this.setStyle({ 'weight': this.options.shadowWidth * this._getScale(this._map.getZoom()) });
-        this.setLatLngs(this._buildArrowLine(this.startLatLng, this.endLatLng));
+        if(this._map) {
+            this.setStyle({ 'weight': this.options.shadowWidth * this._getScale(this._map.getZoom()) });
+            this.setLatLngs(this._buildArrowLine(this.startLatLng, this.endLatLng));
+        }
     },
 
     /*

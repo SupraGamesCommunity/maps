@@ -1151,8 +1151,9 @@ window.loadSaveFile = function () {
               }
 
               // Skeletons get activated when they spawn but get removed when you collect the bones
-              if(o.type == 'CrashEnemySpawner_C')
+              if(o.type == 'CrashEnemySpawner_C') {
                 found = section=='ThingsToRemove';
+              }
             }
 
             if (found) {
