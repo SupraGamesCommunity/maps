@@ -1,7 +1,7 @@
 /*eslint strict: ["error", "global"]*/
 /*global L, UESaveObject*/
 /*global layerConfigs*/
-/*global gameClasses,  defaultGameClass, decodeIconName, getClassIcon, getObjectIcon*/
+/*global gameClasses, gameClassesInit, defaultGameClass, decodeIconName, getClassIcon, getObjectIcon, locStr*/
 
 // Terminology,
 // Class - The type of object represented by marker. Based on UE4 classes/blueprints 
@@ -11,6 +11,8 @@
 
 var map = null;         // Leaflet map object containing current game map and all its markers
 var mapId = '';         // Current map selected (one of sl, slc or siu)
+
+var activePopup = null;	// Global object to hold the active popup
 
 var sidebar = null;     // Global sidebar object
 var baseLayer = null;   // Global object to hold reference to the current map base layer (to support opacity adjustment)
@@ -33,6 +35,7 @@ let settings;           // Reference to localData[mapId]
 let mapCenter;
 let mapParam = {};      // Parameters extracted from map URL
 let objects = {};
+let markers = {};
 let coin2stack = {};    // Map from coin name to coin stack
 let searchControl;      // Leaflet control for searching
 
@@ -68,9 +71,6 @@ var maps = {
       "MapWorldLowerRight": { "X": 73728.0, "Y": 54728.0, "Z": 10000.0 },
    },
 };
-
-
-
 
 function isObject(item) {
   return (item && typeof item === 'object' && !Array.isArray(item));
@@ -281,7 +281,7 @@ function loadMap(id) {
     sidebarGameSelector = L.Control.styledLayerControl(null, null, { container_width : "100%", container_maxHeight : "100%", group_maxHeight : "100%", exclusive : true});
     map.addControl(sidebarGameSelector);
     sidebarGameSelector._container.remove();
-    document.getElementById('layers').appendChild(sidebarGameSelector.onAdd(map));
+    document.getElementById('sbar-layers').appendChild(sidebarGameSelector.onAdd(map));
    }
 
 
@@ -291,7 +291,7 @@ function loadMap(id) {
   sidebarLayerControl = L.Control.styledLayerControl(null, null, { container_width : "100%", container_maxHeight : "100%", group_maxHeight : "100%", exclusive : false});
   map.addControl(sidebarLayerControl);
   sidebarLayerControl._container.remove();
-  document.getElementById('layers').appendChild(sidebarLayerControl.onAdd(map));
+  document.getElementById('sbar-layers').appendChild(sidebarLayerControl.onAdd(map));
 
   let layerOptions = {
       tileSize: L.point(tileSize.x, tileSize.y),
@@ -374,8 +374,8 @@ function loadMap(id) {
     var layer = id==mapId ? baseLayer : L.layerGroup();
     layer.mapId = id;
     layerControl.addBaseLayer(layer, title);
-    // SIDEBAR Something is wrong here.  Adding the base layer to the stylized control (whether or not it is removed from the existing layerControl) makes some really strange stuff happen.
-    //sidebarGameSelector.addBaseLayer(layer, title, 'Game Selector');
+    // SIDEBAR Something is wrong here.  Adding the base layer to the stylized control (whether or not it is added to the existing layerControl) makes some really strange stuff happen.
+    // sidebarGameSelector.addBaseLayer(layer, title, 'Game Selector');
   }
 
 // OLD
@@ -394,6 +394,7 @@ function loadMap(id) {
     layerControl.addOverlay(layer, layerConfig.name);
   });
 */
+
   L.control.mousePosition({numDigits:0, lngFirst:true}).addTo(map);
 
   if (mapParam.lat && mapParam.lng && mapParam.zoom) {
@@ -518,29 +519,34 @@ function loadMap(id) {
     currentMarkerReference = e.popup._source;
     currentBuildReference = o;
 
-    let c = gameClasses[o.type] || defaultGameClass;
-    let sc = o.spawns ? (gameClasses[o.spawns] || defaultGameClass) : null;
-
     let text = ''
-    text += `<div class="marker-popup-heading">${o.friendly || c.friendly || o.type}</div>`
+    text += `<div class="marker-popup-heading">${locStr.friendly(o, o.type, mapId) || o.type}</div>`
     text += '<div class="marker-popup-text">'
-    if(sc && (!('spawns_name' in o) || o.spawns_name != '')) {
-      text += `<br><span class="marker-popup-col">Spawns:</span>${o.spawns_name || sc.friendly || o.spawns}`;
+    if(o.spawns) {
+      text += `<br><span class="marker-popup-col">Contains:</span><span class="marker-popup-col2">${locStr.friendly(null, o.spawns, mapId) || o.spawns}</span>`;
     }
     if(o.coins) {
       text += `<br><span class="marker-popup-col">Coins:</span>${o.coins} coin${o.coins > 1 ? "s":""}`;
+    }
+    if(o.scrapamount) {
+      text += `<br><span class="marker-popup-col">Amount:</span>${o.scrapamount} scrap`;
     }
     if(o.cost) {
       let price_type = (o.price_type in price_types ? o.price_type : 0);
       text += `<br><span class="marker-popup-col">Price:</span>${o.cost} ${price_types[price_type]}${o.cost != 1 && price_type != 5 ? 's':''}`;  // No s on plural of scrap
     }
-    if(o.variant) {
-      text += `<br><span class="marker-popup-col">Variant:</span>${o.variant}`;
+    for(let f of ['variant', 'loop']){
+      if(o[f]){
+        text += `<br><span class="marker-popup-col">${f.charAt(0).toUpperCase() + f.slice(1)}:</span>${o[f]}`;
+      }
     }
-    text += `<br><span class="marker-popup-col">XYZ pos:</span>(${o.lng.toFixed(0)}, ${o.lat.toFixed(0)}, ${o.alt.toFixed(0)})`
+    if(o.description || (gameClasses[o.type] || defaultGameClass).description) {
+      text += `<br><span class="marker-popup-col">Description:</span><span class="marker-popup-col2">${locStr.description(o, o.type, mapId)}</span>`;
+    }
     if(o.comment) {
       text += `<br><span class="marker-popup-col">Comment:</span><span class="marker-popup-col2">${o.comment}</span>`;
     }
+    text += `<br><span class="marker-popup-col">XYZ pos:</span>(${o.lng.toFixed(0)}, ${o.lat.toFixed(0)}, ${o.alt.toFixed(0)})`
   
     text += '<br><br></div>'
 
@@ -591,6 +597,7 @@ function loadMap(id) {
 
 //    e.target.setIcon(e.target.options.icon);
     e.popup.setContent(text);
+    activePopup = e.popup;
   }
 
   const price_types = {
@@ -600,22 +607,37 @@ function loadMap(id) {
     7: 'red moon',
   }
 
+  function parseRelativeOrAbsoluteValue(value) {
+    if (typeof value === 'string' && value.indexOf('%') !== -1) {
+        return {
+            value: parseFloat(value) / 100,
+            isInPixels: false,
+        };
+    }
+    const parsedValue = value ? parseFloat(value) : 0;
+    return {
+        value: parsedValue,
+        isInPixels: parsedValue > 0,
+    };
+}
   function loadMarkers() {
 
     // Extract line properties from CSS
     let lineTypeProps = {}
-    for(let lt of ['jumppad red', 'jumppad blue', 'pipe', 'trigger', 'player_aim']) {
+    for(let lt of ['jumppad red', 'jumppad blue', 'pipe', 'trigger', 'target']) {
       const div = $("<div>").addClass(`line-${lt}`).appendTo(document.body);
       let lineProps = {}
-      for(p of [/*'stroke', 'stroke-width', 'fill', 'opacity', 'fill-opacity',*/ '--arrow-size', '--arrow-angle', '--arrow-dist',
-          '--line-width', '--shadow-width', '--offset', '--offset-end', '--repeat']) {
+      for(let p of ['stroke', 'fill', 'opacity', 'fill-opacity', '--arrow', '--arrow-size', '--arrow-angle', '--arrow-dist',
+            '--line-width', '--shadow-width', '--offset', '--end-offset']) {
         if(div.css(p)) {
           let val = div.css(p); 
           val = !isNaN(val) ? Number(val) : val.endsWith('px') ? Number(val.substring(0,val.length-2)) : val;
+          val = typeof val == 'string' ? val.replace(/["']/g, '') : val;
           lineProps[p.replaceAll('-', '')] = val;
+          
         }
       }
-      lineTypeProps[lt.replace(' ', '_')] = lineProps;
+      lineTypeProps['line-'+lt.replace(' ', '_')] = lineProps;
       div.remove();
     }
 
@@ -627,6 +649,7 @@ function loadMap(id) {
       .then(([j, cmjyt, cmj]) => {
         let titles = {};
         objects = {};
+        markers = {};
         coin2stack = {};
 
         // Build a look up table from alt id to objects 
@@ -721,10 +744,10 @@ function loadMap(id) {
             const layer = nospoiler
             const layerConfig = layerConfigs.get(layer);
             const [icon, size] = decodeIconName(layerConfig.defaultIcon || defaultIcon, mapId, o.variant);
-            const zIndexOffset = 10 * layerConfig.index;
 
-            L.marker(start, {icon: getIcon(icon, size), title: title, zIndexOffset: zIndexOffset, alt: alt, o:o, layerId:layer})
+            const marker = L.marker(start, {icon: getIcon(icon, size), title: title, alt: alt, o:o, layerId:layer})
               .addTo(layers[layer]).bindPopup(text).on('popupopen', onPopupOpen).on('contextmenu', onContextMenu);
+            markers[alt] = markers[alt] ? [...markers[alt], marker] : [marker];
           }
   
           // If there is a normal layer specified then add it to that
@@ -733,11 +756,11 @@ function loadMap(id) {
             const layer = c.layer
             const layerConfig = layerConfigs.get(layer);
             const [icon, size] = decodeIconName((o.icon || c.icon || layerConfig.defaultIcon || defaultIcon), mapId, o.variant);
-            const zIndexOffset = 10 * layerConfig.index;
 
-            L.marker(start, {icon: getIcon(icon, size), title: title, zIndexOffset: zIndexOffset, alt: alt, o:o, layerId:layer })
+            const marker = L.marker(start, {icon: getIcon(icon, size), title: title, alt: alt, o:o, layerId:layer })
               .addTo(layers[layer]).bindPopup(text).on('popupopen', onPopupOpen).on('contextmenu', onContextMenu);
-          }
+            markers[alt] = markers[alt] ? [...markers[alt], marker] : [marker];
+            }
 
           // Deal with layer for whatever it spawns. Normally things that spawn something don't have a spoiler layer
           if(sc && sc.layer && enabledLayers[sc.layer])
@@ -745,56 +768,39 @@ function loadMap(id) {
             const layer = sc.layer
             const layerConfig = layerConfigs.get(layer);
             const [icon, size] = decodeIconName((o.icon || sc.icon || layerConfig.defaultIcon || defaultIcon), mapId, o.variant);
-            const zIndexOffset = 10 * layerConfig.index;
 
-            L.marker(start, {icon: getIcon(icon, size), title: title, zIndexOffset: zIndexOffset, alt: alt, o:o, layerId:layer})
+            const marker = L.marker(start, {icon: getIcon(icon, size), title: title, alt: alt, o:o, layerId:layer})
               .addTo(layers[layer]).bindPopup(text).on('popupopen', onPopupOpen).on('contextmenu', onContextMenu);
-          }
+            markers[alt] = markers[alt] ? [...markers[alt], marker] : [marker];
+            }
 
           // Add a polyline to the appropriate layer
           if(c.lines && enabledLayers[c.lines] && o.linetype) {
-            const layerConfig = layerConfigs.get(c.lines);
             let endxys = o.linetype != 'trigger' ? [o.target] : o.targets;
 
             // need to add title as a single space (leaflet search issue), but not the full title so it doesn't appear in search
-            let options = {title: ' ', interactive: false, alt: alt, o:o, layerId:c.lines, lineCap: 'butt'}
 
-            let ltp = lineTypeProps[o.linetype + (o.linetype == 'jumppad' ? '_'+o.variant : '')];
+            const className = 'line-' + o.linetype + (o.linetype == 'jumppad' ? '_'+o.variant : '');
+            let ltp = lineTypeProps[className];
 
-            if(ltp.shadowwidth) {
-              options.zIndexOffset = 10 * layerConfig.index - 5;
-              options.stroke = true;    // needed for arrow shadow, ignored for line shadow
-
-              for(let endxy of endxys) {
-                // Line shadow
-                options.className = `line-${o.linetype} shadow`
-                let line = L.polyline([start, [endxy.y, endxy.x]], options).addTo(layers[c.lines]);
-
-                if(ltp.arrowsize && !o.twoway && (Math.sqrt(Math.pow(start[0] - endxy.y, 2) + Math.pow(start[1] - endxy.x, 2))) > ltp.arrowdist){
-                  options.className = `line-${o.linetype} arrow shadow`;
-                  // Arrow shadow
-                  L.polylineDecorator(line, {patterns: [{offset: ltp.offset, endOffset: ltp.endoffset, repeat: ltp.repeat, symbol:
-                      L.Symbol.arrowHead({pixelSize:ltp.arrowsize, headAngle: ltp.arrowangle, pathOptions: {...options}})}],})
-                    .addTo(layers[c.lines]);
-                }
-              }
+            let options = {
+              title: ' ', interactive: false, alt: alt, o:o, layerId:c.lines, className: className,
+              arrow: ltp.arrow ? ltp.arrow : 'none',
+              arrowSize: ltp.arrowSize ? ltp.arrowSize : 0,
+              arrowAngle: ltp.arrowngle ? ltp.arrowangle : 45,
+              lineWidth: ltp.linewidth ? ltp.linewidth : 5,
+              shadowWidth: ltp.shadowwidth ? ltp.shadowwidth : 3,
+              offset: ltp.offset ? ltp.offset : 0,
+              endOffset: ltp.endoffset ? ltp.endoffset : 0,
+              color: ltp.stroke ? ltp.stroke : '#000',
+              fillColor: ltp.fill ? ltp.fill : '#FFF',
             }
-
-            options.stroke = true;
-            
-            options.zIndexOffset = 10 * layerConfig.index - 3;
+            if(o.twoway){
+              options.arrow = 'none';
+            }
             for(let endxy of endxys) {
-              // Line
-              options.className = `line-${o.linetype}${o.linetype == 'jumppad' ? ' '+o.variant : ''}`;
-              let line = L.polyline([start, [endxy.y, endxy.x]], options).addTo(layers[c.lines]);
-              if (ltp.arrowsize &&  !o.twoway && (Math.sqrt(Math.pow(start[0] - endxy.y, 2) + Math.pow(start[1] - endxy.x, 2))) > ltp.arrowdist) {  
-                // Line arrow
-                options.className = `line-${o.linetype}${o.linetype == 'jumppad' ? ' '+o.variant : ''} arrow`;
-                L.polylineDecorator(line, {patterns: [{offset: ltp.offset, endOffset: ltp.endoffset, repeat: ltp.repeat, symbol:
-                    L.Symbol.arrowHead({pixelSize:ltp.arrowsize, headAngle: ltp.arrowangle, pathOptions: {...options}})}],})
-                  .addTo(layers[c.lines]);
-              }
-            }  
+              L.arrowLine(start, [endxy.y, endxy.x], options).addTo(layers[c.lines]);
+            }
           }
 
           // add dynamic player marker on top of PlayerStart icon (moves with load save game) 
@@ -814,7 +820,7 @@ function loadMap(id) {
               else {
                 settings.playerPosition = playerStart;
               }
-              playerMarker = L.marker([t.lat, t.lng], {icon: getIcon(icon,size), zIndexOffset: 0, draggable: false, title: title, alt:'playerMarker', o:o, layerId:pc.layer})
+              playerMarker = L.marker([t.lat, t.lng], {icon: getIcon(icon,size), zIndexOffset: -100000, draggable: false, title: title, alt:'playerMarker', o:o, layerId:pc.layer})
                 .bindPopup().on('popupopen', onPopupOpen).addTo(layers[pc.layer]);
             }
           } // end of player marker
@@ -843,7 +849,6 @@ function loadMap(id) {
   }
 
   function loadLayers() {
-
     playerMarker = null;
 
     let activeLayers = [];
@@ -864,6 +869,7 @@ function loadMap(id) {
       layers[id] = layerObj;
       layerControl.addOverlay(layerObj, lc.name);
       searchLayers.push(layerObj);
+
 
     // SIDEBAR: Add layer to stylized layer control
       layers[id] = layerObj;
@@ -1014,11 +1020,7 @@ function resizeIcons(force) {
 }
   
 window.markItemFound = function (id, found=true, save=true) {
-  if(id == "Map:Jumppad85")
-    console.log("This one");
   var divs = document.querySelectorAll('*[alt="' + id + '"]');
-  if(divs.length > 2)
-    console.log("Many");
   [].forEach.call(divs, function(div) {
     if (found) {
       div.classList.add('found');
@@ -1026,7 +1028,11 @@ window.markItemFound = function (id, found=true, save=true) {
       div.classList.remove('found');
     }
   });
-  
+
+  for(let m of markers[id]){
+    m.setZIndexOffset(found ? -100000 : 0);
+  }
+
   if (found) {
     settings.markedItems[id] = true;
   } else {
@@ -1044,6 +1050,11 @@ function markItems() {
     [].forEach.call(divs, function(div) {
       div.classList.add('found');
     });
+    if(markers[id]){
+      for(let m of markers[id]){
+        m.setZIndexOffset(-100000);
+      }
+    }
   }
 
   // filter by settings.searchText. caching is unreliable, just perform a full search here
@@ -1074,7 +1085,12 @@ function unmarkItems() {
     [].forEach.call(divs, function(div) {
       div.classList.remove('found');
     });
+    for(let m of markers[id]){
+      m.setZIndexOffset(0);
+    }  
   }
+
+
   settings.markedItems={};
   settings.coinsFound={};
   settings.playerPosition = playerStart;
@@ -1117,8 +1133,9 @@ window.loadSaveFile = function () {
       return;
     }
 
-    //console.log(loadedSave);
-
+    settings.markedItems={};
+    settings.coinsFound={};
+    settings.playerPosition = playerStart;
 
     for (let section of ["ThingsToRemove", "ThingsToActivate", "ThingsToOpenForever"]) {
       for (let o of loadedSave.Properties) {
@@ -1172,6 +1189,11 @@ window.loadSaveFile = function () {
               // it's barely visible (red on red) but the found flag gives it up
               if (name == 'DeadHeroIndy') {
                 found = section=='ThingsToActivate';
+              }
+
+              // Skeletons get activated when they spawn but get removed when you collect the bones
+              if(o.type == 'CrashEnemySpawner_C') {
+                found = section=='ThingsToRemove';
               }
             }
 
@@ -1241,7 +1263,7 @@ window.onhashchange = function(e) {
 }
 
 window.onload = function(event) {
-  if (location.hash.length>1) {
+  if (location.hash.length > 1) {
     for (const s of location.hash.slice(1).split('&')) {
       let [k,v] = s.split('=');
       mapParam[k] = v;
@@ -1251,83 +1273,87 @@ window.onload = function(event) {
   // clear location hash
   history.pushState('', document.title, window.location.pathname + window.location.search);
 
-  mapId = mapParam.mapId || localData.mapId || 'sl';
+  Promise.all([gameClassesInit(), layerConfigs.init(), locStr.init()])
+    .then(() => {
+      mapId = mapParam.mapId || localData.mapId || 'sl';
 
-  loadMap(mapId);
+      loadMap(mapId);
 
-  // Keys mappings for pan and zoom map controls
-  let bindings = {
-    KeyA:['x',+1],KeyD:['x',-1],
-    KeyW:['y',+1],KeyS:['y',-1],
-    KeyT:['z',+1],KeyG:['z',-1],
-  };
+      // Keys mappings for pan and zoom map controls
+      let bindings = {
+        KeyA:['x',+1],KeyD:['x',-1],
+        KeyW:['y',+1],KeyS:['y',-1],
+        KeyT:['z',+1],KeyG:['z',-1],
+      };
 
-  // Keys currently pressed [code]=true
-  let pressed = {};
+      // Keys currently pressed [code]=true
+      let pressed = {};
 
-  // Called every browser animation timestep following call to requestAnimationFrame
-  function update(timestep) {
-    let step = 100;
-    let v = {};
-    for (let key of Object.keys(bindings)) {
-      if (pressed[key]) {
-        let [dir, step] = bindings[key];
-        v[dir] = (v[dir]||0) + step;
+      // Called every browser animation timestep following call to requestAnimationFrame
+      function update(timestep) {
+        let step = 100;
+        let v = {};
+        for (let key of Object.keys(bindings)) {
+          if (pressed[key]) {
+            let [dir, step] = bindings[key];
+            v[dir] = (v[dir]||0) + step;
+          }
+        }
+        (v.x || v.y) && map.panBy([(-v.x||0)*step, (-v.y||0)*step], {animation: false});
+        //v.z && map.setZoom(map.getZoom()+v.z/16, {duration: 1});
+        window.requestAnimationFrame(update);
       }
-    }
-    (v.x || v.y) && map.panBy([(-v.x||0)*step, (-v.y||0)*step], {animation: false});
-    //v.z && map.setZoom(map.getZoom()+v.z/16, {duration: 1});
-    window.requestAnimationFrame(update);
-  }
 
-  document.querySelector('#map').addEventListener('blur', function(e) {
-    pressed = {}; // prevent sticky keys
-  });
+      document.querySelector('#map').addEventListener('blur', function(e) {
+        pressed = {}; // prevent sticky keys
+      });
 
-  // When a key goes up remove it from the list 
-  window.addEventListener('keyup', (e) => {
-    delete pressed[e.code];
-  });
+      // When a key goes up remove it from the list 
+      window.addEventListener('keyup', (e) => {
+        delete pressed[e.code];
+      });
 
-  window.addEventListener("keydown",function (e) {
-    //console.log(e, e.code);
-    if (e.target.id.startsWith('searchtext')) {
-      return;
-    }
-    if (settings.buildMode) { return; }
-    pressed[e.code] = true;
-    switch (e.code) {
-      case 'KeyF':        // F (no ctrl) to toggle fullscreen
-        if (e.ctrlKey) {
-          searchControl.expand(true);
-          e.preventDefault();
-        } else {
-          map.toggleFullscreen();
+      window.addEventListener("keydown",function (e) {
+        //console.log(e, e.code);
+        if (e.target.id.startsWith('searchtext')) {
+          return;
         }
-        break;
-      case 'Slash':     // Ctrl+F or / to search
-        searchControl.expand(true);
-        e.preventDefault();
-        break;
-      case 'KeyR':
-        if (!e.ctrlKey && !e.altKey) {
-          map.flyTo(playerMarker ? playerMarker._latlng : mapCenter);
-        } else if (e.altKey) {
-          openLoadFileDialog();
+        if (settings.buildMode && activePopup && activePopup.isOpen()) { return; }
+        pressed[e.code] = true;
+        switch (e.code) {
+          case 'KeyF':        // F (no ctrl) to toggle fullscreen
+            if (e.ctrlKey) {
+              searchControl.expand(true);
+              e.preventDefault();
+            } else {
+              map.toggleFullscreen();
+            }
+            break;
+          case 'Slash':     // Ctrl+F or / to search
+            searchControl.expand(true);
+            e.preventDefault();
+            break;
+          case 'KeyR':
+            if (!e.ctrlKey && !e.altKey) {
+              map.flyTo(playerMarker ? playerMarker._latlng : mapCenter);
+            } else if (e.altKey) {
+              openLoadFileDialog();
+            }
+            break;
+        case 'Digit1': reloadMap('sl'); break;
+          case 'Digit2': reloadMap('slc'); break;
+          case 'Digit3': reloadMap('siu'); break;
+          case 'KeyT': map.zoomIn(1); break;
+          case 'KeyG': map.zoomOut(1); break;
         }
-        break;
-    case 'Digit1': reloadMap('sl'); break;
-      case 'Digit2': reloadMap('slc'); break;
-      case 'Digit3': reloadMap('siu'); break;
-      case 'KeyT': map.zoomIn(1); break;
-      case 'KeyG': map.zoomOut(1); break;
+      });
+
+      document.querySelector('#file').onchange = function(e) {
+        window.loadSaveFile();
+      }
+
+      window.requestAnimationFrame(update);
+      //window.addEventListener('contextmenu', function(e) { e.stopPropagation()}, true); // enable default context menu
     }
-  });
-
-  document.querySelector('#file').onchange = function(e) {
-    window.loadSaveFile();
-  }
-
-  window.requestAnimationFrame(update);
-//  window.addEventListener('contextmenu', function(e) { e.stopPropagation()}, true); // enable default context menu
+  );
 }

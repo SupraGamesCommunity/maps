@@ -1,6 +1,7 @@
 {
     "jumppads": {
         "type": "markers",
+        "category": "Travel",
         "name": "Pads",
         "name_key": "",
         "defaultIcon": "jumppad",
@@ -12,6 +13,7 @@
     },
     "pipesys": {
         "type": "markers",
+        "category": "Travel",
         "name": "Pipes",
         "name_key": "",
         "defaultIcon": "pipe",
@@ -23,6 +25,7 @@
     },
     "noSpoiler": {
         "type": "markers",
+        "category": "Miscellaneous",
         "name": "No Spoilers",
         "name_key": "",
         "defaultIcon": "question_mark",
@@ -35,6 +38,7 @@
     },
     "closedChest": {
         "type": "markers",
+        "category": "Collectables",
         "name": "Chests",
         "name_key": "",
         "defaultIcon": "chest",
@@ -47,6 +51,7 @@
     },
     "shop": {
         "type": "markers",
+        "category": "Collectables",
         "name": "Shop",
         "name_key": "",
         "defaultIcon": "shop",
@@ -59,6 +64,7 @@
     },
     "collectable": {
         "type": "markers",
+        "category": "Collectables",
         "name": "Collectables",
         "name_key": "",
         "defaultIcon": "question_mark",
@@ -71,6 +77,7 @@
     },
     "quest": {
         "type": "markers",
+        "category": "Quests",
         "name": "Quests",
         "name_key": "",
         "defaultIcon": "question_mark",
@@ -83,6 +90,7 @@
     },
     "upgrades": {
         "type": "markers",
+        "category": "Upgrades",
         "name": "Upgrades",
         "name_key": "",
         "defaultIcon": "loot",
@@ -95,6 +103,7 @@
     },
     "misc": {
         "type": "markers",
+        "category": "Miscellaneous",
         "name": "Miscellaneous",
         "name_key": "",
         "defaultIcon": "question_mark",
@@ -107,6 +116,7 @@
     },
     "coin": {
         "type": "markers",
+        "category": "Collectables",
         "name": "Coins",
         "name_key": "",
         "defaultIcon": "awesome",
@@ -119,6 +129,7 @@
     },
     "graves": {
         "type": "markers",
+        "category": "Quests",
         "name": "Graves",
         "name_key": "",
         "defaultIcon": "question_mark",
@@ -129,6 +140,7 @@
     },
     "coordinate": {
         "type": "markers",
+        "category": "Miscellaneous",
         "name": "XY",
         "name_key": "",
         "defaultIcon": null,
@@ -141,6 +153,7 @@
     },
     "extra": {
         "type": "markers",
+        "category": "Miscellaneous",
         "name": "Extras",
         "name_key": "",
         "defaultIcon": "question_mark",
@@ -153,6 +166,7 @@
     },
     "dev": {
         "type": "markers",
+        "category": "Miscellaneous",
         "name": "Dev",
         "name_key": "",
         "defaultIcon": "question_mark",
