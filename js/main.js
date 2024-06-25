@@ -663,13 +663,13 @@ function loadMap(id) {
 
             // Add what it spawns
             if(o.spawns) {
-              title += !('spawns_name' in o) ? ` (${o.spawns})` : o.spawns_name != '' ? ` (${o.spawns_name})` : '';    
+              title += ` (${o.spawns})`;    
             }
           }
           else {
-            title = o.friendly || c.friendly || o.type;
+            title = locStr.friendly(o, o.type, mapId) || o.type;
             if(sc) {
-              title += ` (${sc.friendly || o.spawns})`; 
+              title += ` (${locStr.friendly(null, o.spawns, mapId) || o.spawns})`; 
             }
           }
           // Shouldn't be coins and spawns: so this is saying what's in it
