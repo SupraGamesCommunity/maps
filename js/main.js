@@ -810,7 +810,6 @@ function loadMap(id) {
             }).addTo(layers['coordinate'])
         }
 
-        resizeIcons();
         updatePolylines();
         markItems();
     });
@@ -957,12 +956,18 @@ function getIcon(icon, size=32) {
   const iconCls = icon + size.toString();
   let iconObj = icons[iconCls] && icons[iconCls].obj;
   if (!iconObj) {
+    let iconOptions = {iconUrl: 'img/markers/'+icon+'.png', className:iconCls};
+    if(map){
+      const s = getIconSize(size, map.getZoom());
+      const c = s >> 1;
+      Object.assign(iconOptions, {iconSize: [s, s], iconAnchor: [c, c], popupAnchor: [0, -c]});        
+    }
     // We set the iconSize and iconAnchor via CSS in resizeIcons, when we also set the popupAnchor
-    iconObj = L.icon({iconUrl: 'img/markers/'+icon+'.png', className:iconCls});
+    iconObj = L.icon(iconOptions);
 
     // We will also set size entry to the zoom based size of the icon in resizeIcons
     icons[iconCls] = {obj: iconObj, baseSize: size};
-}
+  }
   return iconObj;
 }
 
