@@ -13,8 +13,6 @@ const layerConfigs = {
             .then((response) => response.json())
             .then((j) => {
                 this.data = j;
-                let i = 0;
-                Object.values(this.data).forEach(v => v.index = i++)
             });
       },
 
@@ -23,9 +21,12 @@ const layerConfigs = {
         return this.data[id];
     },
 
+    backZIndexOffset: -20 * 200000,
+    frontZIndexOffset: 20 * 200000,
+
     // Returns index of specified id (in order)
-    getIndex: function(id) { 
-        return this.data[id].index;
+    getZIndexOffset: function(id, found=false) { 
+        return this.data[id].zDepth * 200000 + (found ? this.backZIndexOffset : 0);
     },
 
     // Calls fn for each layer in order (passes v = LayerConfig(), k = layerId

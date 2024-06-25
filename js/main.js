@@ -712,7 +712,7 @@ function loadMap(id) {
             const layerConfig = layerConfigs.get(layer);
             const [icon, size] = decodeIconName(layerConfig.defaultIcon || defaultIcon, mapId, o.variant);
 
-            const marker = L.marker(start, {icon: getIcon(icon, size), title: title, alt: alt, o:o, layerId:layer})
+            const marker = L.marker(start, {icon: getIcon(icon, size), zIndexOffset: layerConfigs.getZIndexOffset(layer), title: title, alt: alt, o:o, layerId:layer})
               .addTo(layers[layer]).bindPopup(text).on('popupopen', onPopupOpen).on('contextmenu', onContextMenu);
             markers[alt] = markers[alt] ? [...markers[alt], marker] : [marker];
           }
@@ -724,7 +724,7 @@ function loadMap(id) {
             const layerConfig = layerConfigs.get(layer);
             const [icon, size] = decodeIconName((o.icon || c.icon || layerConfig.defaultIcon || defaultIcon), mapId, o.variant);
 
-            const marker = L.marker(start, {icon: getIcon(icon, size), title: title, alt: alt, o:o, layerId:layer })
+            const marker = L.marker(start, {icon: getIcon(icon, size), zIndexOffset: layerConfigs.getZIndexOffset(layer), title: title, alt: alt, o:o, layerId:layer })
               .addTo(layers[layer]).bindPopup(text).on('popupopen', onPopupOpen).on('contextmenu', onContextMenu);
             markers[alt] = markers[alt] ? [...markers[alt], marker] : [marker];
             }
@@ -736,7 +736,7 @@ function loadMap(id) {
             const layerConfig = layerConfigs.get(layer);
             const [icon, size] = decodeIconName((o.icon || sc.icon || layerConfig.defaultIcon || defaultIcon), mapId, o.variant);
 
-            const marker = L.marker(start, {icon: getIcon(icon, size), title: title, alt: alt, o:o, layerId:layer})
+            const marker = L.marker(start, {icon: getIcon(icon, size), zIndexOffset: layerConfigs.getZIndexOffset(layer), title: title, alt: alt, o:o, layerId:layer})
               .addTo(layers[layer]).bindPopup(text).on('popupopen', onPopupOpen).on('contextmenu', onContextMenu);
             markers[alt] = markers[alt] ? [...markers[alt], marker] : [marker];
             }
@@ -751,6 +751,7 @@ function loadMap(id) {
             let ltp = lineTypeProps[className];
 
             let options = {
+              zIndexOffset: layerConfigs.getZIndexOffset(c.lines),
               title: ' ', interactive: false, alt: alt, o:o, layerId:c.lines, className: className,
               arrow: ltp.arrow ? ltp.arrow : 'none',
               arrowSize: ltp.arrowSize ? ltp.arrowSize : 0,
@@ -787,14 +788,14 @@ function loadMap(id) {
               else {
                 settings.playerPosition = playerStart;
               }
-              playerMarker = L.marker([t.lat, t.lng], {icon: getIcon(icon,size), zIndexOffset: -100000, draggable: false, title: title, alt:'playerMarker', o:o, layerId:pc.layer})
+              playerMarker = L.marker([t.lat, t.lng], {icon: getIcon(icon,size), zIndexOffset: layerConfigs.backZIndexOffset, draggable: false, title: title, alt:'playerMarker', o:o, layerId:pc.layer})
                 .bindPopup().on('popupopen', onPopupOpen).addTo(layers[pc.layer]);
             }
           } // end of player marker
         } // end of loop
 
         if(enabledLayers['coordinate']){
-          L.marker(mapCenter, {zIndexOffset: 10000, draggable: true, title: Math.round(mapCenter[1])+', '+Math.round(mapCenter[0]), alt:'XYMarker'})
+          L.marker(mapCenter, {zIndexOffset: layerConfigs.frontZIndexOffset, draggable: true, title: Math.round(mapCenter[1])+', '+Math.round(mapCenter[0]), alt:'XYMarker'})
             .bindPopup()
             .on('moveend', function(e) {
               let marker = e.target;
@@ -990,7 +991,7 @@ window.markItemFound = function (id, found=true, save=true) {
   });
 
   for(let m of markers[id]){
-    m.setZIndexOffset(found ? -100000 : 0);
+    m.setZIndexOffset(layerConfigs.getZIndexOffset(m.options.layerId, found));
   }
 
   if (found) {
@@ -1012,7 +1013,7 @@ function markItems() {
     });
     if(markers[id]){
       for(let m of markers[id]){
-        m.setZIndexOffset(-100000);
+        m.setZIndexOffset(layerConfigs.getZIndexOffset(m.options.layerId, true));
       }
     }
   }
@@ -1046,7 +1047,7 @@ function unmarkItems() {
       div.classList.remove('found');
     });
     for(let m of markers[id]){
-      m.setZIndexOffset(0);
+      m.setZIndexOffset(layerConfigs.getZIndexOffset(m.options.layerId));
     }  
   }
 

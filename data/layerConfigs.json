@@ -5,6 +5,7 @@
         "name_key": "",
         "defaultIcon": "jumppad",
         "defaultActive": false,
+        "zDepth": 3,
         "games": [
             "sl",
             "slc"
@@ -16,6 +17,7 @@
         "name_key": "",
         "defaultIcon": "pipe",
         "defaultActive": false,
+        "zDepth": 4,
         "games": [
             "sl",
             "siu"
@@ -27,10 +29,8 @@
         "name_key": "",
         "defaultIcon": "question_mark",
         "defaultActive": true,
+        "zDepth": 7,
         "games": [
-            "sl",
-            "slc",
-            "siu"
         ]
     },
     "closedChest": {
@@ -39,6 +39,7 @@
         "name_key": "",
         "defaultIcon": "chest",
         "defaultActive": true,
+        "zDepth": 8,
         "games": [
             "sl",
             "slc",
@@ -51,6 +52,7 @@
         "name_key": "",
         "defaultIcon": "shop",
         "defaultActive": true,
+        "zDepth": 9,
         "games": [
             "sl",
             "slc",
@@ -63,6 +65,7 @@
         "name_key": "",
         "defaultIcon": "question_mark",
         "defaultActive": true,
+        "zDepth": 10,
         "games": [
             "sl",
             "slc",
@@ -75,6 +78,7 @@
         "name_key": "",
         "defaultIcon": "question_mark",
         "defaultActive": true,
+        "zDepth": 11,
         "games": [
             "sl",
             "slc",
@@ -87,6 +91,7 @@
         "name_key": "",
         "defaultIcon": "loot",
         "defaultActive": false,
+        "zDepth": 13,
         "games": [
             "sl",
             "slc",
@@ -99,6 +104,7 @@
         "name_key": "",
         "defaultIcon": "question_mark",
         "defaultActive": false,
+        "zDepth": 12,
         "games": [
             "sl",
             "slc",
@@ -111,6 +117,7 @@
         "name_key": "",
         "defaultIcon": "awesome",
         "defaultActive": false,
+        "zDepth": 5,
         "games": [
             "sl",
             "slc",
@@ -123,6 +130,7 @@
         "name_key": "",
         "defaultIcon": "question_mark",
         "defaultActive": false,
+        "zDepth": 6,
         "games": [
             "sl"
         ]
@@ -133,6 +141,7 @@
         "name_key": "",
         "defaultIcon": null,
         "defaultActive": false,
+        "zDepth": 14,
         "games": [
             "sl",
             "slc",
@@ -145,6 +154,7 @@
         "name_key": "",
         "defaultIcon": "question_mark",
         "defaultActive": false,
+        "zDepth": 2,
         "games": [ 
             "sl",
             "slc",
@@ -157,6 +167,7 @@
         "name_key": "",
         "defaultIcon": "question_mark",
         "defaultActive": false,
+        "zDepth": 1,
         "games": [
         ]
     }
