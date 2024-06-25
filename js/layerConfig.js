@@ -21,12 +21,12 @@ const layerConfigs = {
         return this.data[id];
     },
 
-    backZIndexOffset: -20 * 200000,
-    frontZIndexOffset: 20 * 200000,
+    backZIndexOffset: -20 * 300000,
+    frontZIndexOffset: 20 * 300000,
 
     // Returns index of specified id (in order)
     getZIndexOffset: function(id, found=false) { 
-        return this.data[id].zDepth * 200000 + (found ? this.backZIndexOffset : 0);
+        return this.data[id].zDepth * 300000 + (found ? this.backZIndexOffset : 0);
     },
 
     // Calls fn for each layer in order (passes v = LayerConfig(), k = layerId
