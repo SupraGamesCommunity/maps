@@ -38,8 +38,10 @@
 <script src="js/lib/sidebar.js"></script>
 <script src="js/lib/UE4Reader.js"></script>
 
+<script src="js/locStr.js"></script>
+<script src="js/arrowLine.js"></script>
 <script src="js/gameClasses.js"></script>
-<script src="js/layerConfig_dev.js"></script>
+<script src="js/layerConfig.js"></script>
 <script src="js/main_dev.js"></script>
 </head>
 <body>
@@ -56,22 +58,23 @@
         <!-- Nav tabs -->
         <div class="sidebar-tabs">
             <ul role="tablist">
-                <li><a href="#home" role="tab"><i class="fa fa-solid fa-house"></i></a></li>
-                <li><a href="#layers" role="tab"><i class="fa fa-layer-group"></i></a></li>
-                <li><a href="#savefile_load" role="tab"><i class="fa fa-cloud-arrow-up"></i></a></li>
-                <li><a href="#share" role="tab"><i class="fa fa-share-from-square"></i></a></li>
-                <li><a href="#discord" role="tab"><i class="fa fa-brands fa-discord"></i></a></li>
+                <li><a href="#sbar-home" role="tab"><i class="fa fa-solid fa-circle-info"></i></a></li>
+                <li><a href="#sbar-layers" role="tab"><i class="fa fa-layer-group"></i></a></li>
+                <li><a href="#sbar-savefile_load" role="tab"><i class="fa fa-solid fa-file-import"></i></a></li>
+                <li><a href="#sbar-share" role="tab"><i class="fa fa-share-from-square"></i></a></li>
+                <li><a href="#sbar-discord" role="tab"><i class="fa fa-brands fa-discord"></i></a></li>
             </ul>
 
             <ul role="tablist">
-                <li><a href="#thanks" role="tab"><i class="fa fa-medal"></i></a></li>
-                <li><a href="#preferences" role="tab"><i class="fa fa-gears"></i></a></li>
+                <li><a href="#sbar-thanks" role="tab"><i class="fa fa-medal"></i></a></li>
+                <li><a href="#sbar-dev" role="tab"><i class="fa fa-solid fa-code"></i></a></li>
+                <li><a href="#sbar-preferences" role="tab"><i class="fa fa-gears"></i></a></li>
             </ul>
         </div>
 
         <!-- Tab panes -->
         <div class="sidebar-content">
-            <div class="sidebar-pane" id="home">
+            <div class="sidebar-pane" id="sbar-home">
                 <h1 class="sidebar-header">Supraland Community Map<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1><br>
                 This map is designed to:
                 <ul>
@@ -80,30 +83,27 @@
                     <li>Allow you to get shareable URLs to bring others to the same location on the map as you are.</li>
                 </ul>
             </div>
-            <div class="sidebar-pane" id="layers">
+            <div class="sidebar-pane" id="sbar-layers">
                 <h1 class="sidebar-header">Layers<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1><br>
             </div>
-            <div class="sidebar-pane" id="savefile_load">
+            <div class="sidebar-pane" id="sbar-savefile_load">
                 <h1 class="sidebar-header">Upload Save File<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1><br>
                 Save file uploading instructions and controls will go here.
             </div>
-            <div class="sidebar-pane" id="share">
+            <div class="sidebar-pane" id="sbar-share">
                 <h1 class="sidebar-header">Share Map View<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1><br>
                 URL sharing instructions will go here.
             </div>
-            <div class="sidebar-pane" id="discord">
+            <div class="sidebar-pane" id="sbar-discord">
                 <h1 class="sidebar-header">Supraland Discord<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1><br>
                 Need more help or just want to chat with Supraland fans and developers?<p>Join the official Supraland discord <a href="https://discord.gg/DhWbSbfMqx" target="_blank">here</a>.</p>
             </div>
-            <div class="sidebar-pane" id="thanks">
-                <h1 class="sidebar-header">Credits and Thanks<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1><br>
-                This map would not be possible without the support of:
-                <br>Credits</br>
-                <br>
-                <li>All credit for these amazing games goes to <a href="http://www.david-m.org/">David Münnich</a> and the <a href="https://store.steampowered.com/developer/SupraGames">Supra Games Team</a>
-                <li>Original maps and data created by <a href="https://github.com/supragamescommunity">Supra Games Community.</a>
-                <li>Complete rewrite based on game data extraction and merge of 3 maps by <a href="https://github.com/joric">Joric.</a>
-                <li>Fork of Joric's map to SupraMaps project and tweaks to finish in preparation for Supra World by <a href="https://github.com/supragamescommunity">Supra Games Community.</a>
+            <div class="sidebar-pane" id="sbar-thanks">
+                <h1 class="sidebar-header">Credits and Thanks<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
+                <br><br>All credit for these amazing games goes to <a href="http://www.david-m.org/">David Münnich</a> and the <a href="https://store.steampowered.com/developer/SupraGames">Supra Games Team</a>
+                <br><br>Original maps and data created by <a href="https://github.com/supragamescommunity">Supra Games Community.</a>
+                <br><br>Complete rewrite based on game data extraction and merge of 3 maps by <a href="https://github.com/joric">Joric.</a>
+                <br><br>Fork of Joric's map to SupraMaps project and tweaks to finish in preparation for Supra World by <a href="https://github.com/supragamescommunity">Supra Games Community.</a>
                 <br></br>
                 This map was made by:
                 <li><a href="https://github.com/Egasuas">Cal (Egasuas)</a>
@@ -121,17 +121,22 @@
                 <li><a href="https://github.com/TJ999M">TJ999M</a>
                 <li>Zookster<br>
             </div>
-            <div class="sidebar-pane" id="preferences">
+            <div class="sidebar-pane" id="sbar-dev">
+                <h1 class="sidebar-header">Developer Options<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1><br>
+                Dev stuff here.
+            </div>
+            <div class="sidebar-pane" id="sbar-preferences">
                 <h1 class="sidebar-header">Preferences<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
                 <br>
-                <h1 class="sidebar-header">Language<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
+
+                <h1 class="sidebar-header">Language</h1>
                 <br>
                 Language: <select name="localisation" id="languages">
                             <option value="zh-Hans">简体中文</option>
                             <option value="zh-Hant">中國傳統的</option>
                             <option value="sr">Српски</option>
                             <option value="de">Deutsch</option>
-                            <option value="en">English</option>
+                            <option value="en" selected>English</option>
                             <option value="es">Español</option>
                             <option value="fr">Français</option>
                             <option value="it-IT">Italiano</option>
@@ -143,19 +148,21 @@
                             <option value="ru">Русский</option>
                             <option value="fi">Suomi</option>
                             <option value="tr">Türkçe</option>
-                        </select>
-                <div></div>
+                        </select><br>
                 <br>
-                <h1 class="sidebar-header">Accessibility<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
+
+                <h1 class="sidebar-header">Accessibility</h1>
                 <br>
-                Dark Mode: <input type="checkbox"><div></div>
-                UI colours: Primary <input type="color"> Secondary <input type="color"> Tertiary <input type="color"><div></div>
-                Font colour: <input type="color"><div></div>
-                High contrast mode: <input type="checkbox"><div></div>
-                Replace icons with text: <input type="checkbox"><div></div>
-                Magnifying glass: <input type="checkbox"><div></div>
-                Place icon on left click: <input type="checkbox"><div></div>
-                <br>                <h1 class="sidebar-header">Opacity<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
+                Dark Mode: <input type="checkbox"><br>
+                UI colours: Primary <input type="color"> Secondary <input type="color"> Tertiary <input type="color"><br>
+                Font colour: <input type="color"><br>
+                High contrast mode: <input type="checkbox"><br>
+                Replace icons with text: <input type="checkbox"><br>
+                Magnifying glass: <input type="checkbox"><br>
+                Place icon on left click: <input type="checkbox"><br>
+                <br> 
+
+                <h1 class="sidebar-header">Opacity</h1>
                 <br>
                 Map: <div style="text-aligh:right"><input id="slider" type="range" min="0" max="1" step="0.05" value="1" oninput="baseLayer.setOpacity(this.value)"></div>
                 Sidebar: <div><input id="slider2" type="range" min="0.15" max="1" step="0.05" value="0.85" oninput="document.querySelector('.sidebar-content').style.backgroundColor = 'rgba(255, 255, 255, ' + this.value + ')'"></div>
@@ -163,15 +170,16 @@
                 Polylines: <div><input id="slider" type="range" min="0" max="1" step="0.05" value="1" oninput="main.css()"></div>
                 Found Icons: <div><input id="slider" type="range" min="0" max="1" step="0.05" value="1" oninput="main.css()"></div>
                 <br>
-                <h1 class="sidebar-header">UI Scaling<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
+
+                <h1 class="sidebar-header">UI Scaling</h1>
                 <br>
                 Sidebar: <div><input id="slider" type="range" min="0" max="1" step="0.05" value="1" oninput="main.css()"></div>
                 Icons: <div><input id="slider" type="range" min="0" max="1" step="0.05" value="1" oninput="main.css()"></div>
                 Polylines: <div><input id="slider" type="range" min="0" max="1" step="0.05" value="1" oninput="main.css()"></div>
                 Font: <div><input id="slider" type="range" min="0" max="1" step="0.05" value="1" oninput="main.css()"></div>
-
                 <br>
-                <h1 class="sidebar-header">Keybindings<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
+
+                <h1 class="sidebar-header">Keybindings</h1>
                 <br>
                 Pan left/right: <input type="text" id="panl" name="panl" value="A" size="1"><input type="text" id="panr" name="panr" value="D" size="1"><div></div>
 
@@ -185,7 +193,8 @@
                 load SLC map: <input type="text" id="loadslc" name="loadslc" value="2" size="1"><div></div>
                 load SIU map: <input type="text" id="loadsiu" name="loadsiu" value="3" size="1"><div></div>
                 <br>
-                <h1 class="sidebar-header">Reset map<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
+
+                <h1 class="sidebar-header">Reset map</h1>
                 <br>
                 Delete all data: <input type="reset" value="Delete"><div></div>            </div>
         </div>
