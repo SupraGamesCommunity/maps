@@ -28,7 +28,7 @@ let settings;           // Reference to localData[mapId]
 let mapCenter;
 let mapParam = {};      // Parameters extracted from map URL
 let objects = {};
-let markers = {};
+let markers = {};       // Map from alt name to markers (or lines) on map (ie to layers)
 let coin2stack = {};    // Map from coin name to coin stack
 let searchControl;      // Leaflet control for searching
 
@@ -739,7 +739,7 @@ function loadMap(id) {
             const marker = L.marker(start, {icon: getIcon(icon, size), zIndexOffset: layerConfigs.getZIndexOffset(layer), title: title, alt: alt, o:o, layerId:layer})
               .addTo(layers[layer]).bindPopup(text).on('popupopen', onPopupOpen).on('contextmenu', onContextMenu);
             markers[alt] = markers[alt] ? [...markers[alt], marker] : [marker];
-            }
+          }
 
           // Add a polyline to the appropriate layer
           if(c.lines && enabledLayers[c.lines] && o.linetype) {
@@ -767,7 +767,8 @@ function loadMap(id) {
               options.arrow = 'none';
             }
             for(let endxy of endxys) {
-              L.arrowLine(start, [endxy.y, endxy.x], options).addTo(layers[c.lines]);
+              let line = L.arrowLine(start, [endxy.y, endxy.x], options).addTo(layers[c.lines]);
+              markers[alt] = markers[alt] ? [...markers[alt], line] : [line];
             }
           }
 
@@ -904,7 +905,12 @@ function loadMap(id) {
     searchControl.on('search:locationfound', function (e) {
         if (e.layer._popup) {
           // reveal layer on click
-          layers[e.layer.options.layerId].addTo(map);
+          for(m of markers[e.layer.options.alt]){
+            let layerId = m.options.layerId;
+            if(!settings.activeLayers[layerId]) { 
+              layers[layerId].addTo(map);
+            }
+          }
           e.layer.openPopup();
         }
     });
@@ -1010,7 +1016,12 @@ window.markItemFound = function (id, found=true, save=true) {
   }
 }
 
+//let inMarkItemsCall = false;
 function markItems() {
+  //if(inMarkItemsCall){
+  //  return;
+  //}
+  //inMarkItemsCall = true;
   for (let id of Object.keys(settings.markedItems)) {
     let divs = document.querySelectorAll('*[alt="' + id + '"]');
     [].forEach.call(divs, function(div) {
@@ -1022,17 +1033,21 @@ function markItems() {
       }
     }
   }
-
+/*
   // filter by settings.searchText. caching is unreliable, just perform a full search here
-  let lookup = {}
+  //let lookup = {}
   if (settings.searchText && searchControl) {
     for (const o of Object.values(searchControl._filterData(settings.searchText, searchControl._recordsFromLayer()))) {
-      lookup[o.layer.options.alt] = true;
-      // reveal layers on filter
-      layers[o.layer.options.layerId].addTo(map);
+      let layerId = o.layer.options.layerId; 
+      if(!settings.activeLayers[layerId]){
+        // reveal layers on filter
+        layers[o.layer.options.layerId].addTo(map);
+      }
+      //lookup[o.layer.options.alt] = true;
     }
   }
-
+*/
+/*  // While search is active hide only show markers found by search
   [].forEach.call(document.querySelectorAll('img.leaflet-marker-icon, path'), function(div) {
     if (div.alt!='playerMarker') {
       let alt = div.getAttribute('alt');
@@ -1042,7 +1057,8 @@ function markItems() {
         div.classList.add('hidden');
       }
     }
-  });
+  });*/
+  //inMarkItemsCall = false;
 }
 
 function unmarkItems() {
