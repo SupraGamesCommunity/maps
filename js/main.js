@@ -37,6 +37,8 @@ let currentBuildReference;              // Current object we're editing in Build
 let currentBuildReferenceChanges = [];  // Current object's changed values before they are committed to the list
 let buildModeChangeList = [];           // Changes made in the current Build Mode session
 
+const skipConfirms = navigator.userAgent.includes('Code');
+
 // Hard coded map data extracted from the games
 var maps = {
   // data taken from the MapWorld* nodes
@@ -130,7 +132,7 @@ function openLoadFileDialog() {
 function toggleBuildMode() {
   if(!settings.buildMode){ settings.buildMode = false }
   settings.buildMode = !settings.buildMode;
-  alert('Build mode is now set to ' + settings.buildMode + '.');
+  skipConfirms || alert('Build mode is now set to ' + settings.buildMode + '.');
 }
 
 function updateBuildModeValue() {
@@ -174,7 +176,7 @@ function exportBuildChanges() {
   console.log(buildModeChangeList);
   let t = JSON.stringify(jsonobj, null, 2)
   copyToClipboard(t);
-  alert('Build mode changes have been placed on the clipboard.');
+  skipConfirms || alert('Build mode changes have been placed on the clipboard.');
 }
 
 // Called when Window loads and when base map changes, loads currently select mapId
@@ -405,7 +407,7 @@ function loadMap(id) {
                   options:{toolbarIcon:{html:'clear', tooltip: 'Clears all pins added to map'}},
                   addHooks:function() {
                     if(settings.mapPins.length > 0
-                        && confirm("Are you sure you want to clear all custom pins?")){
+                        && (skipConfirms || confirm("Are you sure you want to clear all custom pins?"))){
                       clearMapPins();
                       saveSettings();
                     }
@@ -489,7 +491,7 @@ function loadMap(id) {
                   options:{toolbarIcon:{html:'Browse...', tooltip: 'Load game save (*.sav) to mark collected items (Alt+R)'}},
                   addHooks: function () {
                     if(Object.keys(settings.markedItems).length == 0 ||
-                        confirm("Are you sure you want to overwrite existing items marked found?")) {
+                        skipConfirms || confirm("Are you sure you want to overwrite existing items marked found?")) {
                       openLoadFileDialog();
                     } 
                     subAction.prototype.addHooks.call(this);
@@ -505,7 +507,7 @@ function loadMap(id) {
                 subAction.extend({
                   options:{toolbarIcon:{html:'Unmark Found', tooltip: 'Unmark all found items'}},
                   addHooks: function () { 
-                    if (confirm('Are you sure to unmark all found items?')) {
+                    if (skipConfirms || confirm('Are you sure to unmark all found items?')) {
                       unmarkItems();
                       saveSettings();
                     }
