@@ -438,7 +438,10 @@ function loadMap(id) {
                 subAction.extend({
                   options:{toolbarIcon:{html:'Browse...', tooltip: 'Load game save (*.sav) to mark collected items (Alt+R)'}},
                   addHooks: function () {
-                    openLoadFileDialog();
+                    if(Object.keys(settings.markedItems).length == 0 ||
+                        confirm("Are you sure you want to overwrite existing items marked found?")) {
+                      openLoadFileDialog();
+                    } 
                     subAction.prototype.addHooks.call(this);
                   }
                 }),
@@ -1002,7 +1005,9 @@ window.markItemFound = function (id, found=true, save=true) {
   });
 
   for(let m of markers[id]){
-    m.setZIndexOffset(layerConfigs.getZIndexOffset(m.options.layerId, found));
+    if(m instanceof L.Marker){
+      m.setZIndexOffset(layerConfigs.getZIndexOffset(m.options.layerId, found));
+    }
   }
 
   if (found) {
