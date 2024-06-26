@@ -1320,9 +1320,9 @@
   "Jumppad_C": {
     "friendly": "Jumppad",
     "icon": "jumppad:v",
-    "layer": "extra",
+    "layer": "extrapipe",
     "nospoiler": null,
-    "lines": "extra",
+    "lines": "extrapipe",
     "friendly_key": "",
     "description": "Orange jumppads take mid air control away from you. Blue ones let you steer, jump or stomp.",
     "description_key": "5A48FB83438C1DA2B9C68EB1D6A23492",
@@ -2013,9 +2013,9 @@
   "Pipesystem_C": {
     "friendly": "Pipe",
     "icon": "pipe",
-    "layer": "extra",
+    "layer": "extrapipe",
     "nospoiler": null,
-    "lines": "extra",
+    "lines": "extrapipe",
     "friendly_key": "",
     "description": "These pipes are shortcuts back to where you've been, if you want to explore more.",
     "description_key": "CFAC9D6342F08C56ADF66896B960AEE3",
@@ -2035,16 +2035,38 @@
   "PipesystemNew_C": {
     "friendly": "Pipe",
     "icon": "pipe",
-    "layer": "extra",
+    "layer": "extrapipe",
     "nospoiler": null,
-    "lines": "extra"
+    "lines": "extrapipe"
+  },
+  "FT:PipesystemNew_C": {
+    "friendly": "Pipe",
+    "icon": "pipe",
+    "layer": "pipesys",
+    "nospoiler": null,
+    "lines": "pipesys",
+    "friendly_key": "",
+    "description": "These pipes are shortcuts back to where you've been, if you want to explore more.",
+    "description_key": "CFAC9D6342F08C56ADF66896B960AEE3",
+    "notes for dev": "this item has no description but this string works?"
   },
   "PipesystemNewDLC_C": {
     "friendly": "Pipe",
     "icon": "pipe",
-    "layer": "extra",
+    "layer": "extrapipe",
     "nospoiler": null,
-    "lines": "extra"
+    "lines": "extrapipe"
+  },
+  "FT:PipesystemNewDLC_C": {
+    "friendly": "Pipe",
+    "icon": "pipe",
+    "layer": "pipesys",
+    "nospoiler": null,
+    "lines": "pipesys",
+    "friendly_key": "",
+    "description": "These pipes are shortcuts back to where you've been, if you want to explore more.",
+    "description_key": "CFAC9D6342F08C56ADF66896B960AEE3",
+    "notes for dev": "this item has no description but this string works?"
   },
   "TriggerVolume_C": {
     "friendly": "Trigger Volume",

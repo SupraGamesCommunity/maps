@@ -408,5 +408,25 @@
     "name": "Jumppad35",
     "type": "FT:Jumppad_C",
     "area": "Crash"
+  },
+  {
+    "name": "PipesystemNew25",
+    "type": "FT:PipesystemNew_C",
+    "area": "Crash"
+  },
+  {
+    "name": "PipesystemNew26",
+    "type": "FT:PipesystemNew_C",
+    "area": "Crash"
+  },
+  {
+    "name": "Jumppad28_2",
+    "type": "FT:Jumppad_C",
+    "area": "Crash"
+  },
+  {
+    "name": "Jumppad29",
+    "type": "FT:Jumppad_C",
+    "area": "Crash"
   }
 ]

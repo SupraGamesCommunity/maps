@@ -9,7 +9,8 @@
         "zDepth": 3,
         "games": [
             "sl",
-            "slc"
+            "slc",
+            "siu"
         ]
     },
     "pipesys": {
@@ -22,6 +23,7 @@
         "zDepth": 4,
         "games": [
             "sl",
+            "slc",
             "siu"
         ]
     },
@@ -164,6 +166,20 @@
         "type": "markers",
         "category": "Miscellaneous",
         "name": "Extras",
+        "name_key": "",
+        "defaultIcon": "question_mark",
+        "defaultActive": false,
+        "zDepth": 2,
+        "games": [ 
+            "sl",
+            "slc",
+            "siu"
+        ]
+    },
+    "extrapipe": {
+        "type": "markers",
+        "category": "Miscellaneous",
+        "name": "Extra Pads/Pipes",
         "name_key": "",
         "defaultIcon": "question_mark",
         "defaultActive": false,

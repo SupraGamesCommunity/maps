@@ -505,6 +505,86 @@
     "area": "Map"
   },
   {
+    "name": "PipesystemNew25_14338",
+    "type": "FT:PipesystemNew_C",
+    "area": "Map"
+  },
+  {
+    "name": "PipesystemNew26",
+    "type": "FT:PipesystemNew_C",
+    "area": "Map"
+  },
+  {
+    "name": "FT:Jumppad37_8255",
+    "type": "Jumppad_C",
+    "area": "Map"
+  },
+  {
+    "name": "PipesystemNew3_20340",
+    "type": "FT:PipesystemNew_C",
+    "area": "Map"
+  },
+  {
+    "name": "PipesystemNew4",
+    "type": "FT:PipesystemNew_C",
+    "area": "Map"
+  },
+  {
+    "name": "Jumppad34_2191",
+    "type": "FT:Jumppad_C",
+    "area": "Map"
+  },
+  {
+    "name": "Jumppad30_17845",
+    "type": "FT:Jumppad_C",
+    "area": "Map"
+  },
+  {
+    "name": "Jumppad75",
+    "type": "FT:Jumppad_C",
+    "area": "Map"
+  },
+  {
+    "name": "Jumppad46_2543",
+    "type": "FT:Jumppad_C",
+    "area": "Map"
+  },
+  {
+    "name": "Jumppad47",
+    "type": "FT:Jumppad_C",
+    "area": "Map"
+  },
+  {
+    "name": "Jumppad39_2367",
+    "type": "FT:Jumppad_C",
+    "area": "Map"
+  },
+  {
+    "name": "Jumppad52",
+    "type": "FT:Jumppad_C",
+    "area": "Map"
+  },
+  {
+    "name": "Jumppad81",
+    "type": "FT:Jumppad_C",
+    "area": "Map"
+  },
+  {
+    "name": "Jumppad70",
+    "type": "FT:Jumppad_C",
+    "area": "Map"
+  },
+  {
+    "name": "PipesystemNew50",
+    "type": "FT:PipesystemNew_C",
+    "area": "Map"
+  },
+  {
+    "name": "PipesystemNew51",
+    "type": "FT:PipesystemNew_C",
+    "area": "Map"
+  },
+  {
     "name": "MetalBall3",
     "type": "Anvil_C",
     "area": "Map"

@@ -114,6 +114,31 @@
   {
     "name": "Jumppad30_2",
     "type": "FT:Jumppad_C",
+    "area": "DLC2_Complete",
+    "target": {
+      "x": 4464,
+      "y": -14706,
+      "z": 2394.5231876747735
+    }
+  },
+  {
+    "name": "Jumppad11_2",
+    "type": "FT:Jumppad_C",
+    "area": "DLC2_Complete",
+    "target": {
+      "x": 5635.47119140625,
+      "y": -46567,
+      "z": 1833.1768946743039
+    }
+  },
+  {
+    "name": "PipesystemNewDLC2",
+    "type": "FT:PipesystemNewDLC_C",
+    "area": "DLC2_Complete"
+  },
+  {
+    "name": "PipesystemNewDLC3",
+    "type": "FT:PipesystemNewDLC_C",
     "area": "DLC2_Complete"
   },
   {
@@ -196,7 +221,152 @@
     "type": "FT:Pipesystem_C",
     "area": "DLC2_Complete"
   },
-  
+  {
+    "name": "PipesystemNewDLC5_3570",
+    "type": "FT:Jumppad_C",
+    "area": "DLC2_Complete"
+  },
+  {
+    "name": "Secret_TeleportPipe2",
+    "type": "FT:PipesystemNew_C",
+    "area": "DLC2_SecretLavaArea",
+    "lat": 3120,
+    "lng": 5710,
+    "alt": 179.0185546875,
+    "target": {
+      "x": 4604,
+      "y": 2879,
+      "z": -2491.081298828125
+    }
+  },
+  {
+    "name": "Secret_TeleportPipe3",
+    "type": "FT:PipesystemNew_C",
+    "area": "DLC2_SecretLavaArea",
+    "lat": 2879,
+    "lng": 4604,
+    "alt": -2491.081298828125,
+    "target": {
+      "x": 5710,
+      "y": 3120,
+      "z": 179.0185546875
+    }
+  },
+  {
+    "name": "BossArea_BaronPipe1",
+    "type": "FT:PipesystemNew_C",
+    "area": "DLC2_FinalBoss"
+  },
+  {
+    "name": "BossArea_BaronPipe2",
+    "type": "FT:PipesystemNewDLC_C",
+    "area": "DLC2_FinalBoss"
+  },
+  {
+    "name": "Secret_DrainWater_TeleportPipe1",
+    "type": "FT:PipesystemNew_C",
+    "area": "DLC2_SecretLavaArea"
+  },
+  {
+    "name": "Secret_TeleportPipe6",
+    "type": "FT:PipesystemNew_C",
+    "area": "DLC2_SecretLavaArea"
+  },
+  {
+    "name": "Jumppad31_2",
+    "type": "FT:Jumppad_C",
+    "area": "DLC2_Complete",
+    "target": {
+      "x": 52012,
+      "y": -50742,
+      "z": 2002.1459562820478
+    }
+  },
+  {
+    "name": "Jumppad20",
+    "type": "FT:Jumppad_C",
+    "area": "DLC2_Complete"
+  },
+  {
+    "name": "Jumppad16",
+    "type": "FT:Jumppad_C",
+    "area": "DLC2_Complete"
+  },
+  {
+    "name": "Jumppad2_2",
+    "type": "FT:Jumppad_C",
+    "area": "DLC2_Complete"
+  },
+  {
+    "name": "Jumppad2_2",
+    "type": "FT:Jumppad_C",
+    "area": "DLC2_FinalBoss"
+  },
+  {
+    "name": "Jumppad2_2",
+    "type": "FT:Jumppad_C",
+    "area": "DLC2_SecretLavaArea"
+  },
+  {
+    "name": "Jumppad_2",
+    "type": "FT:Jumppad_C",
+    "area": "DLC2_PostRainbow",
+    "target": {
+      "x": -48500,
+      "y": -41823,
+      "z": 11348.466173575593
+    }
+  },
+  {
+    "name": "Jumppad_2",
+    "type": "FT:Jumppad_C",
+    "area": "DLC2_Complete"
+  },
+  {
+    "name": "Jumppad10_2",
+    "type": "FT:Jumppad_C",
+    "area": "DLC2_Complete"
+  },
+  {
+    "name": "Jumppad3_2",
+    "type": "FT:Jumppad_C",
+    "area": "DLC2_Complete"
+  },
+  {
+    "name": "Jumppad5_2",
+    "type": "FT:Jumppad_C",
+    "area": "DLC2_Complete"
+  },
+  {
+    "name": "Jumppad13",
+    "type": "FT:Jumppad_C",
+    "area": "DLC2_Complete"
+  },
+  {
+    "name": "Jumppad21",
+    "type": "FT:Jumppad_C",
+    "area": "DLC2_Complete"
+  },
+  {
+    "name": "Jumppad4_2",
+    "type": "FT:Jumppad_C",
+    "area": "DLC2_Complete"
+  },
+  {
+    "name": "Jumppad6_4",
+    "type": "FT:Jumppad_C",
+    "area": "DLC2_Complete"
+  },
+  {
+    "name": "Jumppad7",
+    "type": "FT:Jumppad_C",
+    "area": "DLC2_Complete"
+  },
+  {
+    "name": "Jumppad8",
+    "type": "FT:Jumppad_C",
+    "area": "DLC2_Complete"
+  },
   {
     "name": "CoinStack3",
     "area": "DLC2_Complete",
