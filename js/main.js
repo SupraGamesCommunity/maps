@@ -203,6 +203,9 @@ function loadMap(id) {
     if (!localData[id].buildMode) {
       localData[id].buildMode = false;
     }
+    if (!localData[id].mapPins) {
+      localData[id].mapPins = [];
+    }
   }
 
   localData.mapId = mapId;
@@ -378,10 +381,57 @@ function loadMap(id) {
     initialize:function(map,myAction){this.map=map;this.myAction=myAction;L.Toolbar2.Action.prototype.initialize.call(this);},
     addHooks:function(){ this.myAction.disable(); }
   });
-
   new L.Toolbar2.Control({
       position: 'bottomleft',
       actions: [
+        // build mode button
+        L.Toolbar2.Action.extend({
+          options: {
+            toolbarIcon:{html: '&#x1F588;', tooltip: 'Map pins'},
+            subToolbar: new L.Toolbar2({ 
+              actions: [
+                subAction.extend({
+                  options:{toolbarIcon:{html:'Add', tooltip: 'Adds new pin to map'}},
+                  addHooks:function() {
+                    if('coordinate' in layers) {
+                      addMapPin();
+                      saveSettings();
+                      layers['coordinate'].addTo(map);
+                    }
+                    subAction.prototype.addHooks.call(this); // closes sub-action
+                  }
+                }),
+                subAction.extend({
+                  options:{toolbarIcon:{html:'clear', tooltip: 'Clears all pins added to map'}},
+                  addHooks:function() {
+                    if(settings.mapPins.length > 0
+                        && confirm("Are you sure you want to clear all custom pins?")){
+                      clearMapPins();
+                      saveSettings();
+                    }
+                    subAction.prototype.addHooks.call(this); // closes sub-action
+                  }
+                }),
+                subAction.extend({
+                  options:{toolbarIcon:{html:'copy', tooltip: 'Copy pin positions to clip board'}},
+                  addHooks:function() {
+                    if(settings.mapPins.length > 0){
+                      let pins = '';
+                      settings.mapPins.forEach((value, i) => {
+                        pins += `${i}: (x: ${value.lng.toFixed()} y: ${value.lat.toFixed()})\r\n`; 
+                      })
+                      copyToClipboard(pins)                    
+                    }
+                    subAction.prototype.addHooks.call(this); // closes sub-action
+                  }
+                }),
+                subAction.extend({
+                  options:{toolbarIcon:{html:'&times;', tooltip: 'Close'}}
+                }),
+              ],
+            })
+          }
+        }),
         // build mode button
         L.Toolbar2.Action.extend({
           options: {
@@ -589,7 +639,61 @@ function loadMap(id) {
         value: parsedValue,
         isInPixels: parsedValue > 0,
     };
-}
+  }
+
+  function addMapPin(idx){
+    let pos, pinIdx;
+    if(typeof idx !== 'undefined'){
+      pos = settings.mapPins[idx];
+      pinIdx = idx;
+    }
+    else {
+      pinIdx = Object.keys(settings.mapPins).length;
+      pos = map.getCenter();
+      settings.mapPins.push(pos);
+    }
+    const alt = `XYMarker ${pinIdx}`;
+    if(!(alt in markers)) {
+      const marker = L.marker(pos, {zIndexOffset: layerConfigs.frontZIndexOffset, draggable: true,
+          title: Math.round(pos[1])+', '+Math.round(pos[0]), alt: alt, pinIdx: pinIdx})
+        .bindPopup()
+        .on('moveend', function(e) {
+          let marker = e.target;
+          let t = marker.getLatLng();
+          e.target._icon.title = Math.round(t.lng)+', '+Math.round(t.lat)
+          settings.mapPins[e.target.options.pinIdx] = t;
+          saveSettings();
+        })
+        .on('popupopen', function(e) {
+            let marker = e.target;
+            let t = marker.getLatLng();
+            marker.setPopupContent(`(${Math.round(t.lng)}, ${Math.round(t.lat)})`);
+            marker.openPopup();
+        }).addTo(layers['coordinate']);
+        markers[alt] = [marker];
+    }
+    else {
+      markers[alt][0].setLatLng(pos);
+    }
+  }
+
+  function restoreMapPins(){
+    settings.mapPins.forEach((value, i) => {
+      addMapPin(i);
+    })
+  }
+
+  function clearMapPins(){
+    settings.mapPins.forEach((value, pinIdx) => {
+      const alt = `XYMarker ${pinIdx}`;
+      if(alt in markers){
+        markers[alt][0].remove(map);
+        delete markers[alt];
+      }
+    });
+    settings.mapPins = [];
+  }
+
   function loadMarkers() {
 
     // Extract line properties from CSS
@@ -799,19 +903,7 @@ function loadMap(id) {
         } // end of loop
 
         if(enabledLayers['coordinate']){
-          L.marker(mapCenter, {zIndexOffset: layerConfigs.frontZIndexOffset, draggable: true, title: Math.round(mapCenter[1])+', '+Math.round(mapCenter[0]), alt:'XYMarker'})
-            .bindPopup()
-            .on('moveend', function(e) {
-              let marker = e.target;
-              let t = marker.getLatLng();
-              e.target._icon.title = Math.round(t.lng)+', '+Math.round(t.lat)
-            })
-            .on('popupopen', function(e) {
-                let marker = e.target;
-                let t = marker.getLatLng();
-                marker.setPopupContent(`(${Math.round(t.lng)}, ${Math.round(t.lat)})`);
-                marker.openPopup();
-            }).addTo(layers['coordinate'])
+          restoreMapPins();
         }
 
         updatePolylines();
