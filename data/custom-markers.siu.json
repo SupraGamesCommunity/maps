@@ -223,7 +223,7 @@
   },
   {
     "name": "PipesystemNewDLC5_3570",
-    "type": "FT:Jumppad_C",
+    "type": "FT:PipesystemNewDLC_C",
     "area": "DLC2_Complete"
   },
   {
