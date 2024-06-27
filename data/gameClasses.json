@@ -2174,7 +2174,7 @@
   },
   "NomNomFlies_C": {
     "friendly": "Nom Nom Flies",
-    "icon": "question_mark",
+    "icon": "nomnomflies",
     "layer": "extra",
     "nospoiler": null,
     "lines": null,
