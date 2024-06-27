@@ -1122,7 +1122,7 @@
   },
   "BuyTranslocatorModule_C": {
     "friendly": "Teleportation Module",
-    "icon": "translocator_cooldown",
+    "icon": "translocator_module",
     "layer": "upgrades",
     "nospoiler": "shop",
     "lines": "dev",
@@ -1142,7 +1142,7 @@
   },
   "BuyTranslocatorWeight_C": {
     "friendly": "Weight x3",
-    "icon": "translocator_damage",
+    "icon": "translocator_weight",
     "layer": "upgrades",
     "nospoiler": "shop",
     "lines": "dev",
