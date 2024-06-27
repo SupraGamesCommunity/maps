@@ -11,7 +11,7 @@ function getUserLanguage(locales){
     if(language){
         if(language in locales)
             return language;
-        if(language.slice(0,2))
+        if(language.slice(0,2) in locales)
             return language.slice(0,2);
     }
     return 'en';
