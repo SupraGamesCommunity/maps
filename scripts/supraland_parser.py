@@ -151,12 +151,6 @@ def export_levels(game, cache_dir):
             json.dump(package_dict, open(filename, 'w'), indent=2)
 
 
-def export_classes():
-    game_classes = read_game_classes();
-    with open("gameClasses.json", 'w') as f:
-        print("Writing classes to gameClasses.json...")
-        json.dump(game_classes, f, indent = 2)
-
 def export_class_loc():
 
     game_classes = read_game_classes();
@@ -558,12 +552,13 @@ def calc_pads(data):
                         o['target']['x'] = t['lng']
                         o['target']['y'] = t['lat']
                         o['target']['z'] = t['alt']
+                        o['other_pad']=alt
+                        o['twoway']=True
                         t['target']['x'] = o['lng']
                         t['target']['y'] = o['lat']
                         t['target']['z'] = o['alt']
-                        o['twoway']=True
                         t['twoway']=True
-
+                        t['other_pad']=':'.join((o['area'], o['name']))
 
 
 def get_z(x, y, triangle):
@@ -628,6 +623,9 @@ exported_properties = [
     'icon',                                         # explicit icon override
     'variant',                                      # variant allows change of marker
     'friendly',                                     # Friendly name for the marker
+    'other_pipe',                                   # For pipes we store the pipe at the other end
+    'nearest_cap',                                  # Nearest pipecap we are connected to if there is one
+    'other_pad',                                    # For two way pads we store the pad at the other end
     'linetype',                                     # Trigger, pad, pipe, target
     'twoway',                                       # Pipe or bad is two way if True
     'target',                                       # where to draw line to for pipes and pads

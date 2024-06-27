@@ -14169,7 +14169,8 @@
       "y": -10152.76953125,
       "z": 267.7165832519531
     },
-    "twoway": true,
+    "other_pad": "Map:Jumppad14_7215",
+    "twoway": 1,
     "linetype": "jumppad",
     "variant": "red"
   },
@@ -14185,7 +14186,8 @@
       "y": -11788.5810546875,
       "z": 1339.5185546875
     },
-    "twoway": true,
+    "twoway": 2,
+    "other_pad": "Map:Jumppad13_972",
     "linetype": "jumppad",
     "variant": "red"
   },
@@ -14321,7 +14323,8 @@
       "y": -33632.13671875,
       "z": -32.774322509765625
     },
-    "twoway": true,
+    "other_pad": "Map:Jumppad24",
+    "twoway": 1,
     "linetype": "jumppad",
     "variant": "red"
   },
@@ -14337,7 +14340,8 @@
       "y": -38028.48046875,
       "z": 281.1507568359375
     },
-    "twoway": true,
+    "twoway": 2,
+    "other_pad": "Map:Jumppad23_3162",
     "linetype": "jumppad",
     "variant": "red"
   },
@@ -14368,7 +14372,8 @@
       "y": -33811.9609375,
       "z": -219.3920135498047
     },
-    "twoway": true,
+    "other_pad": "Map:Jumppad35",
+    "twoway": 1,
     "linetype": "jumppad",
     "variant": "blue"
   },
@@ -14429,7 +14434,8 @@
       "y": -6931.44287109375,
       "z": -446.81304931640625
     },
-    "twoway": true,
+    "other_pad": "Map:Jumppad_266",
+    "twoway": 1,
     "linetype": "jumppad",
     "variant": "blue"
   },
@@ -14520,7 +14526,8 @@
       "y": -41676.1171875,
       "z": -498.17327880859375
     },
-    "twoway": true,
+    "twoway": 2,
+    "other_pad": "Map:Jumppad26",
     "linetype": "jumppad",
     "variant": "blue"
   },
@@ -14671,7 +14678,8 @@
       "y": -33100.11328125,
       "z": -457.6958923339844
     },
-    "twoway": true,
+    "other_pad": "Map:Jumppad45",
+    "twoway": 1,
     "linetype": "jumppad",
     "variant": "red"
   },
@@ -14687,7 +14695,8 @@
       "y": -13163.5205078125,
       "z": -1082.0267333984375
     },
-    "twoway": true,
+    "twoway": 2,
+    "other_pad": "Map:Jumppad44",
     "linetype": "jumppad",
     "variant": "red"
   },
@@ -14703,7 +14712,8 @@
       "y": -23239.681640625,
       "z": -1018.5819091796875
     },
-    "twoway": true,
+    "other_pad": "Map:Jumppad47",
+    "twoway": 1,
     "linetype": "jumppad",
     "variant": "red"
   },
@@ -14719,7 +14729,8 @@
       "y": -11933.14453125,
       "z": 539.2427368164062
     },
-    "twoway": true,
+    "twoway": 2,
+    "other_pad": "Map:Jumppad46_2543",
     "linetype": "jumppad",
     "variant": "red"
   },
@@ -14915,7 +14926,8 @@
       "y": 28683.08203125,
       "z": 798.834716796875
     },
-    "twoway": true,
+    "other_pad": "Map:Jumppad61",
+    "twoway": 1,
     "linetype": "jumppad",
     "variant": "red"
   },
@@ -14976,7 +14988,8 @@
       "y": 4645.07470703125,
       "z": 253.28604125976562
     },
-    "twoway": true,
+    "twoway": 2,
+    "other_pad": "Map:Jumppad59_1564",
     "linetype": "jumppad",
     "variant": "red"
   },
@@ -15097,7 +15110,8 @@
       "y": 1791.294189453125,
       "z": 120.24662780761719
     },
-    "twoway": true,
+    "other_pad": "Map:Jumppad8",
+    "twoway": 1,
     "linetype": "jumppad",
     "variant": "blue"
   },
@@ -15143,7 +15157,8 @@
       "y": 52016.296875,
       "z": 941.4310302734375
     },
-    "twoway": true,
+    "other_pad": "Map:Jumppad73",
+    "twoway": 1,
     "linetype": "jumppad",
     "variant": "red"
   },
@@ -15159,7 +15174,8 @@
       "y": 42413.24609375,
       "z": 577.3323974609375
     },
-    "twoway": true,
+    "twoway": 2,
+    "other_pad": "Map:Jumppad72",
     "linetype": "jumppad",
     "variant": "red"
   },
@@ -15265,7 +15281,8 @@
       "y": -2363.6796875,
       "z": 375.2969970703125
     },
-    "twoway": true,
+    "twoway": 2,
+    "other_pad": "Map:Jumppad7",
     "linetype": "jumppad",
     "variant": "blue"
   },
@@ -15416,7 +15433,8 @@
       "y": 337.01141357421875,
       "z": 2612.117431640625
     },
-    "twoway": true,
+    "other_pad": "Map:Jumppad90",
+    "twoway": 1,
     "linetype": "jumppad",
     "variant": "red"
   },
@@ -15432,7 +15450,8 @@
       "y": -5299.93359375,
       "z": 5888.71728515625
     },
-    "twoway": true,
+    "twoway": 2,
+    "other_pad": "Map:Jumppad89",
     "linetype": "jumppad",
     "variant": "red"
   },
@@ -15523,7 +15542,8 @@
       "y": 58023.26953125,
       "z": 928.8194580078125
     },
-    "twoway": true,
+    "other_pad": "Map:Jumppad97",
+    "twoway": 1,
     "linetype": "jumppad",
     "variant": "red"
   },
@@ -15539,7 +15559,8 @@
       "y": -10249.4150390625,
       "z": 118.1915054321289
     },
-    "twoway": true,
+    "twoway": 2,
+    "other_pad": "Map:Jumppad96",
     "linetype": "jumppad",
     "variant": "red"
   },
@@ -15600,7 +15621,8 @@
       "y": -30098.595703125,
       "z": -266.2233581542969
     },
-    "twoway": true,
+    "twoway": 2,
+    "other_pad": "Map:Jumppad2_49",
     "linetype": "jumppad",
     "variant": "blue"
   },
@@ -17804,13 +17826,14 @@
     "lat": -46427.77734375,
     "lng": -49836.4296875,
     "alt": -811.4808349609375,
+    "other_pipe": "Map:PipesystemNew9",
     "linetype": "pipe",
     "target": {
       "x": -50061.35546875,
       "y": -46673.7734375,
       "z": -811.47607421875
     },
-    "twoway": true
+    "twoway": 2
   },
   {
     "name": "PipesystemNew11",
@@ -17819,13 +17842,14 @@
     "lat": -43858.23828125,
     "lng": -52843.7265625,
     "alt": -808.6069946289062,
+    "other_pipe": "Map:PipesystemNew12",
     "linetype": "pipe",
     "target": {
       "x": -52597.55078125,
       "y": -43633.30859375,
       "z": -808.6051025390625
     },
-    "twoway": true
+    "twoway": 2
   },
   {
     "name": "PipesystemNew12",
@@ -17834,13 +17858,14 @@
     "lat": -43633.30859375,
     "lng": -52597.55078125,
     "alt": -808.6051025390625,
+    "other_pipe": "Map:PipesystemNew11",
+    "twoway": 1,
     "linetype": "pipe",
     "target": {
       "x": -52843.7265625,
       "y": -43858.23828125,
       "z": -808.6069946289062
-    },
-    "twoway": true
+    }
   },
   {
     "name": "PipesystemNew13_6600",
@@ -17849,13 +17874,14 @@
     "lat": -47642.7421875,
     "lng": -52363.65234375,
     "alt": -808.5067138671875,
+    "other_pipe": "Map:PipesystemNew14",
     "linetype": "pipe",
     "target": {
       "x": -52363.65234375,
       "y": -47646.33203125,
       "z": -808.5067138671875
     },
-    "twoway": true
+    "twoway": 2
   },
   {
     "name": "PipesystemNew14",
@@ -17864,13 +17890,14 @@
     "lat": -47646.33203125,
     "lng": -52363.65234375,
     "alt": -808.5067138671875,
+    "other_pipe": "Map:PipesystemNew13_6600",
+    "twoway": 1,
     "linetype": "pipe",
     "target": {
       "x": -52363.65234375,
       "y": -47642.7421875,
       "z": -808.5067138671875
-    },
-    "twoway": true
+    }
   },
   {
     "name": "PipesystemNew15",
@@ -17879,13 +17906,14 @@
     "lat": -42333.8515625,
     "lng": -52443.56640625,
     "alt": -636.0883178710938,
+    "other_pipe": "Map:PipesystemNew16",
     "linetype": "pipe",
     "target": {
       "x": -52443.54296875,
       "y": -42108.953125,
       "z": -390.0661315917969
     },
-    "twoway": true
+    "twoway": 2
   },
   {
     "name": "PipesystemNew16",
@@ -17894,13 +17922,14 @@
     "lat": -42108.953125,
     "lng": -52443.54296875,
     "alt": -390.0661315917969,
+    "other_pipe": "Map:PipesystemNew15",
+    "twoway": 1,
     "linetype": "pipe",
     "target": {
       "x": -52443.56640625,
       "y": -42333.8515625,
       "z": -636.0883178710938
-    },
-    "twoway": true
+    }
   },
   {
     "name": "PipesystemNew17",
@@ -17909,13 +17938,14 @@
     "lat": -43631.08984375,
     "lng": -54340.36328125,
     "alt": -828.0423583984375,
+    "other_pipe": "Map:PipesystemNew18",
     "linetype": "pipe",
     "target": {
       "x": -54342.28125,
       "y": -43883.20703125,
       "z": -1723.151611328125
     },
-    "twoway": true
+    "twoway": 2
   },
   {
     "name": "PipesystemNew18",
@@ -17924,13 +17954,14 @@
     "lat": -43883.20703125,
     "lng": -54342.28125,
     "alt": -1723.151611328125,
+    "other_pipe": "Map:PipesystemNew17",
+    "twoway": 1,
     "linetype": "pipe",
     "target": {
       "x": -54340.36328125,
       "y": -43631.08984375,
       "z": -828.0423583984375
-    },
-    "twoway": true
+    }
   },
   {
     "name": "PipesystemNew19_1192",
@@ -17939,13 +17970,14 @@
     "lat": -22770.5390625,
     "lng": -29638.9921875,
     "alt": -1069.1103515625,
+    "other_pipe": "Map:PipesystemNew20",
     "linetype": "pipe",
     "target": {
       "x": -28769.99609375,
       "y": -22877.4140625,
       "z": 487.214111328125
     },
-    "twoway": true
+    "twoway": 2
   },
   {
     "name": "PipesystemNew2",
@@ -17954,13 +17986,14 @@
     "lat": -46679.64453125,
     "lng": -38759.44140625,
     "alt": -2886.20556640625,
+    "other_pipe": "Map:PipesystemNew_7546",
     "linetype": "pipe",
     "target": {
       "x": -39272.2421875,
       "y": -45546.08984375,
       "z": 681.110107421875
     },
-    "twoway": true
+    "twoway": 2
   },
   {
     "name": "PipesystemNew20",
@@ -17969,13 +18002,14 @@
     "lat": -22877.4140625,
     "lng": -28769.99609375,
     "alt": 487.214111328125,
+    "other_pipe": "Map:PipesystemNew19_1192",
+    "twoway": 1,
     "linetype": "pipe",
     "target": {
       "x": -29638.9921875,
       "y": -22770.5390625,
       "z": -1069.1103515625
-    },
-    "twoway": true
+    }
   },
   {
     "name": "PipesystemNew21_1352",
@@ -17984,13 +18018,15 @@
     "lat": -11445.072265625,
     "lng": 3485.644287109375,
     "alt": 902.7562866210938,
+    "other_pipe": "Map:PipesystemNew22",
+    "nearest_cap": "Map:PipeCap2_2783",
     "linetype": "pipe",
     "target": {
       "x": 58.13136672973633,
       "y": -11445.072265625,
       "z": 820.5833129882812
     },
-    "twoway": true
+    "twoway": 2
   },
   {
     "name": "PipesystemNew22",
@@ -17999,13 +18035,15 @@
     "lat": -11445.072265625,
     "lng": 58.13136672973633,
     "alt": 820.5833129882812,
+    "other_pipe": "Map:PipesystemNew21_1352",
+    "nearest_cap": "Map:PipeCap_572",
+    "twoway": 1,
     "linetype": "pipe",
     "target": {
       "x": 3485.644287109375,
       "y": -11445.072265625,
       "z": 902.7562866210938
-    },
-    "twoway": true
+    }
   },
   {
     "name": "PipesystemNew23",
@@ -18014,13 +18052,15 @@
     "lat": -16393.21875,
     "lng": -8139.65673828125,
     "alt": -153.00547790527344,
+    "other_pipe": "Map:PipesystemNew24",
+    "nearest_cap": "Map:PipeCap4",
     "linetype": "pipe",
     "target": {
       "x": -10401.720703125,
       "y": -11821.9716796875,
       "z": -748.558837890625
     },
-    "twoway": true
+    "twoway": 2
   },
   {
     "name": "PipesystemNew24",
@@ -18029,13 +18069,15 @@
     "lat": -11821.9716796875,
     "lng": -10401.720703125,
     "alt": -748.558837890625,
+    "other_pipe": "Map:PipesystemNew23",
+    "nearest_cap": "Map:PipeCap5",
+    "twoway": 1,
     "linetype": "pipe",
     "target": {
       "x": -8139.65673828125,
       "y": -16393.21875,
       "z": -153.00547790527344
-    },
-    "twoway": true
+    }
   },
   {
     "name": "PipesystemNew25_14338",
@@ -18044,13 +18086,14 @@
     "lat": -42675.88671875,
     "lng": -50513.0,
     "alt": 1355.6444091796875,
+    "other_pipe": "Map:PipesystemNew26",
     "linetype": "pipe",
     "target": {
       "x": -46902.98046875,
       "y": -43482.26953125,
       "z": 1355.3355712890625
     },
-    "twoway": true
+    "twoway": 2
   },
   {
     "name": "PipesystemNew26",
@@ -18059,13 +18102,14 @@
     "lat": -43482.26953125,
     "lng": -46902.98046875,
     "alt": 1355.3355712890625,
+    "other_pipe": "Map:PipesystemNew25_14338",
+    "twoway": 1,
     "linetype": "pipe",
     "target": {
       "x": -50513.0,
       "y": -42675.88671875,
       "z": 1355.6444091796875
-    },
-    "twoway": true
+    }
   },
   {
     "name": "PipesystemNew27",
@@ -18074,13 +18118,14 @@
     "lat": -23548.01171875,
     "lng": 28172.130859375,
     "alt": 569.4591674804688,
+    "other_pipe": "Map:PipesystemNew28",
     "linetype": "pipe",
     "target": {
       "x": 12117.7578125,
       "y": -8020.4013671875,
       "z": -131.71551513671875
     },
-    "twoway": true
+    "twoway": 2
   },
   {
     "name": "PipesystemNew28",
@@ -18089,13 +18134,15 @@
     "lat": -8020.4013671875,
     "lng": 12117.7578125,
     "alt": -131.71551513671875,
+    "other_pipe": "Map:PipesystemNew27",
+    "nearest_cap": "Map:PipeCap11",
+    "twoway": 1,
     "linetype": "pipe",
     "target": {
       "x": 28172.130859375,
       "y": -23548.01171875,
       "z": 569.4591674804688
-    },
-    "twoway": true
+    }
   },
   {
     "name": "PipesystemNew29",
@@ -18104,6 +18151,8 @@
     "lat": 42853.12109375,
     "lng": -30420.552734375,
     "alt": 829.0733032226562,
+    "other_pipe": "Map:PipesystemNew30",
+    "nearest_cap": "Map:PipeCap12",
     "linetype": "pipe",
     "target": {
       "x": -35766.68359375,
@@ -18118,13 +18167,14 @@
     "lat": 40752.08984375,
     "lng": -35766.68359375,
     "alt": -6822.90234375,
+    "other_pipe": "Map:PipesystemNew31",
     "linetype": "pipe",
     "target": {
       "x": -41006.4375,
       "y": 44691.10546875,
       "z": -7368.0341796875
     },
-    "twoway": true
+    "twoway": 2
   },
   {
     "name": "PipesystemNew31",
@@ -18133,13 +18183,14 @@
     "lat": 44691.10546875,
     "lng": -41006.4375,
     "alt": -7368.0341796875,
+    "other_pipe": "Map:PipesystemNew30",
+    "twoway": 1,
     "linetype": "pipe",
     "target": {
       "x": -35766.68359375,
       "y": 40752.08984375,
       "z": -6822.90234375
-    },
-    "twoway": true
+    }
   },
   {
     "name": "PipesystemNew32",
@@ -18148,13 +18199,15 @@
     "lat": 37942.97265625,
     "lng": -19348.22265625,
     "alt": 844.5838012695312,
+    "other_pipe": "Map:PipesystemNew33",
+    "nearest_cap": "Map:PipeCap13",
     "linetype": "pipe",
     "target": {
       "x": -11313.72265625,
       "y": 33291.49609375,
       "z": 956.9715576171875
     },
-    "twoway": true
+    "twoway": 2
   },
   {
     "name": "PipesystemNew33",
@@ -18163,13 +18216,15 @@
     "lat": 33291.49609375,
     "lng": -11313.72265625,
     "alt": 956.9715576171875,
+    "other_pipe": "Map:PipesystemNew32",
+    "nearest_cap": "Map:PipeCap14",
+    "twoway": 1,
     "linetype": "pipe",
     "target": {
       "x": -19348.22265625,
       "y": 37942.97265625,
       "z": 844.5838012695312
-    },
-    "twoway": true
+    }
   },
   {
     "name": "PipesystemNew34",
@@ -18178,13 +18233,15 @@
     "lat": 1001.8740234375,
     "lng": -9021.7041015625,
     "alt": 1174.731201171875,
+    "other_pipe": "Map:PipesystemNew35",
+    "nearest_cap": "Map:PipeCap15",
     "linetype": "pipe",
     "target": {
       "x": -15564.5390625,
       "y": -222.67648315429688,
       "z": 704.6788940429688
     },
-    "twoway": true
+    "twoway": 2
   },
   {
     "name": "PipesystemNew35",
@@ -18193,13 +18250,15 @@
     "lat": -222.67648315429688,
     "lng": -15564.5390625,
     "alt": 704.6788940429688,
+    "other_pipe": "Map:PipesystemNew34",
+    "nearest_cap": "Map:PipeCap16",
+    "twoway": 1,
     "linetype": "pipe",
     "target": {
       "x": -9021.7041015625,
       "y": 1001.8740234375,
       "z": 1174.731201171875
-    },
-    "twoway": true
+    }
   },
   {
     "name": "PipesystemNew36",
@@ -18208,13 +18267,15 @@
     "lat": 6075.8603515625,
     "lng": -3303.66259765625,
     "alt": 588.470703125,
+    "other_pipe": "Map:PipesystemNew37",
+    "nearest_cap": "Map:PipeCap17",
     "linetype": "pipe",
     "target": {
       "x": -2818.434814453125,
       "y": 13997.0615234375,
       "z": 1306.0714111328125
     },
-    "twoway": true
+    "twoway": 2
   },
   {
     "name": "PipesystemNew37",
@@ -18223,13 +18284,15 @@
     "lat": 13997.0615234375,
     "lng": -2818.434814453125,
     "alt": 1306.0714111328125,
+    "other_pipe": "Map:PipesystemNew36",
+    "nearest_cap": "Map:PipeCap18",
+    "twoway": 1,
     "linetype": "pipe",
     "target": {
       "x": -3303.66259765625,
       "y": 6075.8603515625,
       "z": 588.470703125
-    },
-    "twoway": true
+    }
   },
   {
     "name": "PipesystemNew38",
@@ -18238,13 +18301,15 @@
     "lat": -34034.41796875,
     "lng": -2246.938720703125,
     "alt": -25.360198974609375,
+    "other_pipe": "Map:PipesystemNew39",
+    "nearest_cap": "Map:PipeCap10_2",
     "linetype": "pipe",
     "target": {
       "x": -2075.85888671875,
       "y": -34920.0,
       "z": -2013.9991455078125
     },
-    "twoway": true
+    "twoway": 2
   },
   {
     "name": "PipesystemNew39",
@@ -18253,13 +18318,14 @@
     "lat": -34920.0,
     "lng": -2075.85888671875,
     "alt": -2013.9991455078125,
+    "other_pipe": "Map:PipesystemNew38",
+    "twoway": 1,
     "linetype": "pipe",
     "target": {
       "x": -2246.938720703125,
       "y": -34034.41796875,
       "z": -25.360198974609375
-    },
-    "twoway": true
+    }
   },
   {
     "name": "PipesystemNew3_20340",
@@ -18268,13 +18334,14 @@
     "lat": -40052.6796875,
     "lng": -31571.26171875,
     "alt": -1439.1903076171875,
+    "other_pipe": "Map:PipesystemNew4",
     "linetype": "pipe",
     "target": {
       "x": -30131.025390625,
       "y": -41795.1171875,
       "z": -1380.234130859375
     },
-    "twoway": true
+    "twoway": 2
   },
   {
     "name": "PipesystemNew4",
@@ -18283,13 +18350,14 @@
     "lat": -41795.1171875,
     "lng": -30131.025390625,
     "alt": -1380.234130859375,
+    "other_pipe": "Map:PipesystemNew3_20340",
+    "twoway": 1,
     "linetype": "pipe",
     "target": {
       "x": -31571.26171875,
       "y": -40052.6796875,
       "z": -1439.1903076171875
-    },
-    "twoway": true
+    }
   },
   {
     "name": "PipesystemNew40",
@@ -18298,13 +18366,15 @@
     "lat": 41645.7265625,
     "lng": -61356.796875,
     "alt": 886.5266723632812,
+    "other_pipe": "Map:PipesystemNew41",
+    "nearest_cap": "Map:PipeCap19",
     "linetype": "pipe",
     "target": {
       "x": -62132.546875,
       "y": 57765.93359375,
       "z": 784.0267944335938
     },
-    "twoway": true
+    "twoway": 2
   },
   {
     "name": "PipesystemNew41",
@@ -18313,13 +18383,15 @@
     "lat": 57765.93359375,
     "lng": -62132.546875,
     "alt": 784.0267944335938,
+    "other_pipe": "Map:PipesystemNew40",
+    "nearest_cap": "Map:PipeCap20",
+    "twoway": 1,
     "linetype": "pipe",
     "target": {
       "x": -61356.796875,
       "y": 41645.7265625,
       "z": 886.5266723632812
-    },
-    "twoway": true
+    }
   },
   {
     "name": "PipesystemNew42",
@@ -18328,13 +18400,14 @@
     "lat": 32362.10546875,
     "lng": 78773.25,
     "alt": 5144.212890625,
+    "other_pipe": "Map:PipesystemNew43_4",
     "linetype": "pipe",
     "target": {
       "x": 81542.546875,
       "y": 32677.07421875,
       "z": 1786.5152587890625
     },
-    "twoway": true
+    "twoway": 2
   },
   {
     "name": "PipesystemNew43_4",
@@ -18343,13 +18416,14 @@
     "lat": 32677.07421875,
     "lng": 81542.546875,
     "alt": 1786.5152587890625,
+    "other_pipe": "Map:PipesystemNew42",
+    "twoway": 1,
     "linetype": "pipe",
     "target": {
       "x": 78773.25,
       "y": 32362.10546875,
       "z": 5144.212890625
-    },
-    "twoway": true
+    }
   },
   {
     "name": "PipesystemNew44",
@@ -18358,13 +18432,15 @@
     "lat": -2637.1669921875,
     "lng": 69839.4296875,
     "alt": 5770.134765625,
+    "other_pipe": "Map:PipesystemNew47",
+    "nearest_cap": "Map:PipeCap22",
     "linetype": "pipe",
     "target": {
       "x": 64554.55859375,
       "y": -7998.51953125,
       "z": 5894.67822265625
     },
-    "twoway": true
+    "twoway": 2
   },
   {
     "name": "PipesystemNew45_2",
@@ -18373,13 +18449,15 @@
     "lat": -1527.0,
     "lng": 83212.0,
     "alt": 5054.0,
+    "other_pipe": "Map:PipesystemNew46",
+    "nearest_cap": "Map:PipeCap24_2",
     "linetype": "pipe",
     "target": {
       "x": 82687.203125,
       "y": -4143.443359375,
       "z": 5737.39208984375
     },
-    "twoway": true
+    "twoway": 2
   },
   {
     "name": "PipesystemNew46",
@@ -18388,13 +18466,15 @@
     "lat": -4143.443359375,
     "lng": 82687.203125,
     "alt": 5737.39208984375,
+    "other_pipe": "Map:PipesystemNew45_2",
+    "nearest_cap": "Map:PipeCap25",
+    "twoway": 1,
     "linetype": "pipe",
     "target": {
       "x": 83212.0,
       "y": -1527.0,
       "z": 5054.0
-    },
-    "twoway": true
+    }
   },
   {
     "name": "PipesystemNew47",
@@ -18403,13 +18483,15 @@
     "lat": -7998.51953125,
     "lng": 64554.55859375,
     "alt": 5894.67822265625,
+    "other_pipe": "Map:PipesystemNew44",
+    "nearest_cap": "Map:PipeCap23",
+    "twoway": 1,
     "linetype": "pipe",
     "target": {
       "x": 69839.4296875,
       "y": -2637.1669921875,
       "z": 5770.134765625
-    },
-    "twoway": true
+    }
   },
   {
     "name": "PipesystemNew48",
@@ -18418,13 +18500,15 @@
     "lat": 4864.4716796875,
     "lng": 81016.7421875,
     "alt": 6852.99365234375,
+    "other_pipe": "Map:PipesystemNew49",
+    "nearest_cap": "Map:PipeCap26",
     "linetype": "pipe",
     "target": {
       "x": 43074.0859375,
       "y": 25510.626953125,
       "z": 1720.2435302734375
     },
-    "twoway": true
+    "twoway": 2
   },
   {
     "name": "PipesystemNew49",
@@ -18433,13 +18517,15 @@
     "lat": 25510.626953125,
     "lng": 43074.0859375,
     "alt": 1720.2435302734375,
+    "other_pipe": "Map:PipesystemNew48",
+    "nearest_cap": "Map:PipeCap27",
+    "twoway": 1,
     "linetype": "pipe",
     "target": {
       "x": 81016.7421875,
       "y": 4864.4716796875,
       "z": 6852.99365234375
-    },
-    "twoway": true
+    }
   },
   {
     "name": "PipesystemNew50",
@@ -18448,13 +18534,14 @@
     "lat": 39564.94140625,
     "lng": 20876.578125,
     "alt": 1487.6585693359375,
+    "other_pipe": "Map:PipesystemNew51",
     "linetype": "pipe",
     "target": {
       "x": 16360.7412109375,
       "y": 23793.748046875,
       "z": 3636.9287109375
     },
-    "twoway": true
+    "twoway": 2
   },
   {
     "name": "PipesystemNew51",
@@ -18463,13 +18550,14 @@
     "lat": 23793.748046875,
     "lng": 16360.7412109375,
     "alt": 3636.9287109375,
+    "other_pipe": "Map:PipesystemNew50",
+    "twoway": 1,
     "linetype": "pipe",
     "target": {
       "x": 20876.578125,
       "y": 39564.94140625,
       "z": 1487.6585693359375
-    },
-    "twoway": true
+    }
   },
   {
     "name": "PipesystemNew52",
@@ -18478,13 +18566,15 @@
     "lat": 13392.2333984375,
     "lng": -43471.80078125,
     "alt": 1401.84619140625,
+    "other_pipe": "Map:PipesystemNew53",
+    "nearest_cap": "Map:PipeCap28",
     "linetype": "pipe",
     "target": {
       "x": -14577.3984375,
       "y": 13383.0361328125,
       "z": 1073.6905517578125
     },
-    "twoway": true
+    "twoway": 2
   },
   {
     "name": "PipesystemNew53",
@@ -18493,13 +18583,15 @@
     "lat": 13383.0361328125,
     "lng": -14577.3984375,
     "alt": 1073.6905517578125,
+    "other_pipe": "Map:PipesystemNew52",
+    "nearest_cap": "Map:PipeCap29",
+    "twoway": 1,
     "linetype": "pipe",
     "target": {
       "x": -43471.80078125,
       "y": 13392.2333984375,
       "z": 1401.84619140625
-    },
-    "twoway": true
+    }
   },
   {
     "name": "PipesystemNew54",
@@ -18508,6 +18600,8 @@
     "lat": 32369.4140625,
     "lng": 70454.5,
     "alt": 3420.647216796875,
+    "other_pipe": "Map:PipesystemNew49",
+    "nearest_cap": "Map:PipeCap30",
     "linetype": "pipe",
     "target": {
       "x": 43074.0859375,
@@ -18522,13 +18616,14 @@
     "lat": -12597.36328125,
     "lng": -7623.994140625,
     "alt": 189.6727294921875,
+    "other_pipe": "Map:PipesystemNew6",
     "linetype": "pipe",
     "target": {
       "x": 913.2150268554688,
       "y": -19968.634765625,
       "z": -5918.21044921875
     },
-    "twoway": true
+    "twoway": 2
   },
   {
     "name": "PipesystemNew6",
@@ -18537,13 +18632,14 @@
     "lat": -19968.634765625,
     "lng": 913.2150268554688,
     "alt": -5918.21044921875,
+    "other_pipe": "Map:PipesystemNew5_822",
+    "twoway": 1,
     "linetype": "pipe",
     "target": {
       "x": -7623.994140625,
       "y": -12597.36328125,
       "z": 189.6727294921875
-    },
-    "twoway": true
+    }
   },
   {
     "name": "PipesystemNew7_1302",
@@ -18552,13 +18648,14 @@
     "lat": -46179.28515625,
     "lng": -52597.734375,
     "alt": -808.60595703125,
+    "other_pipe": "Map:PipesystemNew8",
     "linetype": "pipe",
     "target": {
       "x": -52843.72265625,
       "y": -46404.21875,
       "z": -808.61083984375
     },
-    "twoway": true
+    "twoway": 2
   },
   {
     "name": "PipesystemNew8",
@@ -18567,13 +18664,14 @@
     "lat": -46404.21875,
     "lng": -52843.72265625,
     "alt": -808.61083984375,
+    "other_pipe": "Map:PipesystemNew7_1302",
+    "twoway": 1,
     "linetype": "pipe",
     "target": {
       "x": -52597.734375,
       "y": -46179.28515625,
       "z": -808.60595703125
-    },
-    "twoway": true
+    }
   },
   {
     "name": "PipesystemNew9",
@@ -18582,13 +18680,14 @@
     "lat": -46673.7734375,
     "lng": -50061.35546875,
     "alt": -811.47607421875,
+    "other_pipe": "Map:PipesystemNew10",
+    "twoway": 1,
     "linetype": "pipe",
     "target": {
       "x": -49836.4296875,
       "y": -46427.77734375,
       "z": -811.4808349609375
-    },
-    "twoway": true
+    }
   },
   {
     "name": "PipesystemNew_7546",
@@ -18597,13 +18696,14 @@
     "lat": -45546.08984375,
     "lng": -39272.2421875,
     "alt": 681.110107421875,
+    "other_pipe": "Map:PipesystemNew2",
+    "twoway": 1,
     "linetype": "pipe",
     "target": {
       "x": -38759.44140625,
       "y": -46679.64453125,
       "z": -2886.20556640625
-    },
-    "twoway": true
+    }
   },
   {
     "name": "PipesystemNewDLC2",
@@ -18612,13 +18712,14 @@
     "lat": -31372.689453125,
     "lng": -32894.3515625,
     "alt": 716.6857299804688,
+    "other_pipe": "Map:PipesystemNewDLC_2",
     "linetype": "pipe",
     "target": {
       "x": -32344.66796875,
       "y": -32069.55859375,
       "z": -1682.9599609375
     },
-    "twoway": true
+    "twoway": 2
   },
   {
     "name": "PipesystemNewDLC_2",
@@ -18627,13 +18728,14 @@
     "lat": -32069.55859375,
     "lng": -32344.66796875,
     "alt": -1682.9599609375,
+    "other_pipe": "Map:PipesystemNewDLC2",
+    "twoway": 1,
     "linetype": "pipe",
     "target": {
       "x": -32894.3515625,
       "y": -31372.689453125,
       "z": 716.6857299804688
-    },
-    "twoway": true
+    }
   },
   {
     "name": "PlayerStart_2",

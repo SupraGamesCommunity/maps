@@ -15519,13 +15519,7 @@
     "lat": -44912.16796875,
     "lng": 51589.5,
     "alt": 2909.39208984375,
-    "linetype": "pipe",
-    "target": {
-      "x": 51589.5,
-      "y": -44912.16796875,
-      "z": 2909.39208984375
-    },
-    "twoway": true
+    "linetype": "pipe"
   },
   {
     "name": "PipesystemNew11",
@@ -15534,13 +15528,14 @@
     "lat": -46867.0625,
     "lng": 50368.0234375,
     "alt": 2493.39208984375,
+    "other_pipe": "DLC2_Complete:PipesystemNew3",
     "linetype": "pipe",
     "target": {
       "x": 51430.28125,
       "y": -48244.4140625,
       "z": 2113.39208984375
     },
-    "twoway": true
+    "twoway": 2
   },
   {
     "name": "PipesystemNew12_5",
@@ -15549,13 +15544,7 @@
     "lat": -44372.0,
     "lng": 19610.0859375,
     "alt": 27491.0,
-    "linetype": "pipe",
-    "target": {
-      "x": 19610.0859375,
-      "y": -44372.0,
-      "z": 27491.0
-    },
-    "twoway": true
+    "linetype": "pipe"
   },
   {
     "name": "PipesystemNew2",
@@ -15564,13 +15553,7 @@
     "lat": -48137.3203125,
     "lng": 52687.015625,
     "alt": 1995.3919677734375,
-    "linetype": "pipe",
-    "target": {
-      "x": 52687.015625,
-      "y": -48137.3203125,
-      "z": 1995.3919677734375
-    },
-    "twoway": true
+    "linetype": "pipe"
   },
   {
     "name": "PipesystemNew3",
@@ -15579,13 +15562,14 @@
     "lat": -48244.4140625,
     "lng": 51430.28125,
     "alt": 2113.39208984375,
+    "other_pipe": "DLC2_Complete:PipesystemNew11",
+    "twoway": 1,
     "linetype": "pipe",
     "target": {
       "x": 50368.0234375,
       "y": -46867.0625,
       "z": 2493.39208984375
-    },
-    "twoway": true
+    }
   },
   {
     "name": "PipesystemNew4",
@@ -15594,13 +15578,14 @@
     "lat": -13603.6845703125,
     "lng": 61608.2109375,
     "alt": 1640.0,
+    "other_pipe": "DLC2_Complete:PipesystemNew5",
     "linetype": "pipe",
     "target": {
       "x": 62915.63671875,
       "y": -12294.8603515625,
       "z": 1610.0
     },
-    "twoway": true
+    "twoway": 2
   },
   {
     "name": "PipesystemNew5",
@@ -15609,13 +15594,14 @@
     "lat": -12294.8603515625,
     "lng": 62915.63671875,
     "alt": 1610.0,
+    "other_pipe": "DLC2_Complete:PipesystemNew4",
+    "twoway": 1,
     "linetype": "pipe",
     "target": {
       "x": 61608.2109375,
       "y": -13603.6845703125,
       "z": 1640.0
-    },
-    "twoway": true
+    }
   },
   {
     "name": "PipesystemNew6_1",
@@ -15624,6 +15610,7 @@
     "lat": -43757.26171875,
     "lng": 52092.3125,
     "alt": 1271.7386474609375,
+    "other_pipe": "DLC2_Complete:PipesystemNew10",
     "linetype": "pipe",
     "target": {
       "x": 51589.5,
@@ -15638,13 +15625,15 @@
     "lat": -48333.3828125,
     "lng": 42753.484375,
     "alt": 1487.4796142578125,
+    "other_pipe": "DLC2_Complete:PipesystemNew8",
+    "nearest_cap": "DLC2_Complete:A4SmallWallPipeCap_BeachSide",
     "linetype": "pipe",
     "target": {
       "x": 42462.2578125,
       "y": -48088.921875,
       "z": -53.9244384765625
     },
-    "twoway": true
+    "twoway": 2
   },
   {
     "name": "PipesystemNew8",
@@ -15653,13 +15642,15 @@
     "lat": -48088.921875,
     "lng": 42462.2578125,
     "alt": -53.9244384765625,
+    "other_pipe": "DLC2_Complete:PipesystemNew7_2",
+    "nearest_cap": "DLC2_Complete:A4SmallWallPipeCap_CubeSide",
+    "twoway": 1,
     "linetype": "pipe",
     "target": {
       "x": 42753.484375,
       "y": -48333.3828125,
       "z": 1487.4796142578125
-    },
-    "twoway": true
+    }
   },
   {
     "name": "PipesystemNew9_2",
@@ -15668,6 +15659,7 @@
     "lat": -21942.0,
     "lng": -73832.0,
     "alt": -9857.0,
+    "other_pipe": "DLC2_Complete:PipesystemNew12_5",
     "linetype": "pipe",
     "target": {
       "x": 19610.0859375,
@@ -15682,6 +15674,7 @@
     "lat": -48115.3359375,
     "lng": 52665.15625,
     "alt": 1995.3919677734375,
+    "other_pipe": "DLC2_Complete:PipesystemNew2",
     "linetype": "pipe",
     "target": {
       "x": 52687.015625,
@@ -15696,13 +15689,15 @@
     "lat": 15560.884765625,
     "lng": 20652.861328125,
     "alt": 3572.840087890625,
+    "other_pipe": "DLC2_Complete:PipeToArea1",
+    "nearest_cap": "DLC2_Complete:A1FastTravelPipeCap",
     "linetype": "pipe",
     "target": {
       "x": 17408.404296875,
       "y": -32586.25390625,
       "z": 379.67572021484375
     },
-    "twoway": true
+    "twoway": 2
   },
   {
     "name": "Area2ShortcutPipe",
@@ -15711,13 +15706,15 @@
     "lat": -7363.88330078125,
     "lng": 61197.86328125,
     "alt": 4666.0,
+    "other_pipe": "DLC2_Complete:PipeToArea2",
+    "nearest_cap": "DLC2_Complete:A2FastTravelPipeCap",
     "linetype": "pipe",
     "target": {
       "x": 17980.796875,
       "y": -32588.25390625,
       "z": 382.5982666015625
     },
-    "twoway": true
+    "twoway": 2
   },
   {
     "name": "Area5ShortcutPipe",
@@ -15725,7 +15722,8 @@
     "area": "DLC2_Complete",
     "lat": -42553.12890625,
     "lng": 21518.27734375,
-    "alt": 3267.990966796875
+    "alt": 3267.990966796875,
+    "nearest_cap": "DLC2_Complete:A5FastTravelPipeCap1"
   },
   {
     "name": "DLC3_upstairsPipe",
@@ -15734,13 +15732,15 @@
     "lat": -43396.73046875,
     "lng": 8937.830078125,
     "alt": 2463.414306640625,
+    "other_pipe": "DLC2_Complete:PipeToArea3",
+    "nearest_cap": "DLC2_Complete:A3FastTravelPipeCap",
     "linetype": "pipe",
     "target": {
       "x": 18539.6328125,
       "y": -32586.25390625,
       "z": 381.9172668457031
     },
-    "twoway": true
+    "twoway": 2
   },
   {
     "name": "NODE_AddChildActorComponent-1_PipesystemNewDLC_C_CAT_0",
@@ -15845,13 +15845,15 @@
     "lat": -60099.109375,
     "lng": 57716.53125,
     "alt": 1278.751220703125,
+    "other_pipe": "DLC2_Complete:PipeToArea4",
+    "nearest_cap": "DLC2_Complete:A4FastTravelPipeCap",
     "linetype": "pipe",
     "target": {
       "x": 19086.947265625,
       "y": -32586.25390625,
       "z": 380.5115661621094
     },
-    "twoway": true
+    "twoway": 2
   },
   {
     "name": "PipesystemNewDLC10",
@@ -15860,13 +15862,7 @@
     "lat": -49335.3359375,
     "lng": 55097.140625,
     "alt": 2831.169921875,
-    "linetype": "pipe",
-    "target": {
-      "x": 55097.140625,
-      "y": -49335.3359375,
-      "z": 2831.169921875
-    },
-    "twoway": true
+    "linetype": "pipe"
   },
   {
     "name": "PipesystemNewDLC11_405",
@@ -15875,13 +15871,15 @@
     "lat": 13195.0986328125,
     "lng": 22501.416015625,
     "alt": 3545.837890625,
+    "other_pipe": "DLC2_Complete:PipesystemNewDLC12_407",
+    "nearest_cap": "DLC2_Complete:PipeCap9_5",
     "linetype": "pipe",
     "target": {
       "x": 20962.060546875,
       "y": 12369.5380859375,
       "z": 3910.046875
     },
-    "twoway": true
+    "twoway": 2
   },
   {
     "name": "PipesystemNewDLC12_407",
@@ -15890,13 +15888,15 @@
     "lat": 12369.5380859375,
     "lng": 20962.060546875,
     "alt": 3910.046875,
+    "other_pipe": "DLC2_Complete:PipesystemNewDLC11_405",
+    "nearest_cap": "DLC2_Complete:PipeCap14",
+    "twoway": 1,
     "linetype": "pipe",
     "target": {
       "x": 22501.416015625,
       "y": 13195.0986328125,
       "z": 3545.837890625
-    },
-    "twoway": true
+    }
   },
   {
     "name": "PipesystemNewDLC16_2167",
@@ -15905,13 +15905,7 @@
     "lat": -33614.1796875,
     "lng": 22480.037109375,
     "alt": -420.270263671875,
-    "linetype": "pipe",
-    "target": {
-      "x": 22480.037109375,
-      "y": -33614.1796875,
-      "z": -420.270263671875
-    },
-    "twoway": true
+    "linetype": "pipe"
   },
   {
     "name": "PipesystemNewDLC19",
@@ -15920,6 +15914,7 @@
     "lat": -31866.4375,
     "lng": 18459.4375,
     "alt": -2803.29541015625,
+    "other_pipe": "DLC2_Complete:PipesystemNewDLC16_2167",
     "linetype": "pipe",
     "target": {
       "x": 22480.037109375,
@@ -15942,6 +15937,8 @@
     "lat": -13181.89453125,
     "lng": 56968.3984375,
     "alt": 786.9484252929688,
+    "other_pipe": "DLC2_Complete:PipesystemNewDLC_Start",
+    "nearest_cap": "DLC2_Complete:PipeCap2",
     "linetype": "pipe",
     "target": {
       "x": 56968.3984375,
@@ -15956,6 +15953,7 @@
     "lat": -35944.9765625,
     "lng": 2373.036376953125,
     "alt": 1909.189453125,
+    "other_pipe": "DLC2_Complete:PipesystemNewDLC2",
     "linetype": "pipe",
     "target": {
       "x": 1548.9307861328125,
@@ -15969,7 +15967,8 @@
     "area": "DLC2_Complete",
     "lat": -14572.5185546875,
     "lng": 58340.78125,
-    "alt": 672.9789428710938
+    "alt": 672.9789428710938,
+    "nearest_cap": "DLC2_Complete:PipeCap_2"
   },
   {
     "name": "PipesystemNewDLC5_3570",
@@ -15978,6 +15977,8 @@
     "lat": -537.02880859375,
     "lng": 37337.58203125,
     "alt": 2679.68896484375,
+    "other_pipe": "DLC2_Complete:PipesystemNewDLC6",
+    "nearest_cap": "DLC2_Complete:PipeCap4_2",
     "linetype": "pipe",
     "target": {
       "x": 30174.87890625,
@@ -16000,13 +16001,14 @@
     "lat": -11389.6220703125,
     "lng": 57514.05859375,
     "alt": 4687.990234375,
+    "other_pipe": "DLC2_Complete:PipesystemNewDLC8",
     "linetype": "pipe",
     "target": {
       "x": 57091.01953125,
       "y": -10963.87890625,
       "z": 4687.990234375
     },
-    "twoway": true
+    "twoway": 2
   },
   {
     "name": "PipesystemNewDLC8",
@@ -16015,13 +16017,14 @@
     "lat": -10963.87890625,
     "lng": 57091.01953125,
     "alt": 4687.990234375,
+    "other_pipe": "DLC2_Complete:PipesystemNewDLC7_3581",
+    "twoway": 1,
     "linetype": "pipe",
     "target": {
       "x": 57514.05859375,
       "y": -11389.6220703125,
       "z": 4687.990234375
-    },
-    "twoway": true
+    }
   },
   {
     "name": "PipesystemNewDLC9_2017",
@@ -16030,6 +16033,7 @@
     "lat": -2155.849365234375,
     "lng": -59503.16796875,
     "alt": 2302.79638671875,
+    "other_pipe": "DLC2_Complete:RainbowTownShortcutPipe",
     "linetype": "pipe",
     "target": {
       "x": -67755.71875,
@@ -16044,6 +16048,7 @@
     "lat": -49338.26171875,
     "lng": 55098.828125,
     "alt": 1986.86865234375,
+    "other_pipe": "DLC2_Complete:PipesystemNewDLC10",
     "linetype": "pipe",
     "target": {
       "x": 55097.140625,
@@ -16058,13 +16063,14 @@
     "lat": 1614.123046875,
     "lng": 10273.6982421875,
     "alt": 3074.8310546875,
+    "other_pipe": "DLC2_SecretLavaArea:PipesystemNewDLC_BathToSecretLavaAreaToBath2",
     "linetype": "pipe",
     "target": {
       "x": 7443.4892578125,
       "y": 585.74365234375,
       "z": 180.625732421875
     },
-    "twoway": true
+    "twoway": 2
   },
   {
     "name": "PipesystemNewDLC_CombatExitPipe",
@@ -16073,13 +16079,14 @@
     "lat": -20788.62890625,
     "lng": -32291.802734375,
     "alt": 5625.8564453125,
+    "other_pipe": "DLC2_Complete:PipeToAreaBoss2",
     "linetype": "pipe",
     "target": {
       "x": 20148.083984375,
       "y": -31964.537109375,
       "z": 287.7752990722656
     },
-    "twoway": true
+    "twoway": 2
   },
   {
     "name": "PipesystemNewDLC_Start",
@@ -16088,13 +16095,8 @@
     "lat": -13181.89453125,
     "lng": 56968.3984375,
     "alt": 786.9484252929688,
-    "linetype": "pipe",
-    "target": {
-      "x": 56968.3984375,
-      "y": -13181.89453125,
-      "z": 786.9484252929688
-    },
-    "twoway": true
+    "nearest_cap": "DLC2_Complete:PipeCap2",
+    "linetype": "pipe"
   },
   {
     "name": "PipeToArea1",
@@ -16103,13 +16105,15 @@
     "lat": -32586.25390625,
     "lng": 17408.404296875,
     "alt": 379.67572021484375,
+    "other_pipe": "DLC2_Complete:Area1_FastTravelPipe",
+    "nearest_cap": "DLC2_Complete:A1FastTravelPipeCap2",
+    "twoway": 1,
     "linetype": "pipe",
     "target": {
       "x": 20652.861328125,
       "y": 15560.884765625,
       "z": 3572.840087890625
-    },
-    "twoway": true
+    }
   },
   {
     "name": "PipeToArea2",
@@ -16118,13 +16122,15 @@
     "lat": -32588.25390625,
     "lng": 17980.796875,
     "alt": 382.5982666015625,
+    "other_pipe": "DLC2_Complete:Area2ShortcutPipe",
+    "nearest_cap": "DLC2_Complete:A2FastTravelPipeCap2",
+    "twoway": 1,
     "linetype": "pipe",
     "target": {
       "x": 61197.86328125,
       "y": -7363.88330078125,
       "z": 4666.0
-    },
-    "twoway": true
+    }
   },
   {
     "name": "PipeToArea3",
@@ -16133,13 +16139,15 @@
     "lat": -32586.25390625,
     "lng": 18539.6328125,
     "alt": 381.9172668457031,
+    "other_pipe": "DLC2_Complete:DLC3_upstairsPipe",
+    "nearest_cap": "DLC2_Complete:A3FastTravelPipeCap3",
+    "twoway": 1,
     "linetype": "pipe",
     "target": {
       "x": 8937.830078125,
       "y": -43396.73046875,
       "z": 2463.414306640625
-    },
-    "twoway": true
+    }
   },
   {
     "name": "PipeToArea4",
@@ -16148,13 +16156,15 @@
     "lat": -32586.25390625,
     "lng": 19086.947265625,
     "alt": 380.5115661621094,
+    "other_pipe": "DLC2_Complete:Pipesystem_Area4",
+    "nearest_cap": "DLC2_Complete:A4FastTravelPipeCap4",
+    "twoway": 1,
     "linetype": "pipe",
     "target": {
       "x": 57716.53125,
       "y": -60099.109375,
       "z": 1278.751220703125
-    },
-    "twoway": true
+    }
   },
   {
     "name": "PipeToAreaBoss2",
@@ -16163,13 +16173,15 @@
     "lat": -31964.537109375,
     "lng": 20148.083984375,
     "alt": 287.7752990722656,
+    "other_pipe": "DLC2_Complete:PipesystemNewDLC_CombatExitPipe",
+    "nearest_cap": "DLC2_Complete:A5FastTravelPipe_ExitCombatFinale",
+    "twoway": 1,
     "linetype": "pipe",
     "target": {
       "x": -32291.802734375,
       "y": -20788.62890625,
       "z": 5625.8564453125
-    },
-    "twoway": true
+    }
   },
   {
     "name": "PipeToAreaSpecial",
@@ -16178,13 +16190,15 @@
     "lat": -32586.25390625,
     "lng": 19641.314453125,
     "alt": 380.9241027832031,
+    "other_pipe": "DLC2_Complete:RainbowTownShortcutPipe",
+    "nearest_cap": "DLC2_Complete:A5FastTravelPipeCap5",
     "linetype": "pipe",
     "target": {
       "x": -67755.71875,
       "y": -20467.703125,
       "z": 9166.0439453125
     },
-    "twoway": true
+    "twoway": 2
   },
   {
     "name": "RainbowTownShortcutPipe",
@@ -16193,13 +16207,14 @@
     "lat": -20467.703125,
     "lng": -67755.71875,
     "alt": 9166.0439453125,
+    "other_pipe": "DLC2_Complete:PipeToAreaSpecial",
+    "twoway": 1,
     "linetype": "pipe",
     "target": {
       "x": 19641.314453125,
       "y": -32586.25390625,
       "z": 380.9241027832031
-    },
-    "twoway": true
+    }
   },
   {
     "name": "PlayerStart_1",
@@ -20746,13 +20761,14 @@
     "lat": -9792.423828125,
     "lng": -5053.1416015625,
     "alt": 3239.46875,
+    "other_pipe": "DLC2_FinalBoss:BossArea_BaronPipe2",
     "linetype": "pipe",
     "target": {
       "x": -30054.828125,
       "y": -20071.126953125,
       "z": 7161.45068359375
     },
-    "twoway": true
+    "twoway": 2
   },
   {
     "name": "BossArea_BaronPipe2",
@@ -20761,13 +20777,15 @@
     "lat": -20071.126953125,
     "lng": -30054.828125,
     "alt": 7161.45068359375,
+    "other_pipe": "DLC2_FinalBoss:BossArea_BaronPipe1",
+    "nearest_cap": "DLC2_FinalBoss:PipeCap12_2",
+    "twoway": 1,
     "linetype": "pipe",
     "target": {
       "x": -5053.1416015625,
       "y": -9792.423828125,
       "z": 3239.46875
-    },
-    "twoway": true
+    }
   },
   {
     "name": "NPC_InStocks",
@@ -21166,6 +21184,8 @@
     "lat": -284028.03125,
     "lng": -2240.900146484375,
     "alt": 9974.640625,
+    "other_pipe": "DLC2_Area0_Below:PipesystemNew_IntoSewer",
+    "nearest_cap": "DLC2_Area0:PipeCap10_2",
     "linetype": "pipe",
     "target": {
       "x": 9276.5419921875,
@@ -24638,13 +24658,15 @@
     "lat": 2748.60791015625,
     "lng": -964.6672973632812,
     "alt": 2625.2578125,
+    "other_pipe": "DLC2_SecretLavaArea:Secret_TeleportPipe1",
+    "nearest_cap": "DLC2_SecretLavaArea:PipeCap11",
     "linetype": "pipe",
     "target": {
       "x": -280.1111755371094,
       "y": 3305.47607421875,
       "z": 797.051025390625
     },
-    "twoway": true
+    "twoway": 2
   },
   {
     "name": "PipesystemNew_4",
@@ -24653,6 +24675,7 @@
     "lat": 10191.171875,
     "lng": -3894.28955078125,
     "alt": 2904.20458984375,
+    "other_pipe": "DLC2_SecretLavaArea:Secret_GetCarryPipe_TeleportPipe",
     "linetype": "pipe",
     "target": {
       "x": -1678.115966796875,
@@ -24667,13 +24690,14 @@
     "lat": 10816.677734375,
     "lng": 5672.96826171875,
     "alt": -945.0032958984375,
+    "other_pipe": "DLC2_SecretLavaArea:Secret_TeleportPipe6",
     "linetype": "pipe",
     "target": {
       "x": 5673.66845703125,
       "y": 10821.8154296875,
       "z": -2012.6494140625
     },
-    "twoway": true
+    "twoway": 2
   },
   {
     "name": "Secret_GetCarryPipe_TeleportPipe",
@@ -24690,13 +24714,15 @@
     "lat": 3305.47607421875,
     "lng": -280.1111755371094,
     "alt": 797.051025390625,
+    "other_pipe": "DLC2_SecretLavaArea:PipesystemNew39",
+    "nearest_cap": "DLC2_SecretLavaArea:Area1_SecretArea_TeleportPipeCap1",
+    "twoway": 1,
     "linetype": "pipe",
     "target": {
       "x": -964.6672973632812,
       "y": 2748.60791015625,
       "z": 2625.2578125
-    },
-    "twoway": true
+    }
   },
   {
     "name": "Secret_TeleportPipe2",
@@ -24705,13 +24731,14 @@
     "lat": 2874.1748046875,
     "lng": 5304.390625,
     "alt": 179.0185546875,
+    "other_pipe": "DLC2_SecretLavaArea:Secret_TeleportPipe3",
     "linetype": "pipe",
     "target": {
       "x": 4935.88037109375,
       "y": 3133.619140625,
       "z": -2491.081298828125
     },
-    "twoway": true
+    "twoway": 2
   },
   {
     "name": "Secret_TeleportPipe3",
@@ -24720,13 +24747,14 @@
     "lat": 3133.619140625,
     "lng": 4935.88037109375,
     "alt": -2491.081298828125,
+    "other_pipe": "DLC2_SecretLavaArea:Secret_TeleportPipe2",
+    "twoway": 1,
     "linetype": "pipe",
     "target": {
       "x": 5304.390625,
       "y": 2874.1748046875,
       "z": 179.0185546875
-    },
-    "twoway": true
+    }
   },
   {
     "name": "Secret_TeleportPipe6",
@@ -24735,13 +24763,14 @@
     "lat": 10821.8154296875,
     "lng": 5673.66845703125,
     "alt": -2012.6494140625,
+    "other_pipe": "DLC2_SecretLavaArea:Secret_DrainWater_TeleportPipe1",
+    "twoway": 1,
     "linetype": "pipe",
     "target": {
       "x": 5672.96826171875,
       "y": 10816.677734375,
       "z": -945.0032958984375
-    },
-    "twoway": true
+    }
   },
   {
     "name": "PipesystemNewDLC_BathToSecretLavaAreaToBath2",
@@ -24750,13 +24779,14 @@
     "lat": 585.74365234375,
     "lng": 7443.4892578125,
     "alt": 180.625732421875,
+    "other_pipe": "DLC2_Complete:PipesystemNewDLC_BathToSecretLavaAreaToBath1",
+    "twoway": 1,
     "linetype": "pipe",
     "target": {
       "x": 10273.6982421875,
       "y": 1614.123046875,
       "z": 3074.8310546875
-    },
-    "twoway": true
+    }
   },
   {
     "name": "PipesystemNewDLC_FastTravelLavaToBeam1",
@@ -24765,13 +24795,15 @@
     "lat": 2676.927734375,
     "lng": 9448.2138671875,
     "alt": -7585.2919921875,
+    "other_pipe": "DLC2_SecretLavaArea:PipesystemNewDLC_FastTravelLavaToBeam2",
+    "nearest_cap": "DLC2_SecretLavaArea:PipeCap_FastTravelLavaToBeam1",
     "linetype": "pipe",
     "target": {
       "x": 16856.8203125,
       "y": -22388.76171875,
       "z": -2829.70068359375
     },
-    "twoway": true
+    "twoway": 2
   },
   {
     "name": "PipesystemNewDLC_FastTravelLavaToBeam2",
@@ -24780,13 +24812,15 @@
     "lat": -22388.76171875,
     "lng": 16856.8203125,
     "alt": -2829.70068359375,
+    "other_pipe": "DLC2_SecretLavaArea:PipesystemNewDLC_FastTravelLavaToBeam1",
+    "nearest_cap": "DLC2_SecretLavaArea:PipeCap_FastTravelLavaToBeam2",
+    "twoway": 1,
     "linetype": "pipe",
     "target": {
       "x": 9448.2138671875,
       "y": 2676.927734375,
       "z": -7585.2919921875
-    },
-    "twoway": true
+    }
   },
   {
     "name": "RedGuy2_2",
@@ -26554,13 +26588,14 @@
     "lat": -39467.86328125,
     "lng": -53929.92578125,
     "alt": 5190.4228515625,
+    "other_pipe": "DLC2_PostRainbow:PipesystemNew_2",
     "linetype": "pipe",
     "target": {
       "x": -53630.5078125,
       "y": -39725.625,
       "z": 5169.57275390625
     },
-    "twoway": true
+    "twoway": 2
   },
   {
     "name": "PipesystemNew3_5",
@@ -26577,6 +26612,8 @@
     "lat": -43132.2578125,
     "lng": -70574.84375,
     "alt": 5762.4091796875,
+    "other_pipe": "DLC2_PostRainbow:PipesystemNew3_5",
+    "nearest_cap": "DLC2_PostRainbow:PipeCap2_2",
     "linetype": "pipe",
     "target": {
       "x": -71331.84375,
@@ -26591,6 +26628,7 @@
     "lat": -37744.7890625,
     "lng": -57149.6328125,
     "alt": 4853.21533203125,
+    "other_pipe": "DLC2_PostRainbow:PipesystemNew3_5",
     "linetype": "pipe",
     "target": {
       "x": -71331.84375,
@@ -26605,6 +26643,7 @@
     "lat": -44440.8984375,
     "lng": -55234.1953125,
     "alt": 3695.21044921875,
+    "other_pipe": "DLC2_PostRainbow:PipesystemNew3_5",
     "linetype": "pipe",
     "target": {
       "x": -71331.84375,
@@ -26619,13 +26658,14 @@
     "lat": -39725.625,
     "lng": -53630.5078125,
     "alt": 5169.57275390625,
+    "other_pipe": "DLC2_PostRainbow:PipesystemNew2",
+    "twoway": 1,
     "linetype": "pipe",
     "target": {
       "x": -53929.92578125,
       "y": -39467.86328125,
       "z": 5190.4228515625
-    },
-    "twoway": true
+    }
   },
   {
     "name": "RedGuy10",
@@ -27027,6 +27067,7 @@
     "lat": 19590.291015625,
     "lng": 9693.0283203125,
     "alt": 20986.0,
+    "other_pipe": "DLC2_Area0_Below:PipesystemNew_IntoSewer",
     "linetype": "pipe",
     "target": {
       "x": 9276.5419921875,

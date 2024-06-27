@@ -5378,7 +5378,8 @@
       "y": 14826.3271484375,
       "z": 2443.18408203125
     },
-    "twoway": true,
+    "other_pad": "Crash:Jumppad25",
+    "twoway": 1,
     "linetype": "jumppad",
     "variant": "red"
   },
@@ -5394,7 +5395,8 @@
       "y": 12107.671875,
       "z": 2231.88525390625
     },
-    "twoway": true,
+    "other_pad": "Crash:Jumppad26",
+    "twoway": 1,
     "linetype": "jumppad",
     "variant": "red"
   },
@@ -5410,7 +5412,8 @@
       "y": -4425.12158203125,
       "z": 121.77313232421875
     },
-    "twoway": true,
+    "twoway": 2,
+    "other_pad": "Crash:Jumppad23_2",
     "linetype": "jumppad",
     "variant": "red"
   },
@@ -5426,7 +5429,8 @@
       "y": -4052.68701171875,
       "z": 121.77325439453125
     },
-    "twoway": true,
+    "twoway": 2,
+    "other_pad": "Crash:Jumppad24",
     "linetype": "jumppad",
     "variant": "red"
   },
@@ -5562,7 +5566,8 @@
       "y": -3077.98388671875,
       "z": 235.77540588378906
     },
-    "twoway": true,
+    "other_pad": "Crash:Jumppad35",
+    "twoway": 1,
     "linetype": "jumppad",
     "variant": "red"
   },
@@ -5578,7 +5583,8 @@
       "y": -3081.643798828125,
       "z": 838.6304321289062
     },
-    "twoway": true,
+    "twoway": 2,
+    "other_pad": "Crash:Jumppad34_2",
     "linetype": "jumppad",
     "variant": "red"
   },
@@ -7120,6 +7126,7 @@
     "lat": -4020.472412109375,
     "lng": 6788.603515625,
     "alt": -1699.3790283203125,
+    "other_pipe": "Crash:PipesystemNew11",
     "linetype": "pipe",
     "target": {
       "x": 7747.9345703125,
@@ -7134,13 +7141,7 @@
     "lat": -2886.613525390625,
     "lng": 7747.9345703125,
     "alt": 166.4151153564453,
-    "linetype": "pipe",
-    "target": {
-      "x": 7747.9345703125,
-      "y": -2886.613525390625,
-      "z": 166.4151153564453
-    },
-    "twoway": true
+    "linetype": "pipe"
   },
   {
     "name": "PipesystemNew12_2",
@@ -7149,6 +7150,7 @@
     "lat": 9357.791015625,
     "lng": 40524.953125,
     "alt": -1987.2265625,
+    "other_pipe": "Crash:PipesystemNew19",
     "linetype": "pipe",
     "target": {
       "x": 41108.609375,
@@ -7163,6 +7165,7 @@
     "lat": -4179.44677734375,
     "lng": 45594.05859375,
     "alt": -1147.593017578125,
+    "other_pipe": "Crash:PipesystemNew20",
     "linetype": "pipe",
     "target": {
       "x": 45594.05859375,
@@ -7177,6 +7180,7 @@
     "lat": -1349.330322265625,
     "lng": 11031.1787109375,
     "alt": 643.8033447265625,
+    "other_pipe": "Crash:PipesystemNew11",
     "linetype": "pipe",
     "target": {
       "x": 7747.9345703125,
@@ -7191,6 +7195,7 @@
     "lat": -5756.5283203125,
     "lng": -6391.9970703125,
     "alt": -3310.516845703125,
+    "other_pipe": "Crash:PipesystemNew18",
     "linetype": "pipe",
     "target": {
       "x": -7543.84326171875,
@@ -7205,6 +7210,7 @@
     "lat": -5171.66259765625,
     "lng": -6391.9970703125,
     "alt": -3328.49658203125,
+    "other_pipe": "Crash:PipesystemNew18",
     "linetype": "pipe",
     "target": {
       "x": -7543.84326171875,
@@ -7219,6 +7225,7 @@
     "lat": -4524.11767578125,
     "lng": -6391.9970703125,
     "alt": -3350.7080078125,
+    "other_pipe": "Crash:PipesystemNew18",
     "linetype": "pipe",
     "target": {
       "x": -7543.84326171875,
@@ -7233,13 +7240,7 @@
     "lat": -7871.3740234375,
     "lng": -7543.84326171875,
     "alt": -1323.410888671875,
-    "linetype": "pipe",
-    "target": {
-      "x": -7543.84326171875,
-      "y": -7871.3740234375,
-      "z": -1323.410888671875
-    },
-    "twoway": true
+    "linetype": "pipe"
   },
   {
     "name": "PipesystemNew19",
@@ -7256,13 +7257,14 @@
     "lat": -12879.640625,
     "lng": 45776.578125,
     "alt": -82.48126220703125,
+    "other_pipe": "Crash:PipesystemNew_2",
     "linetype": "pipe",
     "target": {
       "x": 43278.01171875,
       "y": -12127.0205078125,
       "z": -351.6873779296875
     },
-    "twoway": true
+    "twoway": 2
   },
   {
     "name": "PipesystemNew20",
@@ -7279,13 +7281,15 @@
     "lat": -7830.03955078125,
     "lng": 54757.1875,
     "alt": 332.52435302734375,
+    "other_pipe": "Crash:PipesystemNew22_5",
+    "nearest_cap": "Crash:PipeCap5_5",
     "linetype": "pipe",
     "target": {
       "x": 55715.75390625,
       "y": -6284.51953125,
       "z": 704.7681884765625
     },
-    "twoway": true
+    "twoway": 2
   },
   {
     "name": "PipesystemNew22_5",
@@ -7294,13 +7298,14 @@
     "lat": -6284.51953125,
     "lng": 55715.75390625,
     "alt": 704.7681884765625,
+    "other_pipe": "Crash:PipesystemNew21_2",
+    "twoway": 1,
     "linetype": "pipe",
     "target": {
       "x": 54757.1875,
       "y": -7830.03955078125,
       "z": 332.52435302734375
-    },
-    "twoway": true
+    }
   },
   {
     "name": "PipesystemNew23_2",
@@ -7309,13 +7314,14 @@
     "lat": -17585.740234375,
     "lng": 43423.76171875,
     "alt": 124.17230224609375,
+    "other_pipe": "Crash:PipesystemNew24",
     "linetype": "pipe",
     "target": {
       "x": 43768.76171875,
       "y": -17585.740234375,
       "z": 70.72064208984375
     },
-    "twoway": true
+    "twoway": 2
   },
   {
     "name": "PipesystemNew24",
@@ -7324,13 +7330,14 @@
     "lat": -17585.740234375,
     "lng": 43768.76171875,
     "alt": 70.72064208984375,
+    "other_pipe": "Crash:PipesystemNew23_2",
+    "twoway": 1,
     "linetype": "pipe",
     "target": {
       "x": 43423.76171875,
       "y": -17585.740234375,
       "z": 124.17230224609375
-    },
-    "twoway": true
+    }
   },
   {
     "name": "PipesystemNew25",
@@ -7339,13 +7346,14 @@
     "lat": 9987.1748046875,
     "lng": 46627.05078125,
     "alt": -2268.685302734375,
+    "other_pipe": "Crash:PipesystemNew26",
     "linetype": "pipe",
     "target": {
       "x": 47438.171875,
       "y": 14910.1953125,
       "z": -1465.6490478515625
     },
-    "twoway": true
+    "twoway": 2
   },
   {
     "name": "PipesystemNew26",
@@ -7354,13 +7362,14 @@
     "lat": 14910.1953125,
     "lng": 47438.171875,
     "alt": -1465.6490478515625,
+    "other_pipe": "Crash:PipesystemNew25",
+    "twoway": 1,
     "linetype": "pipe",
     "target": {
       "x": 46627.05078125,
       "y": 9987.1748046875,
       "z": -2268.685302734375
-    },
-    "twoway": true
+    }
   },
   {
     "name": "PipesystemNew3_2",
@@ -7369,6 +7378,7 @@
     "lat": -6319.666015625,
     "lng": 1761.0826416015625,
     "alt": -151.43313598632812,
+    "other_pipe": "Crash:PipesystemNew4",
     "linetype": "pipe",
     "target": {
       "x": 1837.845703125,
@@ -7383,13 +7393,7 @@
     "lat": -6141.619140625,
     "lng": 1837.845703125,
     "alt": 577.0473022460938,
-    "linetype": "pipe",
-    "target": {
-      "x": 1837.845703125,
-      "y": -6141.619140625,
-      "z": 577.0473022460938
-    },
-    "twoway": true
+    "linetype": "pipe"
   },
   {
     "name": "PipesystemNew5",
@@ -7398,6 +7402,7 @@
     "lat": -6319.666015625,
     "lng": 2746.856201171875,
     "alt": -151.43313598632812,
+    "other_pipe": "Crash:PipesystemNew4",
     "linetype": "pipe",
     "target": {
       "x": 1837.845703125,
@@ -7412,13 +7417,14 @@
     "lat": -6514.7568359375,
     "lng": -2028.81298828125,
     "alt": -113.03692626953125,
+    "other_pipe": "Crash:PipesystemNew8",
     "linetype": "pipe",
     "target": {
       "x": -2085.76904296875,
       "y": -6502.84765625,
       "z": -111.75312042236328
     },
-    "twoway": true
+    "twoway": 2
   },
   {
     "name": "PipesystemNew7",
@@ -7427,6 +7433,7 @@
     "lat": -6504.17236328125,
     "lng": -2912.019287109375,
     "alt": 714.8199462890625,
+    "other_pipe": "Crash:PipesystemNew9",
     "linetype": "pipe",
     "target": {
       "x": -2454.94921875,
@@ -7441,13 +7448,14 @@
     "lat": -6502.84765625,
     "lng": -2085.76904296875,
     "alt": -111.75312042236328,
+    "other_pipe": "Crash:PipesystemNew6",
+    "twoway": 1,
     "linetype": "pipe",
     "target": {
       "x": -2028.81298828125,
       "y": -6514.7568359375,
       "z": -113.03692626953125
-    },
-    "twoway": true
+    }
   },
   {
     "name": "PipesystemNew9",
@@ -7464,13 +7472,14 @@
     "lat": -12127.0205078125,
     "lng": 43278.01171875,
     "alt": -351.6873779296875,
+    "other_pipe": "Crash:PipesystemNew2",
+    "twoway": 1,
     "linetype": "pipe",
     "target": {
       "x": 45776.578125,
       "y": -12879.640625,
       "z": -82.48126220703125
-    },
-    "twoway": true
+    }
   },
   {
     "name": "PipesystemNewDLC2",
@@ -7487,6 +7496,7 @@
     "lat": 16668.33984375,
     "lng": 21291.962890625,
     "alt": 2474.070068359375,
+    "other_pipe": "Crash:PipesystemNewDLC2",
     "linetype": "pipe",
     "target": {
       "x": 22102.123046875,
@@ -7501,6 +7511,7 @@
     "lat": 16668.33984375,
     "lng": 21663.66015625,
     "alt": 2474.070068359375,
+    "other_pipe": "Crash:PipesystemNewDLC2",
     "linetype": "pipe",
     "target": {
       "x": 22102.123046875,
@@ -7515,6 +7526,7 @@
     "lat": 16668.33984375,
     "lng": 22034.736328125,
     "alt": 2474.070068359375,
+    "other_pipe": "Crash:PipesystemNewDLC2",
     "linetype": "pipe",
     "target": {
       "x": 22102.123046875,
@@ -7529,13 +7541,7 @@
     "lat": -5072.5244140625,
     "lng": -992.0934448242188,
     "alt": 110.49958801269531,
-    "linetype": "pipe",
-    "target": {
-      "x": -992.0934448242188,
-      "y": -5072.5244140625,
-      "z": 110.49958801269531
-    },
-    "twoway": true
+    "linetype": "pipe"
   },
   {
     "name": "PipesystemNewDLC7",
@@ -7544,13 +7550,7 @@
     "lat": -5217.47998046875,
     "lng": -990.3453979492188,
     "alt": 502.5618896484375,
-    "linetype": "pipe",
-    "target": {
-      "x": -990.3453979492188,
-      "y": -5217.47998046875,
-      "z": 502.5618896484375
-    },
-    "twoway": true
+    "linetype": "pipe"
   },
   {
     "name": "PipesystemNewDLC8",
@@ -7559,6 +7559,7 @@
     "lat": -5549.33935546875,
     "lng": -1985.43017578125,
     "alt": 3029.458740234375,
+    "other_pipe": "Crash:PipesystemNewDLC7",
     "linetype": "pipe",
     "target": {
       "x": -990.3453979492188,
@@ -7573,6 +7574,7 @@
     "lat": 16730.67578125,
     "lng": 20609.82421875,
     "alt": 2474.070068359375,
+    "other_pipe": "Crash:PipesystemNewDLC2",
     "linetype": "pipe",
     "target": {
       "x": 22102.123046875,
