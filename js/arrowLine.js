@@ -1,11 +1,9 @@
 //import L from 'leaflet';
 
+// Generate a point on the line, as if line is running left to right. Hence x is the offset from the start
+// y is the distance from the line (positive up (thus left))
 function _linePoint(start, fwd, x, y) {
     return new L.Point(start.x + fwd.x * x - fwd.y * y, start.y + fwd.y * x + fwd.x * y);
-}
-
-function _vecLength(pt) {
-    return Math.sqrt(pt.x * pt.x + pt.y * pt.y);
 }
 
 L.ArrowLine = L.Polygon.extend({
@@ -57,14 +55,13 @@ L.ArrowLine = L.Polygon.extend({
     },
 
     onAdd: function(map) {
-        this._map = map;
         L.Polygon.prototype.onAdd.call(this, map);
         this._map.on('zoomend', this._rebuildPolygon, this);
         this._rebuildPolygon();
     },
 
     onRemove: function(map) {
-        this._map.off('zoomend', this._rebuildPolygon);
+        map.off('zoomend', this._rebuildPolygon);
         L.Polygon.prototype.onRemove.call(this, map);
     },
 
@@ -114,6 +111,20 @@ L.ArrowLine = L.Polygon.extend({
             S - stroke line
             C - Arrow corner point
     */
+    // Arrow line key x distances:
+    //   start, end      The actual position of start and end of the line without offsets
+    //   tip             Arrows at either end have a tip offset from start or end
+    //   base            Blunt ends have a base X, close to but slightly different to tip
+    //   mid             The point where the line from tip to corner meets the straight line
+    //   corner          The point where the arrow turns
+    //
+    // Arrow line key y distances:
+    //   center          0
+    //   line            distance from center to line (shadowWidth + lineWidth) / 2
+    //   arrow           distance from line to corner
+    //
+    // Note: all of these are for the stroke line which is at the center of the shadow line
+
     _buildArrowLine: function(start, end) {
         const opts = this.options;
 
@@ -121,8 +132,8 @@ L.ArrowLine = L.Polygon.extend({
         const endPt = this._map.latLngToContainerPoint(end, this._map.getZoom());
 
         // Get length of arrow/line and the vector pointing forward along it
+        const lineLen = startPt.distanceTo(endPt);
         const lineVec = endPt.subtract(startPt);
-        const lineLen = _vecLength(lineVec);
 
         if(lineLen < 0.0001){
             return [[start], [end]];
@@ -150,7 +161,15 @@ L.ArrowLine = L.Polygon.extend({
 
         // If arrow is bigger than half the length of the line, don't draw it
 
-        let points;
+        let points = [];
+        let downPoints = [];
+
+        function addPoint(x, y){
+            points.push(_linePoint(startPt, fwd, x, y));
+            if(y > 0){
+                downPoints.push(_linePoint(startPt, fwd, x, -y));
+            }
+        }
 
         if((opts.arrow == 'tip' || opts.arrow == 'mid')
                 && (ad + opts.lineWidth + 2 * d) < (tx - bx)) {
@@ -167,15 +186,10 @@ L.ArrowLine = L.Polygon.extend({
                 // How far back and up are the arrow corner points
                 const cx = tx - h * scale;
 
-                points = [
-                    _linePoint(startPt, fwd, bx,  sy),     // base up
-                    _linePoint(startPt, fwd, cx,  sy),     // lower corner up
-                    _linePoint(startPt, fwd, cx,  cy),     // upper corner up
-                    _linePoint(startPt, fwd, tx,   0),     // tip
-                    _linePoint(startPt, fwd, cx, -cy),     // upper corner down
-                    _linePoint(startPt, fwd, cx, -sy),     // lower corner down
-                    _linePoint(startPt, fwd, bx, -sy),     // base down
-                ]        
+                addPoint(bx,  sy);     // base up
+                addPoint(cx,  sy);     // lower corner up
+                addPoint(cx,  cy);     // upper corner up
+                addPoint(tx,   0);     // tip
             }
             else {
                 const cd = (a - opts.lineWidth / 2) / tanArrowAngle;
@@ -183,28 +197,21 @@ L.ArrowLine = L.Polygon.extend({
                 const cx = mx - cd / 2 * scale;
                 const dx = mx + cd / 2 * scale;
     
-                points = [
-                    _linePoint(startPt, fwd, bx,  sy),     // base up
-                    _linePoint(startPt, fwd, cx,  sy),     // lower corner up
-                    _linePoint(startPt, fwd, cx,  cy),     // upper corner up
-                    _linePoint(startPt, fwd, dx,  sy),     // front up
-                    _linePoint(startPt, fwd, tx,  sy),     // tip up
-                    _linePoint(startPt, fwd, tx, -sy),     // tip down
-                    _linePoint(startPt, fwd, dx, -sy),     // front down
-                    _linePoint(startPt, fwd, cx, -cy),     // upper corner down
-                    _linePoint(startPt, fwd, cx, -sy),     // lower corner down
-                    _linePoint(startPt, fwd, bx, -sy),     // base down
-                ];        
+                addPoint(fwd, bx,  sy);     // base up
+                addPoint(fwd, cx,  sy);     // lower corner up
+                addPoint(fwd, cx,  cy);     // upper corner up
+                addPoint(fwd, dx,  sy);     // front up
+                addPoint(fwd, tx,  sy);     // tip up
             }
         }
         else {
-            points = [
-                _linePoint(startPt, fwd, bx,  sy),         // base up
-                _linePoint(startPt, fwd, tx,  sy),         // tip up
-                _linePoint(startPt, fwd, tx, -sy),         // base down
-                _linePoint(startPt, fwd, bx, -sy),         // tip down
-            ];    
+            addPoint(bx,  sy);         // base up
+            addPoint(tx,  sy);         // tip up
+            addPoint(tx, -sy);         // base down
+            addPoint(bx, -sy);         // tip down
         }
+
+        points = points.concat(downPoints.reverse());
 
         return points.map(pt => this._map.containerPointToLatLng(pt, this._map.getZoom()));
     },
