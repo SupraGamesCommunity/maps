@@ -48,7 +48,7 @@ Fork of Joric's map to SupraMaps project and tweaks to finish in preparation for
 - [Jules](https://github.com/jules43)
 - [KoenigsKind](https://github.com/KoenigsKind)
 - [LewisPattJr](https://github.com/LewisPattJr)
-- [TJ999M](https://github.com/TJ999M)
+- [TJ](https://github.com/TJ999M)
 
 ### Additional support from: 
 - [Anna](https://github.com/PrismAnna) @SupraGames
