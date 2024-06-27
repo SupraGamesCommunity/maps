@@ -367,6 +367,15 @@
     "twoway": true
   },
   {
+    "name": "Jumppad54_1487",
+    "area": "Map",
+    "target": {
+      "x": -16159,
+      "y": 41388,
+      "z": -2024.3995039421034
+    }
+  },
+  {
     "name": "Jumppad89",
     "type": "FT:Jumppad_C",
     "area": "Map"

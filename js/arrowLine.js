@@ -1,10 +1,5 @@
 //import L from 'leaflet';
 
-// Generate a point on the line, as if line is running left to right. Hence x is the offset from the start
-// y is the distance from the line (positive up (thus left))
-function _linePoint(start, fwd, x, y) {
-    return new L.Point(start.x + fwd.x * x - fwd.y * y, start.y + fwd.y * x + fwd.x * y);
-}
 
 L.ArrowLine = L.Polygon.extend({
     options: {
@@ -131,86 +126,86 @@ L.ArrowLine = L.Polygon.extend({
         const startPt = this._map.latLngToContainerPoint(start, this._map.getZoom());
         const endPt = this._map.latLngToContainerPoint(end, this._map.getZoom());
 
-        // Get length of arrow/line and the vector pointing forward along it
-        const lineLen = startPt.distanceTo(endPt);
-        const lineVec = endPt.subtract(startPt);
-
-        if(lineLen < 0.0001){
-            return [[start], [end]];
-        }
-
-        const fwd = lineVec.divideBy(lineLen);
-
         // Get scale to apply to elements of line based on zoom
         const scale = this._getScale(this._map.getZoom());
 
-        const sy = (opts.lineWidth + opts.shadowWidth) * 0.5 * scale;             // Stroke Y (dist from centre line)
-        const bx = (opts.offset - opts.shadowWidth * 0.5) * scale;                // Base X (from start)
-        let tx = lineLen - (opts.endOffset - opts.shadowWidth * 0.5) * scale;     // Tip X (from start)
+        // Unit vector along line, used to transform xy points in line space to point space
+        // and length of line in unscaled units
+        let lineLen = startPt.distanceTo(endPt);
+        const fwd = endPt.subtract(startPt).divideBy(lineLen);
+        lineLen = lineLen / scale;
 
+        // Line is too short (could be zero or negative length). If it appears
+        // at all it will be just shadow
+        if(lineLen <= (opts.offset + opts.endOffset)){
+            return [[start], [end]];
+        }
+
+        // Generate a point on the line, as if line is running left to right. Hence x is the offset from the start
+        // y is the distance from the line (positive up (thus left))
+        function linePoint(start, fwd, x, y) {
+            return new L.Point(start.x + fwd.x * x - fwd.y * y, start.y + fwd.y * x + fwd.x * y);
+        }
+
+        // Line points we're generating
+        let points = [];
+        let downPoints = [];
+
+        // Add a point for the line, if y is not 0 then add a symmetric point do downPoints
+        function addPoint(x, y){
+            points.push(linePoint(startPt, fwd, x * scale, y * scale));
+            if(y > 0){
+                downPoints.push(linePoint(startPt, fwd, x * scale, -y * scale));
+            }
+        }
+        
+        // Everything is keyed off the arrow point angle
         const d2r = Math.PI / 180;
         const radArrowAngle = opts.arrowAngle * 0.5 * d2r;
         const sinArrowAngle = Math.sin(radArrowAngle);
         const tanArrowAngle = Math.tan(radArrowAngle);
 
-        // Distance from tip of line to center of stroke line
-        const d = opts.shadowWidth * 0.5 / sinArrowAngle;
+        const strokeY = (opts.lineWidth + opts.shadowWidth) * 0.5;      // Stroke Y (dist from centre line)
+        const d = opts.shadowWidth * 0.5 / sinArrowAngle;               // Distance from tip of line to center of stroke line
+        const ad = (opts.arrowSize + opts.lineWidth) / tanArrowAngle;   // Length of filled arrow from tip to corner
+        const h = d + ad  + opts.shadowWidth * 0.5;                     // Length of stroke arrow from tip to corner
+        const cornerY = h * tanArrowAngle;                              // Distance from line to arrow corner
 
-        //  Length of filled arrow from tip to back 
-        const ad = (opts.arrowSize + opts.lineWidth) / tanArrowAngle;
+        const drawArrows = (lineLen - opts.offset - opts.endOffset) >= h * ((opts.arrow == 'twoway') + 1);
 
-        // If arrow is bigger than half the length of the line, don't draw it
-
-        let points = [];
-        let downPoints = [];
-
-        function addPoint(x, y){
-            points.push(_linePoint(startPt, fwd, x, y));
-            if(y > 0){
-                downPoints.push(_linePoint(startPt, fwd, x, -y));
-            }
-        }
-
-        if((opts.arrow == 'tip' || opts.arrow == 'mid')
-                && (ad + opts.lineWidth + 2 * d) < (tx - bx)) {
-
-            // Arrow tip is drawn in slightly different place to just a line
-            tx = lineLen - (opts.endOffset - d) * scale;         // Tip X (from start)
-
-            const h = d + ad  + opts.shadowWidth / 2;
-            const a = h * tanArrowAngle;
-
-            const cy = a * scale;
-
-            if(opts.arrow == 'tip') {
-                // How far back and up are the arrow corner points
-                const cx = tx - h * scale;
-
-                addPoint(bx,  sy);     // base up
-                addPoint(cx,  sy);     // lower corner up
-                addPoint(cx,  cy);     // upper corner up
-                addPoint(tx,   0);     // tip
-            }
-            else {
-                const cd = (a - opts.lineWidth / 2) / tanArrowAngle;
-                const mx = (tx - bx) / 2;
-                const cx = mx - cd / 2 * scale;
-                const dx = mx + cd / 2 * scale;
-    
-                addPoint(fwd, bx,  sy);     // base up
-                addPoint(fwd, cx,  sy);     // lower corner up
-                addPoint(fwd, cx,  cy);     // upper corner up
-                addPoint(fwd, dx,  sy);     // front up
-                addPoint(fwd, tx,  sy);     // tip up
-            }
+        if(drawArrows && (opts.arrow == 'twoway' || opts.arrow == 'back')) {
+            const tx = opts.offset - d;     // Arrow stroke is drawn just back from filled arrow start 
+            const cx = tx + h;              // Arrow corner is just arrow "height" from tip
+            addPoint(tx, 0);
+            addPoint(cx, cornerY);
+            addPoint(cx, strokeY)
         }
         else {
-            addPoint(bx,  sy);         // base up
-            addPoint(tx,  sy);         // tip up
-            addPoint(tx, -sy);         // base down
-            addPoint(bx, -sy);         // tip down
+            addPoint(opts.offset - opts.shadowWidth * 0.5, strokeY)
         }
 
+        if(drawArrows && opts.arrow == 'mid'){
+            const mx = (opts.offset + (lineLen - opts.endOffset)) * 0.5;    // Mid point of line
+            const cd = (cornerY - opts.lineWidth / 2) / tanArrowAngle;      // Arrow distance from corner to mid-point (D)
+            const cx = mx - cd / 2 * scale;
+            const dx = mx + cd / 2 * scale;
+
+            addPoint(cx,  strokeY);     // lower corner up
+            addPoint(cx,  cornerY);     // upper corner up
+            addPoint(dx,  strokeY);    // front up
+        }
+
+        if(drawArrows && (opts.arrow == 'tip' || opts.arrow == 'twoway')) {
+            const tx = lineLen - opts.offset + d;
+            const cx = tx - h;
+            addPoint(cx, strokeY);
+            addPoint(cx, cornerY);
+            addPoint(tx, 0);
+        }
+        else{
+            addPoint(lineLen - (opts.endOffset - opts.shadowWidth * 0.5), strokeY); // Line end
+        }
+        
         points = points.concat(downPoints.reverse());
 
         return points.map(pt => this._map.containerPointToLatLng(pt, this._map.getZoom()));

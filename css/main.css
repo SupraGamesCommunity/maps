@@ -112,8 +112,8 @@ path[alt=''] { opacity: 100% }
   --arrow-dist: 100;
   --line-width: 5px;
   --shadow-width: 3px;
-  --offset: 0px;
-  --end-offset: 16px;
+  --offset: 14px;
+  --end-offset: 14px;
 
   fill: #4DFF00;
   fill-opacity: 100%;
