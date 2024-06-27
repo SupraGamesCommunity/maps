@@ -129,7 +129,7 @@ path[alt=''] { opacity: 100% }
   --line-width: 3px;
   --shadow-width: 0px;
   --offset: 0;
-  --end-offset: 0;
+  --end-offset: 22;
 
   fill: #ffffff;
   fill-opacity: 100%;
