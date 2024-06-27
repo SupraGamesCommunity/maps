@@ -656,20 +656,20 @@ function loadMap(id) {
     }
     const alt = `XYMarker ${pinIdx}`;
     if(!(alt in markers)) {
-      const marker = L.marker(pos, {zIndexOffset: layerConfigs.frontZIndexOffset, draggable: true,
-          title: Math.round(pos[1])+', '+Math.round(pos[0]), alt: alt, pinIdx: pinIdx})
+      let title = `${pinIdx}: (${pos.lng.toFixed(0)},${pos.lat.toFixed(0)})`
+      const marker = L.marker(pos, {zIndexOffset: layerConfigs.frontZIndexOffset, draggable: true, title: title, pinIdx: pinIdx})
         .bindPopup()
         .on('moveend', function(e) {
           let marker = e.target;
           let t = marker.getLatLng();
-          e.target._icon.title = Math.round(t.lng)+', '+Math.round(t.lat)
+          e.target._icon.title = `${e.target.options.pinIdx}: (${t.lng.toFixed(0)},${t.lat.toFixed(0)})`
           settings.mapPins[e.target.options.pinIdx] = t;
           saveSettings();
         })
         .on('popupopen', function(e) {
             let marker = e.target;
             let t = marker.getLatLng();
-            marker.setPopupContent(`(${Math.round(t.lng)}, ${Math.round(t.lat)})`);
+            marker.setPopupContent(`${marker.options.pinIdx}: (${t.lng.toFixed()}, ${t.lat.toFixed()})`);
             marker.openPopup();
         }).addTo(layers['coordinate']);
         markers[alt] = [marker];
@@ -1099,7 +1099,7 @@ window.markItemFound = function (id, found=true, save=true) {
   });
 
   for(let m of markers[id]){
-    if(m instanceof L.Marker){
+    if(typeof m.setZIndexOffset === 'function'){
       m.setZIndexOffset(layerConfigs.getZIndexOffset(m.options.layerId, found));
     }
   }
@@ -1128,7 +1128,9 @@ function markItems() {
     });
     if(markers[id]){
       for(let m of markers[id]){
-        m.setZIndexOffset(layerConfigs.getZIndexOffset(m.options.layerId, true));
+        if(typeof m.setZIndexOffset === 'function'){
+          m.setZIndexOffset(layerConfigs.getZIndexOffset(m.options.layerId, true));
+        }
       }
     }
   }
@@ -1167,7 +1169,9 @@ function unmarkItems() {
       div.classList.remove('found');
     });
     for(let m of markers[id]){
-      m.setZIndexOffset(layerConfigs.getZIndexOffset(m.options.layerId));
+      if(typeof m.setZIndexOffset === 'function'){
+        m.setZIndexOffset(layerConfigs.getZIndexOffset(m.options.layerId));
+      }
     }  
   }
 
