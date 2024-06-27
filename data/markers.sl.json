@@ -17390,6 +17390,118 @@
     "alt": 921.8713989257812
   },
   {
+    "name": "NomNomFlies10",
+    "type": "NomNomFlies_C",
+    "area": "Map",
+    "lat": 19873.0,
+    "lng": 28831.849609375,
+    "alt": 460.0
+  },
+  {
+    "name": "NomNomFlies11",
+    "type": "NomNomFlies_C",
+    "area": "Map",
+    "lat": 6922.0,
+    "lng": 51955.0,
+    "alt": 3754.0
+  },
+  {
+    "name": "NomNomFlies12",
+    "type": "NomNomFlies_C",
+    "area": "Map",
+    "lat": 13222.9228515625,
+    "lng": 49816.91796875,
+    "alt": 3216.6826171875
+  },
+  {
+    "name": "NomNomFlies13_2",
+    "type": "NomNomFlies_C",
+    "area": "Map",
+    "lat": -9921.2138671875,
+    "lng": 68451.1484375,
+    "alt": 5594.85791015625
+  },
+  {
+    "name": "NomNomFlies14",
+    "type": "NomNomFlies_C",
+    "area": "Map",
+    "lat": -9921.2138671875,
+    "lng": 68205.6328125,
+    "alt": 5594.85791015625
+  },
+  {
+    "name": "NomNomFlies2",
+    "type": "NomNomFlies_C",
+    "area": "Map",
+    "lat": 49301.94140625,
+    "lng": -69099.1484375,
+    "alt": 874.685302734375
+  },
+  {
+    "name": "NomNomFlies3",
+    "type": "NomNomFlies_C",
+    "area": "Map",
+    "lat": -33313.859375,
+    "lng": -2429.804443359375,
+    "alt": 67.13176727294922
+  },
+  {
+    "name": "NomNomFlies4",
+    "type": "NomNomFlies_C",
+    "area": "Map",
+    "lat": 48458.48046875,
+    "lng": -69096.453125,
+    "alt": 894.62548828125
+  },
+  {
+    "name": "NomNomFlies5",
+    "type": "NomNomFlies_C",
+    "area": "Map",
+    "lat": 48176.94921875,
+    "lng": -68308.3984375,
+    "alt": 817.4518432617188
+  },
+  {
+    "name": "NomNomFlies6_2",
+    "type": "NomNomFlies_C",
+    "area": "Map",
+    "lat": -21849.955078125,
+    "lng": -15559.7685546875,
+    "alt": -257.71026611328125
+  },
+  {
+    "name": "NomNomFlies7",
+    "type": "NomNomFlies_C",
+    "area": "Map",
+    "lat": -21923.63671875,
+    "lng": -15394.408203125,
+    "alt": -167.41383361816406
+  },
+  {
+    "name": "NomNomFlies8_2",
+    "type": "NomNomFlies_C",
+    "area": "Map",
+    "lat": 21198.0,
+    "lng": 25933.0,
+    "alt": 412.0
+  },
+  {
+    "name": "NomNomFlies9",
+    "type": "NomNomFlies_C",
+    "area": "Map",
+    "lat": 22961.0,
+    "lng": 23258.0,
+    "alt": 492.0
+  },
+  {
+    "name": "NomNomFlies_2",
+    "type": "NomNomFlies_C",
+    "area": "Map",
+    "lat": -33020.6640625,
+    "lng": -2361.112060546875,
+    "alt": 67.13176727294922
+  },
+  {
     "name": "PedestalButton2_2",
     "type": "PedestalButton_C",
     "area": "Map",

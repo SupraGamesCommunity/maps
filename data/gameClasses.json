@@ -2171,5 +2171,13 @@
     "description": "Can you help us rebuild our town?",
     "description_key": "947D3A8E43FA45732B77529C63A65345",
     "notes for dev": "this item has no description but this string works?"
+  },
+  "NomNomFlies_C": {
+    "friendly": "Nom Nom Flies",
+    "icon": "question_mark",
+    "layer": "extra",
+    "nospoiler": null,
+    "lines": null,
+    "description": "They're attracted to bright purple things and eat anything orange"
   }
 }

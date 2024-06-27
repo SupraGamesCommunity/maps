@@ -78,7 +78,7 @@ marker_types = {
   'GoldNugget_C', 'Jumppillow_C', 'MoonTake_C', 'Plumbus_C','Stone_C', 'ValveCarriable_C',
   'ValveSlot_C', 'Valve_C','MatchBox_C','Shell_C','BarrelClosed_Blueprint_C','MetalBall_C',
   'Supraball_C','Key_C','KeyLock_C','KeycardColor_C','PipeCap_C','Sponge_C','Juicer_C','Seed_C',
-  'Anvil_C','Map_C',
+  'Anvil_C','Map_C','NomNomFlies_C',
   # slc
   'Scrap_C','TalkingSpeaker_C','Sponge_Large_C',
   # siu
