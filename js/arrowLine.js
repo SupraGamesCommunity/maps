@@ -8,8 +8,8 @@ L.ArrowLine = L.Polygon.extend({
         arrowAngle: 45,     // angle at point of arrow 60 would be equilateral triangle (> 0 < 180)
         lineWidth: 5,       // width of the line in pixels
         shadowWidth: 2,     // width of shadow in pixels
-        offset: 0,          // Offset from start position where line should start
-        endOffset: 0,       // Offset from end position where line should end
+        offset: 0,          // Offset from start position where arrow  should start
+        endOffset: 0,       // Offset from end position where arrow tip should be
         scaleZoom0: 0.6,    // Scale factor when zoom is 0
         zoom1: 3,           // Zoom when scale should be 1:1 (set to -1 for no dynamic scaling)
                             //   scale = Math.round(size * Math.pow(2, zoom * -Math.log2(s0) / z1) * s0)
@@ -181,7 +181,7 @@ L.ArrowLine = L.Polygon.extend({
             addPoint(cx, strokeY)
         }
         else {
-            addPoint(opts.offset - opts.shadowWidth * 0.5, strokeY)
+            addPoint(-opts.shadowWidth * 0.5, strokeY)
         }
 
         if(drawArrows && opts.arrow == 'mid'){
@@ -203,7 +203,7 @@ L.ArrowLine = L.Polygon.extend({
             addPoint(tx, 0);
         }
         else{
-            addPoint(lineLen - (opts.endOffset - opts.shadowWidth * 0.5), strokeY); // Line end
+            addPoint(lineLen + opts.shadowWidth * 0.5, strokeY); // Line end
         }
         
         points = points.concat(downPoints.reverse());
