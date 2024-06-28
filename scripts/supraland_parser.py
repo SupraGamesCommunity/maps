@@ -627,7 +627,8 @@ exported_properties = [
     'nearest_cap',                                  # Nearest pipecap we are connected to if there is one
     'other_pad',                                    # For two way pads we store the pad at the other end
     'linetype',                                     # Trigger, pad, pipe, target
-    'twoway',                                       # Pipe or bad is two way if True
+    'twoway',                                       # Pipe or pad is two way if True
+    'notsaved',                                     # Pipe or pad is not saved
     'target',                                       # where to draw line to for pipes and pads
     'targets',                                      # array of dictionaries 'type' and target position
     'old_coins',                                    # For _CoinStack_C's a dictionary of old coin name to value (for save game handling)
@@ -644,6 +645,9 @@ exported_properties = [
 # data is an array of the same objects
 # each object is a dictionary of k,v pairs
 def cleanup_objects(game, classes_found, data_lookup, data):
+
+    # Read the set of pads and pipes we found save data for
+    savedpadpipes = read_savedpadpipes(game)
 
     classes = read_game_classes()
 
@@ -662,6 +666,9 @@ def cleanup_objects(game, classes_found, data_lookup, data):
     for o in data:
         if not o.get('type'):
            print(f'{o}')
+
+        alt = ':'.join((o['area'], o['name']))
+
         # Merge the various gold properties into one (we'll remove the properties later)
         # and deal with defaults for all coin or coin spawning classes
         # also takes care of DestroyablePots_C
@@ -725,7 +732,6 @@ def cleanup_objects(game, classes_found, data_lookup, data):
                 # We used to put this in startpos but we just move the pipe now
                 nc = data_lookup[o['nearest_cap']]
                 o['lat'], o['lng'], o['alt'] = nc['lat'], nc['lng'], nc['alt']
-            alt = ':'.join((o['area'], o['name']))
             if o['other_pipe'] == alt:
                 del o['linetype'];
                 del o['other_pipe']     # Some pipes point at themselves (basically in only)
@@ -750,6 +756,12 @@ def cleanup_objects(game, classes_found, data_lookup, data):
             if targets != []:
                 o['linetype'] = 'trigger'
                 o['targets'] = targets
+
+        # Mark pads/pipes for which we haven't identified save information
+        if o['type'] == 'Jumppad_C' and alt not in savedpadpipes['pads']:
+            o['notsaved'] = True
+        if 'Pipesystem' in o['type'] and ((nc := o.get('nearest_cap')) and nc not in savedpadpipes['pipes'] or not nc):
+            o['notsaved]'] = True
 
     # Convert piles of non-rotating coins to stack markers
     create_coinstacks(data_lookup, data)
@@ -883,6 +895,18 @@ def read_game_classes(fn = '..\\data\\gameClasses.json'):
         classes = json.load(f)
 
     return classes
+
+def read_savedpadpipes(game):
+
+    fn = f'savedpadpipes.{game}.json'
+
+    # Open and read the whole js file if it exists
+    if os.path.exists(fn):
+        print('Reading "'+fn+'"...')
+        return json.load(open(fn, 'r', encoding='utf-8'))
+
+    print(f'Warning: {fn} not found, skipping')
+    return {'pipes':[], 'pads':[]}
 
 
 def export_textures(game, cache_dir):

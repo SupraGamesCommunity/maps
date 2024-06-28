@@ -8954,7 +8954,8 @@
       "z": 1537.3007000000075
     },
     "linetype": "jumppad",
-    "variant": "red"
+    "variant": "red",
+    "notsaved": true
   },
   {
     "name": "Jumppad13",
@@ -8984,7 +8985,8 @@
       "z": 3632.829624840237
     },
     "linetype": "jumppad",
-    "variant": "red"
+    "variant": "red",
+    "notsaved": true
   },
   {
     "name": "Jumppad15",
@@ -9014,7 +9016,8 @@
       "z": 2858.1061725933573
     },
     "linetype": "jumppad",
-    "variant": "red"
+    "variant": "red",
+    "notsaved": true
   },
   {
     "name": "Jumppad17",
@@ -9104,7 +9107,8 @@
       "z": 3278.348175628725
     },
     "linetype": "jumppad",
-    "variant": "red"
+    "variant": "red",
+    "notsaved": true
   },
   {
     "name": "Jumppad23_3",
@@ -9134,7 +9138,8 @@
       "z": -164.34830671718294
     },
     "linetype": "jumppad",
-    "variant": "blue"
+    "variant": "blue",
+    "notsaved": true
   },
   {
     "name": "Jumppad25",
@@ -9149,7 +9154,8 @@
       "z": 918.2304520387684
     },
     "linetype": "jumppad",
-    "variant": "blue"
+    "variant": "blue",
+    "notsaved": true
   },
   {
     "name": "Jumppad26",
@@ -9164,7 +9170,8 @@
       "z": 2671.271396440515
     },
     "linetype": "jumppad",
-    "variant": "blue"
+    "variant": "blue",
+    "notsaved": true
   },
   {
     "name": "Jumppad27",
@@ -9179,7 +9186,8 @@
       "z": 672.9271773948685
     },
     "linetype": "jumppad",
-    "variant": "blue"
+    "variant": "blue",
+    "notsaved": true
   },
   {
     "name": "Jumppad28",
@@ -9194,7 +9202,8 @@
       "z": 800.8140234107985
     },
     "linetype": "jumppad",
-    "variant": "blue"
+    "variant": "blue",
+    "notsaved": true
   },
   {
     "name": "Jumppad29",
@@ -9209,7 +9218,8 @@
       "z": 8209.546333671393
     },
     "linetype": "jumppad",
-    "variant": "red"
+    "variant": "red",
+    "notsaved": true
   },
   {
     "name": "Jumppad2_2",
@@ -9239,7 +9249,8 @@
       "z": 2394.5231876747735
     },
     "linetype": "jumppad",
-    "variant": "red"
+    "variant": "red",
+    "notsaved": true
   },
   {
     "name": "Jumppad31_2",
@@ -9254,7 +9265,8 @@
       "z": 2002.1459562820478
     },
     "linetype": "jumppad",
-    "variant": "red"
+    "variant": "red",
+    "notsaved": true
   },
   {
     "name": "Jumppad3_2",
@@ -9359,7 +9371,8 @@
       "z": 1286.932684317504
     },
     "linetype": "jumppad",
-    "variant": "red"
+    "variant": "red",
+    "notsaved": true
   },
   {
     "name": "Jumppad_2",
@@ -20403,7 +20416,8 @@
       "z": 7963.871979786898
     },
     "linetype": "jumppad",
-    "variant": "red"
+    "variant": "red",
+    "notsaved": true
   },
   {
     "name": "BossPuzzleEnd1_KeyLockPlastic",
@@ -23431,7 +23445,8 @@
       "z": 533.2360745754241
     },
     "linetype": "jumppad",
-    "variant": "blue"
+    "variant": "blue",
+    "notsaved": true
   },
   {
     "name": "Jumppad2_2",
@@ -23446,7 +23461,8 @@
       "z": 3014.413952122942
     },
     "linetype": "jumppad",
-    "variant": "blue"
+    "variant": "blue",
+    "notsaved": true
   },
   {
     "name": "Lever17_2",
@@ -26334,7 +26350,8 @@
       "z": 11348.466173575593
     },
     "linetype": "jumppad",
-    "variant": "blue"
+    "variant": "blue",
+    "notsaved": true
   },
   {
     "name": "Lever_2",

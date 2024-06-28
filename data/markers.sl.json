@@ -14125,7 +14125,8 @@
       "z": -1924.7456597305281
     },
     "linetype": "jumppad",
-    "variant": "red"
+    "variant": "red",
+    "notsaved": true
   },
   {
     "name": "Jumppad11_1342",
@@ -14140,7 +14141,8 @@
       "z": -238.20753923785134
     },
     "linetype": "jumppad",
-    "variant": "red"
+    "variant": "red",
+    "notsaved": true
   },
   {
     "name": "Jumppad12_1472",
@@ -14155,7 +14157,8 @@
       "z": -738.9729825451525
     },
     "linetype": "jumppad",
-    "variant": "red"
+    "variant": "red",
+    "notsaved": true
   },
   {
     "name": "Jumppad13_972",
@@ -14204,7 +14207,8 @@
       "z": -1272.9794668596269
     },
     "linetype": "jumppad",
-    "variant": "red"
+    "variant": "red",
+    "notsaved": true
   },
   {
     "name": "Jumppad16",
@@ -14234,7 +14238,8 @@
       "z": 174.69389135374905
     },
     "linetype": "jumppad",
-    "variant": "blue"
+    "variant": "blue",
+    "notsaved": true
   },
   {
     "name": "Jumppad18",
@@ -14279,7 +14284,8 @@
       "z": 5444.113209551239
     },
     "linetype": "jumppad",
-    "variant": "red"
+    "variant": "red",
+    "notsaved": true
   },
   {
     "name": "Jumppad21_2",
@@ -14294,7 +14300,8 @@
       "z": 1207.6530797208163
     },
     "linetype": "jumppad",
-    "variant": "red"
+    "variant": "red",
+    "notsaved": true
   },
   {
     "name": "Jumppad22_1179",
@@ -14309,7 +14316,8 @@
       "z": -558.763455273426
     },
     "linetype": "jumppad",
-    "variant": "red"
+    "variant": "red",
+    "notsaved": true
   },
   {
     "name": "Jumppad23_3162",
@@ -14390,7 +14398,8 @@
       "z": -686.8130236816099
     },
     "linetype": "jumppad",
-    "variant": "blue"
+    "variant": "blue",
+    "notsaved": true
   },
   {
     "name": "Jumppad28_8720",
@@ -14405,7 +14414,8 @@
       "z": 1560.212948056528
     },
     "linetype": "jumppad",
-    "variant": "red"
+    "variant": "red",
+    "notsaved": true
   },
   {
     "name": "Jumppad29_13926",
@@ -14420,7 +14430,8 @@
       "z": 613.3996174601723
     },
     "linetype": "jumppad",
-    "variant": "red"
+    "variant": "red",
+    "notsaved": true
   },
   {
     "name": "Jumppad2_49",
@@ -14497,7 +14508,8 @@
       "z": 424.4515617210417
     },
     "linetype": "jumppad",
-    "variant": "red"
+    "variant": "red",
+    "notsaved": true
   },
   {
     "name": "Jumppad34_2191",
@@ -14512,7 +14524,8 @@
       "z": -457.08981941373406
     },
     "linetype": "jumppad",
-    "variant": "blue"
+    "variant": "blue",
+    "notsaved": true
   },
   {
     "name": "Jumppad35",
@@ -14544,7 +14557,8 @@
       "z": -1253.1171450195043
     },
     "linetype": "jumppad",
-    "variant": "blue"
+    "variant": "blue",
+    "notsaved": true
   },
   {
     "name": "Jumppad37_8255",
@@ -14559,7 +14573,8 @@
       "z": -437.3605151749278
     },
     "linetype": "jumppad",
-    "variant": "red"
+    "variant": "red",
+    "notsaved": true
   },
   {
     "name": "Jumppad38_2356",
@@ -14589,7 +14604,8 @@
       "z": 310.8439550001399
     },
     "linetype": "jumppad",
-    "variant": "red"
+    "variant": "red",
+    "notsaved": true
   },
   {
     "name": "Jumppad3_522",
@@ -14604,7 +14620,8 @@
       "z": -702.7775302734125
     },
     "linetype": "jumppad",
-    "variant": "blue"
+    "variant": "blue",
+    "notsaved": true
   },
   {
     "name": "Jumppad40_8816",
@@ -14747,7 +14764,8 @@
       "z": 564.6428630859444
     },
     "linetype": "jumppad",
-    "variant": "red"
+    "variant": "red",
+    "notsaved": true
   },
   {
     "name": "Jumppad49_2147",
@@ -14762,7 +14780,8 @@
       "z": -1376.279309765608
     },
     "linetype": "jumppad",
-    "variant": "blue"
+    "variant": "blue",
+    "notsaved": true
   },
   {
     "name": "Jumppad4_1222",
@@ -14777,7 +14796,8 @@
       "z": 3336.541151953144
     },
     "linetype": "jumppad",
-    "variant": "blue"
+    "variant": "blue",
+    "notsaved": true
   },
   {
     "name": "Jumppad50",
@@ -14807,7 +14827,8 @@
       "z": 169.90890795901774
     },
     "linetype": "jumppad",
-    "variant": "blue"
+    "variant": "blue",
+    "notsaved": true
   },
   {
     "name": "Jumppad52",
@@ -14822,7 +14843,8 @@
       "z": 347.4117506904852
     },
     "linetype": "jumppad",
-    "variant": "red"
+    "variant": "red",
+    "notsaved": true
   },
   {
     "name": "Jumppad53",
@@ -14837,7 +14859,8 @@
       "z": 1287.5933030922401
     },
     "linetype": "jumppad",
-    "variant": "blue"
+    "variant": "blue",
+    "notsaved": true
   },
   {
     "name": "Jumppad54_1487",
@@ -14867,7 +14890,8 @@
       "z": 586.4129915428398
     },
     "linetype": "jumppad",
-    "variant": "red"
+    "variant": "red",
+    "notsaved": true
   },
   {
     "name": "Jumppad56",
@@ -14882,7 +14906,8 @@
       "z": 1537.2768162369848
     },
     "linetype": "jumppad",
-    "variant": "red"
+    "variant": "red",
+    "notsaved": true
   },
   {
     "name": "Jumppad57",
@@ -14897,7 +14922,8 @@
       "z": 1606.5484357799658
     },
     "linetype": "jumppad",
-    "variant": "red"
+    "variant": "red",
+    "notsaved": true
   },
   {
     "name": "Jumppad58",
@@ -14912,7 +14938,8 @@
       "z": 623.3629413444634
     },
     "linetype": "jumppad",
-    "variant": "blue"
+    "variant": "blue",
+    "notsaved": true
   },
   {
     "name": "Jumppad59_1564",
@@ -14959,7 +14986,8 @@
       "z": -1040.8514331054469
     },
     "linetype": "jumppad",
-    "variant": "blue"
+    "variant": "blue",
+    "notsaved": true
   },
   {
     "name": "Jumppad60",
@@ -14974,7 +15002,8 @@
       "z": 2661.889030080113
     },
     "linetype": "jumppad",
-    "variant": "red"
+    "variant": "red",
+    "notsaved": true
   },
   {
     "name": "Jumppad61",
@@ -15006,7 +15035,8 @@
       "z": 39.74255587271047
     },
     "linetype": "jumppad",
-    "variant": "red"
+    "variant": "red",
+    "notsaved": true
   },
   {
     "name": "Jumppad63",
@@ -15021,7 +15051,8 @@
       "z": 39.7434857495482
     },
     "linetype": "jumppad",
-    "variant": "red"
+    "variant": "red",
+    "notsaved": true
   },
   {
     "name": "Jumppad64_1993",
@@ -15036,7 +15067,8 @@
       "z": 235.2717046875223
     },
     "linetype": "jumppad",
-    "variant": "red"
+    "variant": "red",
+    "notsaved": true
   },
   {
     "name": "Jumppad65",
@@ -15051,7 +15083,8 @@
       "z": 228.72552148439962
     },
     "linetype": "jumppad",
-    "variant": "red"
+    "variant": "red",
+    "notsaved": true
   },
   {
     "name": "Jumppad66",
@@ -15066,7 +15099,8 @@
       "z": 240.1823369140917
     },
     "linetype": "jumppad",
-    "variant": "red"
+    "variant": "red",
+    "notsaved": true
   },
   {
     "name": "Jumppad67",
@@ -15128,7 +15162,8 @@
       "z": 558.3810550704595
     },
     "linetype": "jumppad",
-    "variant": "red"
+    "variant": "red",
+    "notsaved": true
   },
   {
     "name": "Jumppad71_9499",
@@ -15143,7 +15178,8 @@
       "z": 1017.8192135128766
     },
     "linetype": "jumppad",
-    "variant": "red"
+    "variant": "red",
+    "notsaved": true
   },
   {
     "name": "Jumppad72",
@@ -15237,7 +15273,8 @@
       "z": 809.194823641789
     },
     "linetype": "jumppad",
-    "variant": "red"
+    "variant": "red",
+    "notsaved": true
   },
   {
     "name": "Jumppad78",
@@ -15252,7 +15289,8 @@
       "z": 696.9133652350068
     },
     "linetype": "jumppad",
-    "variant": "red"
+    "variant": "red",
+    "notsaved": true
   },
   {
     "name": "Jumppad79",
@@ -15299,7 +15337,8 @@
       "z": 1257.540206835956
     },
     "linetype": "jumppad",
-    "variant": "red"
+    "variant": "red",
+    "notsaved": true
   },
   {
     "name": "Jumppad81",
@@ -15314,7 +15353,8 @@
       "z": 1142.3693937225585
     },
     "linetype": "jumppad",
-    "variant": "red"
+    "variant": "red",
+    "notsaved": true
   },
   {
     "name": "Jumppad82",
@@ -15329,7 +15369,8 @@
       "z": 2855.254755859405
     },
     "linetype": "jumppad",
-    "variant": "red"
+    "variant": "red",
+    "notsaved": true
   },
   {
     "name": "Jumppad83",
@@ -15359,7 +15400,8 @@
       "z": 2901.0733383941683
     },
     "linetype": "jumppad",
-    "variant": "red"
+    "variant": "red",
+    "notsaved": true
   },
   {
     "name": "Jumppad85",
@@ -15468,7 +15510,8 @@
       "z": 5952.037109205646
     },
     "linetype": "jumppad",
-    "variant": "red"
+    "variant": "red",
+    "notsaved": true
   },
   {
     "name": "Jumppad92",
@@ -15483,7 +15526,8 @@
       "z": 1207.6529605115268
     },
     "linetype": "jumppad",
-    "variant": "red"
+    "variant": "red",
+    "notsaved": true
   },
   {
     "name": "Jumppad93",
@@ -15607,7 +15651,8 @@
       "z": 203.14371120759296
     },
     "linetype": "jumppad",
-    "variant": "red"
+    "variant": "red",
+    "notsaved": true
   },
   {
     "name": "Jumppad_266",
