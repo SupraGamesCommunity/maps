@@ -175,20 +175,6 @@
             "siu"
         ]
     },
-    "extrapipe": {
-        "type": "markers",
-        "category": "Miscellaneous",
-        "name": "Extra Pads/Pipes",
-        "name_key": "",
-        "defaultIcon": "question_mark",
-        "defaultActive": false,
-        "zDepth": 2,
-        "games": [ 
-            "sl",
-            "slc",
-            "siu"
-        ]
-    },
     "dev": {
         "type": "markers",
         "category": "Miscellaneous",
