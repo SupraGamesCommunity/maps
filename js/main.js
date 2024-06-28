@@ -437,7 +437,7 @@ function loadMap(id) {
         // build mode button
         L.Toolbar2.Action.extend({
           options: {
-            toolbarIcon:{html: '&#128295;&#x1F527;', tooltip: 'Developer Mode'},
+            toolbarIcon:{html: '&#x1F527;', tooltip: 'Developer Mode'},
             subToolbar: new L.Toolbar2({ 
               actions: [
                 subAction.extend({
@@ -875,9 +875,11 @@ function loadMap(id) {
             if(o.twoway){
               options.arrow = 'none';
             }
-            for(let endxy of endxys) {
-              let line = L.arrowLine(start, [endxy.y, endxy.x], options).addTo(layers[c.lines]);
-              markers[alt] = markers[alt] ? [...markers[alt], line] : [line];
+            if(o.twoway != 2){
+              for(let endxy of endxys) {
+                let line = L.arrowLine(start, [endxy.y, endxy.x], options).addTo(layers[c.lines]);
+                markers[alt] = markers[alt] ? [...markers[alt], line] : [line];
+              }
             }
           }
 
