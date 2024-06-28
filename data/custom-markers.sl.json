@@ -506,7 +506,6 @@
   },
   {
     "name": "PipesystemNew25_14338",
-    "type": "FT:PipesystemNew_C",
     "area": "Map",
     "target": {
       "y": -44168.26953125
@@ -514,7 +513,6 @@
   },
   {
     "name": "PipesystemNew26",
-    "type": "FT:PipesystemNew_C",
     "area": "Map",
     "lat": -44168.26953125
   },
@@ -525,7 +523,6 @@
   },
   {
     "name": "PipesystemNew3_20340",
-    "type": "FT:PipesystemNew_C",
     "area": "Map",
     "lat": -40052.6796875,
     "lng": -31176.26171875,
@@ -536,7 +533,6 @@
   },
   {
     "name": "PipesystemNew4",
-    "type": "FT:PipesystemNew_C",
     "area": "Map",
     "lat": -42095.1171875,
     "lng": -30844.025390625,
@@ -544,11 +540,6 @@
       "x": -31176.26171875,
       "y": -40052.6796875
     }
-  },
-  {
-    "name": "Jumppad34_2191",
-    "type": "FT:Jumppad_C",
-    "area": "Map"
   },
   {
     "name": "Jumppad30_17845",

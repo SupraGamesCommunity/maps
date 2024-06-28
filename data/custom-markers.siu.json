@@ -222,11 +222,6 @@
     "area": "DLC2_Complete"
   },
   {
-    "name": "PipesystemNewDLC5_3570",
-    "type": "FT:PipesystemNewDLC_C",
-    "area": "DLC2_Complete"
-  },
-  {
     "name": "Secret_TeleportPipe2",
     "type": "FT:PipesystemNew_C",
     "area": "DLC2_SecretLavaArea",
@@ -301,11 +296,6 @@
     "name": "Jumppad2_2",
     "type": "FT:Jumppad_C",
     "area": "DLC2_FinalBoss"
-  },
-  {
-    "name": "Jumppad2_2",
-    "type": "FT:Jumppad_C",
-    "area": "DLC2_SecretLavaArea"
   },
   {
     "name": "Jumppad_2",
