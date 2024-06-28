@@ -553,11 +553,11 @@ def calc_pads(data):
                         o['target']['y'] = t['lat']
                         o['target']['z'] = t['alt']
                         o['other_pad']=alt
-                        o['twoway']=True
+                        o['twoway']=1
                         t['target']['x'] = o['lng']
                         t['target']['y'] = o['lat']
                         t['target']['z'] = o['alt']
-                        t['twoway']=True
+                        t['twoway']=2
                         t['other_pad']=':'.join((o['area'], o['name']))
 
 
@@ -725,10 +725,16 @@ def cleanup_objects(game, classes_found, data_lookup, data):
                 # We used to put this in startpos but we just move the pipe now
                 nc = data_lookup[o['nearest_cap']]
                 o['lat'], o['lng'], o['alt'] = nc['lat'], nc['lng'], nc['alt']
-            opo = data_lookup[o['other_pipe']]
-            o['target'] = get_nc_xyz(opo)
-            if ':'.join((o['area'], o['name'])) == opo.get('other_pipe'):
-                o['twoway'] = True
+            alt = ':'.join((o['area'], o['name']))
+            if o['other_pipe'] == alt:
+                del o['linetype'];
+                del o['other_pipe']     # Some pipes point at themselves (basically in only)
+            else:
+                opo = data_lookup[o['other_pipe']]
+                o['target'] = get_nc_xyz(opo)
+                if alt == opo.get('other_pipe'):
+                    o['twoway'] = 1
+                    opo['twoway'] = 2
         elif o['type'] == 'Jumppad_C':
             o['linetype'] = 'jumppad' 
             if o.get('allow_stomp') or o.get('disable_movement_in_air') == False:

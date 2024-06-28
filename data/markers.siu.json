@@ -15518,8 +15518,7 @@
     "area": "DLC2_Complete",
     "lat": -44912.16796875,
     "lng": 51589.5,
-    "alt": 2909.39208984375,
-    "linetype": "pipe"
+    "alt": 2909.39208984375
   },
   {
     "name": "PipesystemNew11",
@@ -15543,8 +15542,7 @@
     "area": "DLC2_Complete",
     "lat": -44372.0,
     "lng": 19610.0859375,
-    "alt": 27491.0,
-    "linetype": "pipe"
+    "alt": 27491.0
   },
   {
     "name": "PipesystemNew2",
@@ -15552,8 +15550,7 @@
     "area": "DLC2_Complete",
     "lat": -48137.3203125,
     "lng": 52687.015625,
-    "alt": 1995.3919677734375,
-    "linetype": "pipe"
+    "alt": 1995.3919677734375
   },
   {
     "name": "PipesystemNew3",
@@ -15861,8 +15858,7 @@
     "area": "DLC2_Complete",
     "lat": -49335.3359375,
     "lng": 55097.140625,
-    "alt": 2831.169921875,
-    "linetype": "pipe"
+    "alt": 2831.169921875
   },
   {
     "name": "PipesystemNewDLC11_405",
@@ -15904,8 +15900,7 @@
     "area": "DLC2_Complete",
     "lat": -33614.1796875,
     "lng": 22480.037109375,
-    "alt": -420.270263671875,
-    "linetype": "pipe"
+    "alt": -420.270263671875
   },
   {
     "name": "PipesystemNewDLC19",
@@ -16095,8 +16090,7 @@
     "lat": -13181.89453125,
     "lng": 56968.3984375,
     "alt": 786.9484252929688,
-    "nearest_cap": "DLC2_Complete:PipeCap2",
-    "linetype": "pipe"
+    "nearest_cap": "DLC2_Complete:PipeCap2"
   },
   {
     "name": "PipeToArea1",

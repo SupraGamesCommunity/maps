@@ -58,12 +58,13 @@ function fileBaseName(f){
     return f.replace(/^.*[\\/]/, '').replace(/\..*$/, '')
 }
 
-function readSavFile(file) {
+function readSavFile(game, file) {
     let baseName = fileBaseName(file);
     let data = fs.readFileSync(file);
     let buffer = data.buffer.slice(data.byteOffset, data.byteOffset + data.byteLength);
     let loadedSave = new UESaveObject(buffer);
     let markers = {};
+    let pj = {pipes: [], pads: []};
 
     console.log(`Reading ${baseName}`);
 
@@ -114,6 +115,12 @@ function readSavFile(file) {
             else {
                 outCount += 1;
             }
+            if(alt.includes(':Pipe')){
+                pj.pipes.push(alt);
+            }
+            if (alt.includes(':Jumppad')){
+                pj.pads.push(alt);
+            }
             continue;
         }
 
@@ -154,8 +161,19 @@ function readSavFile(file) {
             else {
                 outCount += 1;
             }
+            if(alt.includes(':Pipe')){
+                pj.pipes.push(alt);
+            }
+            if (alt.includes(':Jumppad')){
+                pj.pads.push(alt);
+            }
         }
     }
+
+    // Write out pads/pipes to json
+    console.log("Writing pads/pipes to savedpadpipes.json...")
+    fs.writeFileSync(`savedpadpipes.${game}.json`, JSON.stringify(pj, null, 2));
+
     console.log(`Duplicates count: ${dupCount}`);
     console.log(`Entries found in JSON extract: ${inCount} not found: ${outCount}`)
     return markers;
@@ -192,7 +210,7 @@ function compareMarkers(a, b)
 
 const outputFileName = `saveextract.${game}.txt`
 
-let base_markers = readSavFile(saveFileName);
+let base_markers = readSavFile(game, saveFileName);
 let dump_markers = base_markers;
 
 if(args.values.compare)
