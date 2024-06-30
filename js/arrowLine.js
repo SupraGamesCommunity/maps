@@ -3,7 +3,7 @@
 
 L.ArrowLine = L.Polygon.extend({
     options: {
-        arrow: 'none',      // Can be 'tip', 'mid', 'none' 
+        arrow: 'none',      // Can be 'tip', 'back', 'twoway', 'mid', 'none' 
         arrowSize: 0,       // Arrow size (0 means it's just a pointer) with shadow wings
         arrowAngle: 45,     // angle at point of arrow 60 would be equilateral triangle (> 0 < 180)
         lineWidth: 5,       // width of the line in pixels
