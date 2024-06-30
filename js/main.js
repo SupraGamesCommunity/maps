@@ -1002,7 +1002,7 @@ function loadMap(id) {
 
     // fired after search control focused on the item
     searchControl.on('search:locationfound', function (e) {
-        if (e.layer._popup) {
+        if (e.layer._popup && markers[e.layer.options.alt]) {
           // reveal layer on click
           for(m of markers[e.layer.options.alt]){
             let layerId = m.options.layerId;
@@ -1100,9 +1100,11 @@ window.markItemFound = function (id, found=true, save=true) {
     }
   });
 
-  for(let m of markers[id]){
-    if(typeof m.setZIndexOffset === 'function'){
-      m.setZIndexOffset(layerConfigs.getZIndexOffset(m.options.layerId, found));
+  if(markers[id]){
+    for(let m of markers[id]){
+      if(typeof m.setZIndexOffset === 'function'){
+        m.setZIndexOffset(layerConfigs.getZIndexOffset(m.options.layerId, found));
+      }
     }
   }
 
@@ -1170,11 +1172,13 @@ function unmarkItems() {
     [].forEach.call(divs, function(div) {
       div.classList.remove('found');
     });
-    for(let m of markers[id]){
-      if(typeof m.setZIndexOffset === 'function'){
-        m.setZIndexOffset(layerConfigs.getZIndexOffset(m.options.layerId));
-      }
-    }  
+    if(markers[id]){
+      for(let m of markers[id]){
+        if(typeof m.setZIndexOffset === 'function'){
+          m.setZIndexOffset(layerConfigs.getZIndexOffset(m.options.layerId));
+        }
+      }  
+    }
   }
 
 
