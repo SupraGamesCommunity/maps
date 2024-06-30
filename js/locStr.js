@@ -9,9 +9,9 @@ function getUserLanguage(locales){
         language = window.navigator.userLanguage || window.navigator.language;
     }
     if(language){
-        if(language in locales)
+        if(locales.includes(language))
             return language;
-        if(language.slice(0,2) in locales)
+        if(locales.includes(language.slice(0,2)))
             return language.slice(0,2);
     }
     return 'en';
