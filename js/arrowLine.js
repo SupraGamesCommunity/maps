@@ -49,6 +49,13 @@ L.ArrowLine = L.Polygon.extend({
         let center = bounds.getCenter();
     },
 
+    setArrow: function(arrow){
+        if(arrow != this.options.arrow){
+            this.options.arrow = arrow;
+            this._rebuildPolygon();
+        }
+    },
+
     onAdd: function(map) {
         L.Polygon.prototype.onAdd.call(this, map);
         this._map.on('zoomend', this._rebuildPolygon, this);

@@ -5377,7 +5377,8 @@
       "z": -1339.353936237903
     },
     "linetype": "jumppad",
-    "variant": "red"
+    "variant": "red",
+    "notsaved": true
   },
   {
     "name": "Jumppad23_2",
@@ -5491,7 +5492,8 @@
       "z": 1559.0669401245375
     },
     "linetype": "jumppad",
-    "variant": "red"
+    "variant": "red",
+    "notsaved": true
   },
   {
     "name": "Jumppad3",

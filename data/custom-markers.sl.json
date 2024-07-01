@@ -353,7 +353,8 @@
       "y": 26780.978515625,
       "z": 1306.9228515625
     },
-    "twoway": true
+    "other_pad": "Map:Jumppad85",
+    "twoway": 1
   },
   {
     "name": "Jumppad85",
@@ -364,7 +365,8 @@
       "y": 5824.7353515625,
       "z": 33.81306076049805
     },
-    "twoway": true
+    "other_pad": "Map:Jumppad83",
+    "twoway": 2
   },
   {
     "name": "Jumppad89",

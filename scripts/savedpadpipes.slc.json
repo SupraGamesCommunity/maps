@@ -6,15 +6,13 @@
   ],
   "pads": [
     "Crash:Jumppad3",
-    "Crash:Jumppad27_2",
+    "Crash:Jumppad25",
+    "Crash:Jumppad23_2",
     "Crash:Jumppad24",
     "Crash:Jumppad26",
     "Crash:Jumppad15_2",
-    "Crash:Jumppad25",
-    "Crash:Jumppad23_2",
-    "Crash:Jumppad22_2",
+    "Crash:Jumppad27_2",
     "Crash:Jumppad35",
-    "Crash:Jumppad34_2",
-    "Crash:Jumppad29"
+    "Crash:Jumppad34_2"
   ]
 }

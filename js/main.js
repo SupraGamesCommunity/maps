@@ -29,6 +29,7 @@ let mapCenter;
 let mapParam = {};      // Parameters extracted from map URL
 let objects = {};
 let markers = {};       // Map from alt name to markers (or lines) on map (ie to layers)
+let saveMap = {};       // Map from alt name in save file to alt name to mark found
 let coin2stack = {};    // Map from coin name to coin stack
 let searchControl;      // Leaflet control for searching
 
@@ -713,7 +714,7 @@ function loadMap(id) {
           
         }
       }
-      lineTypeProps['line-'+lt.replace(' ', '_')] = lineProps;
+      lineTypeProps['line-'+lt] = lineProps;
       div.remove();
     }
 
@@ -806,6 +807,14 @@ function loadMap(id) {
             }
           }
 
+          // Pipe opening is handled with PipeCap_C so we add it to our save map
+          if('nearest_cap' in o){
+            saveMap[o.nearest_cap] = alt;
+          }
+          if('notsaved' in o){
+            settings.markedItems[alt] = true;
+          }
+
           const defaultIcon = 'question_mark';
 
           let start = [o.lat, o.lng];
@@ -820,7 +829,6 @@ function loadMap(id) {
             const layer = nospoiler
             const layerConfig = layerConfigs.get(layer);
             const [icon, size] = decodeIconName(layerConfig.defaultIcon || defaultIcon, mapId, o.variant);
-
             const marker = L.marker(start, {icon: getIcon(icon, size), zIndexOffset: layerConfigs.getZIndexOffset(layer), title: title, alt: alt, o:o, layerId:layer})
               .addTo(layers[layer]).bindPopup(text).on('popupopen', onPopupOpen).on('contextmenu', onContextMenu);
             markers[alt] = markers[alt] ? [...markers[alt], marker] : [marker];
@@ -856,7 +864,7 @@ function loadMap(id) {
 
             // need to add title as a single space (leaflet search issue), but not the full title so it doesn't appear in search
 
-            const className = 'line-' + o.linetype + (o.linetype == 'jumppad' ? '_'+o.variant : '');
+            const className = 'line-' + o.linetype + (o.linetype == 'jumppad' ? ' '+o.variant : '');
             let ltp = lineTypeProps[className];
 
             let options = {
@@ -1089,7 +1097,37 @@ function resizeIcons(force) {
     }
   }
 }
-  
+
+// Change the arrow type for found/unfound jumppads
+function jumppadArrowUpdateFound(id, found){
+  const o = objects[id];
+  if(o && 'other_pad' in o){
+    let found2 = settings.markedItems[o.other_pad] || false;
+    if(o.twoway == 2) {
+      id = o.other_pad;
+      [found, found2] = [found2, found];
+    }
+    if(markers[id]){
+      for(let m of markers[id]){
+        if(m instanceof L.ArrowLine){
+          m.setArrow(found  == found2 ? 'none' : found ? 'tip' : 'back'); 
+        }
+      }
+    }
+    var divs = document.querySelectorAll('*[alt="' + id + '"]');
+    [].forEach.call(divs, function(div) {
+      if(div.getAttribute("class").includes('line-jumppad')){
+        if (found || found2) {
+          div.classList.add('found');
+        } else {
+          div.classList.remove('found');
+        }
+      }
+    });
+  }
+
+}
+
 window.markItemFound = function (id, found=true, save=true) {
   var divs = document.querySelectorAll('*[alt="' + id + '"]');
   [].forEach.call(divs, function(div) {
@@ -1114,17 +1152,14 @@ window.markItemFound = function (id, found=true, save=true) {
     delete settings.markedItems[id];
   }
 
+  jumppadArrowUpdateFound(id, found);
+
   if (save) {
     saveSettings();
   }
 }
 
-//let inMarkItemsCall = false;
 function markItems() {
-  //if(inMarkItemsCall){
-  //  return;
-  //}
-  //inMarkItemsCall = true;
   for (let id of Object.keys(settings.markedItems)) {
     let divs = document.querySelectorAll('*[alt="' + id + '"]');
     [].forEach.call(divs, function(div) {
@@ -1137,6 +1172,7 @@ function markItems() {
         }
       }
     }
+    jumppadArrowUpdateFound(id, true);
   }
 /*
   // filter by settings.searchText. caching is unreliable, just perform a full search here
@@ -1163,7 +1199,6 @@ function markItems() {
       }
     }
   });*/
-  //inMarkItemsCall = false;
 }
 
 function unmarkItems() {
@@ -1179,6 +1214,7 @@ function unmarkItems() {
         }
       }  
     }
+    jumppadArrowUpdateFound(id, false);
   }
 
 
@@ -1271,7 +1307,8 @@ window.loadSaveFile = function () {
  
             // a little hack here about volcano spawners (EnemySpawn3_C, graves layer)
             // they are activated in ThingsToActivate but destroyed only in ThingsToOpenForever
-            if ((o = objects[id])) {
+            let o = objects[id];
+            if (o) {
               if (o.type=='EnemySpawn3_C') {
                 found = section=='ThingsToOpenForever';
               }
@@ -1288,8 +1325,21 @@ window.loadSaveFile = function () {
               }
             }
 
+            function markId(id){
+              settings.markedItems[id]=true;
+              let o = objects[id];
+
+              // For pipes we can just mark both ends as they can't be open one way if they are twoway
+              if(o && 'other_pipe' in o){
+                settings.markedItems[o.other_pipe] = true;
+              }
+            }
+
             if (found) {
-              settings.markedItems[id] = true;
+              markId(id);
+              if(id in saveMap){
+                markId(saveMap[id]);
+              }
             }
           }
         }

@@ -171,7 +171,7 @@ function readSavFile(game, file) {
     }
 
     // Write out pads/pipes to json
-    console.log("Writing pads/pipes to savedpadpipes.json...")
+    console.log(`Writing pads/pipes to savedpadpipes.${game}.json...`)
     fs.writeFileSync(`savedpadpipes.${game}.json`, JSON.stringify(pj, null, 2));
 
     console.log(`Duplicates count: ${dupCount}`);
