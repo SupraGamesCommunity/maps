@@ -7,6 +7,7 @@ using CUE4Parse.UE4.Objects.Core.i18N;
 using CUE4Parse.UE4.Assets.Exports;
 using CUE4Parse.UE4.Objects.Core.Misc;
 using CUE4Parse.UE4.Versions;
+using CUE4Parse.UE4.Localization;
 using Newtonsoft.Json;
 using Serilog;
 using Serilog.Sinks.SystemConsole.Themes;
@@ -19,8 +20,8 @@ namespace BPReader
             {"sl",  @"C:/Program Files (x86)/Steam/steamapps/common/Supraland/Supraland/Content/Paks/" },
             {"siu", @"C:/Program Files (x86)/Steam/steamapps/common/Supraland Six Inches Under/SupralandSIU/Content/Paks/"}
         };
+        private const string _locFilesDir = "Content/Localization/Game/"; 
 
-        private static readonly string _gameClassesFile = "../../../../gameClasses.json";
         private const string _aesKey = "0x0000000000000000000000000000000000000000000000000000000000000000";
         public static void Main()
         {
@@ -30,17 +31,14 @@ namespace BPReader
                 Environment.Exit(1);
             }
             cacheDir = cacheDir.Replace("\\", "/");
-            var bpJsonBase = cacheDir + "/blueprints";
-    
+
             Log.Logger = new LoggerConfiguration().WriteTo.Console(theme: AnsiConsoleTheme.Literate).CreateLogger();
 
-            // Deserialize gameClasses.json
-            var gameClasses = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, string>>>(File.ReadAllText(_gameClassesFile)); 
-
             foreach(var game in _gameDirectories.Keys) {
+                var count = 0;
                 var gameDir = _gameDirectories[game];
                 var provider = new DefaultFileProvider(gameDir, SearchOption.AllDirectories, false, new VersionContainer(EGame.GAME_UE4_27));
- 
+
                 // Scan local files and read them to know what it has to deal with (PAK/UTOC/UCAS/UASSET/UMAP)
                 provider.Initialize();
 
@@ -52,41 +50,29 @@ namespace BPReader
                 var blueprints = new Dictionary<string, string>();
                 foreach(var key in provider.Files.Keys)
                 {
-                    if(key.EndsWith(".uasset") && !key.Contains("Meshes") && !key.Contains("Sounds")
-                        && !key.Contains("Materials") && !key.Contains("Effects"))
+                    if(key.Contains(_locFilesDir))
                     {
-                        var slashIdx = key.LastIndexOf('/');
-                        var bpFile = key.Substring(slashIdx + 1, key.Length - 8 - slashIdx) + "_C";
-                        if(gameClasses.ContainsKey(bpFile))
+                        var outPath = cacheDir+$"/LOC/{game}" + key[(key.IndexOf(_locFilesDir)+_locFilesDir.Length-1)..(key.LastIndexOf('/')+1)];
+                        new FileInfo(outPath).Directory.Create();
+                        var file = provider.Files[key];
+                        file.TryCreateReader(out var archive);
+
+                        if(key.EndsWith(".locres"))
                         {
-                            if(blueprints.ContainsKey(bpFile))
-                            {
-                                Console.WriteLine($"Found multiple .uasset for {bpFile} First: {blueprints[bpFile]} New: {key}");
-                            }
-                            else
-                            {
-                                blueprints[bpFile] = key;
-                                if(!gameClasses[bpFile].ContainsKey("found"))
-                                    gameClasses[bpFile]["found"] = "yes";
-                            }
+                            var locres = new FTextLocalizationResource(archive);
+                            var locJson = JsonConvert.SerializeObject(locres, Formatting.Indented);
+                            File.WriteAllText(outPath + "Game.json", locJson);
+                            count++;
+                        }
+                        else if(key.EndsWith(".locmeta"))
+                        {
+                            var locmeta = new FTextLocalizationMetaDataResource(archive);
+                            var locJson = JsonConvert.SerializeObject(locmeta, Formatting.Indented);
+                            File.WriteAllText(outPath + "Game.json", locJson);
                         }
                     }
                 }
-
-                var blueprintFiles = new Dictionary<string, IEnumerable<UObject>>();
-                foreach(var cls in blueprints.Keys)
-                {
-                    blueprintFiles[cls] = provider.LoadAllObjects(blueprints[cls]);
-                }
-                var fullJson = JsonConvert.SerializeObject(blueprintFiles, Formatting.Indented);
-                File.WriteAllText(bpJsonBase + '.' + game + ".json", fullJson);
-            }
-            foreach(var key in gameClasses.Keys)
-            {
-                if(!gameClasses[key].ContainsKey("found"))
-                {
-                    Console.WriteLine($"Class {key} not found");
-                }
+                Console.WriteLine($"Exported {count} loc files for {game.ToUpper()} to {cacheDir+$"/LOC/"+game}");
             }
         }
     }

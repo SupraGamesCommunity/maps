@@ -49,8 +49,6 @@ config = {
         'path': 'C:/Program Files (x86)/Steam/steamapps/common/Supraland Six Inches Under/SupralandSIU/Content/Paks/',
         'prefix': 'SupralandSIU/Content/FirstPersonBP/Maps/',
         'blueprints': '/Game/Blueprints/Levelobjects/',
-        #'blueprints': 'SupralandSIU/Content/Levelobjects/',
-        #/Game/Blueprints/Levelobjects/BuyHealthRegenMax+1
         'maps': [
             'DLC2_Complete',
             'DLC2_FinalBoss',
@@ -151,13 +149,13 @@ def export_levels(game, cache_dir):
             json.dump(package_dict, open(filename, 'w'), indent=2)
 
 
-def export_class_loc():
+def export_class_loc(cache_dir):
 
     game_classes = read_game_classes();
 
     for game in ['sl', 'siu']:
-        with open('blueprints.'+game+'.json', 'r') as f:
-            blueprints = json.load(f)
+        path = os.environ.get(cache_dir, 'blueprints.'+game+'.json')
+        blueprints = json.load(open(path, 'r'))
 
         def optKey(l, cls, k, v):
             if v:
@@ -956,7 +954,7 @@ def main():
     elif args.levels:
         export_levels(args.game, args.cache_dir)
     elif args.blueprints:
-        export_class_loc()
+        export_class_loc(args.cache_dir)
     elif args.textures:
         export_textures(args.game, args.cache_dir)
     elif args.loc:
