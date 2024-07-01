@@ -729,12 +729,13 @@ function loadMap(id) {
         markers = {};
         coin2stack = {};
 
+
         // Build a look up table from alt id to objects 
         for(let o of j){
           let id = o.area + ':' + o.name;
           objects[id] = o;
         }
-
+        
         function merge_cm(cm) {
           for(let co of cm){
             let alt = co.area + ':' + co.name;
@@ -752,7 +753,17 @@ function loadMap(id) {
         merge_cm(cmj);
 
         let enabledLayers = layerConfigs.getEnabledLayers(mapId) 
-        for(let o of j) {
+
+        // Delete entries we aren't going to use 
+        for(let o of j){
+          c = gameClasses[o.type] || defaultGameClass;
+          if((!c.layer || !enabledLayers[c.layer]) && (!c.nospoiler || !enabledLayers[c.nospoiler]) && (!c.lines || !enabledLayers[c.lines])){
+            let id = o.area + ':' + o.name;
+            delete objects[id];
+          }
+        }
+
+        for(let o of Object.values(objects)) {
 
           // skip markers out of bounds (e.g. the whole start area of the red town in SIU is not painted on the map)
           let [[top,left],[bottom,right]] = mapBounds;

@@ -1882,6 +1882,13 @@
     "nospoiler": null,
     "lines": "dev"
   },
+  "_Pickaxe_C": {
+    "friendly": "Pickaxe",
+    "icon": "pickaxe_stone",
+    "layer": "extra",
+    "nospoiler": null,
+    "lines": "dev"
+  },
   "Lift1_C": {
     "friendly": "Lift 1",
     "icon": "lift",
@@ -1978,6 +1985,16 @@
     "layer": "dev",
     "nospoiler": null,
     "lines": "dev",
+    "friendly_key": "",
+    "description": "",
+    "description_key": ""
+  },
+  "SL:MinecraftBrick_C": {
+    "friendly": "Minecraft Brick",
+    "icon": "brick",
+    "layer": "extra",
+    "nospoiler": null,
+    "lines": "extra",
     "friendly_key": "",
     "description": "",
     "description_key": ""

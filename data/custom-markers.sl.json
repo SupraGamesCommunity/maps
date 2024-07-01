@@ -633,6 +633,455 @@
     "name": "MetalBall7_209",
     "type": "Hide:MetalBall_C",
     "area": "Map"
+  },
+  {
+    "name": "RingRusty10",
+    "type": "_Pickaxe_C",
+    "area": "Map"
+  },
+  {
+    "name": "RingRusty11",
+    "type": "_Pickaxe_C",
+    "area": "Map"
+  },
+  {
+    "name": "RingRusty12",
+    "type": "_Pickaxe_C",
+    "area": "Map"
+  },
+  {
+    "name": "RingRusty13",
+    "type": "_Pickaxe_C",
+    "area": "Map"
+  },
+  {
+    "name": "RingRusty14",
+    "type": "_Pickaxe_C",
+    "area": "Map"
+  },
+  {
+    "name": "RingRusty15",
+    "type": "_Pickaxe_C",
+    "area": "Map"
+  },
+  {
+    "name": "RingRusty16",
+    "type": "_Pickaxe_C",
+    "area": "Map"
+  },
+  {
+    "name": "Brick1682",
+    "type": "SL:MinecraftBrick_C",
+    "area": "Map"
+  },
+  {
+    "name": "Brick2137",
+    "type": "SL:MinecraftBrick_C",
+    "area": "Map"
+  },
+  {
+    "name": "MinecraftBrick10",
+    "type": "SL:MinecraftBrick_C",
+    "area": "Map"
+  },
+  {
+    "name": "MinecraftBrick11",
+    "type": "SL:MinecraftBrick_C",
+    "area": "Map"
+  },
+  {
+    "name": "MinecraftBrick12",
+    "type": "SL:MinecraftBrick_C",
+    "area": "Map"
+  },
+  {
+    "name": "MinecraftBrick13",
+    "type": "SL:MinecraftBrick_C",
+    "area": "Map"
+  },
+  {
+    "name": "MinecraftBrick14_13312",
+    "type": "SL:MinecraftBrick_C",
+    "area": "Map"
+  },
+  {
+    "name": "MinecraftBrick15",
+    "type": "SL:MinecraftBrick_C",
+    "area": "Map"
+  },
+  {
+    "name": "MinecraftBrick16_2",
+    "type": "SL:MinecraftBrick_C",
+    "area": "Map"
+  },
+  {
+    "name": "MinecraftBrick17",
+    "type": "SL:MinecraftBrick_C",
+    "area": "Map"
+  },
+  {
+    "name": "MinecraftBrick19",
+    "type": "SL:MinecraftBrick_C",
+    "area": "Map"
+  },
+  {
+    "name": "MinecraftBrick2",
+    "type": "SL:MinecraftBrick_C",
+    "area": "Map"
+  },
+  {
+    "name": "MinecraftBrick20",
+    "type": "SL:MinecraftBrick_C",
+    "area": "Map"
+  },
+  {
+    "name": "MinecraftBrick21",
+    "type": "SL:MinecraftBrick_C",
+    "area": "Map"
+  },
+  {
+    "name": "MinecraftBrick22",
+    "type": "SL:MinecraftBrick_C",
+    "area": "Map"
+  },
+  {
+    "name": "MinecraftBrick23",
+    "type": "SL:MinecraftBrick_C",
+    "area": "Map"
+  },
+  {
+    "name": "MinecraftBrick24",
+    "type": "SL:MinecraftBrick_C",
+    "area": "Map"
+  },
+  {
+    "name": "MinecraftBrick25",
+    "type": "SL:MinecraftBrick_C",
+    "area": "Map"
+  },
+  {
+    "name": "MinecraftBrick26",
+    "type": "SL:MinecraftBrick_C",
+    "area": "Map"
+  },
+  {
+    "name": "MinecraftBrick27",
+    "type": "SL:MinecraftBrick_C",
+    "area": "Map"
+  },
+  {
+    "name": "MinecraftBrick28_6",
+    "type": "SL:MinecraftBrick_C",
+    "area": "Map"
+  },
+  {
+    "name": "MinecraftBrick29",
+    "type": "SL:MinecraftBrick_C",
+    "area": "Map"
+  },
+  {
+    "name": "MinecraftBrick3",
+    "type": "SL:MinecraftBrick_C",
+    "area": "Map"
+  },
+  {
+    "name": "MinecraftBrick30",
+    "type": "SL:MinecraftBrick_C",
+    "area": "Map"
+  },
+  {
+    "name": "MinecraftBrick31",
+    "type": "SL:MinecraftBrick_C",
+    "area": "Map"
+  },
+  {
+    "name": "MinecraftBrick32",
+    "type": "SL:MinecraftBrick_C",
+    "area": "Map"
+  },
+  {
+    "name": "MinecraftBrick33_13",
+    "type": "SL:MinecraftBrick_C",
+    "area": "Map"
+  },
+  {
+    "name": "MinecraftBrick34",
+    "type": "SL:MinecraftBrick_C",
+    "area": "Map"
+  },
+  {
+    "name": "MinecraftBrick35",
+    "type": "SL:MinecraftBrick_C",
+    "area": "Map"
+  },
+  {
+    "name": "MinecraftBrick36_2",
+    "type": "SL:MinecraftBrick_C",
+    "area": "Map"
+  },
+  {
+    "name": "MinecraftBrick37",
+    "type": "SL:MinecraftBrick_C",
+    "area": "Map"
+  },
+  {
+    "name": "MinecraftBrick38",
+    "type": "SL:MinecraftBrick_C",
+    "area": "Map"
+  },
+  {
+    "name": "MinecraftBrick39",
+    "type": "SL:MinecraftBrick_C",
+    "area": "Map"
+  },
+  {
+    "name": "MinecraftBrick40",
+    "type": "SL:MinecraftBrick_C",
+    "area": "Map"
+  },
+  {
+    "name": "MinecraftBrick41",
+    "type": "SL:MinecraftBrick_C",
+    "area": "Map"
+  },
+  {
+    "name": "MinecraftBrick42",
+    "type": "SL:MinecraftBrick_C",
+    "area": "Map"
+  },
+  {
+    "name": "MinecraftBrick43",
+    "type": "SL:MinecraftBrick_C",
+    "area": "Map"
+  },
+  {
+    "name": "MinecraftBrick44",
+    "type": "SL:MinecraftBrick_C",
+    "area": "Map"
+  },
+  {
+    "name": "MinecraftBrick45",
+    "type": "SL:MinecraftBrick_C",
+    "area": "Map"
+  },
+  {
+    "name": "MinecraftBrick46",
+    "type": "SL:MinecraftBrick_C",
+    "area": "Map"
+  },
+  {
+    "name": "MinecraftBrick47",
+    "type": "SL:MinecraftBrick_C",
+    "area": "Map"
+  },
+  {
+    "name": "MinecraftBrick49",
+    "type": "SL:MinecraftBrick_C",
+    "area": "Map"
+  },
+  {
+    "name": "MinecraftBrick4_6204",
+    "type": "SL:MinecraftBrick_C",
+    "area": "Map"
+  },
+  {
+    "name": "MinecraftBrick5",
+    "type": "SL:MinecraftBrick_C",
+    "area": "Map"
+  },
+  {
+    "name": "MinecraftBrick50",
+    "type": "SL:MinecraftBrick_C",
+    "area": "Map"
+  },
+  {
+    "name": "MinecraftBrick51",
+    "type": "SL:MinecraftBrick_C",
+    "area": "Map"
+  },
+  {
+    "name": "MinecraftBrick52",
+    "type": "SL:MinecraftBrick_C",
+    "area": "Map"
+  },
+  {
+    "name": "MinecraftBrick6_6497",
+    "type": "SL:MinecraftBrick_C",
+    "area": "Map"
+  },
+  {
+    "name": "MinecraftBrick7_6500",
+    "type": "SL:MinecraftBrick_C",
+    "area": "Map"
+  },
+  {
+    "name": "MinecraftBrick8",
+    "type": "SL:MinecraftBrick_C",
+    "area": "Map"
+  },
+  {
+    "name": "MinecraftBrick9",
+    "type": "SL:MinecraftBrick_C",
+    "area": "Map"
+  },
+  {
+    "name": "MinecraftBrick_59",
+    "type": "SL:MinecraftBrick_C",
+    "area": "Map"
+  },
+  {
+    "name": "Red_brick_10028",
+    "type": "SL:MinecraftBrick_C",
+    "area": "Map"
+  },
+  {
+    "name": "Red_brick_10097",
+    "type": "SL:MinecraftBrick_C",
+    "area": "Map"
+  },
+  {
+    "name": "Red_brick_10100",
+    "type": "SL:MinecraftBrick_C",
+    "area": "Map"
+  },
+  {
+    "name": "Red_brick_10167",
+    "type": "SL:MinecraftBrick_C",
+    "area": "Map"
+  },
+  {
+    "name": "Red_brick_10170",
+    "type": "SL:MinecraftBrick_C",
+    "area": "Map"
+  },
+  {
+    "name": "Red_brick_10179",
+    "type": "SL:MinecraftBrick_C",
+    "area": "Map"
+  },
+  {
+    "name": "Red_brick_11375",
+    "type": "SL:MinecraftBrick_C",
+    "area": "Map"
+  },
+  {
+    "name": "Red_brick_11558",
+    "type": "SL:MinecraftBrick_C",
+    "area": "Map"
+  },
+  {
+    "name": "Red_brick_11563",
+    "type": "SL:MinecraftBrick_C",
+    "area": "Map"
+  },
+  {
+    "name": "Red_brick_14112",
+    "type": "SL:MinecraftBrick_C",
+    "area": "Map"
+  },
+  {
+    "name": "Red_brick_1427",
+    "type": "SL:MinecraftBrick_C",
+    "area": "Map"
+  },
+  {
+    "name": "Red_brick_1576",
+    "type": "SL:MinecraftBrick_C",
+    "area": "Map"
+  },
+  {
+    "name": "Red_brick_1697",
+    "type": "SL:MinecraftBrick_C",
+    "area": "Map"
+  },
+  {
+    "name": "Red_brick_178",
+    "type": "SL:MinecraftBrick_C",
+    "area": "Map"
+  },
+  {
+    "name": "Red_brick_1802",
+    "type": "SL:MinecraftBrick_C",
+    "area": "Map"
+  },
+  {
+    "name": "Red_brick_2502",
+    "type": "SL:MinecraftBrick_C",
+    "area": "Map"
+  },
+  {
+    "name": "Red_brick_3711",
+    "type": "SL:MinecraftBrick_C",
+    "area": "Map"
+  },
+  {
+    "name": "Red_brick_3712",
+    "type": "SL:MinecraftBrick_C",
+    "area": "Map"
+  },
+  {
+    "name": "Red_brick_3713",
+    "type": "SL:MinecraftBrick_C",
+    "area": "Map"
+  },
+  {
+    "name": "Red_brick_3719",
+    "type": "SL:MinecraftBrick_C",
+    "area": "Map"
+  },
+  {
+    "name": "Red_brick_3720",
+    "type": "SL:MinecraftBrick_C",
+    "area": "Map"
+  },
+  {
+    "name": "Red_brick_3721",
+    "type": "SL:MinecraftBrick_C",
+    "area": "Map"
+  },
+  {
+    "name": "Red_brick_3723",
+    "type": "SL:MinecraftBrick_C",
+    "area": "Map"
+  },
+  {
+    "name": "Red_brick_3724",
+    "type": "SL:MinecraftBrick_C",
+    "area": "Map"
+  },
+  {
+    "name": "Red_brick_3725",
+    "type": "SL:MinecraftBrick_C",
+    "area": "Map"
+  },
+  {
+    "name": "Red_brick_3726",
+    "type": "SL:MinecraftBrick_C",
+    "area": "Map"
+  },
+  {
+    "name": "Red_brick_3728",
+    "type": "SL:MinecraftBrick_C",
+    "area": "Map"
+  },
+  {
+    "name": "Red_brick_3730",
+    "type": "SL:MinecraftBrick_C",
+    "area": "Map"
+  },
+  {
+    "name": "Red_brick_3733",
+    "type": "SL:MinecraftBrick_C",
+    "area": "Map"
+  },
+  {
+    "name": "Red_brick_3779",
+    "type": "SL:MinecraftBrick_C",
+    "area": "Map"
+  },
+  {
+    "name": "Red_brick_6",
+    "type": "SL:MinecraftBrick_C",
+    "area": "Map"
   }
-  
 ]

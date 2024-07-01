@@ -17574,7 +17574,15 @@
     "area": "Map",
     "lat": 43700.3203125,
     "lng": -64201.8671875,
-    "alt": -971.1793823242188
+    "alt": -971.1793823242188,
+    "linetype": "trigger",
+    "targets": [
+      {
+        "x": -64183.47265625,
+        "y": 43805.984375,
+        "z": -946.9241943359375
+      }
+    ]
   },
   {
     "name": "PedestalButton4_2",
@@ -22486,6 +22494,134 @@
     "lat": -13454.685546875,
     "lng": -15240.80859375,
     "alt": -1175.3546142578125
+  },
+  {
+    "name": "RingRusty10",
+    "type": "RingRusty_C",
+    "area": "Map",
+    "lat": 55256.48046875,
+    "lng": -67850.28125,
+    "alt": 586.8999633789062
+  },
+  {
+    "name": "RingRusty11",
+    "type": "RingRusty_C",
+    "area": "Map",
+    "lat": 41786.57421875,
+    "lng": -54039.90234375,
+    "alt": 2336.08935546875
+  },
+  {
+    "name": "RingRusty12",
+    "type": "RingRusty_C",
+    "area": "Map",
+    "lat": 52686.7734375,
+    "lng": -68606.8046875,
+    "alt": 672.634765625
+  },
+  {
+    "name": "RingRusty13",
+    "type": "RingRusty_C",
+    "area": "Map",
+    "lat": 56269.8046875,
+    "lng": -43832.2890625,
+    "alt": 3298.658203125
+  },
+  {
+    "name": "RingRusty14",
+    "type": "RingRusty_C",
+    "area": "Map",
+    "lat": 43805.984375,
+    "lng": -64183.47265625,
+    "alt": -946.9241943359375
+  },
+  {
+    "name": "RingRusty15",
+    "type": "RingRusty_C",
+    "area": "Map",
+    "lat": -34506.45703125,
+    "lng": -3472.741455078125,
+    "alt": 8.688525199890137
+  },
+  {
+    "name": "RingRusty16",
+    "type": "RingRusty_C",
+    "area": "Map",
+    "lat": 54870.359375,
+    "lng": -68521.4609375,
+    "alt": 1680.482421875
+  },
+  {
+    "name": "RingRusty18",
+    "type": "RingRusty_C",
+    "area": "Map",
+    "lat": 24076.013671875,
+    "lng": 27539.455078125,
+    "alt": 1320.7578125
+  },
+  {
+    "name": "RingRusty2_502",
+    "type": "RingRusty_C",
+    "area": "Map",
+    "lat": -11984.3017578125,
+    "lng": -12781.6484375,
+    "alt": -1684.6943359375
+  },
+  {
+    "name": "RingRusty3_588",
+    "type": "RingRusty_C",
+    "area": "Map",
+    "lat": -11842.8212890625,
+    "lng": -12800.4228515625,
+    "alt": -1682.4339599609375
+  },
+  {
+    "name": "RingRusty4",
+    "type": "RingRusty_C",
+    "area": "Map",
+    "lat": -11556.833984375,
+    "lng": -12774.2705078125,
+    "alt": -1695.8541259765625
+  },
+  {
+    "name": "RingRusty5",
+    "type": "RingRusty_C",
+    "area": "Map",
+    "lat": -50192.58984375,
+    "lng": -50886.16015625,
+    "alt": -1691.726806640625
+  },
+  {
+    "name": "RingRusty6",
+    "type": "RingRusty_C",
+    "area": "Map",
+    "lat": -49537.73828125,
+    "lng": -51064.94140625,
+    "alt": -1779.3817138671875
+  },
+  {
+    "name": "RingRusty7",
+    "type": "RingRusty_C",
+    "area": "Map",
+    "lat": -50205.484375,
+    "lng": -51193.28515625,
+    "alt": -1779.3817138671875
+  },
+  {
+    "name": "RingRusty8",
+    "type": "RingRusty_C",
+    "area": "Map",
+    "lat": -49329.28125,
+    "lng": -51152.26953125,
+    "alt": -1779.3817138671875
+  },
+  {
+    "name": "RingRusty9_734",
+    "type": "RingRusty_C",
+    "area": "Map",
+    "lat": -9825.3896484375,
+    "lng": -15712.447265625,
+    "alt": -1443.1859130859375
   },
   {
     "name": "SecretFound100",
