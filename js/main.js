@@ -1058,11 +1058,6 @@ const p = -Math.log2(s0) / z1;
 function getIconSize(size, zoom) {
   return Math.round(size * Math.pow(2, zoom * p) * s0);;
 }
-  //Original solution
-  //let scaleForZoom = [0.5,0.5,0.75,1,1,1,1.5,1.5,2];
-  //let scaleForZoom = [0.5,0.63,0.79,1,1.26,1.59,2,2.52,3.17]
-  //zoom = zoom < 0 ? 0 : zoom < scaleForZoom.length ? zoom : scaleForZoom.length-1;
-  //return Math.round(size * scaleForZoom[zoom]);
 
 // Returns leaflet object corresponding to icon base name + default size
 function getIcon(icon, size=32) {
@@ -1174,31 +1169,6 @@ function markItems() {
     }
     jumppadArrowUpdateFound(id, true);
   }
-/*
-  // filter by settings.searchText. caching is unreliable, just perform a full search here
-  //let lookup = {}
-  if (settings.searchText && searchControl) {
-    for (const o of Object.values(searchControl._filterData(settings.searchText, searchControl._recordsFromLayer()))) {
-      let layerId = o.layer.options.layerId; 
-      if(!settings.activeLayers[layerId]){
-        // reveal layers on filter
-        layers[o.layer.options.layerId].addTo(map);
-      }
-      //lookup[o.layer.options.alt] = true;
-    }
-  }
-*/
-/*  // While search is active hide only show markers found by search
-  [].forEach.call(document.querySelectorAll('img.leaflet-marker-icon, path'), function(div) {
-    if (div.alt!='playerMarker') {
-      let alt = div.getAttribute('alt');
-      if (!settings.searchText || lookup[alt]) {
-        div.classList.remove('hidden');
-      } else {
-        div.classList.add('hidden');
-      }
-    }
-  });*/
 }
 
 function unmarkItems() {
@@ -1348,7 +1318,6 @@ window.loadSaveFile = function () {
 
     for (let o of loadedSave.Properties) {
       if (o.name == 'Player Position' && playerMarker) {
-        //let c = [0,0,0]
         let p = o.value;
 
         if (o.value.type=='Transform' && o.value['Translation']) {
@@ -1357,7 +1326,6 @@ window.loadSaveFile = function () {
 
         if (p && p.x && p.y) {
           var latlng = new L.LatLng(p.y, p.x);
-          //console.log('setting player position from file', mapId, latlng);
           playerMarker.setLatLng(latlng);
           settings.playerPosition = [p.y, p.x, p.z];
           [playerMarker.options.o['lat'], playerMarker.options.o['lng'], playerMarker.options.o['alt']] = settings.playerPosition;
@@ -1384,7 +1352,6 @@ window.loadSaveFile = function () {
 }
 
 window.onhashchange = function(e) { 
-  //console.log(location.hash)
   if (location.hash.length > 1 && map) {
     let p = map.getCenter();
     mapParam = {mapId:mapId, lat:Math.round(p.lat), lng:Math.round(p.lng), zoom:map.getZoom()};
