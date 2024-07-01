@@ -154,7 +154,7 @@ def export_class_loc(cache_dir):
     game_classes = read_game_classes();
 
     for game in ['sl', 'siu']:
-        path = os.environ.get(cache_dir, 'blueprints.'+game+'.json')
+        path = os.path.join(cache_dir, 'blueprints.'+game+'.json')
         blueprints = json.load(open(path, 'r'))
 
         def optKey(l, cls, k, v):
@@ -187,7 +187,7 @@ def export_class_loc(cache_dir):
         print("Writing loc data to gameClasses.json...")
         json.dump(game_classes, f, indent = 2)
 
-def export_loc_files():
+def export_loc_files(cache_dir):
 
     # Merge custom-loc.json into gameClasses.json
     print('Merging custom-loc.json into gameClasses.json...')
@@ -219,8 +219,8 @@ def export_loc_files():
     print('Writing loc files to data directory')
     for loc in loc_names:
         newlocstr = {}
-        for siu in ['', 'SIU']:
-            fn = f'../LOC/Supraland{siu}/Content/Localization/Game/{loc}/Game.json'
+        for game in ['sl', 'siu']:
+            fn = os.path.join(cache_dir, f'LOC/{game}/{loc}/Game.json')
             locstr = json.load(open(fn, 'r', encoding='utf-8'))
             for k in locstr.keys():
                 if k in keys:
@@ -958,7 +958,7 @@ def main():
     elif args.textures:
         export_textures(args.game, args.cache_dir)
     elif args.loc:
-        export_loc_files()
+        export_loc_files(args.cache_dir)
     else:
         parser.print_help()
 
