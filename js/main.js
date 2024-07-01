@@ -885,10 +885,10 @@ function loadMap(id) {
 
           // add dynamic player marker on top of PlayerStart icon (moves with load save game) 
           if ((o.type == 'PlayerStart' || o.type == '_PlayerPosition') && !playerMarker) {
+            o.type = '_PlayerPosition';
             const pc = gameClasses[o.type];
             if(pc.layer && enabledLayers[pc.layer])
             {
-              o.type = '_PlayerPosition';
               const [icon, size] = getClassIcon(pc, mapId, o['variant']) || defaultIcon;
               playerStart = [o.lat, o.lng, o.alt];
               let title = `Player Position (${o.lng.toFixed(0)},${o.lat.toFixed(0)})`;
