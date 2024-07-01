@@ -1248,7 +1248,7 @@ window.loadSaveFile = function () {
     for (let section of ["ThingsToRemove", "ThingsToActivate", "ThingsToOpenForever"]) {
       for (let o of loadedSave.Properties) {
         const propertyMap = {
-          PlayerDoubleLoot: "Map:Juicer2", 
+          PlayerDoubleHealth: "Map:Juicer2", 
           PlayerDrankHealthPlusJuice: "Map:Juicer3", 
           PlayerStrong: "Map:Juicer_286"
         }
