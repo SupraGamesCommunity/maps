@@ -1350,12 +1350,12 @@ window.loadSaveFile = function () {
       // The pipecaps appear more than once and can be found in ActorSaveDataStructs too but that section is larger.
       for(let p of loadedSave.Properties){
         if(p.name == 'ActorSaveData'){
-          const actorSaveData = p.values;
-          const str = new TextDecoder("latin1").decode(evt.target.result);
+          const actorSaveData = p.value.innerValue;
+          //const str = new TextDecoder("latin1").decode(evt.target.result);
           let re_match = new RegExp('(?:'+Object.keys(pipecaps).join('\x00)|(?:')+'\x00)', 'g');
           let m;
           let found = [];
-          while((m = re_match.exec(str)) != null){
+          while((m = re_match.exec(actorSaveData)) != null){
             let name = m[0].slice(0,-1);
             if(!found.includes(name)){
               found.push(name);
