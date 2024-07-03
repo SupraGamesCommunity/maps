@@ -52,13 +52,22 @@ const locStr = {
 
     // Fetch the language strings and process them
     init: async function(lang = null) {
+        this.setLanguage(lang);
+    },
 
+    // Set locale to specific language code (null for default from browser)
+    // Note: Retuns immediately but loads asynchronously
+    setLanguage: async function(lang = null){
         this.language = lang || getUserLanguage(this.locales);
 
         // Read the loc strings (we don't actually need english)
         const response = await fetch(`data/loc/locstr-${this.language}.json`);
         const json = await response.json();
         this.locstr = json;
+    },
+
+    getLanguage: function(){
+        return this.language;
     },
 
     // Return value for key or otherwise provided string
