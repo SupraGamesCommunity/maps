@@ -758,8 +758,9 @@ def cleanup_objects(game, classes_found, data_lookup, data):
         # Mark pads/pipes for which we haven't identified save information
         if o['type'] == 'Jumppad_C' and alt not in savedpadpipes['pads']:
             o['notsaved'] = True
-        if 'Pipesystem' in o['type'] and ((nc := o.get('nearest_cap')) and nc not in savedpadpipes['pipes'] or not nc):
-            o['notsaved]'] = True
+        if ('Pipesystem' in o['type'] and alt not in savedpadpipes['pipes'] and
+               ((nc := o.get('nearest_cap')) and nc not in savedpadpipes['pipes'] or not nc)):
+            o['notsaved'] = True
 
     # Convert piles of non-rotating coins to stack markers
     create_coinstacks(data_lookup, data)

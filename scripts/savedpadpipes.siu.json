@@ -1,5 +1,22 @@
 {
-  "pipes": [],
+  "pipes": [
+    "DLC2_Complete:Area2ShortcutPipe",
+    "DLC2_Complete:PipeToArea2",
+    "DLC2_Complete:PipeToArea1",
+    "DLC2_Complete:Area1_FastTravelPipe",
+    "DLC2_Complete:DLC3_upstairsPipe",
+    "DLC2_Complete:PipeToArea3",
+    "DLC2_Complete:PipeToAreaBoss2",
+    "DLC2_Complete:PipesystemNewDLC_CombatExitPipe",
+    "DLC2_Complete:PipeToArea4",
+    "DLC2_Complete:Pipesystem_Area4",
+    "DLC2_FinalBoss:BossArea_BaronPipe1",
+    "DLC2_FinalBoss:BossArea_BaronPipe2",
+    "DLC2_Complete:PipesystemNewDLC_FastTravelLavaToBeam1",
+    "DLC2_Complete:PipesystemNewDLC_FastTravelLavaToBeam2",
+    "DLC2_Complete:PipeToAreaSpecial",
+    "DLC2_Complete:RainbowTownShortcutPipe"
+  ],
   "pads": [
     "DLC2_Complete:Jumppad13",
     "DLC2_Complete:Jumppad10_2",
