@@ -1,54 +1,16 @@
-/*global gameClasses, defaultGameClass */
-
-
-function getUserLanguage(locales){
-    let language;
-    if (window.navigator.languages) {
-        language = window.navigator.languages[0];
-    } else {
-        language = window.navigator.userLanguage || window.navigator.language;
-    }
-    if(language){
-        if(locales.includes(language))
-            return language;
-        if(locales.includes(language.slice(0,2)))
-            return language.slice(0,2);
-    }
-    return 'en';
-}
-
-// Extract the number from class type name
-function getClassNumber(ctype){
-    const match = ctype.match(/\d+/g);
-    return match && match[0];
-}
-
-// Replace the form of template literals in the loc strings.
-function decodeLocString(ctype, str) {
-    return str.replace(/\{.*\}/g, (m) => {
-        let n = getClassNumber(ctype);
-        return {
-            '{damageNumber}': n,
-            '{percentage}': n,
-            '{duration}': n,
-            '{healthIncrease}': n,
-            '{regenCeiling}': '?',
-            '{#}': '?',
-        } [m];
-    }); 
-}
+/* global locStr */
 
 /* exported locStr */
 const locStr = {
 
     // These are the languages we support
-    locales: ['en', 'de', 'es', 'fi', 'fr', 'hu', 'it-IT', 'ja', 'ko', 'pl', 'pt-PT', 'ru', 'sr', 'tr', 'zh-Hans', 'zh-Hant'],
+    _locales: ['en', 'de', 'es', 'fi', 'fr', 'hu', 'it-IT', 'ja', 'ko', 'pl', 'pt-PT', 'ru', 'sr', 'tr', 'zh-Hans', 'zh-Hant'],
 
     // Current selected language
-    language: 'en',
+    _language: 'en',
 
     // Localisation strings (dictionary of key => string)
-    locstr: {},
+    _locStr: {},
 
     // Fetch the language strings and process them
     init: async function(lang = null) {
@@ -58,21 +20,37 @@ const locStr = {
     // Set locale to specific language code (null for default from browser)
     // Note: Retuns immediately but loads asynchronously
     setLanguage: async function(lang = null){
-        this.language = lang || getUserLanguage(this.locales);
+        this._language = lang || browser.getUserLanguage(this._locales);
 
         // Read the loc strings (we don't actually need english)
-        const response = await fetch(`data/loc/locstr-${this.language}.json`);
+        const response = await fetch(`data/loc/locstr-${this._language}.json`);
         const json = await response.json();
-        this.locstr = json;
+        this._locStr = json;
     },
 
+    // Current active language
     getLanguage: function(){
-        return this.language;
+        return this._language;
     },
 
     // Return value for key or otherwise provided string
     str: function(enStr, lkey){
-        return locStr && lkey && this.locstr[lkey] || enStr;
+        return this._locStr && lkey && this._locStr[lkey] || enStr;
+    },
+
+    // Replace the form of template literals in the loc strings.
+    decodeLocString: function (ctype, str) {
+        return str.replace(/\{.*\}/g, (m) => {
+            let n = ctype.firstInteger(ctype);
+            return {
+                '{damageNumber}': n,
+                '{percentage}': n,
+                '{duration}': n,
+                '{healthIncrease}': n,
+                '{regenCeiling}': '?',
+                '{#}': '?',
+            } [m];
+        }); 
     },
 
     // Returns loc str for object containing a 'dkey' and a 'dkey'_key
@@ -97,7 +75,7 @@ const locStr = {
             }
         }
         if(str) {
-            str = decodeLocString(ctype, str);
+            str = locStr.decodeLocString(ctype, str);
         }
         return str;
     },

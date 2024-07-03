@@ -38,7 +38,7 @@ let currentBuildReference;              // Current object we're editing in Build
 let currentBuildReferenceChanges = [];  // Current object's changed values before they are committed to the list
 let buildModeChangeList = [];           // Changes made in the current Build Mode session
 
-const skipConfirms = navigator.userAgent.includes('Code');
+const skipConfirms = browser.isCode;
 
 // Hard coded map data extracted from the games
 var maps = {
@@ -339,11 +339,10 @@ function loadMap(id) {
 
   // L.tileLayer.canvas() is much faster than L.tileLayer() but requires a L.TileLayer.Canvas plugin
   // canvas also fixes a visible line between tiles
-  // However on Firefox it makes the lines much worsel, so we choose based on which browser
-  const isFirefox = navigator.userAgent.toLowerCase().includes('firefox');
+  // However on Firefox it makes the lines much worse, so we choose based on which browser
 
   let baseLayer;
-  if(isFirefox)
+  if(browser.isFirefox)
     baseLayer = L.tileLayer(tilesDir+'/base/{z}/{x}/{y}.jpg', layerOptions).addTo(map);
   else
     baseLayer = L.tileLayer.canvas(tilesDir+'/base/{z}/{x}/{y}.jpg', layerOptions).addTo(map);
@@ -358,7 +357,7 @@ function loadMap(id) {
   // Add overlay image map layers 
   layerConfigs.forEachOfType(mapId, "tiles", (layerId, layerConfig) => {
     let layer;
-    if(isFirefox)
+    if(browser.isFirefox)
       layer = L.tileLayer(tilesDir+'/'+layerId+'/{z}/{x}/{y}.png', layerOptions);
     else
       layer = L.tileLayer.canvas(tilesDir+'/'+layerId+'/{z}/{x}/{y}.png', layerOptions);
