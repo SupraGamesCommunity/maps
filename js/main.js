@@ -1060,13 +1060,9 @@ function reloadMap(id) {
   }
 }
 
-// Equation: pow(2, zoom * (log2(y0) / z1)) * y0
-// z1 is the zoom level where we want scale to be 1:1 (so bigger it is the bigger icons are on higher zooms)
-// s0 is the scale factor when zoom is 0 (so bigger it is bgger icons are overall)
-const z1 = 3, s0 = 0.6;   // p = 0.33 for z1=3/s0=0.5; p=0.25 for z1=4/s0=0.5
-const p = -Math.log2(s0) / z1;
-function getIconSize(size, zoom) {
-  return Math.round(size * Math.pow(2, zoom * p) * s0);;
+// Returns icon size given current map zoom
+function getIconSize(size) {
+  return (size * map.getScaleForZoom()).toFixed();
 }
 
 // Returns leaflet object corresponding to icon base name + default size
@@ -1076,7 +1072,7 @@ function getIcon(icon, size=32) {
   if (!iconObj) {
     let iconOptions = {iconUrl: 'img/markers/'+icon+'.png', className:iconCls};
     if(map){
-      const s = getIconSize(size, map.getZoom());
+      const s = getIconSize(size);
       const c = s >> 1;
       Object.assign(iconOptions, {iconSize: [s, s], iconAnchor: [c, c], popupAnchor: [0, -c]});        
     }
@@ -1092,7 +1088,7 @@ function getIcon(icon, size=32) {
 function resizeIcons(force) {
   let zoom = map.getZoom();
   for(let [iconCls, iconData] of Object.entries(icons)){
-    let size = getIconSize(iconData.baseSize, zoom);
+    let size = getIconSize(iconData.baseSize);
     if(force || !iconData.size || iconData.size != size) {
       iconData.size = size;
       iconData.obj.options.popupAnchor = [0, -(size >> 1)];   // Top center relative to the marker icon center

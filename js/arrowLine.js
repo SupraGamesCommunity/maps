@@ -10,9 +10,6 @@ L.ArrowLine = L.Polygon.extend({
         shadowWidth: 2,     // width of shadow in pixels
         offset: 0,          // Offset from start position where arrow  should start
         endOffset: 0,       // Offset from end position where arrow tip should be
-        scaleZoom0: 0.6,    // Scale factor when zoom is 0
-        zoom1: 3,           // Zoom when scale should be 1:1 (set to -1 for no dynamic scaling)
-                            //   scale = Math.round(size * Math.pow(2, zoom * -Math.log2(s0) / z1) * s0)
         lineJoin: 'round'   // miter, round or bevel
 
         // fillColor/fillOpacity are colour and opacity of the line
@@ -35,7 +32,6 @@ L.ArrowLine = L.Polygon.extend({
         L.Util.setOptions(this, options);
 
         this._map = null;
-        this._scalePower = this._calcScalePower();
 
         this.options.fill = true;                                   // Assume we're drawing the line
         this.options.stroke = Boolean(options.shadowWidth);         // drawing shadow
@@ -45,8 +41,6 @@ L.ArrowLine = L.Polygon.extend({
         this.endLatLng = end;
 
         L.Polygon.prototype.initialize([start, end], this.options);
-        let bounds = this.getBounds();
-        let center = bounds.getCenter();
     },
 
     setArrow: function(arrow){
@@ -69,7 +63,7 @@ L.ArrowLine = L.Polygon.extend({
 
     _rebuildPolygon: function(){
         if(this._map) {
-            this.setStyle({ 'weight': this.options.shadowWidth * this._getScale(this._map.getZoom()) });
+            this.setStyle({ 'weight': this.options.shadowWidth * this._map.getScaleForZoom() });
             this.setLatLngs(this._buildArrowLine(this.startLatLng, this.endLatLng));
         }
     },
@@ -130,11 +124,11 @@ L.ArrowLine = L.Polygon.extend({
     _buildArrowLine: function(start, end) {
         const opts = this.options;
 
-        const startPt = this._map.latLngToContainerPoint(start, this._map.getZoom());
-        const endPt = this._map.latLngToContainerPoint(end, this._map.getZoom());
+        const startPt = this._map.latLngToContainerPoint(start);
+        const endPt = this._map.latLngToContainerPoint(end);
 
         // Get scale to apply to elements of line based on zoom
-        const scale = this._getScale(this._map.getZoom());
+        const scale = this._map.getScaleForZoom();
 
         // Unit vector along line, used to transform xy points in line space to point space
         // and length of line in unscaled units
