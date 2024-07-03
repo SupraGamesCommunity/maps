@@ -1327,6 +1327,51 @@ window.loadSaveFile = function () {
       }
     }
 
+    if(mapId == 'siu'){
+        // Explicit list of pipecaps that can be found in an SIU save file and the corresponding pipes
+        const pipecaps = {
+          'A1FastTravelPipeCap':  ['DLC2_Complete:Area1_FastTravelPipe'],
+          'A1FastTravelPipeCap2': ['DLC2_Complete:PipeToArea1'],
+          'A2FastTravelPipeCap':  ['DLC2_Complete:Area2ShortcutPipe'],
+          'A2FastTravelPipeCap2': ['DLC2_Complete:PipeToArea2'],
+          'A3FastTravelPipeCap':  ['DLC2_Complete:DLC3_upstairsPipe'],
+          'A3FastTravelPipeCap3': ['DLC2_Complete:PipeToArea3'],
+          'A4FastTravelPipeCap4': ['DLC2_Complete:PipeToArea4'],
+          'A4FastTravelPipeCap':  ['DLC2_Complete:Pipesystem_Area4'],
+          'A5FastTravelPipe_ExitCombatFinale': ['DLC2_Complete:PipeToAreaBoss2', 'DLC2_Complete:PipesystemNewDLC_CombatExitPipe'],
+          'A5FastTravelPipeCap5': ['DLC2_Complete:PipeToAreaSpecial', 'DLC2_Complete:RainbowTownShortcutPipe'],
+          'PipeCap_FastTravelLavaToBeam1': ['DLC2_Complete:PipesystemNewDLC_FastTravelLavaToBeam1'],
+          'PipeCap_FastTravelLavaToBeam2': ['DLC2_Complete:PipesystemNewDLC_FastTravelLavaToBeam2'],
+          'PipeCap12_2': ['DLC2_FinalBoss:BossArea_BaronPipe1', 'DLC2_FinalBoss:BossArea_BaronPipe2'],
+      };
+  
+      // At the moment we don't need the area as the PipeCap_C names are unique to SIU, however they can be found
+      // 50-60 characters earlier in the data, potentially using '/Maps/{area}\..*?PersistentLevel\.(?:{pipe cap name})'
+      // The pipecaps appear more than once and can be found in ActorSaveDataStructs too but that section is larger.
+      for(let p of loadedSave.Properties){
+        if(p.name == 'ActorSaveData'){
+          const actorSaveData = p.values;
+          const str = new TextDecoder("latin1").decode(evt.target.result);
+          let re_match = new RegExp('(?:'+Object.keys(pipecaps).join('\x00)|(?:')+'\x00)', 'g');
+          let m;
+          let found = [];
+          while((m = re_match.exec(str)) != null){
+            let name = m[0].slice(0,-1);
+            if(!found.includes(name)){
+              found.push(name);
+              pipecaps[name].forEach((id) => {
+                markId(id);
+                if(id in saveMap){
+                  markId(saveMap[id]);
+                }
+              });
+            }
+          }
+          break;
+        }
+      }
+    }
+
     for (let o of loadedSave.Properties) {
       if (o.name == 'Player Position' && playerMarker) {
         let p = o.value;
