@@ -56,7 +56,7 @@ function getObjectIcon(object, game, variant = null)
 {
     variant = variant ? variant : object.variant;
     if(object.icon)
-        return decodeIconName(object.icon, variant);
+        return decodeIconName(object.icon, game, variant);
     else
         return getClassIcon(object.type, game, variant)    
 }
