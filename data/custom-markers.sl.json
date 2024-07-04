@@ -369,6 +369,14 @@
     "twoway": 2
   },
   {
+    "name": "Jumppad71_9499",
+    "target": {
+      "x": -38274.1738734555,
+      "y": 61237.2265625,
+      "z": 4017.8192135128766
+    }
+  },
+  {
     "name": "Jumppad89",
     "type": "FT:Jumppad_C",
     "area": "Map"
