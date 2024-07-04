@@ -233,6 +233,9 @@ const cmpNum = (a,b)=> b[1]!=a[1] ? (b[1]-a[1]) : a[0].localeCompare(b[0]);
 const cmpAlphaNum = (a,b) => a[0].localeCompare(b[0], 'en', { numeric: true });
 const capitalize = s => s[0].toUpperCase()+s.slice(1);
 
+let mouseMoved = false;
+document.addEventListener('mousedown', function(event) {mouseMoved = false; });
+document.addEventListener('mousemove', function(event){mouseMoved = true;});
 
 function getViewURL() {
   let base = window.location.href.replace(/#.*$/,'');
@@ -444,6 +447,7 @@ function loadMarkers(j) {
 
     marker.setInfoWindow({autoCloseOn: 'click'}).on('click', popupOnClick)
     .on('contextmenu', e=> {
+      if (mouseMoved) return;
       let o = e.target.properties;
       let id = o.area + ':' + o.name;
       settings.markedItems[id] = !settings.markedItems[id];
