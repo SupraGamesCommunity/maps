@@ -40,7 +40,7 @@ L.ArrowLine = L.Polygon.extend({
         this.startLatLng = start;
         this.endLatLng = end;
 
-        L.Polygon.prototype.initialize([start, end], this.options);
+        L.Polygon.prototype.initialize.call(this, [start, end], this.options);
     },
 
     setArrow: function(arrow){

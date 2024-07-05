@@ -68,7 +68,7 @@ String.prototype.after = function(str) {
 
 // Returns first integer string found within string (null if there isn't one)
 String.prototype.firstInteger = function(){
-    const match = this.match(/\d+/g);
+    const match = this.match(/\d+/);
     return match && match[0];
 }
 

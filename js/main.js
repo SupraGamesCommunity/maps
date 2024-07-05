@@ -294,9 +294,8 @@ function loadMap(id) {
     settings.zoom = map.getZoom();
     saveSettings();
     if(e.type == 'zoomend'){
-      resizeIcons();
-    updatePolylines();
-    markItems();
+      updatePolylines();
+      markItems();
     }
 });
 
@@ -323,7 +322,6 @@ function loadMap(id) {
     updatePolylines();
     markItems();
     saveSettings();
-    resizeIcons(true);
 
     // let's maybe clear search on layer change just to avoid confusion
     // clearFilter(); // can't really do that, search also opens layers
@@ -836,35 +834,27 @@ function loadMap(id) {
           let nospoiler = c.nospoiler != 'shop' || (o.cost && o.price_type != 7) ? c.nospoiler : 'collectable';
           if(nospoiler && enabledLayers[nospoiler])
           {
-            const layer = nospoiler
-            const layerConfig = layerConfigs.get(layer);
-            const [icon, size] = decodeIconName(layerConfig.defaultIcon || defaultIcon, mapId, o.variant);
-            const marker = L.marker(start, {icon: getIcon(icon, size), zIndexOffset: layerConfigs.getZIndexOffset(layer), title: title, alt: alt, o:o, layerId:layer})
-              .addTo(layers[layer]).bindPopup(text).on('popupopen', onPopupOpen).on('contextmenu', onContextMenu);
+            const icon = L.mapIcon({iconName: layerConfigs.get(nospoiler).defaultIcon, variant: o.variant, game:  mapId}).addTo(map);
+            const marker = L.marker(start, {icon: icon, zIndexOffset: layerConfigs.getZIndexOffset(nospoiler), title: title, alt: alt, o:o, layerId:nospoiler})
+              .addTo(layers[nospoiler]).bindPopup(text).on('popupopen', onPopupOpen).on('contextmenu', onContextMenu);
             markers[alt] = markers[alt] ? [...markers[alt], marker] : [marker];
           }
   
           // If there is a normal layer specified then add it to that
           if(c.layer && enabledLayers[c.layer])
           {
-            const layer = c.layer
-            const layerConfig = layerConfigs.get(layer);
-            const [icon, size] = decodeIconName((o.icon || c.icon || layerConfig.defaultIcon || defaultIcon), mapId, o.variant);
-
-            const marker = L.marker(start, {icon: getIcon(icon, size), zIndexOffset: layerConfigs.getZIndexOffset(layer), title: title, alt: alt, o:o, layerId:layer })
-              .addTo(layers[layer]).bindPopup(text).on('popupopen', onPopupOpen).on('contextmenu', onContextMenu);
+            const icon = L.mapIcon({iconName: o.icon || c.icon || layerConfigs.get(c.layer).defaultIcon, variant: o.variant, game: mapId}).addTo(map);
+            const marker = L.marker(start, {icon: icon, zIndexOffset: layerConfigs.getZIndexOffset(c.layer), title: title, alt: alt, o:o, layerId:c.layer })
+              .addTo(layers[c.layer]).bindPopup(text).on('popupopen', onPopupOpen).on('contextmenu', onContextMenu);
             markers[alt] = markers[alt] ? [...markers[alt], marker] : [marker];
             }
 
           // Deal with layer for whatever it spawns. Normally things that spawn something don't have a spoiler layer
           if(sc && sc.layer && enabledLayers[sc.layer])
           {
-            const layer = sc.layer
-            const layerConfig = layerConfigs.get(layer);
-            const [icon, size] = decodeIconName((o.icon || sc.icon || layerConfig.defaultIcon || defaultIcon), mapId, o.variant);
-
-            const marker = L.marker(start, {icon: getIcon(icon, size), zIndexOffset: layerConfigs.getZIndexOffset(layer), title: title, alt: alt, o:o, layerId:layer})
-              .addTo(layers[layer]).bindPopup(text).on('popupopen', onPopupOpen).on('contextmenu', onContextMenu);
+            const icon = L.mapIcon({iconName: o.icon || sc.icon || layerConfigs.get(sc.layer).defaultIcon, variant: o.variant, game: mapId}).addTo(map);
+            const marker = L.marker(start, {icon: icon, zIndexOffset: layerConfigs.getZIndexOffset(sc.layer), title: title, alt: alt, o:o, layerId:sc.layer})
+              .addTo(layers[sc.layer]).bindPopup(text).on('popupopen', onPopupOpen).on('contextmenu', onContextMenu);
             markers[alt] = markers[alt] ? [...markers[alt], marker] : [marker];
           }
 
@@ -907,7 +897,7 @@ function loadMap(id) {
             const pc = gameClasses[o.type];
             if(pc.layer && enabledLayers[pc.layer])
             {
-              const [icon, size] = getClassIcon(pc, mapId, o['variant']) || defaultIcon;
+              const icon = L.mapIcon({iconName: pc.icon, variant: o.variant, game: mapId}).addTo(map);
               playerStart = [o.lat, o.lng, o.alt];
               let title = `Player Position (${o.lng.toFixed(0)},${o.lat.toFixed(0)})`;
               let t = new L.LatLng(o.lat, o.lng);
@@ -918,7 +908,7 @@ function loadMap(id) {
               else {
                 settings.playerPosition = playerStart;
               }
-              playerMarker = L.marker([t.lat, t.lng], {icon: getIcon(icon,size), zIndexOffset: layerConfigs.backZIndexOffset, draggable: false, title: title, alt:'playerMarker', o:o, layerId:pc.layer})
+              playerMarker = L.marker([t.lat, t.lng], {icon: icon, zIndexOffset: layerConfigs.backZIndexOffset, draggable: false, title: title, alt:'playerMarker', o:o, layerId:pc.layer})
                 .bindPopup().on('popupopen', onPopupOpen).addTo(layers[pc.layer]);
             }
           } // end of player marker
@@ -1057,45 +1047,6 @@ function reloadMap(id) {
     reloading = true;
     map.fireEvent('baselayerchange',{layer:{mapId:id}});
     setTimeout(function(){ reloading = false; }, 250);
-  }
-}
-
-// Returns icon size given current map zoom
-function getIconSize(size) {
-  return (size * map.getScaleForZoom()).toFixed();
-}
-
-// Returns leaflet object corresponding to icon base name + default size
-function getIcon(icon, size=32) {
-  const iconCls = icon + size.toString();
-  let iconObj = icons[iconCls] && icons[iconCls].obj;
-  if (!iconObj) {
-    let iconOptions = {iconUrl: 'img/markers/'+icon+'.png', className:iconCls};
-    if(map){
-      const s = getIconSize(size);
-      const c = s >> 1;
-      Object.assign(iconOptions, {iconSize: [s, s], iconAnchor: [c, c], popupAnchor: [0, -c]});        
-    }
-    // We set the iconSize and iconAnchor via CSS in resizeIcons, when we also set the popupAnchor
-    iconObj = L.icon(iconOptions);
-
-    // We will also set size entry to the zoom based size of the icon in resizeIcons
-    icons[iconCls] = {obj: iconObj, baseSize: size};
-  }
-  return iconObj;
-}
-
-function resizeIcons(force) {
-  let zoom = map.getZoom();
-  for(let [iconCls, iconData] of Object.entries(icons)){
-    let size = getIconSize(iconData.baseSize);
-    if(force || !iconData.size || iconData.size != size) {
-      iconData.size = size;
-      iconData.obj.options.popupAnchor = [0, -(size >> 1)];   // Top center relative to the marker icon center
-      let s = size.toString() + 'px';
-      let c = '-' + (size >> 1).toString() + 'px';
-      $('#map .'+iconCls).css({'width':s, 'height':s, 'margin-left':c, 'margin-top':c});
-    }
   }
 }
 
@@ -1432,7 +1383,7 @@ window.onload = function(event) {
   // clear location hash
   history.pushState('', document.title, window.location.pathname + window.location.search);
 
-  Promise.all([gameClassesInit(), layerConfigs.init(), locStr.init()])
+  Promise.all([gameClassesInit(), layerConfigs.init(), locStr.init(), Icons.init()])
     .then(() => {
       mapId = mapParam.mapId || localData.mapId || 'sl';
 

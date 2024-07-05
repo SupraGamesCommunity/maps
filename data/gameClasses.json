@@ -1378,7 +1378,7 @@
   },
   "_PlayerPosition": {
     "friendly": "Player Position",
-    "icon": "player:v48",
+    "icon": "player:vx1.2",
     "layer": "_map",
     "nospoiler": null,
     "lines": "dev"
