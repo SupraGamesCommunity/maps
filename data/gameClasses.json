@@ -1251,7 +1251,7 @@
   },
   "Coin_C": {
     "friendly": "Coin",
-    "icon": "coin:16",
+    "icon": "coin:x0.5",
     "layer": "coin",
     "nospoiler": null,
     "lines": "dev",
@@ -1870,7 +1870,7 @@
   },
   "MetalBall_C": {
     "friendly": "Metal Ball",
-    "icon": "metal_ball:24",
+    "icon": "metal_ball:x0.75",
     "layer": "extra",
     "nospoiler": null,
     "lines": "dev"
@@ -2008,7 +2008,7 @@
   },
   "SecretFound_C": {
     "friendly": "Secret Found",
-    "icon": "secret:24",
+    "icon": "secret:x0.75",
     "layer": "extra",
     "nospoiler": null,
     "lines": "dev"

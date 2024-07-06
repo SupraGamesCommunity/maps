@@ -104,8 +104,6 @@ class Icons {
     }
 }
 
-var myZoomCount = 0;
-
 // These options are provided to L.MapIcon.Initialize (and Icons.create / L.mapIcon):
 //
 // iconName:      name of icon with optional flags
@@ -151,7 +149,6 @@ L.MapIcon = L.Icon.extend ({
         this._mapAdded = true;
 
         map.on('zoomend overlayadd', this._resizeEvent, this);
-
         this._resize(map);
         
         return this;
@@ -191,7 +188,6 @@ L.MapIcon = L.Icon.extend ({
             });
 
             this._iconRefresh = false;
-            myZoomCount++;   
         }
     },
 
