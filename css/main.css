@@ -102,16 +102,16 @@ path[alt=''] { opacity: 100% }
   fill: #f00;         /* inherited by arrow */
 }
 
-.line-jumppad.red, .jumppad_red32  {opacity: 30%; fill-opacity: 30%; filter: brightness(100%) }
-.line-jumppad.red.found, .jumppad_red32.found {opacity: 100%; fill-opacity: 100%; filter: brightness(100%) }
+.line-jumppad.red, .jumppad-red-x1  {opacity: 30%; fill-opacity: 30%; filter: brightness(100%) }
+.line-jumppad.red.found, .jumppad-red-x1.found {opacity: 100%; fill-opacity: 100%; filter: brightness(100%) }
 
 .line-jumppad.blue {
   stroke: #000;
   fill: #1E90FF;      /* inherited by arrow */
 }
 
-.line-jumppad.blue, .jumppad_blue32  {opacity: 30%; fill-opacity: 30%; filter: brightness(100%) }
-.line-jumppad.blue.found, .jumppad_blue32.found {opacity: 100%; fill-opacity: 100%; filter: brightness(100%) }
+.line-jumppad.blue, .jumppad-blue-x1  {opacity: 30%; fill-opacity: 30%; filter: brightness(100%) }
+.line-jumppad.blue.found, .jumppad-blue-x1.found {opacity: 100%; fill-opacity: 100%; filter: brightness(100%) }
 
 .line-pipe {
   --arrow: tip;
@@ -129,8 +129,8 @@ path[alt=''] { opacity: 100% }
   opacity: 100%;
 }
 
-.line-pipe, .pipe32  {opacity: 30%; fill-opacity: 30%; filter: brightness(100%) }
-.line-pipe.found, .pipe32.found {opacity: 100%; fill-opacity: 100%; filter: brightness(100%) }
+.line-pipe, .pipe-x1  {opacity: 30%; fill-opacity: 30%; filter: brightness(100%) }
+.line-pipe.found, .pipe-x1.found {opacity: 100%; fill-opacity: 100%; filter: brightness(100%) }
 
 .line-target {
   --arrow: tip;
