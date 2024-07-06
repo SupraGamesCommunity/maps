@@ -2071,6 +2071,38 @@
     "cost": 40
   },
   {
+    "name": "CarrotPhysical2",
+    "type": "CarrotPhysical_C",
+    "area": "Crash",
+    "lat": -7777.74755859375,
+    "lng": 53485.97265625,
+    "alt": -2560.657958984375
+  },
+  {
+    "name": "CarrotPhysical3",
+    "type": "CarrotPhysical_C",
+    "area": "Crash",
+    "lat": -7661.75146484375,
+    "lng": 54737.92578125,
+    "alt": -2560.657958984375
+  },
+  {
+    "name": "CarrotPhysical4",
+    "type": "CarrotPhysical_C",
+    "area": "Crash",
+    "lat": -7991.75537109375,
+    "lng": 54737.92578125,
+    "alt": -2656.661865234375
+  },
+  {
+    "name": "CarrotPhysical_2",
+    "type": "CarrotPhysical_C",
+    "area": "Crash",
+    "lat": -7661.74951171875,
+    "lng": 53485.97265625,
+    "alt": -2560.657958984375
+  },
+  {
     "name": "Chest10",
     "type": "Chest_C",
     "area": "Crash",
@@ -3949,6 +3981,33 @@
     "alt": 815.5882568359375
   },
   {
+    "name": "Crystal24",
+    "type": "Crystal_C",
+    "area": "Crash",
+    "lat": -15444.0234375,
+    "lng": -32727.435546875,
+    "alt": -72.6412353515625,
+    "variant": "yellow"
+  },
+  {
+    "name": "Crystal25",
+    "type": "Crystal_C",
+    "area": "Crash",
+    "lat": -14845.3876953125,
+    "lng": -33124.6640625,
+    "alt": 58.50494384765625,
+    "variant": "yellow"
+  },
+  {
+    "name": "Crystal_2",
+    "type": "Crystal_C",
+    "area": "Crash",
+    "lat": -28169.876953125,
+    "lng": 45235.34375,
+    "alt": -152.091064453125,
+    "variant": "purple"
+  },
+  {
     "name": "DestroyablePots10",
     "type": "Coin:DestroyablePots_C",
     "area": "Crash",
@@ -5262,7 +5321,7 @@
     "target": {
       "x": 54931.73046875,
       "y": -7875.74755859375,
-      "z": -1152.8542121093521
+      "z": -2900.0915121093353
     },
     "linetype": "jumppad",
     "variant": "red",

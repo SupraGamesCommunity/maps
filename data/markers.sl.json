@@ -647,7 +647,15 @@
     "area": "Map",
     "lat": 11962.5087890625,
     "lng": 22543.673828125,
-    "alt": 424.0427551269531
+    "alt": 424.0427551269531,
+    "linetype": "trigger",
+    "targets": [
+      {
+        "x": 21866.400390625,
+        "y": 12714.8544921875,
+        "z": 760.6283569335938
+      }
+    ]
   },
   {
     "name": "BigButton33",
@@ -1313,7 +1321,15 @@
     "area": "Map",
     "lat": -17469.6953125,
     "lng": 42007.40234375,
-    "alt": 1730.24658203125
+    "alt": 1730.24658203125,
+    "linetype": "trigger",
+    "targets": [
+      {
+        "x": 42297.62890625,
+        "y": -18318.373046875,
+        "z": 1360.2298583984375
+      }
+    ]
   },
   {
     "name": "Button34",
@@ -1345,7 +1361,15 @@
     "area": "Map",
     "lat": 33204.21484375,
     "lng": 66938.1328125,
-    "alt": 2074.27685546875
+    "alt": 2074.27685546875,
+    "linetype": "trigger",
+    "targets": [
+      {
+        "x": 63429.90234375,
+        "y": 36562.94921875,
+        "z": 1703.338134765625
+      }
+    ]
   },
   {
     "name": "Button38",
@@ -2410,6 +2434,414 @@
         "z": 1545.64404296875
       }
     ]
+  },
+  {
+    "name": "CarryStones10",
+    "type": "CarryStones_C",
+    "area": "Map",
+    "lat": -18836.564453125,
+    "lng": 45018.1015625,
+    "alt": 1130.8514404296875
+  },
+  {
+    "name": "CarryStones11",
+    "type": "CarryStones_C",
+    "area": "Map",
+    "lat": -18762.037109375,
+    "lng": 44915.96484375,
+    "alt": 1132.8489990234375
+  },
+  {
+    "name": "CarryStones12",
+    "type": "CarryStones_C",
+    "area": "Map",
+    "lat": -19235.421875,
+    "lng": 43571.96875,
+    "alt": 1151.3946533203125
+  },
+  {
+    "name": "CarryStones13",
+    "type": "CarryStones_C",
+    "area": "Map",
+    "lat": -19352.833984375,
+    "lng": 43656.23828125,
+    "alt": 1151.3946533203125
+  },
+  {
+    "name": "CarryStones14",
+    "type": "CarryStones_C",
+    "area": "Map",
+    "lat": -19398.470703125,
+    "lng": 43755.29296875,
+    "alt": 1151.3946533203125
+  },
+  {
+    "name": "CarryStones15",
+    "type": "CarryStones_C",
+    "area": "Map",
+    "lat": -19336.560546875,
+    "lng": 43511.84765625,
+    "alt": 1151.3946533203125
+  },
+  {
+    "name": "CarryStones16",
+    "type": "CarryStones_C",
+    "area": "Map",
+    "lat": -19520.6171875,
+    "lng": 43824.125,
+    "alt": 1151.3946533203125
+  },
+  {
+    "name": "CarryStones17",
+    "type": "CarryStones_C",
+    "area": "Map",
+    "lat": -19301.052734375,
+    "lng": 43733.8125,
+    "alt": 1132.845703125
+  },
+  {
+    "name": "CarryStones19",
+    "type": "CarryStones_C",
+    "area": "Map",
+    "lat": -22081.076171875,
+    "lng": 45176.30078125,
+    "alt": 1155.790771484375
+  },
+  {
+    "name": "CarryStones20",
+    "type": "CarryStones_C",
+    "area": "Map",
+    "lat": -22134.068359375,
+    "lng": 45101.6640625,
+    "alt": 1155.790771484375
+  },
+  {
+    "name": "CarryStones21",
+    "type": "CarryStones_C",
+    "area": "Map",
+    "lat": -22232.375,
+    "lng": 45161.00390625,
+    "alt": 1147.6888427734375
+  },
+  {
+    "name": "CarryStones22",
+    "type": "CarryStones_C",
+    "area": "Map",
+    "lat": -22353.509765625,
+    "lng": 45263.33203125,
+    "alt": 1144.0216064453125
+  },
+  {
+    "name": "CarryStones23",
+    "type": "CarryStones_C",
+    "area": "Map",
+    "lat": -21902.224609375,
+    "lng": 45161.44921875,
+    "alt": 1152.64208984375
+  },
+  {
+    "name": "CarryStones24",
+    "type": "CarryStones_C",
+    "area": "Map",
+    "lat": -21930.62109375,
+    "lng": 44246.20703125,
+    "alt": 1159.5238037109375
+  },
+  {
+    "name": "CarryStones25",
+    "type": "CarryStones_C",
+    "area": "Map",
+    "lat": -21930.62109375,
+    "lng": 44120.74609375,
+    "alt": 1159.5238037109375
+  },
+  {
+    "name": "CarryStones26",
+    "type": "CarryStones_C",
+    "area": "Map",
+    "lat": -21930.62109375,
+    "lng": 43917.6171875,
+    "alt": 1160.7760009765625
+  },
+  {
+    "name": "CarryStones27",
+    "type": "CarryStones_C",
+    "area": "Map",
+    "lat": -3147.263427734375,
+    "lng": 49705.64453125,
+    "alt": 3115.22607421875
+  },
+  {
+    "name": "CarryStones28",
+    "type": "CarryStones_C",
+    "area": "Map",
+    "lat": -2799.899169921875,
+    "lng": 53240.0234375,
+    "alt": 3127.3896484375
+  },
+  {
+    "name": "CarryStones29",
+    "type": "CarryStones_C",
+    "area": "Map",
+    "lat": -2088.382080078125,
+    "lng": 53587.08203125,
+    "alt": 3118.5322265625
+  },
+  {
+    "name": "CarryStones2_6",
+    "type": "CarryStones_C",
+    "area": "Map",
+    "lat": -2799.899169921875,
+    "lng": 51020.59765625,
+    "alt": 3109.70947265625
+  },
+  {
+    "name": "CarryStones3",
+    "type": "CarryStones_C",
+    "area": "Map",
+    "lat": -17811.33984375,
+    "lng": 43969.85546875,
+    "alt": 1137.2032470703125
+  },
+  {
+    "name": "CarryStones30",
+    "type": "CarryStones_C",
+    "area": "Map",
+    "lat": -3794.200927734375,
+    "lng": 48812.7109375,
+    "alt": 3115.22607421875
+  },
+  {
+    "name": "CarryStones31",
+    "type": "CarryStones_C",
+    "area": "Map",
+    "lat": -3215.79638671875,
+    "lng": 48015.82421875,
+    "alt": 3115.22607421875
+  },
+  {
+    "name": "CarryStones32",
+    "type": "CarryStones_C",
+    "area": "Map",
+    "lat": -2312.166748046875,
+    "lng": 47551.2109375,
+    "alt": 3104.57421875
+  },
+  {
+    "name": "CarryStones33",
+    "type": "CarryStones_C",
+    "area": "Map",
+    "lat": -1536.323974609375,
+    "lng": 47096.46484375,
+    "alt": 3104.57421875
+  },
+  {
+    "name": "CarryStones34",
+    "type": "CarryStones_C",
+    "area": "Map",
+    "lat": -816.7570190429688,
+    "lng": 47553.3046875,
+    "alt": 3120.88232421875
+  },
+  {
+    "name": "CarryStones35",
+    "type": "CarryStones_C",
+    "area": "Map",
+    "lat": -3153.75390625,
+    "lng": 47917.0390625,
+    "alt": 3115.22607421875
+  },
+  {
+    "name": "CarryStones36",
+    "type": "CarryStones_C",
+    "area": "Map",
+    "lat": -3310.521484375,
+    "lng": 48101.15234375,
+    "alt": 3115.22607421875
+  },
+  {
+    "name": "CarryStones37",
+    "type": "CarryStones_C",
+    "area": "Map",
+    "lat": -3094.625,
+    "lng": 47996.26953125,
+    "alt": 3115.22607421875
+  },
+  {
+    "name": "CarryStones38",
+    "type": "CarryStones_C",
+    "area": "Map",
+    "lat": -3723.530029296875,
+    "lng": 48861.65234375,
+    "alt": 3115.22607421875
+  },
+  {
+    "name": "CarryStones39",
+    "type": "CarryStones_C",
+    "area": "Map",
+    "lat": -3711.99560546875,
+    "lng": 48699.1640625,
+    "alt": 3115.22607421875
+  },
+  {
+    "name": "CarryStones40",
+    "type": "CarryStones_C",
+    "area": "Map",
+    "lat": -2241.5341796875,
+    "lng": 47470.390625,
+    "alt": 3104.57421875
+  },
+  {
+    "name": "CarryStones41",
+    "type": "CarryStones_C",
+    "area": "Map",
+    "lat": -1411.785400390625,
+    "lng": 47143.453125,
+    "alt": 3104.57421875
+  },
+  {
+    "name": "CarryStones42",
+    "type": "CarryStones_C",
+    "area": "Map",
+    "lat": -641.9434814453125,
+    "lng": 47466.5546875,
+    "alt": 3120.88232421875
+  },
+  {
+    "name": "CarryStones43",
+    "type": "CarryStones_C",
+    "area": "Map",
+    "lat": -721.9951171875,
+    "lng": 47543.69140625,
+    "alt": 3120.88232421875
+  },
+  {
+    "name": "CarryStones44",
+    "type": "CarryStones_C",
+    "area": "Map",
+    "lat": -2217.316162109375,
+    "lng": 53539.92578125,
+    "alt": 3118.5322265625
+  },
+  {
+    "name": "CarryStones45",
+    "type": "CarryStones_C",
+    "area": "Map",
+    "lat": -2805.40673828125,
+    "lng": 53136.66796875,
+    "alt": 3127.3896484375
+  },
+  {
+    "name": "CarryStones46",
+    "type": "CarryStones_C",
+    "area": "Map",
+    "lat": -1137.9827880859375,
+    "lng": 50317.953125,
+    "alt": 2843.448974609375
+  },
+  {
+    "name": "CarryStones47",
+    "type": "CarryStones_C",
+    "area": "Map",
+    "lat": -1087.7998046875,
+    "lng": 50178.546875,
+    "alt": 2832.07470703125
+  },
+  {
+    "name": "CarryStones48",
+    "type": "CarryStones_C",
+    "area": "Map",
+    "lat": -1187.041748046875,
+    "lng": 50417.1484375,
+    "alt": 2843.746337890625
+  },
+  {
+    "name": "CarryStones49",
+    "type": "CarryStones_C",
+    "area": "Map",
+    "lat": -1007.7901000976562,
+    "lng": 52018.48046875,
+    "alt": 2840.566162109375
+  },
+  {
+    "name": "CarryStones4_8",
+    "type": "CarryStones_C",
+    "area": "Map",
+    "lat": -17704.517578125,
+    "lng": 43960.2734375,
+    "alt": 1137.2032470703125
+  },
+  {
+    "name": "CarryStones50",
+    "type": "CarryStones_C",
+    "area": "Map",
+    "lat": -873.0279541015625,
+    "lng": 52172.8828125,
+    "alt": 2855.293701171875
+  },
+  {
+    "name": "CarryStones51",
+    "type": "CarryStones_C",
+    "area": "Map",
+    "lat": -1043.6942138671875,
+    "lng": 51834.796875,
+    "alt": 2848.96435546875
+  },
+  {
+    "name": "CarryStones52",
+    "type": "CarryStones_C",
+    "area": "Map",
+    "lat": -11664.4853515625,
+    "lng": -12783.2109375,
+    "alt": -1657.49462890625
+  },
+  {
+    "name": "CarryStones5_10",
+    "type": "CarryStones_C",
+    "area": "Map",
+    "lat": -17920.29296875,
+    "lng": 44051.66015625,
+    "alt": 1137.2032470703125
+  },
+  {
+    "name": "CarryStones6",
+    "type": "CarryStones_C",
+    "area": "Map",
+    "lat": -18008.478515625,
+    "lng": 44139.28125,
+    "alt": 1137.2032470703125
+  },
+  {
+    "name": "CarryStones7",
+    "type": "CarryStones_C",
+    "area": "Map",
+    "lat": -18010.7578125,
+    "lng": 44033.875,
+    "alt": 1104.01171875
+  },
+  {
+    "name": "CarryStones8",
+    "type": "CarryStones_C",
+    "area": "Map",
+    "lat": -17904.681640625,
+    "lng": 43956.48046875,
+    "alt": 1104.01171875
+  },
+  {
+    "name": "CarryStones9",
+    "type": "CarryStones_C",
+    "area": "Map",
+    "lat": -17780.26953125,
+    "lng": 43892.51171875,
+    "alt": 1104.01171875
+  },
+  {
+    "name": "CarryStones_2",
+    "type": "CarryStones_C",
+    "area": "Map",
+    "lat": -18711.837890625,
+    "lng": 45015.1171875,
+    "alt": 1132.3533935546875
   },
   {
     "name": "Chest100_2221",
@@ -10566,6 +10998,861 @@
     "coins": 10
   },
   {
+    "name": "Crystal10",
+    "type": "Crystal_C",
+    "area": "Map",
+    "lat": 37291.46484375,
+    "lng": -64707.34765625,
+    "alt": 212.03665161132812,
+    "variant": "yellow"
+  },
+  {
+    "name": "Crystal11",
+    "type": "Crystal_C",
+    "area": "Map",
+    "lat": 45472.37109375,
+    "lng": -52889.87890625,
+    "alt": 590.7077026367188,
+    "variant": "purple"
+  },
+  {
+    "name": "Crystal12",
+    "type": "Crystal_C",
+    "area": "Map",
+    "lat": 45375.796875,
+    "lng": -53137.6640625,
+    "alt": 515.9580078125,
+    "variant": "purple"
+  },
+  {
+    "name": "Crystal13",
+    "type": "Crystal_C",
+    "area": "Map",
+    "lat": 45186.5546875,
+    "lng": -52978.40625,
+    "alt": 475.85748291015625,
+    "variant": "purple"
+  },
+  {
+    "name": "Crystal14",
+    "type": "Crystal_C",
+    "area": "Map",
+    "lat": -21902.640625,
+    "lng": -15446.9208984375,
+    "alt": -311.0360107421875,
+    "variant": "purple"
+  },
+  {
+    "name": "Crystal15",
+    "type": "Crystal_C",
+    "area": "Map",
+    "lat": -21859.494140625,
+    "lng": -15548.7529296875,
+    "alt": -327.015869140625,
+    "variant": "purple"
+  },
+  {
+    "name": "Crystal16_2",
+    "type": "Crystal_C",
+    "area": "Map",
+    "lat": 18215.341796875,
+    "lng": 26864.669921875,
+    "alt": 1631.1580810546875,
+    "variant": "blue"
+  },
+  {
+    "name": "Crystal17",
+    "type": "Crystal_C",
+    "area": "Map",
+    "lat": 16206.6484375,
+    "lng": 26670.34765625,
+    "alt": 1631.1597900390625,
+    "variant": "blue"
+  },
+  {
+    "name": "Crystal18",
+    "type": "Crystal_C",
+    "area": "Map",
+    "lat": 37549.68359375,
+    "lng": -64346.9921875,
+    "alt": 159.5114288330078,
+    "variant": "yellow"
+  },
+  {
+    "name": "Crystal19",
+    "type": "Crystal_C",
+    "area": "Map",
+    "lat": 37717.984375,
+    "lng": -64243.015625,
+    "alt": 177.2455291748047,
+    "variant": "yellow"
+  },
+  {
+    "name": "Crystal2",
+    "type": "Crystal_C",
+    "area": "Map",
+    "lat": 37325.4375,
+    "lng": -64117.12109375,
+    "alt": 162.39666748046875,
+    "variant": "yellow"
+  },
+  {
+    "name": "Crystal20",
+    "type": "Crystal_C",
+    "area": "Map",
+    "lat": 37325.4375,
+    "lng": -63445.7265625,
+    "alt": 170.60728454589844,
+    "variant": "yellow"
+  },
+  {
+    "name": "Crystal21",
+    "type": "Crystal_C",
+    "area": "Map",
+    "lat": 37630.28515625,
+    "lng": -63725.21484375,
+    "alt": 170.60728454589844,
+    "variant": "yellow"
+  },
+  {
+    "name": "Crystal22",
+    "type": "Crystal_C",
+    "area": "Map",
+    "lat": 37136.69140625,
+    "lng": -63075.6875,
+    "alt": 192.99339294433594,
+    "variant": "yellow"
+  },
+  {
+    "name": "Crystal23",
+    "type": "Crystal_C",
+    "area": "Map",
+    "lat": 48952.14453125,
+    "lng": -67284.984375,
+    "alt": 740.802001953125,
+    "variant": "purple"
+  },
+  {
+    "name": "Crystal24",
+    "type": "Crystal_C",
+    "area": "Map",
+    "lat": -33497.80078125,
+    "lng": 523.6991577148438,
+    "alt": -51.8603630065918,
+    "variant": "yellow"
+  },
+  {
+    "name": "Crystal25",
+    "type": "Crystal_C",
+    "area": "Map",
+    "lat": -37098.8125,
+    "lng": -1967.2894287109375,
+    "alt": 366.4024963378906,
+    "variant": "yellow"
+  },
+  {
+    "name": "Crystal26",
+    "type": "Crystal_C",
+    "area": "Map",
+    "lat": -37015.37109375,
+    "lng": 586.806640625,
+    "alt": 210.21913146972656,
+    "variant": "yellow"
+  },
+  {
+    "name": "Crystal27_2",
+    "type": "Crystal_C",
+    "area": "Map",
+    "lat": 7030.0,
+    "lng": 52006.0,
+    "alt": 3692.0,
+    "variant": "purple"
+  },
+  {
+    "name": "Crystal28",
+    "type": "Crystal_C",
+    "area": "Map",
+    "lat": 13330.9228515625,
+    "lng": 49867.91796875,
+    "alt": 3154.6826171875,
+    "variant": "purple"
+  },
+  {
+    "name": "Crystal29",
+    "type": "Crystal_C",
+    "area": "Map",
+    "lat": 13460.3671875,
+    "lng": 49908.90625,
+    "alt": 3101.06396484375,
+    "variant": "purple"
+  },
+  {
+    "name": "Crystal3",
+    "type": "Crystal_C",
+    "area": "Map",
+    "lat": 37104.109375,
+    "lng": -63749.2890625,
+    "alt": 161.8270263671875,
+    "variant": "yellow"
+  },
+  {
+    "name": "Crystal30_2",
+    "type": "Crystal_C",
+    "area": "Map",
+    "lat": -9866.8955078125,
+    "lng": 68439.9453125,
+    "alt": 5387.2392578125,
+    "variant": "purple"
+  },
+  {
+    "name": "Crystal31",
+    "type": "Crystal_C",
+    "area": "Map",
+    "lat": -9899.98828125,
+    "lng": 68267.9296875,
+    "alt": 5387.2392578125,
+    "variant": "purple"
+  },
+  {
+    "name": "Crystal32",
+    "type": "Crystal_C",
+    "area": "Map",
+    "lat": 25563.55078125,
+    "lng": 81701.171875,
+    "alt": 2074.369140625,
+    "variant": "yellow"
+  },
+  {
+    "name": "Crystal33",
+    "type": "Crystal_C",
+    "area": "Map",
+    "lat": 24494.306640625,
+    "lng": 82020.5703125,
+    "alt": 2098.755126953125,
+    "variant": "yellow"
+  },
+  {
+    "name": "Crystal34",
+    "type": "Crystal_C",
+    "area": "Map",
+    "lat": 19356.17578125,
+    "lng": 83113.78125,
+    "alt": 3987.408447265625,
+    "variant": "yellow"
+  },
+  {
+    "name": "Crystal35",
+    "type": "Crystal_C",
+    "area": "Map",
+    "lat": 18167.86328125,
+    "lng": 81653.046875,
+    "alt": 4128.1181640625,
+    "variant": "yellow"
+  },
+  {
+    "name": "Crystal36",
+    "type": "Crystal_C",
+    "area": "Map",
+    "lat": 15775.9462890625,
+    "lng": 81391.0703125,
+    "alt": 4686.51513671875,
+    "variant": "yellow"
+  },
+  {
+    "name": "Crystal37",
+    "type": "Crystal_C",
+    "area": "Map",
+    "lat": 12677.541015625,
+    "lng": 81481.984375,
+    "alt": 4719.58740234375,
+    "variant": "yellow"
+  },
+  {
+    "name": "Crystal38",
+    "type": "Crystal_C",
+    "area": "Map",
+    "lat": 10845.7509765625,
+    "lng": 82290.9453125,
+    "alt": 4717.4345703125,
+    "variant": "yellow"
+  },
+  {
+    "name": "Crystal39",
+    "type": "Crystal_C",
+    "area": "Map",
+    "lat": 13881.80859375,
+    "lng": 82391.4453125,
+    "alt": 4717.4345703125,
+    "variant": "yellow"
+  },
+  {
+    "name": "Crystal4",
+    "type": "Crystal_C",
+    "area": "Map",
+    "lat": 49318.765625,
+    "lng": -69100.0078125,
+    "alt": 769.3912353515625,
+    "variant": "purple"
+  },
+  {
+    "name": "Crystal40",
+    "type": "Crystal_C",
+    "area": "Map",
+    "lat": 8960.4462890625,
+    "lng": 82179.6796875,
+    "alt": 4815.08349609375,
+    "variant": "yellow"
+  },
+  {
+    "name": "Crystal41_2",
+    "type": "Crystal_C",
+    "area": "Map",
+    "lat": -38570.4921875,
+    "lng": -31499.267578125,
+    "alt": -918.738037109375,
+    "variant": "blue"
+  },
+  {
+    "name": "Crystal42",
+    "type": "Crystal_C",
+    "area": "Map",
+    "lat": -43482.5,
+    "lng": -32489.4609375,
+    "alt": -659.8992309570312,
+    "variant": "blue"
+  },
+  {
+    "name": "Crystal43",
+    "type": "Crystal_C",
+    "area": "Map",
+    "lat": -36094.48046875,
+    "lng": -23284.8359375,
+    "alt": -909.8536376953125,
+    "variant": "blue"
+  },
+  {
+    "name": "Crystal44",
+    "type": "Crystal_C",
+    "area": "Map",
+    "lat": -38099.3671875,
+    "lng": -24111.921875,
+    "alt": -945.6368408203125,
+    "variant": "blue"
+  },
+  {
+    "name": "Crystal45",
+    "type": "Crystal_C",
+    "area": "Map",
+    "lat": -37439.80078125,
+    "lng": -18575.51171875,
+    "alt": -970.5156860351562,
+    "variant": "blue"
+  },
+  {
+    "name": "Crystal46",
+    "type": "Crystal_C",
+    "area": "Map",
+    "lat": -33984.3203125,
+    "lng": -14536.072265625,
+    "alt": -1006.4749755859375,
+    "variant": "blue"
+  },
+  {
+    "name": "Crystal47",
+    "type": "Crystal_C",
+    "area": "Map",
+    "lat": -20414.5,
+    "lng": -19443.275390625,
+    "alt": -83.84976959228516,
+    "variant": "blue"
+  },
+  {
+    "name": "Crystal48",
+    "type": "Crystal_C",
+    "area": "Map",
+    "lat": -20750.498046875,
+    "lng": -18278.9140625,
+    "alt": -88.42208862304688,
+    "variant": "blue"
+  },
+  {
+    "name": "Crystal49_12",
+    "type": "Crystal_C",
+    "area": "Map",
+    "lat": -23068.720703125,
+    "lng": -22884.271484375,
+    "alt": -58.839935302734375,
+    "variant": "blue"
+  },
+  {
+    "name": "Crystal50",
+    "type": "Crystal_C",
+    "area": "Map",
+    "lat": -10251.5283203125,
+    "lng": -25707.380859375,
+    "alt": -800.324951171875,
+    "variant": "blue"
+  },
+  {
+    "name": "Crystal51",
+    "type": "Crystal_C",
+    "area": "Map",
+    "lat": -16896.46875,
+    "lng": -25836.58984375,
+    "alt": -1205.3746337890625,
+    "variant": "blue"
+  },
+  {
+    "name": "Crystal52",
+    "type": "Crystal_C",
+    "area": "Map",
+    "lat": -10256.1328125,
+    "lng": -26688.912109375,
+    "alt": -826.7783813476562,
+    "variant": "blue"
+  },
+  {
+    "name": "Crystal53",
+    "type": "Crystal_C",
+    "area": "Map",
+    "lat": -15315.7333984375,
+    "lng": -29745.0625,
+    "alt": -830.8280029296875,
+    "variant": "blue"
+  },
+  {
+    "name": "Crystal54",
+    "type": "Crystal_C",
+    "area": "Map",
+    "lat": -21629.30078125,
+    "lng": -24916.65234375,
+    "alt": -88.6920166015625,
+    "variant": "blue"
+  },
+  {
+    "name": "Crystal55",
+    "type": "Crystal_C",
+    "area": "Map",
+    "lat": -24052.455078125,
+    "lng": -26528.259765625,
+    "alt": -91.37788391113281,
+    "variant": "blue"
+  },
+  {
+    "name": "Crystal56",
+    "type": "Crystal_C",
+    "area": "Map",
+    "lat": -29154.25390625,
+    "lng": -21662.73828125,
+    "alt": 86.3603286743164,
+    "variant": "blue"
+  },
+  {
+    "name": "Crystal57",
+    "type": "Crystal_C",
+    "area": "Map",
+    "lat": -22444.54296875,
+    "lng": -12903.7958984375,
+    "alt": -122.41808319091797,
+    "variant": "blue"
+  },
+  {
+    "name": "Crystal58",
+    "type": "Crystal_C",
+    "area": "Map",
+    "lat": -659.5986328125,
+    "lng": -7528.36474609375,
+    "alt": 80.7060317993164,
+    "variant": "blue"
+  },
+  {
+    "name": "Crystal59",
+    "type": "Crystal_C",
+    "area": "Map",
+    "lat": 1865.9193115234375,
+    "lng": -7291.62255859375,
+    "alt": 9.394354820251465,
+    "variant": "blue"
+  },
+  {
+    "name": "Crystal5_5058",
+    "type": "Crystal_C",
+    "area": "Map",
+    "lat": 37060.296875,
+    "lng": -64137.484375,
+    "alt": 147.45263671875,
+    "variant": "yellow"
+  },
+  {
+    "name": "Crystal6",
+    "type": "Crystal_C",
+    "area": "Map",
+    "lat": 36915.36328125,
+    "lng": -63379.25,
+    "alt": 161.8270263671875,
+    "variant": "yellow"
+  },
+  {
+    "name": "Crystal60",
+    "type": "Crystal_C",
+    "area": "Map",
+    "lat": -580.9443969726562,
+    "lng": 10732.447265625,
+    "alt": 215.74366760253906,
+    "variant": "blue"
+  },
+  {
+    "name": "Crystal61",
+    "type": "Crystal_C",
+    "area": "Map",
+    "lat": 483.9480895996094,
+    "lng": 13447.0263671875,
+    "alt": -306.2178955078125,
+    "variant": "blue"
+  },
+  {
+    "name": "Crystal62",
+    "type": "Crystal_C",
+    "area": "Map",
+    "lat": 9187.158203125,
+    "lng": 18990.568359375,
+    "alt": 302.188720703125,
+    "variant": "blue"
+  },
+  {
+    "name": "Crystal63",
+    "type": "Crystal_C",
+    "area": "Map",
+    "lat": 9276.7177734375,
+    "lng": 18896.45703125,
+    "alt": 573.5422973632812,
+    "variant": "purple"
+  },
+  {
+    "name": "Crystal64",
+    "type": "Crystal_C",
+    "area": "Map",
+    "lat": 8626.66796875,
+    "lng": 15668.625,
+    "alt": 277.6304931640625,
+    "variant": "purple"
+  },
+  {
+    "name": "Crystal65",
+    "type": "Crystal_C",
+    "area": "Map",
+    "lat": 8656.9111328125,
+    "lng": 17438.7265625,
+    "alt": 168.6250762939453,
+    "variant": "purple"
+  },
+  {
+    "name": "Crystal66",
+    "type": "Crystal_C",
+    "area": "Map",
+    "lat": 6871.54833984375,
+    "lng": 17848.474609375,
+    "alt": 76.06600952148438,
+    "variant": "blue"
+  },
+  {
+    "name": "Crystal67",
+    "type": "Crystal_C",
+    "area": "Map",
+    "lat": -11179.11328125,
+    "lng": 13354.7705078125,
+    "alt": 566.3787231445312,
+    "variant": "red"
+  },
+  {
+    "name": "Crystal68_33",
+    "type": "Crystal_C",
+    "area": "Map",
+    "lat": -11270.4326171875,
+    "lng": 13347.4228515625,
+    "alt": 549.552490234375,
+    "variant": "red"
+  },
+  {
+    "name": "Crystal69",
+    "type": "Crystal_C",
+    "area": "Map",
+    "lat": -20344.171875,
+    "lng": 24763.7421875,
+    "alt": 625.5452270507812,
+    "variant": "red"
+  },
+  {
+    "name": "Crystal70",
+    "type": "Crystal_C",
+    "area": "Map",
+    "lat": 22044.630859375,
+    "lng": 11779.6318359375,
+    "alt": 186.7490692138672,
+    "variant": "purple"
+  },
+  {
+    "name": "Crystal71",
+    "type": "Crystal_C",
+    "area": "Map",
+    "lat": 27823.419921875,
+    "lng": -3928.7783203125,
+    "alt": 1055.2750244140625,
+    "variant": "purple"
+  },
+  {
+    "name": "Crystal72",
+    "type": "Crystal_C",
+    "area": "Map",
+    "lat": 26479.951171875,
+    "lng": -11937.4521484375,
+    "alt": 667.1909790039062,
+    "variant": "purple"
+  },
+  {
+    "name": "Crystal73",
+    "type": "Crystal_C",
+    "area": "Map",
+    "lat": 28310.20703125,
+    "lng": -23408.1015625,
+    "alt": 669.3865356445312,
+    "variant": "purple"
+  },
+  {
+    "name": "Crystal74",
+    "type": "Crystal_C",
+    "area": "Map",
+    "lat": 26558.9453125,
+    "lng": -26919.61328125,
+    "alt": 654.3762817382812,
+    "variant": "purple"
+  },
+  {
+    "name": "Crystal75",
+    "type": "Crystal_C",
+    "area": "Map",
+    "lat": -37138.1953125,
+    "lng": -28325.015625,
+    "alt": -649.8392944335938,
+    "variant": "blue"
+  },
+  {
+    "name": "Crystal76",
+    "type": "Crystal_C",
+    "area": "Map",
+    "lat": -1.3704568147659302,
+    "lng": -15491.068359375,
+    "alt": -808.98828125,
+    "variant": "blue"
+  },
+  {
+    "name": "Crystal77",
+    "type": "Crystal_C",
+    "area": "Map",
+    "lat": -10454.2080078125,
+    "lng": -18332.525390625,
+    "alt": -1621.3804931640625,
+    "variant": "blue"
+  },
+  {
+    "name": "Crystal78",
+    "type": "Crystal_C",
+    "area": "Map",
+    "lat": -20355.14453125,
+    "lng": 24810.966796875,
+    "alt": 642.13037109375,
+    "variant": "red"
+  },
+  {
+    "name": "Crystal7_2",
+    "type": "Crystal_C",
+    "area": "Map",
+    "lat": -33457.23828125,
+    "lng": -199.59910583496094,
+    "alt": 89.50445556640625,
+    "variant": "yellow"
+  },
+  {
+    "name": "Crystal8",
+    "type": "Crystal_C",
+    "area": "Map",
+    "lat": 48517.609375,
+    "lng": -69117.8671875,
+    "alt": 740.6204833984375,
+    "variant": "purple"
+  },
+  {
+    "name": "Crystal9",
+    "type": "Crystal_C",
+    "area": "Map",
+    "lat": 48168.2265625,
+    "lng": -68346.1484375,
+    "alt": 744.8977661132812,
+    "variant": "purple"
+  },
+  {
+    "name": "Crystal_494",
+    "type": "Crystal_C",
+    "area": "Map",
+    "lat": 37468.53515625,
+    "lng": -64082.6328125,
+    "alt": 154.5767822265625,
+    "variant": "yellow"
+  },
+  {
+    "name": "crystalls_crystall12",
+    "type": "Crystal_C",
+    "area": "Map",
+    "lat": -7246.0126953125,
+    "lng": 8042.8955078125,
+    "alt": 1440.1737060546875,
+    "variant": "yellow"
+  },
+  {
+    "name": "crystalls_crystall123",
+    "type": "Crystal_C",
+    "area": "Map",
+    "lat": -1976.85009765625,
+    "lng": -16126.7109375,
+    "alt": -592.340087890625,
+    "variant": "yellow"
+  },
+  {
+    "name": "crystalls_crystall134",
+    "type": "Crystal_C",
+    "area": "Map",
+    "lat": -28130.00390625,
+    "lng": -2526.95703125,
+    "alt": 378.60894775390625,
+    "variant": "yellow"
+  },
+  {
+    "name": "crystalls_crystall138",
+    "type": "Crystal_C",
+    "area": "Map",
+    "lat": -25689.84765625,
+    "lng": 13729.669921875,
+    "alt": 1284.232666015625,
+    "variant": "red"
+  },
+  {
+    "name": "crystalls_crystall140",
+    "type": "Crystal_C",
+    "area": "Map",
+    "lat": -17509.271484375,
+    "lng": 17776.978515625,
+    "alt": 2003.7708740234375,
+    "variant": "yellow"
+  },
+  {
+    "name": "crystalls_crystall241",
+    "type": "Crystal_C",
+    "area": "Map",
+    "lat": -40117.86328125,
+    "lng": -80.69195556640625,
+    "alt": 571.3759765625,
+    "variant": "yellow"
+  },
+  {
+    "name": "crystalls_crystall242",
+    "type": "Crystal_C",
+    "area": "Map",
+    "lat": -9709.6767578125,
+    "lng": -17769.431640625,
+    "alt": -1468.6263427734375,
+    "variant": "yellow"
+  },
+  {
+    "name": "crystalls_crystall243_12",
+    "type": "Crystal_C",
+    "area": "Map",
+    "lat": -11268.248046875,
+    "lng": -12801.0302734375,
+    "alt": -1392.0042724609375,
+    "variant": "yellow"
+  },
+  {
+    "name": "crystalls_crystall244_9",
+    "type": "Crystal_C",
+    "area": "Map",
+    "lat": -15857.869140625,
+    "lng": -15706.5546875,
+    "alt": -747.5452880859375,
+    "variant": "yellow"
+  },
+  {
+    "name": "crystalls_crystall245",
+    "type": "Crystal_C",
+    "area": "Map",
+    "lat": -12188.2041015625,
+    "lng": -15850.853515625,
+    "alt": -957.0592651367188,
+    "variant": "yellow"
+  },
+  {
+    "name": "crystalls_crystall246",
+    "type": "Crystal_C",
+    "area": "Map",
+    "lat": 20872.6015625,
+    "lng": 26226.173828125,
+    "alt": 1432.1522216796875,
+    "variant": "blue"
+  },
+  {
+    "name": "crystalls_crystall247",
+    "type": "Crystal_C",
+    "area": "Map",
+    "lat": 21050.6015625,
+    "lng": 21305.173828125,
+    "alt": 1553.1522216796875,
+    "variant": "blue"
+  },
+  {
+    "name": "crystalls_crystall248_2",
+    "type": "Crystal_C",
+    "area": "Map",
+    "lat": -21573.35546875,
+    "lng": -13468.2255859375,
+    "alt": -106.94568634033203,
+    "variant": "purple"
+  },
+  {
+    "name": "crystalls_crystall249",
+    "type": "Crystal_C",
+    "area": "Map",
+    "lat": 18050.6015625,
+    "lng": 23107.173828125,
+    "alt": 1032.1522216796875,
+    "variant": "blue"
+  },
+  {
+    "name": "crystalls_crystall250",
+    "type": "Crystal_C",
+    "area": "Map",
+    "lat": 18050.6015625,
+    "lng": 22547.173828125,
+    "alt": 1032.1522216796875,
+    "variant": "blue"
+  },
+  {
+    "name": "crystalls_crystall251",
+    "type": "Crystal_C",
+    "area": "Map",
+    "lat": 16691.6015625,
+    "lng": 21610.173828125,
+    "alt": 1032.1522216796875,
+    "variant": "blue"
+  },
+  {
+    "name": "crystalls_crystall97",
+    "type": "Crystal_C",
+    "area": "Map",
+    "lat": -28057.017578125,
+    "lng": -510.13873291015625,
+    "alt": 408.0777282714844,
+    "variant": "yellow"
+  },
+  {
     "name": "DeadHero2Austin",
     "type": "DeadHero_C",
     "area": "Map",
@@ -14502,9 +15789,9 @@
     "lng": -1650.08447265625,
     "alt": 166.31826782226562,
     "target": {
-      "x": -281.06003975868225,
-      "y": -28351.198473632336,
-      "z": 424.4515617210417
+      "x": -228.7406346797943,
+      "y": -28388.658959686756,
+      "z": 388.79062836685483
     },
     "linetype": "jumppad",
     "variant": "red",
@@ -14675,9 +15962,9 @@
     "lng": 63599.31640625,
     "alt": 6091.57861328125,
     "target": {
-      "x": 53962.793944999576,
+      "x": 52783.124263733625,
       "y": -8406.546875,
-      "z": 5673.8885486665595
+      "z": 3092.205278594506
     },
     "linetype": "jumppad",
     "variant": "blue"
@@ -14837,9 +16124,9 @@
     "lng": -21289.65234375,
     "alt": 465.2001037597656,
     "target": {
-      "x": -12210.016077518463,
-      "y": 27537.783813085174,
-      "z": 347.4117506904852
+      "x": -12135.183910489082,
+      "y": 27537.783641043294,
+      "z": 295.1894175607935
     },
     "linetype": "jumppad",
     "variant": "red",
@@ -14900,9 +16187,9 @@
     "lng": -42677.80078125,
     "alt": 569.2398681640625,
     "target": {
-      "x": -49918.5988522768,
-      "y": 43725.418038502336,
-      "z": 1537.2768162369848
+      "x": -52525.28615784645,
+      "y": 43982.165563613176,
+      "z": 461.34011754324115
     },
     "linetype": "jumppad",
     "variant": "red",
@@ -15237,9 +16524,9 @@
     "lng": -17283.203125,
     "alt": -283.02044677734375,
     "target": {
-      "x": -21995.96184065289,
-      "y": -28687.904262852404,
-      "z": -630.7840460853333
+      "x": -21607.547660791388,
+      "y": -28234.873004925008,
+      "z": -135.6912109775339
     },
     "linetype": "jumppad",
     "variant": "red"
@@ -15267,9 +16554,9 @@
     "lng": 25803.701171875,
     "alt": 812.8607177734375,
     "target": {
-      "x": 27676.553924530745,
-      "y": 17308.69931983258,
-      "z": 809.194823641789
+      "x": 26822.150296494365,
+      "y": 17308.70372883916,
+      "z": 1677.860970599656
     },
     "linetype": "jumppad",
     "variant": "red",
@@ -15283,9 +16570,9 @@
     "lng": 25570.3046875,
     "alt": 1552.3514404296875,
     "target": {
-      "x": 24554.60893689096,
-      "y": 19814.69993352145,
-      "z": 696.9133652350068
+      "x": 24579.041480720043,
+      "y": 19832.65874633193,
+      "z": 810.0323134355658
     },
     "linetype": "jumppad",
     "variant": "red",
@@ -15299,9 +16586,9 @@
     "lng": 13031.2021484375,
     "alt": 73.32626342773438,
     "target": {
-      "x": 12755.102563291788,
-      "y": -11600.51947669416,
-      "z": 454.93874322700833
+      "x": 12664.805843621492,
+      "y": -11600.519139473068,
+      "z": 68.996224670797
     },
     "linetype": "jumppad",
     "variant": "red"
@@ -15347,9 +16634,9 @@
     "lng": 37931.4453125,
     "alt": 1260.1219482421875,
     "target": {
-      "x": 44344.04602050781,
-      "y": -19359.69951057434,
-      "z": 1142.3693937225585
+      "x": 44326.4289855957,
+      "y": -19342.04044008255,
+      "z": 1159.5905397514584
     },
     "linetype": "jumppad",
     "variant": "red",
@@ -15455,9 +16742,9 @@
     "lng": 52843.875,
     "alt": 2910.1630859375,
     "target": {
-      "x": 47510.01950007677,
-      "y": -3305.7085448801517,
-      "z": 5947.598941806719
+      "x": 47386.795115590096,
+      "y": -3394.776787340641,
+      "z": 5916.757227255845
     },
     "linetype": "jumppad",
     "variant": "red"
@@ -21557,6 +22844,178 @@
     "variant": "red"
   },
   {
+    "name": "RespawnActor2_2",
+    "type": "RespawnActor_C",
+    "area": "Map",
+    "lat": 21902.7734375,
+    "lng": 24698.212890625,
+    "alt": 416.0,
+    "spawns": "NomNomFlies_C"
+  },
+  {
+    "name": "RespawnActor3_2",
+    "type": "RespawnActor_C",
+    "area": "Map",
+    "lat": -18468.12109375,
+    "lng": 43860.6015625,
+    "alt": 1119.302001953125,
+    "spawns": "CarryStones_C"
+  },
+  {
+    "name": "RespawnActor4_2",
+    "type": "RespawnActor_C",
+    "area": "Map",
+    "lat": 38353.0546875,
+    "lng": 63415.28125,
+    "alt": 1778.2764892578125,
+    "spawns": "RingColorerFlower_C"
+  },
+  {
+    "name": "RespawnActor5_5",
+    "type": "RespawnActor_C",
+    "area": "Map",
+    "lat": 6712.0,
+    "lng": 51609.0,
+    "alt": 3750.0,
+    "spawns": "NomNomFlies_C"
+  },
+  {
+    "name": "RespawnActor6_8",
+    "type": "RespawnActor_C",
+    "area": "Map",
+    "lat": -1092.0655517578125,
+    "lng": 50570.33203125,
+    "alt": 3107.747314453125,
+    "spawns": "CarryStones_C"
+  },
+  {
+    "name": "RespawnActor7_2",
+    "type": "RespawnActor_C",
+    "area": "Map",
+    "lat": 11636.609375,
+    "lng": 51837.22265625,
+    "alt": 3521.944091796875,
+    "spawns": "NomNomFlies_C"
+  },
+  {
+    "name": "RespawnActor8_2",
+    "type": "RespawnActor_C",
+    "area": "Map",
+    "lat": -10122.4677734375,
+    "lng": 68757.0859375,
+    "alt": 5518.2587890625,
+    "spawns": "NomNomFlies_C"
+  },
+  {
+    "name": "RespawnActor9",
+    "type": "RespawnActor_C",
+    "area": "Map",
+    "lat": 60720.546875,
+    "lng": -59612.703125,
+    "alt": 452.26068115234375,
+    "spawns": "KeycardColor_C"
+  },
+  {
+    "name": "RespawnActor_2",
+    "type": "RespawnActor_C",
+    "area": "Map",
+    "lat": 20571.0,
+    "lng": 24324.0,
+    "alt": 1137.0,
+    "spawns": "Crystal_C",
+    "variant": "blue"
+  },
+  {
+    "name": "RespawnActorCrystal",
+    "type": "RespawnActor_C",
+    "area": "Map",
+    "lat": -12743.1044921875,
+    "lng": -15190.8310546875,
+    "alt": -1115.52783203125,
+    "spawns": "Crystal_C",
+    "variant": "yellow"
+  },
+  {
+    "name": "RingColorer10",
+    "type": "RingColorer_C",
+    "area": "Map",
+    "lat": -4143.42333984375,
+    "lng": 69378.453125,
+    "alt": 5693.6845703125
+  },
+  {
+    "name": "RingColorer2",
+    "type": "RingColorer_C",
+    "area": "Map",
+    "lat": -50150.734375,
+    "lng": -50584.44921875,
+    "alt": -1614.2454833984375
+  },
+  {
+    "name": "RingColorer3",
+    "type": "RingColorer_C",
+    "area": "Map",
+    "lat": 59152.52734375,
+    "lng": -61753.65625,
+    "alt": 650.3380737304688
+  },
+  {
+    "name": "RingColorer4",
+    "type": "RingColorer_C",
+    "area": "Map",
+    "lat": -38489.8671875,
+    "lng": 1528.583251953125,
+    "alt": 254.86676025390625
+  },
+  {
+    "name": "RingColorer5",
+    "type": "RingColorer_C",
+    "area": "Map",
+    "lat": -42027.734375,
+    "lng": -56481.44921875,
+    "alt": 720.7545166015625
+  },
+  {
+    "name": "RingColorer6",
+    "type": "RingColorer_C",
+    "area": "Map",
+    "lat": 12714.8544921875,
+    "lng": 21866.400390625,
+    "alt": 760.6283569335938
+  },
+  {
+    "name": "RingColorer7_3",
+    "type": "RingColorer_C",
+    "area": "Map",
+    "lat": -18318.373046875,
+    "lng": 42297.62890625,
+    "alt": 1360.2298583984375
+  },
+  {
+    "name": "RingColorer8",
+    "type": "RingColorer_C",
+    "area": "Map",
+    "lat": 14329.357421875,
+    "lng": 42907.9921875,
+    "alt": 3123.221923828125
+  },
+  {
+    "name": "RingColorer9",
+    "type": "RingColorer_C",
+    "area": "Map",
+    "lat": 36562.94921875,
+    "lng": 63429.90234375,
+    "alt": 1703.338134765625
+  },
+  {
+    "name": "RingColorer_338",
+    "type": "RingColorer_C",
+    "area": "Map",
+    "lat": -12449.572265625,
+    "lng": -16525.470703125,
+    "alt": -1122.5120849609375
+  },
+  {
     "name": "RingColorerFlower10",
     "type": "RingColorerFlower_C",
     "area": "Map",
@@ -24249,7 +25708,15 @@
     "area": "Map",
     "lat": -12418.6826171875,
     "lng": -15830.8603515625,
-    "alt": -1114.40234375
+    "alt": -1114.40234375,
+    "linetype": "trigger",
+    "targets": [
+      {
+        "x": -16525.470703125,
+        "y": -12449.572265625,
+        "z": -1122.5120849609375
+      }
+    ]
   },
   {
     "name": "Smallbutton19_2791",
@@ -24401,7 +25868,15 @@
     "area": "Map",
     "lat": -50016.67578125,
     "lng": -50053.2734375,
-    "alt": -1374.4326171875
+    "alt": -1374.4326171875,
+    "linetype": "trigger",
+    "targets": [
+      {
+        "x": -50584.44921875,
+        "y": -50150.734375,
+        "z": -1614.2454833984375
+      }
+    ]
   },
   {
     "name": "Smallbutton35_26234",
@@ -24553,7 +26028,15 @@
     "area": "Map",
     "lat": 58408.0390625,
     "lng": -61611.84375,
-    "alt": 583.1775512695312
+    "alt": 583.1775512695312,
+    "linetype": "trigger",
+    "targets": [
+      {
+        "x": -61753.65625,
+        "y": 59152.52734375,
+        "z": 650.3380737304688
+      }
+    ]
   },
   {
     "name": "Smallbutton56",
@@ -24561,7 +26044,15 @@
     "area": "Map",
     "lat": -42656.5625,
     "lng": -57334.5078125,
-    "alt": 663.5673828125
+    "alt": 663.5673828125,
+    "linetype": "trigger",
+    "targets": [
+      {
+        "x": -56481.44921875,
+        "y": -42027.734375,
+        "z": 720.7545166015625
+      }
+    ]
   },
   {
     "name": "Smallbutton5_1696",
@@ -25463,7 +26954,15 @@
     "area": "Map",
     "lat": -37394.65234375,
     "lng": 1497.617919921875,
-    "alt": -43.019798278808594
+    "alt": -43.019798278808594,
+    "linetype": "trigger",
+    "targets": [
+      {
+        "x": 1528.583251953125,
+        "y": -38489.8671875,
+        "z": 254.86676025390625
+      }
+    ]
   },
   {
     "name": "SmallbuttonMultipleActors49_2",
@@ -25786,7 +27285,15 @@
     "area": "Map",
     "lat": 13228.1357421875,
     "lng": 43012.18359375,
-    "alt": 3103.49609375
+    "alt": 3103.49609375,
+    "linetype": "trigger",
+    "targets": [
+      {
+        "x": 42907.9921875,
+        "y": 14329.357421875,
+        "z": 3123.221923828125
+      }
+    ]
   },
   {
     "name": "SmallbuttonNINE_2",

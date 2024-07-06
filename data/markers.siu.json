@@ -2425,6 +2425,102 @@
     "cost": 50
   },
   {
+    "name": "CarrotPhysical10",
+    "type": "CarrotPhysical_C",
+    "area": "DLC2_Complete",
+    "lat": -47035.86328125,
+    "lng": 6269.47705078125,
+    "alt": 3368.36474609375
+  },
+  {
+    "name": "CarrotPhysical11",
+    "type": "CarrotPhysical_C",
+    "area": "DLC2_Complete",
+    "lat": -47060.2890625,
+    "lng": 6219.17333984375,
+    "alt": 3369.037353515625
+  },
+  {
+    "name": "CarrotPhysical12",
+    "type": "CarrotPhysical_C",
+    "area": "DLC2_Complete",
+    "lat": -47042.3125,
+    "lng": 6241.078125,
+    "alt": 3369.7470703125
+  },
+  {
+    "name": "CarrotPhysical2",
+    "type": "CarrotPhysical_C",
+    "area": "DLC2_Complete",
+    "lat": -41443.0,
+    "lng": -1721.599609375,
+    "alt": 1884.153564453125
+  },
+  {
+    "name": "CarrotPhysical3",
+    "type": "CarrotPhysical_C",
+    "area": "DLC2_Complete",
+    "lat": -41373.74609375,
+    "lng": -504.5191345214844,
+    "alt": 1878.81103515625
+  },
+  {
+    "name": "CarrotPhysical4",
+    "type": "CarrotPhysical_C",
+    "area": "DLC2_Complete",
+    "lat": -41657.0,
+    "lng": -469.671875,
+    "alt": 1782.810546875
+  },
+  {
+    "name": "CarrotPhysical5",
+    "type": "CarrotPhysical_C",
+    "area": "DLC2_Complete",
+    "lat": -40250.74609375,
+    "lng": -797.0900268554688,
+    "alt": 1878.814453125
+  },
+  {
+    "name": "CarrotPhysical6",
+    "type": "CarrotPhysical_C",
+    "area": "DLC2_Complete",
+    "lat": -40351.50390625,
+    "lng": -844.306396484375,
+    "alt": 1878.814453125
+  },
+  {
+    "name": "CarrotPhysical7_2",
+    "type": "CarrotPhysical_C",
+    "area": "DLC2_Complete",
+    "lat": -20531.99609375,
+    "lng": 22643.43359375,
+    "alt": 11427.427734375
+  },
+  {
+    "name": "CarrotPhysical_2",
+    "type": "CarrotPhysical_C",
+    "area": "DLC2_Complete",
+    "lat": -41327.0,
+    "lng": -1721.599609375,
+    "alt": 1878.814453125
+  },
+  {
+    "name": "CarryStones_Heavy2",
+    "type": "CarryStones_Heavy_C",
+    "area": "DLC2_Complete",
+    "lat": -44217.09375,
+    "lng": -6050.39794921875,
+    "alt": 2653.6767578125
+  },
+  {
+    "name": "CarryStones_Heavy_2",
+    "type": "CarryStones_Heavy_C",
+    "area": "DLC2_Complete",
+    "lat": -41262.8515625,
+    "lng": -3135.181884765625,
+    "alt": 1875.91455078125
+  },
+  {
     "name": "Chest10_11",
     "type": "Coin:Chest_C",
     "area": "DLC2_Complete",
@@ -9265,8 +9361,7 @@
       "z": 2002.1459562820478
     },
     "linetype": "jumppad",
-    "variant": "red",
-    "notsaved": true
+    "variant": "red"
   },
   {
     "name": "Jumppad3_2",
@@ -9959,7 +10054,15 @@
     "area": "DLC2_Complete",
     "lat": -37370.0,
     "lng": 4126.0361328125,
-    "alt": 1880.0
+    "alt": 1880.0,
+    "linetype": "trigger",
+    "targets": [
+      {
+        "x": 3801.644287109375,
+        "y": -36690.25390625,
+        "z": 2049.9375
+      }
+    ]
   },
   {
     "name": "Match_Lever_2",
@@ -14707,7 +14810,15 @@
     "area": "DLC2_Complete",
     "lat": -44310.0,
     "lng": -6290.0,
-    "alt": 2519.0
+    "alt": 2519.0,
+    "linetype": "trigger",
+    "targets": [
+      {
+        "x": -6050.39794921875,
+        "y": -44217.09375,
+        "z": 2653.6767578125
+      }
+    ]
   },
   {
     "name": "PedestalButton56",
@@ -18981,6 +19092,123 @@
     "alt": 553.0389404296875
   },
   {
+    "name": "RespawnActor11_2",
+    "type": "RespawnActor_C",
+    "area": "DLC2_Complete",
+    "lat": -32257.474609375,
+    "lng": 13538.3330078125,
+    "alt": -365.0372314453125,
+    "spawns": "Trash_C"
+  },
+  {
+    "name": "RespawnActor12",
+    "type": "RespawnActor_C",
+    "area": "DLC2_Complete",
+    "lat": -24106.76171875,
+    "lng": 20900.701171875,
+    "alt": 37.09869384765625,
+    "spawns": "FlowerDLC2_C"
+  },
+  {
+    "name": "RespawnActor13",
+    "type": "RespawnActor_C",
+    "area": "DLC2_Complete",
+    "lat": -46858.0,
+    "lng": 6251.0,
+    "alt": 3271.0,
+    "spawns": "BP_CookableMeat_C"
+  },
+  {
+    "name": "RespawnActor14",
+    "type": "RespawnActor_C",
+    "area": "DLC2_Complete",
+    "lat": 5442.6689453125,
+    "lng": 17413.904296875,
+    "alt": 3313.853515625,
+    "spawns": "MetalBall_C"
+  },
+  {
+    "name": "RespawnActor15",
+    "type": "RespawnActor_C",
+    "area": "DLC2_Complete",
+    "lat": -46858.0,
+    "lng": 6317.0,
+    "alt": 3271.0,
+    "spawns": "CarrotPhysical_C"
+  },
+  {
+    "name": "RespawnActor2_2",
+    "type": "RespawnActor_C",
+    "area": "DLC2_Complete",
+    "lat": -49594.625,
+    "lng": 41832.33984375,
+    "alt": 1051.7744140625,
+    "spawns": "BP_CarryBox_C",
+    "variant": "red"
+  },
+  {
+    "name": "RespawnActor3",
+    "type": "RespawnActor_C",
+    "area": "DLC2_Complete",
+    "lat": -55220.8515625,
+    "lng": 55535.9765625,
+    "alt": 589.8582763671875,
+    "spawns": "FlowerDLC2_C"
+  },
+  {
+    "name": "RespawnActor4_5",
+    "type": "RespawnActor_C",
+    "area": "DLC2_Complete",
+    "lat": -41427.0,
+    "lng": -1693.599609375,
+    "alt": 1873.0,
+    "spawns": "CarrotPhysical_C"
+  },
+  {
+    "name": "RespawnActor5",
+    "type": "RespawnActor_C",
+    "area": "DLC2_Complete",
+    "lat": -38482.0,
+    "lng": -546.6728515625,
+    "alt": 2274.0,
+    "spawns": "GoldNugget_C"
+  },
+  {
+    "name": "RespawnActor6_2",
+    "type": "RespawnActor_C",
+    "area": "DLC2_Complete",
+    "lat": -41403.9765625,
+    "lng": -3104.181396484375,
+    "alt": 2260.3203125,
+    "spawns": "CarryStones_Heavy_C"
+  },
+  {
+    "name": "RespawnActor_2",
+    "type": "RespawnActor_C",
+    "area": "DLC2_Complete",
+    "lat": -15069.236328125,
+    "lng": 55523.58203125,
+    "alt": 393.8238220214844,
+    "spawns": "BP_CarryBox_C"
+  },
+  {
+    "name": "RespawnActor_Meat",
+    "type": "RespawnActor_C",
+    "area": "DLC2_Complete",
+    "lat": -11215.9833984375,
+    "lng": 65001.28515625,
+    "alt": 4491.3291015625,
+    "spawns": "BP_CookableMeat_C"
+  },
+  {
+    "name": "PaintMachine",
+    "type": "RingColorer_C",
+    "area": "DLC2_Complete",
+    "lat": -36690.25390625,
+    "lng": 3801.644287109375,
+    "alt": 2049.9375
+  },
+  {
     "name": "Scrap177_2",
     "type": "Scrap_C",
     "area": "DLC2_Complete",
@@ -21108,6 +21336,60 @@
     "spawns": "BuyTranslocator_Fake_C"
   },
   {
+    "name": "Crystal24",
+    "type": "Crystal_C",
+    "area": "DLC2_Area0",
+    "lat": -283498.0,
+    "lng": 523.5,
+    "alt": 9948.140625,
+    "variant": "yellow"
+  },
+  {
+    "name": "Crystal25",
+    "type": "Crystal_C",
+    "area": "DLC2_Area0",
+    "lat": -287099.0,
+    "lng": -1967.5,
+    "alt": 10366.40625,
+    "variant": "yellow"
+  },
+  {
+    "name": "Crystal26",
+    "type": "Crystal_C",
+    "area": "DLC2_Area0",
+    "lat": -287039.4375,
+    "lng": 771.4277954101562,
+    "alt": 10202.59375,
+    "variant": "yellow"
+  },
+  {
+    "name": "Crystal27",
+    "type": "Crystal_C",
+    "area": "DLC2_Area0",
+    "lat": -288069.65625,
+    "lng": -2230.0771484375,
+    "alt": 10350.40625,
+    "variant": "yellow"
+  },
+  {
+    "name": "Crystal7_2",
+    "type": "Crystal_C",
+    "area": "DLC2_Area0",
+    "lat": -283457.0,
+    "lng": -199.5,
+    "alt": 10089.5078125,
+    "variant": "yellow"
+  },
+  {
+    "name": "crystalls_crystall241",
+    "type": "Crystal_C",
+    "area": "DLC2_Area0",
+    "lat": -290118.0,
+    "lng": -80.5,
+    "alt": 10571.375,
+    "variant": "yellow"
+  },
+  {
     "name": "Door33_968",
     "type": "Door3_C",
     "area": "DLC2_Area0",
@@ -22281,6 +22563,62 @@
     "lat": 4755.34326171875,
     "lng": 3959.14599609375,
     "alt": 504.236572265625
+  },
+  {
+    "name": "CarryStones_Heavy1",
+    "type": "CarryStones_Heavy_C",
+    "area": "DLC2_SecretLavaArea",
+    "lat": 7644.69873046875,
+    "lng": -1584.8138427734375,
+    "alt": 889.107421875
+  },
+  {
+    "name": "CarryStones_Heavy2",
+    "type": "CarryStones_Heavy_C",
+    "area": "DLC2_SecretLavaArea",
+    "lat": 3802.36279296875,
+    "lng": -809.5053100585938,
+    "alt": 967.26953125
+  },
+  {
+    "name": "CarryStones_Heavy3",
+    "type": "CarryStones_Heavy_C",
+    "area": "DLC2_SecretLavaArea",
+    "lat": 3558.72119140625,
+    "lng": -366.0082092285156,
+    "alt": 967.26953125
+  },
+  {
+    "name": "CarryStones_Heavy4",
+    "type": "CarryStones_Heavy_C",
+    "area": "DLC2_SecretLavaArea",
+    "lat": 2515.05712890625,
+    "lng": -449.1109924316406,
+    "alt": 777.789306640625
+  },
+  {
+    "name": "CarryStones_Heavy5",
+    "type": "CarryStones_Heavy_C",
+    "area": "DLC2_SecretLavaArea",
+    "lat": 5662.97607421875,
+    "lng": 6104.7109375,
+    "alt": -3021.446044921875
+  },
+  {
+    "name": "CarryStones_Heavy6",
+    "type": "CarryStones_Heavy_C",
+    "area": "DLC2_SecretLavaArea",
+    "lat": -2613.180419921875,
+    "lng": 6084.0244140625,
+    "alt": 1521.08984375
+  },
+  {
+    "name": "CarryStones_Heavy_2",
+    "type": "CarryStones_Heavy_C",
+    "area": "DLC2_SecretLavaArea",
+    "lat": 4473.876953125,
+    "lng": 5415.1875,
+    "alt": -2972.789306640625
   },
   {
     "name": "Chest2_2",
@@ -25404,6 +25742,46 @@
     "alt": 9868.1357421875
   },
   {
+    "name": "CarrotPhysical2",
+    "type": "CarrotPhysical_C",
+    "area": "DLC2_PostRainbow",
+    "lat": -43117.48828125,
+    "lng": -52913.67578125,
+    "alt": 9684.9814453125
+  },
+  {
+    "name": "CarrotPhysical3",
+    "type": "CarrotPhysical_C",
+    "area": "DLC2_PostRainbow",
+    "lat": -43450.35546875,
+    "lng": -52625.9140625,
+    "alt": 9683.498046875
+  },
+  {
+    "name": "CarrotPhysical4",
+    "type": "CarrotPhysical_C",
+    "area": "DLC2_PostRainbow",
+    "lat": -43167.328125,
+    "lng": -52556.5234375,
+    "alt": 9686.97265625
+  },
+  {
+    "name": "CarrotPhysical_2",
+    "type": "CarrotPhysical_C",
+    "area": "DLC2_PostRainbow",
+    "lat": -43401.4453125,
+    "lng": -52984.97265625,
+    "alt": 9688.857421875
+  },
+  {
+    "name": "CarryStones_Heavy_4",
+    "type": "CarryStones_Heavy_C",
+    "area": "DLC2_PostRainbow",
+    "lat": -42992.390625,
+    "lng": -71325.171875,
+    "alt": 5599.5712890625
+  },
+  {
     "name": "Chest2_2",
     "type": "Coin:Chest_C",
     "area": "DLC2_PostRainbow",
@@ -26620,7 +26998,30 @@
     "area": "DLC2_PostRainbow",
     "lat": -43183.3828125,
     "lng": -53317.6015625,
-    "alt": 9679.7529296875
+    "alt": 9679.7529296875,
+    "linetype": "trigger",
+    "targets": [
+      {
+        "x": -52913.67578125,
+        "y": -43117.48828125,
+        "z": 9684.9814453125
+      },
+      {
+        "x": -52984.97265625,
+        "y": -43401.4453125,
+        "z": 9688.857421875
+      },
+      {
+        "x": -52556.5234375,
+        "y": -43167.328125,
+        "z": 9686.97265625
+      },
+      {
+        "x": -52625.9140625,
+        "y": -43450.35546875,
+        "z": 9683.498046875
+      }
+    ]
   },
   {
     "name": "PedestalButton_2",
@@ -26628,7 +27029,15 @@
     "area": "DLC2_PostRainbow",
     "lat": -42953.171875,
     "lng": -54759.24609375,
-    "alt": 9883.8935546875
+    "alt": 9883.8935546875,
+    "linetype": "trigger",
+    "targets": [
+      {
+        "x": -54644.8203125,
+        "y": -42874.6640625,
+        "z": 9932.017578125
+      }
+    ]
   },
   {
     "name": "PipeCap2_2",
@@ -26827,6 +27236,14 @@
     "lng": -57111.26171875,
     "alt": 10003.67578125,
     "variant": "green"
+  },
+  {
+    "name": "RingColorer_5",
+    "type": "RingColorer_C",
+    "area": "DLC2_PostRainbow",
+    "lat": -42874.6640625,
+    "lng": -54644.8203125,
+    "alt": 9932.017578125
   },
   {
     "name": "RingColorerFlower10",

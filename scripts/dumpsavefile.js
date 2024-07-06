@@ -64,7 +64,7 @@ function readSavFile(game, file) {
     let buffer = data.buffer.slice(data.byteOffset, data.byteOffset + data.byteLength);
     let loadedSave = new UESaveObject(buffer);
     let markers = {};
-    let pj = {pipes: [], pads: []};
+    let pj = {pipes: new Set(), pads: new Set()};
 
     console.log(`Reading ${baseName}`);
 
@@ -99,7 +99,7 @@ function readSavFile(game, file) {
                 let name = m[0].slice(0,-1);
                 if(!found.includes(name)){
                     found.push(name);
-                    pipecaps[name].forEach((p) => pj.pipes.push(p));
+                    pipecaps[name].forEach((p) => pj.pipes.add(p));
                 }
             }
             break;
@@ -154,10 +154,10 @@ function readSavFile(game, file) {
                 outCount += 1;
             }
             if(alt.includes(':Pipe')){
-                pj.pipes.push(alt);
+                pj.pipes.add(alt);
             }
             if (alt.includes(':Jumppad')){
-                pj.pads.push(alt);
+                pj.pads.add(alt);
             }
             continue;
         }
@@ -200,13 +200,15 @@ function readSavFile(game, file) {
                 outCount += 1;
             }
             if(alt.includes(':Pipe')){
-                pj.pipes.push(alt);
+                pj.pipes.add(alt);
             }
             if (alt.includes(':Jumppad')){
-                pj.pads.push(alt);
+                pj.pads.add(alt);
             }
         }
     }
+    pj.pads = Array.from(pj.pads).sort();
+    pj.pipes = Array.from(pj.pipes).sort();
 
     // Write out pads/pipes to json
     console.log(`Writing pads/pipes to savedpadpipes.${game}.json...`)
