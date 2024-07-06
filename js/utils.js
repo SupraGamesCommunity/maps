@@ -46,32 +46,91 @@ let browser = {
 };
 
 //=================================================================================================
+
+// Adds a non-enumerable/configurable/writable function to a base class. Function
+// cannot be anonymous
+function extendClass(type, fn){
+    Object.defineProperty(type.prototype, fn.name, {
+        enumerable: false, configurable: false, writable: false,
+        value: fn
+    });
+}
+
+// Returns true if 'item' is 
+function isObject(item) {
+    return (item && typeof item === 'object' && !Array.isArray(item));
+}
+
+function mergeDeep(target, ...sources) {
+    if (!sources.length)
+        return target;
+
+    const source = sources.shift();
+
+    if (isObject(target) && isObject(source)) {
+        for (const key in source) {
+            if (isObject(source[key])) {
+                if(!isObject(target[key]))
+                    Object.assign(target, { [key]: {} });
+                mergeDeep(target[key], source[key]);
+            } else {
+                Object.assign(target, { [key]: source[key] });
+            }
+        }
+    }
+
+    return mergeDeep(target, ...sources);
+}
+    
+//=================================================================================================
 // String extension functions
+//
+// Extending base classes may be 'evil' on the basis that you are poluting the global namespace
+// and could collide with some other library/js environment definition.
+//
+// We use _ to denote a "private" extension and make all their properties false so any collision
+// will hopefully trigger an exception. 
+
 
 // Returns characters up to first instance of str. If str not found whole string is returned.
-String.prototype.before = function(str) {
+extendClass(String, function before(str) {
     let index = this.indexOf(str);
     if(index >= 0) {
         return this.slice(0, index);
     }
     return this;
-} 
+});
 
 // Returns characters after first instance of str. If str not found empty string is returned  
-String.prototype.after = function(str) {
+extendClass(String, function after(str) {
     let index = this.indexOf(str);
     if(index >= 0) {
         return this.slice(index+1);
     }
     return '';
-}
+});
 
 // Returns first integer string found within string (null if there isn't one)
-String.prototype.firstInteger = function(){
+extendClass(String, function firstInteger() {
     const match = this.match(/\d+/);
     return match && match[0];
-}
+});
 
+//=================================================================================================
+// Object extension functions
+
+// Mutating non-recursive function to remove null, undefined and empty string members of object/dictionary
+extendClass(Object, function removeEmpty(){
+    Object.keys(this).forEach((k) => (this[k] === null || this[k] === undefined || this[k] === '') && delete this[k]);
+    return this;
+});
+
+// Non-mutating non-recursive function to remove null, undefined and empty string members of object/dictionary
+extendClass(Object, function emptyRemoved() {
+    const ret = {...this};
+    Object.keys(ret).forEach((k) => (ret[k] === null || ret[k] === undefined || ret[k] === '') && delete ret[k]);
+    return ret;
+});
 
 //=================================================================================================
 // Leaflet map utility extensions

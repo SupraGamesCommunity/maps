@@ -68,30 +68,6 @@ var maps = {
    },
 };
 
-function isObject(item) {
-  return (item && typeof item === 'object' && !Array.isArray(item));
-}
-
-function mergeDeep(target, ...sources) {
-  if (!sources.length) return target;
-  const source = sources.shift();
-
-  if (isObject(target) && isObject(source)) {
-    for (const key in source) {
-      if (isObject(source[key])) {
-        if (!target[key])
-          Object.assign(target, { [key]: {} });
-        mergeDeep(target[key], source[key]);
-      } else {
-        Object.assign(target, { [key]: source[key] });
-      }
-    }
-  }
-
-  return mergeDeep(target, ...sources);
-}
-
-
 // Save the local state data we track to the window local storage
 function saveSettings() {
   localStorage.setItem(localDataName, JSON.stringify(localData));
@@ -871,7 +847,7 @@ function loadMap(id) {
               zIndexOffset: layerConfigs.getZIndexOffset(c.lines),
               title: ' ', interactive: false, alt: alt, o:o, layerId:c.lines, className: className,
               arrow: ltp.arrow ? ltp.arrow : 'none',
-              arrowSize: ltp.arrowSize ? ltp.arrowSize : 0,
+              arrowSize: ltp.arrowSize ? ltp.arrowsize : 0,
               arrowAngle: ltp.arrowngle ? ltp.arrowangle : 45,
               lineWidth: ltp.linewidth ? ltp.linewidth : 5,
               shadowWidth: ltp.shadowwidth ? ltp.shadowwidth : 3,
