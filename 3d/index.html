@@ -132,6 +132,7 @@ let types = {};
 let playerMarker = null;
 let playerStart = [0,0,0];
 let mapParam = {};
+let urls = {};
 
 let maps = {
   // data taken from the MapWorld* nodes
@@ -220,7 +221,7 @@ function humanReadable(type) {
     s = s.replace('BP_Purchase','').replace('BP_','').replace('BP_Buy','').replace('Purchase_','').replace('Buy','').replace(/_C$/,'')
     s = s.replace(/([A-Z]+|[\d]+)/g, ' $1').replace(/^ /, ''); // camel case to space-separated
   }
-  s = s.replace(/[-+]*\{.+\}(%*)/,''); // remove {} formatting
+  s = s.replace(/ [+-]*\{.+\}(%*)/,''); // remove {} formatting
   return s;
 }
 
@@ -242,6 +243,17 @@ function getViewURL() {
   let v = map.getView();
   let vars = {mapId:mapId, lat:Math.round(v.center[1]), lng:Math.round(v.center[0]), zoom:Math.round(v.zoom), pitch:Math.round(v.pitch), bearing: Math.round(v.bearing)};
   return base +'#' + Object.entries(vars).map(e=>e[0]+'='+encodeURIComponent(e[1])).join('&');
+}
+
+function getMarkerURL(markerId) {
+  let base = window.location.href.replace(/#.*$/,'');
+  let vars = {mapId:mapId, markerId: markerId};
+  return base +'#' + Object.entries(vars).map(e=>e[0]+'='+encodeURIComponent(e[1])).join('&');
+}
+
+function copyMarkerURL(markerId) {
+  let url = getMarkerURL(markerId);
+  copyToClipboard(url);
 }
 
 function saveSettings() {
@@ -360,6 +372,18 @@ function loadMap(id) {
     mapParam = {};
   }
 
+  fetch('data/ytdata.'+mapId+'.json')
+  .then(r => r.json())
+  .then(j => {
+    urls = {};
+    for (o of j) {
+      urls[o.area + ':' + o.name] = 'https://youtu.be/'+o.yt_video+'?t='+o.yt_start;
+    }
+  })
+  .catch(e=>{
+    console.log(e);
+  });
+
   fetch('data/markers.'+mapId+'.json')
   .then(r => r.json())
   .then(j => {
@@ -370,16 +394,90 @@ function loadMap(id) {
   });
 }
 
+function toggleMarked(id) {
+  settings.markedItems[id] = !settings.markedItems[id];
+  markItems();
+  saveSettings();
+}
+
 function loadMarkers(j) {
 
   let lookup = {};
   let counters = {};
+
   let popupOnClick = e=>{
     let o = e.target.properties;
-    let title = humanReadable(o.spawns || o.type);
-    let content = JSON.stringify(o, null, 2).replaceAll('\n','<br>').replaceAll(' ','&nbsp;');
-    e.target._infoWindow.setTitle(title);
-    e.target._infoWindow.setContent(content);
+
+    if (player = o.type=='PlayerPosition') {
+      o._coordinates = e.target.getCoordinates();
+    }
+
+    let markerId = (o.area ? o.area + ':' : '') + o.name;
+    let found = settings.markedItems[markerId]==true
+    let value = found ? ' checked' : '';
+    let disabled = player ? ' disabled' : '';
+
+    let title = '<b>' + humanReadable(o.type) + '</b>';
+    if (o.spawns || o.coins) {
+      title +=  '<br/>' + (o.spawns ? humanReadable(o.spawns) : o.coins + (o.coins<2 ? ' coin' : ' coins'));
+    }
+
+    let popup = document.createElement('div')
+    popup.className = 'popup';
+
+    let wrapper = document.createElement('div')
+    wrapper.className = 'popup-content-wrapper';
+
+    let content = document.createElement('div')
+    content.className = 'popup-content';
+
+    let tipContainer = document.createElement('div')
+    tipContainer.className = 'popup-tip-container';
+
+    let tip = document.createElement('div')
+    tip.className = 'popup-tip';
+
+    let close = document.createElement('a')
+    close.className = 'popup-close-button';
+    close.innerHTML = '&times;';
+    close.onclick = ()=> {  e.target._infoWindow.hide(); };
+
+    let text = document.createElement('div');
+    text.innerHTML = title;
+
+    let data = document.createElement('div');
+    data.className = settings.debugMode!=true ? 'collapsed' : '';
+
+    data.innerHTML = '<hr/>'+JSON.stringify(o, null, 2).replaceAll('\n','<br>').replaceAll(' ','&nbsp;');
+
+    let expander = document.createElement('div');
+    expander.className = 'expander';
+    expander.innerHTML = '<hr/>';
+    expander.onclick = ()=>{  settings.debugMode = !toggleClass(data,'collapsed');  saveSettings(); }
+
+    let checkbox = '<input class="form-control '+disabled+'" type="checkbox" id="'+markerId+'" '+value+' onclick=toggleMarked("'+markerId+'") '+disabled+'><label class="form-control'+disabled+'" for="'+markerId+'">Found</label>';
+    let url = urls[o.area + ':' + o.name];
+    let youtube = (url ? '<a href="'+url+'" target=_blank title="'+url+'">' : '')+'<i class="icon fa-brands fa-youtube '+(url ? '':'disabled')+'"></i>'+(url ? '</a>':'');
+    let chain = '<a class="chain" title="copy marker URL to clipboard" href="javascript:copyMarkerURL(\''+markerId+'\')"><i class="fa-solid fa-link"></i></a>';
+
+    let controls = document.createElement('div');
+    controls.innerHTML = '<div class="controls">' + checkbox + youtube + chain + '</div>';
+
+    content.appendChild(text);
+    content.appendChild(data);
+    content.appendChild(expander);
+    content.appendChild(controls);
+
+    popup.appendChild(wrapper);
+    wrapper.appendChild(content);
+    popup.appendChild(tipContainer);
+    tipContainer.appendChild(tip);
+    popup.appendChild(close); // I have no idea how to close window, onclick doesn't fire
+
+    e.target._infoWindow.setOptions({custom: true, dy: -12});
+    e.target._infoWindow.setContent(popup);
+
+    //e.target._infoWindow.setContent(title);
   };
 
   for (const o of j) {
@@ -410,7 +508,7 @@ function loadMarkers(j) {
 
 
     if (o.color !== undefined && !o.type.includes('Button')) {
-      let colors = {0:'lightgrey', 1:'goldenrod',2:'red',3:'dodgerblue',4:'orchid',5:'green',6:'orange'};
+      let colors = {0:'lightgrey', 1:'gold',2:'red',3:'dodgerblue',4:'orchid',5:'green',6:'darkorange'};
       if (color = colors[o.original_color || o.color]) {
         bg = color;
       }
@@ -418,12 +516,6 @@ function loadMarkers(j) {
 
     if (o.type == 'Jumppad_C') {
       bg = (o.allow_stomp || o.disable_movement_in_air==false) ? 'dodgerblue' : 'red';
-    }
-
-    let spawns = o.spawns;
-
-    if (o.type == 'Chest_C' && !o.spawns) {
-      o.spawns = 'Coin_C';
     }
 
     if (o.type.startsWith('MinecraftBrick')) {
@@ -436,12 +528,20 @@ function loadMarkers(j) {
 
     let type = o.spawns || o.type;
 
+    let spawns = o.spawns;
+    if (o.type == 'Chest_C' && !o.spawns) {
+      spawns = o.coins>1 ? 'LotsOfCoins5_C' : 'Coin_C';
+    }
+
     let marker = new maptalks.Marker([c.x, c.y, c.z], {
       properties: o,
-      symbol: markerSymbol(type, bg, fg),
+      symbol: markerSymbol(spawns || o.type, bg, fg),
     }).addTo(markerLayer);
 
-    let title = humanReadable(o.spawns || o.type);
+    let title = humanReadable(o.type);
+    if (o.spawns || o.coins) {
+      title +=  ' (' + (o.spawns ? humanReadable(o.spawns) : o.coins + (o.coins<2 ? ' coin' : ' coins')) + ')';
+    }
 
     new maptalks.ui.ToolTip(title,{}).addTo(marker);
 
@@ -450,19 +550,21 @@ function loadMarkers(j) {
       if (mouseMoved) return;
       let o = e.target.properties;
       let id = o.area + ':' + o.name;
-      settings.markedItems[id] = !settings.markedItems[id];
-      markItems();
+      toggleMarked(id);
     })
 
     lookup[o.area + ':' + o.name] = marker; // lookup for lines
 
-    let group = types[type].group || 'misc';
-    counters[group] = counters[group] || {};
-    counters[group][type] = (counters[group][type] || 0) + 1;
+    let group = (types[type] && types[type].group) || 'misc';
+
+    if (group!='chests') {
+      counters[group] = counters[group] || {};
+      counters[group][type] = (counters[group][type] || 0) + 1;
+    }
   }
 
   if (settings.playerPosition && !playerMarker) {
-    let o = {'type':'PlayerPosition', 'name':'Player Position' };
+    let o = {type:'PlayerPosition', name:'Player Position' };
     playerMarker = new maptalks.Marker(settings.playerPosition, {
         properties: o,
         symbol: markerSymbol(o.type, mapId=='siu' ? 'dodgerblue' : 'red'),
@@ -571,7 +673,7 @@ function loadMarkers(j) {
   ul.innerHTML = '';
 
   let groups = Object.keys(counters);
-  let weight = x=>({'collectable':100,'coins':90,'items':-99, 'weapons':80, 'stats':6, 'upgrades': 7, 'teleports': 85, 'graves':-10, 'misc':-100}[x] || 0);
+  let weight = x=>({'collectable':100,'coins':90,'items':-100, 'actors':-101, 'weapons':80, 'stats':6, 'upgrades': 7, 'teleports': 85, 'graves':-10, 'misc':-1000}[x] || 0);
 
   for (group of groups.sort( (a,b)=> weight(b)-weight(a) || cmpAlphaNum(a,b)) ) {
     let header = document.createElement('div');
@@ -664,6 +766,17 @@ function loadMarkers(j) {
   setClass(document.querySelector('#toggle-found'),settings.toggleFound,'hidden');
 
   markItems();
+
+  if (mapParam.markerId) {
+    if (marker = lookup[mapParam.markerId]) {
+      let o = marker.properties;
+      marker.show();
+      map.animateTo({center: marker.getCoordinates(), zoom: 5});
+      popupOnClick({target: marker});
+      marker.openInfoWindow();
+    }
+    mapParam = {};
+  }
 }
 
 function markItems() {
@@ -1000,7 +1113,7 @@ window.onload = function(event) {
   if (location.hash.length>1) {
     for (const s of location.hash.slice(1).split('&')) {
       let [k,v] = s.split('=');
-      mapParam[k] = v;
+      mapParam[k] = decodeURIComponent(v);
     }
   }
 
