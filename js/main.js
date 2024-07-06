@@ -1251,6 +1251,9 @@ window.loadSaveFile = function () {
 
     if(mapId == 'siu'){
         // Explicit list of pipecaps that can be found in an SIU save file and the corresponding pipes
+        // Note: This table could be built programmatically as all pipes are two way and all the SIU pipes
+        // that we care about have pipecaps at at least one end. So for each pipe we'd add the nearest_pipecap and
+        // the object that has it, and if the other_pipe doesn't have a pipecap add that too.
         const pipecaps = {
           'A1FastTravelPipeCap':  ['DLC2_Complete:Area1_FastTravelPipe'],
           'A1FastTravelPipeCap2': ['DLC2_Complete:PipeToArea1'],
