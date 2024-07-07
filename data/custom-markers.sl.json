@@ -608,31 +608,6 @@
     }
   },
   {
-    "name": "MetalBall3",
-    "type": "Anvil_C",
-    "area": "Map"
-  },
-  {
-    "name": "MetalBall4",
-    "type": "Anvil_C",
-    "area": "Map"
-  },
-  {
-    "name": "MetalBall5",
-    "type": "Anvil_C",
-    "area": "Map"
-  },
-  {
-    "name": "MetalBall6",
-    "type": "Anvil_C",
-    "area": "Map"
-  },
-  {
-    "name": "MetalBall2_2186",
-    "type": "Anvil_C",
-    "area": "Map"
-  },
-  {
     "name": "MetalBall11_938",
     "type": "Hide:MetalBall_C",
     "area": "Map"
@@ -640,41 +615,6 @@
   {
     "name": "MetalBall7_209",
     "type": "Hide:MetalBall_C",
-    "area": "Map"
-  },
-  {
-    "name": "RingRusty10",
-    "type": "_Pickaxe_C",
-    "area": "Map"
-  },
-  {
-    "name": "RingRusty11",
-    "type": "_Pickaxe_C",
-    "area": "Map"
-  },
-  {
-    "name": "RingRusty12",
-    "type": "_Pickaxe_C",
-    "area": "Map"
-  },
-  {
-    "name": "RingRusty13",
-    "type": "_Pickaxe_C",
-    "area": "Map"
-  },
-  {
-    "name": "RingRusty14",
-    "type": "_Pickaxe_C",
-    "area": "Map"
-  },
-  {
-    "name": "RingRusty15",
-    "type": "_Pickaxe_C",
-    "area": "Map"
-  },
-  {
-    "name": "RingRusty16",
-    "type": "_Pickaxe_C",
     "area": "Map"
   },
   {
