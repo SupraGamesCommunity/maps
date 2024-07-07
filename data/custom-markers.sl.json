@@ -155,6 +155,114 @@
     }
   },
   {
+    "name": "Shell13_3781",
+    "area": "Map",
+    "linetype": "target",
+    "target": {
+      "x": 27421.515625,
+      "y": -23146.896484375
+    }
+  },
+  {
+    "name": "Shell16_5895",
+    "area": "Map",
+    "linetype": "target",
+    "target": {
+      "x": 27421.515625,
+      "y": -23146.896484375
+    }
+  },
+  {
+    "name": "Shell2_1957",
+    "area": "Map",
+    "linetype": "target",
+    "target": {
+      "x": 27421.515625,
+      "y": -23146.896484375
+    }
+  },
+  {
+    "name": "Shell5_1015",
+    "area": "Map",
+    "linetype": "target",
+    "target": {
+      "x": 27421.515625,
+      "y": -23146.896484375
+    }
+  },
+  {
+    "name": "Shell9_2044",
+    "area": "Map",
+    "linetype": "target",
+    "target": {
+      "x": 27421.515625,
+      "y": -23146.896484375
+    }
+  },
+  {
+    "name": "Shell_1483",
+    "area": "Map",
+    "linetype": "target",
+    "target": {
+      "x": 27421.515625,
+      "y": -23146.896484375
+    }
+  },
+  {
+    "name": "Chest146_2",
+    "area": "Map",
+    "linetype": "target",
+    "target": {
+      "x": 17819.99609375,
+      "y": 9486.4990234375
+    }
+  },
+  {
+    "name": "Chest147_2",
+    "area": "Map",
+    "linetype": "target",
+    "target": {
+      "x": 17819.99609375,
+      "y": 9486.4990234375
+    }
+  },
+  {
+    "name": "Chest47",
+    "area": "Map",
+    "linetype": "target",
+    "target": {
+      "x": 17819.99609375,
+      "y": 9486.4990234375
+    }
+  },
+  {
+    "name": "Chest60_2151",
+    "area": "Map",
+    "linetype": "target",
+    "target": {
+      "x": 17819.99609375,
+      "y": 9486.4990234375
+    }
+  },
+  {
+    "name": "Chest64_1416",
+    "area": "Map",
+    "linetype": "target",
+    "target": {
+      "x": 17819.99609375,
+      "y": 9486.4990234375
+    }
+  },
+  {
+    "name": "Chest80_1332",
+    "area": "Map",
+    "linetype": "target",
+    "target": {
+      "x": 17819.99609375,
+      "y": 9486.4990234375
+    }
+  },
+  {
     "name": "BuyUpgradeChestNum",
     "area": "Map",
     "lat": -33767.76171875,
