@@ -3,8 +3,8 @@
     "friendly": "Strong",
     "icon": "strong",
     "layer": "upgrades",
-    "nospoiler": "shop",
-    "lines": "upgrades",
+    "nospoiler": "quest",
+    "lines": "quest",
     "friendly_key": "AB8A43CA4F1AE131FBD9C2A7592365FD",
     "description": "You can now destroy pixel blocks with your sword AND carry very heavy objects AND you got +5 sword damage.",
     "description_key": "E5D2B6C24991B39DB6313DB926CD0CCA",
@@ -402,7 +402,7 @@
     "icon": "moon_red",
     "layer": "misc",
     "nospoiler": "collectable",
-    "lines": "dev",
+    "lines": "quest",
     "friendly_key": "571621A1492B4D450EDEEEAF999C310B",
     "description": "Looks very valuable - can be used for something.",
     "description_key": "622EB5CA40E1F930D11F41893FCE5899"
@@ -1222,7 +1222,7 @@
     "icon": "chest",
     "layer": null,
     "nospoiler": "closedChest",
-    "lines": "dev",
+    "lines": "quest",
     "friendly_key": "",
     "description": "",
     "description_key": ""

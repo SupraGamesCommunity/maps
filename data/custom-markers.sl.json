@@ -25,43 +25,283 @@
     "area": "Map"
   },
   {
+    "name": "BarrelClosed2_2",
+    "area": "Map",
+    "comment": " ",
+    "linetype": "target",
+    "target": {
+      "x": 287.12112426757812,
+      "y": -33767.76171875
+    }
+  },
+  {
+    "name": "BarrelClosed_Blueprint2_3",
+    "area": "Map",
+    "comment": "Unlocks Force Cube",
+    "linetype": "target",
+    "target": {
+      "x": 332.32745361328125,
+      "y": -33490.3203125
+    }
+  },
+  {
+    "name": "BarrelClosed_Blueprint3_5",
+    "area": "Map",
+    "comment": "Unlocks Double Jump",
+    "linetype": "target",
+    "target": {
+      "x": 503.5240173339844,
+      "y": -33482.83984375
+    }
+  },
+  {
+    "name": "BarrelClosed_Blueprint4",
+    "area": "Map",
+    "comment": "Unlocks Triple Jump",
+    "linetype": "target",
+    "target": {
+      "x": 130.502090454101562,
+      "y": -33980.2890625
+    }
+  },
+  {
+    "name": "BarrelClosed_Blueprint5_2",
+    "area": "Map",
+    "comment": "Unlocks Happiness",
+    "linetype": "target",
+    "target": {
+      "x": 48.0,
+      "y": -34084.0
+    }
+  },
+  {
+    "name": "BarrelClosed_Blueprint6",
+    "area": "Map",
+    "comment": "Unlocks Health Regeneration",
+    "linetype": "target",
+    "target": {
+      "x": -57.00196838378906,
+      "y": -34003.71875
+    }
+  },
+  {
+    "name": "BarrelClosed_Blueprint_2",
+    "area": "Map",
+    "comment": "Health Max +15",
+    "linetype": "target",
+    "target": {
+      "x": 393.44390869140625,
+      "y": -33396.23046875
+    }
+  },
+  {
+    "name": "BarrelRed2",
+    "area": "Map",
+    "comment": "Unlocks Gun Projectile Speed x2",
+    "linetype": "target",
+    "target": {
+      "x": -23095.03515625,
+      "y": -12244.0947265625
+    }
+  },
+  {
+    "name": "BarrelRed3",
+    "area": "Map",
+    "comment": "Unlocks Gun damage +15",
+    "linetype": "target",
+    "target": {
+      "x": -23101.931640625,
+      "y": -11550.875
+    }
+  },
+  {
+    "name": "BarrelRed4",
+    "area": "Map",
+    "comment": "Unlocks Max Health +15",
+    "linetype": "target",
+    "target": {
+      "x": -23106.603515625,
+      "y": -12066.693359375
+    }
+  },
+  {
+    "name": "BarrelRed5",
+    "area": "Map",
+    "comment": "Unlocks Ammo Refill Speed +66%",
+    "linetype": "target",
+    "target": {
+      "x": -23116.8515625,
+      "y": -11908.509765625
+    }
+  },
+  {
+    "name": "BarrelRed6",
+    "area": "Map",
+    "comment": "Unlocks Sword Damage +3",
+    "linetype": "target",
+    "target": {
+      "x": -23095.521484375,
+      "y": -12392.7412109375
+    }
+  },
+  {
+    "name": "BarrelRed_2",
+    "area": "Map",
+    "comment": "Unlocks Gun cooldown halfed",
+    "linetype": "target",
+    "target": {
+      "x": -23100.384765625,
+      "y": -11320.3593751
+    }
+  },
+  {
+    "name": "Shell13_3781",
+    "area": "Map",
+    "linetype": "target",
+    "target": {
+      "x": 27421.515625,
+      "y": -23146.896484375
+    }
+  },
+  {
+    "name": "Shell16_5895",
+    "area": "Map",
+    "linetype": "target",
+    "target": {
+      "x": 27421.515625,
+      "y": -23146.896484375
+    }
+  },
+  {
+    "name": "Shell2_1957",
+    "area": "Map",
+    "linetype": "target",
+    "target": {
+      "x": 27421.515625,
+      "y": -23146.896484375
+    }
+  },
+  {
+    "name": "Shell5_1015",
+    "area": "Map",
+    "linetype": "target",
+    "target": {
+      "x": 27421.515625,
+      "y": -23146.896484375
+    }
+  },
+  {
+    "name": "Shell9_2044",
+    "area": "Map",
+    "linetype": "target",
+    "target": {
+      "x": 27421.515625,
+      "y": -23146.896484375
+    }
+  },
+  {
+    "name": "Shell_1483",
+    "area": "Map",
+    "linetype": "target",
+    "target": {
+      "x": 27421.515625,
+      "y": -23146.896484375
+    }
+  },
+  {
+    "name": "Chest146_2",
+    "area": "Map",
+    "linetype": "target",
+    "target": {
+      "x": 17819.99609375,
+      "y": 9486.4990234375
+    }
+  },
+  {
+    "name": "Chest147_2",
+    "area": "Map",
+    "linetype": "target",
+    "target": {
+      "x": 17819.99609375,
+      "y": 9486.4990234375
+    }
+  },
+  {
+    "name": "Chest47",
+    "area": "Map",
+    "linetype": "target",
+    "target": {
+      "x": 17819.99609375,
+      "y": 9486.4990234375
+    }
+  },
+  {
+    "name": "Chest60_2151",
+    "area": "Map",
+    "linetype": "target",
+    "target": {
+      "x": 17819.99609375,
+      "y": 9486.4990234375
+    }
+  },
+  {
+    "name": "Chest64_1416",
+    "area": "Map",
+    "linetype": "target",
+    "target": {
+      "x": 17819.99609375,
+      "y": 9486.4990234375
+    }
+  },
+  {
+    "name": "Chest80_1332",
+    "area": "Map",
+    "linetype": "target",
+    "target": {
+      "x": 17819.99609375,
+      "y": 9486.4990234375
+    }
+  },
+  {
     "name": "BuyUpgradeChestNum",
     "area": "Map",
-    "lat": -34084.0,
-    "lng": 48.0
+    "lat": -33767.76171875,
+    "lng": 287.12112426757812,
+    "comment": "Only available after the credits"
   },
   {
     "name": "BuyHealthRegen2_695",
     "area": "Map",
     "lat": -34003.71875,
     "lng": -57.00196838378906,
-    "comment": "Requires collecting 1/6 Gold Barrels"
+    "comment": "Requires collecting a Gold Barrel"
   },
   {
     "name": "BuySwordDamage+11",
     "area": "Map",
-    "lat": -33980.2890625,
-    "lng": 130.502090454101562
+    "lat": -33800.21875,
+    "lng": 100.940216064453125
   },
   {
     "name": "BuyDoubleJump_786",
     "area": "Map",
-    "lat": -33901.05859375,
-    "lng": 27.856106758117676,
-    "comment": "Requires collecting 3/6 Gold Barrels"
+    "lat": -33482.83984375,
+    "lng": 503.5240173339844,
+    "comment": "Requires collecting a Gold Barrel"
   },
   {
     "name": "BuyTripleJump_877",
     "area": "Map",
-    "lat": -33870.11328125,
-    "lng": 210.43764877319336,
-    "comment": "Requires collecting 4/6 Gold Barrels"
+    "lat": -33980.2890625,
+    "lng": 130.502090454101562,
+    "comment": "Requires collecting a Gold Barrel"
   },
   {
     "name": "BuySpeedx15_2",
     "area": "Map",
-    "lat": -33800.21875,
-    "lng": 100.940216064453125
+    "lat": -33870.11328125,
+    "lng": 210.43764877319336,
+    "comment": "Only available after the credits"
   },
   {
     "name": "BuySpeedx2_206",
@@ -72,72 +312,97 @@
   {
     "name": "UpgradeHappiness2_2",
     "area": "Map",
-    "lat": -33767.76171875,
-    "lng": 287.12112426757812,
-    "comment": "Requires collecting 6/6 Gold Barrels"
+    "lat": -34084.0,
+    "lng": 48.0,
+    "comment": "Requires collecting a Gold Barrel"
   },
   {
     "name": "BuyChestDetectorRadius",
     "area": "Map",
     "lat": -33671.2265625,
-    "lng": 360.25746154785156
+    "lng": 360.25746154785156,
+    "comment": "Only available after the credits"
   },
   {
     "name": "BuyForceBlock_695",
     "area": "Map",
-    "lat": -33590.125,
-    "lng": 255.09010314941406,
-    "comment": "Requires collecting 2/6 Gold Barrels"
+    "lat": -33490.3203125,
+    "lng": 332.32745361328125,
+    "comment": "Requires collecting a Gold Barrel"
   },
   {
     "name": "BuyWallet+50_737",
     "area": "Map",
-    "lat": -33575.9296875,
-    "lng": 430.7998504638672
+    "lat": -33590.125,
+    "lng": 255.09010314941406
   },
   {
     "name": "BuyWallet+51",
     "area": "Map",
-    "lat": -33490.3203125,
-    "lng": 332.32745361328125
+    "lat": -33575.9296875,
+    "lng": 430.7998504638672,
+    "comment": "Only available after the credits"
   },
   {
     "name": "BuySwordDamage+10_2",
     "area": "Map",
-    "lat": -33482.83984375,
-    "lng": 503.5240173339844
+    "lat": -33901.05859375,
+    "lng": 27.856106758117676
   },
   {
     "name": "BuyHealth+15_765",
     "area": "Map",
     "lat": -33396.23046875,
     "lng": 393.44390869140625,
-    "comment": "Requires collecting 5/6 Gold Barrels"
+    "comment": "Requires collecting a Gold Barrel"
   },
   {
     "name": "UpgradeSwordDamageX2_716",
     "area": "Map",
-    "comment": "Requires collecting 2/5 Red Barrels"
+    "lat": -12392.7412109375,
+    "lng": -23095.521484375,
+    "comment": "Requires collecting a Red Barrel"
   },
   {
     "name": "BuySilentFeet2",
     "area": "Map",
-    "comment": "Requires collecting 1/5 Red Barrels"
+    "lat": -11908.509765625,
+    "lng": -23116.8515625,
+    "comment": "Requires collecting a Red Barrel"
   },
   {
     "name": "BuyGunRefireRate50_506",
     "area": "Map",
-    "comment": "Requires collecting 3/5 Red Barrels"
+    "lat": -11320.359375,
+    "lng": -23100.384765625,
+    "comment": "Requires collecting a Red Barrel"
   },
   {
     "name": "BuyGunSpeedx2_436",
     "area": "Map",
-    "comment": "Requires collecting 4/5 Red Barrels"
+    "lat": -12244.0947265625,
+    "lng": -23095.03515625,
+    "comment": "Requires collecting a Red Barrel"
   },
   {
     "name": "BuyGunDamage+15_1234",
     "area": "Map",
-    "comment": "Requires collecting 5/5 Red Barrels"
+    "lat": -11550.875,
+    "lng": -23101.931640625,
+    "comment": "Requires collecting a Red Barrel"
+  },
+  {
+    "name": "BuyHealth+16_457",
+    "area": "Map",
+    "lat": -12066.693359375,
+    "lng": -23106.603515625,
+    "comment": "Requires collecting a Red Barrel"
+  },
+  {
+    "name": "BuySilentFeet_902",
+    "area": "Map",
+    "lat": -11697.0458984375,
+    "lng": -23131.419921875
   },
   {
     "name": "Chest9_2231",
