@@ -43,6 +43,7 @@
       <a id="load_slc" class="map-link" href="javascript:loadMap('slc')">Supraland Crash</a>
       <a id="load_siu" class="map-link" href="javascript:loadMap('siu')">Supraland Six Inches Under</a>
     </div>
+
     <hr/>
     <div class="button-panel"><span id="show-all" onclick="showAll()">Show All</span><span id="hide-all" onclick="hideAll()">Hide All</span></div>
 
@@ -62,6 +63,9 @@
       <ul id="categories">
       </ul>
     </div>
+
+    <hr/>
+    <span id="toggle-content" class="button-toggle"><i class="icon fa fa-eye"></i>Chest Contents</span>
 
   </div>
 </div>
@@ -99,7 +103,7 @@
 
   </div>
 </div>
-
+<div id="alert" class="closed">Copied To Clipboard</div>
 </body>
 </html>
 <script>
@@ -160,6 +164,37 @@ let maps = {
       "MapWorldLowerRight": { "X": 73728.0, "Y": 54728.0, "Z": 10000.0 },
    },
 };
+
+function getItemColor(o, _type) {
+  let bg = 'grey';
+
+  if (t = types[_type || o.type]) {
+    if (t.bg) bg = t.bg;
+  }
+
+  if (o.color !== undefined && !o.type.includes('Button')) {
+    let colors = {0:'lightgrey', 1:'gold',2:'red',3:'dodgerblue',4:'orchid',5:'green',6:'darkorange'};
+    if (color = colors[o.original_color || o.color]) {
+      bg = color;
+    }
+  }
+
+  if (o.type == 'Jumppad_C') {
+    bg = (o.allow_stomp || o.disable_movement_in_air==false) ? 'dodgerblue' : 'red';
+  } else if (o.type.startsWith('MinecraftBrick')) {
+    if (color = {1:'purple', 2:'lightgrey', 3:'lightblue', 4:'goldenrod'}[o.brick_type||0]) {
+      bg = color;
+    } else if (o.coins_in_gold) {
+      bg = 'goldenrod';
+    }
+  } else if (o.type.startsWith('Pipesystem')) {
+    bg = 'yellowgreen';
+  } else if (o.type == 'PlayerPosition') {
+    bg = mapId=='siu' ? 'dodgerblue' : 'red';
+  }
+
+  return bg;
+}
 
 function markerSymbol2(type, _bg, _fg) {
   let d = 48;
@@ -369,7 +404,6 @@ function loadMap(id) {
   if (mapParam.lat && mapParam.lng) {
     let view = {center : [mapParam.lng, mapParam.lat], zoom : mapParam.zoom, pitch : mapParam.pitch, bearing : mapParam.bearing };
     map.setView(view);
-    mapParam = {};
   }
 
   fetch('data/ytdata.'+mapId+'.json')
@@ -458,10 +492,10 @@ function loadMarkers(j) {
     let checkbox = '<input class="form-control '+disabled+'" type="checkbox" id="'+markerId+'" '+value+' onclick=toggleMarked("'+markerId+'") '+disabled+'><label class="form-control'+disabled+'" for="'+markerId+'">Found</label>';
     let url = urls[o.area + ':' + o.name];
     let youtube = (url ? '<a href="'+url+'" target=_blank title="'+url+'">' : '')+'<i class="icon fa-brands fa-youtube '+(url ? '':'disabled')+'"></i>'+(url ? '</a>':'');
-    let chain = '<a class="chain" title="copy marker URL to clipboard" href="javascript:copyMarkerURL(\''+markerId+'\')"><i class="fa-solid fa-link"></i></a>';
+    let share = '<a class="chain" title="Copy marker location to clipboard" href="javascript:copyMarkerURL(\''+markerId+'\')"><i class="fa-solid fa-link"></i></a>';
 
     let controls = document.createElement('div');
-    controls.innerHTML = '<div class="controls">' + checkbox + youtube + chain + '</div>';
+    controls.innerHTML = '<div class="controls">' + checkbox + youtube + share + '</div>';
 
     content.appendChild(text);
     content.appendChild(data);
@@ -503,39 +537,19 @@ function loadMarkers(j) {
 
     // create marker
     let id = o.area + ':' + o.name;
-    let bg = null;
     let fg = null;
-
-
-    if (o.color !== undefined && !o.type.includes('Button')) {
-      let colors = {0:'lightgrey', 1:'gold',2:'red',3:'dodgerblue',4:'orchid',5:'green',6:'darkorange'};
-      if (color = colors[o.original_color || o.color]) {
-        bg = color;
-      }
-    }
-
-    if (o.type == 'Jumppad_C') {
-      bg = (o.allow_stomp || o.disable_movement_in_air==false) ? 'dodgerblue' : 'red';
-    }
-
-    if (o.type.startsWith('MinecraftBrick')) {
-      if (color = {1:'purple', 2:'lightgrey', 3:'lightblue', 4:'goldenrod'}[o.brick_type||0]) {
-        bg = color;
-      } else if (o.coins_in_gold) {
-        bg = 'goldenrod';
-      }
-    }
-
-    let type = o.spawns || o.type;
 
     let spawns = o.spawns;
     if (o.type == 'Chest_C' && !o.spawns) {
       spawns = o.coins>1 ? 'LotsOfCoins5_C' : 'Coin_C';
     }
 
+    let type = spawns || o.type
+    let bg = getItemColor(o, type);
+
     let marker = new maptalks.Marker([c.x, c.y, c.z], {
       properties: o,
-      symbol: markerSymbol(spawns || o.type, bg, fg),
+      symbol: markerSymbol(type, bg, fg),
     }).addTo(markerLayer);
 
     let title = humanReadable(o.type);
@@ -555,11 +569,13 @@ function loadMarkers(j) {
 
     lookup[o.area + ':' + o.name] = marker; // lookup for lines
 
-    let group = (types[type] && types[type].group) || 'misc';
-
-    if (group!='chests') {
-      counters[group] = counters[group] || {};
-      counters[group][type] = (counters[group][type] || 0) + 1;
+    // count both outer type and spawns
+    for (type of [o.type, o.spawns]) {
+      if (type !== undefined) {
+        let group = (types[type] && types[type].group) || 'misc';
+        counters[group] = counters[group] || {};
+        counters[group][type] = (counters[group][type] || 0) + 1;
+      }
     }
   }
 
@@ -567,7 +583,7 @@ function loadMarkers(j) {
     let o = {type:'PlayerPosition', name:'Player Position' };
     playerMarker = new maptalks.Marker(settings.playerPosition, {
         properties: o,
-        symbol: markerSymbol(o.type, mapId=='siu' ? 'dodgerblue' : 'red'),
+        symbol: markerSymbol(o.type, getItemColor(o)),
     }).addTo(markerLayer)
     playerMarker.setInfoWindow({autoCloseOn: 'click'}).on('click',popupOnClick);
     new maptalks.ui.ToolTip('Player Position',{}).addTo(playerMarker);
@@ -583,7 +599,6 @@ function loadMarkers(j) {
 
       let points = [];
       let c = marker.getCoordinates();
-      let color = (o.allow_stomp || o.disable_movement_in_air==false) ? 'dodgerblue' : 'red';
 
       let d = o.direction;
 
@@ -638,6 +653,7 @@ function loadMarkers(j) {
 
       points = simplify(points, 10); // https://github.com/maptalks/maptalks.js/issues/2331
       if (points.length>1) {
+        let color = getItemColor(o);
         new maptalks.LineString(points,{arrowStyle:arrowStyle, properties:o, symbol:{lineColor: color, lineWidth: lineWidth}}).addTo(lineLayer);
         if (!vertical) {
           targets.push([o, points.pop()]);
@@ -646,7 +662,7 @@ function loadMarkers(j) {
     } else if (o.type.startsWith('Pipesystem')) { // add pipes
 
       if (o.other_pipe && (target = lookup[o.other_pipe])) {
-        let color = types[o.type] && types[o.type].color || 'yellowgreen';
+        let color = getItemColor(o);
         let points = [marker.getCoordinates(), target.getCoordinates()];
         new maptalks.LineString(points,{arrowStyle:arrowStyle, properties:o, symbol:{lineColor: color, lineWidth: lineWidth}}).addTo(lineLayer);
       }
@@ -735,8 +751,8 @@ function loadMarkers(j) {
   sel.appendChild(opt);
 
   items = [];
-  type = 'Chest_C';
-  items.push([humanReadable(type),type]);
+  //type = 'Chest_C';
+  //items.push([humanReadable(type),type]);
 
   for (group of Object.keys(counters)) {
     for ([type,count] of Object.entries(counters[group])) {
@@ -764,24 +780,26 @@ function loadMarkers(j) {
   },500);
 
   setClass(document.querySelector('#toggle-found'),settings.toggleFound,'hidden');
+  setClass(document.querySelector('#toggle-content'),settings.toggleContent,'hidden');
 
   markItems();
 
-  if (mapParam.markerId) {
-    if (marker = lookup[mapParam.markerId]) {
-      let o = marker.properties;
-      marker.show();
-      map.animateTo({center: marker.getCoordinates(), zoom: 5});
-      popupOnClick({target: marker});
-      marker.openInfoWindow();
-    }
-    mapParam = {};
+  // marker link
+  if (marker = lookup[mapParam.markerId]) {
+    let o = marker.properties;
+    marker.show();
+    map.animateTo({center: marker.getCoordinates(), zoom:(mapParam.zoom||5), pitch:(mapParam.pitch||0), bearing:(mapParam.bearing||0)});
+    popupOnClick({target: marker});
+    marker.openInfoWindow();
   }
+
+  mapParam = {}; // critical to reload map properly
 }
 
 function markItems() {
   // update markers
   let hideFound = document.querySelector('#toggle-found').classList.contains('hidden');
+  let hideContent = document.querySelector('#toggle-content').classList.contains('hidden');
   let alwaysVisible = marker=>marker.properties.type=='Jumppad_C' || marker.properties.type.startsWith('Pipesystem');
 
   let total = {};
@@ -800,12 +818,22 @@ function markItems() {
       hidden || (found && hideFound && !alwaysVisible(marker)) ? marker.hide() : marker.show();
 
       if (layerName == 'markers') {
-        marker.updateSymbol({markerOpacity: found ? 0.5 : 1 });
-        let type = o.type.endsWith('Chest_C') ? 'Chest_C': o.type; // account for MonsterChest
 
-        total[type] = (total[type] || 0) + 1;
-        marked[type] = (marked[type] || 0) + (found ? 1 : 0);
-        visible[type] = (visible[type] || 0) + (hidden ? 0 : 1);
+        let spawns = o.spawns;
+        if (o.type == 'Chest_C' && !o.spawns) {
+          spawns = o.coins>1 ? 'LotsOfCoins5_C' : 'Coin_C';
+        }
+
+        //let type = settings.activeItems[spawns] ? spawns : (hideContent ? o.type : (spawns || o.type) ); // show content if allowed AND active
+        let type = hideContent ? o.type : (spawns || o.type); // show content if allowed
+
+        marker.updateSymbol(markerSymbol(type, getItemColor(o, type)));
+
+        marker.updateSymbol({markerOpacity: found ? 0.5 : 1 });
+
+        total[o.type] = (total[o.type] || 0) + 1;
+        marked[o.type] = (marked[o.type] || 0) + (found ? 1 : 0);
+        visible[o.type] = (visible[o.type] || 0) + (hidden ? 0 : 1);
 
       } else {
         marker.updateSymbol({lineOpacity: marked ? 0.5 : 1 });
@@ -821,7 +849,6 @@ function markItems() {
       div.classList.add('hidden');
     }
   });
-
 
   // add progress track to the sidebar
   let base = document.querySelector('.category-progress');
@@ -841,8 +868,8 @@ function markItems() {
     li.title = name + ' (' + type + ')';
     li.onclick = toggleTrack;
 
-    //if (!visible[type]) {
-    if (!settings.track[type]) {
+    if (!visible[type]) {
+    //if (!settings.track[type]) {
       li.classList.add('hidden');
     }
 
@@ -912,7 +939,7 @@ function toggleGroup(e) {
 function toggleTrack(e) {
   e.preventDefault();
   let id = e.target.alt;
-  settings.track[id] = !settings.track[id];
+  //settings.track[id] = !settings.track[id];
   saveSettings();
   return toggleItems(e, e.target.classList.contains('hidden'), [e.target]);
 }
@@ -920,39 +947,40 @@ function toggleTrack(e) {
 function toggleItems(e, show, parent) {
   let hideFound = document.querySelector('#toggle-found').classList.contains('hidden');
   let alwaysVisible = marker=>marker.properties.type=='Jumppad_C' || marker.properties.type.startsWith('Pipesystem');
-  let chest = parent.length==1 && parent[0].alt == 'Chest_C';
 
   lookup = {};
   for (div of parent) {
     lookup[div.alt] = div;
-
-    if (div.alt=='Chest_C') {
-      lookup['BP_MonsterChest_C'] = div; // 139 + 3 = 142
-    }
-
-    show ? setClass(div, false, 'hidden') : setClass(div, true, 'hidden');
   }
 
   // update markers
   for (layerName of ['markers','lines']) {
     for (marker of map.getLayer(layerName)._geoList) {
       let o = marker.properties;
-      if (div = (lookup[ o.type ] || lookup[ o.spawns ]) ) {
-        let id = o.area + ':' + o.name;
-        let found = settings.markedItems[id];
-        show && !(found && hideFound && !alwaysVisible(marker)) ? marker.show() : marker.hide();
 
-        if (layerName == 'markers') {
-          if (show) {
-            (!chest && o.spawns)? settings.activeItems[o.spawns] = true : settings.activeItems[o.type] = true;
-          } else {
-            (!chest && o.spawns) ? delete settings.activeItems[o.spawns] : delete settings.activeItems[o.type];
+      for (type of [o.spawns,o.type]) {
+
+        if (div = lookup[type]) {
+          let id = o.area + ':' + o.name;
+          let found = settings.markedItems[id];
+
+          // toggle markers
+          show && !(found && hideFound && !alwaysVisible(marker)) ? marker.show() : marker.hide();
+
+          // update active items
+          if (layerName == 'markers') {
+            if (show) {
+              settings.activeItems[type] = true;
+            } else {
+              delete settings.activeItems[type];
+            }
           }
-        }
 
+        }
       }
     }
   }
+
 
   saveSettings();
   markItems();
@@ -990,7 +1018,8 @@ function copyToClipboard(text) {
   input.select();
   document.execCommand('copy');
   input.parentNode.removeChild(input);
-  console.log(text + ' copied to clipboard');
+  document.getElementById('alert').classList.remove('closed');
+  setTimeout(function(e){ document.getElementById('alert').classList.add('closed') },1500);
 }
 
 function openLoadFileDialog() {
@@ -1111,7 +1140,7 @@ function loadSaveFile(e) {
 
 window.onload = function(event) {
   if (location.hash.length>1) {
-    for (const s of location.hash.slice(1).split('&')) {
+    for (const s of location.hash.slice(1).split(/&amp;|&/)) {
       let [k,v] = s.split('=');
       mapParam[k] = decodeURIComponent(v);
     }
@@ -1224,6 +1253,13 @@ window.onload = function(event) {
     markItems();
     saveSettings();
   }
+
+  document.querySelector('#toggle-content').onclick = function(e) {
+    settings.toggleContent = toggleClass(e.target,'hidden');
+    markItems();
+    saveSettings();
+  }
+
 }
 
 </script>
