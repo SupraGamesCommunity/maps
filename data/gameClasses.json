@@ -400,7 +400,7 @@
   "BuyCrystal_C": {
     "friendly": "Red Moon",
     "icon": "moon_red",
-    "layer": "misc",
+    "layer": "quest",
     "nospoiler": "collectable",
     "lines": "quest",
     "friendly_key": "571621A1492B4D450EDEEEAF999C310B",
@@ -983,7 +983,7 @@
     "friendly": "Supra Sword",
     "icon": "sword_red",
     "layer": "upgrades",
-    "nospoiler": "shop",
+    "nospoiler": "quest",
     "lines": "dev",
     "friendly_key": "F2D529CD47182CA6BD8ADF9BE3011120",
     "description": "Lots of damage! Fast swings!",
@@ -1362,7 +1362,7 @@
   "MoonTake_C": {
     "friendly": "Green Moon",
     "icon": "moon_green",
-    "layer": "misc",
+    "layer": "quest",
     "nospoiler": "collectable",
     "lines": "dev",
     "friendly_key": "",

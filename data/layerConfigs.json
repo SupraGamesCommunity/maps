@@ -116,7 +116,6 @@
         "defaultActive": false,
         "zDepth": 12,
         "games": [
-            "sl",
             "slc",
             "siu"
         ]
