@@ -467,3 +467,22 @@ a:hover { text-decoration: underline; }
   margin-right: 16px;
 }
 
+#alert {
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 200px;
+  height: 40px;
+  padding: 12px;
+  text-align: center;
+  background-color: #333;
+  opacity: 95%;
+  color: white;
+  transition: transform .25s ease-out;
+}
+
+#alert.closed {
+  transform: translateY(40px)
+}
