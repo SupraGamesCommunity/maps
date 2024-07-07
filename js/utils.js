@@ -47,6 +47,20 @@ let browser = {
 
 //=================================================================================================
 
+// Save a formatted Json version of specified object to the file name (in downloads directory)
+function SaveObjectToJsonFile(obj, fileName) {
+    const body = document.body;
+    const a = document.createElement("a");
+    const file = new Blob([JSON.stringify(obj, null, 2)], {type: 'application/json'});
+    a.href = URL.createObjectURL(file);
+    a.setAttribute("download", fileName);
+    body.appendChild(a)
+    a.click();
+    body.removeChild(a);
+}
+
+//=================================================================================================
+
 // Adds a non-enumerable/configurable/writable function to a base class. Function
 // cannot be anonymous
 function extendClass(type, fn){
@@ -56,11 +70,12 @@ function extendClass(type, fn){
     });
 }
 
-// Returns true if 'item' is 
+// Returns true if 'item' is an object but not an array (won't handle something like Date)
 function isObject(item) {
     return (item && typeof item === 'object' && !Array.isArray(item));
 }
 
+// merges two objects with string members, doesn't handle arrays or other corner cases
 function mergeDeep(target, ...sources) {
     if (!sources.length)
         return target;

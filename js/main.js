@@ -12,21 +12,15 @@
 var map = null;         // Leaflet map object containing current game map and all its markers
 var mapId = '';         // Current map selected (one of sl, slc or siu)
 
-// Data we store in the HTML Window localStorage property 
-// Current mapId, markedItems[{markerId}:true] (found), activeLayers[{layer}:true] and playerPosition
-const localDataName = 'supgragamescommunity_maps';
-let localData = JSON.parse(localStorage.getItem(localDataName)) || {};
-
 let layers = {};        // Leaflet layerGroup array, one for each collection of markers
-let icons = {};         // Dict of Leaflet icon obj, defSize, size  keyed by our icon file basename + size
+
 let playerStart;        // Position of first player start instance found in map data
 let playerMarker;       // Leaflet marker object for current player start (or dragged position)
 
 let reloading;          // Flag used to prevent triggering reloading while already in progress
 
-let settings;           // Reference to localData[mapId]
-let mapCenter;
 let mapParam = {};      // Parameters extracted from map URL
+
 let objects = {};
 let markers = {};       // Map from alt name to markers (or lines) on map (ie to layers)
 let saveMap = {};       // Map from alt name in save file to alt name to mark found
@@ -68,16 +62,25 @@ var maps = {
    },
 };
 
-// Save the local state data we track to the window local storage
-function saveSettings() {
-  localStorage.setItem(localDataName, JSON.stringify(localData));
-}
+Settings.init('sl');
+
+// Todo: Move these to the the place the relevant code is dealt with
+Settings.globalSetDefault('buildMode', false);
+Settings.globalSetDefault('language', 'en')
+
+Settings.mapSetDefault('markedItems', {});
+Settings.mapSetDefault('coinsFound', {});
+Settings.mapSetDefault('searchText', '');
+Settings.mapSetDefault('playerPosition', [0, 0, 0]);
+Settings.mapSetDefault('center', [0, 0]);
+Settings.mapSetDefault('zoom', 1);
+Settings.mapSetDefault('mapPins', []);
 
 // Called when the search is cleared/cancelled to update searchText, save change
 // and reflect changes in current marker draw state
 function clearFilter() {
-  settings.searchText = '';
-  saveSettings();
+  Settings.map.searchText = '';
+  Settings.commit();
   markItems();
 }
 
@@ -107,9 +110,9 @@ function openLoadFileDialog() {
 }
 
 function toggleBuildMode() {
-  if(!settings.buildMode){ settings.buildMode = false }
-  settings.buildMode = !settings.buildMode;
-  skipConfirms || alert('Build mode is now set to ' + settings.buildMode + '.');
+  Settings.globalSetDefault('buildMode', false);
+  Settings.global.buildMode = !Settings.global.buildMode;
+  skipConfirms || alert('Build mode is now set to ' + Settings.global.buildMode + '.');
 }
 
 function updateBuildModeValue() {
@@ -161,39 +164,8 @@ function loadMap(id) {
 
   mapId = id;
 
-  // Make sure localStorage contains a good set of defaults
-  for (let id in maps) {
-    //var title = maps[id].title;
-    if (!localData[id]) {
-      localData[id] = {};
-    }
-    if (!localData[id].markedItems) {
-      localData[id].markedItems = {};
-    }
-    if (!localData[id].coinsFound) {
-      localData[id].coinsFound = {};
-    }
-    if (!localData[id].searchText) {
-      localData[id].searchText = '';
-    }
-    if (!localData[id].activeLayers) {
-      localData[id].activeLayers = layerConfigs.getDefaultActive(mapId);
-    }
-    if (!localData[id].buildMode) {
-      localData[id].buildMode = false;
-    }
-    if (!localData[id].mapPins) {
-      localData[id].mapPins = [];
-    }
-  }
-
-  localData.mapId = mapId;
-  saveSettings();
-
-  settings = localData[mapId];
-
-  icons = {}
-  //console.log(localData);
+  Settings.mapId = id;
+  Settings.commit();
 
   var mapSize = {width: 8192, height: 8192}
   var tileSize   = {x: 512, y: 512};
@@ -231,8 +203,6 @@ function loadMap(id) {
   crs.scale = function (zoom) { return Math.pow(2, zoom) / mapMinResolution; };
   crs.zoom = function (scale) { return Math.log(scale * mapMinResolution) / Math.LN2; };
 
-  mapCenter = [p.MapWorldCenter.Y, p.MapWorldCenter.X];
-
   // Create the base map
   map = new L.Map('map', {
     crs: crs,
@@ -266,9 +236,9 @@ function loadMap(id) {
 
   // eslint-disable-next-line no-unused-vars
   map.on('moveend zoomend', function(e) {
-    settings.center = [map.getCenter().lat, map.getCenter().lng]; // avoid circular refs here
-    settings.zoom = map.getZoom();
-    saveSettings();
+    Settings.map.center = [map.getCenter().lat, map.getCenter().lng]; // avoid circular refs here
+    Settings.map.zoom = map.getZoom();
+    Settings.commit();
     if(e.type == 'zoomend'){
       updatePolylines();
       markItems();
@@ -294,19 +264,16 @@ function loadMap(id) {
   }
 
   map.on('overlayadd', function(e) {
-    settings.activeLayers[e.layer.id] = true;
+    Settings.map.activeLayers[e.layer.id] = true;
+    Settings.commit();
     updatePolylines();
     markItems();
-    saveSettings();
-
-    // let's maybe clear search on layer change just to avoid confusion
-    // clearFilter(); // can't really do that, search also opens layers
   });
 
   map.on('overlayremove', function(e) {
-    delete settings.activeLayers[e.layer.id];
+    delete Settings.map.activeLayers[e.layer.id];
+    Settings.commit();
     markItems();
-    saveSettings();
   });
 
   let tilesDir = 'tiles/'+mapId;
@@ -336,7 +303,7 @@ function loadMap(id) {
     else
       layer = L.tileLayer.canvas(tilesDir+'/'+layerId+'/{z}/{x}/{y}.png', layerOptions);
     layer.id = layerId;
-    if (settings.activeLayers[layerId]) {
+    if (Settings.map.activeLayers[layerId]) {
       layer.addTo(map);
     }
     layerControl.addOverlay(layer, layerConfig.name);
@@ -347,8 +314,8 @@ function loadMap(id) {
   if (mapParam.lat && mapParam.lng && mapParam.zoom) {
     map.setView([mapParam.lat, mapParam.lng], mapParam.zoom);
     mapParam = {};
-  } else if (settings.center && settings.zoom) {
-    map.setView(settings.center, settings.zoom);
+  } else if (Settings.map.center && Settings.map.zoom) {
+    map.setView(Settings.map.center, Settings.map.zoom);
   } else {
     map.fitBounds(mapBounds);
   }
@@ -371,7 +338,7 @@ function loadMap(id) {
                   addHooks:function() {
                     if('coordinate' in layers) {
                       addMapPin();
-                      saveSettings();
+                      Settings.commit();
                       layers['coordinate'].addTo(map);
                     }
                     subAction.prototype.addHooks.call(this); // closes sub-action
@@ -380,10 +347,10 @@ function loadMap(id) {
                 subAction.extend({
                   options:{toolbarIcon:{html:'clear', tooltip: 'Clears all pins added to map'}},
                   addHooks:function() {
-                    if(settings.mapPins.length > 0
+                    if(Settings.map.mapPins.length > 0
                         && (skipConfirms || confirm("Are you sure you want to clear all custom pins?"))){
                       clearMapPins();
-                      saveSettings();
+                      Settings.commit();
                     }
                     subAction.prototype.addHooks.call(this); // closes sub-action
                   }
@@ -391,9 +358,9 @@ function loadMap(id) {
                 subAction.extend({
                   options:{toolbarIcon:{html:'copy', tooltip: 'Copy pin positions to clip board'}},
                   addHooks:function() {
-                    if(settings.mapPins.length > 0){
+                    if(Settings.map.mapPins.length > 0){
                       let pins = '';
-                      settings.mapPins.forEach((value, i) => {
+                      Settings.map.mapPins.forEach((value, i) => {
                         pins += `${i}: (x: ${value.lng.toFixed()} y: ${value.lat.toFixed()})\r\n`; 
                       })
                       copyToClipboard(pins)                    
@@ -464,7 +431,7 @@ function loadMap(id) {
                 subAction.extend({
                   options:{toolbarIcon:{html:'Browse...', tooltip: 'Load game save (*.sav) to mark collected items (Alt+R)'}},
                   addHooks: function () {
-                    if(Object.keys(settings.markedItems).length == 0 ||
+                    if(Object.keys(Settings.map.markedItems).length == 0 ||
                         skipConfirms || confirm("Are you sure you want to overwrite existing items marked found?")) {
                       openLoadFileDialog();
                     } 
@@ -483,7 +450,7 @@ function loadMap(id) {
                   addHooks: function () { 
                     if (skipConfirms || confirm('Are you sure to unmark all found items?')) {
                       unmarkItems();
-                      saveSettings();
+                      Settings.commit();
                     }
                     subAction.prototype.addHooks.call(this);
                   }
@@ -500,7 +467,7 @@ function loadMap(id) {
 
   function onContextMenu(e) {
     let markerId = e.target.options.alt;
-    let found = settings.markedItems[markerId]==true;
+    let found = Settings.map.markedItems[markerId]==true;
     window.markItemFound(markerId, !found);
     e.target.closePopup();
   }
@@ -561,7 +528,7 @@ function loadMap(id) {
     //<p><span class="a">foo</span>  <span class="b">=</span>  <span class="c">"abcDeveloper"</span>
 
     // it's not "found" but rather "removed" (e.g. BuySword2_2 in the beginning of Crash DLC)
-    let found = (settings.markedItems[markerId] == true);
+    let found = (Settings.map.markedItems[markerId] == true);
     let value = found ? 'checked' : '';
     text += '<div class="marker-popup-found">';
     text += `<input type="checkbox" id="${markerId}" ${value} onclick=window.markItemFound("${markerId}",this.checked)><label for="${markerId}">`
@@ -572,14 +539,14 @@ function loadMap(id) {
     //let url = base +'#' + Object.entries(vars).map(e=>e[0]+'='+encodeURIComponent(e[1])).join('&');
     //let a = '<a href="'+url+'" onclick="return false">Map URL</a>';
 
-    if(settings.buildMode) {
+    if(Settings.global.buildMode) {
       let json = JSON.stringify(o, null, 2)
       json = json.substring(json.indexOf('\n'), json.lastIndexOf('}'));
       json = json.replaceAll('\n','<br>').replaceAll(' ','&nbsp;');
       text +=  '<div class="marker-popup-debug">' + json + '</div><br>'
     }
 
-    if(settings.buildMode) {
+    if(Settings.global.buildMode) {
       text += '<hr>';
       Object.getOwnPropertyNames(o).forEach(
         function (propName) {
@@ -620,13 +587,13 @@ function loadMap(id) {
   function addMapPin(idx){
     let pos, pinIdx;
     if(typeof idx !== 'undefined'){
-      pos = settings.mapPins[idx];
+      pos = Settings.map.mapPins[idx];
       pinIdx = idx;
     }
     else {
-      pinIdx = Object.keys(settings.mapPins).length;
+      pinIdx = Object.keys(Settings.map.mapPins).length;
       pos = map.getCenter();
-      settings.mapPins.push(pos);
+      Settings.map.mapPins.push(pos);
     }
     const alt = `XYMarker ${pinIdx}`;
     if(!(alt in markers)) {
@@ -637,8 +604,8 @@ function loadMap(id) {
           let marker = e.target;
           let t = marker.getLatLng();
           e.target._icon.title = `${e.target.options.pinIdx}: (${t.lng.toFixed(0)},${t.lat.toFixed(0)})`
-          settings.mapPins[e.target.options.pinIdx] = t;
-          saveSettings();
+          Settings.map.mapPins[e.target.options.pinIdx] = t;
+          Settings.commit();
         })
         .on('popupopen', function(e) {
             let marker = e.target;
@@ -654,20 +621,20 @@ function loadMap(id) {
   }
 
   function restoreMapPins(){
-    settings.mapPins.forEach((value, i) => {
+    Settings.map.mapPins.forEach((value, i) => {
       addMapPin(i);
     })
   }
 
   function clearMapPins(){
-    settings.mapPins.forEach((value, pinIdx) => {
+    Settings.map.mapPins.forEach((value, pinIdx) => {
       const alt = `XYMarker ${pinIdx}`;
       if(alt in markers){
         markers[alt][0].remove(map);
         delete markers[alt];
       }
     });
-    settings.mapPins = [];
+    Settings.map.mapPins = [];
   }
 
   function loadMarkers() {
@@ -750,7 +717,7 @@ function loadMap(id) {
           let alt = o.area + ':' + o.name;
 
           let title;
-          if(settings.buildMode){
+          if(Settings.map.buildMode){
             // Ensure the object name is unique
             title = titles[title] ? alt : o.name;
             titles[title] = title;
@@ -776,7 +743,7 @@ function loadMap(id) {
             title += ` [${o.cost} ${price_types[price_type]}${o.cost != 1 && price_type != 5 ? 's':''}]`  // No s on plural of scrap
           }
 
-          if(settings.buildMode) {
+          if(Settings.map.buildMode) {
             // Add the type
             title += ' of ' + o.type;
           } else {
@@ -796,7 +763,7 @@ function loadMap(id) {
             saveMap[o.nearest_cap] = alt;
           }
           if('notsaved' in o){
-            settings.markedItems[alt] = true;
+            Settings.map.markedItems[alt] = true;
           }
 
           const defaultIcon = 'question_mark';
@@ -877,12 +844,12 @@ function loadMap(id) {
               playerStart = [o.lat, o.lng, o.alt];
               let title = `Player Position (${o.lng.toFixed(0)},${o.lat.toFixed(0)})`;
               let t = new L.LatLng(o.lat, o.lng);
-              if (settings.playerPosition) {
-                t = new L.LatLng(settings.playerPosition[0], settings.playerPosition[1]);
-                [o.lat, o.lng, o.alt] = settings.playerPosition;
+              if (Settings.map.playerPosition) {
+                t = new L.LatLng(Settings.map.playerPosition[0], Settings.map.playerPosition[1]);
+                [o.lat, o.lng, o.alt] = Settings.map.playerPosition;
               }
               else {
-                settings.playerPosition = playerStart;
+                Settings.map.playerPosition = playerStart;
               }
               playerMarker = L.marker([t.lat, t.lng], {icon: icon, zIndexOffset: layerConfigs.backZIndexOffset, draggable: false, title: title, alt:'playerMarker', o:o, layerId:pc.layer})
                 .bindPopup().on('popupopen', onPopupOpen).addTo(layers[pc.layer]);
@@ -910,7 +877,7 @@ function loadMap(id) {
       let layerObj = L.layerGroup();
       layerObj.id = id;
 
-      if (settings.activeLayers[id]) {
+      if (Settings.map.activeLayers[id]) {
         layerObj.addTo(map);
         activeLayers.push(layerObj);
       } else {
@@ -944,9 +911,9 @@ function loadMap(id) {
     markItems();
 
     searchControl._handleSubmit = function(){
-      settings.searchText = this._input.value;
+      Settings.map.searchText = this._input.value;
       map.closePopup();
-      saveSettings();
+      Settings.commit();
       markItems();
       this._input.select();
       clickItem(this._input.value, false);
@@ -976,7 +943,7 @@ function loadMap(id) {
           // mark discovered items grey
           let loc;
           if ((loc = searchControl._getLocation(div.innerText))) {
-            if (settings.markedItems[loc.layer.options.alt]) {
+            if (Settings.map.markedItems[loc.layer.options.alt]) {
               div.style.color = '#bbb';
             }
           }
@@ -990,7 +957,7 @@ function loadMap(id) {
           // reveal layer on click
           for(m of markers[e.layer.options.alt]){
             let layerId = m.options.layerId;
-            if(!settings.activeLayers[layerId]) { 
+            if(!Settings.map.activeLayers[layerId]) { 
               layers[layerId].addTo(map);
             }
           }
@@ -1000,8 +967,8 @@ function loadMap(id) {
 
     // fired when input control is expanded (not the dropdown list)
     searchControl.on('search:expanded', function (e) {
-      searchControl._input.value = settings.searchText;
-      searchControl.searchText(settings.searchText);
+      searchControl._input.value = Settings.map.searchText;
+      searchControl.searchText(Settings.map.searchText);
       addSearchCallbacks();
     });
     // end of search
@@ -1030,7 +997,7 @@ function reloadMap(id) {
 function jumppadArrowUpdateFound(id, found){
   const o = objects[id];
   if(o && 'other_pad' in o){
-    let found2 = settings.markedItems[o.other_pad] || false;
+    let found2 = Settings.map.markedItems[o.other_pad] || false;
     if(o.twoway == 2) {
       id = o.other_pad;
       [found, found2] = [found2, found];
@@ -1075,20 +1042,20 @@ window.markItemFound = function (id, found=true, save=true) {
   }
 
   if (found) {
-    settings.markedItems[id] = true;
+    Settings.map.markedItems[id] = true;
   } else {
-    delete settings.markedItems[id];
+    delete Settings.map.markedItems[id];
   }
 
   jumppadArrowUpdateFound(id, found);
 
   if (save) {
-    saveSettings();
+    Settings.commit();
   }
 }
 
 function markItems() {
-  for (let id of Object.keys(settings.markedItems)) {
+  for (let id of Object.keys(Settings.map.markedItems)) {
     let divs = document.querySelectorAll('*[alt="' + id + '"]');
     [].forEach.call(divs, function(div) {
       div.classList.add('found');
@@ -1105,7 +1072,7 @@ function markItems() {
 }
 
 function unmarkItems() {
-  for (const[id, value] of Object.entries(settings.markedItems)) {
+  for (const[id, value] of Object.entries(Settings.map.markedItems)) {
     var divs = document.querySelectorAll('*[alt="' + id + '"]');
     [].forEach.call(divs, function(div) {
       div.classList.remove('found');
@@ -1121,9 +1088,9 @@ function unmarkItems() {
   }
 
 
-  settings.markedItems={};
-  settings.coinsFound={};
-  settings.playerPosition = playerStart;
+  Settings.map.markedItems={};
+  Settings.map.coinsFound={};
+  Settings.map.playerPosition = playerStart;
   if (playerMarker) {
     playerMarker.setLatLng(new L.LatLng(playerStart[0], playerStart[1]));
     [playerMarker.options.o['lat'], playerMarker.options.o['lng'], playerMarker.options.o['alt']] = playerStart;
@@ -1163,9 +1130,9 @@ window.loadSaveFile = function () {
       return;
     }
 
-    settings.markedItems={};
-    settings.coinsFound={};
-    settings.playerPosition = playerStart;
+    Settings.map.markedItems = {};
+    Settings.map.coinsFound = {};
+    Settings.map.playerPosition = playerStart;
 
     for (let section of ["ThingsToRemove", "ThingsToActivate", "ThingsToOpenForever"]) {
       for (let o of loadedSave.Properties) {
@@ -1175,7 +1142,7 @@ window.loadSaveFile = function () {
           PlayerStrong: "Map:Juicer_286"
         }
         if(o.name && propertyMap[o.name]){
-          settings.markedItems[propertyMap[o.name]] = true;
+          Settings.map.markedItems[propertyMap[o.name]] = true;
         }
 
         if (o.name != section) {
@@ -1196,12 +1163,12 @@ window.loadSaveFile = function () {
             let cs;
             if(name.startsWith('Coin') && (cs = coin2stack[id])){
               let csAlt = cs.area+':'+cs.name;
-              if(!(csAlt in settings.coinsFound)){
-                settings.coinsFound[csAlt] = new Set();
+              if(!(csAlt in Settings.map.coinsFound)){
+                Settings.map.coinsFound[csAlt] = new Set();
               }
-              settings.coinsFound[csAlt].add(name);
-              if(settings.coinsFound[csAlt].size == Object.keys(cs.old_coins).length) {
-                settings.markedItems[csAlt] = true;
+              Settings.map.coinsFound[csAlt].add(name);
+              if(Settings.map.coinsFound[csAlt].size == Object.keys(cs.old_coins).length) {
+                Settings.map.markedItems[csAlt] = true;
               }
               continue;
             }
@@ -1229,12 +1196,12 @@ window.loadSaveFile = function () {
             }
 
             function markId(id){
-              settings.markedItems[id]=true;
+              Settings.map.markedItems[id]=true;
               let o = objects[id];
 
               // For pipes we can just mark both ends as they can't be open one way if they are twoway
               if(o && 'other_pipe' in o){
-                settings.markedItems[o.other_pipe] = true;
+                Settings.map.markedItems[o.other_pipe] = true;
               }
             }
 
@@ -1308,8 +1275,8 @@ window.loadSaveFile = function () {
         if (p && p.x && p.y) {
           var latlng = new L.LatLng(p.y, p.x);
           playerMarker.setLatLng(latlng);
-          settings.playerPosition = [p.y, p.x, p.z];
-          [playerMarker.options.o['lat'], playerMarker.options.o['lng'], playerMarker.options.o['alt']] = settings.playerPosition;
+          Settings.map.playerPosition = [p.y, p.x, p.z];
+          [playerMarker.options.o['lat'], playerMarker.options.o['lng'], playerMarker.options.o['alt']] = Settings.map.playerPosition;
           playerMarker.title = `Player Position (${p.x.toFixed(0)},${p.y.toFixed(0)})` 
         } else {
           console.log('cannot load player position from', JSON.stringify(o));
@@ -1318,11 +1285,11 @@ window.loadSaveFile = function () {
       }
     }
 
-    //setTimeout(function(){alert('Loaded successfully. Marked ' + Object.keys(settings.markedItems).length + ' items')},250);
-    //console.log('Marked ' + Object.keys(settings.markedItems).length + ' items');
+    //setTimeout(function(){alert('Loaded successfully. Marked ' + Object.keys(Settings.map.markedItems).length + ' items')},250);
+    //console.log('Marked ' + Object.keys(Settings.map.markedItems).length + ' items');
 
     markItems();
-    saveSettings();
+    Settings.commit();
 
     ready = true;
   };
@@ -1364,7 +1331,9 @@ window.onload = function(event) {
 
   Promise.all([gameClassesInit(), layerConfigs.init(), locStr.init(), Icons.init()])
     .then(() => {
-      mapId = mapParam.mapId || localData.mapId || 'sl';
+      Settings.mapSetDefault('activeLayers', layerConfigs.getDefaultActive());
+
+      mapId = mapParam.mapId || Settings.mapId;
 
       loadMap(mapId);
 
@@ -1407,7 +1376,7 @@ window.onload = function(event) {
         if (e.target.id.startsWith('searchtext')) {
           return;
         }
-        if (settings.buildMode) { return; }
+        if (Settings.map.buildMode) { return; }
         pressed[e.code] = true;
         switch (e.code) {
           case 'KeyF':        // F (no ctrl) to toggle fullscreen
@@ -1424,7 +1393,7 @@ window.onload = function(event) {
             break;
           case 'KeyR':
             if (!e.ctrlKey && !e.altKey) {
-              map.flyTo(playerMarker ? playerMarker._latlng : mapCenter);
+              map.flyTo(playerMarker ? playerMarker._latlng : [maps[mapId].MapWorldCenter.Y, maps[mapId].MapWorldCenter.X]);
             } else if (e.altKey) {
               openLoadFileDialog();
             }

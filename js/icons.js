@@ -65,14 +65,14 @@ class Icons {
     // Retrieve the configuration for the specified icon name, if no config try basename otherwise return default
     static getConfig(className) {
         const filename = className.replace('-', '.');
-        return this._iconConfigs[filename] || this._iconConfigs[filename.before('.')] || _defaultConfig;
+        return this._iconConfigs[filename] || this._iconConfigs[filename.before('.')] || this._defaultConfig;
     }
 
     // Returns icon options given iconName, variant and game
     // If nothing provided will use _defaultIconName
     static getIconOptions(options){
         // Shallow copy so we don't mess up callers version but make sure we have a valid iconName
-        const opts = Object.assign({}, options, {iconName: options.iconName || this.defaultIconName});
+        const opts = Object.assign({}, options, {iconName: options.iconName || this._defaultIconName});
 
         const [baseName, flags] = [...opts.iconName.split(':'), ''];
 
