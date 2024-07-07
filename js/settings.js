@@ -52,7 +52,7 @@ class Settings {
     static set mapId(mapId) {
         Settings._global.mapId = mapId;
         if(!(mapId in Settings._global.maps)){
-            Settings._global.maps.maps[mapId] = Settings._mapDefaults;
+            Settings._global.maps[mapId] = Object.assign({}, Settings._mapDefaults);
         }
         Settings._map = Settings._global.maps[mapId];
 
