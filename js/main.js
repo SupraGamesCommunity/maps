@@ -240,7 +240,6 @@ function loadMap(id) {
     Settings.map.zoom = map.getZoom();
     Settings.commit();
     if(e.type == 'zoomend'){
-      updatePolylines();
       markItems();
     }
 });
@@ -254,19 +253,9 @@ function loadMap(id) {
     loadMap(e.layer.mapId);
   });
 
-  function updatePolylines() {
-    // set alt for polylines (attributes are not populated to paths)
-    for (const m of Object.values(map._layers)) {
-      if ((p = m._path)) {
-        p.setAttribute('alt', m.options.alt);
-      }
-    }
-  }
-
   map.on('overlayadd', function(e) {
     Settings.map.activeLayers[e.layer.id] = true;
     Settings.commit();
-    updatePolylines();
     markItems();
   });
 
@@ -861,7 +850,6 @@ function loadMap(id) {
           restoreMapPins();
         }
 
-        updatePolylines();
         markItems();
     });
   }

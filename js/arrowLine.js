@@ -52,6 +52,11 @@ L.ArrowLine = L.Polygon.extend({
 
     onAdd: function(map) {
         L.Polygon.prototype.onAdd.call(this, map);
+    
+        // set alt for polylines (attributes are not populated to paths)
+        // Might be good to put this in L.Polyline.include({onAdd...}) 
+        this._path.setAttribute('alt', this.options.alt);
+    
         this._map.on('zoomend', this._rebuildPolygon, this);
         this._rebuildPolygon();
     },
