@@ -45,6 +45,24 @@ let browser = {
     },
 };
 
+// Retrieves the CSS for 'className' and builds a dictionary from property to value
+// for any of the properties in 'props' specified in the CSS. Very much doesn't handle
+// the full CSS syntax.
+function cssGetProps(className, props) {
+    const div = $("<div>").addClass(className).appendTo(document.body);
+    cssProps = {};
+    for(const p of props){
+        if(div.css(p)){
+            let val = div.css(p);
+            val = !isNaN(val) ? Number(val) : val.endsWith('px') ? Number(val.substring(0, val.length-2)) : val.endsWith('%') ? Number(val.substring(0, val.length - 1)) / 100 : val;
+            val = typeof val == 'string' ? val.replace(/["']/g, '') : val;
+            cssProps[p] = val;
+        }
+    }
+    div.remove();
+    return cssProps;
+}
+
 //=================================================================================================
 
 // Save a formatted Json version of specified object to the file name (in downloads directory)
@@ -125,11 +143,29 @@ extendClass(String, function after(str) {
     return '';
 });
 
-// Returns first integer string found within string (null if there isn't one)
+// Returns first integer found within string (null if there isn't one)
 extendClass(String, function firstInteger() {
     const match = this.match(/\d+/);
     return match && match[0];
+}); 
+
+// Returns first fixed floating point number found within string (null if there isn't one)
+extendClass(String, function firstFixedFloat() {
+    const match = this.match(/[-+]?[0-9]+\. [0-9]+/);
+    return match && match[0];
+}); 
+
+// Converts camel case string to equivalent snake case
+extendClass(String, function camelToSnakeCase() {
+    return this.replace(/(.)([A-Z][a-z]+)/, '$1_$2').replace(/([a-z0-9])([A-Z])/, '$1_$2').toLowerCase()
 });
+
+// Convert snake (or kebab) case string to equivalent camel case. Note: if multiple _ will only remove one.
+// Use: text.replace(/[_]+/g, '_')
+extendClass(String, function snakeToCamelCase() {
+    return this.toLowerCase().replace(/[-_][a-z0-9]/g, (group) => group.slice(-1).toUpperCase());
+});
+
 
 //=================================================================================================
 // Object extension functions

@@ -1,13 +1,12 @@
 //import L from 'leaflet';
 
-
 L.ArrowLine = L.Polygon.extend({
     options: {
         arrow: 'none',      // Can be 'tip', 'back', 'twoway', 'mid', 'none' 
         arrowSize: 0,       // Arrow size (0 means it's just a pointer) with shadow wings
         arrowAngle: 45,     // angle at point of arrow 60 would be equilateral triangle (> 0 < 180)
         lineWidth: 5,       // width of the line in pixels
-        shadowWidth: 2,     // width of shadow in pixels
+        shadowWidth: 2,     // width of shadow in pixels (also stroke-width in CSS)
         offset: 0,          // Offset from start position where arrow  should start
         endOffset: 0,       // Offset from end position where arrow tip should be
         lineJoin: 'round'   // miter, round or bevel
@@ -31,11 +30,21 @@ L.ArrowLine = L.Polygon.extend({
     initialize: function(start, end, options) {
         L.Util.setOptions(this, options);
 
+        // Override any relevant options with the CSS configuration
+        if(this.options.className){
+            let cssOpts = cssGetProps(this.options.className, ['--arrow', '--arrow-size', '--arrow-angle', '--line-width', '--shadow-width', '--offset', '--end-offset']);
+            for(const [k, v] of Object.entries(cssProps)){
+                delete cssOpts[k];
+                cssOpts[k.slice(2).snakeToCamelCase()] = v;
+            }
+            options = Object.assign(this.options, cssOpts);
+        }
+
         this._map = null;
 
-        this.options.fill = true;                                   // Assume we're drawing the line
-        this.options.stroke = Boolean(options.shadowWidth);         // drawing shadow
-        this.options.weight = options.shadowWidth;                  // shadow width
+        this.options.fill = true;                   // Assume we're drawing the line
+        this.options.stroke = true;                 // drawing shadow
+        this.options.weight = options.shadowWidth;  // shadow width
 
         this.startLatLng = start;
         this.endLatLng = end;
@@ -173,13 +182,13 @@ L.ArrowLine = L.Polygon.extend({
 
         const strokeY = (opts.lineWidth + opts.shadowWidth) * 0.5;      // Stroke Y (dist from centre line)
         const d = opts.shadowWidth * 0.5 / sinArrowAngle;               // Distance from tip of line to center of stroke line
-        const ad = (opts.arrowSize + opts.lineWidth) / tanArrowAngle;   // Length of filled arrow from tip to corner
+        const ad = (opts.arrowSize + opts.lineWidth * 0.5) / tanArrowAngle;   // Length of filled arrow from tip to corner
         const h = d + ad  + opts.shadowWidth * 0.5;                     // Length of stroke arrow from tip to corner
         const cornerY = h * tanArrowAngle;                              // Distance from line to arrow corner
 
-        const drawArrows = (lineLen - opts.offset - opts.endOffset) >= h * ((opts.arrow == 'twoway') + 1);
+        const drawArrows = true;//(lineLen - opts.offset - opts.endOffset) >= h * (opts.arrow == 'twoway' ? 2 : 1);
 
-        if(drawArrows && (opts.arrow == 'twoway' || opts.arrow == 'back')) {
+        if(drawArrows && (opts.arrow == 'back' || opts.arrow == 'twoway')) {
             const tx = opts.offset - d;     // Arrow stroke is drawn just back from filled arrow start 
             const cx = tx + h;              // Arrow corner is just arrow "height" from tip
             addPoint(tx, 0);
@@ -187,29 +196,31 @@ L.ArrowLine = L.Polygon.extend({
             addPoint(cx, strokeY)
         }
         else {
+            const ofs = (opts.arrow == 'twowway' || opts.arrow == 'back') ? opts.offset : 0;
             addPoint(-opts.shadowWidth * 0.5, strokeY)
         }
 
         if(drawArrows && opts.arrow == 'mid'){
             const mx = (opts.offset + (lineLen - opts.endOffset)) * 0.5;    // Mid point of line
-            const cd = (cornerY - opts.lineWidth / 2) / tanArrowAngle;      // Arrow distance from corner to mid-point (D)
+            const cd = (cornerY - opts.lineWidth * 0.5) / tanArrowAngle;      // Arrow distance from corner to mid-point (D)
             const cx = mx - cd / 2 * scale;
             const dx = mx + cd / 2 * scale;
 
             addPoint(cx,  strokeY);     // lower corner up
             addPoint(cx,  cornerY);     // upper corner up
-            addPoint(dx,  strokeY);    // front up
+            addPoint(dx,  strokeY);     // front up
         }
 
         if(drawArrows && (opts.arrow == 'tip' || opts.arrow == 'twoway')) {
-            const tx = lineLen - opts.offset + d;
+            const tx = lineLen - opts.endOffset + d;
             const cx = tx - h;
             addPoint(cx, strokeY);
             addPoint(cx, cornerY);
             addPoint(tx, 0);
         }
         else{
-            addPoint(lineLen + opts.shadowWidth * 0.5, strokeY); // Line end
+            const ofs = (opts.arrow == 'tip' || opts.arrow == 'twoway') ? -opts.endOffset : 0;
+            addPoint(lineLen + opts.shadowWidth * 0.5 + ofs, strokeY); // Line end
         }
         
         points = points.concat(downPoints.reverse());

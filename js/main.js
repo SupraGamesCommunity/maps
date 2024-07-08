@@ -630,25 +630,6 @@ function loadMap(id) {
 
   function loadMarkers() {
 
-    // Extract line properties from CSS
-    let lineTypeProps = {}
-    for(let lt of ['jumppad red', 'jumppad blue', 'pipe', 'trigger', 'target']) {
-      const div = $("<div>").addClass(`line-${lt}`).appendTo(document.body);
-      let lineProps = {}
-      for(let p of ['stroke', 'fill', 'opacity', 'fill-opacity', '--arrow', '--arrow-size', '--arrow-angle', '--arrow-dist',
-            '--line-width', '--shadow-width', '--offset', '--end-offset']) {
-        if(div.css(p)) {
-          let val = div.css(p); 
-          val = !isNaN(val) ? Number(val) : val.endsWith('px') ? Number(val.substring(0,val.length-2)) : val;
-          val = typeof val == 'string' ? val.replace(/["']/g, '') : val;
-          lineProps[p.replaceAll('-', '')] = val;
-          
-        }
-      }
-      lineTypeProps['line-'+lt] = lineProps;
-      div.remove();
-    }
-
     Promise.all([
         fetch(`data/markers.${mapId}.json`),
         fetch(`data/ytdata.${mapId}.json`),
@@ -797,22 +778,9 @@ function loadMap(id) {
             let endxys = o.linetype != 'trigger' ? [o.target] : o.targets;
 
             // need to add title as a single space (leaflet search issue), but not the full title so it doesn't appear in search
-
-            const className = 'line-' + o.linetype + (o.linetype == 'jumppad' ? ' '+o.variant : '');
-            let ltp = lineTypeProps[className];
-
             let options = {
-              zIndexOffset: layerConfigs.getZIndexOffset(c.lines),
-              title: ' ', interactive: false, alt: alt, o:o, layerId:c.lines, className: className,
-              arrow: ltp.arrow ? ltp.arrow : 'none',
-              arrowSize: ltp.arrowSize ? ltp.arrowsize : 0,
-              arrowAngle: ltp.arrowngle ? ltp.arrowangle : 45,
-              lineWidth: ltp.linewidth ? ltp.linewidth : 5,
-              shadowWidth: ltp.shadowwidth ? ltp.shadowwidth : 3,
-              offset: ltp.offset ? ltp.offset : 0,
-              endOffset: ltp.endoffset ? ltp.endoffset : 0,
-              color: ltp.stroke ? ltp.stroke : '#000',
-              fillColor: ltp.fill ? ltp.fill : '#FFF',
+              zIndexOffset: layerConfigs.getZIndexOffset(c.lines), title: ' ', interactive: false, alt: alt, o:o,
+              layerId:c.lines, className: 'line-'+o.linetype+(o.linetype == 'jumppad' ? ' '+o.variant : ''),
             }
             if(o.twoway){
               options.arrow = 'none';
