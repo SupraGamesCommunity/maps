@@ -209,6 +209,8 @@ function loadMap(id) {
     fadeAnimation: true,
   	minZoom: 1,
     maxZoom: 8,
+    zoomDelta: 0.5,
+    zoomSnap: 0.125,
     maxBounds: mapBoundsWithGap, // elastic-y bounds + elastic-x bounds
     zoomControl: false,
     doubleClickZoom: true,
@@ -900,8 +902,8 @@ function loadMap(id) {
 
     searchControl._handleSubmit = function(){
       Settings.map.searchText = this._input.value;
-      map.closePopup();
       Settings.commit();
+      map.closePopup();
       markItems();
       this._input.select();
       clickItem(this._input.value, false);
