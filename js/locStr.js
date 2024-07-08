@@ -1,7 +1,7 @@
-/* global locStr */
+import { defaultGameClass, gameClasses } from './gameClasses.js';
+import { browser } from './utils.js'
 
-/* exported locStr */
-const locStr = {
+export const locStr = {
 
     // These are the languages we support
     _locales: ['en', 'de', 'es', 'fi', 'fr', 'hu', 'it-IT', 'ja', 'ko', 'pl', 'pt-PT', 'ru', 'sr', 'tr', 'zh-Hans', 'zh-Hant'],

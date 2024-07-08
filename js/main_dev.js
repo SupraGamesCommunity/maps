@@ -1,7 +1,13 @@
 /*eslint strict: ["error", "global"]*/
-/*global L, UESaveObject*/
-/*global layerConfigs*/
-/*global gameClasses, gameClassesInit, defaultGameClass, decodeIconName, getClassIcon, getObjectIcon, locStr*/
+/*global L, UESaveObject, $,  */
+
+import { Settings } from './settings.js';
+import { L_arrowLine } from './arrowLine.js';
+import { Icons, L_mapIcon } from './icons.js';
+import { defaultGameClass, gameClasses, gameClassesInit } from './gameClasses.js';
+import { locStr } from './locStr.js';
+import { layerConfigs } from './layerConfig.js';
+import { browser, mergeDeep } from './utils.js';
 
 // Terminology,
 // Class - The type of object represented by marker. Based on UE4 classes/blueprints 
@@ -71,30 +77,6 @@ var maps = {
       "MapWorldLowerRight": { "X": 73728.0, "Y": 54728.0, "Z": 10000.0 },
    },
 };
-
-function isObject(item) {
-  return (item && typeof item === 'object' && !Array.isArray(item));
-}
-
-function mergeDeep(target, ...sources) {
-  if (!sources.length) return target;
-  const source = sources.shift();
-
-  if (isObject(target) && isObject(source)) {
-    for (const key in source) {
-      if (isObject(source[key])) {
-        if (!target[key])
-          Object.assign(target, { [key]: {} });
-        mergeDeep(target[key], source[key]);
-      } else {
-        Object.assign(target, { [key]: source[key] });
-      }
-    }
-  }
-
-  return mergeDeep(target, ...sources);
-}
-
 
 // Save the local state data we track to the window local storage
 function saveSettings() {
@@ -730,8 +712,6 @@ function loadMap(id) {
             }
           }
 
-          const defaultIcon = 'question_mark';
-
           let start = [o.lat, o.lng];
 
           // I feel like this is a bit of a hack because it requires awareness of the layer names which
@@ -741,86 +721,68 @@ function loadMap(id) {
           let nospoiler = c.nospoiler != 'shop' || (o.cost && o.price_type != 7) ? c.nospoiler : 'collectable';
           if(nospoiler && enabledLayers[nospoiler])
           {
-            const layer = nospoiler
-            const layerConfig = layerConfigs.get(layer);
-            const [icon, size] = decodeIconName(layerConfig.defaultIcon || defaultIcon, mapId, o.variant);
-
-            const marker = L.marker(start, {icon: getIcon(icon, size), title: title, alt: alt, o:o, layerId:layer})
-              .addTo(layers[layer]).bindPopup(text).on('popupopen', onPopupOpen).on('contextmenu', onContextMenu);
+            const icon = L_mapIcon({iconName: layerConfigs.get(nospoiler).defaultIcon, variant: o.variant, game:  mapId}).addTo(map);
+            const marker = L.marker(start, {icon: icon, zIndexOffset: layerConfigs.getZIndexOffset(nospoiler), title: title, alt: alt, o:o, layerId:nospoiler})
+              .addTo(layers[nospoiler]).bindPopup(text).on('popupopen', onPopupOpen).on('contextmenu', onContextMenu);
             markers[alt] = markers[alt] ? [...markers[alt], marker] : [marker];
           }
   
           // If there is a normal layer specified then add it to that
           if(c.layer && enabledLayers[c.layer])
           {
-            const layer = c.layer
-            const layerConfig = layerConfigs.get(layer);
-            const [icon, size] = decodeIconName((o.icon || c.icon || layerConfig.defaultIcon || defaultIcon), mapId, o.variant);
-
-            const marker = L.marker(start, {icon: getIcon(icon, size), title: title, alt: alt, o:o, layerId:layer })
-              .addTo(layers[layer]).bindPopup(text).on('popupopen', onPopupOpen).on('contextmenu', onContextMenu);
+            const icon = L_mapIcon({iconName: o.icon || c.icon || layerConfigs.get(c.layer).defaultIcon, variant: o.variant, game: mapId}).addTo(map);
+            const marker = L.marker(start, {icon: icon, zIndexOffset: layerConfigs.getZIndexOffset(c.layer), title: title, alt: alt, o:o, layerId:c.layer })
+              .addTo(layers[c.layer]).bindPopup(text).on('popupopen', onPopupOpen).on('contextmenu', onContextMenu);
             markers[alt] = markers[alt] ? [...markers[alt], marker] : [marker];
             }
 
           // Deal with layer for whatever it spawns. Normally things that spawn something don't have a spoiler layer
           if(sc && sc.layer && enabledLayers[sc.layer])
           {
-            const layer = sc.layer
-            const layerConfig = layerConfigs.get(layer);
-            const [icon, size] = decodeIconName((o.icon || sc.icon || layerConfig.defaultIcon || defaultIcon), mapId, o.variant);
-
-            const marker = L.marker(start, {icon: getIcon(icon, size), title: title, alt: alt, o:o, layerId:layer})
-              .addTo(layers[layer]).bindPopup(text).on('popupopen', onPopupOpen).on('contextmenu', onContextMenu);
+            const icon = L_mapIcon({iconName: o.icon || sc.icon || layerConfigs.get(sc.layer).defaultIcon, variant: o.variant, game: mapId}).addTo(map);
+            const marker = L.marker(start, {icon: icon, zIndexOffset: layerConfigs.getZIndexOffset(sc.layer), title: title, alt: alt, o:o, layerId:sc.layer})
+              .addTo(layers[sc.layer]).bindPopup(text).on('popupopen', onPopupOpen).on('contextmenu', onContextMenu);
             markers[alt] = markers[alt] ? [...markers[alt], marker] : [marker];
-            }
+          }
 
           // Add a polyline to the appropriate layer
           if(c.lines && enabledLayers[c.lines] && o.linetype) {
             let endxys = o.linetype != 'trigger' ? [o.target] : o.targets;
 
             // need to add title as a single space (leaflet search issue), but not the full title so it doesn't appear in search
-
-            const className = 'line-' + o.linetype + (o.linetype == 'jumppad' ? '_'+o.variant : '');
-            let ltp = lineTypeProps[className];
-
             let options = {
-              title: ' ', interactive: false, alt: alt, o:o, layerId:c.lines, className: className,
-              arrow: ltp.arrow ? ltp.arrow : 'none',
-              arrowSize: ltp.arrowSize ? ltp.arrowSize : 0,
-              arrowAngle: ltp.arrowngle ? ltp.arrowangle : 45,
-              lineWidth: ltp.linewidth ? ltp.linewidth : 5,
-              shadowWidth: ltp.shadowwidth ? ltp.shadowwidth : 3,
-              offset: ltp.offset ? ltp.offset : 0,
-              endOffset: ltp.endoffset ? ltp.endoffset : 0,
-              color: ltp.stroke ? ltp.stroke : '#000',
-              fillColor: ltp.fill ? ltp.fill : '#FFF',
+              zIndexOffset: layerConfigs.getZIndexOffset(c.lines), title: ' ', interactive: false, alt: alt, o:o,
+              layerId:c.lines, className: 'line-'+o.linetype+(o.linetype == 'jumppad' ? ' '+o.variant : ''),
             }
             if(o.twoway){
               options.arrow = 'none';
             }
-            for(let endxy of endxys) {
-              L.arrowLine(start, [endxy.y, endxy.x], options).addTo(layers[c.lines]);
+            if(o.twoway != 2){
+              for(let endxy of endxys) {
+                let line = L_arrowLine(start, [endxy.y, endxy.x], options).addTo(layers[c.lines]);
+                markers[alt] = markers[alt] ? [...markers[alt], line] : [line];
+              }
             }
           }
 
           // add dynamic player marker on top of PlayerStart icon (moves with load save game) 
           if ((o.type == 'PlayerStart' || o.type == '_PlayerPosition') && !playerMarker) {
+            o.type = '_PlayerPosition';
             const pc = gameClasses[o.type];
             if(pc.layer && enabledLayers[pc.layer])
             {
-              o.type = '_PlayerPosition';
-              const [icon, size] = getClassIcon(pc, mapId, o['variant']) || defaultIcon;
+              const icon = L_mapIcon({iconName: pc.icon, variant: o.variant, game: mapId}).addTo(map);
               playerStart = [o.lat, o.lng, o.alt];
               let title = `Player Position (${o.lng.toFixed(0)},${o.lat.toFixed(0)})`;
               let t = new L.LatLng(o.lat, o.lng);
-              if (settings.playerPosition) {
-                t = new L.LatLng(settings.playerPosition[0], settings.playerPosition[1]);
-                [o.lat, o.lng, o.alt] = settings.playerPosition;
+              if (Settings.map.playerPosition) {
+                t = new L.LatLng(Settings.map.playerPosition[0], Settings.map.playerPosition[1]);
+                [o.lat, o.lng, o.alt] = Settings.map.playerPosition;
               }
               else {
-                settings.playerPosition = playerStart;
+                Settings.map.playerPosition = playerStart;
               }
-              playerMarker = L.marker([t.lat, t.lng], {icon: getIcon(icon,size), zIndexOffset: -100000, draggable: false, title: title, alt:'playerMarker', o:o, layerId:pc.layer})
+              playerMarker = L.marker([t.lat, t.lng], {icon: icon, zIndexOffset: layerConfigs.backZIndexOffset, draggable: false, title: title, alt:'playerMarker', o:o, layerId:pc.layer})
                 .bindPopup().on('popupopen', onPopupOpen).addTo(layers[pc.layer]);
             }
           } // end of player marker

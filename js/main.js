@@ -1,7 +1,13 @@
 /*eslint strict: ["error", "global"]*/
-/*global L, UESaveObject*/
-/*global layerConfigs*/
-/*global gameClasses, gameClassesInit, defaultGameClass, decodeIconName, getClassIcon, getObjectIcon, locStr*/
+/*global L, UESaveObject */
+
+import { Settings } from './settings.js';
+import { L_arrowLine } from './arrowLine.js';
+import { Icons, L_mapIcon } from './icons.js';
+import { defaultGameClass, gameClasses, gameClassesInit } from './gameClasses.js';
+import { locStr } from './locStr.js';
+import { layerConfigs } from './layerConfig.js';
+import { browser, mergeDeep } from './utils.js';
 
 // Terminology,
 // Class - The type of object represented by marker. Based on UE4 classes/blueprints 
@@ -561,20 +567,6 @@ function loadMap(id) {
     7: 'red moon',
   }
 
-  function parseRelativeOrAbsoluteValue(value) {
-    if (typeof value === 'string' && value.indexOf('%') !== -1) {
-        return {
-            value: parseFloat(value) / 100,
-            isInPixels: false,
-        };
-    }
-    const parsedValue = value ? parseFloat(value) : 0;
-    return {
-        value: parsedValue,
-        isInPixels: parsedValue > 0,
-    };
-  }
-
   function addMapPin(idx){
     let pos, pinIdx;
     if(typeof idx !== 'undefined'){
@@ -668,7 +660,7 @@ function loadMap(id) {
 
         // Delete entries we aren't going to use 
         for(let o of j){
-          c = gameClasses[o.type] || defaultGameClass;
+          const c = gameClasses[o.type] || defaultGameClass;
           if((!c.layer || !enabledLayers[c.layer]) && (!c.nospoiler || !enabledLayers[c.nospoiler]) && (!c.lines || !enabledLayers[c.lines])){
             let id = o.area + ':' + o.name;
             delete objects[id];
@@ -738,8 +730,6 @@ function loadMap(id) {
             Settings.map.markedItems[alt] = true;
           }
 
-          const defaultIcon = 'question_mark';
-
           let start = [o.lat, o.lng];
 
           // I feel like this is a bit of a hack because it requires awareness of the layer names which
@@ -749,7 +739,7 @@ function loadMap(id) {
           let nospoiler = c.nospoiler != 'shop' || (o.cost && o.price_type != 7) ? c.nospoiler : 'collectable';
           if(nospoiler && enabledLayers[nospoiler])
           {
-            const icon = L.mapIcon({iconName: layerConfigs.get(nospoiler).defaultIcon, variant: o.variant, game:  mapId}).addTo(map);
+            const icon = L_mapIcon({iconName: layerConfigs.get(nospoiler).defaultIcon, variant: o.variant, game:  mapId}).addTo(map);
             const marker = L.marker(start, {icon: icon, zIndexOffset: layerConfigs.getZIndexOffset(nospoiler), title: title, alt: alt, o:o, layerId:nospoiler})
               .addTo(layers[nospoiler]).bindPopup(text).on('popupopen', onPopupOpen).on('contextmenu', onContextMenu);
             markers[alt] = markers[alt] ? [...markers[alt], marker] : [marker];
@@ -758,7 +748,7 @@ function loadMap(id) {
           // If there is a normal layer specified then add it to that
           if(c.layer && enabledLayers[c.layer])
           {
-            const icon = L.mapIcon({iconName: o.icon || c.icon || layerConfigs.get(c.layer).defaultIcon, variant: o.variant, game: mapId}).addTo(map);
+            const icon = L_mapIcon({iconName: o.icon || c.icon || layerConfigs.get(c.layer).defaultIcon, variant: o.variant, game: mapId}).addTo(map);
             const marker = L.marker(start, {icon: icon, zIndexOffset: layerConfigs.getZIndexOffset(c.layer), title: title, alt: alt, o:o, layerId:c.layer })
               .addTo(layers[c.layer]).bindPopup(text).on('popupopen', onPopupOpen).on('contextmenu', onContextMenu);
             markers[alt] = markers[alt] ? [...markers[alt], marker] : [marker];
@@ -767,7 +757,7 @@ function loadMap(id) {
           // Deal with layer for whatever it spawns. Normally things that spawn something don't have a spoiler layer
           if(sc && sc.layer && enabledLayers[sc.layer])
           {
-            const icon = L.mapIcon({iconName: o.icon || sc.icon || layerConfigs.get(sc.layer).defaultIcon, variant: o.variant, game: mapId}).addTo(map);
+            const icon = L_mapIcon({iconName: o.icon || sc.icon || layerConfigs.get(sc.layer).defaultIcon, variant: o.variant, game: mapId}).addTo(map);
             const marker = L.marker(start, {icon: icon, zIndexOffset: layerConfigs.getZIndexOffset(sc.layer), title: title, alt: alt, o:o, layerId:sc.layer})
               .addTo(layers[sc.layer]).bindPopup(text).on('popupopen', onPopupOpen).on('contextmenu', onContextMenu);
             markers[alt] = markers[alt] ? [...markers[alt], marker] : [marker];
@@ -787,7 +777,7 @@ function loadMap(id) {
             }
             if(o.twoway != 2){
               for(let endxy of endxys) {
-                let line = L.arrowLine(start, [endxy.y, endxy.x], options).addTo(layers[c.lines]);
+                let line = L_arrowLine(start, [endxy.y, endxy.x], options).addTo(layers[c.lines]);
                 markers[alt] = markers[alt] ? [...markers[alt], line] : [line];
               }
             }
@@ -799,7 +789,7 @@ function loadMap(id) {
             const pc = gameClasses[o.type];
             if(pc.layer && enabledLayers[pc.layer])
             {
-              const icon = L.mapIcon({iconName: pc.icon, variant: o.variant, game: mapId}).addTo(map);
+              const icon = L_mapIcon({iconName: pc.icon, variant: o.variant, game: mapId}).addTo(map);
               playerStart = [o.lat, o.lng, o.alt];
               let title = `Player Position (${o.lng.toFixed(0)},${o.lat.toFixed(0)})`;
               let t = new L.LatLng(o.lat, o.lng);
@@ -962,7 +952,7 @@ function jumppadArrowUpdateFound(id, found){
     }
     if(markers[id]){
       for(let m of markers[id]){
-        if(m instanceof L.ArrowLine){
+        if(m instanceof L_arrowLine){
           m.setArrow(found  == found2 ? 'none' : found ? 'tip' : 'back'); 
         }
       }
@@ -1092,6 +1082,16 @@ window.loadSaveFile = function () {
     Settings.map.coinsFound = {};
     Settings.map.playerPosition = playerStart;
 
+    function markId(id){
+      Settings.map.markedItems[id]=true;
+      let o = objects[id];
+
+      // For pipes we can just mark both ends as they can't be open one way if they are twoway
+      if(o && 'other_pipe' in o){
+        Settings.map.markedItems[o.other_pipe] = true;
+      }
+    }
+
     for (let section of ["ThingsToRemove", "ThingsToActivate", "ThingsToOpenForever"]) {
       for (let o of loadedSave.Properties) {
         const propertyMap = {
@@ -1150,16 +1150,6 @@ window.loadSaveFile = function () {
               // Skeletons get activated when they spawn but get removed when you collect the bones
               if(o.type == 'CrashEnemySpawner_C') {
                 found = section=='ThingsToRemove';
-              }
-            }
-
-            function markId(id){
-              Settings.map.markedItems[id]=true;
-              let o = objects[id];
-
-              // For pipes we can just mark both ends as they can't be open one way if they are twoway
-              if(o && 'other_pipe' in o){
-                Settings.map.markedItems[o.other_pipe] = true;
               }
             }
 

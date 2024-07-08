@@ -2,9 +2,7 @@
 //
 // Configures the set of layers and some properties for each game map.
 
-
-/* exported layerConfigs */
-const layerConfigs = {
+export const layerConfigs = {
     data: {},
 
     // Initialise any procedural data - store index based on position in Map

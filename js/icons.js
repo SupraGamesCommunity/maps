@@ -1,3 +1,5 @@
+/* globals $ */
+
 //=================================================================================================
 // static class Icons
 //
@@ -7,7 +9,7 @@
 //      Defines the icon size, anchor, popup anchor and tooltip anchor
 //      By base or full file name
 //
-// Create an L.MapIcon with L.mapIcon(options) where options contains {iconName, variant, game}
+// Create an L_MapIcon with L_mapIcon(options) where options contains {iconName, variant, game}
 //
 // Icon name may have optional flags: {baseName}:{flags}
 //    v - add variant to filename {basename}.{variant}
@@ -29,7 +31,7 @@
 //          }
 //      }
 
-class Icons {
+export class Icons {
 
     static _iconConfigsFile = 'data/iconConfigs.json';
 
@@ -98,7 +100,7 @@ class Icons {
         const opts = this.getIconOptions(options);
         let icon = this._icons[opts.className];
         if(!icon) {
-            icon = this._icons[opts.className] = new L.MapIcon(opts); 
+            icon = this._icons[opts.className] = new L_MapIcon(opts); 
         }
         return icon;    
     }
@@ -124,7 +126,7 @@ class Icons {
 // popupAnchor:   Popup position in pixels from anchor point
 // tooltipAnchor: Tooltip position in pixels from anchor point (if there is one)
 
-L.MapIcon = L.Icon.extend ({
+export const L_MapIcon = L.Icon.extend ({
 
     // Pass on the options as passed in and apply scaled config
     initialize: function(options){
@@ -198,6 +200,6 @@ L.MapIcon = L.Icon.extend ({
 });
 
 // Traditional syntactic sugar for leaflet extended object to allow instance = L.mapIcon({options}).addTo(map)
-L.mapIcon = function(options) {
+export const L_mapIcon = function(options) {
     return Icons.create(options);
 };

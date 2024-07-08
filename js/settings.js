@@ -1,3 +1,5 @@
+import { SaveObjectToJsonFile } from './utils.js';
+
 //=================================================================================================
 // settings.js
 //
@@ -15,7 +17,7 @@
 //
 // TODO: Could add a load of assertions to check for misuse
 
-class Settings {
+export class Settings {
 
     // Key used for localStorage API
     static _localDataName = 'supragamescommunity_maps';

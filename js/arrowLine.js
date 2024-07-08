@@ -1,6 +1,8 @@
-//import L from 'leaflet';
+/* global L */
 
-L.ArrowLine = L.Polygon.extend({
+import { cssGetProps } from './utils.js';
+
+export const L_ArrowLine = L.Polygon.extend({
     options: {
         arrow: 'none',      // Can be 'tip', 'back', 'twoway', 'mid', 'none' 
         arrowSize: 0,       // Arrow size (0 means it's just a pointer) with shadow wings
@@ -33,7 +35,7 @@ L.ArrowLine = L.Polygon.extend({
         // Override any relevant options with the CSS configuration
         if(this.options.className){
             let cssOpts = cssGetProps(this.options.className, ['--arrow', '--arrow-size', '--arrow-angle', '--line-width', '--shadow-width', '--offset', '--end-offset']);
-            for(const [k, v] of Object.entries(cssProps)){
+            for(const [k, v] of Object.entries(cssOpts)){
                 delete cssOpts[k];
                 cssOpts[k.slice(2).snakeToCamelCase()] = v;
             }
@@ -237,6 +239,6 @@ L.ArrowLine = L.Polygon.extend({
     }    
 });
 
-L.arrowLine = function(start, end, options) {
-    return new L.ArrowLine(start, end, options);
+export const L_arrowLine = function(start, end, options) {
+    return new L_ArrowLine(start, end, options);
 };

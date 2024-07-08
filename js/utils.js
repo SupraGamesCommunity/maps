@@ -1,13 +1,12 @@
+/* global $, L */
+
 //=================================================================================================
 // Utility functions
-
-/* global browser */
 
 //=================================================================================================
 // Browser related functions
 
-/* exported browser */
-let browser = {
+export const browser = {
     // Are we running in Firefox browser, ideally only use to deal with bugs in 3rd party libraries on
     // specific browsers, otherwise we should be using capabilities.
     get isFirefox() {
@@ -48,9 +47,9 @@ let browser = {
 // Retrieves the CSS for 'className' and builds a dictionary from property to value
 // for any of the properties in 'props' specified in the CSS. Very much doesn't handle
 // the full CSS syntax.
-function cssGetProps(className, props) {
+export function cssGetProps(className, props) {
     const div = $("<div>").addClass(className).appendTo(document.body);
-    cssProps = {};
+    let cssProps = {};
     for(const p of props){
         if(div.css(p)){
             let val = div.css(p);
@@ -66,7 +65,7 @@ function cssGetProps(className, props) {
 //=================================================================================================
 
 // Save a formatted Json version of specified object to the file name (in downloads directory)
-function SaveObjectToJsonFile(obj, fileName) {
+export function SaveObjectToJsonFile(obj, fileName) {
     const body = document.body;
     const a = document.createElement("a");
     const file = new Blob([JSON.stringify(obj, null, 2)], {type: 'application/json'});
@@ -94,7 +93,7 @@ function isObject(item) {
 }
 
 // merges two objects with string members, doesn't handle arrays or other corner cases
-function mergeDeep(target, ...sources) {
+export function mergeDeep(target, ...sources) {
     if (!sources.length)
         return target;
 
