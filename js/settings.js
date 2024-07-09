@@ -103,7 +103,7 @@ export class Settings {
 
     // Saves formatted Json to specified local file (downloads directory)
     static saveSettingsToFile(fileName){
-        SaveObjectToJsonFile(Settings._localData);
+        SaveObjectToJsonFile(Settings._localData, fileName);
     }
 }
 

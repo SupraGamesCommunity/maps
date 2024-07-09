@@ -199,7 +199,7 @@ export const L_ArrowLine = L.Polygon.extend({
         }
         else {
             const ofs = (opts.arrow == 'twowway' || opts.arrow == 'back') ? opts.offset : 0;
-            addPoint(-opts.shadowWidth * 0.5, strokeY)
+            addPoint(-opts.shadowWidth * 0.5 + ofs, strokeY)
         }
 
         if(drawArrows && opts.arrow == 'mid'){

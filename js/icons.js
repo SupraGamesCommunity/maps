@@ -1,4 +1,4 @@
-/* globals $ */
+/* globals L, $ */
 
 //=================================================================================================
 // static class Icons
@@ -82,7 +82,7 @@ export class Icons {
         const variant = flags.includes('v') && opts.variant || '';
         const game = flags.includes('g') && opts.game || '';
         
-        const match = flags.match(/x[\d\.]+/);
+        const match = flags.match(/x[\d.]+/);
         const scale = parseFloat(match && match[0].slice(1)) || 1;    // :x{scale}
     
         // Generate options required for L.MapIcon

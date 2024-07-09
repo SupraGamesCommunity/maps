@@ -121,6 +121,7 @@ function toggleBuildMode() {
   skipConfirms || alert('Build mode is now set to ' + Settings.global.buildMode + '.');
 }
 
+/* eslint-disable-next-line no-unused-vars */
 function updateBuildModeValue() {
   let el = window.event.srcElement;
   currentBuildReference[el.id] = el.value;
@@ -128,6 +129,7 @@ function updateBuildModeValue() {
   //alert(currentBuildReference.name + ' property ' + el.id + ' changed from ' + el.defaultValue + ' to ' + el.value + '.');
 }
 
+/* eslint-disable-next-line no-unused-vars */
 function commitCurrentBuildModeChanges() {
   Object.getOwnPropertyNames(currentBuildReferenceChanges).forEach(
     function (i) {
@@ -242,7 +244,6 @@ function loadMap(id) {
     position: 'topright',
   });
 
-  // eslint-disable-next-line no-unused-vars
   map.on('moveend zoomend', function(e) {
     Settings.map.center = [map.getCenter().lat, map.getCenter().lng]; // avoid circular refs here
     Settings.map.zoom = map.getZoom();
@@ -914,7 +915,7 @@ function loadMap(id) {
     });
 
     // fired when input control is expanded (not the dropdown list)
-    searchControl.on('search:expanded', function (e) {
+    searchControl.on('search:expanded', function () {   // (event)
       searchControl._input.value = Settings.map.searchText;
       searchControl.searchText(Settings.map.searchText);
       addSearchCallbacks();
@@ -1020,7 +1021,7 @@ function markItems() {
 }
 
 function unmarkItems() {
-  for (const[id, value] of Object.entries(Settings.map.markedItems)) {
+  for (const id in Settings.map.markedItems) {
     var divs = document.querySelectorAll('*[alt="' + id + '"]');
     [].forEach.call(divs, function(div) {
       div.classList.remove('found');
@@ -1072,7 +1073,7 @@ window.loadSaveFile = function () {
     try {
       loadedSave = new UESaveObject(evt.target.result);
       evt.target.value = null;
-    } catch(e) {
+    } catch(e) {      // eslint-disable-line no-unused-vars
       //console.log(e);
       alert('Could not load file, incompatible format.');
       return;
@@ -1247,7 +1248,7 @@ window.loadSaveFile = function () {
   }
 }
 
-window.onhashchange = function(e) { 
+window.onhashchange = function() {   // (e)
   if (location.hash.length > 1 && map) {
     let p = map.getCenter();
     mapParam = {mapId:mapId, lat:Math.round(p.lat), lng:Math.round(p.lng), zoom:map.getZoom()};
@@ -1266,7 +1267,7 @@ window.onhashchange = function(e) {
   }
 }
 
-window.onload = function(event) {
+window.onload = function() {    // (event)
   if (location.hash.length > 1) {
     for (const s of location.hash.slice(1).split('&')) {
       let [k,v] = s.split('=');
@@ -1296,7 +1297,7 @@ window.onload = function(event) {
       let pressed = {};
 
       // Called every browser animation timestep following call to requestAnimationFrame
-      function update(timestep) {
+      function update() { // (timestep)
         let step = 100;
         let v = {};
         for (let key of Object.keys(bindings)) {
@@ -1310,7 +1311,7 @@ window.onload = function(event) {
         window.requestAnimationFrame(update);
       }
 
-      document.querySelector('#map').addEventListener('blur', function(e) {
+      document.querySelector('#map').addEventListener('blur', function() {  // (e)
         pressed = {}; // prevent sticky keys
       });
 
@@ -1354,7 +1355,7 @@ window.onload = function(event) {
         }
       });
 
-      document.querySelector('#file').onchange = function(e) {
+      document.querySelector('#file').onchange = function() {  // (e)
         window.loadSaveFile();
       }
 
