@@ -40,6 +40,7 @@ export class Settings {
 
     // Specify default Map Id and load settings from local storage
     static init(defaultMapId) {
+        Settings._defaults.mapId = defaultMapId; 
         Settings._localData = {mapId: defaultMapId, maps: {[defaultMapId]: {}}};
         this._localData = Object.assign(Settings._localData, JSON.parse(localStorage.getItem(Settings._localDataName)));
 

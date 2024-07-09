@@ -4,7 +4,7 @@
 import { Settings } from './settings.js';
 import { L_arrowLine } from './arrowLine.js';
 import { Icons, L_mapIcon } from './icons.js';
-import { defaultGameClass, gameClasses, gameClassesInit } from './gameClasses.js';
+import { GameClasses } from './gameClasses.js';
 import { locStr } from './locStr.js';
 import { layerConfigs } from './layerConfig.js';
 import { browser, mergeDeep } from './utils.js';
@@ -118,6 +118,7 @@ function openLoadFileDialog() {
 function toggleBuildMode() {
   Settings.globalSetDefault('buildMode', false);
   Settings.global.buildMode = !Settings.global.buildMode;
+  Settings.commit();
   skipConfirms || alert('Build mode is now set to ' + Settings.global.buildMode + '.');
 }
 
@@ -502,7 +503,7 @@ function loadMap(id) {
         text += `<br><span class="marker-popup-col">${f.charAt(0).toUpperCase() + f.slice(1)}:</span>${o[f]}`;
       }
     }
-    if(o.description || (gameClasses[o.type] || defaultGameClass).description) {
+    if(o.description || GameClasses.get(o.type).description) {
       text += `<br><span class="marker-popup-col">Description:</span><span class="marker-popup-col2">${locStr.description(o, o.type, mapId)}</span>`;
     }
     if(o.comment) {
@@ -661,7 +662,7 @@ function loadMap(id) {
 
         // Delete entries we aren't going to use 
         for(let o of j){
-          const c = gameClasses[o.type] || defaultGameClass;
+          const c = GameClasses.get(o.type);
           if((!c.layer || !enabledLayers[c.layer]) && (!c.nospoiler || !enabledLayers[c.nospoiler]) && (!c.lines || !enabledLayers[c.lines])){
             let id = o.area + ':' + o.name;
             delete objects[id];
@@ -676,15 +677,15 @@ function loadMap(id) {
             continue;
           }
 
-          let c = gameClasses[o.type] || defaultGameClass;
-          let sc = o.spawns ? (gameClasses[o.spawns] || defaultGameClass) : null;
+          let c = GameClasses.get(o.type);
+          let sc = GameClasses.get(o.spawns); // Returns null if o.spawns undefined
           let text = ''; // Set it on demand in onPopupOpen (as it's potentially slow for now)
           let alt = o.area + ':' + o.name;
 
           let title;
-          if(Settings.map.buildMode){
+          if(Settings.global.buildMode){
             // Ensure the object name is unique
-            title = titles[title] ? alt : o.name;
+            title = alt; //titles[title] ? alt : o.name;
             titles[title] = title;
 
             // Add what it spawns
@@ -708,7 +709,7 @@ function loadMap(id) {
             title += ` [${o.cost} ${price_types[price_type]}${o.cost != 1 && price_type != 5 ? 's':''}]`  // No s on plural of scrap
           }
 
-          if(Settings.map.buildMode) {
+          if(Settings.global.buildMode) {
             // Add the type
             title += ' of ' + o.type;
           } else {
@@ -787,7 +788,7 @@ function loadMap(id) {
           // add dynamic player marker on top of PlayerStart icon (moves with load save game) 
           if ((o.type == 'PlayerStart' || o.type == '_PlayerPosition') && !playerMarker) {
             o.type = '_PlayerPosition';
-            const pc = gameClasses[o.type];
+            const pc = GameClasses.get(o.type);
             if(pc.layer && enabledLayers[pc.layer])
             {
               const icon = L_mapIcon({iconName: pc.icon, variant: o.variant, game: mapId}).addTo(map);
@@ -1278,7 +1279,7 @@ window.onload = function() {    // (event)
   // clear location hash
   history.pushState('', document.title, window.location.pathname + window.location.search);
 
-  Promise.all([gameClassesInit(), layerConfigs.init(), locStr.init(), Icons.init()])
+  Promise.all([GameClasses.init(), layerConfigs.init(), locStr.init(), Icons.init()])
     .then(() => {
       Settings.mapSetDefault('activeLayers', layerConfigs.getDefaultActive());
 
@@ -1325,7 +1326,7 @@ window.onload = function() {    // (event)
         if (e.target.id.startsWith('searchtext')) {
           return;
         }
-        if (Settings.map.buildMode) { return; }
+        if (Settings.global.buildMode) { return; }
         pressed[e.code] = true;
         switch (e.code) {
           case 'KeyF':        // F (no ctrl) to toggle fullscreen

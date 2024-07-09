@@ -1,4 +1,4 @@
-import { defaultGameClass, gameClasses } from './gameClasses.js';
+import { GameClasses } from './gameClasses.js';
 import { browser } from './utils.js'
 
 export const locStr = {
@@ -55,20 +55,20 @@ export const locStr = {
 
     // Returns loc str for object containing a 'dkey' and a 'dkey'_key
     objKey: function(dkey, obj, ctype, mapid) {
-        const siukey = dkey+'_siu'  
+        const mapIdKey = dkey+'_'+mapid;  
         let str;
         if(obj){
-            if(mapid == 'siu' && siukey in obj) {
-                str = this.str(obj[siukey], obj[siukey+'_key']);
+            if(mapIdKey in obj) {
+                str = this.str(obj[mapIdKey], obj[mapIdKey+'_key']);
             }
             else {
                 str = this.str(obj[dkey], obj[dkey+'_key']);
             }
         }
         if(!str){
-            const gc = gameClasses[ctype] || defaultGameClass;
-            if(mapid == 'siu' && siukey in gc) {
-                str = this.str(gc[siukey], gc[siukey+'_key']);
+            const gc = GameClasses.get(ctype);
+            if(mapIdKey in gc) {
+                str = this.str(gc[mapIdKey], gc[mapIdKey+'_key']);
             }
             else {
                 str = this.str(gc[dkey], gc[dkey+'_key']);
@@ -88,5 +88,10 @@ export const locStr = {
     // Returns description name string for this object
     description: function(obj, ctype, mapid) {
         return this.objKey('description', obj, ctype, mapid)
+    },
+
+    // Returns command string for this object
+    comment: function(obj, ctype, mapid) {
+        return this.objKey('comment', obj, ctype, mapid)
     }
 }

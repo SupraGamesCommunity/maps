@@ -182,6 +182,17 @@ extendClass(Object, function emptyRemoved() {
     return ret;
 });
 
+/*// Return array containing all properties of an object (including prototype ones)
+function getAllPropertyNames(obj){
+    let nameSet = new Set();
+    for(let o = obj; o != null; o = Object.getPrototypeOf(o)){
+        for(p of Object.getOwnPropertyNames(o)){
+            nameSet.add(p);
+        }
+    }
+    return Array.from(nameSet);
+}*/
+
 //=================================================================================================
 // Leaflet map utility extensions
 
