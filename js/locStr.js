@@ -80,17 +80,17 @@ export const locStr = {
         return str;
     },
 
-    // Returns friendly name string for this object
+    // Returns friendly name string for this object (or if none then the type)
     friendly: function(obj, ctype, mapid) {
-        return this.objKey('friendly', obj, ctype, mapid)
+        return this.objKey('friendly', obj, ctype, mapid) || ctype;
     },
 
-    // Returns description name string for this object
+    // Returns description name string for this object (null if none)
     description: function(obj, ctype, mapid) {
         return this.objKey('description', obj, ctype, mapid)
     },
 
-    // Returns command string for this object
+    // Returns comment string for this object (null if none)
     comment: function(obj, ctype, mapid) {
         return this.objKey('comment', obj, ctype, mapid)
     }
