@@ -87,7 +87,6 @@ Settings.mapSetDefault('mapPins', []);
 function clearFilter() {
   Settings.map.searchText = '';
   Settings.commit();
-  markItems();
 }
 
 // Generate our URL format based on current state
@@ -245,14 +244,11 @@ function loadMap(id) {
     position: 'topright',
   });
 
-  map.on('moveend zoomend', function(e) {
+  map.on('moveend zoomend', function() {     // (e)
     Settings.map.center = [map.getCenter().lat, map.getCenter().lng]; // avoid circular refs here
     Settings.map.zoom = map.getZoom();
     Settings.commit();
-    if(e.type == 'zoomend'){
-      markItems();
-    }
-});
+  });
 
   map.on('baselayerchange', function(e) {
     location.hash = '';
@@ -272,7 +268,6 @@ function loadMap(id) {
   map.on('overlayremove', function(e) {
     delete Settings.map.activeLayers[e.layer.id];
     Settings.commit();
-    markItems();
   });
 
   let tilesDir = 'tiles/'+mapId;
@@ -483,10 +478,10 @@ function loadMap(id) {
     currentBuildReference = o;
 
     let text = ''
-    text += `<div class="marker-popup-heading">${locStr.friendly(o, o.type, mapId) || o.type}</div>`
+    text += `<div class="marker-popup-heading">${locStr.friendly(o, o.type, mapId)}</div>`
     text += '<div class="marker-popup-text">'
     if(o.spawns) {
-      text += `<br><span class="marker-popup-col">Contains:</span><span class="marker-popup-col2">${locStr.friendly(null, o.spawns, mapId) || o.spawns}</span>`;
+      text += `<br><span class="marker-popup-col">Contains:</span><span class="marker-popup-col2">${locStr.friendly(null, o.spawns, mapId)}</span>`;
     }
     if(o.coins) {
       text += `<br><span class="marker-popup-col">Coins:</span>${o.coins} coin${o.coins > 1 ? "s":""}`;
@@ -694,9 +689,9 @@ function loadMap(id) {
             }
           }
           else {
-            title = locStr.friendly(o, o.type, mapId) || o.type;
+            title = locStr.friendly(o, o.type, mapId);
             if(sc) {
-              title += ` (${locStr.friendly(null, o.spawns, mapId) || o.spawns})`; 
+              title += ` (${locStr.friendly(null, o.spawns, mapId)})`; 
             }
           }
           // Shouldn't be coins and spawns: so this is saying what's in it
@@ -843,11 +838,11 @@ function loadMap(id) {
     // search
     searchControl = new L.Control.Search({
         layer: L.featureGroup(searchLayers),
-        marker: false, // no red circle
-        initial: false, // search any substring
-        firstTipSubmit: false, // use first autosuggest
+        marker: false,          // no red circle
+        initial: false,         // search any substring
+        firstTipSubmit: false,  // use first autosuggest
         autoCollapse: false,
-        tipAutoSubmit: false, //auto map panTo when click on tooltip
+        tipAutoSubmit: false,   //auto map panTo when click on tooltip
         tooltipLimit: -1,
         textPlaceholder: 'Search (Enter to save search phrase)',
     }).addTo(map);
@@ -857,14 +852,10 @@ function loadMap(id) {
       map.removeLayer(layerObj);
     }
 
-    // filter items by saved query value
-    markItems();
-
     searchControl._handleSubmit = function(){
       Settings.map.searchText = this._input.value;
       Settings.commit();
       map.closePopup();
-      markItems();
       this._input.select();
       clickItem(this._input.value, false);
     }
@@ -1234,9 +1225,6 @@ window.loadSaveFile = function () {
 
       }
     }
-
-    //setTimeout(function(){alert('Loaded successfully. Marked ' + Object.keys(Settings.map.markedItems).length + ' items')},250);
-    //console.log('Marked ' + Object.keys(Settings.map.markedItems).length + ' items');
 
     markItems();
     Settings.commit();
