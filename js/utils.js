@@ -42,25 +42,53 @@ export const browser = {
         }
         return locales[0];
     },
-};
 
-// Retrieves the CSS for 'className' and builds a dictionary from property to value
-// for any of the properties in 'props' specified in the CSS. Very much doesn't handle
-// the full CSS syntax.
-export function cssGetProps(className, props) {
-    const div = $("<div>").addClass(className).appendTo(document.body);
-    let cssProps = {};
-    for(const p of props){
-        if(div.css(p)){
-            let val = div.css(p);
-            val = !isNaN(val) ? Number(val) : val.endsWith('px') ? Number(val.substring(0, val.length-2)) : val.endsWith('%') ? Number(val.substring(0, val.length - 1)) / 100 : val;
-            val = typeof val == 'string' ? val.replace(/["']/g, '') : val;
-            cssProps[p] = val;
+    // Retrieves the CSS for 'className' and builds a dictionary from property to value
+    // for any of the properties in 'props' specified in the CSS. Very much doesn't handle
+    // the full CSS syntax.
+    cssGetProps: function(className, props) {
+        const div = $("<div>").addClass(className).appendTo(document.body);
+        let cssProps = {};
+        for(const p of props){
+            if(div.css(p)){
+                let val = div.css(p);
+                val = !isNaN(val) ? Number(val) : val.endsWith('px') ? Number(val.substring(0, val.length-2)) : val.endsWith('%') ? Number(val.substring(0, val.length - 1)) / 100 : val;
+                val = typeof val == 'string' ? val.replace(/["']/g, '') : val;
+                cssProps[p] = val;
+            }
+        }
+        div.remove();
+        return cssProps;
+    },
+
+    // This is the old method as the execCommand is deprecated.
+    fallbackCopyTextToClipboard: function(text) {
+        let textarea = document.body.appendChild(document.createElement("textarea"));    //Changed from input to textarea so it honors newline characters
+        textarea.value = text;
+        textarea.focus();
+        textarea.select();
+        document.execCommand('copy');
+        textarea.parentNode.removeChild(textarea);
+    },
+
+    // Copy the specified text to the system clip board.
+    copyTextToClipboard: function(text) {
+        if(navigator.clipboard && navigator.permissions) {
+            navigator.permissions.query({name: 'clipboard-write' }).then((ps) => {
+                if(ps.state != "denied"){
+                    navigator.clipboard.writeText(text);
+                }
+                else{
+                    browser.fallbackCopyTextToClipboard(text);
+                }
+            });
+        }
+        else {
+            browser.fallbackCopyTextToClipboard(text);
         }
     }
-    div.remove();
-    return cssProps;
-}
+};
+
 
 //=================================================================================================
 

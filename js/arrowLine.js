@@ -1,6 +1,6 @@
 /* global L */
 
-import { cssGetProps } from './utils.js';
+import { browser } from './utils.js';
 
 export const L_ArrowLine = L.Polygon.extend({
     options: {
@@ -34,7 +34,7 @@ export const L_ArrowLine = L.Polygon.extend({
 
         // Override any relevant options with the CSS configuration
         if(this.options.className){
-            let cssOpts = cssGetProps(this.options.className, ['--arrow', '--arrow-size', '--arrow-angle', '--line-width', '--shadow-width', '--offset', '--end-offset']);
+            let cssOpts = browser.cssGetProps(this.options.className, ['--arrow', '--arrow-size', '--arrow-angle', '--line-width', '--shadow-width', '--offset', '--end-offset']);
             for(const [k, v] of Object.entries(cssOpts)){
                 delete cssOpts[k];
                 cssOpts[k.slice(2).snakeToCamelCase()] = v;

@@ -98,16 +98,6 @@ function getViewURL() {
   return base +'#' + Object.entries(vars).map(e=>e[0]+'='+encodeURIComponent(e[1])).join('&');
 }
 
-function copyToClipboard(text) {
-  let input = document.body.appendChild(document.createElement("textarea"));    //Changed from input to textarea so it honors newline characters
-  input.value = text;
-  input.focus();
-  input.select();
-  document.execCommand('copy');
-  input.parentNode.removeChild(input);
-  //console.log(text + ' copied to clipboard');
-}
-
 function openLoadFileDialog() {
   document.querySelector('#file').value = null;
   document.querySelector('#file').accept = '.sav';
@@ -163,7 +153,7 @@ function exportBuildChanges() {
 
   console.log(buildModeChangeList);
   let t = JSON.stringify(jsonobj, null, 2)
-  copyToClipboard(t);
+  browser.copyTextToClipboard(t);
   skipConfirms || alert('Build mode changes have been placed on the clipboard.');
 }
 
@@ -357,7 +347,7 @@ function loadMap(id) {
                       Settings.map.mapPins.forEach((value, i) => {
                         pins += `${i}: (x: ${value.lng.toFixed()} y: ${value.lat.toFixed()})\r\n`; 
                       })
-                      copyToClipboard(pins)                    
+                      browser.copyTextToClipboard(pins)                    
                     }
                     subAction.prototype.addHooks.call(this); // closes sub-action
                   }
@@ -405,7 +395,7 @@ function loadMap(id) {
                 subAction.extend({
                   options:{toolbarIcon:{html:'Copy Map View URL', tooltip: 'Copies View URL to the Clipboard'}},
                   addHooks:function() {
-                    copyToClipboard(getViewURL());
+                    browser.copyTextToClipboard(getViewURL());
                     subAction.prototype.addHooks.call(this); // closes sub-action
                   }
                 }),
@@ -435,7 +425,7 @@ function loadMap(id) {
                 subAction.extend({
                   options:{toolbarIcon:{html:'Copy File Path', tooltip: 'Copy default Windows game save file path to the Clipboard'}},
                   addHooks:function() {
-                    copyToClipboard('%LocalAppData%\\Supraland'+(mapId=='siu' ? 'SIU':'')+'\\Saved\\SaveGames');
+                    browser.copyTextToClipboard('%LocalAppData%\\Supraland'+(mapId=='siu' ? 'SIU':'')+'\\Saved\\SaveGames');
                     subAction.prototype.addHooks.call(this);
                   }
                 }),
