@@ -8,13 +8,13 @@ export const L_ArrowLine = L.Polygon.extend({
         arrowSize: 0,       // Arrow size (0 means it's just a pointer) with shadow wings
         arrowAngle: 45,     // angle at point of arrow 60 would be equilateral triangle (> 0 < 180)
         lineWidth: 5,       // width of the line in pixels
-        shadowWidth: 2,     // width of shadow in pixels (also stroke-width in CSS)
+        shadowWidth: 2,     // width of shadow in pixels (can be changed with stroke-width in CSS)
         offset: 0,          // Offset from start position where arrow  should start
         endOffset: 0,       // Offset from end position where arrow tip should be
-        lineJoin: 'round'   // miter, round or bevel
 
         // fillColor/fillOpacity are colour and opacity of the line
         // color/opacity are colour and opacity of the shadow
+        // lineJoin ('miter', 'round' or 'bevel')
     },
 
     // Leaflet Polygon Options:
@@ -44,44 +44,65 @@ export const L_ArrowLine = L.Polygon.extend({
 
         this._map = null;
 
-        this.options.fill = true;                   // Assume we're drawing the line
-        this.options.stroke = true;                 // drawing shadow
-        this.options.weight = options.shadowWidth;  // shadow width
-
-        this.startLatLng = start;
-        this.endLatLng = end;
+        this._startLatLng = start;
+        this._endLatLng = end;
 
         L.Polygon.prototype.initialize.call(this, [start, end], this.options);
+    },
+
+    setStartEnd: function(start, end) {
+        if(start != this._startLatLng || end != this._endLatLng) {
+            this._startLatLng = start;
+            this._endLatLng = end;
+            this.redraw();
+        }
     },
 
     setArrow: function(arrow){
         if(arrow != this.options.arrow){
             this.options.arrow = arrow;
-            this._rebuildPolygon();
+            this.redraw();
         }
+    },
+
+    setStyle: function(style){
+		L.Util.setOptions(this, style);
+        this.redraw();
     },
 
     onAdd: function(map) {
         L.Polygon.prototype.onAdd.call(this, map);
     
-        // set alt for polylines (attributes are not populated to paths)
-        // Might be good to put this in L.Polyline.include({onAdd...}) 
+        // set alt for polylines (attributes are not populated to paths) (we could put this in L.Polyline.include({onAdd...}) 
         this._path.setAttribute('alt', this.options.alt);
     
-        this._map.on('zoomend', this._rebuildPolygon, this);
-        this._rebuildPolygon();
+        this._map.on('zoomend', this.redraw, this);
+
+        this.redraw();
     },
 
     onRemove: function(map) {
-        map.off('zoomend', this._rebuildPolygon);
+        map.off('zoomend', this.redraw, this);
         L.Polygon.prototype.onRemove.call(this, map);
     },
 
-    _rebuildPolygon: function(){
-        if(this._map) {
-            this.setStyle({ 'weight': this.options.shadowWidth * this._map.getScaleForZoom() });
-            this.setLatLngs(this._buildArrowLine(this.startLatLng, this.endLatLng));
+    redraw: function() {
+        if (this._map) {
+            this.options.fill = true;
+            this.options.stroke = (this.options.shadowWidth > 0);
+            this.options.weight = this.options.shadowWidth * this._map.getScaleForZoom();
+
+            this._setLatLngs(this._buildArrowLine(this._startLatLng, this._endLatLng));
+
+            if(this._renderer){
+                this._renderer._updateStyle(this);
+                if(this.options.stroke){
+                    this._updateBounds();
+                }
+                this._renderer._updatePath(this);
+	    	}
         }
+		return this;
     },
 
     /*
