@@ -9,7 +9,7 @@ import { L_mapIcon } from './mapIcon.js'
 //      Defines the icon size, anchor, popup anchor and tooltip anchor
 //      By base or full file name
 //
-// Create an L_MapIcon with L_mapIcon(options) where options contains {iconName, variant, game}
+// Create an L_MapIcon with Icons.get(options) where options contains {iconName, variant, game}
 //
 // Icon name may have optional flags: {baseName}:{flags}
 //    v - add variant to filename {basename}.{variant}
@@ -19,7 +19,7 @@ import { L_mapIcon } from './mapIcon.js'
 // Example usage:
 //
 //      Icons.init()
-//      icon = L.mapIcon({iconName: 'myicon:vx2', variant: 'red'})  - loads img/markers/myicon.red.png and applies 2x scale to corresponding config
+//      icon = Icons.get({iconName: 'myicon:vx2', variant: 'red'})  - loads img/markers/myicon.red.png and applies 2x scale to corresponding config
 //
 //      Corresponding iconConfigs.json entry:
 //      {
@@ -96,7 +96,7 @@ export class Icons {
 
     // Returns icon with matching className or generates a new icon. Icon should be
     // added to map to get zoom computed correctly.
-    static create(options){
+    static get(options){
         const opts = this.getIconOptions(options);
         let icon = this._icons[opts.className];
         if(!icon) {

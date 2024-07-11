@@ -3,7 +3,7 @@
 
 import { Settings } from './settings.js';
 import { L_arrowLine } from './arrowLine.js';
-import { Icons, L_mapIcon } from './icons.js';
+import { Icons } from './icons.js';
 import { GameClasses } from './gameClasses.js';
 import { locStr } from './locStr.js';
 import { layerConfigs } from './layerConfig.js';
@@ -726,7 +726,7 @@ function loadMap(id) {
           let nospoiler = c.nospoiler != 'shop' || (o.cost && o.price_type != 7) ? c.nospoiler : 'collectable';
           if(nospoiler && enabledLayers[nospoiler])
           {
-            const icon = L_mapIcon({iconName: layerConfigs.get(nospoiler).defaultIcon, variant: o.variant, game:  mapId}).addTo(map);
+            const icon = Icons.get({iconName: layerConfigs.get(nospoiler).defaultIcon, variant: o.variant, game:  mapId}).addTo(map);
             const marker = L.marker(start, {icon: icon, zIndexOffset: layerConfigs.getZIndexOffset(nospoiler), title: title, alt: alt, o:o, layerId:nospoiler})
               .addTo(layers[nospoiler]).bindPopup(text).on('popupopen', onPopupOpen).on('contextmenu', onContextMenu);
             markers[alt] = markers[alt] ? [...markers[alt], marker] : [marker];
@@ -735,7 +735,7 @@ function loadMap(id) {
           // If there is a normal layer specified then add it to that
           if(c.layer && enabledLayers[c.layer])
           {
-            const icon = L_mapIcon({iconName: o.icon || c.icon || layerConfigs.get(c.layer).defaultIcon, variant: o.variant, game: mapId}).addTo(map);
+            const icon = Icons.get({iconName: o.icon || c.icon || layerConfigs.get(c.layer).defaultIcon, variant: o.variant, game: mapId}).addTo(map);
             const marker = L.marker(start, {icon: icon, zIndexOffset: layerConfigs.getZIndexOffset(c.layer), title: title, alt: alt, o:o, layerId:c.layer })
               .addTo(layers[c.layer]).bindPopup(text).on('popupopen', onPopupOpen).on('contextmenu', onContextMenu);
             markers[alt] = markers[alt] ? [...markers[alt], marker] : [marker];
@@ -744,7 +744,7 @@ function loadMap(id) {
           // Deal with layer for whatever it spawns. Normally things that spawn something don't have a spoiler layer
           if(sc && sc.layer && enabledLayers[sc.layer])
           {
-            const icon = L_mapIcon({iconName: o.icon || sc.icon || layerConfigs.get(sc.layer).defaultIcon, variant: o.variant, game: mapId}).addTo(map);
+            const icon = Icons.get({iconName: o.icon || sc.icon || layerConfigs.get(sc.layer).defaultIcon, variant: o.variant, game: mapId}).addTo(map);
             const marker = L.marker(start, {icon: icon, zIndexOffset: layerConfigs.getZIndexOffset(sc.layer), title: title, alt: alt, o:o, layerId:sc.layer})
               .addTo(layers[sc.layer]).bindPopup(text).on('popupopen', onPopupOpen).on('contextmenu', onContextMenu);
             markers[alt] = markers[alt] ? [...markers[alt], marker] : [marker];
@@ -776,7 +776,7 @@ function loadMap(id) {
             const pc = GameClasses.get(o.type);
             if(pc.layer && enabledLayers[pc.layer])
             {
-              const icon = L_mapIcon({iconName: pc.icon, variant: o.variant, game: mapId}).addTo(map);
+              const icon = Icons.get({iconName: pc.icon, variant: o.variant, game: mapId}).addTo(map);
               playerStart = [o.lat, o.lng, o.alt];
               let title = `Player Position (${o.lng.toFixed(0)},${o.lat.toFixed(0)})`;
               let t = new L.LatLng(o.lat, o.lng);

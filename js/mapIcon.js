@@ -1,6 +1,6 @@
 /* globals L, $ */
 
-// These options are provided to L.MapIcon.Initialize (and Icons.create / L.mapIcon):
+// These options are provided to Icons.create:
 //
 // iconName:      name of icon with optional flags
 // variant:       variant name if there is one

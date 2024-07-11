@@ -80,18 +80,28 @@ export const locStr = {
         return str;
     },
 
+    // Convert a SL class name to something a bit more human readable. Not sure this should really be here
+    // but it is the simplest place to put it.
+    humanReadable: function(type) {
+        let s = type;
+        s = s.replace('BP_Purchase','').replace('BP_Buy','').replace('BP_','').replace('Purchase_','').replace('Buy','')
+        s = s.replace(/_C$/,'').replace(/.*:/, '').replace('^_', '');
+        s = s.replace(/([A-Z]+|[\d]+)/g, ' $1').replace(/^ /, ''); // camel case to space-separated
+        return s;
+    },
+
     // Returns friendly name string for this object (or if none then the type)
     friendly: function(obj, ctype, mapid) {
-        return this.objKey('friendly', obj, ctype, mapid) || ctype;
+        return this.objKey('friendly', obj, ctype, mapid) || this.humanReadable(ctype);
     },
 
     // Returns description name string for this object (null if none)
     description: function(obj, ctype, mapid) {
-        return this.objKey('description', obj, ctype, mapid)
+        return this.objKey('description', obj, ctype, mapid);
     },
 
     // Returns comment string for this object (null if none)
     comment: function(obj, ctype, mapid) {
-        return this.objKey('comment', obj, ctype, mapid)
+        return this.objKey('comment', obj, ctype, mapid);
     }
 }
