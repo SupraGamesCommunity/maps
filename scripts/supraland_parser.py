@@ -851,7 +851,9 @@ def create_coinstacks(data_lookup, data):
     stacks = []
     delobj = []
     for cc in nx.connected_components(graph):
-        stackId += 1
+        # Note inc should be adfter the condition however there is custom
+        # data depending on the number now and it only matters they are unique
+        stackId += 1    
         if len(cc) > 3:
             coins = 0
             old_coins = {}
