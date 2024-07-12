@@ -103,5 +103,21 @@ export const locStr = {
     // Returns comment string for this object (null if none)
     comment: function(obj, ctype, mapid) {
         return this.objKey('comment', obj, ctype, mapid);
+    },
+
+    coins: function(coins){
+        return this.cost(0, coins);
+    },
+
+    // Returns string describing price given priceType code
+    cost: function(priceType, price){
+        const priceTypes = {
+            0: 'coin',
+            5: 'scrap',
+            6: 'bone',
+            7: 'red moon',
+          };
+          priceType = priceType || 0;
+          return `${price} ${priceTypes[priceType]}${price != 1 && priceType != 5 ? 's':''}`;
     }
 }

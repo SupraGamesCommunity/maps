@@ -1374,14 +1374,14 @@
     "icon": "awesome",
     "layer": "extra",
     "nospoiler": null,
-    "lines": "dev"
+    "lines": null
   },
   "_PlayerPosition": {
     "friendly": "Player Position",
     "icon": "player:vx1.2",
     "layer": "_map",
     "nospoiler": null,
-    "lines": "dev"
+    "lines": null
   },
   "Plumbus_C": {
     "friendly": "Plumbus",

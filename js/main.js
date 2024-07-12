@@ -480,8 +480,7 @@ function loadMap(id) {
       text += `<br><span class="marker-popup-col">Amount:</span>${o.scrapamount} scrap`;
     }
     if(o.cost) {
-      let price_type = (o.price_type in price_types ? o.price_type : 0);
-      text += `<br><span class="marker-popup-col">Price:</span>${o.cost} ${price_types[price_type]}${o.cost != 1 && price_type != 5 ? 's':''}`;  // No s on plural of scrap
+      text += `<br><span class="marker-popup-col">Price:</span>${locStr.cost(o.price_type, o.cost)}`;
     }
     for(let f of ['variant', 'loop']){
       if(o[f]){
@@ -543,15 +542,7 @@ function loadMap(id) {
       text += '<button onclick="commitCurrentBuildModeChanges();">Save</button>';
     }
 
-//    e.target.setIcon(e.target.options.icon);
     e.popup.setContent(text);
-  }
-
-  const price_types = {
-    0: 'coin',
-    5: 'scrap',
-    6: 'bone',
-    7: 'red moon',
   }
 
   function addMapPin(idx){
@@ -684,14 +675,14 @@ function loadMap(id) {
               title += ` (${locStr.friendly(null, o.spawns, mapId)})`; 
             }
           }
+
           // Shouldn't be coins and spawns: so this is saying what's in it
           if(o.coins) {
-            title += ` (${o.coins} coin${o.coins > 1 ? "s":""})`;
+            title += ` (${locStr.coins(o.coins)})`;
           }
-          // Can have spawns and cost
+
           if(o.cost) {
-            let price_type = (o.price_type in price_types ? o.price_type : 0);
-            title += ` [${o.cost} ${price_types[price_type]}${o.cost != 1 && price_type != 5 ? 's':''}]`  // No s on plural of scrap
+            title += ` [${locStr.cost(o.price_type, o.cost)}]`;
           }
 
           if(Settings.global.buildMode) {
