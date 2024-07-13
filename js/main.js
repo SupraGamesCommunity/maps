@@ -213,21 +213,12 @@ function loadMap(id) {
     zoomControl: false,
     doubleClickZoom: true,
   });
+  // redraw paths on dragging (sets % of padding around viewport, may be performance issue)
+  map.getRenderer(map).options.padding = 1;
+
 
   L.control.zoom({ position: 'bottomright'}).addTo(map);
   L.control.fullscreen({ position: 'bottomright', forceSeparateButton: true}).addTo(map);
-
-  let layerOptions = {
-      tileSize: L.point(tileSize.x, tileSize.y),
-      noWrap: true,
-      tms: false,
-      updateInterval: -1,
-      keepBuffer: 16,
-      maxNativeZoom: 4,
-      nativeZooms: [0, 1, 2, 3, 4],
-      bounds: mapBounds,
-      attribution: '<a href="https://github.com/SupraGamesCommunity/maps" target="_blank">SupraGames Community</a>',
-  };
 
   let layerControl = L.control.layers({}, {}, {
     collapsed: true,
@@ -259,6 +250,17 @@ function loadMap(id) {
     delete Settings.map.activeLayers[e.layer.id];
     Settings.commit();
   });
+
+  let layerOptions = {
+    tileSize: L.point(tileSize.x, tileSize.y),
+    noWrap: true,
+    tms: false,
+    updateInterval: -1,
+    keepBuffer: 16,
+    maxNativeZoom: 4,
+    bounds: mapBounds,
+    attribution: '<a href="https://github.com/SupraGamesCommunity/maps" target="_blank">SupraGames Community</a>',
+};
 
   let tilesDir = 'tiles/'+mapId;
 
@@ -900,9 +902,6 @@ function loadMap(id) {
     layerControl.addTo(map); // triggers baselayerchange, so called in the end
   }
   loadLayers();
-
-  // redraw paths on dragging (sets % of padding around viewport, may be performance issue)
-  map.getRenderer(map).options.padding = 1;
 
 } // end of loadmap
 
