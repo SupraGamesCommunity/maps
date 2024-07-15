@@ -6,7 +6,7 @@ import { L_arrowLine } from './arrowLine.js';
 import { Icons } from './icons.js';
 import { GameClasses } from './gameClasses.js';
 import { locStr } from './locStr.js';
-import { layerConfigs } from './layerConfig.js';
+import { MapLayer } from './mapLayer.js';
 import { browser, mergeDeep } from './utils.js';
 
 // Terminology,
@@ -17,8 +17,6 @@ import { browser, mergeDeep } from './utils.js';
 
 var map = null;         // Leaflet map object containing current game map and all its markers
 var mapId = '';         // Current map selected (one of sl, slc or siu)
-
-let layers = {};        // Leaflet layerGroup array, one for each collection of markers
 
 let playerStart;        // Position of first player start instance found in map data
 let playerMarker;       // Leaflet marker object for current player start (or dragged position)
@@ -40,34 +38,6 @@ let buildModeChangeList = [];           // Changes made in the current Build Mod
 
 const skipConfirms = browser.isCode;
 
-// Hard coded map data extracted from the games
-var maps = {
-  // data taken from the MapWorld* nodes
-  'sl':  { 
-      title: 'Supraland',
-      "MapWorldCenter": { "X": 13000.0, "Y": -2000.0, "Z": 0.0 },
-      "MapWorldSize": 175000.0,
-      "MapWorldUpperLeft": { "X": -74500.0, "Y": -89500.0, "Z": 0.0 },
-      "MapWorldLowerRight": { "X": 100500.0, "Y": 85500.0, "Z": 0.0 },
-   },
-
-  'slc': {
-    title: 'Supraland Crash',
-      "MapWorldCenter": { "X": 25991.0, "Y": -16.0, "Z": 0.0  },
-      "MapWorldSize": 90112.0,
-      "MapWorldUpperLeft": { "X": -19065.0, "Y": -45040.0, "Z": 0.0 },
-      "MapWorldLowerRight": { "X": 71047.0, "Y": 45072.0, "Z": 0.0 },
-   },
-
-  'siu': {
-      title: 'Supraland Six Inches Under',
-      "MapWorldCenter": { "X": 0.0, "Y": -19000.0, "Z": 10000.0 },
-      "MapWorldSize": 147456.0,
-      "MapWorldUpperLeft": { "X": -73728.0, "Y": -92728.0, "Z": 10000.0 },
-      "MapWorldLowerRight": { "X": 73728.0, "Y": 54728.0, "Z": 10000.0 },
-   },
-};
-
 Settings.init('sl');
 
 // Todo: Move these to the the place the relevant code is dealt with
@@ -76,11 +46,7 @@ Settings.globalSetDefault('language', 'en')
 
 Settings.mapSetDefault('markedItems', {});
 Settings.mapSetDefault('coinsFound', {});
-Settings.mapSetDefault('searchText', '');
 Settings.mapSetDefault('playerPosition', [0, 0, 0]);
-Settings.mapSetDefault('center', [0, 0]);
-Settings.mapSetDefault('zoom', 1);
-Settings.mapSetDefault('mapPins', []);
 
 // Called when the search is cleared/cancelled to update searchText, save change
 // and reflect changes in current marker draw state
@@ -165,39 +131,17 @@ function loadMap(id) {
   Settings.mapId = id;
   Settings.commit();
 
-  var mapSize = {width: 8192, height: 8192}
-  var tileSize   = {x: 512, y: 512};
-  var tileMaxSet = 4;
-  var mapMinResolution = Math.pow(2, tileMaxSet);
+  const mapLayer = MapLayer.get(mapId);
 
-  document.querySelector('#map').style.backgroundColor = mapId=='siu' ? '#141414' : '#000';
+  document.querySelector('#map').style.backgroundColor = mapLayer.config.backgroundColor;
 
-  var p = maps[mapId];
-
-  // fixes 404 errors
-  p.MapWorldUpperLeft.X  += 1;
-  p.MapWorldUpperLeft.Y += 1;
-  p.MapWorldLowerRight.X -= 1;
-  p.MapWorldLowerRight.Y -= 1;
-
-  let mapBounds = [
-    [ p.MapWorldUpperLeft.Y, p.MapWorldUpperLeft.X ],
-    [ p.MapWorldLowerRight.Y, p.MapWorldLowerRight.X ]
-  ];
-
-  let gap = p.MapWorldSize/2;
-  let mapBoundsWithGap = [
-    [ p.MapWorldUpperLeft.Y*0- gap, p.MapWorldUpperLeft.X - gap ],
-    [ p.MapWorldLowerRight.Y*0 + gap, p.MapWorldLowerRight.X + gap ]
-  ];
-
-  var m = p.MapWorldSize / mapSize.width;
-  var mapScale   = {x: 1.0/m, y: 1.0/m};
-  var mapOrigin  = {x: -p.MapWorldUpperLeft.X * mapScale.x, y: -p.MapWorldUpperLeft.Y * mapScale.y};
+  const mapScale = mapLayer.config.mapRes / mapLayer.config.mapSize;
+  const tileMaxSet = 4;
+  const mapMinResolution = Math.pow(2, tileMaxSet);
 
   // Create a coordinate system for the map
   var crs = L.CRS.Simple;
-  crs.transformation = new L.Transformation(mapScale.x, mapOrigin.x, mapScale.y, mapOrigin.y);
+  crs.transformation = new L.Transformation(mapScale, -mapLayer.mapLngLatBounds[0][1] * mapScale, mapScale, -mapLayer.mapLngLatBounds[0][0] * mapScale);
   crs.scale = function (zoom) { return Math.pow(2, zoom) / mapMinResolution; };
   crs.zoom = function (scale) { return Math.log(scale * mapMinResolution) / Math.LN2; };
 
@@ -209,9 +153,10 @@ function loadMap(id) {
     maxZoom: 8,
     zoomDelta: 0.5,
     zoomSnap: 0.125,
-    maxBounds: mapBoundsWithGap, // elastic-y bounds + elastic-x bounds
+    maxBounds: mapLayer.viewLngLatBounds, // elastic-y bounds + elastic-x bounds
     zoomControl: false,
     doubleClickZoom: true,
+    mapId: id,
   });
   // redraw paths on dragging (sets % of padding around viewport, may be performance issue)
   map.getRenderer(map).options.padding = 1;
@@ -220,11 +165,6 @@ function loadMap(id) {
   L.control.zoom({ position: 'bottomright'}).addTo(map);
   L.control.fullscreen({ position: 'bottomright', forceSeparateButton: true}).addTo(map);
 
-  let layerControl = L.control.layers({}, {}, {
-    collapsed: true,
-    position: 'topright',
-  });
-
   map.on('moveend zoomend', function() {     // (e)
     Settings.map.center = [map.getCenter().lat, map.getCenter().lng]; // avoid circular refs here
     Settings.map.zoom = map.getZoom();
@@ -232,68 +172,24 @@ function loadMap(id) {
   });
 
   map.on('baselayerchange', function(e) {
+    MapLayer.resetLayers();
     location.hash = '';
     map.off();
     map.remove();
     map = null;
     playerMarker = null;
-    loadMap(e.layer.mapId);
+    loadMap(e.layer.options.layerId);
   });
 
-  map.on('overlayadd', function(e) {
-    Settings.map.activeLayers[e.layer.id] = true;
-    Settings.commit();
+  map.on('overlayadd', function() { // (e)
     markItems();
   });
 
-  map.on('overlayremove', function(e) {
-    delete Settings.map.activeLayers[e.layer.id];
-    Settings.commit();
+  let layerControl = L.control.layers({}, {}, {
+    collapsed: true,
+    position: 'topright',
   });
-
-  let layerOptions = {
-    tileSize: L.point(tileSize.x, tileSize.y),
-    noWrap: true,
-    tms: false,
-    updateInterval: -1,
-    keepBuffer: 16,
-    maxNativeZoom: 4,
-    bounds: mapBounds,
-    attribution: '<a href="https://github.com/SupraGamesCommunity/maps" target="_blank">SupraGames Community</a>',
-};
-
-  let tilesDir = 'tiles/'+mapId;
-
-  // L.tileLayer.canvas() is much faster than L.tileLayer() but requires a L.TileLayer.Canvas plugin
-  // canvas also fixes a visible line between tiles
-  // However on Firefox it makes the lines much worse, so we choose based on which browser
-
-  let baseLayer;
-  if(browser.isFirefox)
-    baseLayer = L.tileLayer(tilesDir+'/base/{z}/{x}/{y}.jpg', layerOptions).addTo(map);
-  else
-    baseLayer = L.tileLayer.canvas(tilesDir+'/base/{z}/{x}/{y}.jpg', layerOptions).addTo(map);
-
-  for (let id in maps) {
-    var title = maps[id].title;
-    var layer = id==mapId ? baseLayer : L.layerGroup();
-    layer.mapId = id;
-    layerControl.addBaseLayer(layer, title);
-  }
-
-  // Add overlay image map layers 
-  layerConfigs.forEachOfType(mapId, "tiles", (layerId, layerConfig) => {
-    let layer;
-    if(browser.isFirefox)
-      layer = L.tileLayer(tilesDir+'/'+layerId+'/{z}/{x}/{y}.png', layerOptions);
-    else
-      layer = L.tileLayer.canvas(tilesDir+'/'+layerId+'/{z}/{x}/{y}.png', layerOptions);
-    layer.id = layerId;
-    if (Settings.map.activeLayers[layerId]) {
-      layer.addTo(map);
-    }
-    layerControl.addOverlay(layer, layerConfig.name);
-  });
+  MapLayer.setupLayers(map, layerControl);
 
   L.control.mousePosition({numDigits:0, lngFirst:true}).addTo(map);
 
@@ -303,7 +199,11 @@ function loadMap(id) {
   } else if (Settings.map.center && Settings.map.zoom) {
     map.setView(Settings.map.center, Settings.map.zoom);
   } else {
-    map.fitBounds(mapBounds);
+    map.fitBounds(mapLayer.viewLngLatBounds);
+
+    // Settings center/zoom should have been set by fitBounds events
+    Settings.mapSetDefault('center', Settings.map.center || MapLayer.get(mapId).viewCenterLngLat);
+    Settings.mapSetDefault('zoom', 'zoom' in Settings.map ? Settings.map.zoom : 1);
   }
 
   let subAction = L.Toolbar2.Action.extend({
@@ -322,10 +222,10 @@ function loadMap(id) {
                 subAction.extend({
                   options:{toolbarIcon:{html:'Add', tooltip: 'Adds new pin to map'}},
                   addHooks:function() {
-                    if('coordinate' in layers) {
+                    if(MapLayer.isEnabledFromId('coordinate')) {
                       addMapPin();
                       Settings.commit();
-                      layers['coordinate'].addTo(map);
+                      MapLayer.get('coordinate').setActive(true);
                     }
                     subAction.prototype.addHooks.call(this); // closes sub-action
                   }
@@ -548,6 +448,10 @@ function loadMap(id) {
   }
 
   function addMapPin(idx){
+    if(!MapLayer.isEnabledFromId('coordinate'))
+      return;
+    const mapLayer = MapLayer.get('coordinate');
+
     let pos, pinIdx;
     if(typeof idx !== 'undefined'){
       pos = Settings.map.mapPins[idx];
@@ -561,7 +465,7 @@ function loadMap(id) {
     const alt = `XYMarker ${pinIdx}`;
     if(!(alt in markers)) {
       let title = `${pinIdx}: (${pos.lng.toFixed(0)},${pos.lat.toFixed(0)})`
-      const marker = L.marker(pos, {zIndexOffset: layerConfigs.frontZIndexOffset, draggable: true, title: title, pinIdx: pinIdx})
+      const marker = L.marker(pos, {zIndexOffset: MapLayer.frontZIndexOffset, draggable: true, title: title, pinIdx: pinIdx, layerId: mapLayer.id})
         .bindPopup()
         .on('moveend', function(e) {
           let marker = e.target;
@@ -575,7 +479,7 @@ function loadMap(id) {
             let t = marker.getLatLng();
             marker.setPopupContent(`${marker.options.pinIdx}: (${t.lng.toFixed()}, ${t.lat.toFixed()})`);
             marker.openPopup();
-        }).addTo(layers['coordinate']);
+        }).addTo(mapLayer.layerObj);
         markers[alt] = [marker];
     }
     else {
@@ -584,6 +488,7 @@ function loadMap(id) {
   }
 
   function restoreMapPins(){
+    Settings.mapSetDefault('mapPins', []);
     Settings.map.mapPins.forEach((value, i) => {
       addMapPin(i);
     })
@@ -613,6 +518,7 @@ function loadMap(id) {
         markers = {};
         coin2stack = {};
 
+        const mapBounds = map.options.maxBounds;
 
         // Build a look up table from alt id to objects 
         for(let o of j){
@@ -636,7 +542,7 @@ function loadMap(id) {
         merge_cm(cmjyt);
         merge_cm(cmj);
 
-        let enabledLayers = layerConfigs.getEnabledLayers(mapId) 
+        const enabledLayers = MapLayer.getEnabledLayers(mapId) 
 
         // Delete entries we aren't going to use 
         for(let o of j){
@@ -719,45 +625,49 @@ function loadMap(id) {
           let nospoiler = c.nospoiler != 'shop' || (o.cost && o.price_type != 7) ? c.nospoiler : 'collectable';
           if(nospoiler && enabledLayers[nospoiler])
           {
-            const icon = Icons.get({iconName: layerConfigs.get(nospoiler).defaultIcon, variant: o.variant, game:  mapId}).addTo(map);
-            const marker = L.marker(start, {icon: icon, zIndexOffset: layerConfigs.getZIndexOffset(nospoiler), title: title, alt: alt, o:o, layerId:nospoiler})
-              .addTo(layers[nospoiler]).bindPopup(text).on('popupopen', onPopupOpen).on('contextmenu', onContextMenu);
+            const mapLayer = MapLayer.get(nospoiler);
+            const icon = Icons.get({iconName: mapLayer.defaultIcon, variant: o.variant, game:  mapId}).addTo(map);
+            const marker = L.marker(start, {icon: icon, zIndexOffset: mapLayer.getZIndexOffset(), title: title, alt: alt, o:o, layerId:mapLayer.id})
+              .addTo(mapLayer.layerObj).bindPopup(text).on('popupopen', onPopupOpen).on('contextmenu', onContextMenu);
             markers[alt] = markers[alt] ? [...markers[alt], marker] : [marker];
           }
   
           // If there is a normal layer specified then add it to that
           if(c.layer && enabledLayers[c.layer])
           {
-            const icon = Icons.get({iconName: o.icon || c.icon || layerConfigs.get(c.layer).defaultIcon, variant: o.variant, game: mapId}).addTo(map);
-            const marker = L.marker(start, {icon: icon, zIndexOffset: layerConfigs.getZIndexOffset(c.layer), title: title, alt: alt, o:o, layerId:c.layer })
-              .addTo(layers[c.layer]).bindPopup(text).on('popupopen', onPopupOpen).on('contextmenu', onContextMenu);
+            const mapLayer = MapLayer.get(c.layer);
+            const icon = Icons.get({iconName: o.icon || c.icon || mapLayer.defaultIcon, variant: o.variant, game: mapId}).addTo(map);
+            const marker = L.marker(start, {icon: icon, zIndexOffset: mapLayer.getZIndexOffset(), title: title, alt: alt, o:o, layerId:mapLayer.id })
+              .addTo(mapLayer.layerObj).bindPopup(text).on('popupopen', onPopupOpen).on('contextmenu', onContextMenu);
             markers[alt] = markers[alt] ? [...markers[alt], marker] : [marker];
             }
 
           // Deal with layer for whatever it spawns. Normally things that spawn something don't have a spoiler layer
           if(sc && sc.layer && enabledLayers[sc.layer])
           {
-            const icon = Icons.get({iconName: o.icon || sc.icon || layerConfigs.get(sc.layer).defaultIcon, variant: o.variant, game: mapId}).addTo(map);
-            const marker = L.marker(start, {icon: icon, zIndexOffset: layerConfigs.getZIndexOffset(sc.layer), title: title, alt: alt, o:o, layerId:sc.layer})
-              .addTo(layers[sc.layer]).bindPopup(text).on('popupopen', onPopupOpen).on('contextmenu', onContextMenu);
+            const mapLayer = MapLayer.get(sc.layer);
+            const icon = Icons.get({iconName: o.icon || sc.icon || mapLayer.defaultIcon, variant: o.variant, game: mapId}).addTo(map);
+            const marker = L.marker(start, {icon: icon, zIndexOffset: mapLayer.getZIndexOffset(), title: title, alt: alt, o:o, layerId:mapLayer.id})
+              .addTo(mapLayer.layerObj).bindPopup(text).on('popupopen', onPopupOpen).on('contextmenu', onContextMenu);
             markers[alt] = markers[alt] ? [...markers[alt], marker] : [marker];
           }
 
           // Add a polyline to the appropriate layer
           if(c.lines && enabledLayers[c.lines] && o.linetype) {
+            const mapLayer = MapLayer.get(c.lines);
             let endxys = o.linetype != 'trigger' ? [o.target] : o.targets;
 
             // need to add title as a single space (leaflet search issue), but not the full title so it doesn't appear in search
             let options = {
-              zIndexOffset: layerConfigs.getZIndexOffset(c.lines), title: ' ', interactive: false, alt: alt, o:o,
-              layerId:c.lines, className: 'line-'+o.linetype+(o.linetype == 'jumppad' ? ' '+o.variant : ''),
+              zIndexOffset: mapLayer.getZIndexOffset(), title: ' ', interactive: false, alt: alt, o:o,
+              layerId: mapLayer.id, className: 'line-'+o.linetype+(o.linetype == 'jumppad' ? ' '+o.variant : ''),
             }
             if(o.twoway){
               options.arrow = 'none';
             }
             if(o.twoway != 2){
               for(let endxy of endxys) {
-                let line = L_arrowLine(start, [endxy.y, endxy.x], options).addTo(layers[c.lines]);
+                let line = L_arrowLine(start, [endxy.y, endxy.x], options).addTo(mapLayer.layerObj);
                 markers[alt] = markers[alt] ? [...markers[alt], line] : [line];
               }
             }
@@ -769,6 +679,7 @@ function loadMap(id) {
             const pc = GameClasses.get(o.type);
             if(pc.layer && enabledLayers[pc.layer])
             {
+              const layerObj = MapLayer.getLayerObj(pc.layer);
               const icon = Icons.get({iconName: pc.icon, variant: o.variant, game: mapId}).addTo(map);
               playerStart = [o.lat, o.lng, o.alt];
               let title = `Player Position (${o.lng.toFixed(0)},${o.lat.toFixed(0)})`;
@@ -780,8 +691,8 @@ function loadMap(id) {
               else {
                 Settings.map.playerPosition = playerStart;
               }
-              playerMarker = L.marker([t.lat, t.lng], {icon: icon, zIndexOffset: layerConfigs.backZIndexOffset, draggable: false, title: title, alt:'playerMarker', o:o, layerId:pc.layer})
-                .bindPopup().on('popupopen', onPopupOpen).addTo(layers[pc.layer]);
+              playerMarker = L.marker([t.lat, t.lng], {icon: icon, zIndexOffset: MapLayer.backZIndexOffset, draggable: false, title: title, alt:'playerMarker', o:o, layerId: '_map'})
+                .bindPopup().on('popupopen', onPopupOpen).addTo(layerObj);
             }
           } // end of player marker
         } // end of loop
@@ -797,27 +708,14 @@ function loadMap(id) {
   function loadLayers() {
     playerMarker = null;
 
-    let activeLayers = [];
-    let inactiveLayers = [];
     let searchLayers = [];
+    MapLayer.forEachMarkers((id, l) => {
+      searchLayers.push(l.layerObj);
+    });
 
-    layerConfigs.forEachOfType(mapId, 'markers', (id, lc) => {
-      let layerObj = L.layerGroup();
-      layerObj.id = id;
+    Settings.mapSetDefault('searchText', '');
 
-      if (Settings.map.activeLayers[id]) {
-        layerObj.addTo(map);
-        activeLayers.push(layerObj);
-      } else {
-        inactiveLayers.push(layerObj);
-      }
-
-      layers[id] = layerObj;
-      layerControl.addOverlay(layerObj, lc.name);
-      searchLayers.push(layerObj);
-    })
-    layers['_map'] = map;
-
+    const activeLayers = MapLayer.getActiveLayers();
     // search
     searchControl = new L.Control.Search({
         layer: L.featureGroup(searchLayers),
@@ -831,9 +729,7 @@ function loadMap(id) {
     }).addTo(map);
 
     // workaround: search reveals all layers, hide all inactive layers
-    for (let layerObj of inactiveLayers) {
-      map.removeLayer(layerObj);
-    }
+    MapLayer.setActiveLayers(activeLayers);
 
     searchControl._handleSubmit = function(){
       Settings.map.searchText = this._input.value;
@@ -879,11 +775,9 @@ function loadMap(id) {
     searchControl.on('search:locationfound', function (e) {
         if (e.layer._popup && markers[e.layer.options.alt]) {
           // reveal layer on click
-          for(m of markers[e.layer.options.alt]){
+          for(const m of markers[e.layer.options.alt]){
             let layerId = m.options.layerId;
-            if(!Settings.map.activeLayers[layerId]) { 
-              layers[layerId].addTo(map);
-            }
+            MapLayer.get(layerId).setActive(true);
           }
           e.layer.openPopup();
         }
@@ -957,7 +851,7 @@ window.markItemFound = function (id, found=true, save=true) {
   if(markers[id]){
     for(let m of markers[id]){
       if(typeof m.setZIndexOffset === 'function'){
-        m.setZIndexOffset(layerConfigs.getZIndexOffset(m.options.layerId, found));
+        m.setZIndexOffset(MapLayer.getZIndexOffsetFromId(m.options.layerId, found));
       }
     }
   }
@@ -984,7 +878,7 @@ function markItems() {
     if(markers[id]){
       for(let m of markers[id]){
         if(typeof m.setZIndexOffset === 'function'){
-          m.setZIndexOffset(layerConfigs.getZIndexOffset(m.options.layerId, true));
+          m.setZIndexOffset(MapLayer.getZIndexOffsetFromId(m.options.layerId, true));
         }
       }
     }
@@ -1001,7 +895,7 @@ function unmarkItems() {
     if(markers[id]){
       for(let m of markers[id]){
         if(typeof m.setZIndexOffset === 'function'){
-          m.setZIndexOffset(layerConfigs.getZIndexOffset(m.options.layerId));
+          m.setZIndexOffset(MapLayer.getZIndexOffsetFromId(m.options.layerId));
         }
       }  
     }
@@ -1247,9 +1141,8 @@ window.onload = function() {    // (event)
   // clear location hash
   history.pushState('', document.title, window.location.pathname + window.location.search);
 
-  Promise.all([GameClasses.init(), layerConfigs.init(), locStr.init(), Icons.init()])
+  Promise.all([locStr.init(), GameClasses.init(), MapLayer.loadConfigs(mapId), Icons.init()])
     .then(() => {
-      Settings.mapSetDefault('activeLayers', layerConfigs.getDefaultActive());
 
       mapId = mapParam.mapId || Settings.mapId;
 
@@ -1311,7 +1204,7 @@ window.onload = function() {    // (event)
             break;
           case 'KeyR':
             if (!e.ctrlKey && !e.altKey) {
-              map.flyTo(playerMarker ? playerMarker._latlng : [maps[mapId].MapWorldCenter.Y, maps[mapId].MapWorldCenter.X]);
+              map.flyTo(playerMarker ? playerMarker._latlng : MapLayer._layers[mapId].viewCenterLngLat);
             } else if (e.altKey) {
               openLoadFileDialog();
             }

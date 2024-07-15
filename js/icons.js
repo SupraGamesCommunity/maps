@@ -60,8 +60,6 @@ export class Icons {
         return fetch('data/iconConfigs.json')
             .then((response) => response.json())
             .then((j) => this._iconConfigs = j);
-
-        // Might be nice to compute some 
     }
 
     // Retrieve the configuration for the specified icon name, if no config try basename otherwise return default

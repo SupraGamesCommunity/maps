@@ -1,4 +1,38 @@
 {
+    "sl": {
+        "type": "base",
+        "name": "Supraland",
+        "mapRes": 8192,
+        "tileRes": 512,
+        "mapSize": 175000,
+        "mapBounds":  [{ "x": -74500, "y": -89500, "z": -7000 }, { "x": 100500, "y": 85500, "z": -13000 }],
+        "viewBounds": [{ "x": -73133, "y": -73436, "z": -6860 }, { "x": 100158, "y": 81740, "z": -12942 }],
+        "backgroundColor": "#000",
+        "games": ["sl", "slc", "siu"]
+    },
+    "slc": {
+        "type": "base",
+        "name": "Supraland Crash",
+        "mapRes": 8192,
+        "tileRes": 512,
+        "mapSize": 90112,
+        "mapBounds":  [{ "x": -19065, "y": -45040, "z": -3500 }, { "x": 71047, "y": 45072, "z": 15000 }],
+        "viewBounds": [{ "x": -18713, "y": -27440, "z": -3450 }, { "x": 69111, "y": 28176, "z": 14901 }],
+        "backgroundColor": "#000",
+        "games": ["sl", "slc", "siu"]
+     }, 
+    "siu": {
+        "type": "base",
+        "name": "Supraland Six Inches Under",
+        "name_key": "814531054C45FB25C28FA6AFA3828228",
+        "mapRes": 8192,
+        "tileRes": 512,
+        "mapSize": 147456,
+        "mapBounds":  [{ "x": -73728, "y": -92728, "z": -20000 }, { "x": 73728, "y": 54728, "z": 25000 }],
+        "viewBounds": [{ "x": -73728, "y": -67672, "z": -19901},  { "x": 70848, "y": 27944, "z": 24066 }],
+        "backgroundColor": "#141414",
+        "games": ["sl", "slc", "siu"]
+    },
     "jumppads": {
         "type": "markers",
         "category": "Travel",
@@ -7,11 +41,7 @@
         "defaultIcon": "jumppad",
         "defaultActive": false,
         "zDepth": 3,
-        "games": [
-            "sl",
-            "slc",
-            "siu"
-        ]
+        "games": ["sl", "slc", "siu"]
     },
     "pipesys": {
         "type": "markers",
@@ -21,10 +51,7 @@
         "defaultIcon": "pipe",
         "defaultActive": false,
         "zDepth": 4,
-        "games": [
-            "sl",
-            "siu"
-        ]
+        "games": ["sl", "siu"]
     },
     "noSpoiler": {
         "type": "markers",
@@ -34,8 +61,7 @@
         "defaultIcon": "question_mark",
         "defaultActive": true,
         "zDepth": 7,
-        "games": [
-        ]
+        "games": []
     },
     "closedChest": {
         "type": "markers",
@@ -45,11 +71,7 @@
         "defaultIcon": "chest",
         "defaultActive": true,
         "zDepth": 8,
-        "games": [
-            "sl",
-            "slc",
-            "siu"
-        ]
+        "games": ["sl", "slc", "siu"]
     },
     "shop": {
         "type": "markers",
@@ -59,11 +81,7 @@
         "defaultIcon": "shop",
         "defaultActive": true,
         "zDepth": 9,
-        "games": [
-            "sl",
-            "slc",
-            "siu"
-        ]
+        "games": ["sl", "slc", "siu"]
     },
     "collectable": {
         "type": "markers",
@@ -73,11 +91,7 @@
         "defaultIcon": "question_mark",
         "defaultActive": true,
         "zDepth": 10,
-        "games": [
-            "sl",
-            "slc",
-            "siu"
-        ]
+        "games": ["sl", "slc", "siu"]
     },
     "quest": {
         "type": "markers",
@@ -87,11 +101,7 @@
         "defaultIcon": "question_mark",
         "defaultActive": true,
         "zDepth": 11,
-        "games": [
-            "sl",
-            "slc",
-            "siu"
-        ]
+        "games": ["sl", "slc", "siu"]
     },
     "upgrades": {
         "type": "markers",
@@ -101,11 +111,7 @@
         "defaultIcon": "loot",
         "defaultActive": false,
         "zDepth": 13,
-        "games": [
-            "sl",
-            "slc",
-            "siu"
-        ]
+        "games": ["sl", "slc", "siu"]
     },
     "misc": {
         "type": "markers",
@@ -115,10 +121,7 @@
         "defaultIcon": "question_mark",
         "defaultActive": false,
         "zDepth": 12,
-        "games": [
-            "slc",
-            "siu"
-        ]
+        "games": ["sl", "slc", "siu"]
     },
     "coin": {
         "type": "markers",
@@ -128,11 +131,7 @@
         "defaultIcon": "awesome",
         "defaultActive": false,
         "zDepth": 5,
-        "games": [
-            "sl",
-            "slc",
-            "siu"
-        ]
+        "games": ["sl", "slc", "siu"]
     },
     "graves": {
         "type": "markers",
@@ -142,9 +141,7 @@
         "defaultIcon": "question_mark",
         "defaultActive": false,
         "zDepth": 6,
-        "games": [
-            "sl"
-        ]
+        "games": ["sl"]
     },
     "coordinate": {
         "type": "markers",
@@ -154,11 +151,7 @@
         "defaultIcon": null,
         "defaultActive": false,
         "zDepth": 14,
-        "games": [
-            "sl",
-            "slc",
-            "siu"
-        ]
+        "games": ["sl", "slc", "siu"]
     },
     "extra": {
         "type": "markers",
@@ -168,11 +161,7 @@
         "defaultIcon": "question_mark",
         "defaultActive": false,
         "zDepth": 2,
-        "games": [ 
-            "sl",
-            "slc",
-            "siu"
-        ]
+        "games": ["sl", "slc", "siu"]
     },
     "dev": {
         "type": "markers",
@@ -182,7 +171,6 @@
         "defaultIcon": "question_mark",
         "defaultActive": false,
         "zDepth": 1,
-        "games": [
-        ]
+        "games": []
     }
 }
