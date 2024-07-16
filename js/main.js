@@ -46,14 +46,8 @@ Settings.globalSetDefault('language', 'en')
 
 Settings.mapSetDefault('markedItems', {});
 Settings.mapSetDefault('coinsFound', {});
-Settings.mapSetDefault('playerPosition', [0, 0, 0]);
 
-// Called when the search is cleared/cancelled to update searchText, save change
-// and reflect changes in current marker draw state
-function clearFilter() {
-  Settings.map.searchText = '';
-  Settings.commit();
-}
+Settings.mapSetDefault('playerPosition', [0, 0, 0]);
 
 // Generate our URL format based on current state
 // {base url}#map={sl|slc|siu}&lat={lat}&lng={lng}
@@ -160,7 +154,6 @@ function loadMap(id) {
   });
   // redraw paths on dragging (sets % of padding around viewport, may be performance issue)
   map.getRenderer(map).options.padding = 1;
-
 
   L.control.zoom({ position: 'bottomright'}).addTo(map);
   L.control.fullscreen({ position: 'bottomright', forceSeparateButton: true}).addTo(map);
@@ -518,7 +511,7 @@ function loadMap(id) {
         markers = {};
         coin2stack = {};
 
-        const mapBounds = map.options.maxBounds;
+        const mapBounds = MapLayer.get(mapId).viewLngLatBounds;
 
         // Build a look up table from alt id to objects 
         for(let o of j){
@@ -737,6 +730,13 @@ function loadMap(id) {
       map.closePopup();
       this._input.select();
       clickItem(this._input.value, false);
+    }
+
+    // Called when the search is cleared/cancelled to update searchText, save change
+    // and reflect changes in current marker draw state
+    function clearFilter() {
+      Settings.map.searchText = '';
+      Settings.commit();
     }
 
     document.querySelector('.search-cancel').addEventListener('click', clearFilter);
