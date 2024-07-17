@@ -3,7 +3,7 @@
 //// (c) 2022 LewisPattJr (initial version, https://github.com/SupraGamesCommunity/map-sl/commit/5c2daddbf)
 //// (c) 2024 joric/github (transform node)
 
-class UESaveObject {
+export class UESaveObject {
   constructor(binstr) {
     let x;
     let r = new UEReadHelper(binstr);
@@ -18,23 +18,19 @@ class UESaveObject {
     this.cfVersion = r.getInt32();
     this.cfData_Count = r.getInt32();
     this.cfData_Entries = [];
-      for(x=0;x<this.cfData_Count;x++) {
-        this.cfData_Entries[x] = { id: r.getGuid(), value: r.getInt32()};
-      }
+    for(x=0;x<this.cfData_Count;x++) {
+      this.cfData_Entries[x] = { id: r.getGuid(), value: r.getInt32()};
+    }
     this.SaveGameType = r.getString();
     this.Properties = [];
-    for(x=0;true;x++) {
+    for(x=0;true;x++) {  // eslint-disable-line no-constant-condition
       this.Properties[x] = r.getNextProperty();
       if(this.Properties[x].name=="EOF"){ break; };
     }
   }
 }
 
-if (typeof window === 'undefined') {
-  module.exports = UESaveObject;
-}
-
-class UEReadHelper {
+export class UEReadHelper {
   constructor(binstr) {
     this.src = new TextDecoder("latin1").decode(binstr);
     this.rdr = new DataView(binstr);
@@ -269,6 +265,8 @@ window.loadSaveFile = function () {
 }
 */
 
+/*
+// Test code. Needs tweaking to work for modules
 if (typeof require !== 'undefined' && require.main === module) {
   for (fname of [
     "C:\\Users\\user\\AppData\\Local\\Supraland\\Saved\\SaveGames\\Save1.sav",
@@ -289,3 +287,4 @@ if (typeof require !== 'undefined' && require.main === module) {
     }
   })
 }
+*/

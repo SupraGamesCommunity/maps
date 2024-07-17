@@ -1,6 +1,7 @@
 /*eslint strict: ["error", "global"]*/
-/*global L, UESaveObject */
+/*global L */
 
+import { UESaveObject } from './lib/UE4Reader.js';
 import { Settings } from './settings.js';
 import { L_arrowLine } from './arrowLine.js';
 import { Icons } from './icons.js';
@@ -916,21 +917,6 @@ function unmarkItems() {
 window.loadSaveFile = function () {
   let file = document.querySelector('#file').files[0];
 
-  let self = this;
-  let ready = false;
-  let result = '';
-
-  const sleep = function (ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-  }
-
-  self.readAsArrayBuffer = async function() {
-      while (ready === false) {
-        await sleep(100);
-      }
-      return result;
-  }
-
   const reader = new FileReader();
 
   reader.onloadend = function(evt) {
@@ -1102,8 +1088,6 @@ window.loadSaveFile = function () {
 
     markItems();
     Settings.commit();
-
-    ready = true;
   };
 
   if (file instanceof Blob) {

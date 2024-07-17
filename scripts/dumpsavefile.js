@@ -1,10 +1,17 @@
 "use strict";
 
-const UESaveObject = require ('../js/lib/UE4Reader.js');
+import { UESaveObject } from '../js/lib/UE4Reader.js';
+import * as fs from 'fs';
+import * as process from 'process';
+const env = process.env;
+import { parseArgs } from 'util';
+
+/*const UESaveObject = require ('../js/lib/UE4Reader.js');
 const fs = require('node:fs');
 const process = require('node:process');
 const env = process.env;
 const parseArgs = require('node:util').parseArgs;
+*/
 
 const args = parseArgs({
     options: {
@@ -89,20 +96,30 @@ function readSavFile(game, file) {
     // 50-60 characters earlier in the data, potentially using '/Maps/{area}\..*?PersistentLevel\.(?:{pipe cap name})'
     // The pipecaps appear more than once and can be found in ActorSaveDataStructs too but that section is larger.
     for(let p of loadedSave.Properties){
-        if(p.name == 'ActorSaveData'){
-            const actorSaveData = p.values;
-            const str = new TextDecoder("latin1").decode(buffer);
+        if(p.name.includes('ActorSaveData')){
+            console.log(p.name);
+            const actorSaveData = p.value.innerValue;
             let re_match = new RegExp('(?:'+Object.keys(pipecaps).join('\x00)|(?:')+'\x00)', 'g');
             let m;
             let found = [];
-            while((m = re_match.exec(str)) != null){
+            while((m = re_match.exec(actorSaveData)) != null){
                 let name = m[0].slice(0,-1);
                 if(!found.includes(name)){
                     found.push(name);
                     pipecaps[name].forEach((p) => pj.pipes.add(p));
                 }
             }
-            break;
+
+            // Find all the different area:name objects in ActorSaveData and see if any in pipecaps
+            re_match = new RegExp('([^.:]*):PersistentLevel.([^\\0]*)', 'g');
+            while((m = re_match.exec(actorSaveData)) != null){
+                const area = m[1];
+                const name = m[2];
+//                if(name in pipecaps){
+                console.log(`${area}:${name}`);
+//                }
+            }
+//            break;
         }
     }
 
