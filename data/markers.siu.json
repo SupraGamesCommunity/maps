@@ -25203,8 +25203,7 @@
       "y": -22388.76171875,
       "z": -2829.70068359375
     },
-    "twoway": 2,
-    "notsaved": true
+    "twoway": 2
   },
   {
     "name": "PipesystemNewDLC_FastTravelLavaToBeam2",
@@ -25221,8 +25220,7 @@
       "x": 9448.2138671875,
       "y": 2676.927734375,
       "z": -7585.2919921875
-    },
-    "notsaved": true
+    }
   },
   {
     "name": "RedGuy2_2",

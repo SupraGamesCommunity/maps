@@ -96,8 +96,7 @@ function readSavFile(game, file) {
     // 50-60 characters earlier in the data, potentially using '/Maps/{area}\..*?PersistentLevel\.(?:{pipe cap name})'
     // The pipecaps appear more than once and can be found in ActorSaveDataStructs too but that section is larger.
     for(let p of loadedSave.Properties){
-        if(p.name.includes('ActorSaveData')){
-            console.log(p.name);
+        if(p.name == 'ActorSaveData'){
             const actorSaveData = p.value.innerValue;
             let re_match = new RegExp('(?:'+Object.keys(pipecaps).join('\x00)|(?:')+'\x00)', 'g');
             let m;
@@ -109,17 +108,18 @@ function readSavFile(game, file) {
                     pipecaps[name].forEach((p) => pj.pipes.add(p));
                 }
             }
-
+/*
             // Find all the different area:name objects in ActorSaveData and see if any in pipecaps
-            re_match = new RegExp('([^.:]*):PersistentLevel.([^\\0]*)', 'g');
+            // Matching '/Game/FirstPersonBP/Maps/DLC2_Complete.DLC2_Complete:PersistentLevel.Coin442_41' but converting to 'DLC2_Complete:Coin442_41'
+            //re_match = new RegExp('([^.:]*):PersistentLevel.([^\\0]*)', 'g');
+            re_match = new RegExp('([^.:]*):PersistentLevel.([^\\0]*?pipecap[^\\0]*)', 'gi');
             while((m = re_match.exec(actorSaveData)) != null){
                 const area = m[1];
                 const name = m[2];
-//                if(name in pipecaps){
                 console.log(`${area}:${name}`);
-//                }
             }
-//            break;
+*/
+            break;
         }
     }
 
