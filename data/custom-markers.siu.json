@@ -10,6 +10,11 @@
     "area": "DLC2_Complete"
   },
   {
+    "name": "Coin228_28",
+    "type": "Hide:Coin_C",
+    "area": "DLC2_Complete"
+  },
+  {
     "name": "Coin612_23",
     "type": "Hide:Coin_C",
     "area": "DLC2_Complete"
@@ -370,7 +375,7 @@
     "area": "DLC2_Complete",
     "coins": "35",
     "old_coins": {
-      "Coin228": 1
+      "Coin228_28": 1
     }
   },
   {
