@@ -165,7 +165,7 @@ extendClass(String, function before(str) {
 extendClass(String, function after(str) {
     let index = this.indexOf(str);
     if(index >= 0) {
-        return this.slice(index+1);
+        return this.slice(index+str.length);
     }
     return '';
 });
