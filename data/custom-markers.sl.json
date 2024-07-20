@@ -793,8 +793,8 @@
     "lat": -44168.26953125
   },
   {
-    "name": "FT:Jumppad37_8255",
-    "type": "Jumppad_C",
+    "name": "Jumppad37_8255",
+    "type": "FT:Jumppad_C",
     "area": "Map"
   },
   {
