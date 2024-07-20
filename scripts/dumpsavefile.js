@@ -87,8 +87,8 @@ function readSavFile(game, file) {
         'A4FastTravelPipeCap':  ['DLC2_Complete:Pipesystem_Area4'],
         'A5FastTravelPipe_ExitCombatFinale': ['DLC2_Complete:PipeToAreaBoss2', 'DLC2_Complete:PipesystemNewDLC_CombatExitPipe'],
         'A5FastTravelPipeCap5': ['DLC2_Complete:PipeToAreaSpecial', 'DLC2_Complete:RainbowTownShortcutPipe'],
-        'PipeCap_FastTravelLavaToBeam1': ['DLC2_Complete:PipesystemNewDLC_FastTravelLavaToBeam1'],
-        'PipeCap_FastTravelLavaToBeam2': ['DLC2_Complete:PipesystemNewDLC_FastTravelLavaToBeam2'],
+        'PipeCap_FastTravelLavaToBeam1': ['DLC2_SecretLavaArea:PipesystemNewDLC_FastTravelLavaToBeam1'],
+        'PipeCap_FastTravelLavaToBeam2': ['DLC2_SecretLavaArea:PipesystemNewDLC_FastTravelLavaToBeam2'],
         'PipeCap12_2': ['DLC2_FinalBoss:BossArea_BaronPipe1', 'DLC2_FinalBoss:BossArea_BaronPipe2'],
     };
 
