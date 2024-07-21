@@ -9,6 +9,7 @@ import { MapLayer } from './mapLayer.js';
 import { browser } from './utils.js';
 import { MapObject, mapObjectFound } from './mapObject.js';
 import { SaveFileSystem } from './saveFileSystem.js';
+import { MapPins } from './mapPins.js';
 
 window.mapObjectFound = mapObjectFound;
 
@@ -208,21 +209,16 @@ function loadMap(id) {
                 subAction.extend({
                   options:{toolbarIcon:{html:'Add', tooltip: 'Adds new pin to map'}},
                   addHooks:function() {
-                    if(MapLayer.isEnabledFromId('coordinate')) {
-                      addMapPin();
-                      Settings.commit();
-                      MapLayer.get('coordinate').setActive(true);
-                    }
+                    MapPins.add({ activateLayer: true });
                     subAction.prototype.addHooks.call(this); // closes sub-action
                   }
                 }),
                 subAction.extend({
                   options:{toolbarIcon:{html:'clear', tooltip: 'Clears all pins added to map'}},
                   addHooks:function() {
-                    if(Settings.map.mapPins.length > 0
+                    if(MapPins.hasAny() 
                         && (skipConfirms || confirm("Are you sure you want to clear all custom pins?"))){
-                      clearMapPins();
-                      Settings.commit();
+                      MapPins.clearAll();
                     }
                     subAction.prototype.addHooks.call(this); // closes sub-action
                   }
@@ -230,13 +226,7 @@ function loadMap(id) {
                 subAction.extend({
                   options:{toolbarIcon:{html:'copy', tooltip: 'Copy pin positions to clip board'}},
                   addHooks:function() {
-                    if(Settings.map.mapPins.length > 0){
-                      let pins = '';
-                      Settings.map.mapPins.forEach((value, i) => {
-                        pins += `${i}: (x: ${value.lng.toFixed()} y: ${value.lat.toFixed()})\r\n`; 
-                      })
-                      browser.copyTextToClipboard(pins)                    
-                    }
+                    MapPins.copyToClipboard();
                     subAction.prototype.addHooks.call(this); // closes sub-action
                   }
                 }),
@@ -336,64 +326,6 @@ function loadMap(id) {
       ],
   }).addTo(map);
 
-  function addMapPin(idx){
-    if(!MapLayer.isEnabledFromId('coordinate'))
-      return;
-    const mapLayer = MapLayer.get('coordinate');
-
-    let pos, pinIdx;
-    if(typeof idx !== 'undefined'){
-      pos = Settings.map.mapPins[idx];
-      pinIdx = idx;
-    }
-    else {
-      pinIdx = Object.keys(Settings.map.mapPins).length;
-      pos = map.getCenter();
-      Settings.map.mapPins.push(pos);
-    }
-    const alt = `XYMarker ${pinIdx}`;
-    if(!(alt in markers)) {
-      let title = `${pinIdx}: (${pos.lng.toFixed(0)},${pos.lat.toFixed(0)})`
-      const marker = L.marker(pos, {zIndexOffset: MapLayer.frontZIndexOffset, draggable: true, title: title, pinIdx: pinIdx, layerId: mapLayer.id})
-        .bindPopup()
-        .on('moveend', function(e) {
-          let marker = e.target;
-          let t = marker.getLatLng();
-          e.target._icon.title = `${e.target.options.pinIdx}: (${t.lng.toFixed(0)},${t.lat.toFixed(0)})`
-          Settings.map.mapPins[e.target.options.pinIdx] = t;
-          Settings.commit();
-        })
-        .on('popupopen', function(e) {
-            let marker = e.target;
-            let t = marker.getLatLng();
-            marker.setPopupContent(`${marker.options.pinIdx}: (${t.lng.toFixed()}, ${t.lat.toFixed()})`);
-            marker.openPopup();
-        }).addTo(mapLayer.layerObj);
-        markers[alt] = [marker];
-    }
-    else {
-      markers[alt][0].setLatLng(pos);
-    }
-  }
-
-  function restoreMapPins(){
-    Settings.mapSetDefault('mapPins', []);
-    Settings.map.mapPins.forEach((value, i) => {
-      addMapPin(i);
-    })
-  }
-
-  function clearMapPins(){
-    Settings.map.mapPins.forEach((value, pinIdx) => {
-      const alt = `XYMarker ${pinIdx}`;
-      if(alt in markers){
-        markers[alt][0].remove(map);
-        delete markers[alt];
-      }
-    });
-    Settings.map.mapPins = [];
-  }
-
   function loadLayers() {
     let searchLayers = [];
     MapLayer.forEachMarkers((id, l) => {
@@ -487,9 +419,7 @@ function loadMap(id) {
 
     MapObject.initObjects();
 
-    if(MapLayer.isEnabledFromId('coordinate')){
-      restoreMapPins();
-    }
+    MapPins.restoreMapPins();
 
     layerControl.addTo(map); // triggers baselayerchange, so called in the end
   }

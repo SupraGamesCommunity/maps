@@ -1,8 +1,6 @@
 /* globals L */
 
 import { buildMode } from './main.js';
-
-
 import { mergeDeep } from './utils.js';
 import { L_arrowLine } from './arrowLine.js';
 import { locStr } from './locStr.js';
