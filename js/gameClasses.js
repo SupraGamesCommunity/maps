@@ -1,7 +1,8 @@
-// Supraland Game Classes
+//=================================================================================================
+// Supraland GameClasses
 //
 // All the data we extract from the game data files consist of instances of specific game classes/blueprints.
-// For each class we hold a bunch of data specifying how to deal with the class in the maps.
+// For each class we hold a bunch of data specifying how to deal with the class in the maps (gameClasses.json).
 
 export class GameClasses {
     static _data;
@@ -13,7 +14,7 @@ export class GameClasses {
         'lines': 'dev',
     };
 
-    static async init() {
+    static async loadClasses() {
         return fetch('data/gameClasses.json')
             .then((response) => response.json())
             .then((j) => {
@@ -21,9 +22,8 @@ export class GameClasses {
             });
     }
 
-    // type null/undefined return null. Otherwise return matching class or default if no match
+    // Return matching class or default if no match
     static get(type) {
-        return type && (GameClasses?._data[type] ?? GameClasses._default ?? GameClasses._defaultClass) || null;
+        return GameClasses._data?.[type] ?? GameClasses._defaultClass;
     }
-
 }

@@ -12,6 +12,9 @@ export class MapLayer {
     static _layers;         // Map from layer id to layer instance
 
     static _map;            // Leaflet Map
+
+    static get map() { return MapLayer._map; }
+
     static _layerControl;   // Leaflet Layer Control
 
     // Instance constructor
@@ -59,7 +62,7 @@ export class MapLayer {
     static frontZIndexOffset = 20 * MapLayer.zIndexScale;
 
     // Z Index offset for objects on this layer (found and unfound)
-    getZIndexOffset(found) { this.zDepth * MapLayer.zIndexScale + (found ? MapLayer.backZIndexOffset : 0); }
+    getZIndexOffset(found) { return this.zDepth * MapLayer.zIndexScale + (found ? MapLayer.backZIndexOffset : 0); }
 
 
     // When this layer is activated (normally via layer control) record that we're active and update settings
@@ -120,29 +123,38 @@ export class MapLayer {
             else {
                 tilesDir += id;
             }
-            return L_tileLayer(tilesDir + '/{z}/{x}/{y}' + tileExt, options);
+            return  L_tileLayer(tilesDir + '/{z}/{x}/{y}' + tileExt, options);
         }
     }
 
     // Create the leaflet layer "group" and add it to map and control
     init(){
         if(this.isEnabled) {
-            this.active = !!Settings.map.activeLayers[this.id];
 
             this.layerObj = this.createLayer(MapLayer._map, this.id, this.config);
 
             if(this.config.type == 'base') {
                 MapLayer._layerControl.addBaseLayer(this.layerObj, this.config.name);
+                if(this.id == MapLayer._map.options.mapId) {
+                    this.active = true;
+                    this.layerObj.addTo(MapLayer._map);
+
+                    // This is what's expected by clients of this module
+                    this.tileLayer = this.layerObj;
+                    this.layerObj = MapLayer._map;
+                }
+                else{
+                    this.active = false;
+                }
             }
             else {
                 MapLayer._layerControl.addOverlay(this.layerObj, this.config.name);
-            }
 
-            if(MapLayer._map.options.mapId == this.id || this.active){
-                this.layerObj.addTo(MapLayer._map);
-            }
+                this.active = !!Settings.map.activeLayers[this.id];
+                if(this.active){
+                    this.layerObj.addTo(MapLayer._map);
+                }
 
-            if(this.config.type != 'base') {
                 this.layerObj.on('add', this.onActivate, this);
                 this.layerObj.on('remove', this.onDeactivate, this);
             }
@@ -151,6 +163,10 @@ export class MapLayer {
 
     // Reset layer to initial state (releasing layerObj)
     reset() {
+        if(this.tileLayer){
+            this.layerObj = this.tileLayer; 
+            this.tileLayer = null;
+        }
         if(this.layerObj) {
             this.layerObj.off('add remove');
             this.layerObj.remove();
@@ -163,17 +179,18 @@ export class MapLayer {
 
     // Retrieve the map layer from the object
     static get(layerId) {
+        if(layerId == '_map'){
+            layerId = Settings.mapId;
+        }
         return MapLayer._layers[layerId];
     }
 
     // Retrieve the Leaflet layer object for the specified id
     static getLayerObj(layerId) {
         if(layerId == '_map'){
-            return MapLayer._map;
+            layerId = Settings.mapId;
         }
-        else {
-            return MapLayer._layers[layerId].layerObj;
-        }
+        return MapLayer._layers[layerId].layerObj;
     }
 
     // Returns true if the specified layer will be selectable on the layer control 
@@ -214,7 +231,7 @@ export class MapLayer {
     }
 
     static forEachMarkers(fn) {
-        for(const [layerId, layer] of Object.entries(this._layers)) {
+        for(const [layerId, layer] of Object.entries(MapLayer._layers)) {
             if(layer.type == 'markers' && layer.isEnabled) {
                 fn(layerId, layer);
             }
@@ -241,14 +258,19 @@ export class MapLayer {
         MapLayer._layerControl = layerControl; 
         MapLayer._map = map;
 
-       // Set up default Settings for activeLayers
-       const defaultActive = {};
-       for(const [id, layer] of Object.entries(MapLayer._layers)){
-           if(layer.config.defaultActive && layer.isEnabled) {
-               defaultActive[id] = true;
-           }
-       }
-       Settings.mapSetDefault('activeLayers', defaultActive);
+        // Set up default Settings for activeLayers
+        const defaultActive = {};
+        for(const [id, layer] of Object.entries(MapLayer._layers)){
+            if(layer.config.type == 'base'){
+                defaultActive[id] = map.options.mapId == id;
+            }
+            else{
+                if(layer.config.defaultActive && layer.isEnabled) {
+                    defaultActive[id] = true;
+                }
+            }
+        }
+        Settings.mapSetDefault('activeLayers', defaultActive);
 
         // Initialise layer instances
         for(const layer of Object.values(MapLayer._layers)) {

@@ -12,14 +12,10 @@ export const locStr = {
     // Localisation strings (dictionary of key => string)
     _locStr: {},
 
-    // Fetch the language strings and process them
-    init: async function(lang = null) {
-        this.setLanguage(lang);
-    },
-
+    // Load language strings from json data
     // Set locale to specific language code (null for default from browser)
     // Note: Retuns immediately but loads asynchronously
-    setLanguage: async function(lang = null){
+    loadStrings: async function(lang = null) {
         this._language = lang || browser.getUserLanguage(this._locales);
 
         // Read the loc strings (we don't actually need english)

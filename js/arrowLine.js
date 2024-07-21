@@ -42,8 +42,6 @@ export const L_ArrowLine = L.Polygon.extend({
             options = Object.assign(this.options, cssOpts);
         }
 
-        this._map = null;
-
         this._startLatLng = start;
         this._endLatLng = end;
 

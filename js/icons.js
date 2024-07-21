@@ -18,7 +18,7 @@ import { L_mapIcon } from './mapIcon.js'
 //
 // Example usage:
 //
-//      Icons.init()
+//      Icons.loadIcons()
 //      icon = Icons.get({iconName: 'myicon:vx2', variant: 'red'})  - loads img/markers/myicon.red.png and applies 2x scale to corresponding config
 //
 //      Corresponding iconConfigs.json entry:
@@ -52,11 +52,7 @@ export class Icons {
     static _icons = {};             // Dictionary from class name to icon object
 
     // Load in icon configurations
-    static async init (){
-        return this._loadIconConfigs();
-    }
-
-    static async _loadIconConfigs(){
+    static async loadIconConfigs (){
         return fetch('data/iconConfigs.json')
             .then((response) => response.json())
             .then((j) => this._iconConfigs = j);
