@@ -9,283 +9,283 @@ import { Settings } from './settings.js';
 const L_tileLayer = browser.isFirefox ? L.tileLayer : L.tileLayer.canvas
 
 export class MapLayer {
-    static _layers;         // Map from layer id to layer instance
+  static _layers;         // Map from layer id to layer instance
 
-    static _map;            // Leaflet Map
+  static _map;            // Leaflet Map
 
-    static get map() { return MapLayer._map; }
+  static get map() { return MapLayer._map; }
 
-    static _layerControl;   // Leaflet Layer Control
+  static _layerControl;   // Leaflet Layer Control
 
-    // Instance constructor
-    constructor(layerId, json){
-        this.id = layerId;               // Id for the layer
-        this.config = json;              // Configuration from layerConfigs.json
-        this.active = false;             // Is layer active (visible) on map?
-        this.layerObj = null;            // Leaflet layer object
+  // Instance constructor
+  constructor(layerId, json) {
+    this.id = layerId;               // Id for the layer
+    this.config = json;              // Configuration from layerConfigs.json
+    this.active = false;             // Is layer active (visible) on map?
+    this.layerObj = null;            // Leaflet layer object
 
-        // fixes 404 errors
-        if(this.config.mapBounds) {
-            this.config.mapBounds[0].x += 1;
-            this.config.mapBounds[0].y += 1;
-            this.config.mapBounds[1].x -= 1;
-            this.config.mapBounds[1].y -= 1;
-        }
+    // fixes 404 errors
+    if (this.config.mapBounds) {
+      this.config.mapBounds[0].x += 1;
+      this.config.mapBounds[0].y += 1;
+      this.config.mapBounds[1].x -= 1;
+      this.config.mapBounds[1].y -= 1;
     }
+  }
 
-    // Accessors for the most commonly used configuration data
+  // Accessors for the most commonly used configuration data
 
-    // Full name for the layer
-    get name() { return locStr.str(this.config.name, this.config.name_key); }
+  // Full name for the layer
+  get name() { return locStr.str(this.config.name, this.config.name_key); }
 
-    // List of games (base maps) this layer is enabled for
-    get games() { return this.config.games; }
+  // List of games (base maps) this layer is enabled for
+  get games() { return this.config.games; }
 
-    // Returns true if layer is enabled for current mapId
-    get isEnabled() { return this.games.includes(MapLayer._map?.options.mapId); }
+  // Returns true if layer is enabled for current mapId
+  get isEnabled() { return this.games.includes(MapLayer._map?.options.mapId); }
 
-    // Returns true if layer is currently attached to map
-    get isActive() { return this.active; }
+  // Returns true if layer is currently attached to map
+  get isActive() { return this.active; }
 
-    // For Marker layers there is a default icon name and Z depth
-    get icon() { return this.config.defaultIcon; }
-    get zDepth() { return this.config.zDepth; }
+  // For Marker layers there is a default icon name and Z depth
+  get type() { return this.config.type; }
+  get icon() { return this.config.defaultIcon; }
+  get zDepth() { return this.config.zDepth; }
 
-    // For base layers we can get the bounds and center
-    get mapLngLatBounds() { return [[this.config.mapBounds[0].y, this.config.mapBounds[0].x], [this.config.mapBounds[1].y, this.config.mapBounds[1].x]]; }
-    get viewLngLatBounds() { return [[this.config.viewBounds[0].y, this.config.viewBounds[0].x], [this.config.viewBounds[1].y, this.config.viewBounds[1].x]]; }
-    get viewCenterLngLat() { return [[(this.config.viewBounds[0].y + this.config.viewBounds[1].y) * 0.5], [(this.config.viewBounds[0].x + this.config.viewBounds[1].x) * 0.5]]; }
+  // For base layers we can get the bounds and center
+  get mapLngLatBounds() { return [[this.config.mapBounds[0].y, this.config.mapBounds[0].x], [this.config.mapBounds[1].y, this.config.mapBounds[1].x]]; }
+  get viewLngLatBounds() { return [[this.config.viewBounds[0].y, this.config.viewBounds[0].x], [this.config.viewBounds[1].y, this.config.viewBounds[1].x]]; }
+  get viewCenterLngLat() { return [[(this.config.viewBounds[0].y + this.config.viewBounds[1].y) * 0.5], [(this.config.viewBounds[0].x + this.config.viewBounds[1].x) * 0.5]]; }
 
-    // Leaflet Z index is based on the latitude, so our offsets need to be bigger than the max range of latitude
-    static zIndexScale = 300000;
-    static backZIndexOffset = -20 * MapLayer.zIndexScale;
-    static frontZIndexOffset = 20 * MapLayer.zIndexScale;
+  // Leaflet Z index is based on the latitude, so our offsets need to be bigger than the max range of latitude
+  static zIndexScale = 300000;
+  static backZIndexOffset = -20 * MapLayer.zIndexScale;
+  static frontZIndexOffset = 20 * MapLayer.zIndexScale;
 
-    // Z Index offset for objects on this layer (found and unfound)
-    getZIndexOffset(found) { return this.zDepth * MapLayer.zIndexScale + (found ? MapLayer.backZIndexOffset : 0); }
+  // Z Index offset for objects on this layer (found and unfound)
+  getZIndexOffset(found) { return this.zDepth * MapLayer.zIndexScale + (found ? MapLayer.backZIndexOffset : 0); }
 
 
-    // When this layer is activated (normally via layer control) record that we're active and update settings
-    onActivate(){
-        this.active = true;
-        Settings.map.activeLayers[this.id] = true;
-        Settings.commit();
+  // When this layer is activated (normally via layer control) record that we're active and update settings
+  onActivate() {
+    this.active = true;
+    Settings.map.activeLayers[this.id] = true;
+    Settings.commit();
+  }
+
+  // When this layer is de-activated (normally via layer control) record that we're inactive and update settings
+  onDeactivate() {
+    this.active = false;
+    delete Settings.map.activeLayers[this.id];
+    Settings.commit();
+  }
+
+  // Activate or deactivate this layer group
+  setActive(active) {
+    if (this.config.type != 'base' && this.active != active) {
+      if (active) {
+        this.layerObj.addTo(MapLayer._map);
+      }
+      else {
+        this.layerObj.remove();
+      }
     }
+  }
 
-    // When this layer is de-activated (normally via layer control) record that we're inactive and update settings
-    onDeactivate(){
-        this.active = false;
-        delete Settings.map.activeLayers[this.id];
-        Settings.commit();
+  // Create the appropriate layer object for this map layer
+  createLayer() {
+    const mapId = MapLayer._map.options.mapId;
+    const id = this.id;
+    const cfg = this.config;
+
+    // For marker layers and base maps other than current jusr create an L.LayerGroup
+    if (cfg.type == 'markers' || cfg.type == 'base' && id != mapId) {
+      return L.layerGroup([], { layerId: id });
     }
+    else {  // The primary base layer or an additional 'tiles' layer
+      let tilesDir = 'tiles/' + mapId + '/';
+      const tileExt = cfg.type == 'tiles' ? '.png' : '.jpg';
 
-    // Activate or deactivate this layer group
-    setActive(active){
-        if(this.config.type != 'base' && this.active != active) {
-            if(active) {
-                this.layerObj.addTo(MapLayer._map);
-            }
-            else {
-                this.layerObj.remove();
-            }
-        }
+      let options = {
+        tileSize: L.point(cfg.tileRes, cfg.tileRes),  // Tile size is currently fixed
+        noWrap: true,                                 // tops map wrapping
+        updateInterval: -1,                           // Allows map to update as often as needed when panning
+        keepBuffer: 16,                               // More tiles loaded when panning 
+        maxNativeZoom: 4,                             // Zooming beyond this means auto-scaled
+        bounds: this.viewLngLatBounds,                // Tiles only loaded in this area
+        layerId: id,                                       // Store the name for the map
+      };
+
+      if (id == mapId) {
+        options.attribution = '<a href="https://github.com/SupraGamesCommunity/maps" target="_blank">SupraGames Community</a>';
+        tilesDir += 'base';
+      }
+      else {
+        tilesDir += id;
+      }
+      return L_tileLayer(tilesDir + '/{z}/{x}/{y}' + tileExt, options);
     }
+  }
 
-    // Create the appropriate layer object for this map layer
-    createLayer()
-    {
-        const mapId = MapLayer._map.options.mapId;
-        const id = this.id;
-        const cfg = this.config;
+  // Create the leaflet layer "group" and add it to map and control
+  init() {
+    if (this.isEnabled) {
 
-        // For marker layers and base maps other than current jusr create an L.LayerGroup
-        if(cfg.type == 'markers' || cfg.type == 'base' && id != mapId){
-            return L.layerGroup([], {layerId: id});
+      this.layerObj = this.createLayer(MapLayer._map, this.id, this.config);
+
+      if (this.config.type == 'base') {
+        MapLayer._layerControl.addBaseLayer(this.layerObj, this.config.name);
+        if (this.id == MapLayer._map.options.mapId) {
+          this.active = true;
+          this.layerObj.addTo(MapLayer._map);
+
+          // This is what's expected by clients of this module
+          this.tileLayer = this.layerObj;
+          this.layerObj = MapLayer._map;
         }
-        else {  // The primary base layer or an additional 'tiles' layer
-            let tilesDir = 'tiles/' + mapId + '/';
-            const tileExt = cfg.type == 'tiles' ? '.png' : '.jpg';
-
-            let options = {
-                tileSize: L.point(cfg.tileRes, cfg.tileRes),  // Tile size is currently fixed
-                noWrap: true,                                 // tops map wrapping
-                updateInterval: -1,                           // Allows map to update as often as needed when panning
-                keepBuffer: 16,                               // More tiles loaded when panning 
-                maxNativeZoom: 4,                             // Zooming beyond this means auto-scaled
-                bounds: this.viewLngLatBounds,                // Tiles only loaded in this area
-                layerId: id,                                       // Store the name for the map
-            };
-
-            if(id == mapId){
-                options.attribution = '<a href="https://github.com/SupraGamesCommunity/maps" target="_blank">SupraGames Community</a>';
-                tilesDir += 'base';
-            }
-            else {
-                tilesDir += id;
-            }
-            return  L_tileLayer(tilesDir + '/{z}/{x}/{y}' + tileExt, options);
+        else {
+          this.active = false;
         }
+      }
+      else {
+        MapLayer._layerControl.addOverlay(this.layerObj, this.config.name);
+
+        this.active = !!Settings.map.activeLayers[this.id];
+        if (this.active) {
+          this.layerObj.addTo(MapLayer._map);
+        }
+
+        this.layerObj.on('add', this.onActivate, this);
+        this.layerObj.on('remove', this.onDeactivate, this);
+      }
     }
+  }
 
-    // Create the leaflet layer "group" and add it to map and control
-    init(){
-        if(this.isEnabled) {
-
-            this.layerObj = this.createLayer(MapLayer._map, this.id, this.config);
-
-            if(this.config.type == 'base') {
-                MapLayer._layerControl.addBaseLayer(this.layerObj, this.config.name);
-                if(this.id == MapLayer._map.options.mapId) {
-                    this.active = true;
-                    this.layerObj.addTo(MapLayer._map);
-
-                    // This is what's expected by clients of this module
-                    this.tileLayer = this.layerObj;
-                    this.layerObj = MapLayer._map;
-                }
-                else{
-                    this.active = false;
-                }
-            }
-            else {
-                MapLayer._layerControl.addOverlay(this.layerObj, this.config.name);
-
-                this.active = !!Settings.map.activeLayers[this.id];
-                if(this.active){
-                    this.layerObj.addTo(MapLayer._map);
-                }
-
-                this.layerObj.on('add', this.onActivate, this);
-                this.layerObj.on('remove', this.onDeactivate, this);
-            }
-        }
+  // Reset layer to initial state (releasing layerObj)
+  reset() {
+    if (this.tileLayer) {
+      this.layerObj = this.tileLayer;
+      this.tileLayer = null;
     }
-
-    // Reset layer to initial state (releasing layerObj)
-    reset() {
-        if(this.tileLayer){
-            this.layerObj = this.tileLayer; 
-            this.tileLayer = null;
-        }
-        if(this.layerObj) {
-            this.layerObj.off('add remove');
-            this.layerObj.remove();
-            MapLayer._layerControl.removeLayer(this.layerObj);
-            this.layerObj = null;
-        }
-        this.active = false;
+    if (this.layerObj) {
+      this.layerObj.off('add remove');
+      this.layerObj.remove();
+      MapLayer._layerControl.removeLayer(this.layerObj);
+      this.layerObj = null;
     }
+    this.active = false;
+  }
 
 
-    // Retrieve the map layer from the object
-    static get(layerId) {
-        if(layerId == '_map'){
-            layerId = Settings.mapId;
-        }
-        return MapLayer._layers[layerId];
+  // Retrieve the map layer from the object
+  static get(layerId) {
+    if (layerId == '_map') {
+      layerId = Settings.global.mapId;
     }
+    return MapLayer._layers[layerId];
+  }
 
-    // Retrieve the Leaflet layer object for the specified id
-    static getLayerObj(layerId) {
-        if(layerId == '_map'){
-            layerId = Settings.mapId;
-        }
-        return MapLayer._layers[layerId].layerObj;
+  // Retrieve the Leaflet layer object for the specified id
+  static getLayerObj(layerId) {
+    if (layerId == '_map') {
+      layerId = Settings.global.mapId;
     }
+    return MapLayer._layers[layerId].layerObj;
+  }
 
-    // Returns true if the specified layer will be selectable on the layer control 
-    static isEnabledFromId(layerId) { return !!MapLayer._layers[layerId]?.isEnabled; }
+  // Returns true if the specified layer will be selectable on the layer control 
+  static isEnabledFromId(layerId) { return !!MapLayer._layers[layerId]?.isEnabled; }
 
-    // Returns true if the specified layer is/will be active
-    static isActiveFromId(layerId) { return Boolean(MapLayer._layers?.[layerId].active); }
+  // Returns true if the specified layer is/will be active
+  static isActiveFromId(layerId) { return Boolean(MapLayer._layers?.[layerId].active); }
 
-    static getZIndexOffsetFromId(layerId, found) { return MapLayer._layers[layerId].getZIndexOffset(found); }
+  static getZIndexOffsetFromId(layerId, found) { return MapLayer._layers[layerId].getZIndexOffset(found); }
 
-    // Retrieve list of the currently active layers
-    static getActiveLayers() {
-        let activeLayers = {};
-        for(const [id, layer] of Object.entries(MapLayer._layers)) {
-            if(layer.active){
-                activeLayers[id] = true;
-            }
-        }
-        return activeLayers;
+  // Retrieve list of the currently active layers
+  static getActiveLayers() {
+    let activeLayers = {};
+    for (const [id, layer] of Object.entries(MapLayer._layers)) {
+      if (layer.active) {
+        activeLayers[id] = true;
+      }
     }
+    return activeLayers;
+  }
 
-    // Retrieve map of currently enabled layers
-    static getEnabledLayers() {
-        let enabledLayers = { '_map': true };
-        for(const [id, layer] of Object.entries(MapLayer._layers)) {
-            if(layer.isEnabled){
-                enabledLayers[id] = true;
-            }
-        }
-        return enabledLayers;
+  // Retrieve map of currently enabled layers
+  static getEnabledLayers() {
+    let enabledLayers = { '_map': true };
+    for (const [id, layer] of Object.entries(MapLayer._layers)) {
+      if (layer.isEnabled) {
+        enabledLayers[id] = true;
+      }
     }
+    return enabledLayers;
+  }
 
-    // Set the layers active that are in map as true, set all other layers inactive
-    static setActiveLayers(activeLayers){
-        for(const [id, layer] of Object.entries(MapLayer._layers)) {
-            layer.setActive(!!activeLayers[id]);
-        }
+  // Set the layers active that are in map as true, set all other layers inactive
+  static setActiveLayers(activeLayers) {
+    for (const [id, layer] of Object.entries(MapLayer._layers)) {
+      layer.setActive(!!activeLayers[id]);
     }
+  }
 
-    static forEachMarkers(fn) {
-        for(const [layerId, layer] of Object.entries(MapLayer._layers)) {
-            if(layer.type == 'markers' && layer.isEnabled) {
-                fn(layerId, layer);
-            }
-        }
+  static forEachMarkers(fn) {
+    for (const [layerId, layer] of Object.entries(MapLayer._layers)) {
+      if (layer.config.type == 'markers' && layer.isEnabled) {
+        fn(layerId, layer);
+      }
     }
+  }
 
-    // Loads layer configs and constructs layer objects
-    static async loadConfigs() {
-        MapLayer._layers = {};
-        MapLayer._layerControl = null; 
-        MapLayer._map = null;
+  // Loads layer configs and constructs layer objects
+  static async loadConfigs() {
+    MapLayer._layers = {};
+    MapLayer._layerControl = null;
+    MapLayer._map = null;
 
-        const response = await fetch('data/layerConfigs.json');
-        const json = await response.json();
+    const response = await fetch('data/layerConfigs.json');
+    const json = await response.json();
 
-        // Create layer instances
-        for(const [id, config] of Object.entries(json)){
-            MapLayer._layers[id] = new MapLayer(id, config);
-        }
+    // Create layer instances
+    for (const [id, config] of Object.entries(json)) {
+      MapLayer._layers[id] = new MapLayer(id, config);
     }
+  }
 
-    // Initialise the layer objects and add them to map and layer control as appropriate
-    static setupLayers(map, layerControl) {
-        MapLayer._layerControl = layerControl; 
-        MapLayer._map = map;
+  // Initialise the layer objects and add them to map and layer control as appropriate
+  static setupLayers(map, layerControl) {
+    MapLayer._layerControl = layerControl;
+    MapLayer._map = map;
 
-        // Set up default Settings for activeLayers
-        const defaultActive = {};
-        for(const [id, layer] of Object.entries(MapLayer._layers)){
-            if(layer.config.type == 'base'){
-                defaultActive[id] = map.options.mapId == id;
-            }
-            else{
-                if(layer.config.defaultActive && layer.isEnabled) {
-                    defaultActive[id] = true;
-                }
-            }
+    // Set up default Settings for activeLayers
+    const defaultActive = {};
+    for (const [id, layer] of Object.entries(MapLayer._layers)) {
+      if (layer.config.type == 'base') {
+        defaultActive[id] = map.options.mapId == id;
+      }
+      else {
+        if (layer.config.defaultActive && layer.isEnabled) {
+          defaultActive[id] = true;
         }
-        Settings.mapSetDefault('activeLayers', defaultActive);
-
-        // Initialise layer instances
-        for(const layer of Object.values(MapLayer._layers)) {
-            layer.init();
-        }
+      }
     }
+    Settings.mapSetDefault('activeLayers', defaultActive);
 
-    // Restore MapLayer to initial state
-    static resetLayers() {
-        for(const layer of Object.values(MapLayer._layers)) {
-            layer.reset();            
-        }
-        MapLayer._layerControl = null; 
-        MapLayer._map = null;
+    // Initialise layer instances
+    for (const layer of Object.values(MapLayer._layers)) {
+      layer.init();
     }
+  }
+
+  // Restore MapLayer to initial state
+  static resetLayers() {
+    for (const layer of Object.values(MapLayer._layers)) {
+      layer.reset();
+    }
+    MapLayer._layerControl = null;
+    MapLayer._map = null;
+  }
 }
 
 // **** listen for baselayerchange to trigger map change

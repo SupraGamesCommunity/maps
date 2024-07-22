@@ -120,7 +120,7 @@ function loadMap(id) {
 
   mapId = id;
 
-  Settings.mapId = id;
+  Settings.global.mapId = id;
   Settings.commit();
 
   const mapLayer = MapLayer.get(mapId);
@@ -145,7 +145,7 @@ function loadMap(id) {
     maxZoom: 8,
     zoomDelta: 0.5,
     zoomSnap: 0.125,
-    maxBounds: mapLayer.viewLngLatBounds, // elastic-y bounds + elastic-x bounds
+    maxBounds: L.latLngBounds(mapLayer.viewLngLatBounds).pad(0.25), // elastic-y bounds + elastic-x bounds
     zoomControl: false,
     doubleClickZoom: true,
     mapId: id,
@@ -164,6 +164,7 @@ function loadMap(id) {
 
   map.on('baselayerchange', function(e) {
     MapLayer.resetLayers();
+    MapObject.resetAll();
     location.hash = '';
     map.off();
     map.remove();
@@ -327,17 +328,19 @@ function loadMap(id) {
   }).addTo(map);
 
   function loadLayers() {
+    
     let searchLayers = [];
     MapLayer.forEachMarkers((id, l) => {
-      searchLayers.push(l.layerObj);
+      if(id != 'coordinate'){
+        searchLayers.push(l.layerObj);
+      }
     });
 
     Settings.mapSetDefault('searchText', '');
 
-    const activeLayers = MapLayer.getActiveLayers();
     // search
     searchControl = new L.Control.Search({
-        layer: L.featureGroup(searchLayers),
+        layer: L.layerGroup(searchLayers),
         marker: false,          // no red circle
         initial: false,         // search any substring
         firstTipSubmit: false,  // use first autosuggest
@@ -345,18 +348,30 @@ function loadMap(id) {
         tipAutoSubmit: false,   //auto map panTo when click on tooltip
         tooltipLimit: -1,
         textPlaceholder: 'Search (Enter to save search phrase)',
-    }).addTo(map);
-
-    // workaround: search reveals all layers, hide all inactive layers
-    MapLayer.setActiveLayers(activeLayers);
+    });
 
     searchControl._handleSubmit = function(){
       Settings.map.searchText = this._input.value;
       Settings.commit();
-      map.closePopup();
-      this._input.select();
-      clickItem(this._input.value, false);
+      L.Control.Search.prototype._handleSubmit.call(this);
     }
+
+    searchControl.setLayer = function(layer){
+      this._layer = layer;
+      return this;
+    }
+
+    searchControl.showLocation = function(loc, title){
+      this._map.closePopup();
+      L.Control.Search.prototype.showLocation.call(this, loc, title);
+    }
+
+//    const activeLayers = MapLayer.getActiveLayers();
+    searchControl.addTo(map);
+
+    // workaround: search reveals all layers, hide all inactive layers
+//    MapLayer.setActiveLayers(activeLayers);
+
 
     // Called when the search is cleared/cancelled to update searchText, save change
     // and reflect changes in current marker draw state
@@ -399,14 +414,11 @@ function loadMap(id) {
 
     // fired after search control focused on the item
     searchControl.on('search:locationfound', function (e) {
-        if (e.layer._popup && markers[e.layer.options.alt]) {
-          // reveal layer on click
-          for(const m of markers[e.layer.options.alt]){
-            let layerId = m.options.layerId;
-            MapLayer.get(layerId).setActive(true);
-          }
+      const mapObject = MapObject.get(e.layer.options.alt);
+      if(mapObject){
+          mapObject.activateLayers();
           e.layer.openPopup();
-        }
+      }
     });
 
     // fired when input control is expanded (not the dropdown list)
@@ -417,11 +429,15 @@ function loadMap(id) {
     });
     // end of search
 
-    MapObject.initObjects();
 
-    MapPins.restoreMapPins();
+    MapObject.loadObjects().then(() => {
+      MapObject.initObjects();
 
-    layerControl.addTo(map); // triggers baselayerchange, so called in the end
+      MapPins.restoreMapPins();
+  
+      layerControl.addTo(map); // triggers baselayerchange, so called in the end
+  
+    });
   }
   loadLayers();
 
@@ -437,7 +453,7 @@ function reloadMap(id) {
 }
 
 window.loadSaveFile = function () {
-  SaveFileSystem.loaadFile(document.querySelector('#file').files[0]);
+  SaveFileSystem.loadFile(document.querySelector('#file').files[0]);
 }
 
 window.onhashchange = function() {   // (e)
@@ -470,10 +486,10 @@ window.onload = function() {    // (event)
   // clear location hash
   history.pushState('', document.title, window.location.pathname + window.location.search);
 
-  Promise.all([locStr.loadStrings(), GameClasses.loadClasses(), Icons.loadIconConfigs(), MapLayer.loadConfigs(), MapObject.loadObjects()])
+  Promise.all([locStr.loadStrings(), GameClasses.loadClasses(), Icons.loadIconConfigs(), MapLayer.loadConfigs()])
     .then(() => {
 
-      mapId = mapParam.mapId || Settings.mapId;
+      mapId = mapParam.mapId || Settings.global.mapId;
 
       loadMap(mapId);
 
