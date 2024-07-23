@@ -26,7 +26,6 @@ let reloading;          // Flag used to prevent triggering reloading while alrea
 
 let mapParam = {};      // Parameters extracted from map URL
 
-let markers = {};       // Map from alt name to markers (or lines) on map (ie to layers)
 let searchControl;      // Leaflet control for searching
 
 export const buildMode = {
@@ -50,16 +49,10 @@ Settings.mapSetDefault('coinsFound', {});
 // Generate our URL format based on current state
 // {base url}#map={sl|slc|siu}&lat={lat}&lng={lng}
 function getViewURL() {
-  let base = window.location.href.replace(/#.*$/,'');
+  let base = window.location.href.replace(/#.*$/, '');
   let p = map.getCenter();
-  let vars = {mapId:mapId, lat:Math.round(p.lat), lng:Math.round(p.lng), zoom:map.getZoom()};
-  return base +'#' + Object.entries(vars).map(e=>e[0]+'='+encodeURIComponent(e[1])).join('&');
-}
-
-function openLoadFileDialog() {
-  document.querySelector('#file').value = null;
-  document.querySelector('#file').accept = '.sav';
-  document.querySelector('#file').click();
+  let vars = { mapId: mapId, lat: Math.round(p.lat), lng: Math.round(p.lng), zoom: map.getZoom() };
+  return base + '#' + Object.entries(vars).map(e => e[0] + '=' + encodeURIComponent(e[1])).join('&');
 }
 
 function toggleBuildMode() {
@@ -95,18 +88,18 @@ function commitCurrentBuildModeChanges() {
 function exportBuildChanges() {
   // It might be worth accummulating the changes in this structure as we make them, but this works
   let jsonobj = {}
-  Object.getOwnPropertyNames(buildMode.changeList).filter(function(e) { return e !== 'length' }).forEach(
-    function(k){
+  Object.getOwnPropertyNames(buildMode.changeList).filter(function (e) { return e !== 'length' }).forEach(
+    function (k) {
       let alt, prop, area, name;
       [alt, prop] = k.split('|');
       [area, name] = alt.split(':');
-      if(!jsonobj[alt]){
+      if (!jsonobj[alt]) {
         jsonobj[alt] = {}
       }
       jsonobj[alt][name] = name;
       jsonobj[alt][area] = area;
       jsonobj[alt][prop] = buildMode.changeList[k];
-  });
+    });
   jsonobj = Object.values(jsonobj);
 
   console.log(buildMode.changeList);
@@ -141,7 +134,7 @@ function loadMap(id) {
   map = new L.Map('map', {
     crs: crs,
     fadeAnimation: true,
-  	minZoom: 1,
+    minZoom: 1,
     maxZoom: 8,
     zoomDelta: 0.5,
     zoomSnap: 0.125,
@@ -153,16 +146,16 @@ function loadMap(id) {
   // redraw paths on dragging (sets % of padding around viewport, may be performance issue)
   map.getRenderer(map).options.padding = 1;
 
-  L.control.zoom({ position: 'bottomright'}).addTo(map);
-  L.control.fullscreen({ position: 'bottomright', forceSeparateButton: true}).addTo(map);
+  L.control.zoom({ position: 'bottomright' }).addTo(map);
+  L.control.fullscreen({ position: 'bottomright', forceSeparateButton: true }).addTo(map);
 
-  map.on('moveend zoomend', function() {     // (e)
+  map.on('moveend zoomend', function () {     // (e)
     Settings.map.center = [map.getCenter().lat, map.getCenter().lng]; // avoid circular refs here
     Settings.map.zoom = map.getZoom();
     Settings.commit();
   });
 
-  map.on('baselayerchange', function(e) {
+  map.on('baselayerchange', function (e) {
     MapLayer.resetLayers();
     MapObject.resetAll();
     location.hash = '';
@@ -179,7 +172,7 @@ function loadMap(id) {
   });
   MapLayer.setupLayers(map, layerControl);
 
-  L.control.mousePosition({numDigits:0, lngFirst:true}).addTo(map);
+  L.control.mousePosition({ numDigits: 0, lngFirst: true }).addTo(map);
 
   if (mapParam.lat && mapParam.lng && mapParam.zoom) {
     map.setView([mapParam.lat, mapParam.lng], mapParam.zoom);
@@ -195,143 +188,143 @@ function loadMap(id) {
   }
 
   let subAction = L.Toolbar2.Action.extend({
-    initialize:function(map,myAction){this.map=map;this.myAction=myAction;L.Toolbar2.Action.prototype.initialize.call(this);},
-    addHooks:function(){ this.myAction.disable(); }
+    initialize: function (map, myAction) { this.map = map; this.myAction = myAction; L.Toolbar2.Action.prototype.initialize.call(this); },
+    addHooks: function () { this.myAction.disable(); }
   });
   new L.Toolbar2.Control({
-      position: 'bottomleft',
-      actions: [
-        // build mode button
-        L.Toolbar2.Action.extend({
-          options: {
-            toolbarIcon:{html: '&#x1F588;', tooltip: 'Map pins'},
-            subToolbar: new L.Toolbar2({ 
-              actions: [
-                subAction.extend({
-                  options:{toolbarIcon:{html:'Add', tooltip: 'Adds new pin to map'}},
-                  addHooks:function() {
-                    MapPins.add({ activateLayer: true });
-                    subAction.prototype.addHooks.call(this); // closes sub-action
+    position: 'bottomleft',
+    actions: [
+      // build mode button
+      L.Toolbar2.Action.extend({
+        options: {
+          toolbarIcon: { html: '&#x1F588;', tooltip: 'Map pins' },
+          subToolbar: new L.Toolbar2({
+            actions: [
+              subAction.extend({
+                options: { toolbarIcon: { html: 'Add', tooltip: 'Adds new pin to map' } },
+                addHooks: function () {
+                  MapPins.add({ activateLayer: true });
+                  subAction.prototype.addHooks.call(this); // closes sub-action
+                }
+              }),
+              subAction.extend({
+                options: { toolbarIcon: { html: 'clear', tooltip: 'Clears all pins added to map' } },
+                addHooks: function () {
+                  if (MapPins.hasAny()
+                    && (skipConfirms || confirm("Are you sure you want to clear all custom pins?"))) {
+                    MapPins.clearAll();
                   }
-                }),
-                subAction.extend({
-                  options:{toolbarIcon:{html:'clear', tooltip: 'Clears all pins added to map'}},
-                  addHooks:function() {
-                    if(MapPins.hasAny() 
-                        && (skipConfirms || confirm("Are you sure you want to clear all custom pins?"))){
-                      MapPins.clearAll();
-                    }
-                    subAction.prototype.addHooks.call(this); // closes sub-action
+                  subAction.prototype.addHooks.call(this); // closes sub-action
+                }
+              }),
+              subAction.extend({
+                options: { toolbarIcon: { html: 'copy', tooltip: 'Copy pin positions to clip board' } },
+                addHooks: function () {
+                  MapPins.copyToClipboard();
+                  subAction.prototype.addHooks.call(this); // closes sub-action
+                }
+              }),
+              subAction.extend({
+                options: { toolbarIcon: { html: '&times;', tooltip: 'Close' } }
+              }),
+            ],
+          })
+        }
+      }),
+      // build mode button
+      L.Toolbar2.Action.extend({
+        options: {
+          toolbarIcon: { html: '&#x1F527;', tooltip: 'Developer Mode' },
+          subToolbar: new L.Toolbar2({
+            actions: [
+              subAction.extend({
+                options: { toolbarIcon: { html: 'Toggle', tooltip: 'Toggles Developer mode on or off' } },
+                addHooks: function () {
+                  toggleBuildMode();
+                  subAction.prototype.addHooks.call(this); // closes sub-action
+                }
+              }),
+              subAction.extend({
+                options: { toolbarIcon: { html: 'Copy Changes', tooltip: 'Copies the changes made in this session to the Clipboard' } },
+                addHooks: function () {
+                  exportBuildChanges();
+                  subAction.prototype.addHooks.call(this); // closes sub-action
+                }
+              }),
+              subAction.extend({
+                options: { toolbarIcon: { html: '&times;', tooltip: 'Close' } }
+              }),
+            ],
+          })
+        }
+      }),
+      // share button
+      L.Toolbar2.Action.extend({
+        options: {
+          toolbarIcon: { html: '&#x1F517;', tooltip: 'Share' },
+          subToolbar: new L.Toolbar2({
+            actions: [
+              subAction.extend({
+                options: { toolbarIcon: { html: 'Copy Map View URL', tooltip: 'Copies View URL to the Clipboard' } },
+                addHooks: function () {
+                  browser.copyTextToClipboard(getViewURL());
+                  subAction.prototype.addHooks.call(this); // closes sub-action
+                }
+              }),
+              subAction.extend({
+                options: { toolbarIcon: { html: '&times;', tooltip: 'Close' } }
+              }),
+            ],
+          })
+        }
+      }),
+      // load game button
+      L.Toolbar2.Action.extend({
+        options: {
+          toolbarIcon: { html: '&#x1F4C1;', tooltip: 'Browse...' },
+          subToolbar: new L.Toolbar2({
+            actions: [
+              subAction.extend({
+                options: { toolbarIcon: { html: 'Browse...', tooltip: 'Load game save (*.sav) to mark collected items (Alt+R)' } },
+                addHooks: function () {
+                  if (Object.keys(Settings.map.markedItems).length == 0 ||
+                    skipConfirms || confirm("Are you sure you want to overwrite existing items marked found?")) {
+                    SaveFileSystem.loadFileDialog();
                   }
-                }),
-                subAction.extend({
-                  options:{toolbarIcon:{html:'copy', tooltip: 'Copy pin positions to clip board'}},
-                  addHooks:function() {
-                    MapPins.copyToClipboard();
-                    subAction.prototype.addHooks.call(this); // closes sub-action
+                  subAction.prototype.addHooks.call(this);
+                }
+              }),
+              subAction.extend({
+                options: { toolbarIcon: { html: 'Copy File Path', tooltip: 'Copy default Windows game save file path to the Clipboard' } },
+                addHooks: function () {
+                  browser.copyTextToClipboard('%LocalAppData%\\Supraland' + (mapId == 'siu' ? 'SIU' : '') + '\\Saved\\SaveGames');
+                  subAction.prototype.addHooks.call(this);
+                }
+              }),
+              subAction.extend({
+                options: { toolbarIcon: { html: 'Unmark Found', tooltip: 'Unmark all found items' } },
+                addHooks: function () {
+                  if (skipConfirms || confirm('Are you sure to unmark all found items?')) {
+                    SaveFileSystem.ClearAll();
                   }
-                }),
-                subAction.extend({
-                  options:{toolbarIcon:{html:'&times;', tooltip: 'Close'}}
-                }),
-              ],
-            })
-          }
-        }),
-        // build mode button
-        L.Toolbar2.Action.extend({
-          options: {
-            toolbarIcon:{html: '&#x1F527;', tooltip: 'Developer Mode'},
-            subToolbar: new L.Toolbar2({ 
-              actions: [
-                subAction.extend({
-                  options:{toolbarIcon:{html:'Toggle', tooltip: 'Toggles Developer mode on or off'}},
-                  addHooks:function() {
-                    toggleBuildMode();
-                    subAction.prototype.addHooks.call(this); // closes sub-action
-                  }
-                }),
-                subAction.extend({
-                  options:{toolbarIcon:{html:'Copy Changes', tooltip: 'Copies the changes made in this session to the Clipboard'}},
-                  addHooks:function() {
-                    exportBuildChanges();
-                    subAction.prototype.addHooks.call(this); // closes sub-action
-                  }
-                }),
-                subAction.extend({
-                  options:{toolbarIcon:{html:'&times;', tooltip: 'Close'}}
-                }),
-              ],
-            })
-          }
-        }),
-        // share button
-        L.Toolbar2.Action.extend({
-          options: {
-            toolbarIcon:{html: '&#x1F517;', tooltip: 'Share'},
-            subToolbar: new L.Toolbar2({ 
-              actions: [
-                subAction.extend({
-                  options:{toolbarIcon:{html:'Copy Map View URL', tooltip: 'Copies View URL to the Clipboard'}},
-                  addHooks:function() {
-                    browser.copyTextToClipboard(getViewURL());
-                    subAction.prototype.addHooks.call(this); // closes sub-action
-                  }
-                }),
-                subAction.extend({
-                  options:{toolbarIcon:{html:'&times;', tooltip: 'Close'}}
-                }),
-              ],
-            })
-          }
-        }),
-        // load game button
-        L.Toolbar2.Action.extend({
-          options: {
-            toolbarIcon:{html: '&#x1F4C1;', tooltip: 'Browse...'},
-            subToolbar: new L.Toolbar2({ 
-              actions: [
-                subAction.extend({
-                  options:{toolbarIcon:{html:'Browse...', tooltip: 'Load game save (*.sav) to mark collected items (Alt+R)'}},
-                  addHooks: function () {
-                    if(Object.keys(Settings.map.markedItems).length == 0 ||
-                        skipConfirms || confirm("Are you sure you want to overwrite existing items marked found?")) {
-                      openLoadFileDialog();
-                    } 
-                    subAction.prototype.addHooks.call(this);
-                  }
-                }),
-                subAction.extend({
-                  options:{toolbarIcon:{html:'Copy File Path', tooltip: 'Copy default Windows game save file path to the Clipboard'}},
-                  addHooks:function() {
-                    browser.copyTextToClipboard('%LocalAppData%\\Supraland'+(mapId=='siu' ? 'SIU':'')+'\\Saved\\SaveGames');
-                    subAction.prototype.addHooks.call(this);
-                  }
-                }),
-                subAction.extend({
-                  options:{toolbarIcon:{html:'Unmark Found', tooltip: 'Unmark all found items'}},
-                  addHooks: function () { 
-                    if (skipConfirms || confirm('Are you sure to unmark all found items?')) {
-                      SaveFileSystem.ClearAll();
-                    }
-                    subAction.prototype.addHooks.call(this);
-                  }
-                }),
-                subAction.extend({
-                  options:{toolbarIcon:{html:'&times;', tooltip: 'Close'}}
-                }),
-              ],
-            })
-          }
-        }),
-      ],
+                  subAction.prototype.addHooks.call(this);
+                }
+              }),
+              subAction.extend({
+                options: { toolbarIcon: { html: '&times;', tooltip: 'Close' } }
+              }),
+            ],
+          })
+        }
+      }),
+    ],
   }).addTo(map);
 
   function loadLayers() {
-    
+
     let searchLayers = [];
     MapLayer.forEachMarkers((id, l) => {
-      if(id != 'coordinate'){
+      if (id != 'coordinate') {
         searchLayers.push(l.layerObj);
       }
     });
@@ -340,37 +333,37 @@ function loadMap(id) {
 
     // search
     searchControl = new L.Control.Search({
-        layer: L.layerGroup(searchLayers),
-        marker: false,          // no red circle
-        initial: false,         // search any substring
-        firstTipSubmit: false,  // use first autosuggest
-        autoCollapse: false,
-        tipAutoSubmit: false,   //auto map panTo when click on tooltip
-        tooltipLimit: -1,
-        textPlaceholder: 'Search (Enter to save search phrase)',
+      layer: L.layerGroup(searchLayers),
+      marker: false,          // no red circle
+      initial: false,         // search any substring
+      firstTipSubmit: false,  // use first autosuggest
+      autoCollapse: false,
+      tipAutoSubmit: false,   //auto map panTo when click on tooltip
+      tooltipLimit: -1,
+      textPlaceholder: 'Search (Enter to save search phrase)',
     });
 
-    searchControl._handleSubmit = function(){
+    searchControl._handleSubmit = function () {
       Settings.map.searchText = this._input.value;
       Settings.commit();
       L.Control.Search.prototype._handleSubmit.call(this);
     }
 
-    searchControl.setLayer = function(layer){
+    searchControl.setLayer = function (layer) {
       this._layer = layer;
       return this;
     }
 
-    searchControl.showLocation = function(loc, title){
+    searchControl.showLocation = function (loc, title) {
       this._map.closePopup();
       L.Control.Search.prototype.showLocation.call(this, loc, title);
     }
 
-//    const activeLayers = MapLayer.getActiveLayers();
+    //    const activeLayers = MapLayer.getActiveLayers();
     searchControl.addTo(map);
 
     // workaround: search reveals all layers, hide all inactive layers
-//    MapLayer.setActiveLayers(activeLayers);
+    //    MapLayer.setActiveLayers(activeLayers);
 
 
     // Called when the search is cleared/cancelled to update searchText, save change
@@ -381,24 +374,24 @@ function loadMap(id) {
     }
 
     document.querySelector('.search-cancel').addEventListener('click', clearFilter);
-    searchControl._input.addEventListener('focus', function(e) { setTimeout(function(e){ e.target.select(); },50,e); } );
+    searchControl._input.addEventListener('focus', function (e) { setTimeout(function (e) { e.target.select(); }, 50, e); });
     searchControl._input.addEventListener('input', addSearchCallbacks);
 
     // item clicked in a dropdown list
-    function clickItem(text, collapse=false) {
+    function clickItem(text, collapse = false) {
       let loc;
       if ((loc = searchControl._getLocation(text))) {
         searchControl.showLocation(loc, text);
-        searchControl.fire('search:locationfound', { latlng: loc, text: text, layer:loc.layer });
+        searchControl.fire('search:locationfound', { latlng: loc, text: text, layer: loc.layer });
         collapse && searchControl.collapse();
       }
     }
 
     // add click callbacks to dropdown list after input events, wait 1500 ms so it could reload items
-    function addSearchCallbacks(){
-      setTimeout(function() {
+    function addSearchCallbacks() {
+      setTimeout(function () {
         let divs = document.querySelectorAll('.search-tip');
-        [].forEach.call(divs, function(div) {
+        [].forEach.call(divs, function (div) {
           div.addEventListener('click', function (e) { clickItem(e.target.innerText); e.preventDefault(); })
           div.addEventListener('dblclick', function (e) { clickItem(e.target.innerText, true); e.preventDefault(); })
           // mark discovered items grey
@@ -415,9 +408,9 @@ function loadMap(id) {
     // fired after search control focused on the item
     searchControl.on('search:locationfound', function (e) {
       const mapObject = MapObject.get(e.layer.options.alt);
-      if(mapObject){
-          mapObject.activateLayers();
-          e.layer.openPopup();
+      if (mapObject) {
+        mapObject.activateLayers();
+        e.layer.openPopup();
       }
     });
 
@@ -434,9 +427,9 @@ function loadMap(id) {
       MapObject.initObjects();
 
       MapPins.restoreMapPins();
-  
+
       layerControl.addTo(map); // triggers baselayerchange, so called in the end
-  
+
     });
   }
   loadLayers();
@@ -447,24 +440,24 @@ function loadMap(id) {
 function reloadMap(id) {
   if (!reloading && mapId != id) {
     reloading = true;
-    map.fireEvent('baselayerchange',{layer:{mapId:id}});
-    setTimeout(function(){ reloading = false; }, 250);
+    map.fireEvent('baselayerchange', { layer: { mapId: id } });
+    setTimeout(function () { reloading = false; }, 250);
   }
 }
 
 window.loadSaveFile = function () {
-  SaveFileSystem.loadFile(document.querySelector('#file').files[0]);
+  //SaveFileSystem.loadFile(document.querySelector('#file').files[0]);
 }
 
-window.onhashchange = function() {   // (e)
+window.onhashchange = function () {   // (e)
   if (location.hash.length > 1 && map) {
     let p = map.getCenter();
-    mapParam = {mapId:mapId, lat:Math.round(p.lat), lng:Math.round(p.lng), zoom:map.getZoom()};
+    mapParam = { mapId: mapId, lat: Math.round(p.lat), lng: Math.round(p.lng), zoom: map.getZoom() };
     for (const s of location.hash.slice(1).split('&')) {
-      let [k,v] = s.split('=');
+      let [k, v] = s.split('=');
       mapParam[k] = v;
     }
-    if(mapId != mapParam.mapId) {
+    if (mapId != mapParam.mapId) {
       reloadMap(mapParam.mapId)
     }
     else {
@@ -475,10 +468,10 @@ window.onhashchange = function() {   // (e)
   }
 }
 
-window.onload = function() {    // (event)
+window.onload = function () {    // (event)
   if (location.hash.length > 1) {
     for (const s of location.hash.slice(1).split('&')) {
-      let [k,v] = s.split('=');
+      let [k, v] = s.split('=');
       mapParam[k] = v;
     }
   }
@@ -495,9 +488,9 @@ window.onload = function() {    // (event)
 
       // Keys mappings for pan and zoom map controls
       let bindings = {
-        KeyA:['x',+1],KeyD:['x',-1],
-        KeyW:['y',+1],KeyS:['y',-1],
-        KeyT:['z',+1],KeyG:['z',-1],
+        KeyA: ['x', +1], KeyD: ['x', -1],
+        KeyW: ['y', +1], KeyS: ['y', -1],
+        KeyT: ['z', +1], KeyG: ['z', -1],
       };
 
       // Keys currently pressed [code]=true
@@ -510,15 +503,15 @@ window.onload = function() {    // (event)
         for (let key of Object.keys(bindings)) {
           if (pressed[key]) {
             let [dir, step] = bindings[key];
-            v[dir] = (v[dir]||0) + step;
+            v[dir] = (v[dir] || 0) + step;
           }
         }
-        (v.x || v.y) && map.panBy([(-v.x||0)*step, (-v.y||0)*step], {animation: false});
+        (v.x || v.y) && map.panBy([(-v.x || 0) * step, (-v.y || 0) * step], { animation: false });
         //v.z && map.setZoom(map.getZoom()+v.z/16, {duration: 1});
         window.requestAnimationFrame(update);
       }
 
-      document.querySelector('#map').addEventListener('blur', function() {  // (e)
+      document.querySelector('#map').addEventListener('blur', function () {  // (e)
         pressed = {}; // prevent sticky keys
       });
 
@@ -527,7 +520,7 @@ window.onload = function() {    // (event)
         delete pressed[e.code];
       });
 
-      window.addEventListener("keydown",function (e) {
+      window.addEventListener("keydown", function (e) {
         //console.log(e, e.code);
         if (e.target.id.startsWith('searchtext')) {
           return;
@@ -550,12 +543,12 @@ window.onload = function() {    // (event)
           case 'KeyR':
             if (!e.ctrlKey && !e.altKey) {
               const playerMarker = MapObject.get('PlayerPosition');
-              map.flyTo(playerMarker ? [playerMarker.o.lat, playerMarker.o.lng]  : MapLayer._layers[mapId].viewCenterLngLat);
+              map.flyTo(playerMarker ? [playerMarker.o.lat, playerMarker.o.lng] : MapLayer._layers[mapId].viewCenterLngLat);
             } else if (e.altKey) {
-              openLoadFileDialog();
+              SaveFileSystem.loadFileDialog();
             }
             break;
-        case 'Digit1': reloadMap('sl'); break;
+          case 'Digit1': reloadMap('sl'); break;
           case 'Digit2': reloadMap('slc'); break;
           case 'Digit3': reloadMap('siu'); break;
           case 'KeyT': map.zoomIn(1); break;
@@ -563,12 +556,12 @@ window.onload = function() {    // (event)
         }
       });
 
-      document.querySelector('#file').onchange = function() {  // (e)
+/*      document.querySelector('#file').onchange = function () {  // (e)
         window.loadSaveFile();
       }
-
+*/
       window.requestAnimationFrame(update);
       //window.addEventListener('contextmenu', function(e) { e.stopPropagation()}, true); // enable default context menu
     }
-  );
+    );
 }

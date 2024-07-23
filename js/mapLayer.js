@@ -8,6 +8,14 @@ import { Settings } from './settings.js';
 // However on Firefox it makes the lines much worse, so we choose based on which browser
 const L_tileLayer = browser.isFirefox ? L.tileLayer : L.tileLayer.canvas
 
+function boundsShrink(b, d) {
+  return [{ x: b[0].x + d, y: b[0].y + d }, { x: b[1].x - d, y: b[1].y - d }];
+}
+function boundsMin(b1, b2) {
+  return [{ x: Math.max(b1[0].x, b2[0].x), y: Math.max(b1[0].y, b2[0].y) }, { x: Math.min(b1[1].x, b2[1].x), y: Math.max(b1[1].y, b2[1].y) }];
+}
+
+
 export class MapLayer {
   static _layers;         // Map from layer id to layer instance
 
@@ -24,12 +32,10 @@ export class MapLayer {
     this.active = false;             // Is layer active (visible) on map?
     this.layerObj = null;            // Leaflet layer object
 
-    // fixes 404 errors
     if (this.config.mapBounds) {
-      this.config.mapBounds[0].x += 1;
-      this.config.mapBounds[0].y += 1;
-      this.config.mapBounds[1].x -= 1;
-      this.config.mapBounds[1].y -= 1;
+      // Shrink map bounds by 1 to avoid TileLayer trying to load tiles that are out of range (could cause 404 errors)
+      this.config.mapBounds = boundsShrink(this.config.mapBounds, 1);
+      this.config.viewBounds = boundsMin(this.config.viewBounds, this.config.mapBounds);
     }
   }
 
@@ -111,9 +117,9 @@ export class MapLayer {
         noWrap: true,                                 // tops map wrapping
         updateInterval: -1,                           // Allows map to update as often as needed when panning
         keepBuffer: 16,                               // More tiles loaded when panning 
-        maxNativeZoom: 4,                             // Zooming beyond this means auto-scaled
+        minNativeZoom: 0, maxNativeZoom: 4,           // Zooming beyond this means auto-scaled
         bounds: this.viewLngLatBounds,                // Tiles only loaded in this area
-        layerId: id,                                       // Store the name for the map
+        layerId: id,                                  // Store the name for the map
       };
 
       if (id == mapId) {

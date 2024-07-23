@@ -86,7 +86,23 @@ export const browser = {
     else {
       browser.fallbackCopyTextToClipboard(text);
     }
+  },
+
+  // Open a file dialog and call onload function with selected blob 
+  openLoadFileDialog(ext, onload, context){
+    let input = document.createElement('input');
+    input.value = null;
+    input.type = 'file';
+    input.accept = ext;
+
+    input.onchange = () => {
+      onload.call(context, input.files[0]);      
+    }
+  
+    input.click();
   }
+
+
 };
 
 

@@ -1,5 +1,7 @@
-import { Settings } from './settings.js';
 import { UESaveObject } from './lib/UE4Reader.js';
+import { browser } from './utils.js';
+import { Settings } from './settings.js';
+import { MapObject } from './mapObject.js';
 
 // Tracks a set of listeners for specific Id's from the save data (one listener per id)
 // Id's are either area:name or property name
@@ -49,13 +51,13 @@ export class SaveFileSystem {
   // Returns true if _fire would call a handler
   static _testFire(id, filter) {
     const listener = this._listeners[id];
-    return listener && (!listener.flt || listener.flt == filter);
+    return listener && (!filter || !listener.flt || listener.flt == filter);
   }
 
   // Call all functions listening for event
   static _fire(id, data, filter) {
     const listener = this._listeners[id];
-    if (listener && (!listener.flt || listener.flt == filter)) {
+    if (listener && (!filter || !listener.flt || listener.flt == filter)) {
       listener.fn.call(listener.ctx, id, data);
     };
   }
@@ -128,6 +130,13 @@ export class SaveFileSystem {
 
     this.ClearAll();
 
+    const addToSaveData = (area, name, data = true) => {
+      const id = MapObject.makeAlt(area, name);
+      if (this._testFire(id)) {
+        Settings.map.saveData[id] = data;
+      }
+    }
+
     for (const o of loadedSave.Properties) {
       // Skip things we don't knoww how to deal with
       if (!o.type || !o.name || o.name == 'None' || o.name == 'EOF'
@@ -137,17 +146,12 @@ export class SaveFileSystem {
         continue;
       }
 
-      let id, data;
       if (o.name == 'ActorSaveData') {  // This is for SIU PipeCap's
         const actorSaveData = o.value.innerValue;
         const re_match = new RegExp('([^.:]*):PersistentLevel.([^\\0]*?pipecap[^\\0]*)', 'gi');
         let m;
         while ((m = re_match.exec(actorSaveData)) != null) {
-          const area = m[1];
-          const name = m[2];
-
-          id = area + ':' + name;
-          data = true;
+          addToSaveData(m[1], m[2]);
         }
       }
       else if (o.type == 'ArrayProperty') {  // One of 'ThingsToRemove', 'ThingsToActivate', 'ThingsToOpenForever'
@@ -155,20 +159,14 @@ export class SaveFileSystem {
           // map '/Game/FirstPersonBP/Maps/DLC2_Complete.DLC2_Complete:PersistentLevel.Coin442_41' to 'DLC2_Complete:Coin442_41'
           let area = x.split("/").pop().split('.')[0];
           let name = x.split(".").pop();
-          if (name != "None") {
+          if (name != 'None') {
             name = name.charAt(0).toUpperCase() + name.slice(1);  // Shell2_1957 appears as shell2_1957 in the save file
-
-            id = area + ':' + name;
-            data = true;
+            addToSaveData(area, name);
           }
         }
       }
       else {    // Mostly Player upgrade and other properties
-        id = o.name;
-        data = o.value;
-      }
-      if (this._testFire(id, o.name)) {
-        Settings.map.saveData[id] = data;
+        addToSaveData('', o.name, o.value);
       }
     }
 
@@ -200,4 +198,10 @@ export class SaveFileSystem {
 
     reader.readAsArrayBuffer(blob);
   }
+  
+  // Prompt user to select '.sav' file and then load it
+  static loadFileDialog() {
+    browser.openLoadFileDialog('.sav', SaveFileSystem.loadFile, SaveFileSystem);
+  }
+
 }

@@ -11,80 +11,52 @@ import { MapLayer } from './mapLayer.js';
 import { SaveFileSystem } from './saveFileSystem.js';
 
 /*
-TODO extra:
-
-  Coin chest icon doesn't overwrite chest due to layer zDepths
-  Pipes marked found
-  Remove empty layers from layer control
-
-  MapLayer.resetLayers
-    Call it when reloading map
-
-
-  Remove/comment out unused functions
-
-  Review whether to get mapId from Settings.global.mapId or MapLayer._map.options.mapId
-    mapId - Settings.global.mapId or L.Map.mapId or L.Map.?
-    map - MapLayer.map or L.Map or MapLayer.mapId or ?
-
-
-SaveFileLoad dialog can be done this way:
-    https://stackoverflow.com/questions/16215771/how-to-open-select-file-dialog-via-js
-
-  Look at getting map (MapLayer._map) and mapId (Settings.global.mapId?) from same place in other js
-  Review other classes for static/dynamic mix and harmonise with MapObject (naming, style etc)
-    mapLayer, icons, locStr, gameClasses, saveFileSystem, settings
-    initialisation/loading/reset/release etc naming
-    check static member functions accessing static variables (this. vs Class.)
-    consider naming of class/js file (MapObject in mapObject.js) what should capitalisation be?
-  Play with Chrome's devtool based code coverage tool
-
-  setlatLng
-
-Integration:
-  UI Stuff
-  CopyToClipboard
-
-
 TODO:
-  ReloadMap/onbaselayer change tidyup/reset some stuff
-  MapPins
-  BuildMode (handle setlatlng and any other interface stuff)
 
-  Initial size of icon wrong for some icons
+  General:
+    Change to using view area rather than zoom/center for map param
+    Fix coin chest icon not being visible over chest icon due to layer zDepths
+    Remove empty layers from layer control
+    Consider naming of class/js file (MapObject in mapObject.js) what should capitalisation be?
+    Handle build mode making icons draggable
+    Use awesome font for MapPins
+    Look at hide/unhide
+    Maintain viewed area as map contain/covering dialogs change
+    BuildMode Stuff
+      When in build mode popup produces editable stuff vs debug text
+    Implement hierarchical dialog and tracker like Joric's 3d one
 
-  Add set latlng function so we can deal with buildsettings stuff
 
-  Review whether toggleFound/setFound should call saveFileSystem rather than handling toggle
-  Review whether settings save should be in MapObject rather than saveFileSystem (likely yes)
+  Testing / debugging:
+    Performance of loadMap (presumably due to nested functions on events and similar)
 
-  Deal with MapPins:
-   1. Uses the map default map pin icon
-   2. Is hooked up to UI calling class functions
-   3. Are added from settings
+  Refactor:
+    SaveFileLoad dialog can be done this way (ie move dialog code to utils.js):
+      https://stackoverflow.com/questions/16215771/how-to-open-select-file-dialog-via-js
 
-  Consider hide/unhide
+    Review how we access static/dynamic members with this. vs Class.
+    Remove/comment out usused functions
+      Play with Chrome's devtool based code coverage tool
+    Review where to get map and mapid and make it consistent everywhere
+      map - MapLayer.map or L.Map or ?
+      mapId - Settings.global.mapId or L.Map.mapId or L.Map.options.mapId or ?
+    Refactor L.Map creation
+    Refactor hash / mapParam handling
+      Cleanup hash / mapParam / initialisation of settings defaults / selection of map id & mapview
+    Refactor search control
+      Searching no longer messes with marking items (hidden/unhidden) - get rid of CSS stuff for this
+      ClearFilter
+
+    BuildMode (handle setlatlng and any other interface stuff)
+
+    Move saveload settings handling from SaveFileSystem to MapObject
+    Reiew relationship between toggleFound/SetFound and SaveFileSystem event
+
+
+
 
 */
 
-
-/*
-
-Map creation
-URL decoding
-  Cleanup hash / mapParam / initialisation of settings defaults / selection of map id & mapview
-
-Searching:
-  Searching no longer messes with marking items (hidden/unhidden) - get rid of CSS stuff for this
-  ClearFilter
-
-BuildMode Stuff
- When in build mode popup produces editable stuff
- When you change stuff it gets added to a tracking list
-
-
-
-*/
 //=================================================================================================
 // MapObject class
 //
@@ -219,7 +191,7 @@ export class MapObject {
       .addTo(mapLayer.layerObj)                 // Add to relevant mapLayer (or the group)
       .bindPopup('')
       .on('popupopen', this.onPopupOpen, this)  // We set popup text on demand 
-      .on('mouseover', this.onMouseOver, this)  // We set tooltip text on demand
+      .on('mouseover', this.onMouseOver, this)  // We update tooltip text on demand
       .on('add', this.onAdd, this);             // We may need to resize icons when they're layer is displayed
 
     // If 'found' isn't locked then context menu toggles found
@@ -688,14 +660,18 @@ class MapPipesystem extends MapObject {
     }
   }
 
+  _setFound(found){
+    super.setFound(found);
+  }
+
   // For two way pipes where the other end doesn't have a nearest_cap it should match found
   setFound(found) {
-    super.setFound(found);
+    this._setFound(found);
 
     // Feels like we should test this._triggerOtherPipe but actually if the user marks one end we should
-    // just mark the other but as we don't want an infinite loop call it's parent class method
+    // just mark the other
     const otherPipe = MapObject._mapObjects[this.o.other_pipe];
-    otherPipe?.__proto__.__proto__.setFound.call(otherPipe, found);
+    otherPipe?._setFound.call(otherPipe, found);
   }
 
   // For two way pipes where the other end doesn't have a nearest_cap it should match found
@@ -716,10 +692,6 @@ function mapPipesystem(...args) {
 // For twoway jumppads we special case the line found behaviour, to be found if either end is found.
 // Plus, if only one end found, the line gains an arrow pointing at the unfound end
 class MapJumppad extends MapObject {
-
-  subclassInit(){
-    console.log("jumppad");
-  }
 
   // This is only called by other end of line on markFound
   updateLineFound(found2) {
@@ -772,6 +744,10 @@ function mapJumppad(...args) {
 // for all coins save data, plus if the found is toggled we need to update the save data for them.
 class MapCoinStack extends MapObject {
 
+  subclassInit(){
+    this._coinsFound = new Set();
+  }
+
   // Listen for the coins that are part of this stack
   addSaveListeners() {
     for (const coin in this.o.old_coins) {
@@ -809,7 +785,7 @@ class MapCoinStack extends MapObject {
 
   // Checks the set of coins found rather than normal settings
   isFound() {
-    return (this?._coinsFound.size == Object.keys(this.o.old_coins).length)
+    return (this._coinsFound.size == Object.keys(this.o.old_coins).length)
   }
 
   // Changes the saveData for all the coins we're attached to
@@ -898,7 +874,7 @@ function objectToSubclass(o) {
     'PlayerStart': mapPlayerStart,
     'EnemySpawn3_C': mapGraveVolcano,
     'CrashEnemySpawner_C': mapBonesSpawner,
-    'CoinStack_C': mapCoinStack,
+    '_CoinStack_C': mapCoinStack,
     'Juicer_C': mapJuicer
   };
   let cls = typeMap[o.type];
