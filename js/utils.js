@@ -101,8 +101,6 @@ export const browser = {
   
     input.click();
   }
-
-
 };
 
 
@@ -250,13 +248,13 @@ L.Map.include({
   },
 
   // Returns scale to apply to objects based on config and current map zoom
-  getScaleForZoom() {
+  getPixelResizeScale() {
     const scalePower = -Math.log2(this._zoomForScaleConfig.scaleZoom0) / this._zoomForScaleConfig.zoom1;
     return Math.pow(2, this._zoom * scalePower) * this._zoomForScaleConfig.scaleZoom0;
   },
 
   // Configure the zoom scaling calculation
-  configureScaleForZoom(scaleZoom0 = 0.6, zoom1 = 3) {
+  configurePixelResizeScale(scaleZoom0 = 0.6, zoom1 = 3) {
     this._zoomForScaleConfig.scaleZoom0 = scaleZoom0;
     this._zoomForScaleConfig.zoom1 = zoom1;
   },

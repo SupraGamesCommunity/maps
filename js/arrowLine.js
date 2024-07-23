@@ -90,7 +90,7 @@ export const L_ArrowLine = L.Polygon.extend({
     if (this._map) {
       this.options.fill = true;
       this.options.stroke = (this.options.shadowWidth > 0);
-      this.options.weight = this.options.shadowWidth * this._map.getScaleForZoom();
+      this.options.weight = this.options.shadowWidth * this._map.getPixelResizeScale();
 
       this._setLatLngs(this._buildArrowLine(this._startLatLng, this._endLatLng));
 
@@ -165,7 +165,7 @@ export const L_ArrowLine = L.Polygon.extend({
     const endPt = this._map.latLngToContainerPoint(end);
 
     // Get scale to apply to elements of line based on zoom
-    const scale = this._map.getScaleForZoom();
+    const scale = this._map.getPixelResizeScale();
 
     // Unit vector along line, used to transform xy points in line space to point space
     // and length of line in unscaled units
