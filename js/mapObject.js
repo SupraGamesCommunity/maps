@@ -259,8 +259,8 @@ export class MapObject {
 
   // Initialise this MapObject by creating markers/lines and setting up for save loading
   init() {
-    // If subclass hasn't set default set it based on notSaved
-    if (this._foundLockedState === undefined && this.o.notSaved) {
+    // If subclass hasn't set default set it based on notsaved
+    if (this._foundLockedState === undefined && this.o.notsaved) {
       this._foundLockedState = true;
     }
 
