@@ -24,8 +24,6 @@ var mapId = '';         // Current map selected (one of sl, slc or siu)
 
 let reloading;          // Flag used to prevent triggering reloading while already in progress
 
-let mapParam = {};      // Parameters extracted from map URL
-
 let searchControl;      // Leaflet control for searching
 
 export const buildMode = {
@@ -47,12 +45,13 @@ Settings.mapSetDefault('markedItems', {});
 Settings.mapSetDefault('coinsFound', {});
 
 // Generate our URL format based on current state
-// {base url}#map={sl|slc|siu}&lat={lat}&lng={lng}
+// {base url}#map={sl|slc|siu}&W={bounds west lng}&N={north}&E={east}&S={south}
 function getViewURL() {
-  let base = window.location.href.replace(/#.*$/, '');
-  let p = map.getCenter();
-  let vars = { mapId: mapId, lat: Math.round(p.lat), lng: Math.round(p.lng), zoom: map.getZoom() };
-  return base + '#' + Object.entries(vars).map(e => e[0] + '=' + encodeURIComponent(e[1])).join('&');
+  const base = window.location.href.replace(/#.*$/, '')
+  const b = map.getBounds();
+  const vars = { mapId: mapId, W: Math.round(b.getWest()), N: Math.round(b.getNorth()), E: Math.round(b.getEast()), S: Math.round(b.getSouth()) };
+  const url = base + '#' + Object.entries(vars).map((e) => e[0] + '=' + encodeURIComponent(e[1])).join('&');
+  return url;
 }
 
 function toggleBuildMode() {
@@ -63,8 +62,8 @@ function toggleBuildMode() {
 }
 
 /* eslint-disable-next-line no-unused-vars */
-function updateBuildModeValue() {
-  let el = window.event.srcElement;
+function updateBuildModeValue(event) {
+  let el = event.target;
   buildMode.object[el.id] = el.value;
   buildMode.objectChanges[MapObject.makeAlt(buildMode.object.area, buildMode.object.name) + '|' + el.id] = el.value;
   //alert(buildMode.object.name + ' property ' + el.id + ' changed from ' + el.defaultValue + ' to ' + el.value + '.');
@@ -109,12 +108,13 @@ function exportBuildChanges() {
 }
 
 // Called when Window loads and when base map changes, loads currently select mapId
-function loadMap(id) {
-
-  mapId = id;
-
-  Settings.global.mapId = id;
-  Settings.commit();
+function loadMap(mapParam) {
+  Settings.globalSetDefault('mapId', 'sl');
+  if('mapid' in mapParam){
+    Settings.global.mapId = mapParam.mapid;
+    Settings.commit();
+  }
+  mapId = Settings.global.mapId;
 
   const mapLayer = MapLayer.get(mapId);
 
@@ -126,7 +126,7 @@ function loadMap(id) {
 
   // Create a coordinate system for the map
   var crs = L.CRS.Simple;
-  crs.transformation = new L.Transformation(mapScale, -mapLayer.mapLngLatBounds[0][1] * mapScale, mapScale, -mapLayer.mapLngLatBounds[0][0] * mapScale);
+  crs.transformation = new L.Transformation(mapScale, -mapLayer.mapLatLngBounds[0][1] * mapScale, mapScale, -mapLayer.mapLatLngBounds[0][0] * mapScale);
   crs.scale = function (zoom) { return Math.pow(2, zoom) / mapMinResolution; };
   crs.zoom = function (scale) { return Math.log(scale * mapMinResolution) / Math.LN2; };
 
@@ -138,10 +138,10 @@ function loadMap(id) {
     maxZoom: 8,
     zoomDelta: 0.5,
     zoomSnap: 0.125,
-    maxBounds: L.latLngBounds(mapLayer.viewLngLatBounds).pad(0.25), // elastic-y bounds + elastic-x bounds
+    maxBounds: L.latLngBounds(mapLayer.viewLatLngBounds).pad(0.25), // elastic-y bounds + elastic-x bounds
     zoomControl: false,
     doubleClickZoom: true,
-    mapId: id,
+    mapId: mapId,
   });
   // redraw paths on dragging (sets % of padding around viewport, may be performance issue)
   map.getRenderer(map).options.padding = 1;
@@ -150,20 +150,20 @@ function loadMap(id) {
   L.control.fullscreen({ position: 'bottomright', forceSeparateButton: true }).addTo(map);
 
   map.on('moveend zoomend', function () {     // (e)
-    Settings.map.center = [map.getCenter().lat, map.getCenter().lng]; // avoid circular refs here
-    Settings.map.zoom = map.getZoom();
+    const b = map.getBounds();
+    Settings.map.bounds = [[Math.round(b.getNorth()), Math.round(b.getWest())], [Math.round(b.getSouth()), Math.round(b.getEast())]]
     Settings.commit();
   });
 
   map.on('baselayerchange', function (e) {
     MapLayer.resetLayers();
     MapObject.resetAll();
-    location.hash = '';
+    browser.clearLocationHash();
     map.off();
     map.remove();
     map = null;
 
-    loadMap(e.layer.options.layerId);
+    loadMap({ mapid: e.layer.options.layerId });
   });
 
   let layerControl = L.control.layers({}, {}, {
@@ -174,17 +174,19 @@ function loadMap(id) {
 
   L.control.mousePosition({ numDigits: 0, lngFirst: true }).addTo(map);
 
-  if (mapParam.lat && mapParam.lng && mapParam.zoom) {
-    map.setView([mapParam.lat, mapParam.lng], mapParam.zoom);
-    mapParam = {};
-  } else if (Settings.map.center && Settings.map.zoom) {
-    map.setView(Settings.map.center, Settings.map.zoom);
-  } else {
-    map.fitBounds(mapLayer.viewLngLatBounds);
+  Settings.mapSetDefault('bounds', mapLayer.viewLatLngBounds);
 
-    // Settings center/zoom should have been set by fitBounds events
-    Settings.mapSetDefault('center', Settings.map.center || MapLayer.get(mapId).viewCenterLngLat);
-    Settings.mapSetDefault('zoom', 'zoom' in Settings.map ? Settings.map.zoom : 1);
+  if('zoom' in mapParam || 'lat' in mapParam && 'lng' in mapParam) {
+    const zoom = mapParam.zoom || map.getZoom();
+    const center = 'lat' in mapParam ? [mapParam['lat'], mapParam['lng']] : map.getCenter();
+    map.setView(zoom, center);
+  }
+  else{
+    let bounds = Settings.map.bounds;      
+    if('n' in mapParam && 's' in mapParam && 'e' in mapParam && 'w' in mapParam) {
+      bounds = [mapParam['n'], [mapParam['w']], [mapParam['s'], mapParam['e']]];
+    }
+    map.fitBounds(bounds);
   }
 
   let subAction = L.Toolbar2.Action.extend({
@@ -440,51 +442,39 @@ function loadMap(id) {
 function reloadMap(id) {
   if (!reloading && mapId != id) {
     reloading = true;
-    map.fireEvent('baselayerchange', { layer: { mapId: id } });
-    setTimeout(function () { reloading = false; }, 250);
+    map.fireEvent('baselayerchange', { layer: { options: { layerId: id } } });
+    setTimeout(function () { reloading = false; }, 500);
   }
 }
 
-window.loadSaveFile = function () {
-  //SaveFileSystem.loadFile(document.querySelector('#file').files[0]);
-}
-
 window.onhashchange = function () {   // (e)
-  if (location.hash.length > 1 && map) {
-    let p = map.getCenter();
-    mapParam = { mapId: mapId, lat: Math.round(p.lat), lng: Math.round(p.lng), zoom: map.getZoom() };
-    for (const s of location.hash.slice(1).split('&')) {
-      let [k, v] = s.split('=');
-      mapParam[k] = v;
-    }
-    if (mapId != mapParam.mapId) {
-      reloadMap(mapParam.mapId)
-    }
-    else {
-      map.setView([mapParam.lat, mapParam.lng], mapParam.zoom);
-    }
-    mapParam = {}
-    location.hash = '';
+  const mapParam = browser.getLocationHashParam(true); 
+  if(mapParam.mapid && mapParam.mapid != mapId) {
+    MapLayer.resetLayers();
+    MapObject.resetAll();
+    browser.clearLocationHash();
+    map.off();
+    map.remove();
+    map = null;
+
+    loadMap(mapParam);
+  }
+  else if('zoom' in mapParam || 'lat' in mapParam && 'lng' in mapParam) {
+    const zoom = mapParam.zoom || map.getZoom();
+    const center = 'lat' in mapParam ? [mapParam['lat'], mapParam['lng']] : map.getCenter();
+    map.setView(zoom, center);
+  }
+  else if('n' in mapParam && 's' in mapParam && 'e' in mapParam && 'w' in mapParam) {
+    map.fitBounds([[mapParam['n'], mapParam['w']], [mapParam['s'], mapParam['e']]]);
   }
 }
 
 window.onload = function () {    // (event)
-  if (location.hash.length > 1) {
-    for (const s of location.hash.slice(1).split('&')) {
-      let [k, v] = s.split('=');
-      mapParam[k] = v;
-    }
-  }
-
-  // clear location hash
-  history.pushState('', document.title, window.location.pathname + window.location.search);
-
   Promise.all([locStr.loadStrings(), GameClasses.loadClasses(), Icons.loadIconConfigs(), MapLayer.loadConfigs()])
     .then(() => {
 
-      mapId = mapParam.mapId || Settings.global.mapId;
-
-      loadMap(mapId);
+      // Load map based on hash parameters and clear it 
+      loadMap(browser.getLocationHashParam(true));
 
       // Keys mappings for pan and zoom map controls
       let bindings = {
@@ -542,8 +532,8 @@ window.onload = function () {    // (event)
             break;
           case 'KeyR':
             if (!e.ctrlKey && !e.altKey) {
-              const playerMarker = MapObject.get('PlayerPosition');
-              map.flyTo(playerMarker ? [playerMarker.o.lat, playerMarker.o.lng] : MapLayer._layers[mapId].viewCenterLngLat);
+              const playerPos = MapObject.get('PlayerPosition');
+              map.flyTo(playerPos ? [playerPos.o.lat, playerPos.o.lng] : MapLayer._layers[mapId].viewCenterLngLat);
             } else if (e.altKey) {
               SaveFileSystem.loadFileDialog();
             }
@@ -556,10 +546,6 @@ window.onload = function () {    // (event)
         }
       });
 
-/*      document.querySelector('#file').onchange = function () {  // (e)
-        window.loadSaveFile();
-      }
-*/
       window.requestAnimationFrame(update);
       //window.addEventListener('contextmenu', function(e) { e.stopPropagation()}, true); // enable default context menu
     }

@@ -59,8 +59,8 @@ export class MapLayer {
   get zDepth() { return this.config.zDepth; }
 
   // For base layers we can get the bounds and center
-  get mapLngLatBounds() { return [[this.config.mapBounds[0].y, this.config.mapBounds[0].x], [this.config.mapBounds[1].y, this.config.mapBounds[1].x]]; }
-  get viewLngLatBounds() { return [[this.config.viewBounds[0].y, this.config.viewBounds[0].x], [this.config.viewBounds[1].y, this.config.viewBounds[1].x]]; }
+  get mapLatLngBounds() { return [[this.config.mapBounds[0].y, this.config.mapBounds[0].x], [this.config.mapBounds[1].y, this.config.mapBounds[1].x]]; }
+  get viewLatLngBounds() { return [[this.config.viewBounds[0].y, this.config.viewBounds[0].x], [this.config.viewBounds[1].y, this.config.viewBounds[1].x]]; }
   get viewCenterLngLat() { return [[(this.config.viewBounds[0].y + this.config.viewBounds[1].y) * 0.5], [(this.config.viewBounds[0].x + this.config.viewBounds[1].x) * 0.5]]; }
 
   // Leaflet Z index is based on the latitude, so our offsets need to be bigger than the max range of latitude
@@ -118,7 +118,7 @@ export class MapLayer {
         updateInterval: -1,                           // Allows map to update as often as needed when panning
         keepBuffer: 16,                               // More tiles loaded when panning 
         minNativeZoom: 0, maxNativeZoom: 4,           // Zooming beyond this means auto-scaled
-        bounds: this.viewLngLatBounds,                // Tiles only loaded in this area
+        bounds: this.viewLatLngBounds,                // Tiles only loaded in this area
         layerId: id,                                  // Store the name for the map
       };
 
@@ -239,6 +239,14 @@ export class MapLayer {
   static forEachMarkers(fn) {
     for (const [layerId, layer] of Object.entries(MapLayer._layers)) {
       if (layer.config.type == 'markers' && layer.isEnabled) {
+        fn(layerId, layer);
+      }
+    }
+  }
+
+  static forEachBase(fn) {
+    for (const [layerId, layer] of Object.entries(MapLayer._layers)) {
+      if (layer.config.type == 'base' && layer.isEnabled) {
         fn(layerId, layer);
       }
     }

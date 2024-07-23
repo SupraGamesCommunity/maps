@@ -25,10 +25,14 @@ TODO:
     BuildMode Stuff
       When in build mode popup produces editable stuff vs debug text
     Implement hierarchical dialog and tracker like Joric's 3d one
-
+    Prevent multiple simultaneous calls to loadMap 
 
   Testing / debugging:
     Performance of loadMap (presumably due to nested functions on events and similar)
+    notSaved works when all unmarked but after loading save and refresh they break
+  
+
+  Move filter up to onSaveEvent and pass up the parameter to save event
 
   Refactor:
     SaveFileLoad dialog can be done this way (ie move dialog code to utils.js):
@@ -51,6 +55,14 @@ TODO:
 
     Move saveload settings handling from SaveFileSystem to MapObject
     Reiew relationship between toggleFound/SetFound and SaveFileSystem event
+
+    Add version control to Settings
+
+
+  Get map and mapId from properties of MapLayer
+    MapLayer creates map and updates Settings.mapId
+
+    
 
 
 
@@ -269,7 +281,7 @@ export class MapObject {
 
     const c = GameClasses.get(this.o.type);
     if(!MapLayer.isEnabledFromId(c.layer) && !MapLayer.isEnabledFromId(c.nospoiler)
-      || !L.latLngBounds(MapLayer.get('_map').viewLngLatBounds).contains([this.o.lat, this.o.lng])) {
+      || !L.latLngBounds(MapLayer.get('_map').viewLatLngBounds).contains([this.o.lat, this.o.lng])) {
         this.release();
       return;
     }

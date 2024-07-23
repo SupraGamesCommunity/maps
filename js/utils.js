@@ -89,17 +89,38 @@ export const browser = {
   },
 
   // Open a file dialog and call onload function with selected blob 
-  openLoadFileDialog(ext, onload, context){
+  openLoadFileDialog(ext, onload, context) {
     let input = document.createElement('input');
     input.value = null;
     input.type = 'file';
     input.accept = ext;
 
     input.onchange = () => {
-      onload.call(context, input.files[0]);      
+      onload.call(context, input.files[0]);
     }
-  
+
     input.click();
+  },
+
+  // Same as location.hash = '' but without triggering a hashchange event
+  clearLocationHash() {
+    // Apparently older browser's used to have document.title as 2nd parameter but modern one's ignore it
+    history.pushState('', '', window.location.pathname + window.location.search);
+  },
+
+  // Assuming location.hash is '#key1=value1[&key2=value2[&...]]' returns object filled with key value pairs
+  getLocationHashParam(clearHash = false) {
+    let param = {};
+    if (location.hash.length > 1) {
+      for (const s of location.hash.slice(1).toLowerCase().split('&')) {
+        let [k, v] = s.split('=');
+        param[k] = v;
+      }
+      if (clearHash) {
+        this.clearLocationHash();
+      }
+    }
+    return param;
   }
 };
 
