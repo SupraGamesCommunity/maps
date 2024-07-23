@@ -10,6 +10,7 @@ import { browser } from './utils.js';
 import { MapObject, mapObjectFound } from './mapObject.js';
 import { SaveFileSystem } from './saveFileSystem.js';
 import { MapPins } from './mapPins.js';
+import { MapParam } from './mapParam.js';
 
 window.mapObjectFound = mapObjectFound;
 
@@ -110,8 +111,8 @@ function exportBuildChanges() {
 // Called when Window loads and when base map changes, loads currently select mapId
 function loadMap(mapParam) {
   Settings.globalSetDefault('mapId', 'sl');
-  if('mapid' in mapParam){
-    Settings.global.mapId = mapParam.mapid;
+  if ('mapId' in mapParam) {
+    Settings.global.mapId = mapParam.mapId;
     Settings.commit();
   }
   mapId = Settings.global.mapId;
@@ -158,12 +159,11 @@ function loadMap(mapParam) {
   map.on('baselayerchange', function (e) {
     MapLayer.resetLayers();
     MapObject.resetAll();
-    browser.clearLocationHash();
     map.off();
     map.remove();
     map = null;
 
-    loadMap({ mapid: e.layer.options.layerId });
+    loadMap(new MapParam({ mapId: e.layer.options.layerId }));
   });
 
   let layerControl = L.control.layers({}, {}, {
@@ -175,18 +175,11 @@ function loadMap(mapParam) {
   L.control.mousePosition({ numDigits: 0, lngFirst: true }).addTo(map);
 
   Settings.mapSetDefault('bounds', mapLayer.viewLatLngBounds);
-
-  if('zoom' in mapParam || 'lat' in mapParam && 'lng' in mapParam) {
-    const zoom = mapParam.zoom || map.getZoom();
-    const center = 'lat' in mapParam ? [mapParam['lat'], mapParam['lng']] : map.getCenter();
-    map.setView(zoom, center);
+  if (mapParam.hasView()) {
+    map.setView(mapParam.getCenter(map.getCenter()), mapParam.getZoom(map.getZoom()));
   }
-  else{
-    let bounds = Settings.map.bounds;      
-    if('n' in mapParam && 's' in mapParam && 'e' in mapParam && 'w' in mapParam) {
-      bounds = [mapParam['n'], [mapParam['w']], [mapParam['s'], mapParam['e']]];
-    }
-    map.fitBounds(bounds);
+  else {
+    map.fitBounds(mapParam.getBounds(Settings.map.bounds));
   }
 
   let subAction = L.Toolbar2.Action.extend({
@@ -448,8 +441,9 @@ function reloadMap(id) {
 }
 
 window.onhashchange = function () {   // (e)
-  const mapParam = browser.getLocationHashParam(true); 
-  if(mapParam.mapid && mapParam.mapid != mapId) {
+  const mapParam = new MapParam(browser.getHashAndClear());
+
+  if (mapParam.mapId && mapParam.mapId != mapId) {
     MapLayer.resetLayers();
     MapObject.resetAll();
     browser.clearLocationHash();
@@ -459,13 +453,11 @@ window.onhashchange = function () {   // (e)
 
     loadMap(mapParam);
   }
-  else if('zoom' in mapParam || 'lat' in mapParam && 'lng' in mapParam) {
-    const zoom = mapParam.zoom || map.getZoom();
-    const center = 'lat' in mapParam ? [mapParam['lat'], mapParam['lng']] : map.getCenter();
-    map.setView(zoom, center);
+  else if (mapParam.hasView()) {
+    map.setView(mapParam.getCenter(map.getCenter()), mapParam.getZoom(map.getZoom()));
   }
-  else if('n' in mapParam && 's' in mapParam && 'e' in mapParam && 'w' in mapParam) {
-    map.fitBounds([[mapParam['n'], mapParam['w']], [mapParam['s'], mapParam['e']]]);
+  else if (mapParam.hasBounds()) {
+    map.fitBounds(mapParam.bounds);
   }
 }
 
@@ -473,8 +465,8 @@ window.onload = function () {    // (event)
   Promise.all([locStr.loadStrings(), GameClasses.loadClasses(), Icons.loadIconConfigs(), MapLayer.loadConfigs()])
     .then(() => {
 
-      // Load map based on hash parameters and clear it 
-      loadMap(browser.getLocationHashParam(true));
+      // Load map based on hash parameters and clear it
+      loadMap(new MapParam(browser.getHashAndClear()));
 
       // Keys mappings for pan and zoom map controls
       let bindings = {

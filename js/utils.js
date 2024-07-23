@@ -108,20 +108,12 @@ export const browser = {
     history.pushState('', '', window.location.pathname + window.location.search);
   },
 
-  // Assuming location.hash is '#key1=value1[&key2=value2[&...]]' returns object filled with key value pairs
-  getLocationHashParam(clearHash = false) {
-    let param = {};
-    if (location.hash.length > 1) {
-      for (const s of location.hash.slice(1).toLowerCase().split('&')) {
-        let [k, v] = s.split('=');
-        param[k] = v;
-      }
-      if (clearHash) {
-        this.clearLocationHash();
-      }
-    }
-    return param;
-  }
+  // Returns location hash and clears it 
+  getHashAndClear(){
+    const hash = location.hash;
+    this.clearLocationHash();
+    return hash;
+  },
 };
 
 
