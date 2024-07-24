@@ -140,13 +140,7 @@ Don't think these are needed unless we want to auto-commit on every change
 Settings.globalSetDefault('buildMode', false);
 Settings.globalSetDefault('language', 'en')
 
-Settings.mapSetDefault('markedItems', {});
-Settings.mapSetDefault('coinsFound', {});
 Settings.mapSetDefault('searchText', '');
-Settings.mapSetDefault('playerPosition', [0, 0, 0]);
-Settings.mapSetDefault('center', [0, 0]);
-Settings.mapSetDefault('zoom', 1);
-Settings.mapSetDefault('mapPins', []);
 
 Settings.mapSetDefault('activeLayers', layerConfigs.getDefaultActive());
 

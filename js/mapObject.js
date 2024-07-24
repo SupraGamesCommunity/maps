@@ -35,18 +35,21 @@ TODO:
   Move filter up to onSaveEvent and pass up the parameter to save event
 
   Refactor:
-    SaveFileLoad dialog can be done this way (ie move dialog code to utils.js):
-      https://stackoverflow.com/questions/16215771/how-to-open-select-file-dialog-via-js
+
+    in Search Only enable one of the two layers a MapObject is on (prime first, then group)
+    in search check for found with more reliable method in _createTip
+    in Search save search text whenever we collapse
+
+    Refactor L.Map creation
+    Add an unloadMap function that reverses side effects of LoadMap and call from reloadmap/baselayerchange
 
     Review how we access static/dynamic members with this. vs Class.
     Remove/comment out usused functions
       Play with Chrome's devtool based code coverage tool
     Review where to get map and mapid and make it consistent everywhere
       map - MapLayer.map or L.Map or ?
-      mapId - Settings.global.mapId or L.Map.mapId or L.Map.options.mapId or ?
-    Refactor L.Map creation
-    Refactor hash / mapParam handling
-      Cleanup hash / mapParam / initialisation of settings defaults / selection of map id & mapview
+      mapId - Settings.global.mapId or L.Map.mapId or L.Map.options.mapId or ? or MapLayer.mapId
+  
     Refactor search control
       Searching no longer messes with marking items (hidden/unhidden) - get rid of CSS stuff for this
       ClearFilter

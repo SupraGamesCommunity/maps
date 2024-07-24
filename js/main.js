@@ -11,6 +11,7 @@ import { MapObject, mapObjectFound } from './mapObject.js';
 import { SaveFileSystem } from './saveFileSystem.js';
 import { MapPins } from './mapPins.js';
 import { MapParam } from './mapParam.js';
+import { L_Control_supraSearch } from './supraSearch.js';
 
 window.mapObjectFound = mapObjectFound;
 
@@ -40,10 +41,6 @@ Settings.init('sl');
 
 // Todo: Move these to the the place the relevant code is dealt with
 Settings.globalSetDefault('buildMode', false);
-Settings.globalSetDefault('language', 'en')
-
-Settings.mapSetDefault('markedItems', {});
-Settings.mapSetDefault('coinsFound', {});
 
 // Generate our URL format based on current state
 // {base url}#map={sl|slc|siu}&W={bounds west lng}&N={north}&E={east}&S={south}
@@ -326,97 +323,11 @@ function loadMap(mapParam) {
 
     Settings.mapSetDefault('searchText', '');
 
-    // search
-    searchControl = new L.Control.Search({
-      layer: L.layerGroup(searchLayers),
-      marker: false,          // no red circle
-      initial: false,         // search any substring
-      firstTipSubmit: false,  // use first autosuggest
-      autoCollapse: false,
-      tipAutoSubmit: false,   //auto map panTo when click on tooltip
-      tooltipLimit: -1,
-      textPlaceholder: 'Search (Enter to save search phrase)',
-    });
-
-    searchControl._handleSubmit = function () {
-      Settings.map.searchText = this._input.value;
-      Settings.commit();
-      L.Control.Search.prototype._handleSubmit.call(this);
-    }
-
-    searchControl.setLayer = function (layer) {
-      this._layer = layer;
-      return this;
-    }
-
-    searchControl.showLocation = function (loc, title) {
-      this._map.closePopup();
-      L.Control.Search.prototype.showLocation.call(this, loc, title);
-    }
-
-    //    const activeLayers = MapLayer.getActiveLayers();
-    searchControl.addTo(map);
-
-    // workaround: search reveals all layers, hide all inactive layers
-    //    MapLayer.setActiveLayers(activeLayers);
-
-
-    // Called when the search is cleared/cancelled to update searchText, save change
-    // and reflect changes in current marker draw state
-    function clearFilter() {
-      Settings.map.searchText = '';
-      Settings.commit();
-    }
-
-    document.querySelector('.search-cancel').addEventListener('click', clearFilter);
-    searchControl._input.addEventListener('focus', function (e) { setTimeout(function (e) { e.target.select(); }, 50, e); });
-    searchControl._input.addEventListener('input', addSearchCallbacks);
-
-    // item clicked in a dropdown list
-    function clickItem(text, collapse = false) {
-      let loc;
-      if ((loc = searchControl._getLocation(text))) {
-        searchControl.showLocation(loc, text);
-        searchControl.fire('search:locationfound', { latlng: loc, text: text, layer: loc.layer });
-        collapse && searchControl.collapse();
-      }
-    }
-
-    // add click callbacks to dropdown list after input events, wait 1500 ms so it could reload items
-    function addSearchCallbacks() {
-      setTimeout(function () {
-        let divs = document.querySelectorAll('.search-tip');
-        [].forEach.call(divs, function (div) {
-          div.addEventListener('click', function (e) { clickItem(e.target.innerText); e.preventDefault(); })
-          div.addEventListener('dblclick', function (e) { clickItem(e.target.innerText, true); e.preventDefault(); })
-          // mark discovered items grey
-          let loc;
-          if ((loc = searchControl._getLocation(div.innerText))) {
-            if (Settings.map.markedItems[loc.layer.options.alt]) {
-              div.style.color = '#bbb';
-            }
-          }
-        })
-      }, 1500)
-    }
-
-    // fired after search control focused on the item
-    searchControl.on('search:locationfound', function (e) {
-      const mapObject = MapObject.get(e.layer.options.alt);
-      if (mapObject) {
-        mapObject.activateLayers();
-        e.layer.openPopup();
-      }
-    });
-
-    // fired when input control is expanded (not the dropdown list)
-    searchControl.on('search:expanded', function () {   // (event)
-      searchControl._input.value = Settings.map.searchText;
-      searchControl.searchText(Settings.map.searchText);
-      addSearchCallbacks();
-    });
-    // end of search
-
+    searchControl = L_Control_supraSearch({
+        layerFilter: (id, l) => {
+          return id != 'coordinate';
+        }
+      }).addTo(map);
 
     MapObject.loadObjects().then(() => {
       MapObject.initObjects();
@@ -462,7 +373,10 @@ window.onhashchange = function () {   // (e)
 }
 
 window.onload = function () {    // (event)
-  Promise.all([locStr.loadStrings(), GameClasses.loadClasses(), Icons.loadIconConfigs(), MapLayer.loadConfigs()])
+
+  Settings.globalSetDefault('language', null); // ie use browser default language
+
+  Promise.all([locStr.loadStrings(Settings.global.language), GameClasses.loadClasses(), Icons.loadIconConfigs(), MapLayer.loadConfigs()])
     .then(() => {
 
       // Load map based on hash parameters and clear it

@@ -2,6 +2,8 @@
 
 import { browser } from './utils.js';
 
+const _super = L.Polygon.prototype;
+
 export const L_ArrowLine = L.Polygon.extend({
   options: {
     arrow: 'none',      // Can be 'tip', 'back', 'twoway', 'mid', 'none'
@@ -47,7 +49,7 @@ export const L_ArrowLine = L.Polygon.extend({
     this._startLatLng = start;
     this._endLatLng = end;
 
-    L.Polygon.prototype.initialize.call(this, [start, end], this.options);
+    _super.initialize.call(this, [start, end], this.options);
   },
 
   setStartEnd: function (start, end) {
@@ -71,7 +73,7 @@ export const L_ArrowLine = L.Polygon.extend({
   },
 
   onAdd: function (map) {
-    L.Polygon.prototype.onAdd.call(this, map);
+    _super.onAdd.call(this, map);
 
     // set alt for polylines (attributes are not populated to paths) (we could put this in L.Polyline.include({onAdd...})
     this._path.setAttribute('alt', this.options.alt);
@@ -83,7 +85,7 @@ export const L_ArrowLine = L.Polygon.extend({
 
   onRemove: function (map) {
     map.off('zoomend', this.redraw, this);
-    L.Polygon.prototype.onRemove.call(this, map);
+    _super.onRemove.call(this, map);
   },
 
   redraw: function () {
