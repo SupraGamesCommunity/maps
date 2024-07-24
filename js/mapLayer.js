@@ -46,7 +46,7 @@ export class MapLayer {
   get games() { return this.config.games; }
 
   // Returns true if layer is enabled for current mapId
-  get isEnabled() { return this.games.includes(MapLayer._map?.options.mapId); }
+  get isEnabled() { return this.games.includes(MapLayer._map?.mapId); }
 
   // Returns true if layer is currently attached to map
   get isActive() { return this.active; }
@@ -98,7 +98,7 @@ export class MapLayer {
 
   // Create the appropriate layer object for this map layer
   createTileLayer() {
-    const mapId = MapLayer._map.options.mapId;
+    const mapId = MapLayer._map.mapId;
     const id = this.id;
     const cfg = this.config;
 
@@ -131,7 +131,7 @@ export class MapLayer {
       return;
     }
     if (this.config.type == 'base') {
-      if (this.id == MapLayer._map.options.mapId) {
+      if (this.id == MapLayer._map.mapId) {
         // Primary map layer
         this.layerObj = MapLayer._map;
         this.active = true;
@@ -262,7 +262,7 @@ export class MapLayer {
     const defaultActive = {};
     for (const [id, layer] of Object.entries(MapLayer._layers)) {
       if (layer.config.type == 'base') {
-        defaultActive[id] = map.options.mapId == id;
+        defaultActive[id] = map.mapId == id;
       }
       else {
         if (layer.config.defaultActive && layer.isEnabled) {

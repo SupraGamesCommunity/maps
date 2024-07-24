@@ -139,8 +139,8 @@ function loadMap(mapParam) {
     maxBounds: L.latLngBounds(mapLayer.viewLatLngBounds).pad(0.25), // elastic-y bounds + elastic-x bounds
     zoomControl: false,
     doubleClickZoom: true,
-    mapId: mapId,
   });
+  map.mapId = mapId;
   // redraw paths on dragging (sets % of padding around viewport, may be performance issue)
   map.getRenderer(map).options.padding = 1;
 
