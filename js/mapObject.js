@@ -50,10 +50,6 @@ TODO:
       map - MapLayer.map or L.Map or ?
       mapId - Settings.global.mapId or L.Map.mapId or L.Map.options.mapId or ? or MapLayer.mapId
   
-    Refactor search control
-      Searching no longer messes with marking items (hidden/unhidden) - get rid of CSS stuff for this
-      ClearFilter
-
     BuildMode (handle setlatlng and any other interface stuff)
 
     Move saveload settings handling from SaveFileSystem to MapObject
@@ -203,7 +199,7 @@ export class MapObject {
     const options = { icon: icon, zIndexOffset: mapLayer.getZIndexOffset(), title: this.getTooltipText(), alt: this.alt, o: this.o, layerId: layerId }
 
     const marker = L.marker([this.o.lat, this.o.lng], options)
-      .addTo(mapLayer.layerObj)                 // Add to relevant mapLayer (or the group)
+      .addTo(mapLayer.id == '_map' ? MapLayer.map : mapLayer.layerObj)                 // Add to relevant mapLayer (or the group)
       .bindPopup('')
       .on('popupopen', this.onPopupOpen, this)  // We set popup text on demand 
       .on('mouseover', this.onMouseOver, this)  // We update tooltip text on demand
@@ -265,7 +261,7 @@ export class MapObject {
       this.lines = [];
       for (let endxy of endxys) {
         let line = L_arrowLine([o.lat, o.lng], [endxy.y, endxy.x], options);
-        line.addTo(mapLayer.layerObj);
+        line.addTo(mapLayer.id == '_map' ? MapLayer.map : mapLayer.layerObj);
 
         this.lines.push(line);
       }
@@ -283,9 +279,9 @@ export class MapObject {
     this.subclassInit?.();
 
     const c = GameClasses.get(this.o.type);
-    if(!MapLayer.isEnabledFromId(c.layer) && !MapLayer.isEnabledFromId(c.nospoiler)
+    if (!MapLayer.isEnabledFromId(c.layer) && !MapLayer.isEnabledFromId(c.nospoiler)
       || !L.latLngBounds(MapLayer.get('_map').viewLatLngBounds).contains([this.o.lat, this.o.lng])) {
-        this.release();
+      this.release();
       return;
     }
 
@@ -675,7 +671,7 @@ class MapPipesystem extends MapObject {
     }
   }
 
-  _setFound(found){
+  _setFound(found) {
     super.setFound(found);
   }
 
@@ -759,7 +755,7 @@ function mapJumppad(...args) {
 // for all coins save data, plus if the found is toggled we need to update the save data for them.
 class MapCoinStack extends MapObject {
 
-  subclassInit(){
+  subclassInit() {
     this._coinsFound = new Set();
   }
 

@@ -23,8 +23,6 @@ export class MapLayer {
 
   static get map() { return MapLayer._map; }
 
-  static _layerControl;   // Leaflet Layer Control
-
   // Instance constructor
   constructor(layerId, json) {
     this.id = layerId;               // Id for the layer
@@ -99,84 +97,77 @@ export class MapLayer {
   }
 
   // Create the appropriate layer object for this map layer
-  createLayer() {
+  createTileLayer() {
     const mapId = MapLayer._map.options.mapId;
     const id = this.id;
     const cfg = this.config;
 
-    // For marker layers and base maps other than current jusr create an L.LayerGroup
-    if (cfg.type == 'markers' || cfg.type == 'base' && id != mapId) {
-      return L.layerGroup([], { layerId: id });
-    }
-    else {  // The primary base layer or an additional 'tiles' layer
-      let tilesDir = 'tiles/' + mapId + '/';
-      const tileExt = cfg.type == 'tiles' ? '.png' : '.jpg';
+    let tilesDir = 'tiles/' + mapId + '/';
+    const tileExt = cfg.type == 'tiles' ? '.png' : '.jpg';
 
-      let options = {
-        tileSize: L.point(cfg.tileRes, cfg.tileRes),  // Tile size is currently fixed
-        noWrap: true,                                 // tops map wrapping
-        updateInterval: -1,                           // Allows map to update as often as needed when panning
-        keepBuffer: 16,                               // More tiles loaded when panning 
-        minNativeZoom: 0, maxNativeZoom: 4,           // Zooming beyond this means auto-scaled
-        bounds: this.viewLatLngBounds,                // Tiles only loaded in this area
-        layerId: id,                                  // Store the name for the map
-      };
+    let options = {
+      tileSize: L.point(cfg.tileRes, cfg.tileRes),  // Tile size is currently fixed
+      noWrap: true,                                 // tops map wrapping
+      updateInterval: -1,                           // Allows map to update as often as needed when panning
+      keepBuffer: 16,                               // More tiles loaded when panning 
+      minNativeZoom: 0, maxNativeZoom: 4,           // Zooming beyond this means auto-scaled
+      bounds: this.viewLatLngBounds,                // Tiles only loaded in this area
+      layerId: id,                                  // Store the name for the map
+    };
 
-      if (id == mapId) {
-        options.attribution = '<a href="https://github.com/SupraGamesCommunity/maps" target="_blank">SupraGames Community</a>';
-        tilesDir += 'base';
-      }
-      else {
-        tilesDir += id;
-      }
-      return L_tileLayer(tilesDir + '/{z}/{x}/{y}' + tileExt, options);
+    if (id == mapId) {
+      options.attribution = '<a href="https://github.com/SupraGamesCommunity/maps" target="_blank">SupraGames Community</a>';
+      tilesDir += 'base';
     }
+    else {
+      tilesDir += id;
+    }
+    return L_tileLayer(tilesDir + '/{z}/{x}/{y}' + tileExt, options);
   }
 
   // Create the leaflet layer "group" and add it to map and control
   init() {
-    if (this.isEnabled) {
+    if (!this.isEnabled) {
+      return;
+    }
+    if (this.config.type == 'base') {
+      if (this.id == MapLayer._map.options.mapId) {
+        // Primary map layer
+        this.layerObj = MapLayer._map;
+        this.active = true;
 
-      this.layerObj = this.createLayer(MapLayer._map, this.id, this.config);
-
-      if (this.config.type == 'base') {
-        MapLayer._layerControl.addBaseLayer(this.layerObj, this.config.name);
-        if (this.id == MapLayer._map.options.mapId) {
-          this.active = true;
-          this.layerObj.addTo(MapLayer._map);
-
-          // This is what's expected by clients of this module
-          this.tileLayer = this.layerObj;
-          this.layerObj = MapLayer._map;
-        }
-        else {
-          this.active = false;
-        }
+        this.layerObj = this.createTileLayer().addTo(MapLayer._map);
       }
       else {
-        MapLayer._layerControl.addOverlay(this.layerObj, this.config.name);
-
-        this.active = !!Settings.map.activeLayers[this.id];
-        if (this.active) {
-          this.layerObj.addTo(MapLayer._map);
-        }
-
-        this.layerObj.on('add', this.onActivate, this);
-        this.layerObj.on('remove', this.onDeactivate, this);
+        // The other selectable maps
+        this.layerObj = L.layerGroup([], { layerId: this.id });
+        this.active = false;
       }
+    }
+    else {
+      if (this.config.type == 'tiles') {
+        // An extra tile layer (used to be used for pipe/pad map overlay)
+        this.layerObj = this.createTileLayer();
+      }
+      else {
+        // A collection of markers
+        this.layerObj = L.layerGroup([], { layerId: this.id });
+      }
+      this.active = !!Settings.map.activeLayers[this.id];
+
+      if (this.active) {
+        this.layerObj.addTo(MapLayer._map);
+      }
+      this.layerObj.on('add', this.onActivate, this);
+      this.layerObj.on('remove', this.onDeactivate, this);
     }
   }
 
   // Reset layer to initial state (releasing layerObj)
   reset() {
-    if (this.tileLayer) {
-      this.layerObj = this.tileLayer;
-      this.tileLayer = null;
-    }
     if (this.layerObj) {
       this.layerObj.off('add remove');
       this.layerObj.remove();
-      MapLayer._layerControl.removeLayer(this.layerObj);
       this.layerObj = null;
     }
     this.active = false;
@@ -218,21 +209,18 @@ export class MapLayer {
     return activeLayers;
   }
 
-  // Retrieve map of currently enabled layers
-  static getEnabledLayers() {
-    let enabledLayers = { '_map': true };
-    for (const [id, layer] of Object.entries(MapLayer._layers)) {
-      if (layer.isEnabled) {
-        enabledLayers[id] = true;
-      }
-    }
-    return enabledLayers;
-  }
-
   // Set the layers active that are in map as true, set all other layers inactive
   static setActiveLayers(activeLayers) {
     for (const [id, layer] of Object.entries(MapLayer._layers)) {
       layer.setActive(!!activeLayers[id]);
+    }
+  }
+
+  static forEachEnabled(fn) {
+    for (const [layerId, layer] of Object.entries(MapLayer._layers)) {
+      if (layer.isEnabled) {
+        fn(layerId, layer);
+      }
     }
   }
 
@@ -255,7 +243,6 @@ export class MapLayer {
   // Loads layer configs and constructs layer objects
   static async loadConfigs() {
     MapLayer._layers = {};
-    MapLayer._layerControl = null;
     MapLayer._map = null;
 
     const response = await fetch('data/layerConfigs.json');
@@ -268,8 +255,7 @@ export class MapLayer {
   }
 
   // Initialise the layer objects and add them to map and layer control as appropriate
-  static setupLayers(map, layerControl) {
-    MapLayer._layerControl = layerControl;
+  static setupLayers(map) {
     MapLayer._map = map;
 
     // Set up default Settings for activeLayers
@@ -297,7 +283,6 @@ export class MapLayer {
     for (const layer of Object.values(MapLayer._layers)) {
       layer.reset();
     }
-    MapLayer._layerControl = null;
     MapLayer._map = null;
   }
 }

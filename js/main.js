@@ -146,6 +146,7 @@ function loadMap(mapParam) {
 
   L.control.zoom({ position: 'bottomright' }).addTo(map);
   L.control.fullscreen({ position: 'bottomright', forceSeparateButton: true }).addTo(map);
+  L.control.mousePosition({ numDigits: 0, lngFirst: true }).addTo(map);
 
   map.on('moveend zoomend', function () {     // (e)
     const b = map.getBounds();
@@ -163,13 +164,21 @@ function loadMap(mapParam) {
     loadMap(new MapParam({ mapId: e.layer.options.layerId }));
   });
 
-  let layerControl = L.control.layers({}, {}, {
+  MapLayer.setupLayers(map);
+
+  const layerControl = L.control.layers({}, {}, {
     collapsed: true,
     position: 'topright',
   });
-  MapLayer.setupLayers(map, layerControl);
 
-  L.control.mousePosition({ numDigits: 0, lngFirst: true }).addTo(map);
+  MapLayer.forEachEnabled((id, layer) => {
+    if (layer.type == 'base') {
+      layerControl.addBaseLayer(layer.layerObj, layer.name);
+    }
+    else {
+      layerControl.addOverlay(layer.layerObj, layer.name);
+    }
+  });
 
   Settings.mapSetDefault('bounds', mapLayer.viewLatLngBounds);
   if (mapParam.hasView()) {
@@ -312,33 +321,22 @@ function loadMap(mapParam) {
     ],
   }).addTo(map);
 
-  function loadLayers() {
+  Settings.mapSetDefault('searchText', '');
 
-    let searchLayers = [];
-    MapLayer.forEachMarkers((id, l) => {
-      if (id != 'coordinate') {
-        searchLayers.push(l.layerObj);
-      }
-    });
+  searchControl = L_Control_supraSearch({
+    layerFilter: (id, l) => {
+      return id != 'coordinate';
+    }
+  }).addTo(map);
 
-    Settings.mapSetDefault('searchText', '');
+  MapObject.loadObjects().then(() => {
+    MapObject.initObjects();
 
-    searchControl = L_Control_supraSearch({
-        layerFilter: (id, l) => {
-          return id != 'coordinate';
-        }
-      }).addTo(map);
+    MapPins.restoreMapPins();
 
-    MapObject.loadObjects().then(() => {
-      MapObject.initObjects();
+    layerControl.addTo(map); // triggers baselayerchange, so called in the end
 
-      MapPins.restoreMapPins();
-
-      layerControl.addTo(map); // triggers baselayerchange, so called in the end
-
-    });
-  }
-  loadLayers();
+  });
 
 } // end of loadmap
 

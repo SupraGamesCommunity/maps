@@ -63,7 +63,7 @@ export class MapPins {
           const idx = e.target.options.pinIdx;
           marker.setPopupContent(this.getPinTitle(idx));
           marker.openPopup();
-        }, this).addTo(mapLayer.layerObj);
+        }, this).addTo(mapLayer.id == '_map' ? MapLayer.map : mapLayer.layerObj);
 
       this._markers[alt] = marker;
     }
