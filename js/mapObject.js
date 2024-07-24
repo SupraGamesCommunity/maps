@@ -31,6 +31,7 @@ TODO:
     Performance of loadMap (presumably due to nested functions on events and similar)
     notSaved works when all unmarked but after loading save and refresh they break
     notSaved on unmarked jumppad load not working
+    active layers retained when switching maps
 
   Move filter up to onSaveEvent and pass up the parameter to save event
 

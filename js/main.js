@@ -144,10 +144,6 @@ function loadMap(mapParam) {
   // redraw paths on dragging (sets % of padding around viewport, may be performance issue)
   map.getRenderer(map).options.padding = 1;
 
-  L.control.zoom({ position: 'bottomright' }).addTo(map);
-  L.control.fullscreen({ position: 'bottomright', forceSeparateButton: true }).addTo(map);
-  L.control.mousePosition({ numDigits: 0, lngFirst: true }).addTo(map);
-
   map.on('moveend zoomend', function () {     // (e)
     const b = map.getBounds();
     Settings.map.bounds = [[Math.round(b.getNorth()), Math.round(b.getWest())], [Math.round(b.getSouth()), Math.round(b.getEast())]]
@@ -164,6 +160,18 @@ function loadMap(mapParam) {
     loadMap(new MapParam({ mapId: e.layer.options.layerId }));
   });
 
+  Settings.mapSetDefault('bounds', mapLayer.viewLatLngBounds);
+  if (mapParam.hasView()) {
+    map.setView(mapParam.getCenter(map.getCenter()), mapParam.getZoom(map.getZoom()));
+  }
+  else {
+    map.fitBounds(mapParam.getBounds(Settings.map.bounds));
+  }
+
+  L.control.zoom({ position: 'bottomright' }).addTo(map);
+  L.control.fullscreen({ position: 'bottomright', forceSeparateButton: true }).addTo(map);
+  L.control.mousePosition({ numDigits: 0, lngFirst: true }).addTo(map);
+
   MapLayer.setupLayers(map);
 
   const layerControl = L.control.layers({}, {}, {
@@ -179,14 +187,6 @@ function loadMap(mapParam) {
       layerControl.addOverlay(layer.layerObj, layer.name);
     }
   });
-
-  Settings.mapSetDefault('bounds', mapLayer.viewLatLngBounds);
-  if (mapParam.hasView()) {
-    map.setView(mapParam.getCenter(map.getCenter()), mapParam.getZoom(map.getZoom()));
-  }
-  else {
-    map.fitBounds(mapParam.getBounds(Settings.map.bounds));
-  }
 
   let subAction = L.Toolbar2.Action.extend({
     initialize: function (map, myAction) { this.map = map; this.myAction = myAction; L.Toolbar2.Action.prototype.initialize.call(this); },
@@ -324,7 +324,7 @@ function loadMap(mapParam) {
   Settings.mapSetDefault('searchText', '');
 
   searchControl = L_Control_supraSearch({
-    layerFilter: (id, l) => {
+    layerFilter: (id) => {
       return id != 'coordinate';
     }
   }).addTo(map);
