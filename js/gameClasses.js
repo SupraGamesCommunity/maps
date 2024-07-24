@@ -15,11 +15,9 @@ export class GameClasses {
   };
 
   static async loadClasses() {
-    return fetch('data/gameClasses.json')
-      .then((response) => response.json())
-      .then((j) => {
-        GameClasses._data = j;
-      });
+    const response = await fetch('data/gameClasses.json')
+    const j = await response.json();
+    GameClasses._data = j;
   }
 
   // Return matching class or default if no match

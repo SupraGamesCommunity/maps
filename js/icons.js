@@ -53,9 +53,9 @@ export class Icons {
 
   // Load in icon configurations
   static async loadIconConfigs() {
-    return fetch('data/iconConfigs.json')
-      .then((response) => response.json())
-      .then((j) => this._iconConfigs = j);
+    const response = await fetch('data/iconConfigs.json')
+    const j = await response.json();
+    this._iconConfigs = j;
   }
 
   // Retrieve the configuration for the specified icon name, if no config try basename otherwise return default

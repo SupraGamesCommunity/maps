@@ -30,7 +30,7 @@ TODO:
   Testing / debugging:
     Performance of loadMap (presumably due to nested functions on events and similar)
     notSaved works when all unmarked but after loading save and refresh they break
-  
+    notSaved on unmarked jumppad load not working
 
   Move filter up to onSaveEvent and pass up the parameter to save event
 
@@ -519,20 +519,18 @@ export class MapObject {
 
     const mapId = Settings.global.mapId;
 
-    return Promise.all([
-      fetch(`data/markers.${mapId}.json`),
-      fetch(`data/ytdata.${mapId}.json`),
-      fetch(`data/custom-markers.${mapId}.json`)
-    ]).then(res => Promise.all(res.map(r => r.json())))
-      .then((markersJsonArray) => {
+    const markersJsonArray = await Promise.all([
+      fetch(`data/markers.${mapId}.json`).then((r) => r.json()),
+      fetch(`data/ytdata.${mapId}.json`).then((r) => r.json()),
+      fetch(`data/custom-markers.${mapId}.json`).then((r) => r.json()),
+    ]);
 
-        // Create instances / merge details from the three marker files
-        for (const markersJson of markersJsonArray) {
-          for (const objectJson of markersJson) {
-            this.addObjectFromJson(objectJson);
-          }
-        }
-      });
+    // Create instances / merge details from the three marker files
+    for (const markersJson of markersJsonArray) {
+      for (const objectJson of markersJson) {
+        this.addObjectFromJson(objectJson);
+      }
+    }
   }
 
   // Called after loadObjects to add all the markers to the map
