@@ -212,17 +212,17 @@ export class MapObject {
   }
 
   // Creates and returns a marker.
-  createMarker(layerId, cicon) {
+  createMarker(map, layerId, cicon) {
     const mapLayer = MapLayer.get(layerId);
     if (!mapLayer?.isEnabled)
       return;
 
     const iconName = (cicon && (this.o.icon || cicon)) || mapLayer.config.defaultIcon;
-    const icon = Icons.get({ iconName: iconName, variant: this.o.variant, game: Settings.mapId }).addTo(MapLayer._map);
+    const icon = Icons.get({ iconName: iconName, variant: this.o.variant, game: Settings.mapId }).addTo(map);
     const options = { icon: icon, zIndexOffset: mapLayer.getZIndexOffset(), title: this.getTooltipText(), alt: this.alt, o: this.o, layerId: layerId }
 
     const marker = L.marker([this.o.lat, this.o.lng], options)
-      .addTo(mapLayer.id == '_map' ? MapLayer._map : mapLayer.layerObj)                 // Add to relevant mapLayer (or the group)
+      .addTo(mapLayer.id == '_map' ? map : mapLayer.layerObj)                 // Add to relevant mapLayer (or the group)
       .bindPopup('')
       .on('popupopen', this.onPopupOpen, this)  // We set popup text on demand 
       .on('mouseover', this.onMouseOver, this)  // We update tooltip text on demand
@@ -237,7 +237,7 @@ export class MapObject {
   }
 
   // Create 'no spoiler' marker if this class has one. Examples: Chests, Shop etc.
-  createGroupMarker() {
+  createGroupMarker(map) {
     let c = GameClasses.get(this.o.type);
 
     // I feel like this is a bit of a hack because it requires awareness of the layer names which
@@ -247,25 +247,25 @@ export class MapObject {
 
     // Group marker uses icon from layer it is on (ignores class/spawns/object icon)
     let marker;
-    if ((marker = this.createMarker(layerId))) {
+    if ((marker = this.createMarker(map, layerId))) {
       this.groupMarker = marker;
     }
   }
 
   // Create the primary marker for this class instance
-  createPrimeMarker() {
+  createPrimeMarker(map) {
     const c = GameClasses.get(this.o.type);
     const sc = GameClasses.get(this.o.spawns, null);
     const layerId = sc?.layer || c.layer;
     const icon = sc?.icon || c.icon;
     let marker;
-    if ((marker = this.createMarker(layerId, icon))) {
+    if ((marker = this.createMarker(map, layerId, icon))) {
       this.primeMarker = marker;
     }
   }
 
   // Add any lines to the map 
-  createLines() {
+  createLines(map) {
     const c = GameClasses.get(this.o.type);
     const o = this.o;
 
@@ -284,7 +284,7 @@ export class MapObject {
       this.lines = [];
       for (let endxy of endxys) {
         let line = L_arrowLine([o.lat, o.lng], [endxy.y, endxy.x], options);
-        line.addTo(mapLayer.id == '_map' ? MapLayer._map : mapLayer.layerObj);
+        line.addTo(mapLayer.id == '_map' ? map : mapLayer.layerObj);
 
         this.lines.push(line);
       }
@@ -292,7 +292,7 @@ export class MapObject {
   }
 
   // Initialise this MapObject by creating markers/lines and setting up for save loading
-  init() {
+  init(map) {
     // If subclass hasn't set default set it based on notsaved
     if (this._foundLockedState === undefined && this.o.notsaved) {
       this._foundLockedState = true;
@@ -308,8 +308,8 @@ export class MapObject {
       return;
     }
 
-    this.createGroupMarker();
-    this.createPrimeMarker();
+    this.createGroupMarker(map);
+    this.createPrimeMarker(map);
 
     // If we didn't create either marker then self-destruct
     if (!this.primeMarker && !this.groupMarker) {
@@ -317,7 +317,7 @@ export class MapObject {
       return;
     }
 
-    this.createLines();
+    this.createLines(map);
 
     this.addSaveListeners();
 
@@ -557,11 +557,11 @@ export class MapObject {
   }
 
   // Called after loadObjects to add all the markers to the map
-  static initObjects() {
+  static initObjects(map) {
 
     // Initialise all the objects we've constructed
     for (const mapObject of Object.values(this._mapObjects)) {   // Use values so object can release itself if required
-      mapObject.init();
+      mapObject.init(map);
     }
 
     // Allows popup to toggle found state

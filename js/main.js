@@ -200,7 +200,7 @@ function loadMap(mapParam) {
               subAction.extend({
                 options: { toolbarIcon: { html: 'Add', tooltip: 'Adds new pin to map' } },
                 addHooks: function () {
-                  MapPins.add({ activateLayer: true });
+                  MapPins.add(map, { activateLayer: true });
                   subAction.prototype.addHooks.call(this); // closes sub-action
                 }
               }),
@@ -326,9 +326,9 @@ function loadMap(mapParam) {
   }).addTo(map);
 
   MapObject.loadObjects().then(() => {
-    MapObject.initObjects();
+    MapObject.initObjects(map);
 
-    MapPins.restoreMapPins();
+    MapPins.restoreMapPins(map);
 
     layerControl.addTo(map); // triggers baselayerchange, so called in the end
 

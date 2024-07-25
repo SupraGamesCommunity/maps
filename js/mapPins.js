@@ -31,7 +31,7 @@ export class MapPins {
   };
 
   // Add a pin or update it if it already exists
-  static add(options) {
+  static add(map, options) {
     options = Object.assign({}, this._defaultOptions, options);
 
     const mapLayer = MapLayer.get(options.layerId);
@@ -41,7 +41,7 @@ export class MapPins {
 
     // Figure out index, position and type of pin
     const idx = options.idx || Object.keys(Settings.map.mapPins).length;
-    const pos = options.pos || Settings.map.mapPins[idx]?.pos || MapLayer._map.getCenter();
+    const pos = options.pos || Settings.map.mapPins[idx]?.pos || map.getCenter();
     const type = options.type || Settings.map.mapPins[idx]?.type;
 
     // Save / update pin in settings
@@ -63,7 +63,7 @@ export class MapPins {
           const idx = e.target.options.pinIdx;
           marker.setPopupContent(this.getPinTitle(idx));
           marker.openPopup();
-        }, this).addTo(mapLayer.id == '_map' ? MapLayer._map : mapLayer.layerObj);
+        }, this).addTo(mapLayer.id == '_map' ? map : mapLayer.layerObj);
 
       this._markers[alt] = marker;
     }
@@ -96,12 +96,12 @@ export class MapPins {
   }
 
   // Recreate all pins in storage and add them to the map
-  static restoreMapPins() {
+  static restoreMapPins(map) {
     this._clearMarkers();
     if (MapLayer.isEnabledFromId(this._defaultLayer)) {
       Settings.mapSetDefault('mapPins', {});
       for (const idx in Object.keys(Settings.map.mapPins)) {
-        this.add({ idx: idx, activateLayer: false });
+        this.add(map, { idx: idx, activateLayer: false });
       }
     }
   }
