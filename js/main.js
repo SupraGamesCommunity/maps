@@ -7,19 +7,11 @@ import { GameClasses } from './gameClasses.js';
 import { locStr } from './locStr.js';
 import { MapLayer } from './mapLayer.js';
 import { browser } from './utils.js';
-import { MapObject, mapObjectFound } from './mapObject.js';
+import { MapObject } from './mapObject.js';
 import { SaveFileSystem } from './saveFileSystem.js';
 import { MapPins } from './mapPins.js';
 import { MapParam } from './mapParam.js';
 import { L_Control_supraSearch } from './supraSearch.js';
-
-window.mapObjectFound = mapObjectFound;
-
-// Terminology,
-// Class - The type of object represented by marker. Based on UE4 classes/blueprints 
-// Layer - a toggleable set of data on the map (base map, overlays, groups of markers)
-//         Leaflet calls it a LayerGroup 
-// Marker - An individual icon displayed on the map with a specific position
 
 var map = null;         // Leaflet map object containing current game map and all its markers
 var mapId = '';         // Current map selected (one of sl, slc or siu)

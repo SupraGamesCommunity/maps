@@ -41,7 +41,7 @@ export class MapPins {
 
     // Figure out index, position and type of pin
     const idx = options.idx || Object.keys(Settings.map.mapPins).length;
-    const pos = options.pos || Settings.map.mapPins[idx]?.pos || MapLayer.map.getCenter();
+    const pos = options.pos || Settings.map.mapPins[idx]?.pos || MapLayer._map.getCenter();
     const type = options.type || Settings.map.mapPins[idx]?.type;
 
     // Save / update pin in settings
@@ -63,7 +63,7 @@ export class MapPins {
           const idx = e.target.options.pinIdx;
           marker.setPopupContent(this.getPinTitle(idx));
           marker.openPopup();
-        }, this).addTo(mapLayer.id == '_map' ? MapLayer.map : mapLayer.layerObj);
+        }, this).addTo(mapLayer.id == '_map' ? MapLayer._map : mapLayer.layerObj);
 
       this._markers[alt] = marker;
     }
@@ -90,7 +90,7 @@ export class MapPins {
   // Delete all our markers from the map
   static _clearMarkers() {
     for (const id in this._markers) {
-      this._markers[id].remove(MapLayer.map);
+      this._markers[id].remove();
     }
     this._markers = {};
   }

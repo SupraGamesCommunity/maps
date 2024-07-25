@@ -20,8 +20,6 @@ export class MapLayer {
 
   static _map;            // Leaflet Map
 
-  static get map() { return MapLayer._map; }
-
   // Instance constructor
   constructor(layerId, json) {
     this.id = layerId;               // Id for the layer
@@ -285,42 +283,3 @@ export class MapLayer {
     MapLayer._map = null;
   }
 }
-
-// **** listen for baselayerchange to trigger map change
-
-//    => on add we potentially need to deal with marking items found/unfound (or hide/unhide)
-
-// **** Should we create LayerControl here?
-/*
-
-    LayerControl
-        current map = create TileLayer add as baseLayer
-        other maps = create LayerGroup add as baseLayer
-        other layers = create LayerGroup add as overlay layer
-    
-    all overlay layers get added as search layers (but inactive have to be disabled again)
-
-    Markers get added / removed from layers to handle hide/unhide
-
-    baselayerchange event is how we handle map change -> reloadmap -> baselayerchange -> loadmap
-
-
-    For each enabled 'layer'
-        currrent map = create TileLayer and add as baseLayer to LayerControl
-        other maps = create LayerGroup and add as baseLayer to LayerControl
-        other layers = create LayerGroup and adds as overlay layer
-
-        all if active by default then enable
-            -> add to map
-
-    If layer has been created then it is enabled
-    if layer has been added to map then it is active
-
-    Enable layer => add to map
-    Disable layer => remove from map 
-        Both imply hide/unhide corresponding stuff on map (ie could be done via CSS)
-
-
-
-
-*/

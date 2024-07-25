@@ -13,59 +13,81 @@ import { SaveFileSystem } from './saveFileSystem.js';
 /*
 TODO:
 
-  General:
-    Change to using view area rather than zoom/center for map param
-    Fix coin chest icon not being visible over chest icon due to layer zDepths
-    Remove empty layers from layer control
-    Consider naming of class/js file (MapObject in mapObject.js) what should capitalisation be?
-    Handle build mode making icons draggable
-    Use awesome font for MapPins
-    Look at hide/unhide
-    Maintain viewed area as map contain/covering dialogs change
-    BuildMode Stuff
-      When in build mode popup produces editable stuff vs debug text
-    Implement hierarchical dialog and tracker like Joric's 3d one
-    Prevent multiple simultaneous calls to loadMap 
+General:
+  Fix coin chest icon not being visible over chest icon due to layer zDepths
+  Remove empty layers from layer control
+  Consider naming of class/js file (MapObject in mapObject.js) what should capitalisation be?
+  Prevent multiple simultaneous calls to loadMap
+  Debug mode toggleable
 
-  Testing / debugging:
-    Performance of loadMap (presumably due to nested functions on events and similar)
-    notSaved works when all unmarked but after loading save and refresh they break
-    notSaved on unmarked jumppad load not working
+  BuildMode Stuff
+    When in build mode popup produces editable stuff vs debug text
+  Implement hierarchical dialog and tracker like Joric's 3d one
+  Handle build mode making icons draggable
+  Use awesome font for MapPins
+  Maintain viewed area as map contain/covering dialogs change
 
-  Move filter up to onSaveEvent and pass up the parameter to save event
+  Review whether search should need hide/unhide - look at how other similar searches work
 
-  Refactor:
+  Look at map image naming on extraction and general naming in scripts - make unique
+    (blueprint file extraction -> temp directory)
+  Deal with FT: reverse sense? Make it more meaningful
 
-    Remame settings mapId underlying variable as it is hidden by getter/setter
- 
-    in Search Only enable one of the two layers a MapObject is on (prime first, then group)
-    in search check for found with more reliable method in _createTip
-    in Search save search text whenever we collapse?
 
-    Refactor L.Map creation
-    Add an unloadMap function that reverses side effects of LoadMap and call from reloadmap/baselayerchange
+Testing / debugging:
+  notSaved works when all unmarked but after loading save and refresh they break
+  notSaved on unmarked jumppad load not working
 
-    Review how we access static/dynamic members with this. vs Class.
-    Remove/comment out usused functions
-      Play with Chrome's devtool based code coverage tool
-    Review where to get map and mapid and make it consistent everywhere
-      map - MapLayer.map or L.Map or ?
-      mapId - Settings.mapId or L.Map.mapId or L.Map.options.mapId or ? or MapLayer.mapId
-  
-    BuildMode (handle setlatlng and any other interface stuff)
+  Performance of loadMap (presumably due to nested functions on events and similar)
 
-    Move saveload settings handling from SaveFileSystem to MapObject
-    Reiew relationship between toggleFound/SetFound and SaveFileSystem event
+Refactor:
 
-    Add version control to Settings
+  Refactor L.Map creation
+
+  Move getViewURL to MapParam?
 
   Get map and mapId from properties of MapLayer
     MapLayer creates map and updates Settings.mapId
 
-    
+  Review where to get map and mapid and make it consistent everywhere
+    map - MapLayer._map or L.Map or ?
+    mapId - Settings.mapId or L.Map.mapId or L.Map.options.mapId or ? or MapLayer._mapId
 
+    Remame settings mapId underlying variable as it is hidden by getter/setter
 
+  SaveLoad
+    Move filter up to onSaveEvent and pass up the parameter to save event
+    Move saveload settings handling from SaveFileSystem to MapObject
+    Review relationship between toggleFound/SetFound and SaveFileSystem event
 
+  in Search Only enable one of the two layers a MapObject is on (prime first, then group)
+  in search check for found with more reliable method in _createTip
+  in Search save search text whenever we collapse?
+
+  Review what needs to be in unloadMap (and sub-release / unload functions)
+
+  Review how we access static/dynamic members with this. vs Class.
+    Always use this in functions (watch out for static vars from instance members and set lines)
+
+  Remove/comment out usused functions
+    Play with Chrome's devtool based code coverage tool
+
+  BuildMode (handle setlatlng and any other interface stuff)
+
+  Add version control to Settings
+
+  window.mapObjectFound for the MapObject popup dialog
+
+  deal with initial zoom level, min/max zoom etc also 
+
+  UI
+    Popup - how should this work to be simpler to write and customise?
+    Generally creating different types of UI dialog
+
+  Review what coordinates we're using / transforming and codize:
+    {xy} <-> [latlng]
+    {latlng} <-> [latlng]
+    lbounds <-> [latlng]
 
 */
 
@@ -196,11 +218,11 @@ export class MapObject {
       return;
 
     const iconName = (cicon && (this.o.icon || cicon)) || mapLayer.config.defaultIcon;
-    const icon = Icons.get({ iconName: iconName, variant: this.o.variant, game: Settings.mapId }).addTo(MapLayer.map);
+    const icon = Icons.get({ iconName: iconName, variant: this.o.variant, game: Settings.mapId }).addTo(MapLayer._map);
     const options = { icon: icon, zIndexOffset: mapLayer.getZIndexOffset(), title: this.getTooltipText(), alt: this.alt, o: this.o, layerId: layerId }
 
     const marker = L.marker([this.o.lat, this.o.lng], options)
-      .addTo(mapLayer.id == '_map' ? MapLayer.map : mapLayer.layerObj)                 // Add to relevant mapLayer (or the group)
+      .addTo(mapLayer.id == '_map' ? MapLayer._map : mapLayer.layerObj)                 // Add to relevant mapLayer (or the group)
       .bindPopup('')
       .on('popupopen', this.onPopupOpen, this)  // We set popup text on demand 
       .on('mouseover', this.onMouseOver, this)  // We update tooltip text on demand
@@ -262,7 +284,7 @@ export class MapObject {
       this.lines = [];
       for (let endxy of endxys) {
         let line = L_arrowLine([o.lat, o.lng], [endxy.y, endxy.x], options);
-        line.addTo(mapLayer.id == '_map' ? MapLayer.map : mapLayer.layerObj);
+        line.addTo(mapLayer.id == '_map' ? MapLayer._map : mapLayer.layerObj);
 
         this.lines.push(line);
       }
@@ -536,10 +558,14 @@ export class MapObject {
 
   // Called after loadObjects to add all the markers to the map
   static initObjects() {
+
     // Initialise all the objects we've constructed
     for (const mapObject of Object.values(this._mapObjects)) {   // Use values so object can release itself if required
       mapObject.init();
     }
+
+    // Allows popup to toggle found state
+    window.mapObjectFound = mapObjectFound;
 
     // Triggers save load events from any save data in settings
     SaveFileSystem.LoadSettings();

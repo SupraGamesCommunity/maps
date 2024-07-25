@@ -61,7 +61,7 @@ export const L_MapIcon = L.Icon.extend({
     return this;
   },
 
-  // Called to u-date scale, applies rescaled config to options and stores new scale
+  // Called to update scale, applies rescaled config to options and stores new scale
   // Applies rescale to CSS if required
   _resize: function (map) {
     const scale = (map && map.getPixelResizeScale() || 1) * this.options.baseScale;
