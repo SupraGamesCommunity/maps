@@ -15,7 +15,6 @@ function boundsMin(b1, b2) {
   return [{ x: Math.max(b1[0].x, b2[0].x), y: Math.max(b1[0].y, b2[0].y) }, { x: Math.min(b1[1].x, b2[1].x), y: Math.max(b1[1].y, b2[1].y) }];
 }
 
-
 export class MapLayer {
   static _layers;         // Map from layer id to layer instance
 
@@ -177,7 +176,7 @@ export class MapLayer {
   // Retrieve the map layer from the object
   static get(layerId) {
     if (layerId == '_map') {
-      layerId = Settings.global.mapId;
+      layerId = Settings.mapId;
     }
     return MapLayer._layers[layerId];
   }
@@ -185,7 +184,7 @@ export class MapLayer {
   // Retrieve the Leaflet layer object for the specified id
   static getLayerObj(layerId) {
     if (layerId == '_map') {
-      layerId = Settings.global.mapId;
+      layerId = Settings.mapId;
     }
     return MapLayer._layers[layerId].layerObj;
   }

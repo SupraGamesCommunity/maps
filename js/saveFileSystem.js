@@ -142,7 +142,7 @@ export class SaveFileSystem {
       if (!o.type || !o.name || o.name == 'None' || o.name == 'EOF'
         || (o.type == 'ObjectPropetty')   // Only player music uses this so skip it
         || (o.type == 'ArrayProperty' && o.value.innerType && o.value.innerType == 'StructProperty')
-        || (o.type == 'MapProperty' && (Settings.global.mapId != 'siu' || o.name != 'ActorSaveData'))) {
+        || (o.type == 'MapProperty' && (Settings.mapId != 'siu' || o.name != 'ActorSaveData'))) {
         continue;
       }
 

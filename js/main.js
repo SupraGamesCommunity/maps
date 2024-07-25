@@ -109,10 +109,10 @@ function exportBuildChanges() {
 function loadMap(mapParam) {
   Settings.globalSetDefault('mapId', 'sl');
   if ('mapId' in mapParam) {
-    Settings.global.mapId = mapParam.mapId;
+    Settings.mapId = mapParam.mapId;
     Settings.commit();
   }
-  mapId = Settings.global.mapId;
+  mapId = Settings.mapId;
 
   const mapLayer = MapLayer.get(mapId);
 

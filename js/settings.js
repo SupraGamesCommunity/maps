@@ -45,7 +45,7 @@ export class Settings {
     this._localData = Object.assign(Settings._localData, JSON.parse(localStorage.getItem(Settings._localDataName)));
 
     Settings._global = Settings._localData;
-    Settings._map = Settings._localData.maps[Settings.global.mapId];
+    Settings._map = Settings._localData.maps[Settings.mapId];
   }
 
   // Get/Set current map (ie what map settings are associated with)
@@ -88,7 +88,7 @@ export class Settings {
       }
     }
     else {
-      Settings._global.maps[Settings.global.mapId] = Object.assign({}, Settings._mapDefaults);
+      Settings._global.maps[Settings.mapId] = Object.assign({}, Settings._mapDefaults);
     }
   }
 

@@ -49,7 +49,7 @@ TODO:
       Play with Chrome's devtool based code coverage tool
     Review where to get map and mapid and make it consistent everywhere
       map - MapLayer.map or L.Map or ?
-      mapId - Settings.global.mapId or L.Map.mapId or L.Map.options.mapId or ? or MapLayer.mapId
+      mapId - Settings.mapId or L.Map.mapId or L.Map.options.mapId or ? or MapLayer.mapId
   
     BuildMode (handle setlatlng and any other interface stuff)
 
@@ -153,7 +153,7 @@ export class MapObject {
   // Retrieves unique mouser over text for this map object depending on friendly mode (or dev mode) 
   // Includes a name, what it spawns, 
   getTooltipText() {
-    const mapId = Settings.global.mapId;
+    const mapId = Settings.mapId;
     const friendly = !Settings.global.buildMode;
     const o = this.o;
 
@@ -196,7 +196,7 @@ export class MapObject {
       return;
 
     const iconName = (cicon && (this.o.icon || cicon)) || mapLayer.config.defaultIcon;
-    const icon = Icons.get({ iconName: iconName, variant: this.o.variant, game: Settings.global.mapId }).addTo(MapLayer.map);
+    const icon = Icons.get({ iconName: iconName, variant: this.o.variant, game: Settings.mapId }).addTo(MapLayer.map);
     const options = { icon: icon, zIndexOffset: mapLayer.getZIndexOffset(), title: this.getTooltipText(), alt: this.alt, o: this.o, layerId: layerId }
 
     const marker = L.marker([this.o.lat, this.o.lng], options)
@@ -402,7 +402,7 @@ export class MapObject {
   // Called just before the popup dialog for this marker is displayed
   onPopupOpen(e) {
     const o = this.o;
-    const mapId = Settings.global.mapId;
+    const mapId = Settings.mapId;
 
     buildMode.marker = this;
     buildMode.object = o;
@@ -518,7 +518,7 @@ export class MapObject {
   static async loadObjects() {
     this.resetAll();
 
-    const mapId = Settings.global.mapId;
+    const mapId = Settings.mapId;
 
     const markersJsonArray = await Promise.all([
       fetch(`data/markers.${mapId}.json`).then((r) => r.json()),
