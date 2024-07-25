@@ -105,6 +105,15 @@ function exportBuildChanges() {
   skipConfirms || alert('Build mode changes have been placed on the clipboard.');
 }
 
+function unloadMap(){
+  MapLayer.resetLayers();
+  MapObject.resetAll();
+  browser.clearLocationHash();
+  map.off();
+  map.remove();
+  map = null;
+}
+
 // Called when Window loads and when base map changes, loads currently select mapId
 function loadMap(mapParam) {
   Settings.globalSetDefault('mapId', 'sl');
@@ -151,12 +160,7 @@ function loadMap(mapParam) {
   });
 
   map.on('baselayerchange', function (e) {
-    MapLayer.resetLayers();
-    MapObject.resetAll();
-    map.off();
-    map.remove();
-    map = null;
-
+    unloadMap();
     loadMap(new MapParam({ mapId: e.layer.options.layerId }));
   });
 
@@ -353,12 +357,7 @@ window.onhashchange = function () {   // (e)
   const mapParam = new MapParam(browser.getHashAndClear());
 
   if (mapParam.mapId && mapParam.mapId != mapId) {
-    MapLayer.resetLayers();
-    MapObject.resetAll();
-    browser.clearLocationHash();
-    map.off();
-    map.remove();
-    map = null;
+    unloadMap();
 
     loadMap(mapParam);
   }

@@ -31,15 +31,16 @@ TODO:
     Performance of loadMap (presumably due to nested functions on events and similar)
     notSaved works when all unmarked but after loading save and refresh they break
     notSaved on unmarked jumppad load not working
-    active layers retained when switching maps
 
   Move filter up to onSaveEvent and pass up the parameter to save event
 
   Refactor:
 
+    Remame settings mapId underlying variable as it is hidden by getter/setter
+ 
     in Search Only enable one of the two layers a MapObject is on (prime first, then group)
     in search check for found with more reliable method in _createTip
-    in Search save search text whenever we collapse
+    in Search save search text whenever we collapse?
 
     Refactor L.Map creation
     Add an unloadMap function that reverses side effects of LoadMap and call from reloadmap/baselayerchange
@@ -57,7 +58,6 @@ TODO:
     Reiew relationship between toggleFound/SetFound and SaveFileSystem event
 
     Add version control to Settings
-
 
   Get map and mapId from properties of MapLayer
     MapLayer creates map and updates Settings.mapId
