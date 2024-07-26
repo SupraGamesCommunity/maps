@@ -10,68 +10,6 @@ import { GameClasses } from './gameClasses.js';
 import { MapLayer } from './mapLayer.js';
 import { SaveFileSystem } from './saveFileSystem.js';
 
-/*
-TODO:
-
-General:
-  Fix coin chest icon not being visible over chest icon due to layer zDepths
-  Remove empty layers from layer control
-  Debug mode toggleable
-
-  BuildMode Stuff
-    When in build mode popup produces editable stuff vs debug text
-
-  Implement hierarchical dialog and tracker like Joric's 3d one
-  Handle build mode making icons draggable
-  Use awesome font for MapPins
-  Maintain viewed area as map contain/covering dialogs change
-
-  Review whether search should need hide/unhide - look at how other similar searches work
-
-  Look at map image naming on extraction and general naming in scripts - make unique
-    (blueprint file extraction -> temp directory)
-  Deal with FT: reverse sense? Make it more meaningful
-  Can we get rid of jquery?
-
-
-Testing / debugging:
-  notSaved works when all unmarked but after loading save and refresh they break
-  notSaved on unmarked jumppad load not working
-
-  Performance of loadMap (presumably due to nested functions on events and similar)
-
-Refactor:
-
-  Remove/comment out usused functions
-
-  BuildMode
-    handle setlatlng and any other interface stuff
-    Check it still works
-    Refactor and move into separate module
-
-  Add version control to Settings
-
-  deal with initial zoom level, min/max zoom etc and maintaining bounds when changing container size
-
-  Could we move keyboard controls to map events?
-
-  UI
-    Popup - how should this work to be simpler to write and customise?
-    Generally creating different types of UI dialog
-
-  Review what coordinates we're using / transforming and codize:
-    {xy} <-> [latlng]
-    {latlng} <-> [latlng]
-    lbounds <-> [latlng]
-
-  Change primemarker/groupmarker so only one is attached to map at a time
-    Have mechanism to toggle all it applies to?
-    Figure out what 'sets' we actually have (all on one layer already?)
-    Could we use a layer group
-
-
-*/
-
 //=================================================================================================
 // MapObject class
 //
