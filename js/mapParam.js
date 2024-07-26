@@ -13,12 +13,7 @@ export class MapParam {
       }  
     }
 
-    if (mp.mapId) {
-      this.mapId = mp.mapId;
-    }
-    else if (mp.mapid) {
-      this.mapId = mp.mapid;
-    }
+    this.mapId = mp.mapId || mp.mapid;
 
     if ('n' in mp && 's' in mp && 'e' in mp && 'w' in mp) {
       [this.n, this.w, this.s, this.e] = [mp.n, mp.w, mp.s, mp.e];

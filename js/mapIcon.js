@@ -78,7 +78,7 @@ export const L_MapIcon = L.Icon.extend({
 
     if (rescaleCss) {
       // Apply scale to icon CSS
-      $(`#map .${this.options.className}`).css({
+      $(`#${map._container.id} .${this.options.className}`).css({
         'width': `${this.options.iconSize[0]}px`, 'height': `${this.options.iconSize[1]}px`,
         'margin-left': `${-this.options.iconAnchor[0]}px`, 'margin-top': `${-this.options.iconAnchor[1]}px`
       });

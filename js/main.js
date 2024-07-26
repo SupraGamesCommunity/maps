@@ -1,22 +1,22 @@
 /*eslint strict: ["error", "global"]*/
 /*global L */
 
+import { browser } from './utils.js';
 import { Settings } from './settings.js';
+import { locStr } from './locStr.js';
+import { SaveFileSystem } from './saveFileSystem.js';
+import { MapParam } from './mapParam.js';
 import { Icons } from './icons.js';
 import { GameClasses } from './gameClasses.js';
-import { locStr } from './locStr.js';
 import { MapLayer } from './mapLayer.js';
-import { browser } from './utils.js';
 import { MapObject } from './mapObject.js';
-import { SaveFileSystem } from './saveFileSystem.js';
 import { MapPins } from './mapPins.js';
-import { MapParam } from './mapParam.js';
 import { L_Control_supraSearch } from './supraSearch.js';
+import { L_supraMap } from './supraMap.js';
 
 const skipConfirms = browser.isCode;
 
 let map = null;         // Leaflet map object containing current game map and all its markers
-let mapId = null;       // Current map selected (one of sl, slc or siu)
 let searchControl;      // Leaflet control for searching
 
 export const buildMode = {
@@ -94,65 +94,9 @@ async function loadMap(mapParam) {
     map.off();
     map.remove();
     map = null;
-    mapId = null;
   }
 
-  Settings.globalSetDefault('mapId', 'sl');
-  if ('mapId' in mapParam) {
-    Settings.mapId = mapParam.mapId;
-    Settings.commit();
-  }
-  mapId = Settings.mapId;
-
-  const mapLayer = MapLayer.get(mapId);
-
-  document.querySelector('#map').style.backgroundColor = mapLayer.config.backgroundColor;
-
-  const mapScale = mapLayer.config.mapRes / mapLayer.config.mapSize;
-  const tileMaxSet = 4;
-  const mapMinResolution = Math.pow(2, tileMaxSet);
-
-  // Create a coordinate system for the map
-  var crs = L.CRS.Simple;
-  crs.transformation = new L.Transformation(mapScale, -mapLayer.mapLatLngBounds[0][1] * mapScale, mapScale, -mapLayer.mapLatLngBounds[0][0] * mapScale);
-  crs.scale = function (zoom) { return Math.pow(2, zoom) / mapMinResolution; };
-  crs.zoom = function (scale) { return Math.log(scale * mapMinResolution) / Math.LN2; };
-
-  // Create the base map
-  map = new L.Map('map', {
-    crs: crs,
-    fadeAnimation: true,
-    minZoom: 1,
-    maxZoom: 8,
-    zoomDelta: 0.5,
-    zoomSnap: 0.125,
-    maxBounds: L.latLngBounds(mapLayer.viewLatLngBounds).pad(0.25), // elastic-y bounds + elastic-x bounds
-    zoomControl: false,
-    doubleClickZoom: true,
-  });
-  map.mapId = mapId;
-  // redraw paths on dragging (sets % of padding around viewport, may be performance issue)
-  map.getRenderer(map).options.padding = 1;
-
-  map.on('moveend zoomend', function () {     // (e)
-    const b = map.getBounds();
-    Settings.map.bounds = [[Math.round(b.getNorth()), Math.round(b.getWest())], [Math.round(b.getSouth()), Math.round(b.getEast())]]
-    Settings.commit();
-  });
-
-  map.on('baselayerchange', function (e) {
-    if (mapId != e.layer.options.layerId) {
-      loadMap(new MapParam({ mapId: e.layer.options.layerId }));
-    }
-  });
-
-  Settings.mapSetDefault('bounds', mapLayer.viewLatLngBounds);
-  if (mapParam.hasView()) {
-    map.setView(mapParam.getCenter(map.getCenter()), mapParam.getZoom(map.getZoom()));
-  }
-  else {
-    map.fitBounds(mapParam.getBounds(Settings.map.bounds));
-  }
+  map = L_supraMap(mapParam);
 
   // Add zoom, fullscreen toggle and mousePosition controls to the map
   L.control.zoom({ position: 'bottomright' }).addTo(map);
@@ -176,6 +120,12 @@ async function loadMap(mapParam) {
     }
   });
   layerControl.addTo(map); // triggers baselayerchange which will be ignored
+
+  map.on('baselayerchange', function (e) {
+    if (map.mapId != e.layer.options.layerId) {
+      loadMap(new MapParam({ mapId: e.layer.options.layerId }));
+    }
+  });
 
   // Add the tool bars to the map
   let subAction = L.Toolbar2.Action.extend({
@@ -280,7 +230,7 @@ async function loadMap(mapParam) {
                 addHooks: function () {
                   if (Object.keys(Settings.map.markedItems).length == 0 ||
                     skipConfirms || confirm("Are you sure you want to overwrite existing items marked found?")) {
-                    SaveFileSystem.loadFileDialog(mapId);
+                    SaveFileSystem.loadFileDialog(map.mapId);
                   }
                   subAction.prototype.addHooks.call(this);
                 }
@@ -288,7 +238,7 @@ async function loadMap(mapParam) {
               subAction.extend({
                 options: { toolbarIcon: { html: 'Copy File Path', tooltip: 'Copy default Windows game save file path to the Clipboard' } },
                 addHooks: function () {
-                  browser.copyTextToClipboard('%LocalAppData%\\Supraland' + (mapId == 'siu' ? 'SIU' : '') + '\\Saved\\SaveGames');
+                  browser.copyTextToClipboard('%LocalAppData%\\Supraland' + (map.mapId == 'siu' ? 'SIU' : '') + '\\Saved\\SaveGames');
                   subAction.prototype.addHooks.call(this);
                 }
               }),
@@ -340,7 +290,7 @@ function reloadMap(id) {
 window.onhashchange = function () {   // (e)
   const mapParam = new MapParam(browser.getHashAndClear());
 
-  if (mapParam.mapId && mapParam.mapId != mapId) {
+  if (mapParam.mapId && mapParam.mapId != map.mapId) {
     loadMap(mapParam);
   }
   else if (mapParam.hasView()) {
@@ -364,18 +314,17 @@ window.onload = async function () {    // (event)
   // Load map based on hash parameters and clear it
   loadMap(new MapParam(browser.getHashAndClear()));
 
-  // Keys mappings for pan and zoom map controls
-  let bindings = {
-    KeyA: ['x', +1], KeyD: ['x', -1],
-    KeyW: ['y', +1], KeyS: ['y', -1],
-    KeyT: ['z', +1], KeyG: ['z', -1],
-  };
-
   // Keys currently pressed [code]=true
   let pressed = {};
 
   // Called every browser animation timestep following call to requestAnimationFrame
   function update() { // (timestep)
+    // Keys mappings for pan and zoom map controls
+    const bindings = {
+      KeyA: ['x', +1], KeyD: ['x', -1],
+      KeyW: ['y', +1], KeyS: ['y', -1],
+      //KeyT: ['z', +1], KeyG: ['z', -1],   // Could be used for zoom
+    };
     let step = 100;
     let v = {};
     for (let key of Object.keys(bindings)) {
@@ -389,7 +338,7 @@ window.onload = async function () {    // (event)
     window.requestAnimationFrame(update);
   }
 
-  document.querySelector('#map').addEventListener('blur', function () {  // (e)
+  document.querySelector('#'+map._container.id).addEventListener('blur', function () {  // (e)
     pressed = {}; // prevent sticky keys
   });
 
@@ -421,9 +370,9 @@ window.onload = async function () {    // (event)
       case 'KeyR':
         if (!e.ctrlKey && !e.altKey) {
           const playerPos = MapObject.get('PlayerPosition');
-          map.flyTo(playerPos ? [playerPos.o.lat, playerPos.o.lng] : MapLayer._layers[mapId].viewCenterLngLat);
+          map.flyTo(playerPos ? [playerPos.o.lat, playerPos.o.lng] : MapLayer._layers[map.mapId].viewCenterLngLat);
         } else if (e.altKey) {
-          SaveFileSystem.loadFileDialog(mapId);
+          SaveFileSystem.loadFileDialog(map.mapId);
         }
         break;
       case 'Digit1': reloadMap('sl'); break;
