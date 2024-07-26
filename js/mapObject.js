@@ -144,12 +144,8 @@ export class MapObject {
       .bindPopup('')
       .on('popupopen', this.onPopupOpen, this)  // We set popup text on demand 
       .on('mouseover', this.onMouseOver, this)  // We update tooltip text on demand
-      .on('add', this.onAdd, this);             // We may need to resize icons when they're layer is displayed
-
-    // If 'found' isn't locked then context menu toggles found
-    if (this._foundLockedState === undefined) {
-      marker.on('contextmenu', this.onContextMenu, this);
-    }
+      .on('add', this.onAdd, this)              // We may need to resize icons when they're layer is displayed
+      .on('contextmenu', this.onContextMenu, this);
 
     return marker;
   }
@@ -329,8 +325,11 @@ export class MapObject {
 
   // Called when the user left clicks on the marker for this map object
   onContextMenu(e) {
-    this.toggleFound();
-    e.target.closePopup();
+    // If 'found' isn't locked then context menu toggles found
+    if (this._foundLockedState === undefined) {
+        this.toggleFound();
+        e.target.closePopup();
+      }
   }
 
   // Called before tooltip is displayed
@@ -467,7 +466,7 @@ export class MapObject {
       }
     }
     else {
-      console.log("Warning: Marker JSON entry area:name must both be specified in all markers*.json")
+        ("Warning: Marker JSON entry area:name must both be specified in all markers*.json")
     }
   }
 
