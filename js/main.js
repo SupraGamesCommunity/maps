@@ -84,7 +84,7 @@ function exportBuildChanges() {
 //=================================================================================================
 // setupKeyControls
 
-function setupKeyControls(searchControl){
+function setupKeyControls(map, searchControl){
   // Keys currently pressed [code]=true
   let pressed = {};
 
@@ -109,22 +109,22 @@ function setupKeyControls(searchControl){
     window.requestAnimationFrame(update);
   }
 
-  document.querySelector('#'+map._container.id).addEventListener('blur', function () {  // (e)
+  map.on('blur', function () {  // (e)
     pressed = {}; // prevent sticky keys
   });
 
   // When a key goes up remove it from the list 
-  window.addEventListener('keyup', (e) => {
-    delete pressed[e.code];
+  map.on('keyup', (e) => {
+    delete pressed[e.originalEvent.code];
   });
 
-  window.addEventListener("keydown", function (e) {
-    if (e.target.id.startsWith('searchtext') || Settings.global.buildMode) {
+  map.on('keydown', function (e) {
+    if (e.originalEvent.target.id.startsWith('searchtext') || Settings.global.buildMode) {
       return;
     }
 
-    pressed[e.code] = true;
-    switch (e.code) {
+    pressed[e.originalEvent.code] = true;
+    switch (e.originalEvent.code) {
       case 'KeyF':        // F (no ctrl) to toggle fullscreen
         if (e.ctrlKey) {
           searchControl.expand(true);
@@ -151,7 +151,7 @@ function setupKeyControls(searchControl){
       case 'KeyT': map.zoomIn(1); break;
       case 'KeyG': map.zoomOut(1); break;
     }
-  });
+  }, this);
 
   window.requestAnimationFrame(update);
 }
@@ -370,7 +370,7 @@ async function loadMap(mapParam) {
 
 
   // Setup keyboard controls
-  setupKeyControls(searchControl);
+  setupKeyControls(map, searchControl);
 
 
   // Done loading so ok to switch maps
