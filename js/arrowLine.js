@@ -44,7 +44,7 @@ export const L_ArrowLine = L.Polygon.extend({
       this.options = Object.assign({}, this.options, cssOpts);
     }
     
-    L.Util.setOptions(this, options);
+    L.setOptions(this, options);
 
     this._startLatLng = start;
     this._endLatLng = end;
@@ -68,7 +68,7 @@ export const L_ArrowLine = L.Polygon.extend({
   },
 
   setStyle: function (style) {
-    L.Util.setOptions(this, style);
+    L.setOptions(this, style);
     this.redraw();
   },
 

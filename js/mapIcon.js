@@ -24,7 +24,7 @@ export const L_MapIcon = L.Icon.extend({
 
   // Pass on the options as passed in and apply scaled config
   initialize: function (options) {
-    L.Util.setOptions(this, options);
+    L.setOptions(this, options);
 
     this._iconScale = 1;            // Current scale embodied by options
     this._iconRefresh = false;      // Do we need to refresh CSS for icons?

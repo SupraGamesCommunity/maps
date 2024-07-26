@@ -21,17 +21,16 @@ import { MapObject } from './mapObject.js';
 const _super = L.Control.Search.prototype;
 
 L.Control.SupraSearch = L.Control.Search.extend({
-  myDefaults: {
+  options: {
     marker: false,          // no red circle
     initial: false,         // search any substring
     tipAutoSubmit: false,   // auto map panTo when click on tooltip
     textPlaceholder: 'Search (Enter to save search phrase)'
   },
 
-
   // Slightly changes default options plus creates a LayerGroup containing a filtered version of 'our' layers
   initialize: function (options) {
-    options = Object.assign({}, this.myDefaults, options);
+    L.setOptions(this, options);
 
     _super.initialize.call(this, options);
   },
