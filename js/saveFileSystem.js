@@ -48,16 +48,16 @@ export class SaveFileSystem {
     }
   }
 
-  // Returns true if _fire would call a handler
+  // Returns true if there is a listener and filter passes
   static _testFire(id, filter) {
     const listener = this._listeners[id];
-    return listener && (!filter || !listener.flt || listener.flt == filter);
+    return listener && (listener.flt === undefined || listener.flt == filter);
   }
 
   // Call all functions listening for event
-  static _fire(id, data, filter) {
+  static _fire(id, data) {
     const listener = this._listeners[id];
-    if (listener && (!filter || !listener.flt || listener.flt == filter)) {
+    if (listener) {
       listener.fn.call(listener.ctx, id, data);
     };
   }
@@ -129,9 +129,9 @@ export class SaveFileSystem {
 
     this.ClearAll();
 
-    const addToSaveData = (area, name, data = true) => {
+    const addToSaveData = (area, name, filter, data = true) => {
       const id = MapObject.makeAlt(area, name);
-      if (this._testFire(id)) {
+      if (this._testFire(id, filter)) {
         Settings.map.saveData[id] = data;
       }
     }
@@ -150,7 +150,7 @@ export class SaveFileSystem {
         const re_match = new RegExp('([^.:]*):PersistentLevel.([^\\0]*?pipecap[^\\0]*)', 'gi');
         let m;
         while ((m = re_match.exec(actorSaveData)) != null) {
-          addToSaveData(m[1], m[2]);
+          addToSaveData(m[1], m[2], o.name);
         }
       }
       else if (o.type == 'ArrayProperty') {  // One of 'ThingsToRemove', 'ThingsToActivate', 'ThingsToOpenForever'
@@ -160,12 +160,12 @@ export class SaveFileSystem {
           let name = x.split(".").pop();
           if (name != 'None') {
             name = name.charAt(0).toUpperCase() + name.slice(1);  // Shell2_1957 appears as shell2_1957 in the save file
-            addToSaveData(area, name);
+            addToSaveData(area, name, o.name);
           }
         }
       }
       else {    // Mostly Player upgrade and other properties
-        addToSaveData('', o.name, o.value);
+        addToSaveData('', o.name, null, o.value);
       }
     }
 
