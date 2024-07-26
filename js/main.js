@@ -18,7 +18,6 @@ const skipConfirms = browser.isCode;
 
 let map = null;         // Leaflet map object containing current game map and all its markers
 
-
 //=================================================================================================
 // BuildMode hanlding
 
@@ -54,7 +53,7 @@ function commitCurrentBuildModeChanges() {
   let newLat = buildMode.object.lat;
   let newLng = buildMode.object.lng;
 
-  buildMode.marker.setLatLng(new L.LatLng(newLat, newLng)).update();
+  buildMode.marker.setLatLng(new L.LatLng(newLat, newLng));
   buildMode.objectChanges = [];
   map.closePopup();
 }

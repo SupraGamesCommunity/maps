@@ -42,10 +42,6 @@ Testing / debugging:
 
 Refactor:
 
-  in Search Only enable one of the two layers a MapObject is on (prime first, then group)
-  in search check for found with more reliable method in _createTip
-  in Search save search text whenever we collapse?
-
   Remove/comment out usused functions
 
   BuildMode
@@ -403,6 +399,18 @@ export class MapObject {
     if (this.primeMarker?._icon) {
       this.primeMarker._icon.title = title;
     }
+  }
+
+  setLatLng(latLng){
+    [this.o.lat, this.o.lng] = [latLng.lat, latLng.lng];
+
+    if (this.groupMarker?._icon) {
+      this.groupMarker.setLatLng(latLng).update();
+    }
+    if (this.primeMarker?._icon) {
+      this.primeMarker.setLatLng(latLng).update();
+    }
+    return this;
   }
 
   // Called just before the popup dialog for this marker is displayed
