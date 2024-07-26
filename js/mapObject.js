@@ -202,7 +202,8 @@ export class MapObject {
       this.lines = [];
       for (let endxy of endxys) {
         let line = L_arrowLine([o.lat, o.lng], [endxy.y, endxy.x], options);
-        line.addTo(mapLayer.id == '_map' ? map : mapLayer.layerObj);
+        line.addTo(mapLayer.id == '_map' ? map : mapLayer.layerObj)
+          .on('add', this.onAdd, this);             // We may need to resize icons when they're layer is displayed
 
         this.lines.push(line);
       }
@@ -239,6 +240,10 @@ export class MapObject {
 
     this.addSaveListeners();
 
+    if(this._foundLockedState){
+      this.markFound(true);
+    }
+
     return this;
   }
 
@@ -246,7 +251,7 @@ export class MapObject {
   // This default behaviour can be cancelled by setting _saveFileId to null
   // _saveFileId, _filter and _defaultSaveData may be set by subclasses 
   addSaveListeners() {
-    if (this._saveFileId !== null) {
+    if (this._saveFileId !== null && this._foundLockedState === undefined) {
       SaveFileSystem.setListener(this._saveFileId || this.alt, this.onSaveEvent, this, this._saveFilter, this._defaultSaveData);
     }
   }
@@ -679,6 +684,10 @@ class MapJumppad extends MapObject {
 
   // Overloading of markFound to handle special line behaviour
   markFound(found) {
+    if(found == undefined){
+      found = this.isFound();
+    }
+
     const o = this.o;
     let lineFound;
     if ('other_pad' in o) {

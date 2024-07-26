@@ -73,6 +73,18 @@ export const browser = {
 
   // Copy the specified text to the system clip board.
   copyTextToClipboard: function (text) {
+    try {
+      navigator.clipboard.writeText(text).catch(
+        () => {
+           browser.fallbackCopyTextToClipboard(text);
+          }
+        );
+    }
+    catch(error){   // eslint-disable-line no-unused-vars
+      browser.fallbackCopyTextToClipboard(text);
+    }
+/*  // Firefox doesn't support this permissions query so it's easier just to try the writeText and fallback if it fails
+    // THis is how you query permissoions in theory but given we have to catch anyway there seems no point
     if (navigator.clipboard && navigator.permissions) {
       navigator.permissions.query({ name: 'clipboard-write' }).then((ps) => {
         if (ps.state != "denied") {
@@ -85,7 +97,7 @@ export const browser = {
     }
     else {
       browser.fallbackCopyTextToClipboard(text);
-    }
+    }*/
   },
 
   // Open a file dialog and call onload function with selected blob 

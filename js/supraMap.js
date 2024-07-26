@@ -74,6 +74,8 @@ export const L_SupraMap = L.Map.extend({
     // redraw paths on dragging (sets % of padding around viewport, may be performance issue)
     this.getRenderer(this).options.padding = 1;
 
+    this.on('moveend zoomend', this.onViewChanged, this);
+
     // Set the initial view
     Settings.mapSetDefault('bounds', mapLayer.viewLatLngBounds);
     if (mapParam.hasView()) {
@@ -85,12 +87,10 @@ export const L_SupraMap = L.Map.extend({
   },
 
   // Called to fire the moveend and zoomend events, we track changes view bounds
-  _moveEnd: function(zoomChanged){
+  onViewChanged: function(){
     const b = this.getBounds();
     Settings.map.bounds = [[Math.round(b.getNorth()), Math.round(b.getWest())], [Math.round(b.getSouth()), Math.round(b.getEast())]]
     Settings.commit();
-
-    _super._moveEnd.call(this, zoomChanged);
   },
 
   // Returns scale to apply to objects based on config and current map zoom
