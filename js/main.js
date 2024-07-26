@@ -18,6 +18,10 @@ const skipConfirms = browser.isCode;
 
 let map = null;         // Leaflet map object containing current game map and all its markers
 
+
+//=================================================================================================
+// BuildMode hanlding
+
 export const buildMode = {
   marker: undefined,    // Current marker we're editing in Build Mode
   object: undefined,    // Current object we're editing in Build Mode
@@ -78,6 +82,9 @@ function exportBuildChanges() {
   skipConfirms || alert('Build mode changes have been placed on the clipboard.');
 }
 
+//=================================================================================================
+// setupKeyControls
+
 function setupKeyControls(searchControl){
   // Keys currently pressed [code]=true
   let pressed = {};
@@ -113,11 +120,10 @@ function setupKeyControls(searchControl){
   });
 
   window.addEventListener("keydown", function (e) {
-    //console.log(e, e.code);
-    if (e.target.id.startsWith('searchtext')) {
+    if (e.target.id.startsWith('searchtext') || Settings.global.buildMode) {
       return;
     }
-    if (Settings.global.buildMode) { return; }
+
     pressed[e.code] = true;
     switch (e.code) {
       case 'KeyF':        // F (no ctrl) to toggle fullscreen
@@ -140,9 +146,9 @@ function setupKeyControls(searchControl){
           SaveFileSystem.loadFileDialog(map.mapId);
         }
         break;
-      case 'Digit1': reloadMap('sl'); break;
-      case 'Digit2': reloadMap('slc'); break;
-      case 'Digit3': reloadMap('siu'); break;
+      case 'Digit1': loadMap(new MapParam({ mapId: 'sl' })); break;
+      case 'Digit2': loadMap(new MapParam({ mapId: 'slc' })); break;
+      case 'Digit3': loadMap(new MapParam({ mapId: 'siu' })); break;
       case 'KeyT': map.zoomIn(1); break;
       case 'KeyG': map.zoomOut(1); break;
     }
@@ -234,8 +240,7 @@ async function loadMap(mapParam) {
               subAction.extend({
                 options: { toolbarIcon: { html: 'clear', tooltip: 'Clears all pins added to map' } },
                 addHooks: function () {
-                  if (MapPins.hasAny()
-                    && (skipConfirms || confirm("Are you sure you want to clear all custom pins?"))) {
+                  if (MapPins.hasAny() && (skipConfirms || confirm("Are you sure you want to clear all custom pins?"))) {
                     MapPins.clearAll();
                   }
                   subAction.prototype.addHooks.call(this); // closes sub-action
@@ -374,11 +379,7 @@ async function loadMap(mapParam) {
 
 } // end of loadmap
 
-// Change current map loaded (if not currently reloading)
-function reloadMap(id) {
-  loadMap(new MapParam({ mapId: id }));
-}
-
+//=================================================================================================
 window.onhashchange = function () {   // (e)
   const mapParam = new MapParam(browser.getHashAndClear());
 
@@ -393,18 +394,16 @@ window.onhashchange = function () {   // (e)
   }
 }
 
+//=================================================================================================
 window.onload = async function () {    // (event)
 
+  // Initialise/load settings
   Settings.init('sl');
   Settings.globalSetDefault('language', null); // ie use browser default language
-
-  // Todo: Move this to the the place the relevant code is dealt with
-  Settings.globalSetDefault('buildMode', false);
   
+  // Initialise all the modules that load config from Json but are indepedent of map selection
   await Promise.all([locStr.loadStrings(Settings.global.language), GameClasses.loadClasses(), Icons.loadIconConfigs(), MapLayer.loadConfigs()]);
 
-  // Load map based on hash parameters and clear it
+  // Load map based on hash parameters or defaults. Clearing location hash
   loadMap(new MapParam(browser.getHashAndClear()));
-
-
 }
