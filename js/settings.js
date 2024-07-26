@@ -20,7 +20,7 @@ import { SaveObjectToJsonFile } from './utils.js';
 export class Settings {
 
   // Key used for localStorage API
-  static _localDataName = 'supragamescommunity_maps';
+  static _localDataName = 'supragamescommunity_maps_v2';
 
   // Default map id - should really be specified as argument to init
   static _defaultMapId = 'sl';
