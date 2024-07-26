@@ -31,6 +31,7 @@ General:
   Look at map image naming on extraction and general naming in scripts - make unique
     (blueprint file extraction -> temp directory)
   Deal with FT: reverse sense? Make it more meaningful
+  Can we get rid of jquery?
 
 
 Testing / debugging:
@@ -40,17 +41,12 @@ Testing / debugging:
   Performance of loadMap (presumably due to nested functions on events and similar)
 
 Refactor:
-
-  Refactor L.Map creation
+  Note: main.js holds map and we use map.mapId as a global. Most other 'globals' are in settings
 
   Change primemarker/groupmarker so only one is attached to map at a time
     Have mechanism to toggle all it applies to?
       Figure out what 'sets' we actually have (all on one layer already?)
       Could we use a layer group
-
-  Review where to get map and mapid and make it consistent everywhere
-    map - MapLayer._map or L.Map or ?
-    mapId - Settings.mapId or L.Map.mapId or L.Map.options.mapId or ? or MapLayer._mapId
 
   SaveLoad
     Move filter up to onSaveEvent and pass up the parameter to save event
@@ -76,6 +72,9 @@ Refactor:
   window.mapObjectFound for the MapObject popup dialog
 
   deal with initial zoom level, min/max zoom etc also 
+
+  Could we move keyboard controls to map events?
+
 
   UI
     Popup - how should this work to be simpler to write and customise?
@@ -569,6 +568,7 @@ export class MapObject {
   static resetAll() {
     SaveFileSystem.reset();
     this._mapObjects = [];
+    delete window.mapObjectFound;
   }
 
   static get(id) {
