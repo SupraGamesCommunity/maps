@@ -125,7 +125,6 @@ export class SaveFileSystem {
 
   // Read array data loaded from UE4 save file and call any listeners set up with data, saving it to settings if listener 
   static _processLoadedArray(arrayData) {
-
     const loadedSave = new UESaveObject(arrayData);
 
     this.ClearAll();
@@ -142,7 +141,7 @@ export class SaveFileSystem {
       if (!o.type || !o.name || o.name == 'None' || o.name == 'EOF'
         || (o.type == 'ObjectPropetty')   // Only player music uses this so skip it
         || (o.type == 'ArrayProperty' && o.value.innerType && o.value.innerType == 'StructProperty')
-        || (o.type == 'MapProperty' && (Settings.mapId != 'siu' || o.name != 'ActorSaveData'))) {
+        || (o.type == 'MapProperty' && (this.mapId != 'siu' || o.name != 'ActorSaveData'))) {
         continue;
       }
 
@@ -177,9 +176,12 @@ export class SaveFileSystem {
   };
 
   // Load save file given by Blob (taken from UI)
-  static loadFile(blob) {
+  static loadFile(blob, mapId) {
     if (!(blob instanceof Blob)) {
       return;
+    }
+    if(mapId){
+      this.mapId = mapId;
     }
 
     const reader = new FileReader();
@@ -200,7 +202,8 @@ export class SaveFileSystem {
   }
   
   // Prompt user to select '.sav' file and then load it
-  static loadFileDialog() {
+  static loadFileDialog(mapId) {
+    this.mapId = mapId;
     browser.openLoadFileDialog('.sav', SaveFileSystem.loadFile, SaveFileSystem);
   }
 

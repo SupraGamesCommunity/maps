@@ -43,7 +43,7 @@ export class MapLayer {
   get games() { return this.config.games; }
 
   // Returns true if layer is enabled for current mapId
-  get isEnabled() { return this.games.includes(MapLayer._map?.mapId); }
+  isEnabled(mapId) { return this.games.includes(mapId); }
 
   // Returns true if layer is currently attached to map
   get isActive() { return this.active; }
@@ -68,34 +68,36 @@ export class MapLayer {
 
 
   // When this layer is activated (normally via layer control) record that we're active and update settings
-  onActivate() {
+  onAdd() {
     this.active = true;
     Settings.map.activeLayers[this.id] = true;
     Settings.commit();
   }
 
   // When this layer is de-activated (normally via layer control) record that we're inactive and update settings
-  onDeactivate() {
+  onRemove() {
     this.active = false;
     delete Settings.map.activeLayers[this.id];
     Settings.commit();
   }
 
   // Activate or deactivate this layer group
-  setActive(active) {
-    if (this.config.type != 'base' && this.active != active) {
-      if (active) {
-        this.layerObj.addTo(MapLayer._map);
-      }
-      else {
-        this.layerObj.remove();
-      }
+  addTo(map) {
+    if (this.config.type != 'base' && !this.active) {
+      this.layerObj.addTo(map);
+    }
+  }
+
+  // Activate or deactivate this layer group
+  remove() {
+    if (this.config.type != 'base' && this.active) {
+      this.layerObj.remove();
     }
   }
 
   // Create the appropriate layer object for this map layer
-  createTileLayer() {
-    const mapId = MapLayer._map.mapId;
+  createTileLayer(map) {
+    const mapId = map.mapId;
     const id = this.id;
     const cfg = this.config;
 
@@ -123,17 +125,16 @@ export class MapLayer {
   }
 
   // Create the leaflet layer "group" and add it to map and control
-  init() {
-    if (!this.isEnabled) {
+  init(map) {
+    if (!this.isEnabled(map.mapId)) {
       return;
     }
     if (this.config.type == 'base') {
-      if (this.id == MapLayer._map.mapId) {
+      if (this.id == map.mapId) {
         // Primary map layer
-        this.layerObj = MapLayer._map;
         this.active = true;
 
-        this.layerObj = this.createTileLayer().addTo(MapLayer._map);
+        this.layerObj = this.createTileLayer(map).addTo(map);
       }
       else {
         // The other selectable maps
@@ -144,7 +145,7 @@ export class MapLayer {
     else {
       if (this.config.type == 'tiles') {
         // An extra tile layer (used to be used for pipe/pad map overlay)
-        this.layerObj = this.createTileLayer();
+        this.layerObj = this.createTileLayer(map);
       }
       else {
         // A collection of markers
@@ -153,10 +154,10 @@ export class MapLayer {
       this.active = !!Settings.map.activeLayers[this.id];
 
       if (this.active) {
-        this.layerObj.addTo(MapLayer._map);
+        this.layerObj.addTo(map);
       }
-      this.layerObj.on('add', this.onActivate, this);
-      this.layerObj.on('remove', this.onDeactivate, this);
+      this.layerObj.on('add', this.onAdd, this);
+      this.layerObj.on('remove', this.onRemove, this);
     }
   }
 
@@ -173,28 +174,23 @@ export class MapLayer {
 
   // Retrieve the map layer from the object
   static get(layerId) {
-    if (layerId == '_map') {
-      layerId = Settings.mapId;
-    }
     return MapLayer._layers[layerId];
   }
 
   // Retrieve the Leaflet layer object for the specified id
   static getLayerObj(layerId) {
-    if (layerId == '_map') {
-      layerId = Settings.mapId;
-    }
     return MapLayer._layers[layerId].layerObj;
   }
 
   // Returns true if the specified layer will be selectable on the layer control 
-  static isEnabledFromId(layerId) { return !!MapLayer._layers[layerId]?.isEnabled; }
+  static isEnabledFromId(layerId, mapId) { return !!MapLayer._layers[layerId]?.isEnabled(mapId); }
 
   // Returns true if the specified layer is/will be active
   static isActiveFromId(layerId) { return Boolean(MapLayer._layers?.[layerId].active); }
 
   static getZIndexOffsetFromId(layerId, found) { return MapLayer._layers[layerId].getZIndexOffset(found); }
 
+/*
   // Retrieve list of the currently active layers
   static getActiveLayers() {
     let activeLayers = {};
@@ -212,26 +208,27 @@ export class MapLayer {
       layer.setActive(!!activeLayers[id]);
     }
   }
+*/
 
-  static forEachEnabled(fn) {
+  static forEachEnabled(mapId, fn) {
     for (const [layerId, layer] of Object.entries(MapLayer._layers)) {
-      if (layer.isEnabled) {
+      if (layer.isEnabled(mapId)) {
         fn(layerId, layer);
       }
     }
   }
 
-  static forEachMarkers(fn) {
+  static forEachMarkers(mapId, fn) {
     for (const [layerId, layer] of Object.entries(MapLayer._layers)) {
-      if (layer.config.type == 'markers' && layer.isEnabled) {
+      if (layer.config.type == 'markers' && layer.isEnabled(mapId)) {
         fn(layerId, layer);
       }
     }
   }
 
-  static forEachBase(fn) {
+  static forEachBase(mapId, fn) {
     for (const [layerId, layer] of Object.entries(MapLayer._layers)) {
-      if (layer.config.type == 'base' && layer.isEnabled) {
+      if (layer.config.type == 'base' && layer.isEnabled(mapId)) {
         fn(layerId, layer);
       }
     }
@@ -262,7 +259,7 @@ export class MapLayer {
         defaultActive[id] = map.mapId == id;
       }
       else {
-        if (layer.config.defaultActive && layer.isEnabled) {
+        if (layer.config.defaultActive && layer.isEnabled(map.mapId)) {
           defaultActive[id] = true;
         }
       }
@@ -271,7 +268,7 @@ export class MapLayer {
 
     // Initialise layer instances
     for (const layer of Object.values(MapLayer._layers)) {
-      layer.init();
+      layer.init(map);
     }
   }
 

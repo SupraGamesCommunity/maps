@@ -46,6 +46,13 @@ Refactor:
 
   Move getViewURL to MapParam?
 
+  Change primemarker/groupmarker so only one is attached to map at a time
+    Have mechanism to toggle all it applies to?
+      Figure out what 'sets' we actually have (all on one layer already?)
+      Could we use a layer group
+  
+
+
   Get map and mapId from properties of MapLayer
     MapLayer creates map and updates Settings.mapId
 
@@ -174,8 +181,7 @@ export class MapObject {
 
   // Retrieves unique mouser over text for this map object depending on friendly mode (or dev mode) 
   // Includes a name, what it spawns, 
-  getTooltipText() {
-    const mapId = Settings.mapId;
+  getTooltipText(mapId) {
     const friendly = !Settings.global.buildMode;
     const o = this.o;
 
@@ -214,12 +220,12 @@ export class MapObject {
   // Creates and returns a marker.
   createMarker(map, layerId, cicon) {
     const mapLayer = MapLayer.get(layerId);
-    if (!mapLayer?.isEnabled)
+    if (!mapLayer?.isEnabled(map.mapId))
       return;
 
     const iconName = (cicon && (this.o.icon || cicon)) || mapLayer.config.defaultIcon;
-    const icon = Icons.get({ iconName: iconName, variant: this.o.variant, game: Settings.mapId }).addTo(map);
-    const options = { icon: icon, zIndexOffset: mapLayer.getZIndexOffset(), title: this.getTooltipText(), alt: this.alt, o: this.o, layerId: layerId }
+    const icon = Icons.get({ iconName: iconName, variant: this.o.variant, game: map.mapId }).addTo(map);
+    const options = { icon: icon, zIndexOffset: mapLayer.getZIndexOffset(), title: this.getTooltipText(map.mapId), alt: this.alt, o: this.o, layerId: layerId }
 
     const marker = L.marker([this.o.lat, this.o.lng], options)
       .addTo(mapLayer.id == '_map' ? map : mapLayer.layerObj)                 // Add to relevant mapLayer (or the group)
@@ -269,7 +275,7 @@ export class MapObject {
     const c = GameClasses.get(this.o.type);
     const o = this.o;
 
-    if (o.linetype && MapLayer.isEnabledFromId(c.lines) && o.twoway != 2) {
+    if (o.linetype && MapLayer.isEnabledFromId(c.lines, map.mapId) && o.twoway != 2) {
       const mapLayer = MapLayer.get(c.lines);
       let endxys = o.linetype != 'trigger' ? [o.target] : o.targets;
 
@@ -299,11 +305,11 @@ export class MapObject {
     }
 
     // Give subclass a chance to change things
-    this.subclassInit?.();
+    this.subclassInit?.(map);
 
     const c = GameClasses.get(this.o.type);
-    if (!MapLayer.isEnabledFromId(c.layer) && !MapLayer.isEnabledFromId(c.nospoiler)
-      || !L.latLngBounds(MapLayer.get('_map').viewLatLngBounds).contains([this.o.lat, this.o.lng])) {
+    if (!MapLayer.isEnabledFromId(c.layer, map.mapId) && !MapLayer.isEnabledFromId(c.nospoiler, map.mapId)
+      || !L.latLngBounds(MapLayer.get(map.mapId).viewLatLngBounds).contains([this.o.lat, this.o.lng])) {
       this.release();
       return;
     }
@@ -411,8 +417,8 @@ export class MapObject {
   }
 
   // Called before tooltip is displayed
-  onMouseOver() {
-    const title = this.getTooltipText();
+  onMouseOver(e) {
+    const title = this.getTooltipText(e.target.map.mapId);
     if (this.groupMarker?._icon) {
       this.groupMarker._icon.title = title;
     }
@@ -424,7 +430,7 @@ export class MapObject {
   // Called just before the popup dialog for this marker is displayed
   onPopupOpen(e) {
     const o = this.o;
-    const mapId = Settings.mapId;
+    const mapId = e.target._map.mapId;
 
     buildMode.marker = this;
     buildMode.object = o;
@@ -508,14 +514,14 @@ export class MapObject {
   }
 
   // Activate all layers the MapObject is on
-  activateLayers() {
+  activateLayers(map) {
     if (this.primeMarker) {
       const layerId = this.primeMarker.options.layerId;
-      MapLayer.get(layerId).setActive(true);
+      MapLayer.get(layerId).addTo(map);
     }
     if (this.groupMarker) {
       const layerId = this.groupMarker.options.layerId;
-      MapLayer.get(layerId).setActive(true);
+      MapLayer.get(layerId).addTo(map);
     }
   }
 
@@ -537,10 +543,8 @@ export class MapObject {
   }
 
   // Load all markers for current map
-  static async loadObjects() {
+  static async loadObjects(mapId) {
     this.resetAll();
-
-    const mapId = Settings.mapId;
 
     const markersJsonArray = await Promise.all([
       fetch(`data/markers.${mapId}.json`).then((r) => r.json()),
@@ -606,14 +610,14 @@ export const mapObjectFound = function (id, found = true) {
 class MapPlayerStart extends MapObject {
   _foundLockedState = false;
 
-  subclassInit() {
+  subclassInit(map) {
     if (!this._playerStartPosition) {
 
       const objJson = Object.assign({}, this.o);
       objJson.type = '_PlayerPosition';
       objJson.area = '';
       objJson.name = 'PlayerPosition';
-      MapObject.addObjectFromJson(objJson).init();
+      MapObject.addObjectFromJson(objJson).init(map);
     }
   }
 }

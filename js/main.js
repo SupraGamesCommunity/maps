@@ -175,7 +175,7 @@ function loadMap(mapParam) {
     position: 'topright',
   });
 
-  MapLayer.forEachEnabled((id, layer) => {
+  MapLayer.forEachEnabled(map.mapId, (id, layer) => {
     if (layer.type == 'base') {
       layerControl.addBaseLayer(layer.layerObj, layer.name);
     }
@@ -286,7 +286,7 @@ function loadMap(mapParam) {
                 addHooks: function () {
                   if (Object.keys(Settings.map.markedItems).length == 0 ||
                     skipConfirms || confirm("Are you sure you want to overwrite existing items marked found?")) {
-                    SaveFileSystem.loadFileDialog();
+                    SaveFileSystem.loadFileDialog(mapId);
                   }
                   subAction.prototype.addHooks.call(this);
                 }
@@ -319,13 +319,17 @@ function loadMap(mapParam) {
 
   Settings.mapSetDefault('searchText', '');
 
-  searchControl = L_Control_supraSearch({
-    layerFilter: (id) => {
-      return id != 'coordinate';
+  const layerObjArray = [];
+  MapLayer.forEachMarkers(map.mapId, (id, layer) => {
+    if(id != 'coordinate'){
+      layerObjArray.push(layer.layerObj);
     }
-  }).addTo(map);
+  });
+  const searchLayer = L.layerGroup(layerObjArray);
 
-  MapObject.loadObjects().then(() => {
+  searchControl = L_Control_supraSearch({ layer: searchLayer }).addTo(map);
+
+  MapObject.loadObjects(map.mapId).then(() => {
     MapObject.initObjects(map);
 
     MapPins.restoreMapPins(map);
@@ -430,7 +434,7 @@ window.onload = function () {    // (event)
               const playerPos = MapObject.get('PlayerPosition');
               map.flyTo(playerPos ? [playerPos.o.lat, playerPos.o.lng] : MapLayer._layers[mapId].viewCenterLngLat);
             } else if (e.altKey) {
-              SaveFileSystem.loadFileDialog();
+              SaveFileSystem.loadFileDialog(mapId);
             }
             break;
           case 'Digit1': reloadMap('sl'); break;

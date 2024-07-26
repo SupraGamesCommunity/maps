@@ -29,22 +29,10 @@ L.Control.SupraSearch = L.Control.Search.extend({
     textPlaceholder: 'Search (Enter to save search phrase)'
   },
 
-  // Get all marker layers and give caller the chance to skip some
-  createSearchLayer: function (layerFilter) {
-    let searchLayers = [];
-    MapLayer.forEachMarkers((id, layer) => {
-      if (!layerFilter || layerFilter(id, layer)) {
-        searchLayers.push(layer.layerObj);
-      }
-    });
-    return L.layerGroup(searchLayers);
-  },
 
   // Slightly changes default options plus creates a LayerGroup containing a filtered version of 'our' layers
   initialize: function (options) {
     options = Object.assign({}, this.myDefaults, options);
-
-    options.layer = this.createSearchLayer(options.layerFilter);
 
     _super.initialize.call(this, options);
   },
@@ -110,7 +98,7 @@ L.Control.SupraSearch = L.Control.Search.extend({
     this._map.closePopup();
     const mapObject = MapObject.get(loc.layer.options.alt);
     if (mapObject) {
-      mapObject.activateLayers();
+      mapObject.activateLayers(this._map);
       loc.layer.openPopup();
     }
   },

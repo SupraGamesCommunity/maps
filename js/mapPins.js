@@ -36,7 +36,7 @@ export class MapPins {
 
     const mapLayer = MapLayer.get(options.layerId);
 
-    if (!(mapLayer?.isEnabled))
+    if (!(mapLayer?.isEnabled(map.mapId)))
       return;
 
     // Figure out index, position and type of pin
@@ -72,7 +72,7 @@ export class MapPins {
     }
 
     if (options.activateLayer) {
-      mapLayer.setActive(true);
+      mapLayer.addTo(map);
     }
   }
 
@@ -98,7 +98,7 @@ export class MapPins {
   // Recreate all pins in storage and add them to the map
   static restoreMapPins(map) {
     this._clearMarkers();
-    if (MapLayer.isEnabledFromId(this._defaultLayer)) {
+    if (MapLayer.isEnabledFromId(this._defaultLayer, map.mapId)) {
       Settings.mapSetDefault('mapPins', {});
       for (const idx in Object.keys(Settings.map.mapPins)) {
         this.add(map, { idx: idx, activateLayer: false });
