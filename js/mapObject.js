@@ -17,7 +17,6 @@ General:
   Fix coin chest icon not being visible over chest icon due to layer zDepths
   Remove empty layers from layer control
   Consider naming of class/js file (MapObject in mapObject.js) what should capitalisation be?
-  Prevent multiple simultaneous calls to loadMap
   Debug mode toggleable
 
   BuildMode Stuff
@@ -44,23 +43,14 @@ Refactor:
 
   Refactor L.Map creation
 
-  Move getViewURL to MapParam?
-
   Change primemarker/groupmarker so only one is attached to map at a time
     Have mechanism to toggle all it applies to?
       Figure out what 'sets' we actually have (all on one layer already?)
       Could we use a layer group
-  
-
-
-  Get map and mapId from properties of MapLayer
-    MapLayer creates map and updates Settings.mapId
 
   Review where to get map and mapid and make it consistent everywhere
     map - MapLayer._map or L.Map or ?
     mapId - Settings.mapId or L.Map.mapId or L.Map.options.mapId or ? or MapLayer._mapId
-
-    Remame settings mapId underlying variable as it is hidden by getter/setter
 
   SaveLoad
     Move filter up to onSaveEvent and pass up the parameter to save event

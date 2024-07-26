@@ -13,11 +13,10 @@ import { MapPins } from './mapPins.js';
 import { MapParam } from './mapParam.js';
 import { L_Control_supraSearch } from './supraSearch.js';
 
-var map = null;         // Leaflet map object containing current game map and all its markers
-var mapId = '';         // Current map selected (one of sl, slc or siu)
+const skipConfirms = browser.isCode;
 
-let reloading;          // Flag used to prevent triggering reloading while already in progress
-
+let map = null;         // Leaflet map object containing current game map and all its markers
+let mapId = null;       // Current map selected (one of sl, slc or siu)
 let searchControl;      // Leaflet control for searching
 
 export const buildMode = {
@@ -26,13 +25,6 @@ export const buildMode = {
   objectChanges: [],    // Current object's changed values before they are committed to the list
   changeList: []        // Changes made in the current Build Mode session
 }
-
-const skipConfirms = browser.isCode;
-
-Settings.init('sl');
-
-// Todo: Move these to the the place the relevant code is dealt with
-Settings.globalSetDefault('buildMode', false);
 
 function toggleBuildMode() {
   Settings.globalSetDefault('buildMode', false);
@@ -87,17 +79,24 @@ function exportBuildChanges() {
   skipConfirms || alert('Build mode changes have been placed on the clipboard.');
 }
 
-function unloadMap(){
-  MapLayer.resetLayers();
-  MapObject.resetAll();
-  browser.clearLocationHash();
-  map.off();
-  map.remove();
-  map = null;
-}
+// Called when Window loads and when base map changes, loads currently select   
+async function loadMap(mapParam) {
+  if(loadMap.isLoading){
+    return;
+  }
+  loadMap.isLoading = true;
 
-// Called when Window loads and when base map changes, loads currently select mapId
-function loadMap(mapParam) {
+  if (map) {
+    MapObject.resetAll();
+    MapLayer.resetLayers();
+    browser.clearLocationHash();
+    searchControl = null;
+    map.off();
+    map.remove();
+    map = null;
+    mapId = null;
+  }
+
   Settings.globalSetDefault('mapId', 'sl');
   if ('mapId' in mapParam) {
     Settings.mapId = mapParam.mapId;
@@ -142,8 +141,9 @@ function loadMap(mapParam) {
   });
 
   map.on('baselayerchange', function (e) {
-    unloadMap();
-    loadMap(new MapParam({ mapId: e.layer.options.layerId }));
+    if (mapId != e.layer.options.layerId) {
+      loadMap(new MapParam({ mapId: e.layer.options.layerId }));
+    }
   });
 
   Settings.mapSetDefault('bounds', mapLayer.viewLatLngBounds);
@@ -154,12 +154,14 @@ function loadMap(mapParam) {
     map.fitBounds(mapParam.getBounds(Settings.map.bounds));
   }
 
+  // Add zoom, fullscreen toggle and mousePosition controls to the map
   L.control.zoom({ position: 'bottomright' }).addTo(map);
   L.control.fullscreen({ position: 'bottomright', forceSeparateButton: true }).addTo(map);
   L.control.mousePosition({ numDigits: 0, lngFirst: true }).addTo(map);
 
   MapLayer.setupLayers(map);
 
+  // Add the layer control to the map
   const layerControl = L.control.layers({}, {}, {
     collapsed: true,
     position: 'topright',
@@ -173,7 +175,9 @@ function loadMap(mapParam) {
       layerControl.addOverlay(layer.layerObj, layer.name);
     }
   });
+  layerControl.addTo(map); // triggers baselayerchange which will be ignored
 
+  // Add the tool bars to the map
   let subAction = L.Toolbar2.Action.extend({
     initialize: function (map, myAction) { this.map = map; this.myAction = myAction; L.Toolbar2.Action.prototype.initialize.call(this); },
     addHooks: function () { this.myAction.disable(); }
@@ -307,11 +311,12 @@ function loadMap(mapParam) {
     ],
   }).addTo(map);
 
+  // Add search control to the map
   Settings.mapSetDefault('searchText', '');
 
   const layerObjArray = [];
   MapLayer.forEachMarkers(map.mapId, (id, layer) => {
-    if(id != 'coordinate'){
+    if (id != 'coordinate') {
       layerObjArray.push(layer.layerObj);
     }
   });
@@ -319,32 +324,23 @@ function loadMap(mapParam) {
 
   searchControl = L_Control_supraSearch({ layer: searchLayer }).addTo(map);
 
-  MapObject.loadObjects(map.mapId).then(() => {
-    MapObject.initObjects(map);
+  // Add the markers to the map
+  await MapObject.loadObjects(map.mapId); 
+  MapObject.initObjects(map);
+  MapPins.restoreMapPins(map);
 
-    MapPins.restoreMapPins(map);
-
-    layerControl.addTo(map); // triggers baselayerchange, so called in the end
-
-  });
-
+  loadMap.isLoading = false;
 } // end of loadmap
 
 // Change current map loaded (if not currently reloading)
 function reloadMap(id) {
-  if (!reloading && mapId != id) {
-    reloading = true;
-    map.fireEvent('baselayerchange', { layer: { options: { layerId: id } } });
-    setTimeout(function () { reloading = false; }, 500);
-  }
+  loadMap(new MapParam({ mapId: id }));
 }
 
 window.onhashchange = function () {   // (e)
   const mapParam = new MapParam(browser.getHashAndClear());
 
   if (mapParam.mapId && mapParam.mapId != mapId) {
-    unloadMap();
-
     loadMap(mapParam);
   }
   else if (mapParam.hasView()) {
@@ -355,88 +351,88 @@ window.onhashchange = function () {   // (e)
   }
 }
 
-window.onload = function () {    // (event)
+window.onload = async function () {    // (event)
 
+  Settings.init('sl');
   Settings.globalSetDefault('language', null); // ie use browser default language
 
-  Promise.all([locStr.loadStrings(Settings.global.language), GameClasses.loadClasses(), Icons.loadIconConfigs(), MapLayer.loadConfigs()])
-    .then(() => {
+  // Todo: Move this to the the place the relevant code is dealt with
+  Settings.globalSetDefault('buildMode', false);
+  
+  await Promise.all([locStr.loadStrings(Settings.global.language), GameClasses.loadClasses(), Icons.loadIconConfigs(), MapLayer.loadConfigs()]);
 
-      // Load map based on hash parameters and clear it
-      loadMap(new MapParam(browser.getHashAndClear()));
+  // Load map based on hash parameters and clear it
+  loadMap(new MapParam(browser.getHashAndClear()));
 
-      // Keys mappings for pan and zoom map controls
-      let bindings = {
-        KeyA: ['x', +1], KeyD: ['x', -1],
-        KeyW: ['y', +1], KeyS: ['y', -1],
-        KeyT: ['z', +1], KeyG: ['z', -1],
-      };
+  // Keys mappings for pan and zoom map controls
+  let bindings = {
+    KeyA: ['x', +1], KeyD: ['x', -1],
+    KeyW: ['y', +1], KeyS: ['y', -1],
+    KeyT: ['z', +1], KeyG: ['z', -1],
+  };
 
-      // Keys currently pressed [code]=true
-      let pressed = {};
+  // Keys currently pressed [code]=true
+  let pressed = {};
 
-      // Called every browser animation timestep following call to requestAnimationFrame
-      function update() { // (timestep)
-        let step = 100;
-        let v = {};
-        for (let key of Object.keys(bindings)) {
-          if (pressed[key]) {
-            let [dir, step] = bindings[key];
-            v[dir] = (v[dir] || 0) + step;
-          }
-        }
-        (v.x || v.y) && map.panBy([(-v.x || 0) * step, (-v.y || 0) * step], { animation: false });
-        //v.z && map.setZoom(map.getZoom()+v.z/16, {duration: 1});
-        window.requestAnimationFrame(update);
+  // Called every browser animation timestep following call to requestAnimationFrame
+  function update() { // (timestep)
+    let step = 100;
+    let v = {};
+    for (let key of Object.keys(bindings)) {
+      if (pressed[key]) {
+        let [dir, step] = bindings[key];
+        v[dir] = (v[dir] || 0) + step;
       }
-
-      document.querySelector('#map').addEventListener('blur', function () {  // (e)
-        pressed = {}; // prevent sticky keys
-      });
-
-      // When a key goes up remove it from the list 
-      window.addEventListener('keyup', (e) => {
-        delete pressed[e.code];
-      });
-
-      window.addEventListener("keydown", function (e) {
-        //console.log(e, e.code);
-        if (e.target.id.startsWith('searchtext')) {
-          return;
-        }
-        if (Settings.global.buildMode) { return; }
-        pressed[e.code] = true;
-        switch (e.code) {
-          case 'KeyF':        // F (no ctrl) to toggle fullscreen
-            if (e.ctrlKey) {
-              searchControl.expand(true);
-              e.preventDefault();
-            } else {
-              map.toggleFullscreen();
-            }
-            break;
-          case 'Slash':     // Ctrl+F or / to search
-            searchControl.expand(true);
-            e.preventDefault();
-            break;
-          case 'KeyR':
-            if (!e.ctrlKey && !e.altKey) {
-              const playerPos = MapObject.get('PlayerPosition');
-              map.flyTo(playerPos ? [playerPos.o.lat, playerPos.o.lng] : MapLayer._layers[mapId].viewCenterLngLat);
-            } else if (e.altKey) {
-              SaveFileSystem.loadFileDialog(mapId);
-            }
-            break;
-          case 'Digit1': reloadMap('sl'); break;
-          case 'Digit2': reloadMap('slc'); break;
-          case 'Digit3': reloadMap('siu'); break;
-          case 'KeyT': map.zoomIn(1); break;
-          case 'KeyG': map.zoomOut(1); break;
-        }
-      });
-
-      window.requestAnimationFrame(update);
-      //window.addEventListener('contextmenu', function(e) { e.stopPropagation()}, true); // enable default context menu
     }
-    );
+    (v.x || v.y) && map.panBy([(-v.x || 0) * step, (-v.y || 0) * step], { animation: false });
+    //v.z && map.setZoom(map.getZoom()+v.z/16, {duration: 1});
+    window.requestAnimationFrame(update);
+  }
+
+  document.querySelector('#map').addEventListener('blur', function () {  // (e)
+    pressed = {}; // prevent sticky keys
+  });
+
+  // When a key goes up remove it from the list 
+  window.addEventListener('keyup', (e) => {
+    delete pressed[e.code];
+  });
+
+  window.addEventListener("keydown", function (e) {
+    //console.log(e, e.code);
+    if (e.target.id.startsWith('searchtext')) {
+      return;
+    }
+    if (Settings.global.buildMode) { return; }
+    pressed[e.code] = true;
+    switch (e.code) {
+      case 'KeyF':        // F (no ctrl) to toggle fullscreen
+        if (e.ctrlKey) {
+          searchControl.expand(true);
+          e.preventDefault();
+        } else {
+          map.toggleFullscreen();
+        }
+        break;
+      case 'Slash':     // Ctrl+F or / to search
+        searchControl.expand(true);
+        e.preventDefault();
+        break;
+      case 'KeyR':
+        if (!e.ctrlKey && !e.altKey) {
+          const playerPos = MapObject.get('PlayerPosition');
+          map.flyTo(playerPos ? [playerPos.o.lat, playerPos.o.lng] : MapLayer._layers[mapId].viewCenterLngLat);
+        } else if (e.altKey) {
+          SaveFileSystem.loadFileDialog(mapId);
+        }
+        break;
+      case 'Digit1': reloadMap('sl'); break;
+      case 'Digit2': reloadMap('slc'); break;
+      case 'Digit3': reloadMap('siu'); break;
+      case 'KeyT': map.zoomIn(1); break;
+      case 'KeyG': map.zoomOut(1); break;
+    }
+  });
+
+  window.requestAnimationFrame(update);
 }

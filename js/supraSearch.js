@@ -2,7 +2,6 @@
 
 import { Settings } from './settings.js';
 import { MapObject } from './mapObject.js';
-import { MapLayer } from './mapLayer.js';
 
 //=================================================================================================
 // L.Control.SupraSearch
