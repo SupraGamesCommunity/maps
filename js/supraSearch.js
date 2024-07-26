@@ -50,7 +50,7 @@ L.Control.SupraSearch = L.Control.Search.extend({
   _createTip: function (text, value) {
     const tip = _super._createTip.call(this, text, value);
     // Grey out tip items that have been found (TODO: fix to be more reliable)
-    if (Settings.map.saveData[value.layer.options.alt]) {
+    if(MapObject.get(value.layer.options.alt).isFound()) {
       tip.style.color = '#bbb';
     }
 
@@ -96,7 +96,7 @@ L.Control.SupraSearch = L.Control.Search.extend({
     this._map.closePopup();
     const mapObject = MapObject.get(loc.layer.options.alt);
     if (mapObject) {
-      mapObject.activateLayers(this._map);
+      mapObject.activateTopLayer(this._map);
       loc.layer.openPopup();
     }
   },
@@ -113,11 +113,14 @@ L.Control.SupraSearch = L.Control.Search.extend({
   // Called when cancel button is clicked or control is collapsed
   // If called from click on cancel button clear the search text
   cancel: function (e) {
-    _super.cancel.call(this);
     if (e && e.currentTarget.className == 'search-cancel') {
       Settings.map.searchText = '';
-      Settings.commit();
     }
+    else{
+      Settings.map.searchText = this._input.value;
+    }
+    Settings.commit();
+    _super.cancel.call(this);
   },
 });
 

@@ -16,11 +16,11 @@ TODO:
 General:
   Fix coin chest icon not being visible over chest icon due to layer zDepths
   Remove empty layers from layer control
-  Consider naming of class/js file (MapObject in mapObject.js) what should capitalisation be?
   Debug mode toggleable
 
   BuildMode Stuff
     When in build mode popup produces editable stuff vs debug text
+
   Implement hierarchical dialog and tracker like Joric's 3d one
   Handle build mode making icons draggable
   Use awesome font for MapPins
@@ -42,17 +42,6 @@ Testing / debugging:
 
 Refactor:
 
-  SaveLoad
-    Move filter up to onSaveEvent and pass up the parameter to save event
-    Move saveload settings handling from SaveFileSystem to MapObject
-    Review relationship between toggleFound/SetFound and SaveFileSystem event
-
-  Change primemarker/groupmarker so only one is attached to map at a time
-    Have mechanism to toggle all it applies to?
-      Figure out what 'sets' we actually have (all on one layer already?)
-      Could we use a layer group
-
-
   in Search Only enable one of the two layers a MapObject is on (prime first, then group)
   in search check for found with more reliable method in _createTip
   in Search save search text whenever we collapse?
@@ -70,7 +59,6 @@ Refactor:
 
   Could we move keyboard controls to map events?
 
-
   UI
     Popup - how should this work to be simpler to write and customise?
     Generally creating different types of UI dialog
@@ -79,6 +67,12 @@ Refactor:
     {xy} <-> [latlng]
     {latlng} <-> [latlng]
     lbounds <-> [latlng]
+
+  Change primemarker/groupmarker so only one is attached to map at a time
+    Have mechanism to toggle all it applies to?
+    Figure out what 'sets' we actually have (all on one layer already?)
+    Could we use a layer group
+
 
 */
 
@@ -498,12 +492,12 @@ export class MapObject {
   }
 
   // Activate all layers the MapObject is on
-  activateLayers(map) {
+  activateTopLayer(map) {
     if (this.primeMarker) {
       const layerId = this.primeMarker.options.layerId;
       MapLayer.get(layerId).addTo(map);
     }
-    if (this.groupMarker) {
+    else if (this.groupMarker) {
       const layerId = this.groupMarker.options.layerId;
       MapLayer.get(layerId).addTo(map);
     }
