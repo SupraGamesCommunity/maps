@@ -315,7 +315,7 @@ async function loadMap(mapParam) {
               subAction.extend({
                 options: { toolbarIcon: { html: 'Browse...', tooltip: 'Load game save (*.sav) to mark collected items (Alt+R)' } },
                 addHooks: function () {
-                  if (Object.keys(Settings.map.markedItems).length == 0 ||
+                  if (Object.keys(Settings.map.saveData).length == 0 ||
                     skipConfirms || confirm("Are you sure you want to overwrite existing items marked found?")) {
                     SaveFileSystem.loadFileDialog(map.mapId);
                   }
