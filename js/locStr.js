@@ -71,7 +71,7 @@ export const locStr = {
       }
     }
     if (str) {
-      str = locStr.decodeLocString(ctype, str);
+      str = this.decodeLocString(ctype, str);
     }
     return str;
   },

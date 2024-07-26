@@ -41,37 +41,32 @@ Testing / debugging:
   Performance of loadMap (presumably due to nested functions on events and similar)
 
 Refactor:
-  Note: main.js holds map and we use map.mapId as a global. Most other 'globals' are in settings
-
-  Change primemarker/groupmarker so only one is attached to map at a time
-    Have mechanism to toggle all it applies to?
-      Figure out what 'sets' we actually have (all on one layer already?)
-      Could we use a layer group
 
   SaveLoad
     Move filter up to onSaveEvent and pass up the parameter to save event
     Move saveload settings handling from SaveFileSystem to MapObject
     Review relationship between toggleFound/SetFound and SaveFileSystem event
 
+  Change primemarker/groupmarker so only one is attached to map at a time
+    Have mechanism to toggle all it applies to?
+      Figure out what 'sets' we actually have (all on one layer already?)
+      Could we use a layer group
+
+
   in Search Only enable one of the two layers a MapObject is on (prime first, then group)
   in search check for found with more reliable method in _createTip
   in Search save search text whenever we collapse?
 
-  Review what needs to be in unloadMap (and sub-release / unload functions)
-
-  Review how we access static/dynamic members with this. vs Class.
-    Always use this in functions (watch out for static vars from instance members and set lines)
-
   Remove/comment out usused functions
-    Play with Chrome's devtool based code coverage tool
 
-  BuildMode (handle setlatlng and any other interface stuff)
+  BuildMode
+    handle setlatlng and any other interface stuff
+    Check it still works
+    Refactor and move into separate module
 
   Add version control to Settings
 
-  window.mapObjectFound for the MapObject popup dialog
-
-  deal with initial zoom level, min/max zoom etc also 
+  deal with initial zoom level, min/max zoom etc and maintaining bounds when changing container size
 
   Could we move keyboard controls to map events?
 
