@@ -39,4 +39,14 @@ export class MapParam {
   getCenter(def) { return 'lat' in this ? [this.lat, this.lng] : def; }
   getBounds(def) { return 'n' in this ? [[this.n, this.w], [this.s, this.e]] : def; }
   get bounds() { return [[this.n, this.w], [this.s, this.e]] }
+
+  // Generate our URL format based on current state
+  // {base url}#map={sl|slc|siu}&W={bounds west lng}&N={north}&E={east}&S={south}
+  static getViewURL(map) {
+    const base = window.location.href.replace(/#.*$/, '')
+    const b = map.getBounds();
+    const vars = { mapId: map.mapId, W: Math.round(b.getWest()), N: Math.round(b.getNorth()), E: Math.round(b.getEast()), S: Math.round(b.getSouth()) };
+    const url = base + '#' + Object.entries(vars).map((e) => e[0] + '=' + encodeURIComponent(e[1])).join('&');
+    return url;
+  }
 }

@@ -34,16 +34,6 @@ Settings.init('sl');
 // Todo: Move these to the the place the relevant code is dealt with
 Settings.globalSetDefault('buildMode', false);
 
-// Generate our URL format based on current state
-// {base url}#map={sl|slc|siu}&W={bounds west lng}&N={north}&E={east}&S={south}
-function getViewURL() {
-  const base = window.location.href.replace(/#.*$/, '')
-  const b = map.getBounds();
-  const vars = { mapId: mapId, W: Math.round(b.getWest()), N: Math.round(b.getNorth()), E: Math.round(b.getEast()), S: Math.round(b.getSouth()) };
-  const url = base + '#' + Object.entries(vars).map((e) => e[0] + '=' + encodeURIComponent(e[1])).join('&');
-  return url;
-}
-
 function toggleBuildMode() {
   Settings.globalSetDefault('buildMode', false);
   Settings.global.buildMode = !Settings.global.buildMode;
@@ -264,7 +254,7 @@ function loadMap(mapParam) {
               subAction.extend({
                 options: { toolbarIcon: { html: 'Copy Map View URL', tooltip: 'Copies View URL to the Clipboard' } },
                 addHooks: function () {
-                  browser.copyTextToClipboard(getViewURL());
+                  browser.copyTextToClipboard(MapParam.getViewURL(map));
                   subAction.prototype.addHooks.call(this); // closes sub-action
                 }
               }),

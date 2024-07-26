@@ -418,7 +418,7 @@ export class MapObject {
 
   // Called before tooltip is displayed
   onMouseOver(e) {
-    const title = this.getTooltipText(e.target.map.mapId);
+    const title = this.getTooltipText(e.target._map.mapId);
     if (this.groupMarker?._icon) {
       this.groupMarker._icon.title = title;
     }
