@@ -73,7 +73,7 @@
         "name_key": "",
         "defaultIcon": "chest",
         "defaultActive": true,
-        "zDepth": 8,
+        "zDepth": 5,
         "games": ["sl", "slc", "siu"]
     },
     "shop": {
@@ -83,7 +83,7 @@
         "name_key": "",
         "defaultIcon": "shop",
         "defaultActive": true,
-        "zDepth": 9,
+        "zDepth": 6,
         "games": ["sl", "slc", "siu"]
     },
     "collectable": {
@@ -133,7 +133,7 @@
         "name_key": "",
         "defaultIcon": "awesome",
         "defaultActive": false,
-        "zDepth": 5,
+        "zDepth": 8,
         "games": ["sl", "slc", "siu"]
     },
     "graves": {
@@ -143,7 +143,7 @@
         "name_key": "",
         "defaultIcon": "question_mark",
         "defaultActive": false,
-        "zDepth": 6,
+        "zDepth": 9,
         "games": ["sl"]
     },
     "coordinate": {
