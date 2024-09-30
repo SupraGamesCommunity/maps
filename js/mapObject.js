@@ -395,8 +395,18 @@ export class MapObject {
 
     if (o.yt_video) {
       let ytSrc = 'https://www.youtube-nocookie.com/embed/' + o.yt_video + '?controls=0';
-      if (o.yt_start) ytSrc += '&start=' + o.yt_start;
-      if (o.yt_end) ytSrc += '&end=' + o.yt_end;
+
+      function hmsToSecs(str) {
+        var p = str.split(':'), s = 0, m = 1;
+        while (p.length > 0) {
+            s += m * Number(p.pop());
+            m *= 60;
+        }
+        return s;
+      }
+
+      if (o.yt_start) ytSrc += '&start=' + hmsToSecs(o.yt_start);
+      if (o.yt_end) ytSrc += '&end=' + hmsToSecs(o.yt_end);
 
       text = text + '<iframe width="300" height="169" src="' + ytSrc
         + '" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
