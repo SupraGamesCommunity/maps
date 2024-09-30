@@ -3520,7 +3520,7 @@
     "loop": "4"
   }, 
   {
-	"name": "BuyChestDetector2"
+	"name": "BuyChestDetector2",
 	"area": "Crash",
 	"yt_video": "_09-yLgxrIY",
     "yt_start": "21:46",
@@ -3528,7 +3528,7 @@
     "loop": "5"  
   },
   {
-	"name": "BuyChestDetectorRadius_2"
+	"name": "BuyChestDetectorRadius_2",
 	"area": "Crash",
 	"yt_video": "_09-yLgxrIY",
     "yt_start": "21:56",
