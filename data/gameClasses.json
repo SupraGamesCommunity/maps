@@ -509,7 +509,7 @@
   },
   "BuyForceCubeStompJump_C": {
     "friendly": "Force Cube Stomp Jump",
-    "icon": "stomp_damage",
+    "icon": "force_cube",
     "layer": "upgrades",
     "nospoiler": "shop",
     "lines": "dev",
