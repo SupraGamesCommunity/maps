@@ -1,4 +1,4 @@
-# install UE4Parse module: pip install UE4Parse[tex]git+https://github.com/joric/pyUE4Parse.git
+# install UE4Parse module: pip install UE4Parse[tex]@git+https://github.com/joric/pyUE4Parse.git
 # This was previously: pip install UE4Parse[tex]@git+https://github.com/MinshuG/pyUE4Parse.git
 # install dependencies: pip install mathutils aes numpy scikit-learn libpysal
 
@@ -9,8 +9,10 @@ from UE4Parse.Encryption import FAESKey
 from UE4Parse.Assets.PackageReader import LegacyPackageReader
 from UE4Parse.BinaryReader import BinaryStream
 
-from mathutils import *
-from math import *
+import glob
+from itertools import groupby
+from mathutils import Vector, Matrix, Euler, Quaternion
+from math import radians
 import logging, gc, json, gc, os, sys, csv, re, argparse, tempfile
 import numpy as np
 from sklearn.neighbors import KDTree
@@ -60,6 +62,7 @@ config = {
             'DLC2_Menu_Splash',
             'DLC2_Splash',
             'DLC2_Menu',
+            'DLC2_LateChanges',
         ],
         'images': [
             'SupralandSIU/Content/Blueprints/PlayerMap/Textures/T_SIUMapV7Q0',
@@ -68,7 +71,32 @@ config = {
             'SupralandSIU/Content/Blueprints/PlayerMap/Textures/T_SIUMapV7Q3',
         ],
     },
+    'sw': {
+        'maps': [
+            'Supraworld'
+        ],
+    }
 }
+
+
+
+#ESupraColors::Custom		0xFFFFFF
+#ESupraColors::Red			0xFF0000
+#ESupraColors::Green		0x49FF00
+#ESupraColors::Blue			0x0000FF
+#ESupraColors::Yellow		0xFFFF00
+#ESupraColors::White		0xFFFFFF
+#ESupraColors::Black		0x030303
+#ESupraColors::Brown		0x964B00
+#ESupraColors::Purple		0x800080
+#ESupraColors::Orange		0xFF7700
+#ESupraColors::Cyan			0x00FFFF
+#ESupraColors::Lime			0x00FF00
+#ESupraColors::Aqua			0x00FFFF
+#ESupraColors::LightOrange	0xFFD680
+#ESupraColors::Grey			0x898989
+#ESupraColors::Magenta		0xFF00FF
+#ESupraColors::Pink			0xA74472
 
 marker_types = {
   'PlayerStart','Jumppad_C','Bones_C','Chest_C','BarrelColor_C', 'BarrelRed_C','Battery_C',
@@ -119,11 +147,105 @@ actions = {
     'Objects', # used by TriggerVolume_C in SL/SLC
 }
 
+
+# Unreal mostly uses PascalCase / UpperCamelCase for its naming. This function converts a string of this form
+# to snake case ie all lower case with underscores. It has special handling for flags converting 'bMyVar' to
+# 'is_my_var' and 'MyVar?' to 'my_var_flag'
 def camel_to_snake(s):
     if s[-1]=='?': s = s[:-1] + 'Flag'
     if s.startswith('b'): s = 'Is' + s[1:]
     s = s.replace(' ','')
     return ''.join(['_'+c.lower() if c.isupper() else c for c in s]).lstrip('_')
+
+# Returns list of numbers in the specified string (ie "a1b98" return ["1", "98"])
+get_ints = lambda s:[''.join(group) for key, group in groupby(s, lambda e:e.isdigit()) if key]
+
+# Returns last number in the specified string or empty string if it isn't one
+# Note: we could do this more simply with a regexp but it seems inefficient
+# get_last_int = lamda s: m.group() if (m := re.search('\d+$', s)) else ''
+get_last_int = lambda s: get_ints(s)[-1] if s and s[-1].isdigit() else ''  
+
+
+# isenum / isenum_unreal
+# enum.to_source_attr(s) "EnumType::NewEnumeratorNN" -> "EnumType::SourceAttrName"
+# Comparison "EnumType::SourceAttrName" == "EnumType::NewEnumeratorNN" / "EnumType::SourceAttrName"
+# helper: get_enumtype
+# helper: find filenames
+
+
+    # values = { 'EnumType::NewEnumeratorNN': 'EnumType::SourceAttrValue' }
+    # convert():
+    #    isenum_unreal() then lookup
+    # comparison
+    #    do they match, convert and try again
+
+# Return True if this string looks like some kind of enumeration
+def isenum(s):
+    return (isinstance(s, str)
+        and '::' in s 
+        and set(s) <= set("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz:0123456789"))
+
+# Return True if this string looks like an Unreal renamed enumeration
+def isueenum(s):
+    return (isinstance(s, str)
+        and '::NewEnumerator' in s 
+        and set(s) <= set("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz:0123456789"))
+
+class UEEnums:
+    def __init__(self):
+        self.map = {}
+        self.types = set()
+
+    def loadenumbp(self, filename):
+        # Read the file as a JSON
+        j = json.load(open(filename, 'r'))
+
+        # Check that it is formatted as we expect
+        if (   not isinstance(j, list) or not j             # We have a non empty list
+            or not isinstance(j[0], dict)                   # containing a dictionary
+            or not j[0].get('Type') == 'UserDefinedEnum'    # of the right type
+            or not (name := j[0].get('Name'))               # which has Name
+            or not (p := j[0].get('Properties'))            #           Properties
+            or not (emap := p.get('DisplayNameMap'))        #           DisplayNameMap
+            or not emap):                                   # which is non empty
+            print(f"Warning: {filename} does not meet expectations for an Unreal enumeration")
+            return None
+
+        #name = j[0].get('Name')
+        #emap = j[0]['Properties']['DisplayNameMap']
+
+        for i, e in enumerate(emap):
+            k, v = e['Key'], e['Value']
+            if k != f'NewEnumerator{i}' or not (s := v.get('SourceString')):
+                print(f"Warning: in {filename} key is '{k}' when expecting 'NewEnumerator{i}'")
+                return False
+            self.map[name+'::'+k] = name+'::'+s
+
+        self.types.add(name)
+
+    # If s is an enumeration name we're aware of convert it to the source form
+    def ue2source(self, s):
+        return self.map.get(s, s)
+
+    # Returns true if the two enum strings match. First may be a UE renamed enum
+    # or a source enum, second should be an untranslated source name
+    def match(self, ue, s):
+        return (ue == s or self.ue2source(ue) == s)
+
+    # If first argument is a UE enum then add it
+    def addueattr(self, ue, s=None):
+        if isueenum(ue):
+            self.map[ue] = s or ue
+            self.types.add(ue.split("::").pop())
+
+
+
+# Walk through the map and generate a list of types we're interested in
+def get_bp_file_list():
+# We want a way to convert enums of the form "ELaunchMode::NewEnumerator1" or an index to the friendly name
+
+
+
 
 def export_levels(game, cache_dir):
     path = os.environ.get(game+'dir',config[game]['path'])
@@ -231,7 +353,266 @@ def export_loc_files(cache_dir):
         print(f'Writing to ../data/loc/locstr-{loc}.json')
         json.dump(newlocstr, open(f'../data/loc/locstr-{loc}.json', 'w', encoding='utf-8'), indent = 2)
 
+
+def export_sw_markers(game, cache_dir, marker_types=marker_types, marker_names=[]):
+    maps = {}       # dictionary from map name to json data list
+    objects = {}    # dictionary from map name to dictionary of outer.name to object
+                    # key is {type}'{area}:{outer}.{name}
+    area_mtx = {}   # Transform for each area map geometry
+    pipes = {}      # Mapping from pipe to targets
+
+    optEnum= lambda s:int(s[len(s.rstrip('0123456789')):]or 0) if type(s) is str and '::' in s else s
+    optArea= lambda a,k,v: v if a==k else ':'.join((k,v))
+    optColor=lambda p:p and '#'+''.join(hex(int(p[c]))[2:] for c in 'RGB')
+    optKey = lambda d,k,v: v is not None and d.__setitem__(k,optEnum(v))
+    getVec = lambda d,v=0: Vector((d['X'], d['Y'], d['Z'])) if d else Vector((v,v,v))
+    getRot = lambda d,v=0: Euler(( radians(d['Roll']), radians(d['Pitch']), radians(d['Yaw'])) ) if d else Euler((v,v,v))
+    getQuat= lambda d,v=0: Quaternion((d['W'], d['X'], d['Y'], d['Z'])) if d else Quaternion((v,v,v,v))
+    getXYZ = lambda v:{'x':v.x, 'y': v.y, 'z': v.z}
+
+
+    # The Map JSON read in has referenced between objects and their components, either
+    # ObjectName/ObjectPath in in the same map file or AssetPathName/SubPathString if
+    # in a separate map file. This function comes up with the object.
+    # RootComponent":
+    #    "ObjectName": "SceneComponent'Map:PersistentLevel.PipesystemNew10.DefaultSceneRoot'", type'area:*.*.outer.name'}
+    #    "ObjectPath": "Supraland/Content/FirstPersonBP/Maps/Map.28893" /area.index
+    # Pickup Class
+    #    "ObjectName": "BlueprintGeneratedClass'Pickup_SolversGuidePage_C'",    -> 'class$
+    #    "ObjectPath": "/Supraworld/Levelobjects/Collectible/Pickup_SolversGuidePage.0" not a map object just a class
+    # RequiredAbilities (array)
+    #    "AssetPathName": "/Supraworld/Abilities/Dash/Inventory_Dash.Inventory_Dash_C",
+    #    "SubPathString": ""
+    # InventoryItem
+    #    "AssetPathName": "/Supraworld/Abilities/ThoughtReading/Inventory_ThoughtReading.Inventory_ThoughtReading_C",
+    #    "SubPathString": ""
+    # CustomShopItem
+    #    "AssetPathName": "/Supraworld/Systems/Shop/ShopItems/ShopItemAbility_MindReading.ShopItemAbility_MindReading_C",
+    #    "SubPathString": ""  <- It's not a map obect, so basically just extract the class ie .class$
+    # otherPipeInOtherLevel: {
+    #    "AssetPathName": "/Game/FirstPersonBP/Maps/DLC2_Area0_Below.DLC2_Area0_Below", -> /area.area$
+    #    "SubPathString": "PersistentLevel.PipesystemNew_IntoSewer" -> Outer.Name$
+
+    # Expects a dictionary containing SubPathString and AssetPathName or containing
+    # ObjectName and ObjectPath. If we have an object loaded from JSON corresponding
+    # to the reference object then it is returned, otherwise a string containing
+    # it's class or the name of the object. if type(getObject(p) is dict: can be
+    # used to check which has been returned.
+    def getObject(p):
+        if (sps := p.get('SubPathString')) is None:
+            if (op := p.get('ObjectPath')) is None:
+                return ""
+            if '/Maps/' in op:
+                area = op.split("/Maps/")[1].split('/')[0].split(".")[0]
+                index = int(op.split(".").pop())
+                if area in maps:
+                    object = maps[area][int(index)]
+                else:
+                    object = op.split("/").pop().split('.')[0]
+            else:
+                on = p.get('ObjectName')
+                object = on.split("'")[1]   # Just extract class
+        else:
+            apn = p.get('AssetPathName', '').split('.').pop() 
+            # If the SubPathString is empty then just return the last bit of the asset path name (normally type)
+            if sps == '':
+                object = apn
+            elif not (object := objects.get(apn, {}).get(sps)):
+                # elif not (areaobjects := objects.get(apn)) or not (object := areaobjects.get(sps)):
+                # See if we have referenced object in our look up table, if not return string
+                object = apn + '.' + sps.split('.').pop()   # We could remove pop to include Outer
+
+        return object
     
+    # Phase 1: Read all the map json files in and build a look up table for references
+    # Also get any area/map file matrices 
+    for area in config[game]['maps']:
+        path = os.path.join(cache_dir, area + '.json')
+        print('loading "%s" ...' % path)
+
+        # Store the map data
+        maps[area] = json.load(open(path, encoding="utf-8-sig"))
+
+        # Go through all objects in the map data and store lookups for later
+        objects[area] = {}
+        for o in maps[area]:
+            # Store a unique reference to this object for later access
+            outer = o.get('Outer', '')
+            objects[area]['.'.join((outer, o['Name']))] = o
+
+            # Get reference to properties (or empty if this object doesn't have any)
+            p = o.get('Properties', {})
+
+            # For maps that are divided into multiple files, there may be a LevelTransform for entities in that
+            # file relative to the persistent world that is handled by the streaming system. To correct for this
+            # we construct a matrix from the Translation/Rotation members if they exit
+            if (a := p.get('WorldAsset',{}).get('AssetPathName')) and (t := p.get('LevelTransform')):
+                area_mtx[a.split('.').pop()] = Matrix.Translation(getVec(t.get('Translation'))) @ getQuat(t.get('Rotation')).to_matrix().to_4x4()
+
+    # "ActorLabel": "PickupSpawner" -> PickupSpawnerSolversGuide0?
+
+
+    # Phase 2: Go through all the objects which have types we're interested in
+    # and
+    types = set()
+    props = set()
+    properties = set()
+    enumprops = set()
+    enumvalues = set()
+    def isenum(s):
+        return (isinstance(s,str) and "::" in s and set(s) <= set("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz:0123456789"))
+
+    for area in maps:
+        for o in maps[area]:
+
+                def checkitems(d):
+                    for k,v in d.items():
+                        if isinstance(v, (list,dict, tuple)):
+                            checkitems(v)
+                        elif isinstance(v, str):
+                            if "::" in v:
+                                enum, member = v.split("::")
+                                idx = member.
+
+
+
+            for k in o.keys():
+                props.add(k+":"+(o[k].split('::').pop() if isenum(o[k]) else type(o[k]).__name__))
+                if type(s := o[k]) is str:
+                    if isenum(s):
+                        ek, ev = s.split("::")
+                        enumprops.add(k+"="+ek)
+                        enumvalues.add(ek+"::"+ev)
+
+            if (p := o.get('Properties')):
+                for k in p.keys():
+                    properties.add(k+":"+(p[k].split('::').pop() if isenum(p[k]) else type(p[k]).__name__))
+                    if type(s := p[k]) is str:
+                        if isenum(s):
+                            ek, ev = s.split("::")
+                            enumprops.add(k+"="+ek)
+                            enumvalues.add(ek+"::"+ev)
+
+            # We're only interested in objects with a world position and custom class
+            if not o['Type'].endswith("_C") or not (p := o.get('Properties')) or not (r := p.get('RootComponent')):
+                continue
+
+            # Remember all the custom classes we find
+            types.add(o['Type'])
+
+            # We're currently only interested in these classes
+            if o['Type'] != "PresentBox_C":
+                continue
+
+            def get_matrix(o, matrix=Matrix.Identity(4)):
+                p = o.get('Properties',{})
+
+                if p.get('RelativeLocation'):
+                    matrix = Matrix.LocRotScale(getVec(p.get('RelativeLocation')), getRot(p.get('RelativeRotation')), getVec(p.get('RelativeScale3D'), 1)) @ matrix
+
+                for parent in ['RootObject', 'RootComponent', 'DefaultSceneRoot', 'AttachParent']:
+                    node = p.get(parent, {})
+                    if type(node) is dict:
+                        obj = getObject(node)
+                        if type(obj) is dict:
+                            return get_matrix(obj, matrix);
+                return matrix
+
+            matrix = get_matrix(o)
+            if area in area_mtx:
+                matrix  = area_mtx[area] @ matrix
+
+            print(f"n: {o['Name']} m: {matrix}")
+
+    json_file = game + '.types.json'
+    print('writing "%s" ...' % json_file)
+    json.dump(sorted(types), open(json_file,'w'), indent=2)
+
+    json_file = game + '.props.json'
+    print('writing "%s" ...' % json_file)
+    json.dump(sorted(props), open(json_file,'w'), indent=2)
+
+    json_file = game + '.properties.json'
+    print('writing "%s" ...' % json_file)
+    json.dump(sorted(properties), open(json_file,'w'), indent=2)
+
+    json_file = game + '.enums.json'
+    print('writing "%s" ...' % json_file)
+    f = open(json_file,'w')
+    json.dump(sorted(enumprops), f, indent=2)
+    json.dump(sorted(enumvalues), f, indent=2)
+    f.close()
+
+    print("Done")
+
+'''
+-1237.642333984375 -7274.92333984375 871.6895141601562
+    Object
+      Properties
+        WorldAsset
+          AssetPathName
+        LevelTransform
+    let outer = o.Outer + '.' + o.Name;
+    outers[outer] = o;
+    if ((p = o.Properties) && (a = p.WorldAsset) && (n = a.AssetPathName) && (t = p.LevelTransform)) {
+      let key = n.split('.').pop();
+      let m = new THREE.Matrix4().compose(getVec(t.Translation, 0), getQuat(t.Rotation), new THREE.Vector3(1,1,1));
+      areas[key] = m
+    }
+    if (o.Type=='StaticMeshComponent') meshes[o.Outer] = o;
+    if (o.Type=='MessengerComponent') messengers[o.Outer] = o;
+    if (o.Type=='SupraworldLaunchComponent_C') targets[o.Outer] = o;
+
+    components[o.Outer] = components[o.Outer] || {};
+    components[o.Outer][o.Name] = o;
+
+    ObjectName: {type}'{area}:PersistentLevel.{name}[.{subname}[.{sub}[...]]]
+    {type} is the "Type" of the target object
+    {area} is the json map file containing the target object (seems to always match file name)
+    {name} is the base name of this object (which contains all the components properties)
+    {subname} is the base name of the object it points at
+
+    Target object will be in {area}.json:
+    "Type": "{type}",
+    "Name": "{subname}",
+    "Outer": "{name}",
+
+    
+
+
+
+      "Area": {
+        "TagName": "Supraworld.Area.StartTown"
+      },
+      "ProgressionGroup": {
+        "TagName": "Supraworld.Story.Act1"
+      },
+            "Color": "ESupraColors::Green",
+      "RibbonColor": "ESupraColors::Orange",
+      "ProgressionGroup": {
+        "TagName": "Supraworld.Story.Act1"
+      },
+            "Coins": 3,
+MoveOneWay
+SupraworldLaunch
+TargetLocation
+      "RelativeLocation": {
+        "X": 11140.349,
+        "Y": 15022.57,
+        "Z": 6897.67
+      },
+
+      "otherPipeInOtherLevel": {
+        "AssetPathName": "/Game/FirstPersonBP/Maps/DLC2_Complete.DLC2_Complete",
+        "SubPathString": "PersistentLevel.PipesystemNewDLC_BathToSecretLavaAreaToBath1"
+        PipesystemNewDLC_C
+        DLC2_Complete
+
+
+'''
+
+
+
     
 def export_markers(game, cache_dir, marker_types=marker_types, marker_names=[]):
     data = []
@@ -253,6 +634,8 @@ def export_markers(game, cache_dir, marker_types=marker_types, marker_names=[]):
     getQuat= lambda d,v=0: Quaternion((d['W'], d['X'], d['Y'], d['Z'])) if d else Quaternion((v,v,v,v))
     getXYZ = lambda v:{'x':v.x, 'y': v.y, 'z': v.z}
 
+
+
     def parse_json(j, area):
         outer = {}
         pipes = {}
@@ -268,10 +651,27 @@ def export_markers(game, cache_dir, marker_types=marker_types, marker_names=[]):
                 outer[':'.join((o['Name'],o['Outer']))] = o # pyUE4Parse 90e309b
 
             if o['Type'].startswith('Pipesystem') and 'Pipe' in p and ('OtherPipe' in p or 'otherPipeInOtherLevel' in p):
-                a = ':'.join((area, p['Pipe']['Outer']))
-                b = ':'.join((t['AssetPathName'].split('.').pop(),t['SubPathString'].split('.').pop()) if (t:=p.get('otherPipeInOtherLevel')) else (area, p['OtherPipe']['ObjectName']))
-                pipes[ a ] = b
-                #pipes[ b ] = a # links may be single-sided
+                # p['Pipe']
+                #        "ObjectName": "StaticMeshComponent'Map:PersistentLevel.PipesystemNew10.Pipe'",
+                # p['OtherPipe']
+                #        "ObjectName": "PipesystemNewDLC_C'DLC2_Complete:PersistentLevel.PipesystemNewDLC10'",
+                # p['otherPipeInOtherLevel']
+                #        "AssetPathName": "/Game/FirstPersonBP/Maps/DLC2_Complete.DLC2_Complete",
+                #        "SubPathString": "PersistentLevel.PipeToArea1"
+                # {ComponentType/class}'{map}'
+                def getPipeObjectName(o):
+                    t = o['ObjectName'].split('.')
+                    r = t[-2] if t[-1]=="Pipe'" else t[-1]
+                    return r.replace("'", "")
+
+                a = ':'.join((area, getPipeObjectName(p['Pipe'])))
+                if (t:=p.get('otherPipeInOtherLevel')):
+                    b = ':'.join((t['AssetPathName'].split('.').pop(), t['SubPathString'].split('.').pop()))
+                else:
+                    b = ':'.join((area, getPipeObjectName(p['OtherPipe'])))
+                pipes[a] = b
+                print(f"{a} -> {b}")
+                #pipes [b] = a # links may be single-sided
 
             objects[area +':'+o['Name']] = o
 
@@ -366,7 +766,8 @@ def export_markers(game, cache_dir, marker_types=marker_types, marker_names=[]):
     for area in config[game]['maps']:
         path = os.path.join(cache_dir, area + '.json')
         print('loading "%s" ...' % path)
-        parse_json(json.load(open(path)), area)
+        f = open(path, encoding="utf-8-sig")
+        parse_json(json.load(f), area)
 
     calc_pads(data)
     calc_pipes(data)
@@ -706,7 +1107,7 @@ def cleanup_objects(game, classes_found, data_lookup, data):
                 if o['variant'] == 'gold' and not o.get('coins'):
                     o['coins'] = 3
                 if o.get('coins') is not None and o['variant'] != 'gold':
-                    print(f'Non gold coin containing MinecraftBrick_C:{o['variant']}:{o['coins']}')
+                    print(f'Non gold coin containing MinecraftBrick_C:{o["variant"]}:{o["coins"]}')
 
         # Player icon changes colour based on game
         if o['type'] == 'PlayerStart':
@@ -946,10 +1347,18 @@ def export_textures(game, cache_dir):
 
 
 def main():
+
+    export_sw_markers("sw", "source")
+    export_sw_markers("sl", "source")
+    export_sw_markers("slc", "source")
+    export_sw_markers("siu", "source")
+
+    exit()
+
     # Looks for environment variable {game}dir ie %SLDIR% for the path where the game data is stored 
 
     parser = argparse.ArgumentParser()
-    parser.add_argument('-g', '--game', default='siu', help='game name (sl, slc, siu)')
+    parser.add_argument('-g', '--game', default='siu', help='game name (sl, slc, siu, sw)')
     parser.add_argument('-d', '--cache_dir', default=tempfile.gettempdir(), help='cache directory for temporary files')
     parser.add_argument('-t', '--textures', action='store_true', help='export textures')
     parser.add_argument('-l', '--levels', action='store_true', help='export json levels to cache directory')
