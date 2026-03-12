@@ -2196,5 +2196,1725 @@
     "nospoiler": null,
     "lines": null,
     "description": "They're attracted to bright purple things and eat anything orange"
+  },
+  "BuySmashdownDamage+100_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "BuySmashdownRadius+5_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "5Cent_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "StolenCoins_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "LotsOfCoins10_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "LotsOfCoins15_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "LotsOfCoins30_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "LotsOfCoins50_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "LotsOfCoins5_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "LotsofCoins200_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "Purchase_SlumHouse1_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "SlumBurningQuest_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "EnemySpawner2_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "SpongeBig_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "Matchbox_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "SnappyPipe": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "CarrotPhysical_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "RingColorer_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "RespawnActor_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "CarryStones_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "CarryStones_Heavy_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "BP_CarryBox_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "FlowerDLC2_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "Crystal_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "RingRusty_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "TaskHintGuy_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "AAABattery_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "AluminumBall_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "Barrel_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "ButtonBattery_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "ChocolateEgg_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "Cork_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "Corn_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "Die_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "FourLeafClover_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "GarbageBug_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "GreenTubeCap_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "Piratehat_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "Popcorn_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "Respirator_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "SaladLeaf_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "SimCard_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "Sombrero_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "Spider_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "Thimble_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "TrafficCone_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "UmbrellaHat_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "Weight_Draggable_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "AsterixHat_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "ButtonHat_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "CapHat_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "ConstructionHat_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "GlobeHat_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "ImperialHat_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "JesterHat_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "MagnetHat_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "MagnetHat_ProxieC": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "MarioHat_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "TopHat_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "FireBall_Trap_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "FlameThrower_FireTrap_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "Pickup_Hay_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "Pickup_SolversGuidePage_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "SmallHeart_Healing_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "RealCoinPickup_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "CoinStacker_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "FloppyDisk_SavePoint_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "ShopEgg_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "Egg_Opener_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "JumpTargetAssist_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "AAABatterySlot_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "NFCSimReader_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "PuzzleCloud_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "PadlockThinker_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "PadlockCodeCombination_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "JustTalkActor_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "HayGuy_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "FloatingRaft_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "HealthDispenser_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "Gumball_Machine_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "PressurePlate_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "SupraworldPlayerStart_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "ItemSpawner_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "ShopItemSpawner_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "ShopSlot_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "ButtonBatterySlot_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "Snail_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "Jimmy_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "BP_LaserPointer_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "Pickup_Rune_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "PresentBox_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "PresentBox_Lootpools_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "GearFan_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "SmallFan_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "SecretVolume_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "GlowStar_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "Nailscrew_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "CornerMetalScrew_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "Tack_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "SupraVolumeBase_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "SupraBlockingVolume_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "SupraEABlockingVolume_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "NPCManagerVolume_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "RoamPoint_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "GhostPoint_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "EnemyArenaProxy_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "LED_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "MetalLeverButton_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "TaskAchievement_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "TeaLight_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "BP_MoveMesh_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "PlaySound_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "Cable_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "FashionSlotComponent_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "Inventory_Walk_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "Inventory_Toothpin_Dart_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "Inventory_LaserWalk_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "Inventory_Dash_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "Inventory_HealthQuarter_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "Inventory_BlowGun_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "Inventory_Coin5_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "Inventory_ThoughtReading_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "Inventory_MindVision_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "Inventory_ThirdEye_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "Inventory_Toothpick_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "Inventory_MaxHealth_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "Inventory_Jump_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "Inventory_Run_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "Inventory_Crouch_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "Inventory_SolversGuidePage_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "Inventory_PlayerMap_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "Inventory_JumpHeightDouble_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "Inventory_Strength_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "Inventory_SpongeSuit_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "Inventory_Toothpin_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "Inventory_LanguageFabric_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "Smartphone_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "ResetButton_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "PaintTube_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "PaintBottle_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "ToothPinSnap_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "ShopItemAbility_MindPossession_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "ShopItemAbility_MindReading_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "ToyCharacterBase_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "YouMissedNSecrets_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "CodeOrderUnlock_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "TextRenderActor": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "Bush_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "Jumppad_C:target": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "Balloon_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "Balloon_C:target": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "RubberBand_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "RubberBand_C:target": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "WobbleSpring_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "WobbleSpring_C:target": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "LaunchPrincess_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "LaunchPrincess_C:target": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "GuardVolume_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "GuardVolume_C:target": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "LaunchVolume_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "LaunchVolume_C:target": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "RubberBand_CustomDeform_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "RubberBand_CustomDeform_C:target": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "EncroachVolume_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "EncroachVolume_C:target": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "DashLauncher_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "DashLauncher_C:target": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "Pickup_Thread_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "DoorSlideCard_1_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "DoorSlideCard_2_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "DoorSlideCard_3_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
+  },
+  "DoorSlideCard_4_C": {
+    "friendly": "title",
+    "icon": "icon",
+    "layer": "group",
+    "nospoiler": null,
+    "lines": "dev",
+    "games": [
+      "sw"
+    ]
   }
 }

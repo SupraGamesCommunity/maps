@@ -9,7 +9,7 @@
         "viewBounds": [{ "x": -73133, "y": -73436, "z": -6860 }, { "x": 100158, "y": 81740, "z": -12942 }],
         "backgroundColor": "#000",
         "zDepth": 0,
-        "games": ["sl", "slc", "siu"]
+        "games": ["sl", "slc", "siu", "sw"]
     },
     "slc": {
         "type": "base",
@@ -21,7 +21,7 @@
         "viewBounds": [{ "x": -18713, "y": -27440, "z": -3450 }, { "x": 69111, "y": 28176, "z": 14901 }],
         "backgroundColor": "#000",
         "zDepth": 0,
-        "games": ["sl", "slc", "siu"]
+        "games": ["sl", "slc", "siu", "sw"]
      }, 
     "siu": {
         "type": "base",
@@ -34,7 +34,19 @@
         "viewBounds": [{ "x": -73728, "y": -67672, "z": -19901},  { "x": 71400, "y": 27944, "z": 24066 }],
         "backgroundColor": "#141414",
         "zDepth": 0,
-        "games": ["sl", "slc", "siu"]
+        "games": ["sl", "slc", "siu", "sw"]
+    },
+    "sw": {
+        "type": "base",
+        "name": "Supraworld",
+        "mapRes": 8192,
+        "tileRes": 512,
+        "mapSize": 200000,
+        "mapBounds":  [{ "x": -116500, "y": -116500, "z": -20000 }, { "x": 83500, "y": 83500, "z": 25000 }],
+        "viewBounds": [{ "x": -20000, "y": -30000, "z": -19901},  { "x": 20000, "y": 30000, "z": 24066 }],
+        "backgroundColor": "#141414",
+        "zDepth": 0,
+        "games": ["sl", "slc", "siu", "sw"]
     },
     "jumppads": {
         "type": "markers",
