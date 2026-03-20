@@ -1,0 +1,17 @@
+# Created by venv; see https://docs.python.org/3/library/venv.html
+
+# Ignore all . files and folders except this one (.git, .venv, .vs etc)
+.*
+!/.gitignore
+
+# Libraries installed for python and node.js
+node_modules/
+site-packages/
+
+# Binary and intermediate files from VS projects amongst others
+bin/
+obj/
+
+# Ignore source data extracted from games or from other repositories
+/source/
+/scripts/source/
