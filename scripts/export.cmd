@@ -28,7 +28,7 @@ for %%i in ( "%SLROOT%" "%SIUROOT%" "%SWROOT%" ) do if "%%~i"=="" goto env_error
 :: Game selection
 set games=%~1
 if "%games%"=="" goto :cli_error
-if "%games%"=="all" set games=sl siu sw
+if "%games%"=="all" set games=sl slc siu sw
 call :has_wildcard "%games%"
 if not errorlevel 1 goto cli_error
 
@@ -74,7 +74,7 @@ for %%i in (sl siu sw) do if "%%i"=="%game%" set gameopt=good
 if %gameopt%==bad goto :cli_error
 
 set modeopt=bad
-for %%i in (levels loc bp mapimg enums list parse) do if "%%i"=="%mode%" set modeopt=good
+for %%i in (levels loc bp mapimg gentiles enums list parse) do if "%%i"=="%mode%" set modeopt=good
 if %modeopt%==bad goto :cli_error
 
 :: Make sure the game output directory exists (this creates basedir and basedir\game)
@@ -124,25 +124,35 @@ exit /b
 :: export all markers           - export markers
 ::                              - add loc keys to gameClasses.json (export_class_loc)
 ::                              - Filter loc files to just keys we want (markers, layers, gameclasses...)
+::
+:: For map textures:
+:: export all mapimg            - to get the map raw images
+:: {manually produce ..\source\{game}map-final.png}
+:: export all gentiles          - to generate tiles for runtime map
+::
 :: Todo:
-:: maketiles
-:: cleanup (parse)?
-:: ? dumpsavefilesw, json2csv
-:: check if anything missing from run and remove it
+:: Move stuff in run.cmd to here with these commands:
+:: python supraland_parse.py -d ..\source -g %game% -p      preproc
+:: python supraland_parse.py -d ..\source -g %game% -m      markers
+:: python supraland_parse.py -d ..\source -g %game% -b      loc keys from blueprints to gameClasses
+:: python supraland_parse.py -d ..\source -g %game% -o      loc files filtered to just keys we need
+::
+:: Deal with pipeline update
 
 echo Usage: export {game} [{mode}]
 echo.
-echo {game} is one of sl, siu or sw (sl does crash too) (use all or put multiple games in quotes)
+echo {game} is one of sl, slc, siu or sw (slc ignored for most commands) (use all or put multiple games in quotes)
 echo {mode} is one of images, maps or list (put multiple modes in quotes)
 echo.
-echo levels  extracts .umap level data for the specified game to ..\source\*.json
-echo bp      extracts .uasset blueprint files to .json
-echo mapimg  extracts .png map image files and merges them together in ..\source\{maps}.json
-echo loc     extracts .locres/.locmeta localistation files for the specified game
-echo enums   extracts all the enumerations and their member names/numbers (..\source\{game}.enums.json)
-echo list    generates a list of all files in the specified game ({game}.list.txt)
-echo parse   runs extraction with custom arguments (optional flatten argument)
-echo         ie export {game} parse [flatten] -p */{file}.uasset
+echo levels   extracts .umap level data for the specified game to ..\source\*.json
+echo bp       extracts .uasset blueprint files to .json
+echo mapimg   extracts .png map image files and merges them together in ..\source\{maps}.json
+echo gentiles takes ..\source\{game}map-final.png and generates tiles in ..\tiles\{game}\base 
+echo loc      extracts .locres/.locmeta localistation files for the specified game
+echo enums    extracts all the enumerations and their member names/numbers (..\source\{game}.enums.json)
+echo list     generates a list of all files in the specified game ({game}.list.txt)
+echo parse    runs extraction with custom arguments (optional flatten argument)
+echo          ie export {game} parse [flatten] -p */{file}.uasset
 echo.
 echo Files and directories are placed in ..\source\{game}\
 
@@ -152,6 +162,7 @@ exit /b
 
 :: Set the game specific options for CUE4Parse
 :setopt_sl
+:setopt_slc
 set "gameroot=%SLROOT%"
 set gamever=GAME_UE4_26
 set gamename=Supraland
@@ -196,6 +207,10 @@ goto :eof
 ::
 :: Still want to unwind the enums
 
+:slc_levels
+echo %colGrn%Crash umaps are extracted with Supraland skipping%colDef%
+goto :eof
+
 :sl_levels
 :siu_levels
 :sw_levels
@@ -225,6 +240,10 @@ goto :eof
 :: We basically want to extract all the blueprints for the types we're interested in from the
 :: games umap file and then move them into the bp directory.
 
+:slc_bp
+echo %colGrn%Crash blueprints are extracted with Supraland skipping%colDef%
+goto :eof
+
 :sl_bp
 :siu_bp
 :sw_bp
@@ -250,6 +269,10 @@ goto :eof
 ::=================================================================================================
 :: Localisation Files
 
+:slc_loc
+echo %colGrn%Crash localisation data is extracted with Supraland skipping%colDef%
+goto :eof
+
 :sl_loc
 :siu_loc
 :sw_loc
@@ -271,6 +294,11 @@ goto :eof
 
 ::=================================================================================================
 :: Player Map Image extraction and conversion
+
+:slc_mapimg
+echo %colGrn%Crash had no map image use manually created one, skipping%colDef%
+goto :eof
+
 :sl_mapimg
 :siu_mapimg
 :sw_mapimg
@@ -302,7 +330,32 @@ goto :eof
 
 
 ::=================================================================================================
+:: Generate tiled versions of map images
+
+:sl_gentiles
+:slc_gentiles
+:siu_gentiles
+:sw_gentiles
+
+set tiledir=..\tiles\%game%\base
+set mappng=..\source\%game%map-final.png
+
+echo %colGrn%Generating map tiles in %tiledir% from %mappng%%colDef%
+
+if not exist "%tiledir%" md "%tiledir%""
+
+python gentiles.py -t jpg -w 512 %mappng% 0-4 %tiledir%
+
+goto :eof
+
+
+::=================================================================================================
 :: Extract and convert to JSON all files in the PAK in \Enums\ directories 
+
+:slc_enums
+echo %colGrn%Crash enums extracted from Supraland, skipping%colDef%
+goto :eof
+
 :sl_enums
 :siu_enums
 :sw_enums
@@ -327,6 +380,11 @@ goto :eof
 
 ::=================================================================================================
 :: List the contents of the game PAK files
+
+:slc_list
+echo %colGrn%Crash data extracted from Supraland, skipping%colDef%
+goto :eof
+
 :sl_list
 :siu_list
 :sw_list
@@ -342,6 +400,11 @@ goto :eof
 :: Run CUE4Parse with custom arguments
 ::
 :: Normal use: export sw parse [flatten] -p *name.uasset
+
+:slc_parse
+echo %colGrn%Crash data extracted from Supraland, skipping%colDef%
+goto :eof
+
 :sl_parse
 :siu_parse
 :sw_parse
