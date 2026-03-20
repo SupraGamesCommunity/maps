@@ -5,14 +5,19 @@
 :: Spits out files into game specific subdirectories of "source"
 ::
 :: Note the maps tend to be hand customised, so we grab copies
-:: from source rather than the originals from source\{game}\mapimg
+:: from source rather than the originals from ..\source\{game}\mapimg
 :: when we do the tiling.
 
 setlocal enabledelayedexpansion
 
+for /f %%a in ('echo prompt $E^| cmd') do set "ESC=%%a"
+set colDef=%ESC%[0m
+set colRed=%ESC%[31m
+set colGrn=%ESC%[32m
+
 :: Specifies where various things are
 set CUE4Parse=CUE4Parse.exe
-set basedir=source
+set basedir=..\source
 
 :: Make sure we have the relevant environment variables set up
 for %%i in ( "%SLROOT%" "%SIUROOT%" "%SWROOT%" ) do if "%%~i"=="" goto env_error
@@ -24,7 +29,7 @@ for %%i in ( "%SLROOT%" "%SIUROOT%" "%SWROOT%" ) do if "%%~i"=="" goto env_error
 set games=%~1
 if "%games%"=="" goto :cli_error
 if "%games%"=="all" set games=sl siu sw
-call :has_wildcard %games%
+call :has_wildcard "%games%"
 if not errorlevel 1 goto cli_error
 
 :: Mode selection
@@ -33,9 +38,8 @@ if "%modes%"=="" goto :cli_error
 call :has_wildcard %modes%
 if not errorlevel 1 goto cli_error
 
-:: Keep and flatten flags (used by parse command)
-if "%~3"=="keep" ( set "keepfiles=yes" & shift /3 )
-if "%~3"=="flatten" ( set "keepfiles=flatten" & shift /3 )
+:: Flatten flag (used by parse command)
+if "%~3"=="flatten" ( set "flatten=true" & shift /3 )
 
 :: Concatenate any extra arguments
 
@@ -101,29 +105,46 @@ goto :eof
 :: Required environment variables not set
 :env_error
 
-echo This batch file requires SLROOT, SIUROOT and SWROOT environment variables
+echo %colRed%This batch file requires SLROOT, SIUROOT and SWROOT environment variables
 echo to be set up to work correctly. You can set them manually or use the
-echo findslpaks.cmd batch file to set them up automatically
+echo findslpaks.cmd batch file to set them up automatically%colDef%
 
 exit /b
 
 :: There was a command line processing error display help text
 :cli_error
 
+:: Sequence is:
+:: findslpaks                   - set up env vars
+:: export all list              - outputs PAK dir in gamefilelist.txt
+:: export all levels            - extract levels
+:: export all preproc           - identify bps and enums based on gameClasses.json
+:: export all "bp enums"        - extract bps and enums
+:: export all preproc           - optional remap enums based on enum extraction
+:: export all markers           - export markers
+::                              - add loc keys to gameClasses.json (export_class_loc)
+::                              - Filter loc files to just keys we want (markers, layers, gameclasses...)
+:: Todo:
+:: maketiles
+:: cleanup (parse)?
+:: ? dumpsavefilesw, json2csv
+:: check if anything missing from run and remove it
+
 echo Usage: export {game} [{mode}]
 echo.
 echo {game} is one of sl, siu or sw (sl does crash too) (use all or put multiple games in quotes)
 echo {mode} is one of images, maps or list (put multiple modes in quotes)
 echo.
-echo levels  extracts .umap level data for the specified game to .\source\*.json
+echo levels  extracts .umap level data for the specified game to ..\source\*.json
 echo bp      extracts .uasset blueprint files to .json
-echo mapimg  extracts .png map image files and merges them together in .\source\{maps}.json
+echo mapimg  extracts .png map image files and merges them together in ..\source\{maps}.json
 echo loc     extracts .locres/.locmeta localistation files for the specified game
-echo enums   extracts all the enumerations and their member names/numbers (source\{game}.enums.json)
+echo enums   extracts all the enumerations and their member names/numbers (..\source\{game}.enums.json)
 echo list    generates a list of all files in the specified game ({game}.list.txt)
-echo parse   runs extraction with custom arguments
+echo parse   runs extraction with custom arguments (optional flatten argument)
+echo         ie export {game} parse [flatten] -p */{file}.uasset
 echo.
-echo Files and directories are placed in source\{game}\
+echo Files and directories are placed in ..\source\{game}\
 
 exit /b
 
@@ -136,6 +157,7 @@ set gamever=GAME_UE4_26
 set gamename=Supraland
 set "mappings=%basedir%\%game%\%gamename%.usmap"
 set mapimage=T_Downscale
+set mappath=Supraland/Content/Blueprints/PlayerMap/Textures
 
 goto :eof
 
@@ -145,6 +167,7 @@ set gamever=GAME_UE4_27
 set gamename=SupralandSIU
 set "mappings=%basedir%\%game%\%gamename%.usmap"
 set mapimage=T_SIUMapV7Q
+set mappath=SupralandSIU/Content/Blueprints/PlayerMap/Textures
 
 goto :eof
 
@@ -153,7 +176,8 @@ set "gameroot=%SWROOT%"
 set gamever=GAME_UE5_6
 set gamename=Supraworld
 set "mappings=%basedir%\%game%\%gamename%.usmap"
-set mapimage=T_SupraworldMapV7Q
+set mapimage=T_SupraworldMapV?Q
+set mappath=Supraworld/Plugins/Supra/PlayerMap/Content/Textures
 
 goto :eof
 
@@ -176,7 +200,10 @@ goto :eof
 :siu_levels
 :sw_levels
 
+echo %colGrn%Extracting umaps as jsons to %basedir%\%game%\levels%colDef%
+
 :: Exract the umap files (more than we need)
+:: Content/FirstPersonBP/Maps is SIU/SL and Content/Maps is SW
 %CUE4Parse% %opt% -p %gamename%/Content/FirstPersonBP/Maps/*.umap -p */%gamename%/Content/Maps/*.umap
 
 :: Move all the level map json files into a single directory
@@ -202,7 +229,7 @@ goto :eof
 :siu_bp
 :sw_bp
 
-echo Extracting blueprints jsons for types of interest to %basedir%\%game%\bpassetlist.txt
+echo %colGrn%Extracting blueprints jsons for types of interest to %basedir%\%game%\bpassetlist.txt%colDef%
 
 if not exist "%basedir%\%game%\bpassetlist.txt" goto :eof
 %CUE4Parse% %opt% -c "%basedir%\%game%\bpassetlist.txt"
@@ -227,7 +254,7 @@ goto :eof
 :siu_loc
 :sw_loc
 
-echo Extracting localisation json files to %gameout%\loc
+echo %colGrn%Extracting localisation json files to %gameout%\loc%colDef%
 
 :: Unpack all the game specific localisation files
 %CUE4Parse% %opt% -p */Localization/Game/*.locres -p */Localization/Game/*.locmeta
@@ -236,107 +263,39 @@ echo Extracting localisation json files to %gameout%\loc
 :: then delete the other files/directories
 if not exist "%gameout%\loc" md "%gameout%\loc"
 robocopy "%gameout%\temp\%gamename%\Content\Localization\Game" "%gameout%\loc" /s /move >nul
+
 rd /s /q "%gameout%\temp" 
 
 goto :eof
 
 
 ::=================================================================================================
-:: Player Map Images
-
-::-------------------------------------------------------------------------------------------------
-:: Supraland Map Image Extraction (Crash has no in game map)
+:: Player Map Image extraction and conversion
 :sl_mapimg
-
-echo Extracting map images, joining and copying to %mapimg%\slmap.png
-
-:: Unpack all the map image textures
-%CUE4Parse% %opt% -p Supraland/Content/Blueprints/PlayerMap/Textures/T_Downscale?.uasset
-
-:: Move the extracted files to local store
-set "mapimg=%gameout%\mapimg"
-if not exist %mapimg% md %mapimg%
-move>nul /Y  "%gameout%\temp\Supraland\Content\Blueprints\PlayerMap\Textures\T_Downscale*.png"  "%mapimg%"
-
-:: Stitch the images into two rows and then stitch the rows into final image
-::magick "%mapimg%\T_Downscale0.png" "%mapimg%\T_Downscale1.png" +append "%mapimg%\row0.png"
-::magick "%mapimg%\T_Downscale2.png" "%mapimg%\T_Downscale3.png" +append "%mapimg%\row1.png"
-::magick "%mapimg%\row0.png" "%mapimg%\row1.png" -append "%mapimg%\slmap.png"
-magick montage "%mapimg%\%mapimage%*.png" -geometry +0+0 %game%map.png 
-
-:: Delete source/intermediate files
-::del "%mapimg%\row*.png"
-del "%mapimg%\T_Downscale*.png"
-rd /s /q "%gameout%\temp"
-
-goto :eof
-
-
-::-------------------------------------------------------------------------------------------------
-:: Supraland SIU Map Image Extraction
 :siu_mapimg
-
-echo Extracting map images, joining and copying to %mapimg%\siumap.png
-
-:: Unpack all the map image textures
-%CUE4Parse% %opt% -p SupralandSIU/Content/Blueprints/PlayerMap/Textures/T_SIUMapV?Q?.uasset
-
-:: Move them to the mapimg directory
-set "mapimg=%gameout%\mapimg"
-if not exist %mapimg% md %mapimg%
-move>nul /Y  %gameout%\temp\SupralandSIU\Content\Blueprints\PlayerMap\Textures\T_SIUMapV?Q?.png "%mapimg%"
-
-:: Stitch the images into rows and then rows into a final map
-::magick "%mapimg%\T_SIUMapV7Q0.png" "%mapimg%\T_SIUMapV7Q1.png" +append "%mapimg%\row0.png"
-::magick "%mapimg%\T_SIUMapV7Q2.png" "%mapimg%\T_SIUMapV7Q3.png" +append "%mapimg%\row1.png"
-::magick "%mapimg%\row0.png" "%mapimg%\row1.png" -append "%mapimg%\siumap.png"
-magick montage "%mapimg%\%mapimage%*.png" -geometry +0+0 %game%map.png 
-
-:: Cleanup intermdiate/soure files
-::del "%mapimg%\row*.png"
-del "%mapimg%\T_SIUMapV*.png"
-rd /s /q "%gameout%\temp"
-
-goto :eof
-
-
-::-------------------------------------------------------------------------------------------------
-:: Supraworld Map Image Extraction
 :sw_mapimg
 
-echo Extracting map images, joining and copying to %mapimg%\swmap.png
+echo %colGrn%Extracting map images, joining and copying to %gameout%\mapimg\%game%map.png%colDef%
 
 :: Unpack all the map image textures
-%CUE4Parse% %opt% -p Supraworld/Plugins/Supra/PlayerMap/Content/Textures/T_SupraworldMapV?Q?.uasset
+%CUE4Parse% %opt% -p %mappath%/%mapimage%?.uasset
 
-:: Move them to the mapimg directory
-set "mapimg=%gameout%\mapimg"
-if not exist "%mapimg%" md "%mapimg%"
-move>nul /Y  "%gameout%\temp\Supraworld\Plugins\Supra\PlayerMap\Content\Textures\T_SupraworldMapV?Q?.hdr" "%mapimg%"
+:: Move the extracted files to local store
+if not exist %gameout%\mapimg md %gameout%\mapimg
+move>nul /Y  "%gameout%\temp\%mappath:/=\%\%mapimage%*.*" "%gameout%\mapimg"
 
-:: Convert HDR to PNG with gamma correction
-:: set options= -gamma 2.2 -- too dark
-set options=-colorspace RGB -auto-level -sigmoidal-contrast 3,0.5 -gamma 2.2
+set "hdropt=-colorspace RGB -auto-level -sigmoidal-contrast 3,0.5 -gamma 2.2"
 
-:: **** The 7 here might change with future releases
-set "base=%mapimg%\%mapimage%"
-
-:: It may be possible to include this in the colorspace options
-magick "%base%0.hdr" %options% "%base%0.png"
-magick "%base%1.hdr" %options% "%base%1.png"
-magick "%base%2.hdr" %options% "%base%2.png"
-magick "%base%3.hdr" %options% "%base%3.png"
-
-:: Stitch into rows and then join the rows together
-::magick "%mapimg%\out0.png" "%mapimg%\out1.png" +append "%mapimg%\row0.png"
-::magick "%mapimg%\out2.png" "%mapimg%\out3.png" +append "%mapimg%\row1.png"
-::magick "%mapimg%\row0.png" "%mapimg%\row1.png" -append "%mapimg%\swmap.png"
-magick montage "%mapimg%\%mapimage%*.png" -geometry +0+0 %game%map.png 
+if not "%game%"=="sw" (
+    :: Stitch the PNG images into two rows and two columns
+    magick montage "%gameout%\mapimg\%mapimage%*.png" -geometry +0+0 %gameout%\mapimg\%game%map.png 
+) else (
+    :: Convert HDR to PNG with gamma correction and merge tiles
+    magick "%gameout%\mapimg\%mapimage%*.hdr" %hdropt% miff:- | magick montage miff:- -geometry +0+0 "%gameout%\mapimg\%game%map.png"
+)
 
 :: Cleanup intermediate files
-::del %mapimg%\out*.png
-::del %mapimg%\row*.png
-del %base%*.hdr
+del "%gameout%\mapimg\%mapimage%*.*"
 rd /s /q %gameout%\temp
 
 goto :eof
@@ -348,7 +307,7 @@ goto :eof
 :siu_enums
 :sw_enums
 
-echo Outputting Enum .json files to %basedir%\%game%\enumassetlist.txt 
+echo %colGrn%Outputting Enum .json files to %basedir%\%game%\enumassetlist.txt%colDef%
 
 if not exist "%basedir%\%game%\enumassetlist.txt" goto :eof
 %CUE4Parse% %opt% -c "%basedir%\%game%\enumassetlist.txt"
@@ -372,39 +331,42 @@ goto :eof
 :siu_list
 :sw_list
 
-echo Outputting directory of %game% PAK files to %gameout%\gamefilelist.txt
+echo %colGrn%Outputting directory of %game% PAK files to %gameout%\gamefilelist.txt%colDef%
 
 %CUE4Parse% %opt% -l -p * >"%gameout%\gamefilelist.txt"
 
 goto :eof
 
+
 ::=================================================================================================
 :: Run CUE4Parse with custom arguments
+::
+:: Normal use: export sw parse [flatten] -p *name.uasset
 :sl_parse
 :siu_parse
 :sw_parse
 
-echo Running CUE4Parse from %game% to %gameout%\temp with args %extraargs%
+echo %colGrn%Running CUE4Parse from %game% to %gameout%\parse with args:%colDef% %extraargs%
 
 %CUE4Parse% %opt% %extraargs%
 
 :: Any files extracted?
 if not exist "%gameout%\temp" goto :eof
 
-:: Keep files?
-if "%keepfiles%"=="" goto :eof
+echo Moving any extracted files to %gameout%\parse
 
-echo Moving any extracted files to %gameout%\extra
-
-if not exist "%gameout%\extra" md "%gameout%\extra"
+if not exist "%gameout%\parse" md "%gameout%\parse"
 pushd "%gameout%\temp"
 if not errorlevel 0 goto :eof
 
-if "%keepfiles%"=="flatten" (
-    for /r %%i in ( *.* ) do move /Y %%i ..\extra >nul
+if "%flatten%"=="flatten" (
+    :: Copy files removing subfolders
+    robocopy "%gameout%\temp\" "%gameout%\parse" /s /move >nul
 ) else (
-    robocopy "%gameout%\temp\" "%gameout%\extra" /s /move >nul
+    :: Copy files keeping subfolder structure
+    for /r %%i in ( *.* ) do move /Y %%i ..\parse >nul
 )
+
 popd
 rd /s /q "%gameout%\temp"
 

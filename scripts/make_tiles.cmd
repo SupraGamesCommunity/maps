@@ -20,21 +20,21 @@ python gentiles.py -t jpg -w 512 %MAP% 0-4 %TILES%
 
 :sl_tiles
 set TILES=..\tiles\sl\base
-set MAP=source\slmap.png
+set MAP=..\source\slmap-final.png
 goto :eof
 
 :slc_tiles
 set TILES=..\tiles\slc\base
-set MAP=source\slcmap.png
+set MAP=..\source\slcmap-final.png
 goto :eof
 
 :siu_tiles
 set TILES=..\tiles\siu\base
-set MAP=source\siumap.png
+set MAP=..\source\siumap-final.png
 goto :eof
 
 :sw_tiles
 set TILES=..\tiles\sw\base
-set MAP=source\swmap.png
+set MAP=..\source\swmap-final.png
 goto :eof
 

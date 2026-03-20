@@ -350,7 +350,7 @@ class UEEnums:
         # Check that it is formatted as we expect
         if (   not isinstance(j, list) or not j             # We have a non empty list
             or not isinstance(j[0], dict)                   # containing a dictionary
-            or not j[0].get('Type') == 'UserDefinedEnum')   # of the right type
+            or not j[0].get('Type') == 'UserDefinedEnum'):  # of the right type
             print(f"Warning: {path[-1]} does not appear to be an Unreal enumeration")
             return
 
@@ -471,7 +471,7 @@ def preproc_levels(cache_dir, game):
             save_json_file(level, filename)
 
     save_assetlist(bp_assetlist, gamefilelist, cache_dir, game, 'bpassetlist.txt')
-    save_assetlist(ueenums.types, gamefilelist, cache_dir, game, 'enumassetlist.txt')
+    save_assetlist(ueenums.types, gamefilelist, cache_dir, game, 'enumassetlist.txt', prefer="Enums")
     save_text_file(sorted(area_names), cache_dir, game, "areanames.txt")
     levelprops = {
         "IgnoredTypes": sorted(list(ignored_types)),
@@ -506,22 +506,26 @@ def load_filelist(*path, quiet=False):
 # Write an asset list for use by CUE4Parse to select which files to extract
 # from the game PAK file. Blueprints needed for localisation and enums just
 # for understanding data
-def save_assetlist(items, filelist, *path, quiet=False):
+def save_assetlist(items, filelist, *path, quiet=False, prefer=None):
     lines=[]
     basedict = filelist['basedict']
     for item in items:
         if item.find('/') == -1:
             if matching_lines := basedict.get(item):
+                match_idx = 0
                 if len(matching_lines) > 1:
                     print(f'Warning: multiple options in gamefilelist.txt for assetlist item {item}')
-                lines.append(matching_lines[0])
+                    if prefer:
+                        for i, line in enumerate(matching_lines):
+                            if prefer+'/'+item+'.uasset' in line:
+                                match_idx = i
+                lines.append(matching_lines[match_idx])
         else:
             names = item.split('.')[0].split('/')
             if matching_lines := basedict.get(names[-1]):
                 fullname = '/'.join(names[1:])+'.uasset'
                 for line in matching_lines:
                     if line.lower().endswith(fullname.lower()):
-                        matches += 1
                         lines.append(line)
     lines.sort()
     save_text_file(lines, *path, quiet=quiet)
@@ -530,7 +534,7 @@ def save_assetlist(items, filelist, *path, quiet=False):
 # together with '\\' and adding '.txt'
 #
 # For game specific source data this is usually something like:
-#   cache_dir:  .\\source              (but can be any path)
+#   cache_dir:  ..\\source             (but can be any path)
 #   game:       'sl', 'siu', 'sw'      (note Crash files are in sl source directories)
 #   dir:        'levels', 'enums', 'bps', 'loc', 'mapimg'
 #   filename:   'Map'
@@ -575,13 +579,52 @@ def save_text_file(lines, *path, quiet=False):
                 file.write(line + '\n')
  
 
+ 
 
-def export_sw_markers(game, cache_dir, marker_types=marker_types, marker_names=[]):
+
+def joric_data(cache_dir='..\\source', game='sw'):
+    path = Path(cache_dir, 'icons')
+
+    for fn in path.glob('*.png'):
+        os.rename(fn, fn.with_suffix('.pin.png'))
+
+'''
+    joric_icons = load_json_file(cache_dir, 'icons.json')
+    icon_cfgs = load_json_file('..\\data\\iconConfigs.json')
+
+    # Remove the previous set of new icons
+    icon_cfgs = { name: cfg for name,cfg in icon_cfgs.items() if cfg['iconSize'][0] != 48 }
+
+    # Add joric icons to file
+    newcfg = {  "iconSize": [ 48, 48 ], "iconAnchor": [ 24, 48 ], "popupAnchor": [ 0, -24 ], "tooltipAnchor": [ 24, 24 ] }
+    icon_cfgs |= { name+'.pin': newcfg for name in joric_icons }
+
+    save_json_file(icon_cfgs, cache_dir, 'iconConfigs.json')
+'''
+
+'''
+    joric_types = load_json_file(cache_dir, "types.json")['match']['type']
+    game_classes = read_game_classes()
+
+    for otype,tdata in game_classes.items():
+        if not tdata.get('games') or not joric_types.get(otype):
+            continue
+        if not 'title' in joric_types[otype]:
+            tdata['friendly']  = friendly_name(otype)
+        else:
+            tdata['friendly'] = joric_types[otype]['title']
+        tdata['icon'] = joric_types[otype]['icon']
+        tdata['layer'] = joric_types[otype]['group']
+
+    write_game_classes(game_classes, 'gameClasses.json')
+'''
+
+def export_sw_markers(cache_dir, game, marker_types=marker_types, marker_names=[]):
     maps = {}       # dictionary from map name to json data list
     objects = {}    # dictionary from map name to dictionary of outer.name to object
                     # key is {type}'{area}:{outer}.{name}
     area_mtx = {}   # Transform for each area map geometry
-    pipes = {}      # Mapping from pipe to targets
+    data = []       # Output marker data   
 
     optEnum= lambda s:int(s[len(s.rstrip('0123456789')):]or 0) if type(s) is str and '::' in s else s
     optArea= lambda a,k,v: v if a==k else ':'.join((k,v))
@@ -624,23 +667,22 @@ def export_sw_markers(game, cache_dir, marker_types=marker_types, marker_names=[
         return object
     
     # Phase 1: Read all the map json files in and build a look up table for references
-    # Also get any area/map file matrices 
+    # Also get any area/map file matrices (for streaming levels)
     for area in config[game]['maps']:
-        path = os.path.join(cache_dir, area + '.json')
-        print('loading "%s" ...' % path)
-
         # Store the map data
-        maps[area] = json.load(open(path, encoding="utf-8-sig"))
+        maps[area] = load_json_file(cache_dir, game, 'levels', area+'.json')
 
         # Go through all objects in the map data and store lookups for later
         objects[area] = {}
         for o in maps[area]:
-            # Store a unique reference to this object for later access
-            outer = o.get('Outer', '')
-            objects[area]['.'.join((outer, o['Name']))] = o
+            if not (outer := o.get('Outer')) or not (p:= o.get('Properties')):
+                continue
+            oname = o['Name']
 
-            # Get reference to properties (or empty if this object doesn't have any)
-            p = o.get('Properties', {})
+            # Store reference to object for later look up
+            okey = outer + '.' + oname
+            if outer == 'PersistentLevel' or 'PersistentLevel.'+outer in objects:
+                objects[okey] = o
 
             # For maps that are divided into multiple files, there may be a LevelTransform for entities in that
             # file relative to the persistent world that is handled by the streaming system. To correct for this
@@ -648,63 +690,23 @@ def export_sw_markers(game, cache_dir, marker_types=marker_types, marker_names=[
             if (a := p.get('WorldAsset',{}).get('AssetPathName')) and (t := p.get('LevelTransform')):
                 area_mtx[a.split('.').pop()] = Matrix.Translation(getVec(t.get('Translation'))) @ getQuat(t.get('Rotation')).to_matrix().to_4x4()
 
-    # "ActorLabel": "PickupSpawner" -> PickupSpawnerSolversGuide0?
-
+    game_classes = read_game_classes()
 
     # Phase 2: Go through all the objects which have types we're interested in
-    # and
-    types = set()
-    props = set()
-    properties = set()
-    enumprops = set()
-    enumvalues = set()
-    def isenum(s):
-        return (isinstance(s,str) and "::" in s and set(s) <= set("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz:0123456789"))
-
     for area in maps:
         for o in maps[area]:
-
-#                def checkitems(d):
-#                    for k,v in d.items():
-#                        if isinstance(v, (list,dict, tuple)):
-#                            checkitems(v)
-#                        elif isinstance(v, str):
-#                            if "::" in v:
-#                                enum, member = v.split("::")
-#                                idx = member.
-
-
-
-            for k in o.keys():
-                props.add(k+":"+(o[k].split('::').pop() if isenum(o[k]) else type(o[k]).__name__))
-                if type(s := o[k]) is str:
-                    if isenum(s):
-                        ek, ev = s.split("::")
-                        enumprops.add(k+"="+ek)
-                        enumvalues.add(ek+"::"+ev)
-
-            if (p := o.get('Properties')):
-                for k in p.keys():
-                    properties.add(k+":"+(p[k].split('::').pop() if isenum(p[k]) else type(p[k]).__name__))
-                    if type(s := p[k]) is str:
-                        if isenum(s):
-                            ek, ev = s.split("::")
-                            enumprops.add(k+"="+ek)
-                            enumvalues.add(ek+"::"+ev)
-
-            # We're only interested in objects with a world position and custom class
-            if not o['Type'].endswith("_C") or not (p := o.get('Properties')) or not (r := p.get('RootComponent')):
+            otype = o['Type']
+            oname = o['Name']
+            if not (outer := o.get('Outer')) or not (p := o.get('Properties')):
+                continue
+            if not otype in game_classes:
                 continue
 
-            # Remember all the custom classes we find
-            types.add(o['Type'])
-
-            # We're currently only interested in these classes
-            if o['Type'] != "PresentBox_C":
+            if otype != 'SecretVolume_C':
                 continue
 
             def get_matrix(o, matrix=Matrix.Identity(4)):
-                p = o.get('Properties',{})
+                p = o.get('Properties', {})
 
                 if p.get('RelativeLocation'):
                     matrix = Matrix.LocRotScale(getVec(p.get('RelativeLocation')), getRot(p.get('RelativeRotation')), getVec(p.get('RelativeScale3D'), 1)) @ matrix
@@ -720,28 +722,49 @@ def export_sw_markers(game, cache_dir, marker_types=marker_types, marker_names=[
             matrix = get_matrix(o)
             if area in area_mtx:
                 matrix  = area_mtx[area] @ matrix
+            pos = matrix.to_translation()
 
-            print(f"n: {o['Name']} m: {matrix}")
+            def in_earlyaccess(otype, p, pos):
+                if (proggroup := p.get('ProgressionGroup', {}).get('TagName')):
+                    proggroups = ['Act1', 'Act2.Blue', 'Act2.Green']
+                    if not any(proggroup.endswith(s) for s in proggroups):
+                        return False
+                if (swarea := p.get('Area', {}).get('TagName')):
+                    swareas = ['ArmChairTown', 'BedDrawer','BedKingdom',
+                        'Castle', 'OutskirtsCastle', 'OutskirtsStartTown',
+                        'RecyclingArea', 'SnailArea','StartTown']
+                    if not any(swarea.endswith(s) for s in swareas):
+                        return False
+                elif otype in ['SecretVolume_C']:
+                    return False
+                if (required := p.get('RequiredAbilities')): 
+                    abilities = ['BlowGun', 'Crouch', 'Dash', 'Jump', 'JumpHigh',
+                        'Vision', 'SpongeSuit', 'Toothpick', 'Dart', 'Stake', 'Strength']
+                    for r in required:
+                        if not any(r.endswith(s) for s in abilities):
+                            return False
+                # Should probably check pos against a cuboid but not yet
+                return True
 
-    json_file = game + '.types.json'
-    print('writing "%s" ...' % json_file)
-    json.dump(sorted(types), open(json_file,'w'), indent=2)
+            comment = None
+            if o.get('ActorLabel') == "ObviousAreaOuttaTown":
+                p['Area'] = {'TagName': 'OutskirtsStartTown'}
+                comment = 'Obvious Area'
 
-    json_file = game + '.props.json'
-    print('writing "%s" ...' % json_file)
-    json.dump(sorted(props), open(json_file,'w'), indent=2)
+            if not in_earlyaccess(otype, p, pos):
+                continue
 
-    json_file = game + '.properties.json'
-    print('writing "%s" ...' % json_file)
-    json.dump(sorted(properties), open(json_file,'w'), indent=2)
+            data.append({'name':oname, 'type':otype, 'area':area })
+            data[-1].update({'lat': pos.y, 'lng': pos.x, 'alt': pos.z})
 
-    json_file = game + '.enums.json'
-    print('writing "%s" ...' % json_file)
-    f = open(json_file,'w')
-    json.dump(sorted(enumprops), f, indent=2)
-    json.dump(sorted(enumvalues), f, indent=2)
-    f.close()
+            # Grab the area tag if there is one
+            if (a := p.get('Area', {})) and (ta := a.get('TagName')):
+                data[-1]['area_tag'] = ta.split('.')[-1]
 
+            if comment:
+                data[-1]['comment'] = comment
+
+    save_json_file(data, cache_dir, game, f'markers.{game}.json')
     print("Done")
 
 '''
@@ -770,42 +793,6 @@ def export_sw_markers(game, cache_dir, marker_types=marker_types, marker_names=[
     {area} is the json map file containing the target object (seems to always match file name)
     {name} is the base name of this object (which contains all the components properties)
     {subname} is the base name of the object it points at
-
-    Target object will be in {area}.json:
-    "Type": "{type}",
-    "Name": "{subname}",
-    "Outer": "{name}",
-
-    
-
-
-
-      "Area": {
-        "TagName": "Supraworld.Area.StartTown"
-      },
-      "ProgressionGroup": {
-        "TagName": "Supraworld.Story.Act1"
-      },
-            "Color": "ESupraColors::Green",
-      "RibbonColor": "ESupraColors::Orange",
-      "ProgressionGroup": {
-        "TagName": "Supraworld.Story.Act1"
-      },
-            "Coins": 3,
-MoveOneWay
-SupraworldLaunch
-TargetLocation
-      "RelativeLocation": {
-        "X": 11140.349,
-        "Y": 15022.57,
-        "Z": 6897.67
-      },
-
-      "otherPipeInOtherLevel": {
-        "AssetPathName": "/Game/FirstPersonBP/Maps/DLC2_Complete.DLC2_Complete",
-        "SubPathString": "PersistentLevel.PipesystemNewDLC_BathToSecretLavaAreaToBath1"
-        PipesystemNewDLC_C
-        DLC2_Complete
 
 
 '''
@@ -1575,7 +1562,7 @@ def friendly_name(cls):
     n = n.replace('Smashdown', 'Stomp')
     n = n.replace('*', 'x')
     n = n.rstrip('.').lstrip('.')
-
+    n = n.replace('.', ' ')
     return n 
 
 # Read gameClasses.json and return data
@@ -1614,37 +1601,27 @@ def read_savedpadpipes(game):
 
 
 def main():
-
-#    export_sw_markers("sw", "source")
-#    export_sw_markers("sl", "source")
-#    export_sw_markers("slc", "source")
-#    export_sw_markers("siu", "source")
-
-    exit()
-
-    # Looks for environment variable {game}dir ie %SLDIR% for the path where the game data is stored 
-
     parser = argparse.ArgumentParser()
-    parser.add_argument('-d', '--cache_dir', default=source, help='directory where extracted and generated data is stored')
+    parser.add_argument('-d', '--cache_dir', default='..\\source', help='directory where extracted and generated data is stored')
     parser.add_argument('-g', '--game', default='siu', help='game name (sl, slc, siu, sw)')
-    parser.add_argument('-p', '--preproc', default='sw', help='preprocess level files to gather ')
+    parser.add_argument('-p', '--preproc', action='store_true', help='preprocess level files to gather ')
     parser.add_argument('-m', '--markers', action='store_true', help='export markers as json (need json levels)')
     parser.add_argument('-b', '--blueprints', action='store_true',  help='read loc from blueprints and export to gameClasses')
     parser.add_argument('-o', '--loc', action='store_true',  help='extract required loc strings for game')
     args = parser.parse_args()
 
     try:
-        os.mkdir(args.cache_dir)
+        Path(args.cache_dir, args.game).mkdir(exist_ok=True, parents=True)
     except Exception as e:
         pass
 
     if args.preproc:
         preproc_levels(args.cache_dir, args.game)
-    if args.markers:
+    elif args.markers:
         if args.game=='sw':
             export_sw_markers(args.cache_dir, args.game)
         else:
-            export_markers(args.cache_dir, args.game)
+            export_sw_markers(args.cache_dir, args.game)
     elif args.blueprints:
         export_class_loc(args.cache_dir)
     elif args.loc:
