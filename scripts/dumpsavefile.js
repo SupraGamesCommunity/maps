@@ -53,7 +53,7 @@ else {
     saveFileName = `${localAppData}\\${saveFileBaseDirs[game]}\\Saved\\SaveGames\\${saveFileBaseNames[game]}${saveSlot}.sav`;
 }
 
-let markerFileName = `markers.${game}.json`;
+let markerFileName = `..\\data\\markers.${game}.json`;
 const jsonData = JSON.parse(fs.readFileSync(markerFileName));
 let jsonMap = {};
 for(const o of jsonData) {
