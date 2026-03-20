@@ -232,6 +232,21 @@ extendClass(String, function snakeToCamelCase() {
   return this.toLowerCase().replace(/[-_][a-z0-9]/g, (group) => group.slice(-1).toUpperCase());
 });
 
+// Return string with first character converted to upper case
+extendClass(String, function capitalised() {
+  return this.charAt(0).toUpperCase() + this.slice(1);
+});
+
+// Convert snake (or kebab) case string to UI friendly capitalised with spaces
+extendClass(String, function snakeToUI() {
+  return this.split('_').map(f => f.capitalised()).join(' ');
+});
+
+// Return camel case string with spaces between capitals and preceding characters
+extendClass(String, function camelToUI() {
+  return this.capitalise().replace(/([A-Z])/g, ' $1').trim()
+});
+
 
 //=================================================================================================
 // Object extension functions
