@@ -138,7 +138,6 @@ export class MapObject {
     const iconName = (cicon && (this.o.icon || cicon)) || mapLayer.config.defaultIcon;
     const icon = Icons.get({ iconName: iconName, variant: this.o.variant, game: map.mapId }).addTo(map);
     const options = { icon: icon, zIndexOffset: mapLayer.getZIndexOffset(), title: this.getTooltipText(map.mapId), alt: this.alt, o: this.o, layerId: layerId }
-
     const marker = L.marker([this.o.lat, this.o.lng], options)
       .addTo(mapLayer.id == '_map' ? map : mapLayer.layerObj)                 // Add to relevant mapLayer (or the group)
       .bindPopup('')
@@ -378,9 +377,10 @@ export class MapObject {
     if (o.cost) {
       text += `<br><span class="marker-popup-col">Price:</span>${locStr.cost(o.price_type, o.cost)}`;
     }
-    for (let f of ['variant', 'loop']) {
+
+    for (let f of ['loop', 'area_tag', 'variant']) {
       if (o[f]) {
-        text += `<br><span class="marker-popup-col">${f.charAt(0).toUpperCase() + f.slice(1)}:</span>${o[f]}`;
+        text += `<br><span class="marker-popup-col">${f.snakeToUI()}:</span>${o[f]}`;
       }
     }
     if (o.description || GameClasses.get(o.type).description) {
