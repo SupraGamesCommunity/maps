@@ -1,0 +1,1407 @@
+[
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0E017A02_1965936935",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": 31141.6875,
+    "lng": -5635.8388671875,
+    "alt": 583.6358032226562,
+    "area_tag": "OutskirtsCastle"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0E058101_1722442598",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": -7846.29248046875,
+    "lng": 8567.30859375,
+    "alt": 2492.615966796875,
+    "area_tag": "StartTown"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0E05BE01_1788544020",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": -936.3092651367188,
+    "lng": -570.3751220703125,
+    "alt": 388.5535583496094,
+    "area_tag": "StartTown"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0E0C6E02_1995877212",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": 13059.224609375,
+    "lng": 12062.7841796875,
+    "alt": 555.4114379882812,
+    "area_tag": "SnailArea"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0E0D3502_1540246219",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": 1829.217041015625,
+    "lng": -351.92327880859375,
+    "alt": -1102.1573486328125,
+    "area_tag": "OutskirtsStartTown"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0E0D6E02_1184879440",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": 13529.6298828125,
+    "lng": 12089.20703125,
+    "alt": 384.6138000488281,
+    "area_tag": "SnailArea"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0E0DCE01_1872197380",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": 21155.37109375,
+    "lng": 13085.2216796875,
+    "alt": 9660.4599609375,
+    "area_tag": "BedKingdom"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0E14CE01_1989234743",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": 21211.83984375,
+    "lng": 18068.892578125,
+    "alt": 10965.5146484375,
+    "area_tag": "BedKingdom"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0E15CE01_1083720924",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": 21211.83984375,
+    "lng": 16719.951171875,
+    "alt": 10965.5146484375,
+    "area_tag": "BedKingdom"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0E16CE01_1696341131",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": 21189.646484375,
+    "lng": 17591.494140625,
+    "alt": 9331.7509765625,
+    "area_tag": "BedKingdom"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0E1E4102_1111669873",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": 6200.9228515625,
+    "lng": -1843.413818359375,
+    "alt": 776.4957275390625,
+    "area_tag": "OutskirtsStartTown"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0E1E6202_1607417635",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": 2910.5810546875,
+    "lng": 3667.495361328125,
+    "alt": -112.62963104248047,
+    "area_tag": "OutskirtsStartTown",
+    "comment": "Obvious Area"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0E277301_1155332857",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": -11988.1796875,
+    "lng": -1932.501708984375,
+    "alt": -73.18792724609375,
+    "area_tag": "StartTown"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0E283A02_1593798935",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": 20823.794921875,
+    "lng": 1387.8262939453125,
+    "alt": 1901.1048583984375,
+    "area_tag": "Castle"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0E293A02_1571776377",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": 20346.67578125,
+    "lng": 61.98268508911133,
+    "alt": 2548.828857421875,
+    "area_tag": "Castle"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0E297301_1395882998",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": -8718.212890625,
+    "lng": 2127.537353515625,
+    "alt": -181.15394592285156,
+    "area_tag": "StartTown"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0E335201_1186006154",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": 16025.2236328125,
+    "lng": 8437.763671875,
+    "alt": 2488.205078125,
+    "area_tag": "OutskirtsCastle"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0E335201_1528222157",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": 16025.2236328125,
+    "lng": 8358.9345703125,
+    "alt": 2959.637939453125,
+    "area_tag": "OutskirtsCastle"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0E343A02_1346230319",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": 22034.0859375,
+    "lng": -54.34691619873047,
+    "alt": 1560.410400390625,
+    "area_tag": "Castle"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0E355201_1312940543",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": 12890.3486328125,
+    "lng": 6950.51513671875,
+    "alt": 2017.8040771484375,
+    "area_tag": "OutskirtsCastle"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0E385201_1305125084",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": 435.5196228027344,
+    "lng": 11644.662109375,
+    "alt": 2409.723388671875,
+    "area_tag": "BedDrawer"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0E3E6002_1119156193",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": 8253.8896484375,
+    "lng": -6917.45068359375,
+    "alt": 2429.754150390625,
+    "area_tag": "OutskirtsStartTown"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0E3F6002_1369580458",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": -1244.573974609375,
+    "lng": -4971.03076171875,
+    "alt": 1743.9219970703125,
+    "area_tag": "OutskirtsStartTown"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0E3F6002_1955894464",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": -6483.38720703125,
+    "lng": 9143.47265625,
+    "alt": 1662.780029296875,
+    "area_tag": "StartTown"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0E444D02_1345630398",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": -1891.6767578125,
+    "lng": 5079.25048828125,
+    "alt": 3105.052734375,
+    "area_tag": "OutskirtsStartTown"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0E477502_1813162945",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": 20012.830078125,
+    "lng": -2715.131103515625,
+    "alt": 2890.619873046875,
+    "area_tag": "Castle"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0E4B7101_1329207932",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": -16698.03125,
+    "lng": 12035.673828125,
+    "alt": 567.9319458007812,
+    "area_tag": "ArmChairTown"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0E504302_2069910779",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": 13822.61328125,
+    "lng": 14789.0048828125,
+    "alt": 440.5577392578125,
+    "area_tag": "SnailArea"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0E557101_1383140787",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": -14638.556640625,
+    "lng": 1157.337158203125,
+    "alt": 636.0156860351562,
+    "area_tag": "StartTown"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0E5A7402_1578676296",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": 22889.84765625,
+    "lng": 8418.3349609375,
+    "alt": 2350.834716796875,
+    "area_tag": "SnailArea"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0E5C7F01_1913710900",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": -10543.2177734375,
+    "lng": 9415.2587890625,
+    "alt": 1550.2955322265625,
+    "area_tag": "StartTown"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0E5C7F01_2118859908",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": -7846.29248046875,
+    "lng": 8567.30859375,
+    "alt": 1917.0504150390625,
+    "area_tag": "StartTown"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0E65CE01_1958571833",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": 21053.552734375,
+    "lng": 14238.94140625,
+    "alt": 11734.291015625,
+    "area_tag": "BedKingdom"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0E664801_1415498330",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": 2121.65771484375,
+    "lng": 4383.8115234375,
+    "alt": 38.96859359741211,
+    "area_tag": "OutskirtsStartTown"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0E664801_1519362334",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": -487.12078857421875,
+    "lng": 2037.3206787109375,
+    "alt": -725.7930908203125,
+    "area_tag": "OutskirtsStartTown"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0E664801_1557590335",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": -2979.1044921875,
+    "lng": 49.19794464111328,
+    "alt": -1549.62841796875,
+    "area_tag": "OutskirtsStartTown"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0E664801_1588417336",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": -7029.2978515625,
+    "lng": 6244.783203125,
+    "alt": 925.6559448242188,
+    "area_tag": "StartTown"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0E664801_1612268337",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": -7087.26806640625,
+    "lng": 6207.451171875,
+    "alt": 1305.4134521484375,
+    "area_tag": "StartTown"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0E664801_1673055338",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": -6592.10009765625,
+    "lng": 9147.1396484375,
+    "alt": 530.6104736328125,
+    "area_tag": "StartTown"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0E664801_1788466340",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": -12361.76171875,
+    "lng": 5294.912109375,
+    "alt": 721.0888671875,
+    "area_tag": "StartTown"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0E664801_1816308341",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": -14010.111328125,
+    "lng": 4630.18115234375,
+    "alt": 1165.53076171875,
+    "area_tag": "StartTown"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0E664801_1930377344",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": 23576.091796875,
+    "lng": -2215.878662109375,
+    "alt": 6821.6201171875,
+    "area_tag": "Castle"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0E664801_1957405345",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": 25383.7734375,
+    "lng": 34.604736328125,
+    "alt": 5984.9072265625,
+    "area_tag": "Castle"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0E664801_1976377346",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": 24695.484375,
+    "lng": -659.65673828125,
+    "alt": 6153.36083984375,
+    "area_tag": "Castle"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0E664801_2026762347",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": -1503.486572265625,
+    "lng": 1889.3349609375,
+    "alt": 585.2389526367188,
+    "area_tag": "StartTown"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0E664801_2088654348",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": 538.6646118164062,
+    "lng": 12305.6357421875,
+    "alt": 2728.224853515625,
+    "area_tag": "BedDrawer"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0E664801_2144455351",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": 960.0851440429688,
+    "lng": 13628.875,
+    "alt": 2542.858154296875,
+    "area_tag": "BedDrawer"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0E674801_1099377528",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": 4914.3837890625,
+    "lng": 13743.3232421875,
+    "alt": 3390.08203125,
+    "area_tag": "BedDrawer"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0E674801_1145933529",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": 4630.03759765625,
+    "lng": 16727.306640625,
+    "alt": 911.2203369140625,
+    "area_tag": "BedDrawer"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0E674801_1182682530",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": 2356.093017578125,
+    "lng": 19140.40234375,
+    "alt": 1005.1748657226562,
+    "area_tag": "BedDrawer"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0E674801_1317629532",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": 3473.093994140625,
+    "lng": 19165.947265625,
+    "alt": 2477.800048828125,
+    "area_tag": "BedDrawer"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0E674801_1376596534",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": -913.0939331054688,
+    "lng": 154.61871337890625,
+    "alt": 1455.284423828125,
+    "area_tag": "OutskirtsStartTown"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0E674801_1399520535",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": -762.2913208007812,
+    "lng": -337.8284912109375,
+    "alt": 1457.4075927734375,
+    "area_tag": "StartTown"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0E674801_1461800536",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": -3039.91162109375,
+    "lng": -491.4552307128906,
+    "alt": 425.5389404296875,
+    "area_tag": "StartTown"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0E674801_1504122537",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": -7685.18798828125,
+    "lng": 11675.7998046875,
+    "alt": 848.5671997070312,
+    "area_tag": "RecyclingArea"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0E674801_1540101538",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": -8175.04052734375,
+    "lng": 10007.1396484375,
+    "alt": 932.7073974609375,
+    "area_tag": "RecyclingArea"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0E674801_1606027540",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": -8780.0654296875,
+    "lng": 15613.47265625,
+    "alt": 1675.7093505859375,
+    "area_tag": "RecyclingArea"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0E674801_1631668541",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": -8288.99609375,
+    "lng": 14440.92578125,
+    "alt": 1958.0859375,
+    "area_tag": "RecyclingArea"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0E674801_1794303545",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": -16029.126953125,
+    "lng": 16008.1689453125,
+    "alt": 494.7010192871094,
+    "area_tag": "ArmChairTown"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0E674801_1883418547",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": -8151.7998046875,
+    "lng": 16096.642578125,
+    "alt": 404.8807678222656,
+    "area_tag": "RecyclingArea"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0E674801_1988015548",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": -2210.89111328125,
+    "lng": 7981.27490234375,
+    "alt": 1406.714599609375,
+    "area_tag": "OutskirtsStartTown"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0E674801_2008309549",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": -2308.27587890625,
+    "lng": 7575.38037109375,
+    "alt": 1730.8369140625,
+    "area_tag": "OutskirtsStartTown"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0E684801_1144807727",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": 10556.2578125,
+    "lng": 4557.0517578125,
+    "alt": 742.2830810546875,
+    "area_tag": "OutskirtsStartTown"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0E684801_1196342728",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": 10467.431640625,
+    "lng": 7240.18115234375,
+    "alt": 3620.89013671875,
+    "area_tag": "OutskirtsCastle"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0E684801_1214640729",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": 10006.11328125,
+    "lng": 5766.5224609375,
+    "alt": 3687.041259765625,
+    "area_tag": "OutskirtsCastle"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0E684801_1598966733",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": 9814.73828125,
+    "lng": -1172.4630126953125,
+    "alt": 2390.425048828125,
+    "area_tag": "OutskirtsStartTown"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0E694801_1200962923",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": 7555.75048828125,
+    "lng": -7458.0556640625,
+    "alt": 388.81414794921875,
+    "area_tag": "OutskirtsStartTown"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0E69BD01_2091684645",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": -15154.69140625,
+    "lng": 2380.793212890625,
+    "alt": 661.1992797851562,
+    "area_tag": "StartTown"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0E775201_1266926141",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": -20506.57421875,
+    "lng": 6899.6435546875,
+    "alt": 924.4619140625,
+    "area_tag": "ArmChairTown"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0E7BC001_1237891898",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": 6640.6455078125,
+    "lng": 9306.525390625,
+    "alt": 814.2611083984375,
+    "area_tag": "OutskirtsStartTown"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0E7FC001_1873907621",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": -8444.96875,
+    "lng": 2206.211181640625,
+    "alt": 753.9171142578125,
+    "area_tag": "StartTown"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0E835D01_1955990696",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": -13863.896484375,
+    "lng": 4065.78564453125,
+    "alt": 621.9204711914062,
+    "area_tag": "StartTown"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0E837602_2073968631",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": 23995.115234375,
+    "lng": -1229.189453125,
+    "alt": 1115.175537109375,
+    "area_tag": "OutskirtsCastle"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0E845B02_1760822180",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": -14228.7275390625,
+    "lng": 4079.875,
+    "alt": 2993.199462890625,
+    "area_tag": "StartTown"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0E857B02_1120665251",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": -6795.08349609375,
+    "lng": 8886.7470703125,
+    "alt": 880.1793212890625,
+    "area_tag": "StartTown"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0E874C01_2024861570",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": -8032.5556640625,
+    "lng": 4550.8994140625,
+    "alt": 535.4172973632812,
+    "area_tag": "StartTown"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0E897C02_1904515051",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": 14132.556640625,
+    "lng": 15336.6669921875,
+    "alt": 979.0012817382812,
+    "area_tag": "SnailArea"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0E8A6D01_1593694805",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": -16588.869140625,
+    "lng": 13216.359375,
+    "alt": 947.6290283203125,
+    "area_tag": "ArmChairTown"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0E8B7002_1609991607",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": -9673.6005859375,
+    "lng": -1621.265869140625,
+    "alt": -1031.178466796875,
+    "area_tag": "StartTown"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0E8BCB01_1912712401",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": 20691.103515625,
+    "lng": 14149.845703125,
+    "alt": 4566.82470703125,
+    "area_tag": "BedKingdom"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0E8E3E02_1097307651",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": 13067.8623046875,
+    "lng": 12477.2958984375,
+    "alt": 3343.777099609375,
+    "area_tag": "SnailArea"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0E8F3E02_1401686841",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": 12186.1904296875,
+    "lng": -2927.71142578125,
+    "alt": 2107.32861328125,
+    "area_tag": "OutskirtsStartTown"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0E8F6E02_1689661426",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": 18098.255859375,
+    "lng": -3870.34375,
+    "alt": 1294.6072998046875,
+    "area_tag": "OutskirtsCastle"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0E923302_1585140484",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": 31151.263671875,
+    "lng": 9422.11328125,
+    "alt": 665.4696044921875,
+    "area_tag": "OutskirtsCastle"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0E9A7201_1314227938",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": -9998.4970703125,
+    "lng": -91.94674682617188,
+    "alt": -1091.442626953125,
+    "area_tag": "StartTown"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0EA04202_1167954834",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": -10741.7509765625,
+    "lng": -4286.61865234375,
+    "alt": -681.799560546875,
+    "area_tag": "StartTown"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0EA24202_1322412219",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": -7660.08984375,
+    "lng": -6231.15478515625,
+    "alt": -1675.151611328125,
+    "area_tag": "StartTown"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0EA24202_1594906231",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": -5408.28515625,
+    "lng": -6312.7138671875,
+    "alt": -1675.151611328125,
+    "area_tag": "StartTown"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0EA24202_1746748233",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": -5848.826171875,
+    "lng": -8392.5029296875,
+    "alt": -1663.45263671875,
+    "area_tag": "StartTown"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0EA2BF01_2023610790",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": 8900.6201171875,
+    "lng": -7474.763671875,
+    "alt": 481.59234619140625,
+    "area_tag": "OutskirtsStartTown"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0EA34202_1250110419",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": -8473.515625,
+    "lng": -7253.91796875,
+    "alt": -1086.2750244140625,
+    "area_tag": "StartTown"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0EA37A02_1337228436",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": -5408.28515625,
+    "lng": -5208.58544921875,
+    "alt": -1675.151611328125,
+    "area_tag": "StartTown"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0EA8C901_1849492328",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": 6612.6171875,
+    "lng": 17085.70703125,
+    "alt": 6275.109375,
+    "area_tag": "BedKingdom"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0EAA7A02_1666222677",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": 12877.33984375,
+    "lng": 15392.71875,
+    "alt": 4088.68017578125,
+    "area_tag": "SnailArea"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0EB07D02_1211083494",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": 25127.046875,
+    "lng": -1597.2626953125,
+    "alt": 1025.36669921875,
+    "area_tag": "OutskirtsCastle"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0EB09601_1975919811",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": -4515.1201171875,
+    "lng": 6482.65234375,
+    "alt": 2154.71728515625,
+    "area_tag": "StartTown"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0EB34E01_1151201231",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": 2858.9150390625,
+    "lng": 5823.80224609375,
+    "alt": -1466.7789306640625,
+    "area_tag": "OutskirtsStartTown"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0EB5BD01_1880527491",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": -12855.46875,
+    "lng": 6237.18603515625,
+    "alt": 182.92710876464844,
+    "area_tag": "StartTown"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0EB6BD01_1472771119",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": -7921.94775390625,
+    "lng": 2150.7421875,
+    "alt": 383.6673278808594,
+    "area_tag": "StartTown"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0EBD7E02_1455190219",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": 30781.6875,
+    "lng": -16267.3896484375,
+    "alt": 1950.415283203125,
+    "area_tag": "OutskirtsCastle"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0EC26C02_2037104057",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": -7876.7392578125,
+    "lng": 1790.2872314453125,
+    "alt": 1536.0263671875,
+    "area_tag": "StartTown"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0EC57A01_1253667915",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": -10757.39453125,
+    "lng": 419.2331237792969,
+    "alt": -1064.5318603515625,
+    "area_tag": "StartTown"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0EC62902_1669695066",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": 31041.771484375,
+    "lng": -3219.093017578125,
+    "alt": 1414.6116943359375,
+    "area_tag": "OutskirtsCastle"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0EC64B02_1754859038",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": 4862.79443359375,
+    "lng": 15957.0107421875,
+    "alt": 436.7210998535156,
+    "area_tag": "BedDrawer"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0EC74C01_2120097671",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": 24113.056640625,
+    "lng": 5130.171875,
+    "alt": 7011.99951171875,
+    "area_tag": "Castle"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0EC97D02_1353702765",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": 12039.1484375,
+    "lng": 13403.51953125,
+    "alt": 2051.119384765625,
+    "area_tag": "SnailArea"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0ECE7D02_1528156659",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": 12188.4091796875,
+    "lng": 9172.724609375,
+    "alt": 1733.8043212890625,
+    "area_tag": "SnailArea"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0ED34002_1964619731",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": 15544.4404296875,
+    "lng": 10847.123046875,
+    "alt": 5935.5498046875,
+    "area_tag": "BedKingdom"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0EE0CB01_1837766986",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": 21082.041015625,
+    "lng": 12201.4609375,
+    "alt": 6832.87255859375,
+    "area_tag": "BedKingdom"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0EEA6C01_1749641882",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": 23556.390625,
+    "lng": 4979.64404296875,
+    "alt": 6511.80126953125,
+    "area_tag": "Castle"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0EEB7302_1532749460",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": 6914.65673828125,
+    "lng": 14575.19921875,
+    "alt": 734.0634155273438,
+    "area_tag": "SnailArea"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0EF27001_1465562485",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": -26929.806640625,
+    "lng": 9843.2841796875,
+    "alt": 1336.1072998046875,
+    "area_tag": "ArmChairTown"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0EF27001_1814611490",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": -26952.056640625,
+    "lng": 15257.9638671875,
+    "alt": 1049.3173828125,
+    "area_tag": "ArmChairTown"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0EF57202_1766001384",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": -9732.166015625,
+    "lng": 419.2331237792969,
+    "alt": -216.91427612304688,
+    "area_tag": "StartTown"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0EF84E01_1330370400",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": 4038.689453125,
+    "lng": 9813.228515625,
+    "alt": 4040.854736328125,
+    "area_tag": "BedDrawer"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0EF84E01_2062271404",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": 1602.6854248046875,
+    "lng": 13876.76171875,
+    "alt": 3268.544189453125,
+    "area_tag": "BedDrawer"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0EF9BE01_1494643020",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": -6199.71484375,
+    "lng": -2670.65673828125,
+    "alt": 1316.4576416015625,
+    "area_tag": "StartTown"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0EFA4E01_1084131767",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": 5767.7744140625,
+    "lng": 11003.0224609375,
+    "alt": 3091.439208984375,
+    "area_tag": "BedDrawer"
+  },
+  {
+    "name": "SecretVolume_C_UAID_7085C2B20F0EFB7101_1908115893",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": -10609.8984375,
+    "lng": 92.62628936767578,
+    "alt": -36.44579315185547,
+    "area_tag": "StartTown"
+  },
+  {
+    "name": "SecretVolume_C_UAID_ACB480ECFC8418C002_1421647893",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": -18959.5234375,
+    "lng": 17528.994140625,
+    "alt": 1482.814697265625,
+    "area_tag": "ArmChairTown"
+  },
+  {
+    "name": "SecretVolume_C_UAID_ACB480ECFC841CC002_1230035607",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": -23705.80078125,
+    "lng": 17846.95703125,
+    "alt": 4738.42578125,
+    "area_tag": "ArmChairTown"
+  },
+  {
+    "name": "SecretVolume_C_UAID_ACB480ECFC84209202_1277622370",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": 14788.5244140625,
+    "lng": -1132.86962890625,
+    "alt": 1450.7301025390625,
+    "area_tag": "OutskirtsCastle"
+  },
+  {
+    "name": "SecretVolume_C_UAID_ACB480ECFC8429A302_1374914359",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": -7560.3017578125,
+    "lng": -3658.875244140625,
+    "alt": 461.25909423828125,
+    "area_tag": "StartTown"
+  },
+  {
+    "name": "SecretVolume_C_UAID_ACB480ECFC8429A302_1758405363",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": 7685.2841796875,
+    "lng": 15870.8662109375,
+    "alt": 7655.87548828125,
+    "area_tag": "BedKingdom"
+  },
+  {
+    "name": "SecretVolume_C_UAID_ACB480ECFC8448C702_1525347820",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": -32600.572265625,
+    "lng": 13332.61328125,
+    "alt": 4310.037109375,
+    "area_tag": "ArmChairTown"
+  },
+  {
+    "name": "SecretVolume_C_UAID_ACB480ECFC84548B02_1319940044",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": 30966.181640625,
+    "lng": 13237.8974609375,
+    "alt": 583.7418212890625,
+    "area_tag": "SnailArea"
+  },
+  {
+    "name": "SecretVolume_C_UAID_ACB480ECFC84557F02_2102362003",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": 7474.22900390625,
+    "lng": 13696.5986328125,
+    "alt": 1004.9017333984375,
+    "area_tag": "SnailArea"
+  },
+  {
+    "name": "SecretVolume_C_UAID_ACB480ECFC84568A02_1206070995",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": 11657.1826171875,
+    "lng": 9352.5556640625,
+    "alt": 4088.666259765625,
+    "area_tag": "SnailArea"
+  },
+  {
+    "name": "SecretVolume_C_UAID_ACB480ECFC845A8B02_1985193262",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": 23302.82421875,
+    "lng": 14009.3505859375,
+    "alt": 1393.949951171875,
+    "area_tag": "SnailArea"
+  },
+  {
+    "name": "SecretVolume_C_UAID_ACB480ECFC8468A302_1858252456",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": 3247.668701171875,
+    "lng": 17346.265625,
+    "alt": 6475.72900390625,
+    "area_tag": "BedKingdom"
+  },
+  {
+    "name": "SecretVolume_C_UAID_ACB480ECFC8468A302_2102925457",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": -10786.0595703125,
+    "lng": -6107.7099609375,
+    "alt": -681.7466430664062,
+    "area_tag": "StartTown"
+  },
+  {
+    "name": "SecretVolume_C_UAID_ACB480ECFC846E9402_2061732589",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": 347.0821228027344,
+    "lng": 10215.73046875,
+    "alt": 533.0234985351562,
+    "area_tag": "RecyclingArea"
+  },
+  {
+    "name": "SecretVolume_C_UAID_ACB480ECFC84798702_1426339811",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": 9303.3623046875,
+    "lng": 14514.328125,
+    "alt": 3479.3955078125,
+    "area_tag": "SnailArea"
+  },
+  {
+    "name": "SecretVolume_C_UAID_ACB480ECFC84798702_1806715814",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": 8046.35888671875,
+    "lng": 8769.810546875,
+    "alt": 534.6063842773438,
+    "area_tag": "OutskirtsStartTown"
+  },
+  {
+    "name": "SecretVolume_C_UAID_ACB480ECFC847C9202_1999805018",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": -11215.8388671875,
+    "lng": -3140.86572265625,
+    "alt": 414.3134765625,
+    "area_tag": "StartTown"
+  },
+  {
+    "name": "SecretVolume_C_UAID_ACB480ECFC84808702_1801024070",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": 6225.28466796875,
+    "lng": -2798.909423828125,
+    "alt": 553.8898315429688,
+    "area_tag": "OutskirtsStartTown"
+  },
+  {
+    "name": "SecretVolume_C_UAID_ACB480ECFC84819202_1815096951",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": -863.5548706054688,
+    "lng": 19944.97265625,
+    "alt": 491.7033386230469,
+    "area_tag": "RecyclingArea"
+  },
+  {
+    "name": "SecretVolume_C_UAID_ACB480ECFC8484A802_1748634604",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": -15104.6494140625,
+    "lng": 2168.40673828125,
+    "alt": 2306.581298828125,
+    "area_tag": "StartTown"
+  },
+  {
+    "name": "SecretVolume_C_UAID_ACB480ECFC848B9202_1598449795",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": -1975.0635986328125,
+    "lng": 9134.296875,
+    "alt": 569.4344482421875,
+    "area_tag": "RecyclingArea"
+  },
+  {
+    "name": "SecretVolume_C_UAID_ACB480ECFC848C9202_1138212029",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": -4570.17529296875,
+    "lng": 6923.57421875,
+    "alt": 2984.045166015625,
+    "area_tag": "StartTown"
+  },
+  {
+    "name": "SecretVolume_C_UAID_ACB480ECFC84958602_1436864733",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": -17949.814453125,
+    "lng": -3389.836181640625,
+    "alt": 549.5196533203125,
+    "area_tag": "StartTown"
+  },
+  {
+    "name": "SecretVolume_C_UAID_ACB480ECFC84998B02_1453667457",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": 27624.216796875,
+    "lng": 13001.5439453125,
+    "alt": 1576.0128173828125,
+    "area_tag": "SnailArea"
+  },
+  {
+    "name": "SecretVolume_C_UAID_ACB480ECFC84A59A02_1626663604",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": 9179.30859375,
+    "lng": 13092.6552734375,
+    "alt": 6815.03466796875,
+    "area_tag": "BedKingdom"
+  },
+  {
+    "name": "SecretVolume_C_UAID_ACB480ECFC84AE9A02_1639570222",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": 27745.33203125,
+    "lng": 11335.892578125,
+    "alt": 12567.8974609375,
+    "area_tag": "BedKingdom"
+  },
+  {
+    "name": "SecretVolume_C_UAID_ACB480ECFC84AF9302_1732921991",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": 21135.333984375,
+    "lng": 13913.19140625,
+    "alt": 13857.41015625,
+    "area_tag": "BedKingdom"
+  },
+  {
+    "name": "SecretVolume_C_UAID_ACB480ECFC84B69F02_1198388909",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": 5956.01611328125,
+    "lng": 19759.466796875,
+    "alt": 4431.31005859375,
+    "area_tag": "BedKingdom"
+  },
+  {
+    "name": "SecretVolume_C_UAID_ACB480ECFC84C39302_1736206652",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": 19706.01953125,
+    "lng": 5288.701171875,
+    "alt": 3950.1259765625,
+    "area_tag": "Castle"
+  },
+  {
+    "name": "SecretVolume_C_UAID_ACB480ECFC84C7B402_1729620035",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": -23383.615234375,
+    "lng": 12870.34375,
+    "alt": 6836.91552734375,
+    "area_tag": "ArmChairTown"
+  },
+  {
+    "name": "SecretVolume_C_UAID_ACB480ECFC84C89302_1952270645",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": 20411.5625,
+    "lng": 10910.2080078125,
+    "alt": 7817.2392578125,
+    "area_tag": "BedKingdom"
+  },
+  {
+    "name": "SecretVolume_C_UAID_ACB480ECFC84CE8102_1330748454",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": 8077.20849609375,
+    "lng": 10470.345703125,
+    "alt": 2387.1591796875,
+    "area_tag": "SnailArea"
+  },
+  {
+    "name": "SecretVolume_C_UAID_ACB480ECFC84D78D02_1240841694",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": 20615.01953125,
+    "lng": 19096.84765625,
+    "alt": 5560.69775390625,
+    "area_tag": "BedKingdom"
+  },
+  {
+    "name": "SecretVolume_C_UAID_ACB480ECFC84DF8C02_1792035271",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": 14277.2900390625,
+    "lng": 18685.630859375,
+    "alt": 5810.2724609375,
+    "area_tag": "BedKingdom"
+  },
+  {
+    "name": "SecretVolume_C_UAID_ACB480ECFC84EFA502_1497033360",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": -10098.9267578125,
+    "lng": 10168.67578125,
+    "alt": 1986.28125,
+    "area_tag": "ArmChairTown"
+  },
+  {
+    "name": "SecretVolume_C_UAID_ACB480ECFC84FD8302_1958451823",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": 6993.7763671875,
+    "lng": 9244.337890625,
+    "alt": 2033.3197021484375,
+    "area_tag": "SnailArea"
+  },
+  {
+    "name": "SecretVolume_C_UAID_ACB480ECFC84FE8902_1752073418",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": 1590.352783203125,
+    "lng": 4749.19287109375,
+    "alt": -9.676783561706543,
+    "area_tag": "OutskirtsStartTown"
+  },
+  {
+    "name": "SecretVolume_C_UAID_FC3497C3461032C702_1893930895",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": -9936.642578125,
+    "lng": 16213.6015625,
+    "alt": 1576.3310546875,
+    "area_tag": "RecyclingArea"
+  }
+]

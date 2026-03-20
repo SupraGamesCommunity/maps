@@ -43,149 +43,25 @@
         "tileRes": 512,
         "mapSize": 200000,
         "mapBounds":  [{ "x": -116500, "y": -116500, "z": -20000 }, { "x": 83500, "y": 83500, "z": 25000 }],
-        "viewBounds": [{ "x": -20000, "y": -30000, "z": -19901},  { "x": 20000, "y": 30000, "z": 24066 }],
+        "viewBounds": [{ "x": -25000, "y": -35000, "z": -19901},  { "x": 25000, "y": 35000, "z": 24066 }],
         "backgroundColor": "#141414",
         "zDepth": 0,
         "games": ["sl", "slc", "siu", "sw"]
     },
-    "jumppads": {
-        "type": "markers",
-        "category": "Travel",
-        "name": "Pads",
-        "name_key": "",
-        "defaultIcon": "jumppad",
-        "defaultActive": false,
-        "zDepth": 3,
-        "games": ["sl", "slc", "siu"]
-    },
-    "pipesys": {
-        "type": "markers",
-        "category": "Travel",
-        "name": "Pipes",
-        "name_key": "",
-        "defaultIcon": "pipe",
-        "defaultActive": false,
-        "zDepth": 4,
-        "games": ["sl", "siu"]
-    },
-    "noSpoiler": {
-        "type": "markers",
-        "category": "Miscellaneous",
-        "name": "No Spoilers",
-        "name_key": "",
-        "defaultIcon": "question_mark",
-        "defaultActive": true,
-        "zDepth": 7,
-        "games": []
-    },
-    "closedChest": {
-        "type": "markers",
-        "category": "Collectables",
-        "name": "Chests",
-        "name_key": "",
-        "defaultIcon": "chest",
-        "defaultActive": true,
-        "zDepth": 5,
-        "games": ["sl", "slc", "siu"]
-    },
-    "shop": {
-        "type": "markers",
-        "category": "Collectables",
-        "name": "Shop",
-        "name_key": "",
-        "defaultIcon": "shop",
-        "defaultActive": true,
-        "zDepth": 6,
-        "games": ["sl", "slc", "siu"]
-    },
-    "collectable": {
-        "type": "markers",
-        "category": "Collectables",
-        "name": "Collectables",
-        "name_key": "",
-        "defaultIcon": "question_mark",
-        "defaultActive": true,
-        "zDepth": 10,
-        "games": ["sl", "slc", "siu"]
-    },
-    "quest": {
-        "type": "markers",
-        "category": "Quests",
-        "name": "Quests",
-        "name_key": "",
-        "defaultIcon": "question_mark",
-        "defaultActive": true,
-        "zDepth": 11,
-        "games": ["sl", "slc", "siu"]
-    },
-    "upgrades": {
-        "type": "markers",
-        "category": "Upgrades",
-        "name": "Upgrades",
-        "name_key": "",
-        "defaultIcon": "loot",
-        "defaultActive": false,
-        "zDepth": 13,
-        "games": ["sl", "slc", "siu"]
-    },
-    "misc": {
-        "type": "markers",
-        "category": "Miscellaneous",
-        "name": "Miscellaneous",
-        "name_key": "",
-        "defaultIcon": "question_mark",
-        "defaultActive": false,
-        "zDepth": 12,
-        "games": ["sl", "slc", "siu"]
-    },
-    "coin": {
-        "type": "markers",
-        "category": "Collectables",
-        "name": "Coins",
-        "name_key": "",
-        "defaultIcon": "awesome",
-        "defaultActive": false,
-        "zDepth": 8,
-        "games": ["sl", "slc", "siu"]
-    },
-    "graves": {
-        "type": "markers",
-        "category": "Quests",
-        "name": "Graves",
-        "name_key": "",
-        "defaultIcon": "question_mark",
-        "defaultActive": false,
-        "zDepth": 9,
-        "games": ["sl"]
-    },
-    "coordinate": {
-        "type": "markers",
-        "category": "Miscellaneous",
-        "name": "XY",
-        "name_key": "",
-        "defaultIcon": null,
-        "defaultActive": false,
-        "zDepth": 14,
-        "games": ["sl", "slc", "siu"]
-    },
-    "extra": {
-        "type": "markers",
-        "category": "Miscellaneous",
-        "name": "Extras",
-        "name_key": "",
-        "defaultIcon": "question_mark",
-        "defaultActive": false,
-        "zDepth": 2,
-        "games": ["sl", "slc", "siu"]
-    },
-    "dev": {
-        "type": "markers",
-        "category": "Miscellaneous",
-        "name": "Dev",
-        "name_key": "",
-        "defaultIcon": "question_mark",
-        "defaultActive": false,
-        "zDepth": 1,
-        "games": []
-    }
+    "jumppads"   : { "type": "markers", "category": "Travel",        "name": "Pads",          "name_key": "", "defaultIcon": "jumppad",       "defaultActive": false, "zDepth":  3, "games": ["sl", "slc", "siu"] },
+    "pipesys"    : { "type": "markers", "category": "Travel",        "name": "Pipes",         "name_key": "", "defaultIcon": "pipe",          "defaultActive": false, "zDepth":  4, "games": ["sl", "siu"       ] },
+    "noSpoiler"  : { "type": "markers", "category": "Miscellaneous", "name": "No Spoilers",   "name_key": "", "defaultIcon": "question_mark", "defaultActive": true,  "zDepth":  7, "games": [                  ] },
+    "closedChest": { "type": "markers", "category": "Collectables",  "name": "Chests",        "name_key": "", "defaultIcon": "chest",         "defaultActive": true,  "zDepth":  5, "games": ["sl", "slc", "siu"] },
+    "shop"       : { "type": "markers", "category": "Collectables",  "name": "Shop",          "name_key": "", "defaultIcon": "shop",          "defaultActive": true,  "zDepth":  6, "games": ["sl", "slc", "siu"] },
+    "collectable": { "type": "markers", "category": "Collectables",  "name": "Collectables",  "name_key": "", "defaultIcon": "question_mark", "defaultActive": true,  "zDepth": 10, "games": ["sl", "slc", "siu"] },
+    "quest"      : { "type": "markers", "category": "Quests",        "name": "Quests",        "name_key": "", "defaultIcon": "question_mark", "defaultActive": true,  "zDepth": 11, "games": ["sl", "slc", "siu"] },
+    "upgrades"   : { "type": "markers", "category": "Upgrades",      "name": "Upgrades",      "name_key": "", "defaultIcon": "loot",          "defaultActive": false, "zDepth": 13, "games": ["sl", "slc", "siu"] },
+    "misc"       : { "type": "markers", "category": "Miscellaneous", "name": "Miscellaneous", "name_key": "", "defaultIcon": "question_mark", "defaultActive": false, "zDepth": 12, "games": ["sl", "slc", "siu"] },
+    "coin"       : { "type": "markers", "category": "Collectables",  "name": "Coins",         "name_key": "", "defaultIcon": "awesome",       "defaultActive": false, "zDepth":  8, "games": ["sl", "slc", "siu"] },
+    "graves"     : { "type": "markers", "category": "Quests",        "name": "Graves",        "name_key": "", "defaultIcon": "question_mark", "defaultActive": false, "zDepth":  9, "games": ["sl"              ] },
+    "coordinate" : { "type": "markers", "category": "Miscellaneous", "name": "XY",            "name_key": "", "defaultIcon": null,            "defaultActive": false, "zDepth": 14, "games": ["sl", "slc", "siu"] },
+    "extra"      : { "type": "markers", "category": "Miscellaneous", "name": "Extras",        "name_key": "", "defaultIcon": "question_mark", "defaultActive": false, "zDepth":  2, "games": ["sl", "slc", "siu"] },
+    "dev"        : { "type": "markers", "category": "Miscellaneous", "name": "Dev",           "name_key": "", "defaultIcon": "question_mark", "defaultActive": false, "zDepth":  1, "games": [                  ] },
+    "collectible": { "type": "markers", "category": "Collectables",  "name": "Collectables",  "name_key": "", "defaultIcon": "question_mark", "defaultActive": true,  "zDepth":  2, "games": ["sw"              ] }
+
 }

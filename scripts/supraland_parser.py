@@ -764,7 +764,7 @@ def export_sw_markers(cache_dir, game, marker_types=marker_types, marker_names=[
             if comment:
                 data[-1]['comment'] = comment
 
-    save_json_file(data, cache_dir, game, f'markers.{game}.json')
+    save_json_file(data, "..\\data", f'markers.{game}.json')
     print("Done")
 
 '''
