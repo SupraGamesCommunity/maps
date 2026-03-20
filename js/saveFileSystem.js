@@ -125,10 +125,8 @@ export class SaveFileSystem {
 
   // Read array data loaded from UE4 save file and call any listeners set up with data, saving it to settings if listener 
   static _processLoadedArray(arrayData) {
-    const loadedSave = new UESaveObject(arrayData);
 
-    this.ClearAll();
-
+    // If there is a listener for this object then add it as found (data)
     const addToSaveData = (area, name, filter, data = true) => {
       const id = MapObject.makeAlt(area, name);
       if (this._testFire(id, filter)) {
@@ -136,36 +134,60 @@ export class SaveFileSystem {
       }
     }
 
-    for (const o of loadedSave.Properties) {
-      // Skip things we don't knoww how to deal with
-      if (!o.type || !o.name || o.name == 'None' || o.name == 'EOF'
-        || (o.type == 'ObjectPropetty')   // Only player music uses this so skip it
-        || (o.type == 'ArrayProperty' && o.value.innerType && o.value.innerType == 'StructProperty')
-        || (o.type == 'MapProperty' && (this.mapId != 'siu' || o.name != 'ActorSaveData'))) {
-        continue;
-      }
+    this.ClearAll();
 
-      if (o.name == 'ActorSaveData') {  // This is for SIU PipeCap's
-        const actorSaveData = o.value.innerValue;
-        const re_match = new RegExp('([^.:]*):PersistentLevel.([^\\0]*?pipecap[^\\0]*)', 'gi');
-        let m;
-        while ((m = re_match.exec(actorSaveData)) != null) {
-          addToSaveData(m[1], m[2], o.name);
-        }
+    if(this.mapId == 'sw') {
+      // Get string and data views on the buffer
+      let dataview = new DataView(arrayData, arrayData.byteOffset, arrayData.byteLength);
+      let strview = new TextDecoder("latin1").decode(dataview);
+
+      // We're searching for any strings that start with PersistentLevel. following a nul
+      const srchStr = '\0PersistentLevel.'
+      const re_match = new RegExp(srchStr, 'gi');
+      let m;
+
+      // Go through all matching strings
+      while ((m = re_match.exec(strview)) != null) {
+          const nameidx = m.index + srchStr.length;
+          const namelen = dataview.getInt32(m.index+1-4, true) - srchStr.length + 1;
+          const name = strview.slice(nameidx, nameidx + namelen);
+          addToSaveData('Supraworld', name);
       }
-      else if (o.type == 'ArrayProperty') {  // One of 'ThingsToRemove', 'ThingsToActivate', 'ThingsToOpenForever'
-        for (let x of o.value.value) {
-          // map '/Game/FirstPersonBP/Maps/DLC2_Complete.DLC2_Complete:PersistentLevel.Coin442_41' to 'DLC2_Complete:Coin442_41'
-          let area = x.split("/").pop().split('.')[0];
-          let name = x.split(".").pop();
-          if (name != 'None') {
-            name = name.charAt(0).toUpperCase() + name.slice(1);  // Shell2_1957 appears as shell2_1957 in the save file
-            addToSaveData(area, name, o.name);
+    }
+    else {
+      const loadedSave = new UESaveObject(arrayData);
+
+      for (const o of loadedSave.Properties) {
+        // Skip things we don't knoww how to deal with
+        if (!o.type || !o.name || o.name == 'None' || o.name == 'EOF'
+          || (o.type == 'ObjectPropetty')   // Only player music uses this so skip it
+          || (o.type == 'ArrayProperty' && o.value.innerType && o.value.innerType == 'StructProperty')
+          || (o.type == 'MapProperty' && (this.mapId != 'siu' || o.name != 'ActorSaveData'))) {
+          continue;
+        }
+
+        if (o.name == 'ActorSaveData') {  // This is for SIU PipeCap's
+          const actorSaveData = o.value.innerValue;
+          const re_match = new RegExp('([^.:]*):PersistentLevel.([^\\0]*?pipecap[^\\0]*)', 'gi');
+          let m;
+          while ((m = re_match.exec(actorSaveData)) != null) {
+            addToSaveData(m[1], m[2], o.name);
           }
         }
-      }
-      else {    // Mostly Player upgrade and other properties
-        addToSaveData('', o.name, null, o.value);
+        else if (o.type == 'ArrayProperty') {  // One of 'ThingsToRemove', 'ThingsToActivate', 'ThingsToOpenForever'
+          for (let x of o.value.value) {
+            // map '/Game/FirstPersonBP/Maps/DLC2_Complete.DLC2_Complete:PersistentLevel.Coin442_41' to 'DLC2_Complete:Coin442_41'
+            let area = x.split("/").pop().split('.')[0];
+            let name = x.split(".").pop();
+            if (name != 'None') {
+              name = name.capitalised();  // Shell2_1957 appears as shell2_1957 in the save file
+              addToSaveData(area, name, o.name);
+            }
+          }
+        }
+        else {    // Mostly Player upgrade and other properties
+          addToSaveData('', o.name, null, o.value);
+        }
       }
     }
 
