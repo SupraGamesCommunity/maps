@@ -325,7 +325,13 @@ async function loadMap(mapParam) {
               subAction.extend({
                 options: { toolbarIcon: { html: 'Copy File Path', tooltip: 'Copy default Windows game save file path to the Clipboard' } },
                 addHooks: function () {
-                  browser.copyTextToClipboard('%LocalAppData%\\Supraland' + (map.mapId == 'siu' ? 'SIU' : '') + '\\Saved\\SaveGames');
+                  const savedPaths = {
+                    'sl':  '%LocalAppData%\\Supraland\\Saved\\SaveGames',
+                    'slc': '%LocalAppData%\\Supraland\\Saved\\SaveGames',
+                    'siu': '%LocalAppData%\\SupralandSIU\\Saved\\SaveGames',
+                    'sw':  '%LocalAppData%\\Supraworld\\Saved\\SaveGames\\Supraworld',
+                  }
+                  browser.copyTextToClipboard(savedPaths[map.mapId]);
                   subAction.prototype.addHooks.call(this);
                 }
               }),
