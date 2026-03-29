@@ -2,6 +2,7 @@ from pathlib import Path
 from itertools import groupby
 from mathutils import Vector, Matrix, Euler, Quaternion
 from math import radians
+from PIL import Image
 import logging, gc, json, gc, os, sys, csv, re, argparse, tempfile
 import numpy as np
 from sklearn.neighbors import KDTree
@@ -111,28 +112,38 @@ So we can normally decode the reference to:
     Instance:
         area       Map, Crash, DLC2_*, Supraworld
         file       [/][symboliclink/]{file path}/{bp or map name}{.uasset|.umap}
-        ref        index of object
+        ref        index of object in a uasset file
         type       class/type of object *_C for game objects
         outer      the parent (could have a whole hierarchy but most of what we care about is 1st or occasionally 2nd)
         name       name of the object most of our objects are unique with area:name
 
     Class:
         file       [/][symboliclink/]{file path}/{bp or map name}{.uasset|.umap}
-        type/name  in the blueprint file it will be in the name field
+        type/name  in the blueprint file it will be in the name field (file names normally exclude _C)
         ref        index of class within blueprint (not required)
 
-        ObjectName/ObjectPath
-    or  AssetPathName/SubPathString
-        file,ref
+    type,ref = p.get('ObjectName').split("'")[0:1]
 
-    Preproc:
-        get class name (Check _C. Check care/not care)
-        get bp file (save for loc stuff)
-
-    export_markers
-        get object based on reference
-    
-
+    return (type, ref. 
+    def objectName(p):
+        return p.get('ObjectName', '').split('.')[-1][:]
+    def ObjectClass(p):
+        return p.get('ObjectName', '').split("'")[0]
+    def objectAreaName(p):
+        return [p.get('ObjectPath').split('/')[-1].split('.')[-2], objectName(p)]
+    def objectRef(p):
+        return p['ObjectPath'].split('/')[-1].split('.')
+    def assetClass(p):
+        return p['AssetPathName'].split('.')[-1]
+    def assetAreaName(p):
+        return p['AssetPathName'].split('.')[-1], p['SubPathString'].split('.')
+            "AssetPathName": "/Supraworld/Maps/Supraworld.Supraworld",
+            "SubPathString": "PersistentLevel.NPCManagerVolume_C_UAID_7085C2B20F0E486802_1139294404"
+    # Expects a dictionary containing SubPathString and AssetPathName or containing
+    # ObjectName and ObjectPath. If we have an object loaded from JSON corresponding
+    # to the reference object then it is returned, otherwise a string containing
+    # it's class or the name of the object. if type(getObject(p) is dict: can be
+    # used to check which has been returned.
     def getObject(p):
         if (sps := p.get('SubPathString')) is None:
             if (op := p.get('ObjectPath')) is None:
@@ -157,10 +168,36 @@ So we can normally decode the reference to:
                 # See if we have referenced object in our look up table, if not return string
                 object = apn + '.' + sps.split('.').pop()   # We could remove pop to include Outer
 
-        return object
-        
+        return object        
 '''
+# p = {
+# "ObjectName": "ShopEgg_C'Supraworld:PersistentLevel.ShopEgg_C_UAID_FC3497C34610BB6D01_1671702339'",
+# "ObjectPath": "/Supraworld/Maps/Supraworld.60177"
+# }
+# Returns 'Supraworld.60177'
+def objectRefStr(p):
+    return p['ObjectPath'].split('/')[-1]
 
+# Returns ['Supraworld', 60177]
+def objectRef(p):
+    t = objectRefStr(p).split('.')[-2:]
+    return [t[0], int(t[1])]
+
+# p = {
+# "ObjectName": "ShopEgg_C'Supraworld:PersistentLevel.ShopEgg_C_UAID_FC3497C34610BB6D01_1671702339'",
+# "ObjectPath": "/Supraworld/Maps/Supraworld.60177"
+# }
+# Returns 'Supraworld:PersistentLevel.ShopEgg_C_UAID_FC3497C34610BB6D01_1671702339'
+def objectKey(p):
+    return p['Objectpath'].split("'")[1]
+
+# Returns a key for an object based on it's area, outer and name. Won't be useful for objects
+# deeper than root or next level in the hierarchy
+def makeObjectKey(area, outer, name):
+    key = area+':PersistentLevel.'
+    if outer != 'PersistentLevel':
+        key += outer
+    return key + '.' + name
 
 # Data about each game based on the game code sl, slc, siu, sw
 #
@@ -242,23 +279,102 @@ config = {
 }
 
 # These are the colours we currently know about:
-#ESupraColors::Aqua			0x00FFFF
-#ESupraColors::Black		0x030303
-#ESupraColors::Blue			0x0000FF
-#ESupraColors::Brown		0x964B00
-#ESupraColors::Custom		0xFFFFFF
-#ESupraColors::Cyan			0x00FFFF
-#ESupraColors::Green		0x49FF00
-#ESupraColors::Grey			0x898989
-#ESupraColors::LightOrange	0xFFD680
-#ESupraColors::Lime			0x00FF00
-#ESupraColors::Magenta		0xFF00FF
-#ESupraColors::Orange		0xFF7700
-#ESupraColors::Pink			0xA74472
-#ESupraColors::Purple		0x800080
-#ESupraColors::Red			0xFF0000
-#ESupraColors::White		0xFFFFFF
-#ESupraColors::Yellow		0xFFFF00
+# ESupraColors::Aqua        0x00FFFF
+# ESupraColors::Black       0x030303
+# ESupraColors::Blue        0x0000FF
+# ESupraColors::Brown       0x964B00
+# ESupraColors::Custom      0xFFFFFF
+# ESupraColors::Cyan        0x00FFFF
+# ESupraColors::Green       0x49FF00
+# ESupraColors::Grey        0x898989
+# ESupraColors::LightOrange 0xFFD680
+# ESupraColors::Lime        0x00FF00
+# ESupraColors::Magenta     0xFF00FF
+# ESupraColors::Orange      0xFF7700
+# ESupraColors::Pink        0xA74472
+# ESupraColors::Purple      0x800080
+# ESupraColors::Red         0xFF0000
+# ESupraColors::White       0xFFFFFF
+# ESupraColors::Yellow      0xFFFF00
+
+# Early Access Filter data
+ea_filter = True
+ea_fogfile = "swmapfog-ea.png"
+ea_proggroups = [
+    'Act1',
+    'Act2.Blue',
+    'Act2.Green',
+]
+ea_areas = [
+    'ArmChairTown',
+    'BedDrawer',
+    'BedKingdom',
+    'Castle',
+    'OutskirtsCastle',
+    'OutskirtsStartTown',
+    'RecyclingArea',
+    'SnailArea',
+    'StartTown',
+]
+ea_abilities = [
+    'BlowGun',
+    'Crouch',
+    'Dash',
+    'Jump',
+    'JumpHigh',
+    'Vision',
+    'SpongeSuit',
+    'Toothpick',
+    'Dart',
+    'Stake',
+    'Strength',
+]
+ea_fog_bounds = (-116500, -116500, 83500, 83500)
+ea_fog_pixels = None
+ea_fog_width = 0
+ea_fog_height = 0
+
+
+# Classes that potentially have a travel target
+travel_types = [
+    'Balloon_C',
+    'DashLauncher_C'
+    'GuardVolume_C',
+    'Jumppad_C',
+    'Jumppad_TwoPath_C',
+    'LaunchBox_C',
+    'LaunchVolume_C',
+    'RubberBand_C',
+    'RubberBand_CustomDeform_C',
+    'WobbleSpring_C',
+]
+
+# Override Material Variants
+material_types = [
+    "Nailscrew_C",
+    "PuzzleCloud_C"
+]
+
+material2variant = {
+    'Metal_Base_Golden': 'gold',
+    'CloudPurple':       'purple',
+    'CloudCyan':         'cyan',
+    'CloudRed':          'red',
+    'CloudBlue':         'blue',
+    'CloudWhite':        'white',
+}
+
+dietype2typeprefix = {
+    'DieType::D6':       'D6',
+    'DieType::D6 Round': 'D6R',
+}
+
+# Currently there are three Loot Pools:
+#
+# Lootpool1: Inventory_BlowgunBlowTime1_C
+# Lootpool2: Inventory_DashDamage_C, Inventory_DashBurstRange_C, Inventory_ToothpickDamage_C, Inventory_MaxHealth_C
+# Lootpool3Money: Inventory_Coin3_C
+
 
 marker_types = {
   'PlayerStart','Jumppad_C','Bones_C','Chest_C','BarrelColor_C', 'BarrelRed_C','Battery_C',
@@ -322,10 +438,13 @@ def camel_to_snake(s):
 # Returns list of numbers in the specified string (ie "a1b98" return ["1", "98"])
 get_ints = lambda s:[''.join(group) for key, group in groupby(s, lambda e:e.isdigit()) if key]
 
-# Returns last number in the specified string or empty string if it isn't one
+# Returns last number in the specified string
+get_last_int = lambda s: ints[-1] if (ints := get_ints(s)) else ''
+
+# Returns number at end of the specified string or empty string if it isn't one
 # Note: we could do this more simply with a regexp but it seems inefficient
 # get_last_int = lamda s: m.group() if (m := re.search('\d+$', s)) else ''
-get_last_int = lambda s: get_ints(s)[-1] if s and s[-1].isdigit() else ''  
+get_end_int = lambda s: get_ints(s)[-1] if s and s[-1].isdigit() else ''  
 
 # Return True if this string looks like some kind of enumeration
 def isenum(s):
@@ -402,6 +521,7 @@ def preproc_levels(cache_dir, game):
     bp_assetlist = set()
     area_names = set()
     ignored_types = set()
+    classprops = {}
 
     # Set of property:type pairs for all key:value pairs in game maps
     propset = {'Root': set(), 'Properties': set(), 'Other': set()}
@@ -423,11 +543,32 @@ def preproc_levels(cache_dir, game):
                 print(f'Warning: Object missing something in {filename} Type:{otype} Name:{oname} BP:{obp}')
                 continue
 
+            # Collect any claases which use the properties we're interested
+            if(p:= obj.get('Properties')):
+                for prop in ['RequiredAbilities', 'Area', 'ProgressionGroup',
+                        'AdditionalRequirementHints', 'AdditionalRequirements',                    
+                        'DieType',
+                        'Value', 'CoinValue', 'Coins', 'CoinPool',
+                        'Pickup Class', 'CustomShopItem', 'InventoryItem','Initial Shop Inventory',
+                        'SupraworldLaunchComponent', 'FrontSupraworldLaunchComponent', 'BackSupraworldLaunchComponent', 'AltLaunchComp',
+                        'SpawnerTags',
+                        'Spawn on Level Start',
+                    ]:
+                    if prop in p:
+                        classprops[otype] = set([*list(classprops.get(otype, set())),prop])
+
             # Remember blueprint paths of types we're interested in
             # And the base type of any other custom types
             # Note: old SL based game classes don't necessarily have games member
             if otype in game_classes and game in game_classes[otype].get('games', ['sl', 'slc', 'siu']):
                 bp_assetlist.add(obp if obp[0] != '/' else obp[1:])
+                p = obj['Properties']
+                # Collect those classes we're interested that use these properties
+                for prop in ['Color', 'Color_Initial', 'Initial_Color',
+                        'ButtonColor', 'LiquidColor', 'RuneColor',
+                        'bExists', 'bHidden']:
+                    if prop in p:
+                        classprops[otype] = set([*list(classprops.get(otype, set())),prop])
             elif otype.endswith('_C'):
                 ignored_types.add(otype)
 
@@ -454,7 +595,8 @@ def preproc_levels(cache_dir, game):
                         if ref == 'AssetPathName' and value and '.' in value:
                             obp, otype = value.split('.')
                         if otype:
-                            if otype in game_classes and game in game_classes[otype].get('games', ['sl', 'slc', 'siu']):
+                            if (otype == 'Jumppad_C'
+                                or otype in game_classes and game in game_classes[otype].get('games', ['sl', 'slc', 'siu'])):
                                 bp_assetlist.add(obp if obp[0] != '/' else obp[1:])
                             elif otype.endswith('_C'):
                                 ignored_types.add(otype)
@@ -473,7 +615,11 @@ def preproc_levels(cache_dir, game):
     save_assetlist(bp_assetlist, gamefilelist, cache_dir, game, 'bpassetlist.txt')
     save_assetlist(ueenums.types, gamefilelist, cache_dir, game, 'enumassetlist.txt', prefer="Enums")
     save_text_file(sorted(area_names), cache_dir, game, "areanames.txt")
+
+    for k,v in classprops.items():
+        classprops[k] = sorted(list(v))
     levelprops = {
+        "ClassProps": dict(sorted(classprops.items())),
         "IgnoredTypes": sorted(list(ignored_types)),
         "EnumTypes": sorted(list(ueenums.types)),
         "EnumValues": ueenums.map,
@@ -577,55 +723,66 @@ def save_text_file(lines, *path, quiet=False):
         with open(path, 'w') as file:
             for line in lines:
                 file.write(line + '\n')
- 
-
- 
 
 
-def joric_data(cache_dir='..\\source', game='sw'):
-    path = Path(cache_dir, 'icons')
 
-    for fn in path.glob('*.png'):
-        os.rename(fn, fn.with_suffix('.pin.png'))
+# Load in a PNG file containing RGB values 
+def load_ea_fog(*path):
+    path = os.path.join(*path, 'mapimg', ea_fogfile)
+    if not os.path.exists(path):
+        print(f'Warning: Failed to load fog png ({path})')
+        return None
+    with Image.open(path) as im:
+        global ea_fog_width, ea_fog_height, ea_fog_pixels
+        ea_fog_width = im.width
+        ea_fog_height = im.height
+        ea_fog_pixels = im.getchannel(0).load()
 
-'''
-    joric_icons = load_json_file(cache_dir, 'icons.json')
-    icon_cfgs = load_json_file('..\\data\\iconConfigs.json')
 
-    # Remove the previous set of new icons
-    icon_cfgs = { name: cfg for name,cfg in icon_cfgs.items() if cfg['iconSize'][0] != 48 }
+def in_earlyaccess(otype, p, pos):
+    if not ea_filter:
+        return True
 
-    # Add joric icons to file
-    newcfg = {  "iconSize": [ 48, 48 ], "iconAnchor": [ 24, 48 ], "popupAnchor": [ 0, -24 ], "tooltipAnchor": [ 24, 24 ] }
-    icon_cfgs |= { name+'.pin': newcfg for name in joric_icons }
+    # If it has a progression and it's not in released content then reject
+    if ((proggroup := p.get('ProgressionGroup', {}).get('TagName'))
+        and not any(proggroup.endswith(s) for s in ea_proggroups)):
+            return False
 
-    save_json_file(icon_cfgs, cache_dir, 'iconConfigs.json')
-'''
+    # If it has an area that's not 
+    if ((swarea := p.get('Area', {}).get('TagName'))
+        and not any(swarea.endswith(s) for s in ea_areas)):
+            return False
 
-'''
-    joric_types = load_json_file(cache_dir, "types.json")['match']['type']
-    game_classes = read_game_classes()
+    # Some classes should be rejected if they have no area tag
+    if not swarea and otype in ['SecretVolume_C']:
+        return False
+    
+    # Check if it requires abilities not yet released
+    if (required := p.get('RequiredAbilities')): 
+        for r in required:
+            if isinstance(r, str) and not any(r.endswith(s) for s in ea_abilities):
+                return False
 
-    for otype,tdata in game_classes.items():
-        if not tdata.get('games') or not joric_types.get(otype):
-            continue
-        if not 'title' in joric_types[otype]:
-            tdata['friendly']  = friendly_name(otype)
-        else:
-            tdata['friendly'] = joric_types[otype]['title']
-        tdata['icon'] = joric_types[otype]['icon']
-        tdata['layer'] = joric_types[otype]['group']
+    if(ea_fog_pixels):
+        (xmin, ymin, xmax, ymax) = ea_fog_bounds 
+        if xmin < pos.x < xmax and ymin < pos.y < ymax: 
+            px = (pos.x - xmin) / (xmax - xmin) * ea_fog_width
+            py = (pos.y - ymin) / (ymax - ymin) * ea_fog_width
+            if(ea_fog_pixels[px, py] < 255):
+                return False
 
-    write_game_classes(game_classes, 'gameClasses.json')
-'''
+    # Should probably check pos against a cuboid but not yet
+    return True
 
-def export_sw_markers(cache_dir, game, marker_types=marker_types, marker_names=[]):
+
+def export_sw_markers(cache_dir, game):
     maps = {}       # dictionary from map name to json data list
-    objects = {}    # dictionary from map name to dictionary of outer.name to object
-                    # key is {type}'{area}:{outer}.{name}
+    toyeggs = {}    # Collected chocolate eggs
+    meshmats = {}   # dictionary from outer name to mesh material variant
+    targets = {}    # dictionary from outer name to target positions   
     area_mtx = {}   # Transform for each area map geometry
-    data = []       # Output marker data   
-
+    data = []       # Output marker data
+ 
     optEnum= lambda s:int(s[len(s.rstrip('0123456789')):]or 0) if type(s) is str and '::' in s else s
     optArea= lambda a,k,v: v if a==k else ':'.join((k,v))
     optColor=lambda p:p and '#'+''.join(hex(int(p[c]))[2:] for c in 'RGB')
@@ -635,37 +792,6 @@ def export_sw_markers(cache_dir, game, marker_types=marker_types, marker_names=[
     getQuat= lambda d,v=0: Quaternion((d['W'], d['X'], d['Y'], d['Z'])) if d else Quaternion((v,v,v,v))
     getXYZ = lambda v:{'x':v.x, 'y': v.y, 'z': v.z}
 
-    # Expects a dictionary containing SubPathString and AssetPathName or containing
-    # ObjectName and ObjectPath. If we have an object loaded from JSON corresponding
-    # to the reference object then it is returned, otherwise a string containing
-    # it's class or the name of the object. if type(getObject(p) is dict: can be
-    # used to check which has been returned.
-    def getObject(p):
-        if (sps := p.get('SubPathString')) is None:
-            if (op := p.get('ObjectPath')) is None:
-                return ""
-            if '/Maps/' in op:
-                area = op.split("/Maps/")[1].split('/')[0].split(".")[0]
-                index = int(op.split(".").pop())
-                if area in maps:
-                    object = maps[area][int(index)]
-                else:
-                    object = op.split("/").pop().split('.')[0]
-            else:
-                on = p.get('ObjectName')
-                object = on.split("'")[1]   # Just extract class
-        else:
-            apn = p.get('AssetPathName', '').split('.').pop() 
-            # If the SubPathString is empty then just return the last bit of the asset path name (normally type)
-            if sps == '':
-                object = apn
-            elif not (object := objects.get(apn, {}).get(sps)):
-                # elif not (areaobjects := objects.get(apn)) or not (object := areaobjects.get(sps)):
-                # See if we have referenced object in our look up table, if not return string
-                object = apn + '.' + sps.split('.').pop()   # We could remove pop to include Outer
-
-        return object
-    
     # Phase 1: Read all the map json files in and build a look up table for references
     # Also get any area/map file matrices (for streaming levels)
     for area in config[game]['maps']:
@@ -673,16 +799,32 @@ def export_sw_markers(cache_dir, game, marker_types=marker_types, marker_names=[
         maps[area] = load_json_file(cache_dir, game, 'levels', area+'.json')
 
         # Go through all objects in the map data and store lookups for later
-        objects[area] = {}
-        for o in maps[area]:
+        for oidx, o in enumerate(maps[area]):
             if not (outer := o.get('Outer')) or not (p:= o.get('Properties')):
                 continue
             oname = o['Name']
+            otype = o['Type']
 
-            # Store reference to object for later look up
-            okey = outer + '.' + oname
-            if outer == 'PersistentLevel' or 'PersistentLevel.'+outer in objects:
-                objects[okey] = o
+            # Keep list of static meshes by parent/outer
+            if (otype == 'StaticMeshComponent'
+                and (oms := p.get('OverrideMaterials'))):
+                for om in oms:
+                    if (om and (v := om.get('ObjectName'))
+                        and (v:= material2variant.get(v.split("'")[-2].split('.')[-1]))):
+                        meshmats[outer] = v
+
+            # Keep list of Chocolate Egg interior objects
+            if(otype == 'ChocolateEgg_C' and (v := p.get('ToyEgg'))):
+                toyeggs[objectRefStr(v)] = o
+
+            # Keep a list of launch target positions
+            # I was filtering based on name but it's not reliable indicator of class
+            # some rubber bands have name 'StaticMashActor_...' for example
+            # and outer[0:outer.find("_C")+2] in travel_types): name 
+            if (otype == 'SupraworldLaunchComponent_C'
+                and (tl := p.get('TargetLocation'))
+                and not oname == 'AltLaunchComp'):      # For now remove Jumppad_TwoPath_C 2nd path
+                targets[outer] = [*targets.get(outer, []), {'x': tl['X'], 'y': tl['Y'], 'z': tl['Z']}]
 
             # For maps that are divided into multiple files, there may be a LevelTransform for entities in that
             # file relative to the persistent world that is handled by the streaming system. To correct for this
@@ -692,18 +834,19 @@ def export_sw_markers(cache_dir, game, marker_types=marker_types, marker_names=[
 
     game_classes = read_game_classes()
 
+    load_ea_fog(cache_dir, game)
+
     # Phase 2: Go through all the objects which have types we're interested in
     for area in maps:
-        for o in maps[area]:
+        for oidx, o in enumerate(maps[area]):
             otype = o['Type']
             oname = o['Name']
             if not (outer := o.get('Outer')) or not (p := o.get('Properties')):
                 continue
-            if not otype in game_classes:
-                continue
 
-            if otype != 'SecretVolume_C':
-                continue
+            def getObject(p):
+                ref = objectRef(p)
+                return maps[ref[0]][ref[1]]
 
             def get_matrix(o, matrix=Matrix.Identity(4)):
                 p = o.get('Properties', {})
@@ -711,12 +854,16 @@ def export_sw_markers(cache_dir, game, marker_types=marker_types, marker_names=[
                 if p.get('RelativeLocation'):
                     matrix = Matrix.LocRotScale(getVec(p.get('RelativeLocation')), getRot(p.get('RelativeRotation')), getVec(p.get('RelativeScale3D'), 1)) @ matrix
 
-                for parent in ['RootObject', 'RootComponent', 'DefaultSceneRoot', 'AttachParent']:
-                    node = p.get(parent, {})
+                for prop in ['RootObject', 'RootComponent', 'DefaultSceneRoot', 'AttachParent']:
+                    if p.get(prop):
+                        return get_matrix(getObject(p[prop]))
+                '''                    
+                    node = p.get(parent)
                     if type(node) is dict:
                         obj = getObject(node)
                         if type(obj) is dict:
                             return get_matrix(obj, matrix);
+                '''
                 return matrix
 
             matrix = get_matrix(o)
@@ -724,42 +871,137 @@ def export_sw_markers(cache_dir, game, marker_types=marker_types, marker_names=[
                 matrix  = area_mtx[area] @ matrix
             pos = matrix.to_translation()
 
-            def in_earlyaccess(otype, p, pos):
-                if (proggroup := p.get('ProgressionGroup', {}).get('TagName')):
-                    proggroups = ['Act1', 'Act2.Blue', 'Act2.Green']
-                    if not any(proggroup.endswith(s) for s in proggroups):
-                        return False
-                if (swarea := p.get('Area', {}).get('TagName')):
-                    swareas = ['ArmChairTown', 'BedDrawer','BedKingdom',
-                        'Castle', 'OutskirtsCastle', 'OutskirtsStartTown',
-                        'RecyclingArea', 'SnailArea','StartTown']
-                    if not any(swarea.endswith(s) for s in swareas):
-                        return False
-                elif otype in ['SecretVolume_C']:
-                    return False
-                if (required := p.get('RequiredAbilities')): 
-                    abilities = ['BlowGun', 'Crouch', 'Dash', 'Jump', 'JumpHigh',
-                        'Vision', 'SpongeSuit', 'Toothpick', 'Dart', 'Stake', 'Strength']
-                    for r in required:
-                        if not any(r.endswith(s) for s in abilities):
-                            return False
-                # Should probably check pos against a cuboid but not yet
-                return True
+            # Fix up classes that have weird defaults in the blueprint
+            if otype == 'DetectiveCase_ChocolateFactory':
+                o['ProgressionGroup']= { "TagName": "Supraworld.Story.Act2.Blue" }
 
+            # Check for early access based on type, properties and map position
+            if not in_earlyaccess(otype, p, pos):
+                continue
+
+            # If this is a shop egg inside a chocolate egg then skip it (ChocolateEgg_C)
+            if toyeggs.get(area+'.'+str(oidx)):
+                continue
+
+            # Add the standard data to the object
+            data.append({'name':oname, 'type':otype, 'area':area, 'lat': pos.y, 'lng': pos.x, 'alt': pos.z })
+
+            # Hidden Flag
+            if (p.get('bHidden') == True
+                or p.get('bHiddenInGame') == True
+                or p.get('bExists') == False
+                or p.get('InitialExists') == False 
+                or p.get('Spawn on Level Start') == False
+                or p.get('bItemIsAvailable_Initial') == False):
+                data[-1]['hidden']='true'
+
+            # Handle the Obvious Area secret
             comment = None
             if o.get('ActorLabel') == "ObviousAreaOuttaTown":
                 p['Area'] = {'TagName': 'OutskirtsStartTown'}
                 comment = 'Obvious Area'
 
-            if not in_earlyaccess(otype, p, pos):
+            variant = ''
+            # Variants from colours or override materials
+            for colkey in ['RuneColor', 'Color', 'Color_Initial', 'LiquidColor', 'ButtonColor']:
+                if (color := p.get(colkey)) and isinstance(color, str):
+                    variant = color.removeprefix("ESupraColors::")
+                    break
+
+            # Currently gold screws and puzzle cloud's
+            if v := meshmats.get(oname):
+                variant = v
+
+            # Only keep gold variant of Nailscrew_C 
+            if otype == 'Nailscrew_C' and variant != 'gold':
+                del data[-1]
                 continue
 
-            data.append({'name':oname, 'type':otype, 'area':area })
-            data[-1].update({'lat': pos.y, 'lng': pos.x, 'alt': pos.z})
+            if variant:
+                data[-1]['variant'] = variant
 
-            # Grab the area tag if there is one
-            if (a := p.get('Area', {})) and (ta := a.get('TagName')):
-                data[-1]['area_tag'] = ta.split('.')[-1]
+            # If it's a D6 or D6 Round then change the class (could use variant but might have coloured die in future)
+            if otype == 'Die_C' and (v := dietype2typeprefix.get(p.get('DieType'))):
+                data[-1]['type'] = v + ':' + otype
+
+            if otype == 'HayGuy_C' and p.get('Collectible Tag', {}).get('TagName') == 'Stats.Collectible.Thread':
+                data[-1]['type'] = '_ThreadGuy_C'
+
+            # Solve clashes with old game classes
+            if otype in ['Jumppad_C', 'KeyPlastic_C']:
+                data[-1]['type'] = 'SW:'+otype
+
+            # Grab the Area (or AreaTag) if there is one
+            if v := p.get('Area', p.get('AreaTag', {})).get('TagName'):
+                data[-1]['area_tag'] = v.split('.')[-1]
+
+            # Grab progression tag
+            if v := p.get('ProgressionGroup', {}).get('TagName'):
+                data[-1]['prog_tag'] = v.removeprefix('Supraworld.Story.').replace('.', ':')
+
+            # Grab secret required abilities if there are any
+            if otype == 'SecretVolume_C' and (v:= p.get('RequiredAbilities')):
+                data[-1]['abilities'] = ','.join([a.removeprefix('GameplayAbilitySystem.Ability.').replace('.', ' ') for a in v])
+
+            # If this is a chocolate egg then get the spawn property from the related toy egg (which will not be included)
+            spawn_props = p
+            if(otype == 'ChocolateEgg_C' and (v:= p.get('ToyEgg'))):
+                spawn_props = getObject(v)['Properties']
+
+            # Spawners (presents, shops, eggs, launch boxes, ...)
+            spawns = ''
+            if v := spawn_props.get('Pickup Class'):
+                spawns = v['ObjectName'].split("'")[-2]
+            elif ((v := spawn_props.get('InventoryItem'))
+                or ((v := spawn_props.get('Initial Shop Inventory')) and isinstance((v := list(v[0].values())[0]), dict))
+                or (v := spawn_props.get('CustomShopItem'))):
+                spawns = v['AssetPathName'].split(".")[-1]
+            if spawn_props.get('bFromLootPool') == True:
+                spawns = '_LootPool_C'
+
+            # These classes just spawn stuff so we change the type to what it spawns
+            if otype in ['ItemSpawner_C', 'PickupSpawner_C', 'ShopItemSpawner_C', 'RespawnablePickupSpawner_C']:
+                data[-1]['type'] = otype = spawns
+                spawns = ''
+
+            # Coins
+            # Anything that spawns Inventory_Coin[nn]_C or RealCoinPickup_C/5Cent_C/Gumball_Machine_C
+            coins = 0
+            if (v := coin_defaults.get(otype)) or (v := coin_defaults.get(spawns)):
+                coins = v
+            if (v := p.get('Value')) and v.startswith('CoinValue::'): # RealCoinPickup_C/5Cent_C
+                coins = int(get_end_int(v))
+            if (v := p.get('CoinPool')):                              # Gumball_Machine_C
+                coins = v
+            if coins:
+                data[-1]['coins'] = coins
+                if spawns != '':
+                    data[-1]['type'] = 'Coin:' + data[-1]['type']
+                    spawns = ''
+
+            # Loot boxes default to spawning loot pools
+            if otype == 'PresentBox_Lootpools_C' and not (coins or spawns):
+                spawns = '_LootPool_C'
+
+            if spawns != '':
+                data[-1]['spawns'] = spawns
+
+            def filter_targets(objpos, targets, mindist):
+                ov = Vector((objpos['lng'], objpos['lat'], objpos['alt']))
+                keep = [ target for target in targets if (Vector((target['x'], target['y'], target['z'])) - ov).magnitude >= mindist]
+                return keep
+
+            # Travel targets
+            if(oname in targets
+               and (v := filter_targets(data[-1], targets[oname], 600))):
+                data[-1]['targets'] = v
+                data[-1]['linetype'] = 'target'
+
+            # Type may have been modified, so only check for it at the end
+            otype = data[-1]['type']
+            if not 'sw' in game_classes.get(otype, {}).get('games', []):
+                del data[-1]
+                continue
 
             if comment:
                 data[-1]['comment'] = comment
@@ -1291,6 +1533,13 @@ coin_defaults = {
     'LotsOfCoins50_C': 50,
     'LotsofCoins200_C': 200,    # Note lower case 'of'
     'PhysicalCoin_C': 1,
+    '5Cent_C': 5,
+    'RealCoinPickup_C': 1,
+    'Inventory_Coin_C': 1,
+    'Inventory_Coin3_C': 3,
+    'Inventory_Coin5_C': 5,
+    'Inventory_Coin10_C': 10,
+    'Gumball_Machine_C': 0
 }
 
 # Which properties we allow to be exported for each instance
