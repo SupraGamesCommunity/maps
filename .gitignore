@@ -15,3 +15,5 @@ obj/
 # Ignore source data extracted from games or from other repositories
 /source/
 /scripts/source/
+
+*.bak
