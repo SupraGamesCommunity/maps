@@ -74,7 +74,7 @@ for %%i in (sl siu sw) do if "%%i"=="%game%" set gameopt=good
 if %gameopt%==bad goto :cli_error
 
 set modeopt=bad
-for %%i in (levels loc bp mapimg gentiles enums list parse) do if "%%i"=="%mode%" set modeopt=good
+for %%i in (levels loc bp mapimg gentiles enums list parse getfog applyfog ) do if "%%i"=="%mode%" set modeopt=good
 if %modeopt%==bad goto :cli_error
 
 :: Make sure the game output directory exists (this creates basedir and basedir\game)
@@ -127,6 +127,9 @@ exit /b
 ::
 :: For map textures:
 :: export all mapimg            - to get the map raw images
+:: export sw getfog [{savename}]- to get a fog file (swmapfog.png)
+:: {manually edit fog file}
+:: export sw applyfog           - to appply swmapfog to swmap and create swmap-fogged.png
 :: {manually produce ..\source\{game}map-final.png}
 :: export all gentiles          - to generate tiles for runtime map
 ::
@@ -146,13 +149,15 @@ echo {mode} is one of images, maps or list (put multiple modes in quotes)
 echo.
 echo levels   extracts .umap level data for the specified game to ..\source\*.json
 echo bp       extracts .uasset blueprint files to .json
-echo mapimg   extracts .png map image files and merges them together in ..\source\{maps}.json
-echo gentiles takes ..\source\{game}map-final.png and generates tiles in ..\tiles\{game}\base 
+echo mapimg   extracts .png map image files and merges them together in ..\source\mapimg
+echo gentiles takes ..\source\{game}\map-final.png and generates tiles in ..\tiles\{game}\base 
 echo loc      extracts .locres/.locmeta localistation files for the specified game
 echo enums    extracts all the enumerations and their member names/numbers (..\source\{game}.enums.json)
 echo list     generates a list of all files in the specified game ({game}.list.txt)
 echo parse    runs extraction with custom arguments (optional flatten argument)
 echo          ie export {game} parse [flatten] -p */{file}.uasset
+echo getfog   extract editable for fog map from [{savename}] or from source\sw
+echo applyfog combine swmapfog.png and swmap.png into swmap-fogged.png
 echo.
 echo Files and directories are placed in ..\source\{game}\
 
@@ -432,5 +437,38 @@ if "%flatten%"=="flatten" (
 
 popd
 rd /s /q "%gameout%\temp"
+
+goto :eof
+
+::=================================================================================================
+:: Fog Extraction and Processing
+::
+:: Use export sw getfog [{savename}] to convert a MapFog.png file to something editable in swmapfog.png
+:: Use export sw applyfog to apply a swmapfog.png an extracted swmap.png file and output swmap-fogged.png
+
+:sl_getfog
+:slc_getfog
+:siu_getfog
+:sl_applyfog
+:slc_applyfog
+:siu_applyfog
+echo %colGrn%getfog and applyfog commands only supported for Supraworld, skipping%colDef%
+goto :eof
+
+:sw_getfog
+
+set fogsave=%gameout%\MapFog.png
+if not "%extraargs%"=="" set fogsave=%LocalAppData%\Supraworld\Saved\SaveGames\Supraworld\%extraargs%\MapFog.png
+
+@echo %colGrn%Creating %gameout%\mapimg\swmapfog.png from %fogsave%%colDef%
+
+magick "%fogsave%" -channel-fx "red=>green,red=>blue,red=>alpha" -alpha off -resize 8192x8192 "%gameout%\mapimg\swmapfog.png"
+magick "%gameout%\mapimg\swmapfog.png" -resize 2048x2048 "%gameout%\mapimg\swmapfog-2k.png"
+goto :eof
+
+:sw_applyfog
+@echo %colGrn%Applying fog image swmapfog.png to swmap.png and outputting swmap-fogged.png (in %gameout%\mapimg)%colDef%
+
+magick "%gameout%\mapimg\swmap.png" "%gameout%\mapimg\swmapfog.png" -compose Multiply -composite "%gameout%\mapimg\swmap-fogged.png"
 
 goto :eof
