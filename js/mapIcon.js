@@ -69,9 +69,12 @@ export const L_MapIcon = L.Icon.extend({
 
     // If scale has changed apply it to options
     if (scale != this._iconScale) {
-      for (const [k, v] of Object.entries(this.options.iconConfig)) {
+      for(const [k, v] of Object.entriesPick(this.options.iconConfig, ['iconSize', 'iconAnchor', 'popupAnchor', 'tooltipAnchor'])) {
         this.options[k] = [Math.round(v[0] * scale), Math.round(v[1] * scale)];
       }
+      //for (const [k, v] of Object.entries(this.options.iconConfig)) {
+      //  this.options[k] = [Math.round(v[0] * scale), Math.round(v[1] * scale)];
+      //}
       this._iconScale = scale;
       rescaleCss = this._mapAdded;
     }

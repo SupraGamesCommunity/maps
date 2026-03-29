@@ -184,7 +184,7 @@ export class MapObject {
 
     if (o.linetype && MapLayer.isEnabledFromId(c.lines, map.mapId) && o.twoway != 2) {
       const mapLayer = MapLayer.get(c.lines);
-      let endxys = o.linetype != 'trigger' ? [o.target] : o.targets;
+      let endxys = o?.target ? [o.target] : o.targets;
 
       // need to add title as a single space (leaflet search issue), but not the full title so it doesn't appear in search
       let options = {
@@ -363,33 +363,54 @@ export class MapObject {
     buildMode.object = o;
 
     let text = ''
-    text += `<div class="marker-popup-heading">${locStr.friendly(o, o.type, mapId)}</div>`
-    text += '<div class="marker-popup-text">'
-    if (o.spawns) {
-      text += `<br><span class="marker-popup-col">Contains:</span><span class="marker-popup-col2">${locStr.friendly(null, o.spawns, mapId)}</span>`;
-    }
-    if (o.coins) {
-      text += `<br><span class="marker-popup-col">Coins:</span>${o.coins} coin${o.coins > 1 ? "s" : ""}`;
-    }
-    if (o.scrapamount) {
-      text += `<br><span class="marker-popup-col">Amount:</span>${o.scrapamount} scrap`;
-    }
-    if (o.cost) {
-      text += `<br><span class="marker-popup-col">Price:</span>${locStr.cost(o.price_type, o.cost)}`;
+    const hidden = (o?.hidden == 'true' ? ' (hidden)' : ''); 
+
+    const fmtheading = (str) => {
+      return `<div class="marker-popup-heading">${str}</div>`
     }
 
-    for (let f of ['loop', 'area_tag', 'variant']) {
-      if (o[f]) {
-        text += `<br><span class="marker-popup-col">${f.snakeToUI()}:</span>${o[f]}`;
-      }
+    text += fmtheading(`${locStr.friendly(o, o.type, mapId)}${hidden}`)
+  
+    text += '<div class="marker-popup-text">'
+
+    const fmtrow = (title, value) => {
+      return `<br><span class="marker-popup-col">${title}</span><span class="marker-popup-col2">${value}</span>`
     }
-    if (o.description || GameClasses.get(o.type).description) {
-      text += `<br><span class="marker-popup-col">Description:</span><span class="marker-popup-col2">${locStr.description(o, o.type, mapId)}</span>`;
-    }
-    if (o.comment) {
-      text += `<br><span class="marker-popup-col">Comment:</span><span class="marker-popup-col2">${o.comment}</span>`;
-    }
-    text += `<br><span class="marker-popup-col">XYZ pos:</span>(${o.lng.toFixed(0)}, ${o.lat.toFixed(0)}, ${o.alt.toFixed(0)})`
+
+    if(o.spawns)
+      text += fmtrow('Contains', locStr.friendly(null, o.spawns, mapId));
+
+    if(o.coins)
+      text += fmtrow('Coins', `${o.coins} coin${o.coins > 1 ? "s" : ""}`);
+
+    if(o.scrapamount)
+      text += fmtrow('Amount', `${o.scrapamount} coin${o.scrapamount > 1 ? "s" : ""}`);
+
+    if(o.cost)
+      text += fmtrow('Price', locStr.cost(o.price_type, o.cost));
+
+    if(o.area_tag)
+      text += fmtrow('Area', o.area_tag);
+
+    if(o.prog_tag)
+      text += fmtrow('Act', o.prog_tag);
+
+    if(o.abilities)
+      text += fmtrow('Requires', o.abilities);
+
+    if(o.loop)
+      text += fmtrow('Loop', o.loop);
+
+    if(o.variant)
+      text += fmtrow('Variant', o.variant);
+
+    if(o.description || GameClasses.get(o.type).description)
+      text += fmtrow('Description', (a) => { return `${locStr.description(o, o.type, mapId)}` })
+
+    if(o.comment)
+      text += fmtrow('Comment', o.comment);
+
+    text += fmtrow('XYZ pos', `(${o.lng.toFixed(0)}, ${o.lat.toFixed(0)}, ${o.alt.toFixed(0)})`)
 
     text += '<br><br></div>'
 

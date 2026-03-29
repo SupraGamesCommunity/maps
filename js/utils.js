@@ -247,9 +247,29 @@ extendClass(String, function camelToUI() {
   return this.capitalise().replace(/([A-Z])/g, ' $1').trim()
 });
 
-
 //=================================================================================================
 // Object extension functions
+
+// Returns copy of dictionary with all unspecified members filtered out
+extendClass(Object, function entriesPick(obj, arr) {
+  return Object.entries(obj).filter(([k]) => arr.includes(k));
+});
+
+// Returns copy of dictionary with all specified members filtered out
+extendClass(Object, function entriesOmit(obj, arr) {
+  return Object.entries(obj).filter(([k]) => !arr.includes(k));
+});
+
+// Returns copy of dictionary with all unspecified members filtered out
+extendClass(Object, function pick(obj, arr) {
+  return Object.fromEntries(Object.entriesPick(obj, arr));
+});
+
+// Returns copy of dictionary with all specified members filtered out
+extendClass(Object, function omit(obj, arr) {
+  return Object.fromEntries(Object.entriesOmit(obj, arr));
+});
+
 
 // Mutating non-recursive function to remove null, undefined and empty string members of object/dictionary
 extendClass(Object, function removeEmpty() {
