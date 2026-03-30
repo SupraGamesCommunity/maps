@@ -312,7 +312,7 @@
   "Inventory_JumpHeightDouble_C"    : { "friendly": "Double Jump Height",  "icon": "jumpheight",         "layer": "swupgrade",     "nospoiler": null, "lines": "dev",           "games": ["sw"] },
   "Inventory_LanguageFabric_C"      : { "friendly": "Translator Module",   "icon": "translator",         "layer": "swupgrade",     "nospoiler": null, "lines": "dev",           "games": ["sw"] },
   "Inventory_LaserWalk_C"           : { "friendly": "Laser Walk",          "icon": "laser_walk",         "layer": "null",          "nospoiler": null, "lines": "dev",           "games": ["sw"] },
-  "Inventory_MaxHealth_C"           : { "friendly": "Max Health",          "icon": "swhealth",           "layer": "swupgrade",     "nospoiler": null, "lines": "dev",           "games": ["sw"] },
+  "Inventory_MaxHealth_C"           : { "friendly": "Max Health",          "icon": "heart",              "layer": "swupgrade",     "nospoiler": null, "lines": "dev",           "games": ["sw"] },
   "ShopItemAbility_MindPossession_C": { "friendly": "Mind Posession",      "icon": "brain",              "layer": "null",          "nospoiler": null, "lines": "dev",           "games": ["sw"] },
   "ShopItemAbility_MindReading_C"   : { "friendly": "Mind Reading",        "icon": "thought",            "layer": "swupgrade",     "nospoiler": null, "lines": "dev",           "games": ["sw"] },
   "Inventory_MindVision_C"          : { "friendly": "Mind Vision",         "icon": "mind_vision",        "layer": "swupgrade",     "nospoiler": null, "lines": "dev",           "games": ["sw"] },
