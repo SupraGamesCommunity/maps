@@ -238,7 +238,7 @@ async function loadMap(mapParam) {
       // build mode button
       L.Toolbar2.Action.extend({
         options: {
-          toolbarIcon: { html: '&#x1F588;', tooltip: 'Map pins' },
+          toolbarIcon: { html: '<i class="fa fa-map-pin"></i>', tooltip: 'Map pins' },
           subToolbar: new L.Toolbar2({
             actions: [
               subAction.extend({
