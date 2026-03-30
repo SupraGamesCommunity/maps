@@ -774,6 +774,50 @@ def in_earlyaccess(otype, p, pos):
     # Should probably check pos against a cuboid but not yet
     return True
 
+def icon_cleanup():
+    game_classes = load_json_file('..\\data', 'gameClasses.json');
+    icons = load_json_file('..\\data', 'iconConfigs.json')
+    icons2 = {}
+    for iconname, icondata in icons.items():
+        for gd in game_classes.values():
+            if (gdicon := gd.get('icon','')) and gdicon.startswith(iconname):
+                icons2[iconname] = icondata
+                break
+
+    save_json_file(icons2, '..\\data', 'iconConfigs.json')
+    return
+
+def icon_check():
+    game_classes = load_json_file('..\\data', 'gameClasses.json');
+    icons = load_json_file('..\\data', 'iconConfigs.json')
+    icons2 = {}
+    count = 0
+    clashcount = 0
+    clscount = 0
+    for iconname, icondata in icons.items():
+        if iconname.endswith('_pin'):
+            newname = iconname.removesuffix('_pin') 
+            if newname in icons:
+                newname = 'sw'+newname
+            if newname in icons:
+                print(f'Clash {iconname}')
+                clashcount += 1
+                icons2[iconname] = icondata        
+            else:
+                icons2[newname] = icondata
+                count += 1
+                for gd in game_classes.values():
+                    if (gdicon := gd.get('icon','')) and (parts := gdicon.split(':'))[0] == iconname:
+                        gd['icon'] = ':'.join([newname, *parts[1:]])
+                        clscount += 1
+        else:
+            icons2[iconname] = icondata        
+
+    save_json_file(game_classes, '..\\data', 'gameClasses.json')
+    save_json_file(icons2, '..\\data', 'iconConfigs.json')
+    print(f'clashes: {clashcount} rename: {count} classes: {clscount}')
+    return
+
 
 def export_sw_markers(cache_dir, game):
     maps = {}       # dictionary from map name to json data list
@@ -960,7 +1004,7 @@ def export_sw_markers(cache_dir, game):
                 spawns = '_LootPool_C'
 
             # These classes just spawn stuff so we change the type to what it spawns
-            if otype in ['ItemSpawner_C', 'PickupSpawner_C', 'ShopItemSpawner_C', 'RespawnablePickupSpawner_C']:
+            if otype in ['ItemSpawner_C', 'PickupSpawner_C', 'ShopItemSpawner_C', 'RespawnablePickupSpawner_C', 'ShopSlot_C']:
                 data[-1]['type'] = otype = spawns
                 spawns = ''
 
