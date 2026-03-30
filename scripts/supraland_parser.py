@@ -900,7 +900,7 @@ def export_sw_markers(cache_dir, game):
 
                 for prop in ['RootObject', 'RootComponent', 'DefaultSceneRoot', 'AttachParent']:
                     if p.get(prop):
-                        return get_matrix(getObject(p[prop]))
+                        return get_matrix(getObject(p[prop]), matrix)
                 '''                    
                     node = p.get(parent)
                     if type(node) is dict:

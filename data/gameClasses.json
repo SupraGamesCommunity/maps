@@ -273,7 +273,7 @@
   "PresentBox_Lootpools_C"          : { "friendly": "Present Box",         "icon": "gift_box_blue",      "layer": "swcollectable", "nospoiler": null, "lines": "dev",           "games": ["sw"] },
 
   "Bush_C"                          : { "friendly": "Bush",                "icon": "bush",               "layer": "special",        "nospoiler": null, "lines": "dev",           "games": ["sw"] },
-  "Nailscrew_C"                     : { "friendly": "Screw (Gold)",        "icon": "screw",              "layer": "special",        "nospoiler": null, "lines": "dev",           "games": ["sw"] },
+  "Nailscrew_C"                     : { "friendly": "Gold Screw",        "icon": "screw",              "layer": "special",        "nospoiler": null, "lines": "dev",           "games": ["sw"] },
   "GoldenScrew_C"                   : { "friendly": "Gold Screw",          "icon": "screw",              "layer": "special",        "nospoiler": null, "lines": "dev",           "games": ["sw"] },
 
   "FloatingRaft_C"                  : { "friendly": "Item Shop",           "icon": "gift_box_gold",      "layer": "poi", "nospoiler": null, "lines": "dev",           "games": ["sw"] },
