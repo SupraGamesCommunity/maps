@@ -1274,6 +1274,14 @@
     "alt": 611.510498046875
   },
   {
+    "name": "FloatingRaft_C_UAID_047C16835142C88202_1474694423",
+    "type": "FloatingRaft_C",
+    "area": "Supraworld",
+    "lat": 10202.294921875,
+    "lng": 3839.049072265625,
+    "alt": 915.5487670898438
+  },
+  {
     "name": "FloppyDisk_SavePoint_C_UAID_7085C2B20F0E007A02_1634701749",
     "type": "FloppyDisk_SavePoint_C",
     "area": "Supraworld",
@@ -2349,7 +2357,7 @@
   },
   {
     "name": "HayGuy_C_UAID_ACB480ECFC84C8BE02_1909948779",
-    "type": "HayGuy_C",
+    "type": "_ThreadGuy_C",
     "area": "Supraworld",
     "lat": -222.5709686279297,
     "lng": 19862.65625,
@@ -15921,12 +15929,11 @@
   },
   {
     "name": "ShopSlot_C_UAID_7085C2B20F0EDD7602_1811387926",
-    "type": "ShopSlot_C",
+    "type": "Inventory_Toothpin_C",
     "area": "Supraworld",
     "lat": 19254.88671875,
     "lng": 1973.4832763671875,
-    "alt": 436.5850830078125,
-    "spawns": "Inventory_Toothpin_C"
+    "alt": 436.5850830078125
   },
   {
     "name": "SimCard_C_UAID_7085C2B20F0EAA7D02_1420451959",
