@@ -274,7 +274,7 @@ async function loadMap(mapParam) {
       // build mode button
       L.Toolbar2.Action.extend({
         options: {
-          toolbarIcon: { html: '&#x1F527;', tooltip: 'Developer Mode' },
+          toolbarIcon: { html: '<i class="fa-solid fa-screwdriver-wrench"></i>', tooltip: 'Developer Mode' },
           subToolbar: new L.Toolbar2({
             actions: [
               subAction.extend({
@@ -308,7 +308,7 @@ async function loadMap(mapParam) {
       // share button
       L.Toolbar2.Action.extend({
         options: {
-          toolbarIcon: { html: '&#x1F517;', tooltip: 'Share' },
+          toolbarIcon: { html: '<i class="fa-solid fa-link"></i>', tooltip: 'Share' },
           subToolbar: new L.Toolbar2({
             actions: [
               subAction.extend({
@@ -328,7 +328,7 @@ async function loadMap(mapParam) {
       // load game button
       L.Toolbar2.Action.extend({
         options: {
-          toolbarIcon: { html: '&#x1F4C1;', tooltip: 'Browse...' },
+          toolbarIcon: { html: '<i class="fa-regular fa-folder-open"></i>', tooltip: 'Browse...' },
           subToolbar: new L.Toolbar2({
             actions: [
               subAction.extend({
