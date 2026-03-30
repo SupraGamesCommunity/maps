@@ -28,6 +28,13 @@ export const buildMode = {
   changeList: []        // Changes made in the current Build Mode session
 }
 
+function toggleDevMode() {
+  Settings.globalSetDefault('devMode', false);
+  Settings.global.devMode = !Settings.global.devMode;
+  Settings.commit();
+  skipConfirms || alert('Dev mode is now set to ' + Settings.global.devMode + '.');
+}
+
 function toggleBuildMode() {
   Settings.globalSetDefault('buildMode', false);
   Settings.global.buildMode = !Settings.global.buildMode;
@@ -148,6 +155,9 @@ function setupKeyControls(map, searchControl){
       case 'Digit1': loadMap(new MapParam({ mapId: 'sl' })); break;
       case 'Digit2': loadMap(new MapParam({ mapId: 'slc' })); break;
       case 'Digit3': loadMap(new MapParam({ mapId: 'siu' })); break;
+      case 'Digit4':
+        if(Settings.global.devMode)
+          loadMap(new MapParam({ mapId: 'sw' })); break;
       case 'KeyT': map.zoomIn(1); break;
       case 'KeyG': map.zoomOut(1); break;
     }
@@ -199,11 +209,13 @@ async function loadMap(mapParam) {
   });
 
   MapLayer.forEachEnabled(map.mapId, (id, layer) => {
-    if (layer.type == 'base') {
-      layerControl.addBaseLayer(layer.layerObj, layer.name);
-    }
-    else {
-      layerControl.addOverlay(layer.layerObj, layer.name);
+    if(Settings.global.devMode || id != 'sw') {
+      if (layer.type == 'base') {
+        layerControl.addBaseLayer(layer.layerObj, layer.name);
+      }
+      else {
+        layerControl.addOverlay(layer.layerObj, layer.name);
+      }
     }
   });
   layerControl.addTo(map); // triggers baselayerchange which will be ignored
@@ -266,7 +278,14 @@ async function loadMap(mapParam) {
           subToolbar: new L.Toolbar2({
             actions: [
               subAction.extend({
-                options: { toolbarIcon: { html: 'Toggle', tooltip: 'Toggles Developer mode on or off' } },
+                options: { toolbarIcon: { html: 'Dev', tooltip: 'Toggles Developer mode on or off' } },
+                addHooks: function () {
+                  toggleDevMode();
+                  subAction.prototype.addHooks.call(this); // closes sub-action
+                }
+              }),
+              subAction.extend({
+                options: { toolbarIcon: { html: 'Build', tooltip: 'Toggles Build mode on or off' } },
                 addHooks: function () {
                   toggleBuildMode();
                   subAction.prototype.addHooks.call(this); // closes sub-action

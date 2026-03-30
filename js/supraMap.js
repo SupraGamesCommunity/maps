@@ -42,6 +42,11 @@ export const L_SupraMap = L.Map.extend({
     // Sort out mapId and store for other clients to access
     Settings.globalSetDefault('mapId', 'sl');
     Settings.mapId = mapParam.mapId || Settings.mapId;
+
+    Settings.globalSetDefault('devMode', false);
+    if(!Settings.global.devMode && Settings.mapId == 'sw')
+      Settings.mapId = 'sl';
+    
     Settings.commit();
     this.mapId = Settings.mapId;
 
