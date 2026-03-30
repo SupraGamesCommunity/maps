@@ -249,7 +249,7 @@
   "DashLauncher_C"                  : { "friendly": "Dash Launcher",       "icon": "dash_launcher",      "layer": "swtravel",      "nospoiler": null, "lines": "swtravel",      "games": ["sw"] },
   "GuardVolume_C"                   : { "friendly": "Guard Volume",        "icon": "guard_volume",       "layer": "swtravel",      "nospoiler": null, "lines": "swtravel",      "games": ["sw"] },
   "SW:Jumppad_C"                    : { "friendly": "Jumppad",             "icon": "swjumppad",          "layer": "swtravel",      "nospoiler": null, "lines": "swtravel",      "games": ["sw"] },
-  "Jumppad_TwoPath_C"               : { "friendly": "Jumppad*",            "icon": "swjumppad_cyan",     "layer": "swtravel",      "nospoiler": null, "lines": "swtravel",      "games": ["sw"] },
+  "Jumppad_TwoPath_C"               : { "friendly": "Jumppad",             "icon": "swjumppad",          "layer": "swtravel",      "nospoiler": null, "lines": "swtravel",      "games": ["sw"] },
   "LaunchBox_C"                     : { "friendly": "Launch Chest",        "icon": "chest",              "layer": "swcollectable", "nospoiler": null, "lines": "swcollectable", "games": ["sw"] },
   "LaunchVolume_C"                  : { "friendly": "Launch Volume",       "icon": "launch_volume",      "layer": null,            "nospoiler": null, "lines": null,            "games": ["sw"] },
   "RubberBand_C"                    : { "friendly": "Rubber Band",         "icon": "rubber_band",        "layer": "swtravel",      "nospoiler": null, "lines": "swtravel",      "games": ["sw"] },
