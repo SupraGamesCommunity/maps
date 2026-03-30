@@ -1649,8 +1649,8 @@
     "type": "FloppyDisk_SavePoint_C",
     "area": "Supraworld",
     "lat": -3135.501953125,
-    "lng": 5561.16796875,
-    "alt": 138.6892852783203
+    "lng": 5046.28369140625,
+    "alt": 902.3405151367188
   },
   {
     "name": "StaticMeshActor_UAID_7085C2B20F0E6DF900_1374895994",
@@ -1754,9 +1754,9 @@
     "name": "Nailscrew_C_UAID_ACB480ECFC84179402_1991574327",
     "type": "GoldenScrew_C",
     "area": "Supraworld",
-    "lat": 457.4862976074219,
-    "lng": 15434.708984375,
-    "alt": 5903.7314453125
+    "lat": 457.4861755371094,
+    "lng": 15434.7099609375,
+    "alt": 5903.73095703125
   },
   {
     "name": "Nailscrew_C_UAID_ACB480ECFC841D9202_1410823788",
@@ -1780,7 +1780,7 @@
     "area": "Supraworld",
     "lat": -4690.56103515625,
     "lng": 14372.1396484375,
-    "alt": 539.6548461914062
+    "alt": 539.6544799804688
   },
   {
     "name": "Nailscrew_C_UAID_ACB480ECFC84929102_1184396164",
@@ -1795,8 +1795,8 @@
     "type": "GoldenScrew_C",
     "area": "Supraworld",
     "lat": 18532.130859375,
-    "lng": 9969.916015625,
-    "alt": 6021.6865234375
+    "lng": 9969.91796875,
+    "alt": 6021.6884765625
   },
   {
     "name": "Nailscrew_C_UAID_ACB480ECFC84CEBE02_1275581819",
@@ -2624,9 +2624,9 @@
     "name": "Jumppad_C_UAID_7085C2B20F0E69C701_1103472155",
     "type": "SW:Jumppad_C",
     "area": "Supraworld",
-    "lat": 7656.935546875,
-    "lng": 14092.9990234375,
-    "alt": 11744.6787109375,
+    "lat": 9316.935546875,
+    "lng": 13964.359375,
+    "alt": 11744.42578125,
     "targets": [
       {
         "x": 13125.5625,
@@ -3016,9 +3016,9 @@
     "name": "Jumppad_C_UAID_ACB480ECFC844CBC02_1260246159",
     "type": "SW:Jumppad_C",
     "area": "Supraworld",
-    "lat": -887.1264038085938,
-    "lng": 7552.49462890625,
-    "alt": -1611.169677734375,
+    "lat": -884.2049560546875,
+    "lng": 7800.77587890625,
+    "alt": -1725.067138671875,
     "targets": [
       {
         "x": 9654.604,
@@ -5551,9 +5551,9 @@
     "name": "PuzzleCloud_C_UAID_7085C2B20F0ECD4002_1374263651",
     "type": "PuzzleCloud_C",
     "area": "Supraworld",
-    "lat": 9014.84765625,
-    "lng": 6754.041015625,
-    "alt": -238.0166778564453
+    "lat": 9014.8486328125,
+    "lng": 7356.0126953125,
+    "alt": 1834.7183837890625
   },
   {
     "name": "PuzzleCloud_C_UAID_7085C2B20F0ED65A02_1910882556",
@@ -10313,9 +10313,9 @@
     "name": "RealCoinPickup_C_UAID_7085C2B20F0EC2B101_1076831547",
     "type": "RealCoinPickup_C",
     "area": "Supraworld",
-    "lat": -10816.1611328125,
-    "lng": 5019.072265625,
-    "alt": 319.23272705078125,
+    "lat": -10799.1171875,
+    "lng": 5007.68359375,
+    "alt": 1088.990234375,
     "coins": 1
   },
   {

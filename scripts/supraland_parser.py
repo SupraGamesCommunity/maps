@@ -832,7 +832,7 @@ def export_sw_markers(cache_dir, game):
     optColor=lambda p:p and '#'+''.join(hex(int(p[c]))[2:] for c in 'RGB')
     optKey = lambda d,k,v: v is not None and d.__setitem__(k,optEnum(v))
     getVec = lambda d,v=0: Vector((d['X'], d['Y'], d['Z'])) if d else Vector((v,v,v))
-    getRot = lambda d,v=0: Euler(( radians(d['Roll']), radians(d['Pitch']), radians(d['Yaw'])) ) if d else Euler((v,v,v))
+    getRot = lambda d,v=0: Euler(( radians(-d['Roll']), -radians(d['Pitch']), radians(d['Yaw'])) ) if d else Euler((v,v,v))
     getQuat= lambda d,v=0: Quaternion((d['W'], d['X'], d['Y'], d['Z'])) if d else Quaternion((v,v,v,v))
     getXYZ = lambda v:{'x':v.x, 'y': v.y, 'z': v.z}
 
@@ -887,6 +887,9 @@ def export_sw_markers(cache_dir, game):
             oname = o['Name']
             if not (outer := o.get('Outer')) or not (p := o.get('Properties')):
                 continue
+
+            if oname == 'Jumppad_C_UAID_7085C2B20F0E69C701_1103472155':
+                print('Jumppad_C_UAID_7085C2B20F0E69C701_1103472155')
 
             def getObject(p):
                 ref = objectRef(p)
@@ -1034,7 +1037,6 @@ def export_sw_markers(cache_dir, game):
             if otype in ['ShopEgg_C', 'ChocolateEgg_C'] and not spawns:
                 del data[-1]
                 continue
-
 
             def filter_targets(objpos, targets, mindist):
                 ov = Vector((objpos['lng'], objpos['lat'], objpos['alt']))
