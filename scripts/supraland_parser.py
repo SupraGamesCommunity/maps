@@ -1030,6 +1030,12 @@ def export_sw_markers(cache_dir, game):
             if spawns != '':
                 data[-1]['spawns'] = spawns
 
+            # Remove any empty eggs
+            if otype in ['ShopEgg_C', 'ChocolateEgg_C'] and not spawns:
+                del data[-1]
+                continue
+
+
             def filter_targets(objpos, targets, mindist):
                 ov = Vector((objpos['lng'], objpos['lat'], objpos['alt']))
                 keep = [ target for target in targets if (Vector((target['x'], target['y'], target['z'])) - ov).magnitude >= mindist]

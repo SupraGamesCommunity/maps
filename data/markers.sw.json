@@ -15868,14 +15868,6 @@
     "spawns": "Inventory_Crouch_C"
   },
   {
-    "name": "ShopEgg_C_UAID_7085C2B20F0EC13C01_1955529568",
-    "type": "ShopEgg_C",
-    "area": "Supraworld",
-    "lat": 27387.73046875,
-    "lng": -14158.779296875,
-    "alt": 8104.02001953125
-  },
-  {
     "name": "ShopEgg_C_UAID_7085C2B20F0ECE6602_2105959451",
     "type": "ShopEgg_C",
     "area": "Supraworld",
