@@ -259,7 +259,7 @@ export class MapLayer {
         defaultActive[id] = map.mapId == id;
       }
       else {
-        if (layer.config.defaultActive && layer.isEnabled(map.mapId)) {
+        if (layer.config.defaultActive) {
           defaultActive[id] = true;
         }
       }
