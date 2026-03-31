@@ -7,6 +7,7 @@ export const supraColors = {
   "brown":       "#964B00",
   "custom":      "#FFFFFF",
   "cyan":        "#00FFFF",
+  "gold":        "#FFD700", // #EEE8AA, #FFD700, #EFBF04, #FFBF00, #DAA520, #CFB53B, #B8860B
   "green":       "#49FF00",
   "grey":        "#898989",
   "lightorange": "#FFD680",
@@ -16,9 +17,9 @@ export const supraColors = {
   "pink":        "#A74472",
   "purple":      "#800080",
   "red":         "#FF0000",
+  "teal":        "#00EBFF",
   "white":       "#FFFFFF",
   "yellow":      "#FFFF00",
-  "gold":        "#FFD700", // #EEE8AA, #FFD700, #EFBF04, #FFBF00, #DAA520, #CFB53B, #B8860B
 }
 
 export const toSupraColor = (col) => { return supraColors[col] || col } 

@@ -296,6 +296,7 @@ config = {
 # ESupraColors::Red         0xFF0000
 # ESupraColors::White       0xFFFFFF
 # ESupraColors::Yellow      0xFFFF00
+# ESupraColors::Teal        0x00EBFF
 
 # Early Access Filter data
 ea_filter = True
@@ -888,9 +889,6 @@ def export_sw_markers(cache_dir, game):
             if not (outer := o.get('Outer')) or not (p := o.get('Properties')):
                 continue
 
-            if oname == 'Jumppad_C_UAID_7085C2B20F0E69C701_1103472155':
-                print('Jumppad_C_UAID_7085C2B20F0E69C701_1103472155')
-
             def getObject(p):
                 ref = objectRef(p)
                 return maps[ref[0]][ref[1]]
@@ -952,7 +950,7 @@ def export_sw_markers(cache_dir, game):
             # Variants from colours or override materials
             for colkey in ['RuneColor', 'Color', 'Color_Initial', 'LiquidColor', 'ButtonColor']:
                 if (color := p.get(colkey)) and isinstance(color, str):
-                    variant = color.removeprefix("ESupraColors::")
+                    variant = color.removeprefix("ESupraColors::").lower()
                     break
 
             # Currently gold screws and puzzle cloud's
