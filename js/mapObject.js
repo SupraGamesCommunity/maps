@@ -207,6 +207,13 @@ export class MapObject {
 
   // Initialise this MapObject by creating markers/lines and setting up for save loading
   init(map) {
+    const c = GameClasses.get(this.o.type);
+
+    // If class is not saved then we want to show as not found
+    if (this._foundLockedState === undefined && c.notsaved) {
+      this._foundLockedState = false;
+    }
+  
     // If subclass hasn't set default set it based on notsaved
     if (this._foundLockedState === undefined && this.o.notsaved) {
       this._foundLockedState = true;
@@ -215,7 +222,6 @@ export class MapObject {
     // Give subclass a chance to change things
     this.subclassInit?.(map);
 
-    const c = GameClasses.get(this.o.type);
     if (!MapLayer.isEnabledFromId(c.layer, map.mapId) && !MapLayer.isEnabledFromId(c.nospoiler, map.mapId)
       || !L.latLngBounds(MapLayer.get(map.mapId).viewLatLngBounds).contains([this.o.lat, this.o.lng])) {
       this.release();

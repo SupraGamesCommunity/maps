@@ -954,7 +954,7 @@
     "lat": -3078.43212890625,
     "lng": 9185.953125,
     "alt": 507.1165771484375,
-    "variant": "White"
+    "variant": "white"
   },
   {
     "name": "ChocolateEgg_C_UAID_7085C2B20F0E9C5B01_1163745921",
@@ -1238,7 +1238,7 @@
     "lat": 9459.669921875,
     "lng": 19499.458984375,
     "alt": 4409.322265625,
-    "variant": "Grey"
+    "variant": "grey"
   },
   {
     "name": "Die_C_UAID_7085C2B20F0E8B7201_1084562294",
@@ -1247,7 +1247,7 @@
     "lat": -9979.3251953125,
     "lng": -520.2633056640625,
     "alt": -856.364990234375,
-    "variant": "Grey"
+    "variant": "grey"
   },
   {
     "name": "Die_C_UAID_ACB480ECFC844CBC02_1626731164",
@@ -1667,7 +1667,7 @@
     "lat": 21199.36328125,
     "lng": 13053.005859375,
     "alt": 369.4068298339844,
-    "variant": "Blue"
+    "variant": "blue"
   },
   {
     "name": "GarbageBag_C_UAID_7085C2B20F0E033C02_1373550838",
@@ -1676,7 +1676,7 @@
     "lat": 21145.123046875,
     "lng": 12989.046875,
     "alt": 369.4068298339844,
-    "variant": "Blue"
+    "variant": "blue"
   },
   {
     "name": "GarbageBag_C_UAID_7085C2B20F0EB9A101_1945279350",
@@ -1685,7 +1685,7 @@
     "lat": -3963.4150390625,
     "lng": 10742.705078125,
     "alt": -10.020730018615723,
-    "variant": "Blue"
+    "variant": "blue"
   },
   {
     "name": "GarbageBag_C_UAID_7085C2B20F0EB9A101_1964734378",
@@ -1694,7 +1694,7 @@
     "lat": -3789.1767578125,
     "lng": 10742.705078125,
     "alt": -36.07744216918945,
-    "variant": "Blue"
+    "variant": "blue"
   },
   {
     "name": "GarbageBag_C_UAID_7085C2B20F0ECB6602_1104430872",
@@ -1703,7 +1703,7 @@
     "lat": -7151.92236328125,
     "lng": 7293.8935546875,
     "alt": 431.7253723144531,
-    "variant": "Blue"
+    "variant": "blue"
   },
   {
     "name": "GarbageBag_C_UAID_7085C2B20F0ED9A301_1653097797",
@@ -1712,7 +1712,7 @@
     "lat": -4005.103271484375,
     "lng": 10870.98828125,
     "alt": -36.07744216918945,
-    "variant": "Blue"
+    "variant": "blue"
   },
   {
     "name": "GarbageBag_C_UAID_7085C2B20F0ED9A301_1656328812",
@@ -1721,7 +1721,7 @@
     "lat": -3848.65576171875,
     "lng": 10581.125,
     "alt": -36.07744216918945,
-    "variant": "Blue"
+    "variant": "blue"
   },
   {
     "name": "StaticMeshActor_UAID_7085C2B20F0EA03301_1385280264",
@@ -1730,7 +1730,7 @@
     "lat": -8578.751953125,
     "lng": 419.27777099609375,
     "alt": 500.3735046386719,
-    "variant": "Blue"
+    "variant": "blue"
   },
   {
     "name": "StaticMeshActor_UAID_7085C2B20F0EE9B301_1978945749",
@@ -1739,7 +1739,7 @@
     "lat": -8578.751953125,
     "lng": 571.6919555664062,
     "alt": 472.0426330566406,
-    "variant": "Blue"
+    "variant": "blue"
   },
   {
     "name": "StaticMeshActor_UAID_7085C2B20F0EE9B301_1991787784",
@@ -1748,7 +1748,7 @@
     "lat": -8614.0283203125,
     "lng": 235.6934051513672,
     "alt": 475.1936950683594,
-    "variant": "Blue"
+    "variant": "blue"
   },
   {
     "name": "Nailscrew_C_UAID_ACB480ECFC84179402_1991574327",
@@ -1814,7 +1814,7 @@
     "lng": 6732.5048828125,
     "alt": 537.8660278320312,
     "hidden": "true",
-    "variant": "Red"
+    "variant": "red"
   },
   {
     "name": "TubeCapHat_C_UAID_7085C2B20F0EF15A01_1356827530",
@@ -3203,7 +3203,7 @@
     "lat": -7700.02587890625,
     "lng": 2162.824951171875,
     "alt": 1118.442138671875,
-    "variant": "White"
+    "variant": "white"
   },
   {
     "name": "Key_C_UAID_7085C2B20F0E69D301_2094190944",
@@ -3212,7 +3212,7 @@
     "lat": 28000.0,
     "lng": -12500.0,
     "alt": 8721.3291015625,
-    "variant": "Yellow"
+    "variant": "yellow"
   },
   {
     "name": "Key_C_UAID_7085C2B20F0E813B02_2065025477",
@@ -3221,7 +3221,7 @@
     "lat": 6841.802734375,
     "lng": 18489.505859375,
     "alt": 765.4089965820312,
-    "variant": "Purple"
+    "variant": "purple"
   },
   {
     "name": "Key_C_UAID_7085C2B20F0EA7A101_1812690848",
@@ -3230,7 +3230,7 @@
     "lat": -4514.74462890625,
     "lng": 20152.484375,
     "alt": 392.3716735839844,
-    "variant": "Blue"
+    "variant": "blue"
   },
   {
     "name": "Key_C_UAID_7085C2B20F0EC44C01_1612586109",
@@ -3239,7 +3239,7 @@
     "lat": 4914.54052734375,
     "lng": 16716.076171875,
     "alt": 439.0928649902344,
-    "variant": "White"
+    "variant": "white"
   },
   {
     "name": "Key_C_UAID_ACB480ECFC8406AA02_1198517555",
@@ -3248,7 +3248,7 @@
     "lat": -18398.388671875,
     "lng": 19837.65625,
     "alt": 611.8388671875,
-    "variant": "White"
+    "variant": "white"
   },
   {
     "name": "Key_C_UAID_ACB480ECFC84D28C02_1783470106",
@@ -3258,7 +3258,7 @@
     "lng": 18346.462890625,
     "alt": 5834.3828125,
     "hidden": "true",
-    "variant": "Pink"
+    "variant": "pink"
   },
   {
     "name": "Key_C_UAID_D45D6446946DD0E501_1349451987",
@@ -3267,7 +3267,7 @@
     "lat": 24969.62890625,
     "lng": 529.9823608398438,
     "alt": 6904.3349609375,
-    "variant": "Magenta"
+    "variant": "magenta"
   },
   {
     "name": "KeyPlastic_C_UAID_7085C2B20F0E335E01_1766526636",
@@ -3276,7 +3276,7 @@
     "lat": -4770.77880859375,
     "lng": -606.9757080078125,
     "alt": 1632.7869873046875,
-    "variant": "Blue"
+    "variant": "blue"
   },
   {
     "name": "KeyPlastic_C_UAID_7085C2B20F0E67D600_1304276017",
@@ -3285,7 +3285,7 @@
     "lat": -15244.5166015625,
     "lng": 1711.71435546875,
     "alt": 785.6533203125,
-    "variant": "Magenta"
+    "variant": "magenta"
   },
   {
     "name": "LaunchBox_C_UAID_ACB480ECFC8416AA02_1918668342",
@@ -3700,7 +3700,7 @@
     "lat": -20292.814453125,
     "lng": 19516.61328125,
     "alt": 11755.3984375,
-    "variant": "Green"
+    "variant": "green"
   },
   {
     "name": "Pickup_Rune_C_UAID_FC3497C34610B64102_2074938602",
@@ -3709,7 +3709,7 @@
     "lat": 28888.275390625,
     "lng": -18634.9375,
     "alt": 20510.849609375,
-    "variant": "Yellow"
+    "variant": "yellow"
   },
   {
     "name": "Pickup_Rune_C_UAID_FC3497C34610B64102_2124305603",
@@ -3718,7 +3718,7 @@
     "lat": 30383.056640625,
     "lng": 10427.1064453125,
     "alt": 13350.3642578125,
-    "variant": "Blue"
+    "variant": "blue"
   },
   {
     "name": "Pickup_Thread_C_UAID_ACB480ECFC848F9502_1681156450",
@@ -3959,7 +3959,7 @@
     "lat": -12629.66015625,
     "lng": -5707.73193359375,
     "alt": 320.5781555175781,
-    "variant": "Purple",
+    "variant": "purple",
     "prog_tag": "Act2:Green",
     "spawns": "Inventory_HealthQuarter_C"
   },
@@ -3980,7 +3980,7 @@
     "lat": 20429.849609375,
     "lng": 1381.961669921875,
     "alt": 1485.0,
-    "variant": "Green",
+    "variant": "green",
     "prog_tag": "Act1",
     "spawns": "_LootPool_C"
   },
@@ -3991,7 +3991,7 @@
     "lat": -7771.5654296875,
     "lng": 11769.8330078125,
     "alt": 668.3703002929688,
-    "variant": "Teal",
+    "variant": "teal",
     "prog_tag": "Act2:Blue",
     "spawns": "_LootPool_C"
   },
@@ -4012,7 +4012,7 @@
     "lat": 13209.30859375,
     "lng": 12545.4130859375,
     "alt": 3277.856689453125,
-    "variant": "Blue",
+    "variant": "blue",
     "prog_tag": "Act1",
     "spawns": "_LootPool_C"
   },
@@ -4023,7 +4023,7 @@
     "lat": 9663.1416015625,
     "lng": -1132.39599609375,
     "alt": 2185.43896484375,
-    "variant": "Green",
+    "variant": "green",
     "prog_tag": "Act1",
     "spawns": "_LootPool_C"
   },
@@ -4034,7 +4034,7 @@
     "lat": -7766.35205078125,
     "lng": 2565.517578125,
     "alt": -838.2500610351562,
-    "variant": "Yellow",
+    "variant": "yellow",
     "prog_tag": "Act1",
     "spawns": "_LootPool_C"
   },
@@ -4055,7 +4055,7 @@
     "lat": -1482.7957763671875,
     "lng": 2041.607177734375,
     "alt": 467.5303039550781,
-    "variant": "Red",
+    "variant": "red",
     "prog_tag": "Act1",
     "spawns": "_LootPool_C"
   },
@@ -4066,7 +4066,7 @@
     "lat": 9250.7861328125,
     "lng": 7401.59130859375,
     "alt": 438.43511962890625,
-    "variant": "Yellow",
+    "variant": "yellow",
     "prog_tag": "Act1",
     "spawns": "_LootPool_C"
   },
@@ -4087,7 +4087,7 @@
     "lat": 12724.9638671875,
     "lng": 11915.13671875,
     "alt": 321.0045166015625,
-    "variant": "Teal",
+    "variant": "teal",
     "prog_tag": "Act1",
     "spawns": "_LootPool_C"
   },
@@ -4098,7 +4098,7 @@
     "lat": 30964.349609375,
     "lng": -3353.22998046875,
     "alt": 1168.2261962890625,
-    "variant": "Brown",
+    "variant": "brown",
     "prog_tag": "Act1",
     "spawns": "_LootPool_C"
   },
@@ -4159,7 +4159,7 @@
     "lat": 23267.404296875,
     "lng": 8415.009765625,
     "alt": 2214.264404296875,
-    "variant": "White",
+    "variant": "white",
     "prog_tag": "Act1",
     "spawns": "_LootPool_C"
   },
@@ -4210,7 +4210,7 @@
     "lat": -9184.2490234375,
     "lng": -1079.5966796875,
     "alt": -1200.673583984375,
-    "variant": "White",
+    "variant": "white",
     "prog_tag": "Act1",
     "spawns": "_LootPool_C"
   },
@@ -4231,7 +4231,7 @@
     "lat": 25246.52734375,
     "lng": -1609.313232421875,
     "alt": 969.85888671875,
-    "variant": "Yellow",
+    "variant": "yellow",
     "prog_tag": "Act1",
     "spawns": "_LootPool_C"
   },
@@ -4252,7 +4252,7 @@
     "lat": -4297.3896484375,
     "lng": 6403.279296875,
     "alt": 1006.1890258789062,
-    "variant": "Brown",
+    "variant": "brown",
     "prog_tag": "Act1",
     "spawns": "_LootPool_C"
   },
@@ -4263,7 +4263,7 @@
     "lat": 7766.95068359375,
     "lng": -7475.576171875,
     "alt": 1397.9422607421875,
-    "variant": "White",
+    "variant": "white",
     "prog_tag": "Act1",
     "spawns": "_LootPool_C"
   },
@@ -4274,7 +4274,7 @@
     "lat": 1726.8924560546875,
     "lng": 4866.849609375,
     "alt": -1365.552978515625,
-    "variant": "Purple",
+    "variant": "purple",
     "prog_tag": "Act1",
     "spawns": "_LootPool_C"
   },
@@ -4285,7 +4285,7 @@
     "lat": -513.75634765625,
     "lng": -333.6629943847656,
     "alt": 1302.7958984375,
-    "variant": "Teal",
+    "variant": "teal",
     "prog_tag": "Act1",
     "spawns": "_LootPool_C"
   },
@@ -4296,7 +4296,7 @@
     "lat": 4261.23828125,
     "lng": 10224.84375,
     "alt": 3963.8251953125,
-    "variant": "White",
+    "variant": "white",
     "prog_tag": "Act1",
     "spawns": "_LootPool_C"
   },
@@ -4327,7 +4327,7 @@
     "lat": 7773.1689453125,
     "lng": -7465.73388671875,
     "alt": 320.5724792480469,
-    "variant": "Green",
+    "variant": "green",
     "prog_tag": "Act1",
     "spawns": "_LootPool_C"
   },
@@ -4348,7 +4348,7 @@
     "lat": 31139.431640625,
     "lng": 8520.0849609375,
     "alt": 320.74151611328125,
-    "variant": "Purple",
+    "variant": "purple",
     "prog_tag": "Act1",
     "spawns": "_LootPool_C"
   },
@@ -4419,7 +4419,7 @@
     "lat": 12321.64453125,
     "lng": 12604.978515625,
     "alt": 1298.2591552734375,
-    "variant": "Teal",
+    "variant": "teal",
     "prog_tag": "Act1",
     "spawns": "_LootPool_C"
   },
@@ -4440,7 +4440,7 @@
     "lat": -8500.580078125,
     "lng": 18816.416015625,
     "alt": 1560.5648193359375,
-    "variant": "Brown",
+    "variant": "brown",
     "prog_tag": "Act2:Blue",
     "spawns": "_LootPool_C"
   },
@@ -4451,7 +4451,7 @@
     "lat": -7683.1708984375,
     "lng": 2995.34130859375,
     "alt": 1464.9444580078125,
-    "variant": "Teal",
+    "variant": "teal",
     "prog_tag": "Act1",
     "spawns": "_LootPool_C"
   },
@@ -4462,7 +4462,7 @@
     "lat": 28844.072265625,
     "lng": 11228.33984375,
     "alt": 13202.15625,
-    "variant": "Purple",
+    "variant": "purple",
     "prog_tag": "Act2:Blue",
     "spawns": "_LootPool_C"
   },
@@ -4473,7 +4473,7 @@
     "lat": -32606.740234375,
     "lng": 13368.744140625,
     "alt": 4310.037109375,
-    "variant": "Purple",
+    "variant": "purple",
     "spawns": "_LootPool_C"
   },
   {
@@ -4483,7 +4483,7 @@
     "lat": -26008.3828125,
     "lng": 3998.854736328125,
     "alt": 1601.1495361328125,
-    "variant": "Green",
+    "variant": "green",
     "prog_tag": "Act1",
     "spawns": "_LootPool_C"
   },
@@ -4494,7 +4494,7 @@
     "lat": -19025.1796875,
     "lng": -3366.03857421875,
     "alt": 360.75048828125,
-    "variant": "Orange",
+    "variant": "orange",
     "prog_tag": "Act1",
     "spawns": "_LootPool_C"
   },
@@ -4505,7 +4505,7 @@
     "lat": 8642.087890625,
     "lng": 11266.5380859375,
     "alt": 320.4971618652344,
-    "variant": "Blue",
+    "variant": "blue",
     "prog_tag": "Act1",
     "spawns": "_LootPool_C"
   },
@@ -4516,7 +4516,7 @@
     "lat": 30832.826171875,
     "lng": 13406.1953125,
     "alt": 418.0024108886719,
-    "variant": "Blue",
+    "variant": "blue",
     "prog_tag": "Act1",
     "spawns": "_LootPool_C"
   },
@@ -4527,7 +4527,7 @@
     "lat": 11764.953125,
     "lng": 9345.474609375,
     "alt": 4034.24560546875,
-    "variant": "Orange",
+    "variant": "orange",
     "prog_tag": "Act1",
     "spawns": "_LootPool_C"
   },
@@ -4548,7 +4548,7 @@
     "lat": -15102.0107421875,
     "lng": 1919.694580078125,
     "alt": 2200.4375,
-    "variant": "Teal",
+    "variant": "teal",
     "prog_tag": "Act2:Green",
     "spawns": "_LootPool_C"
   },
@@ -4559,7 +4559,7 @@
     "lat": -15095.1220703125,
     "lng": 1195.1510009765625,
     "alt": 1143.7730712890625,
-    "variant": "Yellow",
+    "variant": "yellow",
     "prog_tag": "Act2:Green",
     "spawns": "_LootPool_C"
   },
@@ -4590,7 +4590,7 @@
     "lat": -25947.03125,
     "lng": 9793.541015625,
     "alt": 1058.6077880859375,
-    "variant": "Purple",
+    "variant": "purple",
     "prog_tag": "Act2:Green",
     "spawns": "_LootPool_C"
   },
@@ -4601,7 +4601,7 @@
     "lat": -23506.814453125,
     "lng": 12886.7734375,
     "alt": 6773.6572265625,
-    "variant": "Brown",
+    "variant": "brown",
     "prog_tag": "Act2:Green",
     "spawns": "_LootPool_C"
   },
@@ -4612,7 +4612,7 @@
     "lat": -2966.185546875,
     "lng": 3.5460569858551025,
     "alt": -1686.123779296875,
-    "variant": "Teal",
+    "variant": "teal",
     "prog_tag": "Act1",
     "spawns": "_LootPool_C"
   },
@@ -4643,7 +4643,7 @@
     "lat": 20702.095703125,
     "lng": 19168.166015625,
     "alt": 5466.515625,
-    "variant": "Red",
+    "variant": "red",
     "prog_tag": "Act2:Blue",
     "spawns": "_LootPool_C"
   },
@@ -4654,7 +4654,7 @@
     "lat": 6602.5546875,
     "lng": 9564.6279296875,
     "alt": 320.64031982421875,
-    "variant": "Pink",
+    "variant": "pink",
     "prog_tag": "Act1",
     "spawns": "_LootPool_C"
   },
@@ -12783,7 +12783,7 @@
     "lat": -6064.43505859375,
     "lng": 1664.0406494140625,
     "alt": 650.1184692382812,
-    "variant": "Brown",
+    "variant": "brown",
     "targets": [
       {
         "x": 1864.0406,
@@ -12800,7 +12800,7 @@
     "lat": -6064.43505859375,
     "lng": 1277.0966796875,
     "alt": 633.4452514648438,
-    "variant": "Brown",
+    "variant": "brown",
     "targets": [
       {
         "x": 1469.0967,
@@ -12817,7 +12817,7 @@
     "lat": -6565.67626953125,
     "lng": 2649.279052734375,
     "alt": 646.1299438476562,
-    "variant": "Brown"
+    "variant": "brown"
   },
   {
     "name": "StaticMeshActor_UAID_7085C2B20F0E375E02_1660082117",
@@ -12964,7 +12964,7 @@
     "lat": 22854.544921875,
     "lng": 1909.0538330078125,
     "alt": 1771.1470947265625,
-    "variant": "Pink"
+    "variant": "pink"
   },
   {
     "name": "StaticMeshActor_UAID_7085C2B20F0E79D200_1317029156",
@@ -12973,7 +12973,7 @@
     "lat": 22198.28125,
     "lng": 1907.1826171875,
     "alt": 2112.17919921875,
-    "variant": "Pink",
+    "variant": "pink",
     "targets": [
       {
         "x": 1320.8304,
@@ -12990,7 +12990,7 @@
     "lat": 22213.884765625,
     "lng": 1901.2515869140625,
     "alt": 2142.052490234375,
-    "variant": "Pink",
+    "variant": "pink",
     "targets": [
       {
         "x": 1285.7698,
@@ -13007,7 +13007,7 @@
     "lat": 22489.892578125,
     "lng": 1911.0615234375,
     "alt": 1942.971923828125,
-    "variant": "Pink",
+    "variant": "pink",
     "targets": [
       {
         "x": 1297.8452,
@@ -13024,7 +13024,7 @@
     "lat": 21892.521484375,
     "lng": 1907.1826171875,
     "alt": 2251.95849609375,
-    "variant": "Pink",
+    "variant": "pink",
     "targets": [
       {
         "x": 1038.7548,
@@ -13041,7 +13041,7 @@
     "lat": 21908.125,
     "lng": 1901.4439697265625,
     "alt": 2281.831787109375,
-    "variant": "Pink",
+    "variant": "pink",
     "targets": [
       {
         "x": 1013.07587,
@@ -13058,7 +13058,7 @@
     "lat": 21586.818359375,
     "lng": 1908.601806640625,
     "alt": 2390.352783203125,
-    "variant": "Pink",
+    "variant": "pink",
     "targets": [
       {
         "x": 949.5356,
@@ -13075,7 +13075,7 @@
     "lat": 21602.421875,
     "lng": 1902.8631591796875,
     "alt": 2420.22607421875,
-    "variant": "Pink",
+    "variant": "pink",
     "targets": [
       {
         "x": 925.10004,
@@ -13092,7 +13092,7 @@
     "lat": 22197.669921875,
     "lng": 829.2506713867188,
     "alt": 2130.99560546875,
-    "variant": "Pink",
+    "variant": "pink",
     "targets": [
       {
         "x": 1804.9551,
@@ -13109,7 +13109,7 @@
     "lat": 22213.2734375,
     "lng": 823.5119018554688,
     "alt": 2160.868896484375,
-    "variant": "Pink",
+    "variant": "pink",
     "targets": [
       {
         "x": 1821.635,
@@ -13126,7 +13126,7 @@
     "lat": 21891.935546875,
     "lng": 829.5909423828125,
     "alt": 2270.82666015625,
-    "variant": "Pink",
+    "variant": "pink",
     "targets": [
       {
         "x": 1882.4468,
@@ -13143,7 +13143,7 @@
     "lat": 21907.5390625,
     "lng": 823.8521728515625,
     "alt": 2300.699951171875,
-    "variant": "Pink",
+    "variant": "pink",
     "targets": [
       {
         "x": 1880.4637,
@@ -13160,7 +13160,7 @@
     "lat": 21586.232421875,
     "lng": 831.0098876953125,
     "alt": 2409.220947265625,
-    "variant": "Pink",
+    "variant": "pink",
     "targets": [
       {
         "x": 1881.1699,
@@ -13177,7 +13177,7 @@
     "lat": 21601.8359375,
     "lng": 825.2716064453125,
     "alt": 2439.09423828125,
-    "variant": "Pink",
+    "variant": "pink",
     "targets": [
       {
         "x": 1880.7072,
@@ -13194,7 +13194,7 @@
     "lat": 22790.95703125,
     "lng": 831.6072387695312,
     "alt": 1822.87353515625,
-    "variant": "Pink",
+    "variant": "pink",
     "targets": [
       {
         "x": 1533.0437,
@@ -13211,7 +13211,7 @@
     "lat": 22806.560546875,
     "lng": 825.8684692382812,
     "alt": 1852.7467041015625,
-    "variant": "Pink",
+    "variant": "pink",
     "targets": [
       {
         "x": 1560.0496,
@@ -13228,7 +13228,7 @@
     "lat": 22485.25390625,
     "lng": 833.0261840820312,
     "alt": 1961.2679443359375,
-    "variant": "Pink",
+    "variant": "pink",
     "targets": [
       {
         "x": 1672.2393,
@@ -13245,7 +13245,7 @@
     "lat": 22500.857421875,
     "lng": 827.0955810546875,
     "alt": 1991.1412353515625,
-    "variant": "Pink",
+    "variant": "pink",
     "targets": [
       {
         "x": 1693.0413,
@@ -13262,7 +13262,7 @@
     "lat": 22607.939453125,
     "lng": 920.7008056640625,
     "alt": 3445.041015625,
-    "variant": "Pink"
+    "variant": "pink"
   },
   {
     "name": "StaticMeshActor_UAID_7085C2B20F0E79D200_1611241190",
@@ -13271,7 +13271,7 @@
     "lat": 21936.505859375,
     "lng": 919.3984375,
     "alt": 3134.948486328125,
-    "variant": "Pink",
+    "variant": "pink",
     "targets": [
       {
         "x": -119.348404,
@@ -13288,7 +13288,7 @@
     "lat": 21922.25,
     "lng": 921.8916625976562,
     "alt": 3165.923095703125,
-    "variant": "Pink",
+    "variant": "pink",
     "targets": [
       {
         "x": -119.34832,
@@ -13305,7 +13305,7 @@
     "lat": 22248.955078125,
     "lng": 919.3689575195312,
     "alt": 3261.6806640625,
-    "variant": "Pink",
+    "variant": "pink",
     "targets": [
       {
         "x": -119.348755,
@@ -13322,7 +13322,7 @@
     "lat": 21638.662109375,
     "lng": 915.7333984375,
     "alt": 2979.037841796875,
-    "variant": "Pink",
+    "variant": "pink",
     "targets": [
       {
         "x": -119.346344,
@@ -13339,7 +13339,7 @@
     "lat": 21624.421875,
     "lng": 918.2264404296875,
     "alt": 3010.0166015625,
-    "variant": "Pink",
+    "variant": "pink",
     "targets": [
       {
         "x": -119.34626,
@@ -13356,7 +13356,7 @@
     "lat": 21342.08984375,
     "lng": 913.1573486328125,
     "alt": 2822.057373046875,
-    "variant": "Pink",
+    "variant": "pink",
     "targets": [
       {
         "x": 55.29932,
@@ -13373,7 +13373,7 @@
     "lat": 21327.837890625,
     "lng": 915.6506958007812,
     "alt": 2853.033447265625,
-    "variant": "Pink",
+    "variant": "pink",
     "targets": [
       {
         "x": 37.272255,
@@ -13390,7 +13390,7 @@
     "lat": 22202.962890625,
     "lng": 1857.4921875,
     "alt": 3254.366455078125,
-    "variant": "Pink",
+    "variant": "pink",
     "targets": [
       {
         "x": 2878.7344,
@@ -13407,7 +13407,7 @@
     "lat": 22187.568359375,
     "lng": 1864.5411376953125,
     "alt": 3284.066650390625,
-    "variant": "Pink",
+    "variant": "pink",
     "targets": [
       {
         "x": 2878.7344,
@@ -13429,7 +13429,7 @@
     "lat": 22508.580078125,
     "lng": 1851.058349609375,
     "alt": 3394.289306640625,
-    "variant": "Pink",
+    "variant": "pink",
     "targets": [
       {
         "x": 2878.7007,
@@ -13446,7 +13446,7 @@
     "lat": 22493.193359375,
     "lng": 1858.1060791015625,
     "alt": 3423.989990234375,
-    "variant": "Pink",
+    "variant": "pink",
     "targets": [
       {
         "x": 2878.7007,
@@ -13468,7 +13468,7 @@
     "lat": 22814.9296875,
     "lng": 1843.5093994140625,
     "alt": 3533.21826171875,
-    "variant": "Pink",
+    "variant": "pink",
     "targets": [
       {
         "x": 2878.6997,
@@ -13485,7 +13485,7 @@
     "lat": 22799.533203125,
     "lng": 1850.55419921875,
     "alt": 3562.91796875,
-    "variant": "Pink",
+    "variant": "pink",
     "targets": [
       {
         "x": 2878.6985,
@@ -13507,7 +13507,7 @@
     "lat": 21610.2578125,
     "lng": 1866.1458740234375,
     "alt": 2946.400390625,
-    "variant": "Pink",
+    "variant": "pink",
     "targets": [
       {
         "x": 2555.0474,
@@ -13524,7 +13524,7 @@
     "lat": 21594.853515625,
     "lng": 1873.1915283203125,
     "alt": 2976.10009765625,
-    "variant": "Pink",
+    "variant": "pink",
     "targets": [
       {
         "x": 2580.8345,
@@ -13546,7 +13546,7 @@
     "lat": 21915.810546875,
     "lng": 1858.6055908203125,
     "alt": 3084.916748046875,
-    "variant": "Pink",
+    "variant": "pink",
     "targets": [
       {
         "x": 2766.5977,
@@ -13563,7 +13563,7 @@
     "lat": 21899.9453125,
     "lng": 1865.6522216796875,
     "alt": 3114.37158203125,
-    "variant": "Pink",
+    "variant": "pink",
     "targets": [
       {
         "x": 2788.3208,
@@ -13617,7 +13617,7 @@
     "lat": -6565.67626953125,
     "lng": 2649.279052734375,
     "alt": 665.7511596679688,
-    "variant": "Brown"
+    "variant": "brown"
   },
   {
     "name": "StaticMeshActor_UAID_7085C2B20F0E96D800_2025017390",
@@ -13626,7 +13626,7 @@
     "lat": 3522.007080078125,
     "lng": 11631.607421875,
     "alt": 1952.336181640625,
-    "variant": "Brown",
+    "variant": "brown",
     "targets": [
       {
         "x": 12746.69,
@@ -13664,7 +13664,7 @@
     "lat": 28021.41796875,
     "lng": -15453.9794921875,
     "alt": 8339.95703125,
-    "variant": "Brown",
+    "variant": "brown",
     "targets": [
       {
         "x": -16031.635,
@@ -13681,7 +13681,7 @@
     "lat": 28357.359375,
     "lng": -15452.0869140625,
     "alt": 8327.072265625,
-    "variant": "Brown"
+    "variant": "brown"
   },
   {
     "name": "StaticMeshActor_UAID_7085C2B20F0EB19C01_1423838431",
@@ -13690,7 +13690,7 @@
     "lat": 28357.87890625,
     "lng": -15459.1240234375,
     "alt": 8293.6240234375,
-    "variant": "Brown"
+    "variant": "brown"
   },
   {
     "name": "StaticMeshActor_UAID_7085C2B20F0EB19C01_1423844435",
@@ -13699,7 +13699,7 @@
     "lat": 28021.9453125,
     "lng": -15461.0166015625,
     "alt": 8306.505859375,
-    "variant": "Brown"
+    "variant": "brown"
   },
   {
     "name": "StaticMeshActor_UAID_7085C2B20F0EB19C01_1450665438",
@@ -13708,7 +13708,7 @@
     "lat": 27014.96484375,
     "lng": -15464.9072265625,
     "alt": 8346.21484375,
-    "variant": "Brown",
+    "variant": "brown",
     "targets": [
       {
         "x": -16052.465,
@@ -13725,7 +13725,7 @@
     "lat": 27350.90625,
     "lng": -15463.0146484375,
     "alt": 8333.330078125,
-    "variant": "Brown",
+    "variant": "brown",
     "targets": [
       {
         "x": -16031.842,
@@ -13742,7 +13742,7 @@
     "lat": 27351.42578125,
     "lng": -15470.0517578125,
     "alt": 8299.8828125,
-    "variant": "Brown"
+    "variant": "brown"
   },
   {
     "name": "StaticMeshActor_UAID_7085C2B20F0EB19C01_1450685441",
@@ -13751,7 +13751,7 @@
     "lat": 27687.06640625,
     "lng": -15462.2333984375,
     "alt": 8319.234375,
-    "variant": "Brown"
+    "variant": "brown"
   },
   {
     "name": "StaticMeshActor_UAID_7085C2B20F0EB19C01_1450690444",
@@ -13760,7 +13760,7 @@
     "lat": 27015.4921875,
     "lng": -15471.9453125,
     "alt": 8312.763671875,
-    "variant": "Brown"
+    "variant": "brown"
   },
   {
     "name": "StaticMeshActor_UAID_7085C2B20F0EB19C01_1450693446",
@@ -13769,7 +13769,7 @@
     "lat": 27687.595703125,
     "lng": -15469.267578125,
     "alt": 8285.783203125,
-    "variant": "Brown"
+    "variant": "brown"
   },
   {
     "name": "StaticMeshActor_UAID_7085C2B20F0EEFD200_1242747872",
@@ -13778,7 +13778,7 @@
     "lat": 24140.0625,
     "lng": 141.21896362304688,
     "alt": 7709.1328125,
-    "variant": "Pink",
+    "variant": "pink",
     "targets": [
       {
         "x": -14.721604,
@@ -13795,7 +13795,7 @@
     "lat": 24139.3359375,
     "lng": -191.943115234375,
     "alt": 7695.9814453125,
-    "variant": "Pink",
+    "variant": "pink",
     "targets": [
       {
         "x": -354.52115,
@@ -13812,7 +13812,7 @@
     "lat": 24132.5,
     "lng": -191.96453857421875,
     "alt": 7729.4794921875,
-    "variant": "Pink",
+    "variant": "pink",
     "targets": [
       {
         "x": -354.59256,
@@ -13829,7 +13829,7 @@
     "lat": 24132.416015625,
     "lng": -526.6555786132812,
     "alt": 7718.8310546875,
-    "variant": "Pink"
+    "variant": "pink"
   },
   {
     "name": "StaticMeshActor_UAID_7085C2B20F0EEFD200_1242749876",
@@ -13838,7 +13838,7 @@
     "lat": 24125.57421875,
     "lng": -526.16015625,
     "alt": 7752.32763671875,
-    "variant": "Pink"
+    "variant": "pink"
   },
   {
     "name": "StaticMeshActor_UAID_7085C2B20F0EEFD200_1242749877",
@@ -13847,7 +13847,7 @@
     "lat": 24133.216796875,
     "lng": 141.7265625,
     "alt": 7742.62451171875,
-    "variant": "Pink",
+    "variant": "pink",
     "targets": [
       {
         "x": -14.307541,
@@ -13960,7 +13960,7 @@
     "lat": 21454.169921875,
     "lng": 18838.111328125,
     "alt": 11984.6650390625,
-    "variant": "White",
+    "variant": "white",
     "targets": [
       {
         "x": 20483.459,
@@ -13982,7 +13982,7 @@
     "lat": 21385.28125,
     "lng": 18836.505859375,
     "alt": 11983.7294921875,
-    "variant": "White",
+    "variant": "white",
     "targets": [
       {
         "x": 20483.459,
@@ -14036,7 +14036,7 @@
     "lat": -6063.54541015625,
     "lng": 941.7748413085938,
     "alt": 648.809814453125,
-    "variant": "Brown",
+    "variant": "brown",
     "targets": [
       {
         "x": 1108.2748,
@@ -14053,7 +14053,7 @@
     "lat": -6063.7861328125,
     "lng": 941.7748413085938,
     "alt": 683.0006713867188,
-    "variant": "Brown",
+    "variant": "brown",
     "targets": [
       {
         "x": 1108.2925,
@@ -15961,7 +15961,7 @@
     "lat": 14684.1611328125,
     "lng": 1903.353515625,
     "alt": 788.2765502929688,
-    "variant": "Teal"
+    "variant": "teal"
   },
   {
     "name": "SimCard_C_UAID_ACB480ECFC84828102_1929953044",
