@@ -59,9 +59,7 @@
     "misc"         : { "type": "markers", "category": "Miscellaneous",      "name": "Miscellaneous",      "name_key": "", "defaultIcon": "question_mark",   "defaultActive": false, "zDepth": 12, "games": ["sl", "slc", "siu"] },
     "coin"         : { "type": "markers", "category": "Collectables",       "name": "Coins",              "name_key": "", "defaultIcon": "awesome",         "defaultActive": false, "zDepth":  8, "games": ["sl", "slc", "siu"] },
     "graves"       : { "type": "markers", "category": "Quests",             "name": "Graves",             "name_key": "", "defaultIcon": "question_mark",   "defaultActive": false, "zDepth":  9, "games": ["sl"              ] },
-    "coordinate"   : { "type": "markers", "category": "Miscellaneous",      "name": "XY",                 "name_key": "", "defaultIcon": null,              "defaultActive": false, "zDepth": 14, "games": ["sl", "slc", "siu"] },
     "extra"        : { "type": "markers", "category": "Miscellaneous",      "name": "Extras",             "name_key": "", "defaultIcon": "question_mark",   "defaultActive": false, "zDepth":  2, "games": ["sl", "slc", "siu"] },
-    "dev"          : { "type": "markers", "category": "Miscellaneous",      "name": "Dev",                "name_key": "", "defaultIcon": "question_mark",   "defaultActive": false, "zDepth":  1, "games": [                  ] },
 
     "swnospoiler"  : { "type": "markers", "category": "Miscellaneous",      "name": "No Spoilers",        "name_key": "", "defaultIcon": "misc_pin",        "defaultActive": false, "zDepth":  2, "games": ["sw"              ] },
     "clouds"       : { "type": "markers", "category": "Puzzle Clouds",      "name": "Puzzle Clouds",      "name_key": "", "defaultIcon": "cloud:v",         "defaultActive": true,  "zDepth":  7, "games": ["sw"              ] },
@@ -74,6 +72,7 @@
     "poi"          : { "type": "markers", "category": "Points of Interest", "name": "Points of Interest", "name_key": "", "defaultIcon": "misc_pin",        "defaultActive": false, "zDepth":  7, "games": ["sw"              ] },
     "swquests"     : { "type": "markers", "category": "Quests/Items",       "name": "Quests/Items",       "name_key": "", "defaultIcon": "misc_pin",        "defaultActive": false, "zDepth":  7, "games": ["sw"              ] },
     "swcollectable": { "type": "markers", "category": "Collectables",       "name": "Collectables",       "name_key": "", "defaultIcon": "misc_pin",        "defaultActive": false, "zDepth":  3, "games": ["sw"              ] },
-    "swcoordinate" : { "type": "markers", "category": "Miscellaneous",      "name": "XY",                 "name_key": "", "defaultIcon": null,              "defaultActive": false, "zDepth": 10, "games": ["sw"              ] },
-    "swdev"        : { "type": "markers", "category": "Miscellaneous",      "name": "Dev",                "name_key": "", "defaultIcon": "misc_pin",        "defaultActive": false, "zDepth":  1, "games": ["sw"              ] }
+
+    "coordinate"   : { "type": "markers", "category": "Miscellaneous",      "name": "XY",                 "name_key": "", "defaultIcon": null,              "defaultActive": false, "zDepth": 14, "games": ["sl", "slc", "siu", "sw"] },
+    "dev"          : { "type": "markers", "category": "Miscellaneous",      "name": "Dev",                "name_key": "", "defaultIcon": "misc_pin",        "defaultActive": false, "zDepth":  1, "games": [                  ] }
 }
