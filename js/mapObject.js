@@ -214,9 +214,9 @@ export class MapObject {
       this._foundLockedState = false;
     }
   
-    // If subclass hasn't set default set it based on notsaved
-    if (this._foundLockedState === undefined && this.o.notsaved) {
-      this._foundLockedState = true;
+    // If subclass hasn't set default set it based on setfound
+    if (this._foundLockedState === undefined && this.o.setfound) {
+      this._foundLockedState = this.o.setfound;
     }
 
     // Give subclass a chance to change things
