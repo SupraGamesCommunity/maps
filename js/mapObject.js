@@ -156,11 +156,17 @@ export class MapObject {
     // I feel like this is a bit of a hack because it requires awareness of the layer names which
     // is supposed to be just data but I can't currently think of a better way to do it.
     // TODO: reverse sense - make collectable but if it has a price then put it in shop
+    // If nospoiler is shop but it has no price - put it on the collectable nospoiler layer (as opposed to shop)
     const layerId = c.nospoiler != 'shop' || (this.o.cost && this.o.price_type != 7) ? c.nospoiler : 'collectable';
+    if(!layerId)
+      return;
+    if(this.o.type == 'Coin:LaunchBox_C')
+      console.log("Gold Launchbox")
+    let cicon = c.noSpoilIcon || this.o.spawns && c.icon;
 
     // Group marker uses icon from layer it is on (ignores class/spawns/object icon)
     let marker;
-    if ((marker = this.createMarker(map, layerId))) {
+    if ((marker = this.createMarker(map, layerId, cicon))) {
       this.groupMarker = marker;
     }
   }
@@ -171,7 +177,9 @@ export class MapObject {
     const sc = GameClasses.get(this.o.spawns, null);
     const layerId = sc?.layer || c.layer;
     const icon = sc?.icon || c.icon;
-    let marker;
+    if(this.o.type == 'Coin:LaunchBox_C')
+      console.log("Gold Launchbox")
+      let marker;
     if ((marker = this.createMarker(map, layerId, icon))) {
       this.primeMarker = marker;
     }
@@ -181,15 +189,16 @@ export class MapObject {
   createLines(map) {
     const c = GameClasses.get(this.o.type);
     const o = this.o;
-
-    if (o.linetype && MapLayer.isEnabledFromId(c.lines, map.mapId) && o.twoway != 2) {
-      const mapLayer = MapLayer.get(c.lines);
+    const lineslayer = c.lines || this.primeMarker?.options.layerId;
+  
+    if (o.linetype && MapLayer.isEnabledFromId(lineslayer, map.mapId) && o.twoway != 2) {
+      const mapLayer = MapLayer.get(lineslayer);
       let endxys = o?.target ? [o.target] : o.targets;
 
       // need to add title as a single space (leaflet search issue), but not the full title so it doesn't appear in search
       let options = {
         zIndexOffset: mapLayer.getZIndexOffset(), title: ' ', interactive: false, alt: this.alt, o: o,
-        layerId: c.lines, className: 'line-' + o.linetype + (o.linetype == 'jumppad' ? ' ' + o.variant : ''),
+        layerId: lineslayer, className: 'line-' + o.linetype + (o.linetype == 'jumppad' ? ' ' + o.variant : ''),
       }
       if (o.twoway) {
         options.arrow = 'none';
@@ -227,7 +236,9 @@ export class MapObject {
       this.release();
       return;
     }
-
+    if(this.o.name == "LaunchBox_C_UAID_ACB480ECFC8416AA02_1918668342"){
+      console.log("Missing Box");
+    }
     this.createGroupMarker(map);
     this.createPrimeMarker(map);
 

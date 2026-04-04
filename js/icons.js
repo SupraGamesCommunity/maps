@@ -68,6 +68,15 @@ export class Icons {
     const response = await fetch('data/iconConfigs.json')
     const j = await response.json();
     this._iconConfigs = j;
+    let icondecodes = []
+    for(const cfg in this._iconConfigs){
+      if(this._iconConfigs[cfg].style == 'fapng'){
+        this._iconConfigs[cfg].img = new Image();
+        this._iconConfigs[cfg].img.src = this._imgPath + this._iconConfigs[cfg].iconName + this._imgExt;
+        icondecodes.push(this._iconConfigs[cfg].img.decode());
+      }
+    }
+    await Promise.all(icondecodes);
   }
 
   // Retrieve the configuration for the specified icon name, if no config try basename otherwise return default
@@ -125,9 +134,7 @@ export class Icons {
 
     // Draw a PNG as the Icon instead of an FA icon
     function drawPNGIcon(iconName, tgtSize, iconSize, dy = 0) {
-      let image = new Image();
-      image.src = iconPNG;
-      ctx.drawImage(img, (size - iconSize) * 0.5, 0 - dy, iconSize, iconSize);
+      ctx.drawImage(iconName, (size - iconSize) * 0.5, 0 - dy, iconSize, iconSize);
     }
 
     bg = toSupraColor(bg) || 'grey';
@@ -158,7 +165,6 @@ export class Icons {
   }
 
   // Returns icon options given iconName, variant and game
-  // If nothing provided will use _defaultIconName
   static getIconOptions(options) {
       // Shallow copy so we don't mess up callers version but make sure we have a valid iconName
     const opts = Object.assign({}, options, { iconName: options.iconName || this._defaultIconName });
@@ -177,7 +183,7 @@ export class Icons {
     opts.className = [baseName, opts.variant, opts.game, `x${opts.baseScale.toString().replace('.', '-')}`].filter(Boolean).join('-');
     opts.iconConfig = this.getConfig(opts.className);
     opts.iconConfig.bg = (isSupraColor(opts.variant) ? opts.variant : opts.iconConfig.bg);
-    opts.iconUrl = `${this._imgPath}${[baseName, opts.variant, opts.game].filter(Boolean).join('.')}${this._imgExt}`;
+    opts.iconUrl = `${this._imgPath}${[opts.iconConfig.iconName || baseName, opts.variant, opts.game].filter(Boolean).join('.')}${this._imgExt}`;
 
     return opts;
   }
@@ -192,9 +198,12 @@ export class Icons {
       // If not a PNG then we need to generate it
       if(opts.iconConfig.style != 'png') {
         const isPin = (opts.iconConfig.type == 'pin');
-        const iconName = opts.iconConfig.style == 'fapng' ? opts.iconUrl : opts.iconConfig.iconName;
-        opts.iconUrl = this.renderFAIconToImageURL(isPin, opts.style, iconName, opts.iconConfig.bg, opts.iconConfig.fg);
+        const style = opts.iconConfig.style;
+        const iconName = style == 'fapng' ? opts.iconConfig.img : opts.iconConfig.iconName;
+        opts.iconUrl = this.renderFAIconToImageURL(isPin, style, iconName, opts.iconConfig.bg, opts.iconConfig.fg);
       }
+      else
+        console.log("debug")
       icon = this._icons[opts.className] = L_mapIcon(opts);
     }
     return icon;

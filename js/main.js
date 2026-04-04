@@ -152,12 +152,10 @@ function setupKeyControls(map, searchControl){
           SaveFileSystem.loadFileDialog(map.mapId);
         }
         break;
-      case 'Digit1': loadMap(new MapParam({ mapId: 'sl' })); break;
+      case 'Digit1': loadMap(new MapParam({ mapId: 'sl'  })); break;
       case 'Digit2': loadMap(new MapParam({ mapId: 'slc' })); break;
       case 'Digit3': loadMap(new MapParam({ mapId: 'siu' })); break;
-      case 'Digit4':
-        if(Settings.global.devMode)
-          loadMap(new MapParam({ mapId: 'sw' })); break;
+      case 'Digit4': loadMap(new MapParam({ mapId: 'sw'  })); break;
       case 'KeyT': map.zoomIn(1); break;
       case 'KeyG': map.zoomOut(1); break;
     }
@@ -209,13 +207,11 @@ async function loadMap(mapParam) {
   });
 
   MapLayer.forEachEnabled(map.mapId, (id, layer) => {
-    if(Settings.global.devMode || id != 'sw') {
-      if (layer.type == 'base') {
-        layerControl.addBaseLayer(layer.layerObj, layer.name);
-      }
-      else {
-        layerControl.addOverlay(layer.layerObj, layer.name);
-      }
+    if (layer.type == 'base') {
+      layerControl.addBaseLayer(layer.layerObj, layer.name);
+    }
+    else {
+      layerControl.addOverlay(layer.layerObj, layer.name);
     }
   });
   layerControl.addTo(map); // triggers baselayerchange which will be ignored

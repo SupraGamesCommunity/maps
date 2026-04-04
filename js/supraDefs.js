@@ -19,7 +19,7 @@ export const supraColors = {
   "red":         "#FF0000",
   "teal":        "#00EBFF",
   "white":       "#FFFFFF",
-  "yellow":      "#FFFF00",
+  "yellow":      "#d1bb0f"  //"#FFFF00",
 }
 
 export const toSupraColor = (col) => { return supraColors[col] || col } 
