@@ -15822,16 +15822,6 @@
     "spawns": "Inventory_Toothpick_C"
   },
   {
-    "name": "ShopEgg_C_UAID_7085C2B20F0EA03301_1595503266",
-    "type": "ShopEgg_C",
-    "area": "Supraworld",
-    "lat": -3349.514404296875,
-    "lng": 6318.65087890625,
-    "alt": 394.4082946777344,
-    "hidden": "true",
-    "spawns": "ShopItemAbility_MindPossession_C"
-  },
-  {
     "name": "ShopEgg_C_UAID_7085C2B20F0EA13301_1905939473",
     "type": "ShopEgg_C",
     "area": "Supraworld",
