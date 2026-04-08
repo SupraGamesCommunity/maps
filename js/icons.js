@@ -202,8 +202,6 @@ export class Icons {
         const iconName = style == 'fapng' ? opts.iconConfig.img : opts.iconConfig.iconName;
         opts.iconUrl = this.renderFAIconToImageURL(isPin, style, iconName, opts.iconConfig.bg, opts.iconConfig.fg);
       }
-      else
-        console.log("debug")
       icon = this._icons[opts.className] = L_mapIcon(opts);
     }
     return icon;
