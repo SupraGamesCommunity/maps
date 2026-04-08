@@ -424,7 +424,7 @@ export class MapObject {
     if(o.description || GameClasses.get(o.type).description)
       text += fmtrow('Description', (a) => { return `${locStr.description(o, o.type, mapId)}` })
 
-    if(o.comment)
+    if(o.comment && Settings.global.showComments)
       text += fmtrow('Comment', o.comment);
 
     text += fmtrow('XYZ pos', `(${o.lng.toFixed(0)}, ${o.lat.toFixed(0)}, ${o.alt.toFixed(0)})`)

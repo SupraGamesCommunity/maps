@@ -28,6 +28,13 @@ export const buildMode = {
   changeList: []        // Changes made in the current Build Mode session
 }
 
+function toggleComments() {
+  Settings.globalSetDefault('showComments', false);
+  Settings.global.showComments = !Settings.global.showComments;
+  Settings.commit();
+  skipConfirms || alert('Show/Hide comments is now set to ' + Settings.global.showComments + '.');
+}
+
 function toggleDevMode() {
   Settings.globalSetDefault('devMode', false);
   Settings.global.devMode = !Settings.global.devMode;
@@ -273,6 +280,13 @@ async function loadMap(mapParam) {
           toolbarIcon: { html: '<i class="fa-solid fa-screwdriver-wrench"></i>', tooltip: 'Developer Mode' },
           subToolbar: new L.Toolbar2({
             actions: [
+              subAction.extend({
+                options: { toolbarIcon: { html: 'Show/Hide comments', tooltip: 'Toggles displaying comments on Pins. (For example, how to enter a secret area)' } },
+                addHooks: function () {
+                  toggleComments();
+                  subAction.prototype.addHooks.call(this); // closes sub-action
+                }
+              }),
               subAction.extend({
                 options: { toolbarIcon: { html: 'Dev', tooltip: 'Toggles Developer mode on or off' } },
                 addHooks: function () {
