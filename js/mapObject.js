@@ -428,10 +428,7 @@ export class MapObject {
       text += fmtrow('Comment', o.comment);
 
     if(o.spoiler_help)
-      text += fmtrow('Spoiler help', Settings.global.showSpoilerHelp
-        ? o.spoiler_help
-        : '<span class="marker-spoiler-warning">Spoiler help is hidden. Toggle in settings.</span>'
-      );
+      text += fmtrow('Spoiler help', `<details><summary>Click to show/hide</summary><span>${o.spoiler_help}</span></details>`);
 
     text += fmtrow('XYZ pos', `(${o.lng.toFixed(0)}, ${o.lat.toFixed(0)}, ${o.alt.toFixed(0)})`)
 

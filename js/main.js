@@ -28,13 +28,6 @@ export const buildMode = {
   changeList: []        // Changes made in the current Build Mode session
 }
 
-function toggleSpoilerHelp() {
-  Settings.globalSetDefault('showSpoilerHelp', false);
-  Settings.global.showSpoilerHelp = !Settings.global.showSpoilerHelp;
-  Settings.commit();
-  skipConfirms || alert('Show/Hide spoiler help is now set to ' + Settings.global.showSpoilerHelp + '.');
-}
-
 function toggleDevMode() {
   Settings.globalSetDefault('devMode', false);
   Settings.global.devMode = !Settings.global.devMode;
@@ -280,13 +273,6 @@ async function loadMap(mapParam) {
           toolbarIcon: { html: '<i class="fa-solid fa-screwdriver-wrench"></i>', tooltip: 'Developer Mode' },
           subToolbar: new L.Toolbar2({
             actions: [
-              subAction.extend({
-                options: { toolbarIcon: { html: 'Show/Hide spoiler help', tooltip: 'Toggles displaying spoiler help on Pins. (For example, guides to acquire an item or enter a secret area.)' } },
-                addHooks: function () {
-                  toggleSpoilerHelp();
-                  subAction.prototype.addHooks.call(this); // closes sub-action
-                }
-              }),
               subAction.extend({
                 options: { toolbarIcon: { html: 'Dev', tooltip: 'Toggles Developer mode on or off' } },
                 addHooks: function () {
