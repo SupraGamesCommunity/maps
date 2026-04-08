@@ -160,8 +160,7 @@ export class MapObject {
     const layerId = c.nospoiler != 'shop' || (this.o.cost && this.o.price_type != 7) ? c.nospoiler : 'collectable';
     if(!layerId)
       return;
-    if(this.o.type == 'Coin:LaunchBox_C')
-      console.log("Gold Launchbox")
+
     let cicon = c.noSpoilIcon || this.o.spawns && c.icon;
 
     // Group marker uses icon from layer it is on (ignores class/spawns/object icon)
@@ -177,9 +176,7 @@ export class MapObject {
     const sc = GameClasses.get(this.o.spawns, null);
     const layerId = sc?.layer || c.layer;
     const icon = sc?.icon || c.icon;
-    if(this.o.type == 'Coin:LaunchBox_C')
-      console.log("Gold Launchbox")
-      let marker;
+    let marker;
     if ((marker = this.createMarker(map, layerId, icon))) {
       this.primeMarker = marker;
     }
@@ -236,9 +233,7 @@ export class MapObject {
       this.release();
       return;
     }
-    if(this.o.name == "LaunchBox_C_UAID_ACB480ECFC8416AA02_1918668342"){
-      console.log("Missing Box");
-    }
+
     this.createGroupMarker(map);
     this.createPrimeMarker(map);
 
@@ -508,12 +503,15 @@ export class MapObject {
   static addObjectFromJson(obj) {
     if ('area' in obj && 'name' in obj) {
       const alt = MapObject.makeAlt(obj.area, obj.name);
-      const mapObject = MapObject._mapObjects[alt];
+      let mapObject = MapObject._mapObjects[alt];
       if (mapObject) {
-        return mapObject.mergeJson(obj);
+        mapObject.mergeJson(obj);
       }
       else if ('type' in obj) {
-        return new objectToSubclass(obj)(alt, obj);
+        mapObject = new objectToSubclass(obj)(alt, obj);
+      }
+      if (mapObject && 'delete' in obj) {
+        mapObject.release();
       }
     }
     else {
