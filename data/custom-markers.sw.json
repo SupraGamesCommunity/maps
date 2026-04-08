@@ -1,2 +1,12 @@
 [
+  {
+    "name": "SecretVolume_C_UAID_ACB480ECFC84B69F02_1198388909",
+    "area": "Supraworld",
+	"spoiler_help": "Under the magnet suspended on the 2 rails, there is a green book. To reach the secret, walk carefully anti-clockwise around the book's lower cover from the south edge until you reach the book's north side."
+  },
+  {
+    "name": "SecretVolume_C_UAID_ACB480ECFC841CC002_1230035607",
+    "area": "Supraworld",
+	"spoiler_help": "On the east wall high up near the upper pipe entrance is a golden screw. Crouch on the screw and look at the nearby wrench. The wrench's hole frames a set of nails embedded in the armrest of the green chair. Pushing the center nail will cause a box below to fall to the ground, revealing the secret within."
+  }
 ]

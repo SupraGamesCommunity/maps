@@ -528,6 +528,9 @@ function loadMap(id) {
     if(o.comment) {
       text += `<br><span class="marker-popup-col">Comment:</span><span class="marker-popup-col2">${o.comment}</span>`;
     }
+    if(o.spoiler_help) {
+      text += `<br><span class="marker-popup-col">Spoiler help:</span><span class="marker-popup-col2">${o.spoiler_help}</span>`;
+    }
     text += `<br><span class="marker-popup-col">XYZ pos:</span>(${o.lng.toFixed(0)}, ${o.lat.toFixed(0)}, ${o.alt.toFixed(0)})`
   
     text += '<br><br></div>'

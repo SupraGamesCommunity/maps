@@ -427,6 +427,9 @@ export class MapObject {
     if(o.comment)
       text += fmtrow('Comment', o.comment);
 
+    if(o.spoiler_help)
+      text += fmtrow('Spoiler help', `<details><summary>Click to show/hide</summary><span>${o.spoiler_help}</span></details>`);
+
     text += fmtrow('XYZ pos', `(${o.lng.toFixed(0)}, ${o.lat.toFixed(0)}, ${o.alt.toFixed(0)})`)
 
     text += '<br><br></div>'
