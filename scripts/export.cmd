@@ -7,6 +7,8 @@
 :: Note the maps tend to be hand customised, so we grab copies
 :: from source rather than the originals from ..\source\{game}\mapimg
 :: when we do the tiling.
+::
+:: Gentiles needs python and some library dependencies including PIL
 
 setlocal enabledelayedexpansion
 
@@ -150,7 +152,7 @@ echo.
 echo levels   extracts .umap level data for the specified game to ..\source\*.json
 echo bp       extracts .uasset blueprint files to .json
 echo mapimg   extracts .png map image files and merges them together in ..\source\mapimg
-echo gentiles takes ..\source\{game}\map-final.png and generates tiles in ..\tiles\{game}\base 
+echo gentiles takes ..\source\{game}map-final.png and generates tiles in ..\tiles\{game}\base 
 echo loc      extracts .locres/.locmeta localistation files for the specified game
 echo enums    extracts all the enumerations and their member names/numbers (..\source\{game}.enums.json)
 echo list     generates a list of all files in the specified game ({game}.list.txt)
@@ -309,7 +311,7 @@ goto :eof
 :sw_mapimg
 
 echo %colGrn%Extracting map images, joining and copying to %gameout%\mapimg\%game%map.png%colDef%
-
+@echo on
 :: Unpack all the map image textures
 %CUE4Parse% %opt% -p %mappath%/%mapimage%?.uasset
 
@@ -323,13 +325,14 @@ if not "%game%"=="sw" (
     :: Stitch the PNG images into two rows and two columns
     magick montage "%gameout%\mapimg\%mapimage%*.png" -geometry +0+0 %gameout%\mapimg\%game%map.png 
 ) else (
-    :: Convert HDR to PNG with gamma correction and merge tiles
-    magick "%gameout%\mapimg\%mapimage%*.hdr" %hdropt% miff:- | magick montage miff:- -geometry +0+0 "%gameout%\mapimg\%game%map.png"
+    magick "%gameout%\mapimg\%mapimage%*.png" -resize 4096x4096 -gamma 2.2 miff:- | magick montage miff:- -geometry +0+0 "%gameout%\mapimg\%game%map.png"
 )
+    :: Convert HDR to PNG with gamma correction and merge tiles
+    :: magick "%gameout%\mapimg\%mapimage%*.hdr" %hdropt% miff:- | magick montage miff:- -geometry +0+0 "%gameout%\mapimg\%game%map.png"
 
 :: Cleanup intermediate files
-del "%gameout%\mapimg\%mapimage%*.*"
-rd /s /q %gameout%\temp
+rem del "%gameout%\mapimg\%mapimage%*.*"
+rem rd /s /q %gameout%\temp
 
 goto :eof
 
@@ -397,6 +400,7 @@ goto :eof
 echo %colGrn%Outputting directory of %game% PAK files to %gameout%\gamefilelist.txt%colDef%
 
 %CUE4Parse% %opt% -l -p * >"%gameout%\gamefilelist.txt"
+sort "%gameout%\gamefilelist.txt" /o "%gameout%\gamefilelist.txt"
 
 goto :eof
 
