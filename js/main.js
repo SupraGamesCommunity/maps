@@ -28,11 +28,11 @@ export const buildMode = {
   changeList: []        // Changes made in the current Build Mode session
 }
 
-function toggleComments() {
-  Settings.globalSetDefault('showComments', false);
-  Settings.global.showComments = !Settings.global.showComments;
+function toggleSpoilerHelp() {
+  Settings.globalSetDefault('showSpoilerHelp', false);
+  Settings.global.showSpoilerHelp = !Settings.global.showSpoilerHelp;
   Settings.commit();
-  skipConfirms || alert('Show/Hide comments is now set to ' + Settings.global.showComments + '.');
+  skipConfirms || alert('Show/Hide spoiler help is now set to ' + Settings.global.showSpoilerHelp + '.');
 }
 
 function toggleDevMode() {
@@ -281,9 +281,9 @@ async function loadMap(mapParam) {
           subToolbar: new L.Toolbar2({
             actions: [
               subAction.extend({
-                options: { toolbarIcon: { html: 'Show/Hide comments', tooltip: 'Toggles displaying comments on Pins. (For example, how to enter a secret area)' } },
+                options: { toolbarIcon: { html: 'Show/Hide spoiler help', tooltip: 'Toggles displaying spoiler help on Pins. (For example, guides to acquire an item or enter a secret area.)' } },
                 addHooks: function () {
-                  toggleComments();
+                  toggleSpoilerHelp();
                   subAction.prototype.addHooks.call(this); // closes sub-action
                 }
               }),

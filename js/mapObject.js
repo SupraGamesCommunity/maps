@@ -424,8 +424,14 @@ export class MapObject {
     if(o.description || GameClasses.get(o.type).description)
       text += fmtrow('Description', (a) => { return `${locStr.description(o, o.type, mapId)}` })
 
-    if(o.comment && Settings.global.showComments)
+    if(o.comment)
       text += fmtrow('Comment', o.comment);
+
+    if(o.spoiler_help)
+      text += fmtrow('Spoiler help', Settings.global.showSpoilerHelp
+        ? o.spoiler_help
+        : '<span class="marker-spoiler-warning">Spoiler help is hidden. Toggle in settings.</span>'
+      );
 
     text += fmtrow('XYZ pos', `(${o.lng.toFixed(0)}, ${o.lat.toFixed(0)}, ${o.alt.toFixed(0)})`)
 

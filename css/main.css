@@ -68,6 +68,10 @@ path[alt=''] { opacity: 100% }
   
 }
 
+.marker-spoiler-warning {
+  font-style: italic;
+}
+
 .marker-popup-found {
   background-color: lightblue;
   color: black;
