@@ -1049,7 +1049,14 @@ def export_sw_markers(cache_dir, game):
 
             # Type may have been modified, so only check for it at the end
             otype = data[-1]['type']
-            if not 'sw' in game_classes.get(otype, {}).get('games', []):
+
+            def class_supported(otype, game):
+                return ((gc := game_classes.get(otype))
+                        and gc.get('layer')
+                        and game in gc.get('games', []))
+
+            if(not class_supported(otype, game) 
+               or spawns and not class_supported(spawns, game)):
                 del data[-1]
                 continue
 
