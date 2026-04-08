@@ -501,9 +501,10 @@ export class MapObject {
 
   // Constructs new object or merges data into existing one
   static addObjectFromJson(obj) {
+    let mapObject;
     if ('area' in obj && 'name' in obj) {
       const alt = MapObject.makeAlt(obj.area, obj.name);
-      let mapObject = MapObject._mapObjects[alt];
+      mapObject = MapObject._mapObjects[alt];
       if (mapObject) {
         mapObject.mergeJson(obj);
       }
@@ -512,11 +513,13 @@ export class MapObject {
       }
       if (mapObject && 'delete' in obj) {
         mapObject.release();
+        mapObject = null;
       }
     }
     else {
         ("Warning: Marker JSON entry area:name must both be specified in all markers*.json")
     }
+    return mapObject;
   }
 
   // Load all markers for current map
