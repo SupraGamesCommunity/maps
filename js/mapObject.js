@@ -476,11 +476,11 @@ export class MapObject {
       Object.getOwnPropertyNames(o).forEach(
         function (propName) {
           if (propName != 'name' && propName != 'area')
-            text += '<br>' + propName + ': <input type="text" id="' + propName + '" onchange="updateBuildModeValue();" value="' + o[propName] + '"></input>';
+            text += '<br>' + propName + ': <input type="text" id="' + propName + '" onchange="updateBuildModeValue(event);" value="' + o[propName] + '"></input>';
         }
       );
-      if (!o.yt_video) { text += '<br>yt_video: <input type="text" id="yt_video" onchange="updateBuildModeValue();" value=""></input>'; };
-      if (!o.yt_start) { text += '<br>yt_start: <input type="text" id="yt_start" onchange="updateBuildModeValue();" value=""></input>'; };
+      if (!o.yt_video) { text += '<br>yt_video: <input type="text" id="yt_video" onchange="updateBuildModeValue(event);" value=""></input>'; };
+      if (!o.yt_start) { text += '<br>yt_start: <input type="text" id="yt_start" onchange="updateBuildModeValue(event);" value=""></input>'; };
       text += '<button onclick="commitCurrentBuildModeChanges();">Save</button>';
     }
 

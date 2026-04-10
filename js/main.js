@@ -49,6 +49,9 @@ function updateBuildModeValue(event) {
   buildMode.objectChanges[MapObject.makeAlt(buildMode.object.area, buildMode.object.name) + '|' + el.id] = el.value;
   //alert(buildMode.object.name + ' property ' + el.id + ' changed from ' + el.defaultValue + ' to ' + el.value + '.');
 }
+window.updateBuildModeValue = function (event) {
+    updateBuildModeValue(event);
+}
 
 /* eslint-disable-next-line no-unused-vars */
 function commitCurrentBuildModeChanges() {
@@ -64,6 +67,9 @@ function commitCurrentBuildModeChanges() {
   buildMode.objectChanges = [];
   map.closePopup();
 }
+window.commitCurrentBuildModeChanges = function () {
+    commitCurrentBuildModeChanges();
+}
 
 function exportBuildChanges() {
   // It might be worth accummulating the changes in this structure as we make them, but this works
@@ -76,8 +82,8 @@ function exportBuildChanges() {
       if (!jsonobj[alt]) {
         jsonobj[alt] = {}
       }
-      jsonobj[alt][name] = name;
-      jsonobj[alt][area] = area;
+      jsonobj[alt]['name'] = name;
+      jsonobj[alt]['area'] = area;
       jsonobj[alt][prop] = buildMode.changeList[k];
     });
   jsonobj = Object.values(jsonobj);
