@@ -51,6 +51,7 @@ Fork of Joric's map to SupraMaps project and tweaks to finish in preparation for
 - [KoenigsKind](https://github.com/KoenigsKind)
 - [LewisPattJr](https://github.com/LewisPattJr)
 - [TJ](https://github.com/TJ999M)
+- [Minato](https://github.com/coverprice)
 
 ### Additional support from: 
 - [Anna](https://github.com/PrismAnna) @SupraGames
