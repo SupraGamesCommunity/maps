@@ -37,8 +37,12 @@ export class Icons {
   static _iconConfigsFile = 'data/iconConfigs.json';
 
   static _imgPath = 'img/markers/';                   // Relative path to marker icon directory
-  static _imgExt = '.png';                            // All icon images are 32 bit pngs
-
+  static _imgExt = {            // Maps style to file extension
+    fapng: '.png',
+    fasvg: '.svg',
+    png: '.png',
+    svg: '.svg',
+  };
   static _defaultIconName = 'question_mark';
   
   static _pointConfig = {
@@ -70,9 +74,10 @@ export class Icons {
     this._iconConfigs = j;
     let icondecodes = []
     for(const cfg in this._iconConfigs){
-      if(this._iconConfigs[cfg].style == 'fapng'){
+      const style = this._iconConfigs[cfg].style; 
+      if(style == 'fapng' || style == 'fasvg'){
         this._iconConfigs[cfg].img = new Image();
-        this._iconConfigs[cfg].img.src = this._imgPath + this._iconConfigs[cfg].iconName + this._imgExt;
+        this._iconConfigs[cfg].img.src = this._imgPath + this._iconConfigs[cfg].iconName + this._imgExt[style];
         icondecodes.push(this._iconConfigs[cfg].img.decode());
       }
     }
@@ -133,7 +138,7 @@ export class Icons {
     }
 
     // Draw a PNG as the Icon instead of an FA icon
-    function drawPNGIcon(iconName, tgtSize, iconSize, dy = 0) {
+    function drawImageIcon(iconName, tgtSize, iconSize, dy = 0) {
       ctx.drawImage(iconName, (size - iconSize) * 0.5, 0 - dy, iconSize, iconSize);
     }
 
@@ -142,24 +147,13 @@ export class Icons {
 
     // We draw FA icons in three layers, a shadow, a slightly smaller background,
     // and then some centred icon to actually represent it.
-    if(isPin) {
-      drawFAIcon('fas', faPin, 'black', size);
-      drawFAIcon('fas', faPin, bg, outlineSize);
+    drawFAIcon('fas', isPin ? faPin : faPoint, 'black', size);
+    drawFAIcon('fas', isPin ? faPin : faPoint, bg, outlineSize);
 
-      if(style != 'fapng')
-        drawFAIcon(style, iconName, toSupraColor(fg || 'white'), pinIconSize, pinCentreOfs);
-      else
-        drawPNGIcon(iconName, size, pinIconSize, pinCentreOfs);
-    }
-    else {
-      drawFAIcon('fas', faPoint, 'black', size);
-      drawFAIcon('fas', faPoint, fg, outlineSize);
-
-      if(style != 'fapng')
-        drawFAIcon(style, iconName, fg, ptIconSize);
-      else
-        drawPNGIcon(iconName, size, ptIconSize);
-    }
+    if(style == 'fapng' || style == 'fasvg')
+      drawImageIcon(iconName, size, isPin ? pinIconSize : ptIconSize, isPin ? pinCentreOfs : 0);
+    else
+      drawFAIcon(style, iconName, toSupraColor(fg || 'white'), isPin ? pinIconSize : ptIconSize, isPin ? pinCentreOfs : 0);
 
     return canvas.toDataURL('image/png'); 
   }
@@ -183,7 +177,9 @@ export class Icons {
     opts.className = [baseName, opts.variant, opts.game, `x${opts.baseScale.toString().replace('.', '-')}`].filter(Boolean).join('-');
     opts.iconConfig = this.getConfig(opts.className);
     opts.iconConfig.bg = (isSupraColor(opts.variant) ? opts.variant : opts.iconConfig.bg);
-    opts.iconUrl = `${this._imgPath}${[opts.iconConfig.iconName || baseName, opts.variant, opts.game].filter(Boolean).join('.')}${this._imgExt}`;
+    let ext;
+    if(ext = this._imgExt[opts.iconConfig.style])
+      opts.iconUrl = `${this._imgPath}${[opts.iconConfig.iconName || baseName, opts.variant, opts.game].filter(Boolean).join('.')}${ext}`;
 
     return opts;
   }
@@ -199,7 +195,7 @@ export class Icons {
       if(opts.iconConfig.style != 'png') {
         const isPin = (opts.iconConfig.type == 'pin');
         const style = opts.iconConfig.style;
-        const iconName = style == 'fapng' ? opts.iconConfig.img : opts.iconConfig.iconName;
+        const iconName = style in this._imgExt ? opts.iconConfig.img : opts.iconConfig.iconName;
         opts.iconUrl = this.renderFAIconToImageURL(isPin, style, iconName, opts.iconConfig.bg, opts.iconConfig.fg);
       }
       icon = this._icons[opts.className] = L_mapIcon(opts);
