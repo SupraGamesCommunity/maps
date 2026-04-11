@@ -162,7 +162,7 @@
 
   "chocolate_egg"           : {"type": "pin", "style": "fas", "iconName": "egg",                      "bg": "#3f000f"                      },
   "egg"                     : {"type": "pin", "style": "fas", "iconName": "egg",                      "bg": "orange"                       },
-  "gift_box"                : {"type": "pin", "style": "fas", "iconName": "gift",                     "bg": "#d1bb0f"                       },
+  "gift_box"                : {"type": "pin", "style": "svg", "iconName": "gift",                     "bg": "#d1bb0f"                       },
   "gift_box_blue"           : {"type": "pin", "style": "fas", "iconName": "gift",                     "bg": "dodgerblue"                   },
   "gift_box_green"          : {"type": "pin", "style": "fas", "iconName": "gift",                     "bg": "green"                        },
   "gift_box_red"            : {"type": "pin", "style": "fas", "iconName": "gift",                     "bg": "red"                          },
