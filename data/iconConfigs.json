@@ -147,7 +147,7 @@
   "swcoin"                  : {"type": "pin", "style": "fas", "iconName": "coins",                    "bg": "orange"                       },
   "gift_box_orange"         : {"type": "pin", "style": "fas", "iconName": "gift",                     "bg": "orange"                       },
   "swchest_coin"            : {"type": "pin", "style": "fapng", "iconName": "chest_coin",             "bg": "red"                          },
-  "swsecret"                : {"type": "pin", "style": "fas", "iconName": "question",                 "bg": "darkgreen",     "fg": "yellow"},
+  "swsecret"                : {"type": "pin", "style": "fapng", "iconName": "greensecret",            "bg": "black"                        },
   "npc_purple"              : {"type": "pin", "style": "fas", "iconName": "person",                   "bg": "purple",        "fg": "yellow"},
 
   "screw"                   : {"type": "pin", "style": "fas", "iconName": "circle-xmark",             "bg": "gold"                         },
