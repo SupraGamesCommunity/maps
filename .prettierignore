@@ -1,0 +1,4 @@
+# Ignore artifacts
+dist/
+# Ignore anything in the public directory, which is expected to be delivered as-is.
+public/

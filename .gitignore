@@ -1,11 +1,24 @@
-# Created by venv; see https://docs.python.org/3/library/venv.html
+# Logs
+logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+lerna-debug.log*
 
-# Ignore all . files and folders except this one (.git, .venv, .vs etc)
-.*
-!/.gitignore
+# Yarn package manager
+yarn-debug.log*
+yarn-error.log*
+.yarn/
+.pnp.cjs
+.pnp.loader.mjs
 
-# Libraries installed for python and node.js
-node_modules/
+# Node
+node_modules
+dist
+dist-ssr
+*.local
+
+# Libraries installed for python
 site-packages/
 
 # Binary and intermediate files from VS projects amongst others
@@ -15,5 +28,15 @@ obj/
 # Ignore source data extracted from games or from other repositories
 /source/
 /scripts/source/
-
 *.bak
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
