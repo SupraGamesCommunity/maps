@@ -147,7 +147,7 @@
   "swcoin"                  : {"type": "pin", "style": "fas", "iconName": "coins",                    "bg": "orange"                       },
   "gift_box_orange"         : {"type": "pin", "style": "fas", "iconName": "gift",                     "bg": "orange"                       },
   "swchest_coin"            : {"type": "pin", "style": "fapng", "iconName": "chest_coin",             "bg": "red"                          },
-  "swsecret"                : {"type": "pin", "style": "fas", "iconName": "question",                 "bg": "darkgreen",     "fg": "yellow"},
+  "swsecret"                : {"type": "pin", "style": "fapng", "iconName": "greensecret",            "bg": "black"                        },
   "npc_purple"              : {"type": "pin", "style": "fas", "iconName": "person",                   "bg": "purple",        "fg": "yellow"},
 
   "screw"                   : {"type": "pin", "style": "fas", "iconName": "circle-xmark",             "bg": "gold"                         },
@@ -162,9 +162,9 @@
 
   "chocolate_egg"           : {"type": "pin", "style": "fas", "iconName": "egg",                      "bg": "#3f000f"                      },
   "egg"                     : {"type": "pin", "style": "fas", "iconName": "egg",                      "bg": "orange"                       },
-  "gift_box"                : {"type": "pin", "style": "fas", "iconName": "gift",                     "bg": "#d1bb0f"                       },
+  "gift_box"                : {"type": "pin", "style": "fapng", "iconName": "giftboxyellow",          "bg": "#d1bb0f"                       },
   "gift_box_blue"           : {"type": "pin", "style": "fas", "iconName": "gift",                     "bg": "dodgerblue"                   },
-  "gift_box_green"          : {"type": "pin", "style": "fas", "iconName": "gift",                     "bg": "green"                        },
+  "gift_box_green"          : {"type": "pin", "style": "fapng", "iconName": "giftboxgreen",           "bg": "green"                        },
   "gift_box_red"            : {"type": "pin", "style": "fas", "iconName": "gift",                     "bg": "red"                          },
   "guide"                   : {"type": "pin", "style": "fas", "iconName": "receipt",                  "bg": "peru"                         },
   "gumball_machine"         : {"type": "pin", "style": "fas", "iconName": "blender",                  "bg": "red"                          },
