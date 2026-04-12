@@ -3,7 +3,7 @@ from itertools import groupby
 from mathutils import Vector, Matrix, Euler, Quaternion
 from math import radians
 from PIL import Image
-import logging, gc, json, gc, os, sys, csv, re, argparse, tempfile
+import logging, json, gc, os, sys, csv, re, argparse
 import numpy as np
 from sklearn.neighbors import KDTree
 import networkx as nx
