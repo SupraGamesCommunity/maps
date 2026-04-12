@@ -278,26 +278,6 @@ config = {
     },
 }
 
-# These are the colours we currently know about:
-# ESupraColors::Aqua        0x00FFFF
-# ESupraColors::Black       0x030303
-# ESupraColors::Blue        0x0000FF
-# ESupraColors::Brown       0x964B00
-# ESupraColors::Custom      0xFFFFFF
-# ESupraColors::Cyan        0x00FFFF
-# ESupraColors::Green       0x49FF00
-# ESupraColors::Grey        0x898989
-# ESupraColors::LightOrange 0xFFD680
-# ESupraColors::Lime        0x00FF00
-# ESupraColors::Magenta     0xFF00FF
-# ESupraColors::Orange      0xFF7700
-# ESupraColors::Pink        0xA74472
-# ESupraColors::Purple      0x800080
-# ESupraColors::Red         0xFF0000
-# ESupraColors::White       0xFFFFFF
-# ESupraColors::Yellow      0xFFFF00
-# ESupraColors::Teal        0x00EBFF
-
 # Early Access Filter data
 ea_filter = True
 ea_fogfile = "swmapfog-ea.png"
@@ -775,49 +755,7 @@ def in_earlyaccess(otype, p, pos):
     # Should probably check pos against a cuboid but not yet
     return True
 
-def icon_cleanup():
-    game_classes = load_json_file('..\\data', 'gameClasses.json');
-    icons = load_json_file('..\\data', 'iconConfigs.json')
-    icons2 = {}
-    for iconname, icondata in icons.items():
-        for gd in game_classes.values():
-            if (gdicon := gd.get('icon','')) and gdicon.startswith(iconname):
-                icons2[iconname] = icondata
-                break
 
-    save_json_file(icons2, '..\\data', 'iconConfigs.json')
-    return
-
-def icon_check():
-    game_classes = load_json_file('..\\data', 'gameClasses.json');
-    icons = load_json_file('..\\data', 'iconConfigs.json')
-    icons2 = {}
-    count = 0
-    clashcount = 0
-    clscount = 0
-    for iconname, icondata in icons.items():
-        if iconname.endswith('_pin'):
-            newname = iconname.removesuffix('_pin') 
-            if newname in icons:
-                newname = 'sw'+newname
-            if newname in icons:
-                print(f'Clash {iconname}')
-                clashcount += 1
-                icons2[iconname] = icondata        
-            else:
-                icons2[newname] = icondata
-                count += 1
-                for gd in game_classes.values():
-                    if (gdicon := gd.get('icon','')) and (parts := gdicon.split(':'))[0] == iconname:
-                        gd['icon'] = ':'.join([newname, *parts[1:]])
-                        clscount += 1
-        else:
-            icons2[iconname] = icondata        
-
-    save_json_file(game_classes, '..\\data', 'gameClasses.json')
-    save_json_file(icons2, '..\\data', 'iconConfigs.json')
-    print(f'clashes: {clashcount} rename: {count} classes: {clscount}')
-    return
 
 
 def export_sw_markers(cache_dir, game):
@@ -1066,37 +1004,6 @@ def export_sw_markers(cache_dir, game):
     save_json_file(data, "..\\data", f'markers.{game}.json')
     print("Done")
 
-'''
--1237.642333984375 -7274.92333984375 871.6895141601562
-    Object
-      Properties
-        WorldAsset
-          AssetPathName
-        LevelTransform
-    let outer = o.Outer + '.' + o.Name;
-    outers[outer] = o;
-    if ((p = o.Properties) && (a = p.WorldAsset) && (n = a.AssetPathName) && (t = p.LevelTransform)) {
-      let key = n.split('.').pop();
-      let m = new THREE.Matrix4().compose(getVec(t.Translation, 0), getQuat(t.Rotation), new THREE.Vector3(1,1,1));
-      areas[key] = m
-    }
-    if (o.Type=='StaticMeshComponent') meshes[o.Outer] = o;
-    if (o.Type=='MessengerComponent') messengers[o.Outer] = o;
-    if (o.Type=='SupraworldLaunchComponent_C') targets[o.Outer] = o;
-
-    components[o.Outer] = components[o.Outer] || {};
-    components[o.Outer][o.Name] = o;
-
-    ObjectName: {type}'{area}:PersistentLevel.{name}[.{subname}[.{sub}[...]]]
-    {type} is the "Type" of the target object
-    {area} is the json map file containing the target object (seems to always match file name)
-    {name} is the base name of this object (which contains all the components properties)
-    {subname} is the base name of the object it points at
-
-
-'''
-
-
 
 def export_class_loc(cache_dir):
 
@@ -1182,16 +1089,16 @@ def export_loc_files(cache_dir):
 
 
     
-def export_markers(cache_dir, game, marker_types=marker_types, marker_names=[]):
-    data = []
+def export_markers(cache_dir, game):
+    maps = {}       # dictionary from map name to json data list
+    area_mtx = {}   # Transform for each area map geometry
+    data = []       # Output marker data
+
+    pipes = {}
+    objects = {}
+
     data_lookup = {}
     classes_found = set()
-    areas = {}
-    
-    markerFileName = f"{game}.marker_names.txt"
-    if os.path.isfile(markerFileName):
-        with open(markerFileName) as fh:
-            marker_names += fh.read().splitlines()
 
     optEnum= lambda s:int(s[len(s.rstrip('0123456789')):]or 0) if type(s) is str and '::' in s else s
     optArea= lambda a,k,v: v if a==k else ':'.join((k,v))
@@ -1202,30 +1109,35 @@ def export_markers(cache_dir, game, marker_types=marker_types, marker_names=[]):
     getQuat= lambda d,v=0: Quaternion((d['W'], d['X'], d['Y'], d['Z'])) if d else Quaternion((v,v,v,v))
     getXYZ = lambda v:{'x':v.x, 'y': v.y, 'z': v.z}
 
+    # Phase 1: Read all the map json files in and build a look up table for references
+    # Also get any area/map file matrices (for streaming levels)
+    for area in config[game]['maps']:
+        # Store the map data
+        maps[area] = load_json_file(cache_dir, game, 'levels', area+'.json')
 
+        # Go through all objects in the map data and store lookups for later
+        for oidx, o in enumerate(maps[area]):
+            if not (outer := o.get('Outer')) or not (p:= o.get('Properties')):
+                continue
+            oname = o['Name']
+            otype = o['Type']
 
-    def parse_json(j, area):
-        outer = {}
-        pipes = {}
-        objects = {}
-        for o in j:
-            p = o.get('Properties',{})
-            if a := p.get('WorldAsset',{}).get('AssetPathName'):
-                if t := p.get('LevelTransform'):
-                    areas[a.split('.').pop()] = Matrix.Translation(getVec(t.get('Translation'))) @ getQuat(t.get('Rotation')).to_matrix().to_4x4()
+            # For maps that are divided into multiple files, there may be a LevelTransform for entities in that
+            # file relative to the persistent world that is handled by the streaming system. To correct for this
+            # we construct a matrix from the Translation/Rotation members if they exit
+            if (a := p.get('WorldAsset',{}).get('AssetPathName')) and (t := p.get('LevelTransform')):
+                area_mtx[a.split('.').pop()] = Matrix.Translation(getVec(t.get('Translation'))) @ getQuat(t.get('Rotation')).to_matrix().to_4x4()
 
-            if 'Outer' in o:
-                outer[':'.join((o['Name'],o['Type'],o['Outer']))] = o # pyUE4Parse 5e0e6f0
-                outer[':'.join((o['Name'],o['Outer']))] = o # pyUE4Parse 90e309b
-
-            if o['Type'].startswith('Pipesystem') and 'Pipe' in p and ('OtherPipe' in p or 'otherPipeInOtherLevel' in p):
+            if otype.startswith('Pipesystem') and 'Pipe' in p and ('OtherPipe' in p or 'otherPipeInOtherLevel' in p):
                 # p['Pipe']
-                #        "ObjectName": "StaticMeshComponent'Map:PersistentLevel.PipesystemNew10.Pipe'",
+                #     ObjectName: StaticMeshComponent'DLC2_Complete:PersistentLevel.HealingStation13_44.Pipe'
+                #     ObjectPath: SupralandSIU/Content/FirstPersonBP/Maps/DLC2_Complete.58973
                 # p['OtherPipe']
-                #        "ObjectName": "PipesystemNewDLC_C'DLC2_Complete:PersistentLevel.PipesystemNewDLC10'",
+                #     ObjectName: PipesystemNew_C'DLC2_Complete:PersistentLevel.PipesystemNew10'
+                #     ObjectPath: SupralandSIU/Content/FirstPersonBP/Maps/DLC2_Complete.19652
                 # p['otherPipeInOtherLevel']
-                #        "AssetPathName": "/Game/FirstPersonBP/Maps/DLC2_Complete.DLC2_Complete",
-                #        "SubPathString": "PersistentLevel.PipeToArea1"
+                #     AssetPathName: /Game/FirstPersonBP/Maps/DLC2_Complete.DLC2_Complete
+                #     SubPathString: PersistentLevel.PipeToArea2
                 # {ComponentType/class}'{map}'
                 def getPipeObjectName(o):
                     t = o['ObjectName'].split('.')
@@ -1241,36 +1153,41 @@ def export_markers(cache_dir, game, marker_types=marker_types, marker_names=[]):
                 print(f"{a} -> {b}")
                 #pipes [b] = a # links may be single-sided
 
-            objects[area +':'+o['Name']] = o
+            objects[area +':'+oname] = o
 
-        for o in j:
+    for area in maps:
+        for oidx, o in enumerate(maps[area]):
+            otype = o['Type']
+            oname = o['Name']
+            if not (outer := o.get('Outer')) or not (p := o.get('Properties')):
+                continue
+
             allowed_items = (
-                marker_names and o['Name'] in marker_names
-                or marker_types and o['Type'] in marker_types
+                o['Type'] in marker_types
                 or any(o['Type'].startswith(s) for s in starts_with)
                 or any(o['Type'].endswith(s) for s in ends_with)
             )
 
             if not allowed_items: continue
-            #if not o['Type'].endswith('_C'): continue
-            #if not 'Pipe' in o['Type']: continue
+
+            def getObject(p):
+                ref = objectRef(p)
+                return maps[ref[0]][ref[1]]
 
             def get_matrix(o, matrix=Matrix.Identity(4)):
-                p = o.get('Properties',{})
+                p = o.get('Properties', {})
+
                 if p.get('RelativeLocation'):
                     matrix = Matrix.LocRotScale(getVec(p.get('RelativeLocation')), getRot(p.get('RelativeRotation')), getVec(p.get('RelativeScale3D'), 1)) @ matrix
-                for parent in ['RootObject', 'RootComponent', 'DefaultSceneRoot', 'AttachParent']:
-                    node = p.get(parent,{})
-                    if type(node) is dict:
-                        if ref := node.get('OuterIndex',{}).get('ObjectName'):
-                            key = ':'.join((node.get('ObjectName',''),ref))
-                            if key in outer:
-                                return get_matrix(outer[key], matrix)
+
+                for prop in ['RootObject', 'RootComponent', 'DefaultSceneRoot', 'AttachParent']:
+                    if p.get(prop):
+                        return get_matrix(getObject(p[prop]), matrix)
                 return matrix
 
             matrix = get_matrix(o)
-            if area in areas:
-                matrix  = areas[area] @ matrix
+            if area in area_mtx:
+                matrix  = area_mtx[area] @ matrix
 
             # some MetalBall_C are Anvils, do the replacement
             if o['Type']=='MetalBall_C' and o.get('Properties',{}).get('Mesh?',{}).get('ObjectName')=='Anvil':
@@ -1299,43 +1216,12 @@ def export_markers(cache_dir, game, marker_types=marker_types, marker_names=[]):
             optKey(data[-1], 'other_pipe', pipes.get(':'.join((area,o['Name']))))
             optKey(data[-1], 'custom_color', optColor(p.get('CustomColor')))
 
-            actors = []
-            def get_actors(o,level=0):
-                for action in actions:
-                    if a := o.get('Properties',{}).get(action):
-                        for d in [a] if type(a) is dict else a if type(a) is list else []:
-                            for b in ([d[x] for x in d.keys()] if action=='ActionsOnOpen' else [d]):
-                                if type(b) is dict and 'OuterIndex' in b and 'ObjectName' in b:
-                                    key = ':'.join((k:= b['OuterIndex']['Outer'],v:= b['ObjectName']))
-                                    actors.append(optArea(area, k, v))
-                                    if key in objects and level<6:
-                                        get_actors(objects[key], level+1)
-
-            get_actors(o)
-
-            # investigate Relay_C links, namely FinalBossQuest_4
-            if o.get('Properties',{}).get('PropogateToRelaysInOtherMaps'):
-                b = ':'.join((t['AssetPathName'].split('.').pop(),t['SubPathString'].split('.').pop()))
-                actors.append(b)
-                get_actors(objects[b])
-
-            # looks like we hit a wall here, UniqueActorBeginOverlap of BP_TriggerVolume_C is empty in UE4Parse
-            # but has an invocation list in FModel. Related issue https://github.com/MinshuG/pyUE4Parse/issues/22
-            optKey(data[-1], 'actors', actors or None)
-
-
             if o['Type'] in ('Jumppad_C'):
                 optKey(data[-1], 'velocity', (v:=p.get('Velocity'))and getXYZ(getVec(v)))
                 d = Vector((matrix[0][2],matrix[1][2],matrix[2][2]));
                 d.normalize()
                 data[-1].update({'direction': getXYZ(d)})
                 data[-1].update({'target': getXYZ(Vector((0,0,0)))})
-
-    for area in config[game]['maps']:
-        path = os.path.join(cache_dir, area + '.json')
-        print('loading "%s" ...' % path)
-        f = open(path, encoding="utf-8-sig")
-        parse_json(json.load(f), area)
 
     calc_pads(data)
     calc_pipes(data)
@@ -1927,7 +1813,7 @@ def main():
         if args.game=='sw':
             export_sw_markers(args.cache_dir, args.game)
         else:
-            export_sw_markers(args.cache_dir, args.game)
+            export_markers(args.cache_dir, args.game)
     elif args.blueprints:
         export_class_loc(args.cache_dir)
     elif args.loc:
