@@ -82,7 +82,7 @@ export const L_SupraMap = L.Map.extend({
     // Set the initial view
     Settings.mapSetDefault('bounds', mapLayer.viewLatLngBounds);
     if (mapParam.hasView()) {
-      this.setView(mapParam.getCenter(this.getCenter()), mapParam.getZoom(this.getZoom()));
+      this.setView(mapParam.getCenter(this._loaded ? this.getCenter() : [0,0]), mapParam.getZoom(this._loaded ? this.getZoom() : 0));
     }
     else {
       this.fitBounds(mapParam.getBounds(Settings.map.bounds));

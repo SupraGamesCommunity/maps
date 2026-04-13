@@ -409,7 +409,7 @@ async function loadMap(mapParam) {
 window.onhashchange = function () {   // (e)
   const mapParam = new MapParam(browser.getHashAndClear());
 
-  if (mapParam.mapId && mapParam.mapId != map.mapId) {
+  if (!map || mapParam.mapId && mapParam.mapId != map.mapId) {
     loadMap(mapParam);
   }
   else if (mapParam.hasView()) {
