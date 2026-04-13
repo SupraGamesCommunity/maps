@@ -9,6 +9,7 @@ import { Icons } from './icons.js';
 import { GameClasses } from './gameClasses.js';
 import { MapLayer } from './mapLayer.js';
 import { SaveFileSystem } from './saveFileSystem.js';
+import { MapParam } from './mapParam.js';
 
 //=================================================================================================
 // MapObject class
@@ -56,6 +57,7 @@ import { SaveFileSystem } from './saveFileSystem.js';
 //
 //  onContextMenu              - callback when marker is left clicked on
 //  onPopupOpen                - callback before popup displayed when marker is clicked on
+//  getURL                     - returns URL for this map object
 //
 // Static member functions:
 //
@@ -65,6 +67,7 @@ import { SaveFileSystem } from './saveFileSystem.js';
 //  addObjectFromJson          - called by load to instantiate or merge a MapObject
 //  resetAll                   - called to reset us to initial state (also resets SaveFileSystem)
 //  get                        - returns MapObject from id
+//  showAlt                    - shows the map object specified
 
 export class MapObject {
   static _mapObjects;               // Map from id to a MapObject (or subclass)
@@ -487,6 +490,11 @@ export class MapObject {
     e.popup.setContent(text);
   }
 
+  // returns URL for this map object
+  getURL(showPopup=false){
+    MapParam.getMapObjectURL(this.alt, showPopup);
+  }
+
   // Activate all layers the MapObject is on
   activateTopLayer(map) {
     if (this.primeMarker) {
@@ -574,9 +582,28 @@ export class MapObject {
     return this._mapObjects[id];
   }
 
+  static get_ignorecase(id){
+    id = id.toLowerCase();
+    return this._mapObjects[Object.keys(this._mapObjects).find(k => k.toLowerCase() === id)];
+  }
+
   // Return alt id from string arguments (normally area, name)
   static makeAlt(...args) {
     return args.filter(a => a).join(':');   // Join all truthy arguments (a !== null && a !== undefined && a !== '') might by better?
+  }
+
+  // Move view point to object specified and optionallly show popup
+  static showAlt(alt, showPopup=false) {
+    const mapObj = MapObject.get_ignorecase(alt);
+    if(mapObj){
+      const map = MapLayer._map
+      map.closePopup();
+      map.setView([mapObj.o.lat, mapObj.o.lng], map._loaded ? map.getZoom(0) : 0);
+      mapObj.activateTopLayer(map);
+      if(showPopup){
+        (mapObj.primeMarker || mapObj.groupMarker)?.openPopup(); 
+      }
+    }
   }
 }
 

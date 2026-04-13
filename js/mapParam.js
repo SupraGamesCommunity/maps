@@ -12,10 +12,15 @@ export class MapParam {
         }
       }  
     }
-
     this.mapId = mp.mapId || mp.mapid;
 
-    if ('n' in mp && 's' in mp && 'e' in mp && 'w' in mp) {
+    if('alt' in mp) {
+      this.alt = mp.alt;
+      if('show' in mp) {
+        this.show = (mp.show === 'true');
+      }
+    }
+    else if ('n' in mp && 's' in mp && 'e' in mp && 'w' in mp) {
       [this.n, this.w, this.s, this.e] = [mp.n, mp.w, mp.s, mp.e];
     }
     else {
@@ -27,8 +32,12 @@ export class MapParam {
       }
     }
   }
+  hasAlt() { return 'alt' in this; }
   hasView() { return 'zoom' in this || 'lat' in this; }
   hasBounds() { return 'n' in this; }
+
+  getAlt() { return this.alt; }
+  getShow() { return 'show' in this ? this.show : false; }
 
   getZoom(def) { return 'zoom' in this ? this.zoom : def; }
   getCenter(def) { return 'lat' in this ? [this.lat, this.lng] : def; }
@@ -42,6 +51,14 @@ export class MapParam {
     const b = map.getBounds();
     const vars = { mapId: map.mapId, W: Math.round(b.getWest()), N: Math.round(b.getNorth()), E: Math.round(b.getEast()), S: Math.round(b.getSouth()) };
     const url = base + '#' + Object.entries(vars).map((e) => e[0] + '=' + encodeURIComponent(e[1])).join('&');
+    return url;
+  }
+
+  // Generate a URL for specified object / flag
+  // {base url}#alt={alt}&show={true|false}
+  static getMapObjectURL(map, alt, showPopup=false){
+    const base = window.location.href.replace(/#.*$/, '')
+    const url = `${base}#mapId=${map.mapId}&alt=${alt}&show=${showPopup}`;
     return url;
   }
 }

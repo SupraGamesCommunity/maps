@@ -399,10 +399,12 @@ async function loadMap(mapParam) {
   // Setup keyboard controls
   setupKeyControls(map, searchControl);
 
+  if(mapParam.hasAlt()){
+    MapObject.showAlt(mapParam.getAlt(), mapParam.getShow());
+  }
 
   // Done loading so ok to switch maps
   loadMap.isLoading = false;
-
 } // end of loadmap
 
 //=================================================================================================
@@ -411,6 +413,9 @@ window.onhashchange = function () {   // (e)
 
   if (!map || mapParam.mapId && mapParam.mapId != map.mapId) {
     loadMap(mapParam);
+  }
+  else if (mapParam.hasAlt()) {
+    MapObject.showAlt(mapParam.getAlt(), mapParam.getShow());
   }
   else if (mapParam.hasView()) {
     map.setView(mapParam.getCenter(map.getCenter()), mapParam.getZoom(map.getZoom()));
