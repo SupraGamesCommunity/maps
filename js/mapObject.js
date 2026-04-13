@@ -511,6 +511,14 @@ export class MapObject {
       else if ('type' in obj) {
         mapObject = new objectToSubclass(obj)(alt, obj);
       }
+
+      // Delete any flagged properties completely
+      for (const [prop, value] of Object.entries(obj)){
+        if(value == '!')
+          delete mapObject.o[prop];
+      }
+
+      // Delete object if that key is present
       if (mapObject && 'delete' in obj) {
         mapObject.release();
         mapObject = null;
