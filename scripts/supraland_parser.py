@@ -1655,37 +1655,6 @@ def cleanup_objects(game, classes_found, data_lookup, data):
                 if not prop in exported_properties:
                     del o[prop]
 
-    def parse_json(j):
-        # Custom markers is an array of dictionaries which must have name/area declared
-        # if 'del': True then we delete the whole instance
-        # otherwise we take the remaining members
-        # and merge: 'property': new value
-        # or delete: '!property': anything
-        count = 0
-        for jo in j:
-            id = ':'.join((jo['area'], jo['name']))
-            o = data_lookup.get(id)
-            count += 1
-            if jo.get('del'):
-                if o: data.remove(o)
-            else:
-                if not o:
-                    o = {}
-                    data_lookup[id] = o
-                    data.append(o)
-                for prop, value in jo.items():
-                    if value == '!':
-                        o.pop(prop, None)
-                    else:
-                        o[prop] = value
-        return count
-
-    # Read in any build time custom data we'd like to merge
-    for cfn in [f'custom-data.{game}.json']:
-        if os.path.isfile(cfn):
-            count = parse_json(json.load(open(cfn)))
-            print(f'Processed {count} instances read from {cfn}')
-
 
 # Goes through all the non-rotating coins and looks for groups of more than 3 to combine into coinstacks
 # Adds the new stack objects to our collection and removes the original coins
