@@ -403,6 +403,9 @@ async function loadMap(mapParam) {
     MapObject.showAlt(mapParam.getAlt(), mapParam.getShow());
   }
 
+  // This is a fix for the map tiles going black when you reactivate a tab/window containing
+  // the map. If it happens zooming in/out or refreshing fixes it. Seems to be a problem with
+  // leaflet - though I've not found a good reference discussing it.
   window.addEventListener("visibilitychange", () => {
     if (!window.document.hidden && map) {
         map.invalidateSize();
