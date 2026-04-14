@@ -9,7 +9,6 @@ and publish the web application.
 ### Tools
 
 * [Node.js](https://nodejs.org): Local JavaScript execution engine.
-* [Yarn](https://yarnpkg.com): Yarn package manager (equivalent to Node's built-in `npm`).
 * [Vite](https://vite.dev): Frontend build tooling. Transforms and compiles JavaScript, CSS, and other assets into
   a form usable by the browser, provides a local development server with built-in "hot reloading" to instantly see
   results when you save files, and a bundler to create the final assets to publish to a production server.
@@ -40,7 +39,6 @@ This is a step-by-step guide to setting up your local development environment. Y
 
 Follow each tool's guide to install these tools on your system:
 * [Node.js download](https://nodejs.org/en/download)
-* [Yarn installation](https://yarnpkg.com/getting-started/install) (Yarn uses Node to install itself)
 
 Note that it may be more convenient to use methods like [Homebrew](https://brew.sh) (for MacOS) to install tools,
 e.g. with `brew install node`.
@@ -48,7 +46,7 @@ e.g. with `brew install node`.
 
 2. Install libraries
 
-Run `yarn install`. This will download the JavaScript libraries and tools (including the Vite tools framework) into
+Run `npm install`. This will download the JavaScript libraries and tools (including the Vite tools framework) into
 the local `node_modules/` directory. (This directory is not intended to be committed to the codebase.)
 
 
@@ -72,7 +70,7 @@ index.html                  The entrypoint HTML of the application.
 vite.config.js              Vite configuration file.
 eslint.config.js            Configuration for the ESLint tool that builds and lints JavaScript source files.
 package.json                NodeJS configuration.
-yarn.lock                   Yarn's list of JavaScript libraries to install.
+package-lock.json           NPM's resolved list of JavaScript libraries to install.
 
 node_modules/               Development-only. Stores tools and libraries. Should not be committed to the codebase.
 ```
@@ -80,10 +78,10 @@ node_modules/               Development-only. Stores tools and libraries. Should
 
 ## Running the development server
 
-After installing Node & Yarn, and running `yarn install`, you can start a local development server with:
+After installing Node and running `npm install`, you can start a local development server with:
 
 ```
-yarn run dev
+npm run dev
 ```
 
 This will start a server on `http://localhost:5173/`. If you visit that in your browser, you should immediately see
@@ -101,5 +99,5 @@ files.
 (TODO) This process is automatically handled by Github Actions (using a variant of the process described in Vite's
 [guide to publishing to static sites](https://vite.dev/guide/static-deploy#github-pages).
 
-In short, this process runs `yarn run build` to create a `dist/` directory that contains the static web assets.
+In short, this process runs `npm run build` to create a `dist/` directory that contains the static web assets.
 This directory's contents are intended to be published to the static site server.

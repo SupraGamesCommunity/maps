@@ -8,4 +8,11 @@ export default defineConfig({
     react(),
     babel({ presets: [reactCompilerPreset()] })
   ],
+  build: {
+    rollupOptions: {
+      input: {
+        main: './index.html',
+      },
+    },
+  },
 })
