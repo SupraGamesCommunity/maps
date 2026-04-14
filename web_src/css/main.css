@@ -31,8 +31,8 @@ path[alt=''] { opacity: 100% }
 }
 
 .leaflet-control-toolbar .leaflet-toolbar-1>li>.leaflet-toolbar-icon {
-  //background-color:#f4f4f4;
-  //color: #333;
+  /* background-color:#f4f4f4; */
+  /* color: #333; */
 }
 
 .marker-popup-heading {
