@@ -403,6 +403,12 @@ async function loadMap(mapParam) {
     MapObject.showAlt(mapParam.getAlt(), mapParam.getShow());
   }
 
+  window.addEventListener("visibilitychange", () => {
+    if (!window.document.hidden && map) {
+        map.invalidateSize();
+    }
+  });
+
   // Done loading so ok to switch maps
   loadMap.isLoading = false;
 } // end of loadmap
