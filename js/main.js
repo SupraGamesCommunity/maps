@@ -45,9 +45,9 @@ function toggleBuildMode() {
 /* eslint-disable-next-line no-unused-vars */
 function updateBuildModeValue(event) {
   let el = event.target;
-  buildMode.object[el.id] = el.value;
-  buildMode.objectChanges[MapObject.makeAlt(buildMode.object.area, buildMode.object.name) + '|' + el.id] = el.value;
-  //alert(buildMode.object.name + ' property ' + el.id + ' changed from ' + el.defaultValue + ' to ' + el.value + '.');
+  let value = ('{["'.includes((el.value+' ').charAt(0))) ? JSON.parse(el.value) : el.value;
+  buildMode.object[el.id] = value;
+  buildMode.objectChanges[MapObject.makeAlt(buildMode.object.area, buildMode.object.name) + '|' + el.id] = value;
 }
 window.updateBuildModeValue = function (event) {
     updateBuildModeValue(event);

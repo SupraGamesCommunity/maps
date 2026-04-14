@@ -468,23 +468,42 @@ export class MapObject {
     //let a = '<a href="'+url+'" onclick="return false">Map URL</a>';
 
     if (Settings.global.buildMode) {
-      let json = JSON.stringify(o, null, 2)
-      json = json.substring(json.indexOf('\n'), json.lastIndexOf('}'));
-      json = json.replaceAll('\n', '<br>').replaceAll(' ', '&nbsp;');
-      text += '<div class="marker-popup-debug">' + json + '</div><br>'
+      const dbgrow = (title, value) => {
+        value = JSON.stringify(value, null, ' ').replaceAll('"','').replaceAll('\n','');
+        //value = value.replaceAll(' ', '&nbsp;');
+        return `<span class="marker-popup-debug-col">${title}</span><span class="marker-popup-debug-col2">${value}</span><br>`
+      }
+
+      text += '<div class="marker-popup-debug"><br><details><summary><b>Full JSON (dev)</b></summary>';
+      for(const [key, value] of Object.entries(o)){
+        text += dbgrow(key, value);
+      }
+      text += '</details></div>'
     }
 
     if (Settings.global.buildMode) {
       text += '<hr>';
+      text += '<div class="marker-popup-edit"><details><summary><b>Edit JSON (dev)</b></summary>';
+
+      const editrow = (title, value) => {
+        return `<span class="marker-popup-edit-col">${title}</span>`
+          +    '<span class="marker-popup-edit-col2">'
+          +       `<input type="text" id="${title}" onchange="updateBuildModeValue(event);" value="${value}"></input>`
+          +     '</span><br>';
+      }
+
       Object.getOwnPropertyNames(o).forEach(
         function (propName) {
-          if (propName != 'name' && propName != 'area')
-            text += '<br>' + propName + ': <input type="text" id="' + propName + '" onchange="updateBuildModeValue(event);" value="' + o[propName] + '"></input>';
+          if (propName != 'name' && propName != 'area') {
+            const value = typeof o[propName] === 'string' ? o[propName] : JSON.stringify(o[propName]).replaceAll('"', '&quot;');
+            text += editrow(propName, value);
+          }
         }
       );
-      if (!o.yt_video) { text += '<br>yt_video: <input type="text" id="yt_video" onchange="updateBuildModeValue(event);" value=""></input>'; };
-      if (!o.yt_start) { text += '<br>yt_start: <input type="text" id="yt_start" onchange="updateBuildModeValue(event);" value=""></input>'; };
+      if (!o.yt_video) { text += editrow('yt_video', ""); }
+      if (!o.yt_start) { text += editrow('yt_start', ""); }
       text += '<button onclick="commitCurrentBuildModeChanges();">Save</button>';
+      text += '</details></div>';
     }
 
     e.popup.setContent(text);
