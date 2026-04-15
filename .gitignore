@@ -5,13 +5,6 @@ npm-debug.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-# Yarn package manager
-yarn-debug.log*
-yarn-error.log*
-.yarn/
-.pnp.cjs
-.pnp.loader.mjs
-
 # Node
 node_modules
 dist
