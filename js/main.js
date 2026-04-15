@@ -132,12 +132,15 @@ function setupKeyControls(map, searchControl){
   });
 
   map.on('keydown', function (e) {
-    if (e.originalEvent.target.id.startsWith('searchtext') || Settings.global.buildMode) {
+    const le = e;
+    e = e.originalEvent;
+
+    if (e.target.id.startsWith('searchtext') /*|| Settings.global.buildMode*/) {
       return;
     }
-
-    pressed[e.originalEvent.code] = true;
-    switch (e.originalEvent.code) {
+  
+    pressed[e.code] = true;
+    switch (e.code) {
       case 'KeyF':        // F (no ctrl) to toggle fullscreen
         if (e.ctrlKey) {
           searchControl.expand(true);
@@ -216,7 +219,7 @@ async function loadMap(mapParam) {
     if (layer.type == 'base') {
       layerControl.addBaseLayer(layer.layerObj, layer.name);
     }
-    else {
+    else if (layer.type == 'markers') {
       layerControl.addOverlay(layer.layerObj, layer.name);
     }
   });

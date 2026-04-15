@@ -71,6 +71,7 @@ import { MapParam } from './mapParam.js';
 
 export class MapObject {
   static _mapObjects;               // Map from id to a MapObject (or subclass)
+  static _playerStartPosition;
 
   o = {};     // The json data loaded from the various marker files
   alt;        // Our unique 'alt' name (normally area:name)
@@ -218,14 +219,14 @@ export class MapObject {
   init(map) {
     const c = GameClasses.get(this.o.type);
 
-    // If class is not saved then we want to show as not found
-    if (this._foundLockedState === undefined && c.notsaved) {
+    // If instance is marked as not saved then we want to show as not found
+    if (this._foundLockedState === undefined && this.o.notsaved) {
       this._foundLockedState = false;
     }
   
     // If subclass hasn't set default set it based on setfound
-    if (this._foundLockedState === undefined && this.o.setfound) {
-      this._foundLockedState = this.o.setfound;
+    if (this._foundLockedState === undefined && c.setfound) {
+      this._foundLockedState = c.setfound;
     }
 
     // Give subclass a chance to change things
@@ -261,7 +262,7 @@ export class MapObject {
   // This default behaviour can be cancelled by setting _saveFileId to null
   // _saveFileId, _filter and _defaultSaveData may be set by subclasses 
   addSaveListeners() {
-    if (this._saveFileId !== null && this._foundLockedState === undefined) {
+    if (this._saveFileId !== null /*&& this._foundLockedState === undefined*/) {
       SaveFileSystem.setListener(this._saveFileId || this.alt, this.onSaveEvent, this, this._saveFilter, this._defaultSaveData);
     }
   }
@@ -639,17 +640,17 @@ export const mapObjectFound = function (id, found = true) {
 // MapObject subclasses
 
 //-------------------------------------------------------------------------------------------------
-// MapObject subclass for o.type=='PlayerStart'
+// MapObject subclass for o.type=='PlayerStart' or o.type=='SupraworldPlayerStart_C'
 //
 // First one created stores it's position as static member of MapObject and spawns an _PlayerPosition 
 class MapPlayerStart extends MapObject {
   _foundLockedState = false;
 
   subclassInit(map) {
-    if (!this._playerStartPosition) {
+    if (!MapObject._playerStartPosition) {
 
       const objJson = Object.assign({}, this.o);
-      objJson.type = '_PlayerPosition';
+      objJson.type = map.mapId == 'sw' ? '_SWPlayerPosition' : '_PlayerPosition';
       objJson.area = '';
       objJson.name = 'PlayerPosition';
       MapObject.addObjectFromJson(objJson).init(map);
@@ -671,36 +672,38 @@ class MapPlayerPosition extends MapObject {
   _foundLockedState = false;
 
   subclassInit() {
-    this._startPosition = { lat: this.o.lat, lng: this.o.lng, alt: this.o.alt };
+    MapObject._playerStartPosition = { lat: this.o.lat, lng: this.o.lng, alt: this.o.alt };
   }
 
   // We're listening for a saveLoadEvent of Player Position. We will be called with a position
   // if one has been loaded, otherwise the save state must be cleared.
   onSaveEvent(id, data) {
     if (!data) {
-      Object.assign(this.o, this._startPosition);
+      Object.assign(this.o, MapObject._playerStartPosition);
+      this.setLatLng({lat: this.o.lat, lng: this.o.lng});
     }
     else {
+      if (this.primeMarker) {
+        this.primeMarker.closePopup();
+      }
+      if (this.groupMarker) {
+        this.groupMarker.closePopup();
+      }
+
       let value;
       if ('Translation' in data) {
-        value = data.value['Translation'].value;
+        value = data['Translation'].value;
       }
       else {
         value = data.value;
       }
       if (value) {
-        [this.o.lng, this.o.lat, this.o.alt] = [value.x, value.y, value.z];
+        this.o.alt = value.z;
+        this.setLatLng({lat: value.y, lng: value.x});
       }
       else {
         return;
       }
-    }
-
-    if (this.primeMarker) {
-      this.primeMarker.closePopup();
-    }
-    if (this.groupMarker) {
-      this.groupMarker.closePopup();
     }
   }
 }
@@ -950,7 +953,9 @@ function objectToSubclass(o) {
   // Object types that have MapObject subclass
   const typeMap = {
     '_PlayerPosition': mapPlayerPosition,
+    '_SWPlayerPosition': mapPlayerPosition,
     'PlayerStart': mapPlayerStart,
+    'SupraworldPlayerStart_C': mapPlayerStart,
     'EnemySpawn3_C': mapGraveVolcano,
     'CrashEnemySpawner_C': mapBonesSpawner,
     '_CoinStack_C': mapCoinStack,

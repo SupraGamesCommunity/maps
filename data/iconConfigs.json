@@ -159,6 +159,7 @@
   "health_dispencer"        : {"type": "pin", "style": "fas", "iconName": "pills",                    "bg": "red"                          },
   "fashion_slot"            : {"type": "pin", "style": "fas", "iconName": "hat-cowboy",               "bg": "grey"                         },
   "playerstart"             : {"type": "pin", "style": "fas", "iconName": "face-smile",               "bg": "red"                          },
+  "swplayerpos"             : {"type": "pin", "style": "fapng", "iconName": "player.red",            "bg": "red"                          },
 
   "chocolate_egg"           : {"type": "pin", "style": "fas", "iconName": "egg",                      "bg": "#3f000f"                      },
   "egg"                     : {"type": "pin", "style": "fas", "iconName": "egg",                      "bg": "orange"                       },

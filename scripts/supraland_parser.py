@@ -895,6 +895,9 @@ def export_sw_markers(cache_dir, game):
             if v := meshmats.get(oname):
                 variant = v
 
+            if otype == 'SupraworldPlayerStart_C':
+                o['variant'] = 'red'
+
             # Only keep gold variant of Nailscrew_C 
             if otype == 'Nailscrew_C' and variant != 'gold':
                 del data[-1]
