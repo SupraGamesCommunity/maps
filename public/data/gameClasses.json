@@ -284,6 +284,7 @@
   "StandardFashionStore_C"          : { "friendly": "Fashion Store",       "icon": "fashion_slot",       "layer": "poi",           "nospoiler": null,          "games": ["sw"], "setfound": false                },
   "StandardShop_C"                  : { "friendly": "Item Shop",           "icon": "gift_box_gold",      "layer": "poi",           "nospoiler": null,          "games": ["sw"], "setfound": false                },
   "SupraworldPlayerStart_C"         : { "friendly": "Player Start",        "icon": "playerstart",        "layer": "poi",           "nospoiler": null,          "games": ["sw"], "setfound": false                },
+  "_SWPlayerPosition"               : { "friendly": "Player Position",     "icon": "swplayerpos",        "layer": "_map",          "nospoiler": null,          "games": ["sw"]                                   },
 
   "ChocolateEgg_C"                  : { "friendly": "Chocolate Egg",       "icon": "chocolate_egg",      "layer": "swcollectable", "nospoiler": "swnospoiler", "games": ["sw"]                                   },
   "ShopEgg_C"                       : { "friendly": "Egg",                 "icon": "egg",                "layer": "swcollectable", "nospoiler": "swnospoiler", "games": ["sw"]                                   },

@@ -20,6 +20,11 @@ export class MapLayer {
 
   static _map;            // Leaflet Map
 
+  static _baseMap = new MapLayer('_map', { type: '_map', category: '_map', name: '_map',
+      defaultIcon: 'misc', defaultActive: true, zDepth: 0,
+      games: ['sl', 'slc', 'siu', 'sw'],
+    });
+
   // Instance constructor
   constructor(layerId, json) {
     this.id = layerId;               // Id for the layer
@@ -83,14 +88,14 @@ export class MapLayer {
 
   // Activate or deactivate this layer group
   addTo(map) {
-    if (this.config.type != 'base' && !this.active) {
+    if (this.config.type == 'markers' && !this.active) {
       this.layerObj.addTo(map);
     }
   }
 
   // Activate or deactivate this layer group
   remove() {
-    if (this.config.type != 'base' && this.active) {
+    if (this.config.type == 'markers' && this.active) {
       this.layerObj.remove();
     }
   }
@@ -142,7 +147,7 @@ export class MapLayer {
         this.active = false;
       }
     }
-    else {
+    else if (this.config.type == 'markers') {
       if (this.config.type == 'tiles') {
         // An extra tile layer (used to be used for pipe/pad map overlay)
         this.layerObj = this.createTileLayer(map);
@@ -159,18 +164,21 @@ export class MapLayer {
       this.layerObj.on('add', this.onAdd, this);
       this.layerObj.on('remove', this.onRemove, this);
     }
+    else if(this.config.type == '_map') {
+      this.layerObj = MapLayer._map;
+      this.active = true;      
+    }
   }
 
   // Reset layer to initial state (releasing layerObj)
   reset() {
-    if (this.layerObj) {
+    if(this.config.type != '_map' && this.layerObj) {
       this.layerObj.off('add remove');
       this.layerObj.remove();
-      this.layerObj = null;
-    }
+    } 
     this.active = false;
+    this.layerObj = null;
   }
-
 
   // Retrieve the map layer from the object
   static get(layerId) {
