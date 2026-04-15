@@ -2,3 +2,12 @@
 dist/
 # Ignore anything in the public directory, which is expected to be delivered as-is.
 public/
+
+# Ignore the css directory (since it's mostly CSS provided by 3rd-party plugins)
+web_src/css/
+
+# Don't reformat data files, YAML files, or Markdown
+*.json
+*.yaml
+*.yml
+*.md
