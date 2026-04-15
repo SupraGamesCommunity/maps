@@ -492,7 +492,7 @@ def preproc_levels(cache_dir, game):
         ueenums.loadenumbp(filename)
 
     # Load current gameClasses.json so we know which classes we currently know about for this game
-    game_classes = load_json_file('..\\data', 'gameClasses.json');
+    game_classes = load_json_file('..\\public\\data', 'gameClasses.json');
 
     # Load the game's PAK file list so we can look up where to find enums
     gamefilelist = load_filelist(cache_dir, game)
@@ -667,7 +667,7 @@ def save_assetlist(items, filelist, *path, quiet=False, prefer=None):
 #   filename:   'Map'
 # 
 # For output data used by the web map it's likely:
-#  '..\\data', 'gameClasses'
+#  '..\\public\\data', 'gameClasses'
 #
 # Extension should not be included. Empty strings will be ignored/skipped
 
@@ -1004,7 +1004,7 @@ def export_sw_markers(cache_dir, game):
             if comment:
                 data[-1]['comment'] = comment
 
-    save_json_file(data, "..\\data", f'markers.{game}.json')
+    save_json_file(data, "..\\public\\data", f'markers.{game}.json')
     print("Done")
 
 
@@ -1050,8 +1050,8 @@ def export_loc_files(cache_dir):
 
     # Merge custom-loc.json into gameClasses.json
     print('Merging custom-loc.json into gameClasses.json...')
-    classes = json.load(open('../data/gameClasses.json', 'r', encoding='utf-8'))
-    customLoc = json.load(open('../data/custom-loc.json', 'r', encoding='utf-8'))
+    classes = json.load(open('../public/data/gameClasses.json', 'r', encoding='utf-8'))
+    customLoc = json.load(open('../public/data/custom-loc.json', 'r', encoding='utf-8'))
     for c, d in customLoc.items():
         classes[c] = classes[c] | d
     json.dump(classes, open('gameClasses.json', 'w', encoding='utf-8'), indent = 2)
@@ -1064,7 +1064,7 @@ def export_loc_files(cache_dir):
     ]
     print('Reading files to determine loc keys required...')
     for fn in key_files:
-        path = '../data/'+fn
+        path = '../public/data/'+fn
         if os.path.exists(path):
             data = json.load(open(path, 'r'));
             for entry in data if type(data) is list else data.values():
@@ -1087,8 +1087,8 @@ def export_loc_files(cache_dir):
                     #    print(f'SL  {newlocstr[k]}')
                     #    print(f'SIU {locstr[k]}')
                     newlocstr[k] = locstr[k]
-        print(f'Writing to ../data/loc/locstr-{loc}.json')
-        json.dump(newlocstr, open(f'../data/loc/locstr-{loc}.json', 'w', encoding='utf-8'), indent = 2)
+        print(f'Writing to ../public/data/loc/locstr-{loc}.json')
+        json.dump(newlocstr, open(f'../public/data/loc/locstr-{loc}.json', 'w', encoding='utf-8'), indent = 2)
 
 
     
@@ -1730,7 +1730,7 @@ def friendly_name(cls):
     return n 
 
 # Read gameClasses.json and return data
-def read_game_classes(fn = '..\\data\\gameClasses.json'):
+def read_game_classes(fn = '..\\public\\data\\gameClasses.json'):
     print('Reading "'+fn+'"...')
 
     # Open and read the whole js file if it exists
@@ -1743,7 +1743,7 @@ def read_game_classes(fn = '..\\data\\gameClasses.json'):
     return classes
 
 # Write the specified data to gameClasses.json
-def write_game_classes(classes, fn = '..\\data\\gameClasses.json'):
+def write_game_classes(classes, fn = '..\\public\\data\\gameClasses.json'):
     with open(fn, 'w') as f:
         print(f"Writing loc data to {fn}...")
         json.dump(classes, f, indent = 2)

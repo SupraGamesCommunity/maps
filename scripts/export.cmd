@@ -349,7 +349,7 @@ goto :eof
 :siu_gentiles
 :sw_gentiles
 
-set tiledir=..\tiles\%game%\base
+set tiledir=..\public\tiles\%game%\base
 set mappng=..\source\%game%map-final.png
 
 echo %colGrn%Generating map tiles in %tiledir% from %mappng%%colDef%
