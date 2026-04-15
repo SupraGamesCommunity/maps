@@ -13,6 +13,7 @@ export default defineConfig(({ command, mode }) => {
       babel({ presets: [reactCompilerPreset()] })
     ],
     build: {
+      sourcemap: true,
       rollupOptions: {
         input: {
           main: './index.html',

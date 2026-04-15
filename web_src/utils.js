@@ -147,8 +147,8 @@ export function SaveObjectToJsonFile(obj, fileName) {
 
 // Adds a non-enumerable/configurable/writable function to a base class. Function
 // cannot be anonymous
-function extendClass(type, fn) {
-  Object.defineProperty(type.prototype, fn.name, {
+function extendClass(type, fnName, fn) {
+  Object.defineProperty(type.prototype, fnName, {
     enumerable: false, configurable: false, writable: false,
     value: fn
   });
@@ -192,7 +192,7 @@ export function mergeDeep(target, ...sources) {
 
 
 // Returns characters up to first instance of str. If str not found whole string is returned.
-extendClass(String, function before(str) {
+extendClass(String, "before", function before(str) {
   let index = this.indexOf(str);
   if (index >= 0) {
     return this.slice(0, index);
@@ -201,7 +201,7 @@ extendClass(String, function before(str) {
 });
 
 // Returns characters after first instance of str. If str not found empty string is returned  
-extendClass(String, function after(str) {
+extendClass(String, "after", function after(str) {
   let index = this.indexOf(str);
   if (index >= 0) {
     return this.slice(index + str.length);
@@ -210,40 +210,40 @@ extendClass(String, function after(str) {
 });
 
 // Returns first integer found within string (null if there isn't one)
-extendClass(String, function firstInteger() {
+extendClass(String, "firstInteger", function firstInteger() {
   const match = this.match(/\d+/);
   return match && match[0];
 });
 
 // Returns first fixed floating point number found within string (null if there isn't one)
-extendClass(String, function firstFixedFloat() {
+extendClass(String, "firstFixedFloat", function firstFixedFloat() {
   const match = this.match(/[-+]?[0-9]+\. [0-9]+/);
   return match && match[0];
 });
 
 // Converts camel case string to equivalent snake case
-extendClass(String, function camelToSnakeCase() {
+extendClass(String, "camelToSnakeCase", function camelToSnakeCase() {
   return this.replace(/(.)([A-Z][a-z]+)/, '$1_$2').replace(/([a-z0-9])([A-Z])/, '$1_$2').toLowerCase()
 });
 
 // Convert snake (or kebab) case string to equivalent camel case. Note: if multiple _ will only remove one.
 // Use: text.replace(/[_]+/g, '_')
-extendClass(String, function snakeToCamelCase() {
+extendClass(String, "snakeToCamelCase", function snakeToCamelCase() {
   return this.toLowerCase().replace(/[-_][a-z0-9]/g, (group) => group.slice(-1).toUpperCase());
 });
 
 // Return string with first character converted to upper case
-extendClass(String, function capitalised() {
+extendClass(String, "capitalised", function capitalised() {
   return this.charAt(0).toUpperCase() + this.slice(1);
 });
 
 // Convert snake (or kebab) case string to UI friendly capitalised with spaces
-extendClass(String, function snakeToUI() {
+extendClass(String, "snakeToUI", function snakeToUI() {
   return this.split('_').map(f => f.capitalised()).join(' ');
 });
 
 // Return camel case string with spaces between capitals and preceding characters
-extendClass(String, function camelToUI() {
+extendClass(String, "camelToUI", function camelToUI() {
   return this.capitalise().replace(/([A-Z])/g, ' $1').trim()
 });
 
@@ -251,34 +251,34 @@ extendClass(String, function camelToUI() {
 // Object extension functions
 
 // Returns copy of dictionary with all unspecified members filtered out
-extendClass(Object, function entriesPick(obj, arr) {
+extendClass(Object, "entriesPick", function entriesPick(obj, arr) {
   return Object.entries(obj).filter(([k]) => arr.includes(k));
 });
 
 // Returns copy of dictionary with all specified members filtered out
-extendClass(Object, function entriesOmit(obj, arr) {
+extendClass(Object, "entriesOmit", function entriesOmit(obj, arr) {
   return Object.entries(obj).filter(([k]) => !arr.includes(k));
 });
 
 // Returns copy of dictionary with all unspecified members filtered out
-extendClass(Object, function pick(obj, arr) {
+extendClass(Object, "pick", function pick(obj, arr) {
   return Object.fromEntries(Object.entriesPick(obj, arr));
 });
 
 // Returns copy of dictionary with all specified members filtered out
-extendClass(Object, function omit(obj, arr) {
+extendClass(Object, "omit", function omit(obj, arr) {
   return Object.fromEntries(Object.entriesOmit(obj, arr));
 });
 
 
 // Mutating non-recursive function to remove null, undefined and empty string members of object/dictionary
-extendClass(Object, function removeEmpty() {
+extendClass(Object, "removeEmpty", function removeEmpty() {
   Object.keys(this).forEach((k) => (this[k] === null || this[k] === undefined || this[k] === '') && delete this[k]);
   return this;
 });
 
 // Non-mutating non-recursive function to remove null, undefined and empty string members of object/dictionary
-extendClass(Object, function emptyRemoved() {
+extendClass(Object, "emptyRemoved", function emptyRemoved() {
   const ret = { ...this };
   Object.keys(ret).forEach((k) => (ret[k] === null || ret[k] === undefined || ret[k] === '') && delete ret[k]);
   return ret;
