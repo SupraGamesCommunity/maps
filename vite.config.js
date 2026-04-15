@@ -3,11 +3,9 @@ import react, { reactCompilerPreset } from '@vitejs/plugin-react'
 import babel from '@rolldown/plugin-babel'
 
 // https://vite.dev/config/
-export default defineConfig(({ command, mode }) => {
-  const isProduction = command === 'build';
-
+export default defineConfig(() => {
   return {
-    base: isProduction ? '/maps/' : '/',
+    base: './',
     plugins: [
       react(),
       babel({ presets: [reactCompilerPreset()] })

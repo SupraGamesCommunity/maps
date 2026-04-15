@@ -1,0 +1,3 @@
+# This prevents package-lock.lock from displaying in Github diffs by default. These are machine-generated and typically
+# just add noise to PR reviews, so we hide them.
+package-lock.json linguist-generated=true

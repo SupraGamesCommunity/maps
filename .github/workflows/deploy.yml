@@ -1,10 +1,11 @@
 ---
+# This workflow is based on the template provided in the Vite docs: https://vite.dev/guide/static-deploy#github-pages
 name: Deploy static content to Pages
 
 on:
   # Runs on pushes targeting the default branch
   push:
-    branches: ['web_pipeline']
+    branches: ['main']
   pull_request:
     branches: ["main"]
 
