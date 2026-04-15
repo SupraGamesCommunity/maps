@@ -42,7 +42,6 @@ function toggleBuildMode() {
   skipConfirms || alert('Build mode is now set to ' + Settings.global.buildMode + '.');
 }
 
-/* eslint-disable-next-line no-unused-vars */
 function updateBuildModeValue(event) {
   let el = event.target;
   let value = ('{["'.includes((el.value+' ').charAt(0))) ? JSON.parse(el.value) : el.value;
@@ -53,7 +52,6 @@ window.updateBuildModeValue = function (event) {
     updateBuildModeValue(event);
 }
 
-/* eslint-disable-next-line no-unused-vars */
 function commitCurrentBuildModeChanges() {
   Object.getOwnPropertyNames(buildMode.objectChanges).forEach(
     function (i) {
