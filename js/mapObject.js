@@ -225,7 +225,7 @@ export class MapObject {
     }
   
     // If subclass hasn't set default set it based on setfound
-    if (this._foundLockedState === undefined && c.setfound) {
+    if (this._foundLockedState === undefined && 'setfound' in c) {
       this._foundLockedState = c.setfound;
     }
 
@@ -276,7 +276,8 @@ export class MapObject {
 
   // Callback from saveFileSystem when save data changes
   onSaveEvent(id, data) {
-    this.markFound(data);
+    if(this._foundLockedState === undefined)
+      this.markFound(data);
   }
 
   // Returns true if MapObject is 'found'
