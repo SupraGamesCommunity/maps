@@ -7,7 +7,7 @@ export default defineConfig(({ command, mode }) => {
   const isProduction = command === 'build';
 
   return {
-    base: isProduction ? '/supramaps/' : '/',
+    base: isProduction ? '/maps/' : '/',
     plugins: [
       react(),
       babel({ presets: [reactCompilerPreset()] })
