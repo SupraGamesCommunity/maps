@@ -422,7 +422,7 @@ export class MapObject {
       text += fmtrow('Variant', o.variant);
 
     if(o.description || GameClasses.get(o.type).description)
-      text += fmtrow('Description', (a) => { return `${locStr.description(o, o.type, mapId)}` })
+      text += fmtrow('Description', locStr.description(o, o.type, mapId));
 
     if(o.comment)
       text += fmtrow('Comment', o.comment);
