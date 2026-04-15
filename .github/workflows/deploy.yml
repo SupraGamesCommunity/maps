@@ -1,5 +1,6 @@
 ---
-# This workflow is based on the template provided in the Vite docs: https://vite.dev/guide/static-deploy#github-pages
+# This workflow is based on the template provided by Vite:
+# https://vite.dev/guide/static-deploy#github-pages
 name: Deploy static content to Pages
 
 on:
