@@ -44,9 +44,9 @@ function toggleBuildMode() {
 
 function updateBuildModeValue(event) {
   let el = event.target;
-  buildMode.object[el.id] = el.value;
-  buildMode.objectChanges[MapObject.makeAlt(buildMode.object.area, buildMode.object.name) + '|' + el.id] = el.value;
-  //alert(buildMode.object.name + ' property ' + el.id + ' changed from ' + el.defaultValue + ' to ' + el.value + '.');
+  let value = ('{["'.includes((el.value+' ').charAt(0))) ? JSON.parse(el.value) : el.value;
+  buildMode.object[el.id] = value;
+  buildMode.objectChanges[MapObject.makeAlt(buildMode.object.area, buildMode.object.name) + '|' + el.id] = value;
 }
 window.updateBuildModeValue = function (event) {
     updateBuildModeValue(event);
@@ -397,18 +397,32 @@ async function loadMap(mapParam) {
   // Setup keyboard controls
   setupKeyControls(map, searchControl);
 
+  if(mapParam.hasAlt()){
+    MapObject.showAlt(mapParam.getAlt(), mapParam.getShow());
+  }
+
+  // This is a fix for the map tiles going black when you reactivate a tab/window containing
+  // the map. If it happens zooming in/out or refreshing fixes it. Seems to be a problem with
+  // leaflet - though I've not found a good reference discussing it.
+  window.addEventListener("visibilitychange", () => {
+    if (!window.document.hidden && map) {
+        map.invalidateSize();
+    }
+  });
 
   // Done loading so ok to switch maps
   loadMap.isLoading = false;
-
 } // end of loadmap
 
 //=================================================================================================
 window.onhashchange = function () {   // (e)
   const mapParam = new MapParam(browser.getHashAndClear());
 
-  if (mapParam.mapId && mapParam.mapId != map.mapId) {
+  if (!map || mapParam.mapId && mapParam.mapId != map.mapId) {
     loadMap(mapParam);
+  }
+  else if (mapParam.hasAlt()) {
+    MapObject.showAlt(mapParam.getAlt(), mapParam.getShow());
   }
   else if (mapParam.hasView()) {
     map.setView(mapParam.getCenter(map.getCenter()), mapParam.getZoom(map.getZoom()));

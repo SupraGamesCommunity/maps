@@ -1,4 +1,4 @@
-html, body, #map { width:100%; height:100%; margin:0; padding:0; z-index: 1; background: #000; }
+html, body, #map { width:100%; height:100%; margin:0; padding:0; z-index: 1; background: #000; contain: paint; }
 .leaflet-control { user-select: none;}
 
 .found { opacity: 30%; }
@@ -82,6 +82,43 @@ path[alt=''] { opacity: 100% }
   font-size: .75em;
   word-wrap: break-word;
 }
+
+.marker-popup-debug-col {
+  text-align: top;
+  display: inline-block;
+  width: 40px;
+  font-weight: bold;
+  vertical-align: top;
+}
+
+.marker-popup-debug-col2 {
+  display: inline-block;
+  width: 260px;
+  word-wrap: break-word;
+  vertical-align: top;
+  user-select: all;
+}
+
+.marker-popup-edit {
+  font-size: 1em;
+  word-wrap: break-word;
+}
+
+.marker-popup-edit-col {
+  text-align: top;
+  display: inline-block;
+  width: 70px;
+  font-weight: bold;
+  vertical-align: top;
+}
+
+.marker-popup-edit-col2 {
+  display: inline-block;
+  width: 230px;
+  word-wrap: break-word;
+  vertical-align: top;
+}
+
 
 /* Jumppad line drawing */
 .line-jumppad {

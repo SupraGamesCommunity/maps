@@ -1,5 +1,7 @@
 @echo off
 
+
+
 :: Needs the games installed with their locations set in envvars
 :: Uses CUE4Parse.exe from the path/current directory
 :: Spits out files into game specific subdirectories of "source"
@@ -143,6 +145,8 @@ exit /b
 :: python supraland_parse.py -d ..\source -g %game% -o      loc files filtered to just keys we need
 ::
 :: Deal with pipeline update
+
+:: Todo: Add export markers, extract loc keys from blueprints, generate loc files
 
 echo Usage: export {game} [{mode}]
 echo.
@@ -311,7 +315,7 @@ goto :eof
 :sw_mapimg
 
 echo %colGrn%Extracting map images, joining and copying to %gameout%\mapimg\%game%map.png%colDef%
-@echo on
+
 :: Unpack all the map image textures
 %CUE4Parse% %opt% -p %mappath%/%mapimage%?.uasset
 
@@ -319,20 +323,20 @@ echo %colGrn%Extracting map images, joining and copying to %gameout%\mapimg\%gam
 if not exist %gameout%\mapimg md %gameout%\mapimg
 move>nul /Y  "%gameout%\temp\%mappath:/=\%\%mapimage%*.*" "%gameout%\mapimg"
 
-set "hdropt=-colorspace RGB -auto-level -sigmoidal-contrast 3,0.5 -gamma 2.2"
+set "hdropt=-auto-level -sigmoidal-contrast 3,0.5 -gamma 2.2"
+if exist "%gameout%\mapimg\%mapimage%*.hdr" set "hdropt=-colorspace RGB %hdropt%"
 
 if not "%game%"=="sw" (
     :: Stitch the PNG images into two rows and two columns
     magick montage "%gameout%\mapimg\%mapimage%*.png" -geometry +0+0 %gameout%\mapimg\%game%map.png 
 ) else (
-    magick "%gameout%\mapimg\%mapimage%*.png" -resize 4096x4096 -gamma 2.2 miff:- | magick montage miff:- -geometry +0+0 "%gameout%\mapimg\%game%map.png"
+    :: Resize all images to 4k x 4k and adjust colours handling linear colourspace if HDR
+    magick "%gameout%\mapimg\%mapimage%*.*" -resize 4096x4096 %hdropt% miff:- | magick montage miff:- -geometry +0+0 "%gameout%\mapimg\%game%map.png"
 )
-    :: Convert HDR to PNG with gamma correction and merge tiles
-    :: magick "%gameout%\mapimg\%mapimage%*.hdr" %hdropt% miff:- | magick montage miff:- -geometry +0+0 "%gameout%\mapimg\%game%map.png"
 
 :: Cleanup intermediate files
-rem del "%gameout%\mapimg\%mapimage%*.*"
-rem rd /s /q %gameout%\temp
+del "%gameout%\mapimg\%mapimage%*.*"
+rd /s /q %gameout%\temp
 
 goto :eof
 

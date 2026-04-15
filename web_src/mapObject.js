@@ -9,6 +9,7 @@ import { Icons } from './icons.js';
 import { GameClasses } from './gameClasses.js';
 import { MapLayer } from './mapLayer.js';
 import { SaveFileSystem } from './saveFileSystem.js';
+import { MapParam } from './mapParam.js';
 
 //=================================================================================================
 // MapObject class
@@ -56,6 +57,7 @@ import { SaveFileSystem } from './saveFileSystem.js';
 //
 //  onContextMenu              - callback when marker is left clicked on
 //  onPopupOpen                - callback before popup displayed when marker is clicked on
+//  getURL                     - returns URL for this map object
 //
 // Static member functions:
 //
@@ -65,6 +67,7 @@ import { SaveFileSystem } from './saveFileSystem.js';
 //  addObjectFromJson          - called by load to instantiate or merge a MapObject
 //  resetAll                   - called to reset us to initial state (also resets SaveFileSystem)
 //  get                        - returns MapObject from id
+//  showAlt                    - shows the map object specified
 
 export class MapObject {
   static _mapObjects;               // Map from id to a MapObject (or subclass)
@@ -465,26 +468,50 @@ export class MapObject {
     //let a = '<a href="'+url+'" onclick="return false">Map URL</a>';
 
     if (Settings.global.buildMode) {
-      let json = JSON.stringify(o, null, 2)
-      json = json.substring(json.indexOf('\n'), json.lastIndexOf('}'));
-      json = json.replaceAll('\n', '<br>').replaceAll(' ', '&nbsp;');
-      text += '<div class="marker-popup-debug">' + json + '</div><br>'
+      const dbgrow = (title, value) => {
+        value = JSON.stringify(value, null, ' ').replaceAll('"','').replaceAll('\n','');
+        //value = value.replaceAll(' ', '&nbsp;');
+        return `<span class="marker-popup-debug-col">${title}</span><span class="marker-popup-debug-col2">${value}</span><br>`
+      }
+
+      text += '<div class="marker-popup-debug"><br><details><summary><b>Full JSON (dev)</b></summary>';
+      for(const [key, value] of Object.entries(o)){
+        text += dbgrow(key, value);
+      }
+      text += '</details></div>'
     }
 
     if (Settings.global.buildMode) {
       text += '<hr>';
+      text += '<div class="marker-popup-edit"><details><summary><b>Edit JSON (dev)</b></summary>';
+
+      const editrow = (title, value) => {
+        return `<span class="marker-popup-edit-col">${title}</span>`
+          +    '<span class="marker-popup-edit-col2">'
+          +       `<input type="text" id="${title}" onchange="updateBuildModeValue(event);" value="${value}"></input>`
+          +     '</span><br>';
+      }
+
       Object.getOwnPropertyNames(o).forEach(
         function (propName) {
-          if (propName != 'name' && propName != 'area')
-            text += '<br>' + propName + ': <input type="text" id="' + propName + '" onchange="updateBuildModeValue(event);" value="' + o[propName] + '"></input>';
+          if (propName != 'name' && propName != 'area') {
+            const value = typeof o[propName] === 'string' ? o[propName] : JSON.stringify(o[propName]).replaceAll('"', '&quot;');
+            text += editrow(propName, value);
+          }
         }
       );
-      if (!o.yt_video) { text += '<br>yt_video: <input type="text" id="yt_video" onchange="updateBuildModeValue(event);" value=""></input>'; };
-      if (!o.yt_start) { text += '<br>yt_start: <input type="text" id="yt_start" onchange="updateBuildModeValue(event);" value=""></input>'; };
+      if (!o.yt_video) { text += editrow('yt_video', ""); }
+      if (!o.yt_start) { text += editrow('yt_start', ""); }
       text += '<button onclick="commitCurrentBuildModeChanges();">Save</button>';
+      text += '</details></div>';
     }
 
     e.popup.setContent(text);
+  }
+
+  // returns URL for this map object
+  getURL(showPopup=false){
+    MapParam.getMapObjectURL(this.alt, showPopup);
   }
 
   // Activate all layers the MapObject is on
@@ -511,6 +538,14 @@ export class MapObject {
       else if ('type' in obj) {
         mapObject = new objectToSubclass(obj)(alt, obj);
       }
+
+      // Delete any flagged properties completely
+      for (const [prop, value] of Object.entries(obj)){
+        if(value == '!')
+          delete mapObject.o[prop];
+      }
+
+      // Delete object if that key is present
       if (mapObject && 'delete' in obj) {
         mapObject.release();
         mapObject = null;
@@ -566,9 +601,28 @@ export class MapObject {
     return this._mapObjects[id];
   }
 
+  static get_ignorecase(id){
+    id = id.toLowerCase();
+    return this._mapObjects[Object.keys(this._mapObjects).find(k => k.toLowerCase() === id)];
+  }
+
   // Return alt id from string arguments (normally area, name)
   static makeAlt(...args) {
     return args.filter(a => a).join(':');   // Join all truthy arguments (a !== null && a !== undefined && a !== '') might by better?
+  }
+
+  // Move view point to object specified and optionallly show popup
+  static showAlt(alt, showPopup=false) {
+    const mapObj = MapObject.get_ignorecase(alt);
+    if(mapObj){
+      const map = MapLayer._map
+      map.closePopup();
+      map.setView([mapObj.o.lat, mapObj.o.lng], map._loaded ? map.getZoom(0) : 0);
+      mapObj.activateTopLayer(map);
+      if(showPopup){
+        (mapObj.primeMarker || mapObj.groupMarker)?.openPopup(); 
+      }
+    }
   }
 }
 
