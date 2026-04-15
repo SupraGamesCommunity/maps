@@ -36,9 +36,9 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version: 25.x
-          cache: 'npm'
+          # cache: 'npm'
       - name: Install dependencies
-        run: npm clean-install --strict-peer-deps
+        run: npm clean-install
       - name: Build
         run: npm run build
       - name: Setup Pages
