@@ -135,7 +135,7 @@ function setupKeyControls(map, searchControl){
     const le = e;
     e = e.originalEvent;
 
-    if (e.target.id.startsWith('searchtext') /*|| Settings.global.buildMode*/) {
+    if (e.target.localName == 'input' || e.target.id.startsWith('searchtext')) {
       return;
     }
   
