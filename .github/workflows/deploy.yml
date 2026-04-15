@@ -38,7 +38,7 @@ jobs:
           node-version: lts/*
           cache: 'npm'
       - name: Install dependencies
-        run: npm clean-install
+        run: npm clean-install --include dev
       - name: Build
         run: npm run build
       - name: Setup Pages
