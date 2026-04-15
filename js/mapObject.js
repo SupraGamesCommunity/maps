@@ -462,6 +462,9 @@ export class MapObject {
       text += `<input type="checkbox" id="${this.alt}" ${value} onclick=window.mapObjectFound("${this.alt}",this.checked)><label for="${this.alt}">`
       text += 'Found</label></div>';
     }
+    else{
+      text += '<div class="marker-popup-found">&nbsp;</div>';
+    }
 
     //let base = window.location.href.replace(/#.*$/,'');
     //let vars = {mapId:mapId, lat:Math.round(map.getCenter().lat), lng:Math.round(map.getCenter().lng), zoom:map.getZoom()};
