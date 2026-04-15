@@ -11,8 +11,9 @@ dist
 dist-ssr
 *.local
 
-# Libraries installed for python
+# Libraries installed for python and default virtual environments
 site-packages/
+.venv*
 
 # Binary and intermediate files from VS projects amongst others
 bin/
@@ -25,6 +26,7 @@ obj/
 
 # Editor directories and files
 .vscode/*
+.vs
 !.vscode/extensions.json
 .idea
 .DS_Store
