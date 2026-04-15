@@ -501,8 +501,8 @@ export class MapObject {
           }
         }
       );
-      if (!o.yt_video) { text += editrow('yt_video', ""); }
-      if (!o.yt_start) { text += editrow('yt_start', ""); }
+      if (!('yt_video' in o)) { text += editrow('yt_video', ""); }
+      if (!('yt_start' in o)) { text += editrow('yt_start', ""); }
       text += '<button onclick="commitCurrentBuildModeChanges();">Save</button>';
       text += '</details></div>';
     }
