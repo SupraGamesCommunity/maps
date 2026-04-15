@@ -73,7 +73,6 @@ Many marker icons supplied by DavidM from game assets and others made by the com
 - [leaflet-search](https://github.com/stefanocudini/leaflet-search) - search icon for leaflet maps.
 - [leaflet](https://leafletjs.com/) - A javascript library for interactive maps.
 - [leaflet.toolbar](https://github.com/Leaflet/Leaflet.toolbar) -  flexible, extensible toolbar interfaces for Leaflet maps.
-- [papaparse](https://github.com/mholt/PapaParse) - Fast CSV reading.
 - [UE4Parse](https://github.com/MinshuG/pyUE4Parse) - UE4 PAK file reader for Python.
 - [joric/UE4Parse](https://github.com/joric/pyUE4Parse.git) - Joric's fork of the UE4 parse (modified).
 - [joric/CUE4Parse.CLI](https://github.com/joric/CUE4Parse.CLI)
