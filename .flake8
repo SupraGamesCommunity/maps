@@ -1,0 +1,40 @@
+[flake8]
+ignore =
+    # F541 - f-string is missing placeholders
+    F541,
+    # F401 - module imported but unused
+    F401,
+    # E402 - module level import not at top of file
+    E402,
+    # E128 - continuation line under-indented for visual indent
+    E128,
+    # E131 - continuation line unaligned for hanging indent
+    E131,
+    # E121 - continuation line under-indented for hanging indent
+    E121
+    # E124 - closing bracket does not match visual indentation
+    E124,
+    # E125 - continuation line with same indent as next logical line
+    E125,
+    # W503 - linebreak before binary operator
+    W503,
+    # E203 - whitespace before ':'
+    E203,
+    # E501 - Line too long
+    E501
+    # E701 - multiple statements on one line (colon)
+    # This is necessary because Black 24.x now merges `...` onto the previous line
+    E701
+    # E704 - multiple statements on one line (def)
+    # This is necessary because Black 24.x now merges `...` onto the previous line
+    E704
+
+# Defaults
+# E121,E123,E126,E226,E24,E704,W503,W504
+
+exclude =
+  .git,
+  __pycache__
+
+max-complexity = 10
+max-line-length = 120
