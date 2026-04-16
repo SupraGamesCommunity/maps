@@ -12,22 +12,26 @@ import { MapLayer } from './mapLayer.js';
 export class MapPins {
   static _defaultLayer = 'coordinate';
   static _defaultOptions = {
-    layerId: this._defaultLayer,      // By default add to the coordinate layer
-    activateLayer: true,              // By default activate the layer when adding a pin
-    pos: undefined,                   // By default pins are added to the center of the viewable area [lat: lat, lng: lng]
-  }
+    layerId: this._defaultLayer, // By default add to the coordinate layer
+    activateLayer: true, // By default activate the layer when adding a pin
+    pos: undefined, // By default pins are added to the center of the viewable area [lat: lat, lng: lng]
+  };
 
   static _markers = {};
 
   // Returns alt name for the pin
-  static getAlt(idx) { return `XYMarker ${idx}`; }
+  static getAlt(idx) {
+    return `XYMarker ${idx}`;
+  }
 
-  // Returns true if we have any pins at the moment 
-  static hasAny() { return Object.keys(this._markers).length > 0; }
+  // Returns true if we have any pins at the moment
+  static hasAny() {
+    return Object.keys(this._markers).length > 0;
+  }
 
   static getPinTitle = (idx) => {
     const pin = Settings.map.mapPins[idx];
-    return `${pin.type != undefined ? pin.type + ' ' : ''}${idx}: (${pin.pos.lng.toFixed(0)},${pin.pos.lat.toFixed(0)})`
+    return `${pin.type != undefined ? pin.type + ' ' : ''}${idx}: (${pin.pos.lng.toFixed(0)},${pin.pos.lat.toFixed(0)})`;
   };
 
   // Add a pin or update it if it already exists
@@ -36,8 +40,7 @@ export class MapPins {
 
     const mapLayer = MapLayer.get(options.layerId);
 
-    if (!(mapLayer?.isEnabled(map.mapId)))
-      return;
+    if (!mapLayer?.isEnabled(map.mapId)) return;
 
     // Figure out index, position and type of pin
     const idx = options.idx || Object.keys(Settings.map.mapPins).length;
@@ -45,29 +48,42 @@ export class MapPins {
     const type = options.type || Settings.map.mapPins[idx]?.type;
 
     // Save / update pin in settings
-    Settings.map.mapPins[idx] = { pos: pos, ...type != undefined ? { type: type } : {} };
+    Settings.map.mapPins[idx] = { pos: pos, ...(type != undefined ? { type: type } : {}) };
     Settings.commit();
 
     const alt = MapPins.getAlt(idx);
     if (!(alt in this._markers)) {
-
-      const marker = L.marker(pos, { zIndexOffset: MapLayer.frontZIndexOffset, draggable: true, title: this.getPinTitle(idx), pinIdx: idx, layerId: mapLayer.id })
+      const marker = L.marker(pos, {
+        zIndexOffset: MapLayer.frontZIndexOffset,
+        draggable: true,
+        title: this.getPinTitle(idx),
+        pinIdx: idx,
+        layerId: mapLayer.id,
+      })
         .bindPopup()
-        .on('moveend', function (e) {
-          const idx = e.target.options.pinIdx;
-          Settings.map.mapPins[idx].pos = e.target.getLatLng();
-          Settings.commit();
-          e.target._icon.title = this.getPinTitle(idx);
-        }, this)
-        .on('popupopen', function (e) {
-          const idx = e.target.options.pinIdx;
-          marker.setPopupContent(this.getPinTitle(idx));
-          marker.openPopup();
-        }, this).addTo(mapLayer.id == '_map' ? map : mapLayer.layerObj);
+        .on(
+          'moveend',
+          function (e) {
+            const idx = e.target.options.pinIdx;
+            Settings.map.mapPins[idx].pos = e.target.getLatLng();
+            Settings.commit();
+            e.target._icon.title = this.getPinTitle(idx);
+          },
+          this
+        )
+        .on(
+          'popupopen',
+          function (e) {
+            const idx = e.target.options.pinIdx;
+            marker.setPopupContent(this.getPinTitle(idx));
+            marker.openPopup();
+          },
+          this
+        )
+        .addTo(mapLayer.id == '_map' ? map : mapLayer.layerObj);
 
       this._markers[alt] = marker;
-    }
-    else {
+    } else {
       this._markers[alt].setLatLng(pos);
     }
 
@@ -83,7 +99,7 @@ export class MapPins {
       for (const idx in Settings.map.mapPins) {
         pins += this.getPinTitle(idx) + '\r\n';
       }
-      browser.copyTextToClipboard(pins)
+      browser.copyTextToClipboard(pins);
     }
   }
 

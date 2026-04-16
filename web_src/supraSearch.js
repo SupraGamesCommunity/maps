@@ -22,10 +22,10 @@ const _super = L.Control.Search.prototype;
 
 L.Control.SupraSearch = L.Control.Search.extend({
   options: {
-    marker: false,          // no red circle
-    initial: false,         // search any substring
-    tipAutoSubmit: false,   // auto map panTo when click on tooltip
-    textPlaceholder: 'Search (Enter to save search phrase)'
+    marker: false, // no red circle
+    initial: false, // search any substring
+    tipAutoSubmit: false, // auto map panTo when click on tooltip
+    textPlaceholder: 'Search (Enter to save search phrase)',
   },
 
   // Slightly changes default options plus creates a LayerGroup containing a filtered version of 'our' layers
@@ -36,39 +36,56 @@ L.Control.SupraSearch = L.Control.Search.extend({
   },
 
   // Called from onAdd when control added to map
-  // When text input gets focus, select any 'text' so typing will overwrite it 
+  // When text input gets focus, select any 'text' so typing will overwrite it
   _createInput: function (text, className) {
     const input = _super._createInput.call(this, text, className);
 
-    L.DomEvent.on(input, 'focus', function (e) { setTimeout(function (e) { e.target.select(); }, 50, e); }, this);
+    L.DomEvent.on(
+      input,
+      'focus',
+      function (e) {
+        setTimeout(
+          function (e) {
+            e.target.select();
+          },
+          50,
+          e
+        );
+      },
+      this
+    );
     return input;
   },
 
   // Called when finding matches via showTooltip to create the list of options
-  // We gray out the tool tips for found objects 
+  // We gray out the tool tips for found objects
   // and when the user clicks on a tip, go to that location like _handleSubmit
   _createTip: function (text, value) {
     const tip = _super._createTip.call(this, text, value);
     // Grey out tip items that have been found (TODO: fix to be more reliable)
-    if(MapObject.get(value.layer.options.alt).isFound()) {
+    if (MapObject.get(value.layer.options.alt).isFound()) {
       tip.style.color = '#bbb';
     }
 
     // When user clicks on the tip store the text, go to the tip location
-    L.DomEvent
-      .disableClickPropagation(tip)
+    L.DomEvent.disableClickPropagation(tip)
       .on(tip, 'click', L.DomEvent.stop, this)
-      .on(tip, 'click', function (e) {
-        Settings.map.searchText = this._input.value;
-        Settings.commit();
+      .on(
+        tip,
+        'click',
+        function (e) {
+          Settings.map.searchText = this._input.value;
+          Settings.commit();
 
-        const text = e.target.innerText
-        let loc;
-        if ((loc = this._getLocation(text))) {
-          this.showLocation(loc, text);
-          this.fire('search:locationfound', { latlng: loc, text: text, layer: loc.layer });
-        }
-      }, this);
+          const text = e.target.innerText;
+          let loc;
+          if ((loc = this._getLocation(text))) {
+            this.showLocation(loc, text);
+            this.fire('search:locationfound', { latlng: loc, text: text, layer: loc.layer });
+          }
+        },
+        this
+      );
 
     return tip;
   },
@@ -101,7 +118,7 @@ L.Control.SupraSearch = L.Control.Search.extend({
     }
   },
 
-  // When expanding set the input text to our value 
+  // When expanding set the input text to our value
   expand: function (toggle) {
     _super.expand.call(this, toggle);
 
@@ -115,8 +132,7 @@ L.Control.SupraSearch = L.Control.Search.extend({
   cancel: function (e) {
     if (e && e.currentTarget.className == 'search-cancel') {
       Settings.map.searchText = '';
-    }
-    else{
+    } else {
       Settings.map.searchText = this._input.value;
     }
     Settings.commit();

@@ -6,31 +6,42 @@ import { Settings } from './settings.js';
 
 // L.tileLayer.canvas() is faster than L.tileLayer() and fixes a visible line between tiles on most browsers
 // However on Firefox it makes the lines much worse, so we choose based on which browser
-const L_tileLayer = browser.isFirefox ? L.tileLayer : L.tileLayer.canvas
+const L_tileLayer = browser.isFirefox ? L.tileLayer : L.tileLayer.canvas;
 
 function boundsShrink(b, d) {
-  return [{ x: b[0].x + d, y: b[0].y + d }, { x: b[1].x - d, y: b[1].y - d }];
+  return [
+    { x: b[0].x + d, y: b[0].y + d },
+    { x: b[1].x - d, y: b[1].y - d },
+  ];
 }
 function boundsMin(b1, b2) {
-  return [{ x: Math.max(b1[0].x, b2[0].x), y: Math.max(b1[0].y, b2[0].y) }, { x: Math.min(b1[1].x, b2[1].x), y: Math.max(b1[1].y, b2[1].y) }];
+  return [
+    { x: Math.max(b1[0].x, b2[0].x), y: Math.max(b1[0].y, b2[0].y) },
+    { x: Math.min(b1[1].x, b2[1].x), y: Math.max(b1[1].y, b2[1].y) },
+  ];
 }
 
 export class MapLayer {
-  static _layers;         // Map from layer id to layer instance
+  static _layers; // Map from layer id to layer instance
 
-  static _map;            // Leaflet Map
+  static _map; // Leaflet Map
 
-  static _baseMap = new MapLayer('_map', { type: '_map', category: '_map', name: '_map',
-      defaultIcon: 'misc', defaultActive: true, zDepth: 0,
-      games: ['sl', 'slc', 'siu', 'sw'],
-    });
+  static _baseMap = new MapLayer('_map', {
+    type: '_map',
+    category: '_map',
+    name: '_map',
+    defaultIcon: 'misc',
+    defaultActive: true,
+    zDepth: 0,
+    games: ['sl', 'slc', 'siu', 'sw'],
+  });
 
   // Instance constructor
   constructor(layerId, json) {
-    this.id = layerId;               // Id for the layer
-    this.config = json;              // Configuration from layerConfigs.json
-    this.active = false;             // Is layer active (visible) on map?
-    this.layerObj = null;            // Leaflet layer object
+    this.id = layerId; // Id for the layer
+    this.config = json; // Configuration from layerConfigs.json
+    this.active = false; // Is layer active (visible) on map?
+    this.layerObj = null; // Leaflet layer object
 
     if (this.config.mapBounds) {
       // Shrink map bounds by 1 to avoid TileLayer trying to load tiles that are out of range (could cause 404 errors)
@@ -42,26 +53,55 @@ export class MapLayer {
   // Accessors for the most commonly used configuration data
 
   // Full name for the layer
-  get name() { return locStr.str(this.config.name, this.config.name_key); }
+  get name() {
+    return locStr.str(this.config.name, this.config.name_key);
+  }
 
   // List of games (base maps) this layer is enabled for
-  get games() { return this.config.games; }
+  get games() {
+    return this.config.games;
+  }
 
   // Returns true if layer is enabled for current mapId
-  isEnabled(mapId) { return this.games.includes(mapId); }
+  isEnabled(mapId) {
+    return this.games.includes(mapId);
+  }
 
   // Returns true if layer is currently attached to map
-  get isActive() { return this.active; }
+  get isActive() {
+    return this.active;
+  }
 
   // For Marker layers there is a default icon name and Z depth
-  get type() { return this.config.type; }
-  get icon() { return this.config.defaultIcon; }
-  get zDepth() { return this.config.zDepth; }
+  get type() {
+    return this.config.type;
+  }
+  get icon() {
+    return this.config.defaultIcon;
+  }
+  get zDepth() {
+    return this.config.zDepth;
+  }
 
   // For base layers we can get the bounds and center
-  get mapLatLngBounds() { return [[this.config.mapBounds[0].y, this.config.mapBounds[0].x], [this.config.mapBounds[1].y, this.config.mapBounds[1].x]]; }
-  get viewLatLngBounds() { return [[this.config.viewBounds[0].y, this.config.viewBounds[0].x], [this.config.viewBounds[1].y, this.config.viewBounds[1].x]]; }
-  get viewCenterLngLat() { return [[(this.config.viewBounds[0].y + this.config.viewBounds[1].y) * 0.5], [(this.config.viewBounds[0].x + this.config.viewBounds[1].x) * 0.5]]; }
+  get mapLatLngBounds() {
+    return [
+      [this.config.mapBounds[0].y, this.config.mapBounds[0].x],
+      [this.config.mapBounds[1].y, this.config.mapBounds[1].x],
+    ];
+  }
+  get viewLatLngBounds() {
+    return [
+      [this.config.viewBounds[0].y, this.config.viewBounds[0].x],
+      [this.config.viewBounds[1].y, this.config.viewBounds[1].x],
+    ];
+  }
+  get viewCenterLngLat() {
+    return [
+      [(this.config.viewBounds[0].y + this.config.viewBounds[1].y) * 0.5],
+      [(this.config.viewBounds[0].x + this.config.viewBounds[1].x) * 0.5],
+    ];
+  }
 
   // Leaflet Z index is based on the latitude, so our offsets need to be bigger than the max range of latitude
   static zIndexScale = 300000;
@@ -69,8 +109,9 @@ export class MapLayer {
   static frontZIndexOffset = 20 * MapLayer.zIndexScale;
 
   // Z Index offset for objects on this layer (found and unfound)
-  getZIndexOffset(found) { return this.zDepth * MapLayer.zIndexScale + (found ? MapLayer.backZIndexOffset : 0); }
-
+  getZIndexOffset(found) {
+    return this.zDepth * MapLayer.zIndexScale + (found ? MapLayer.backZIndexOffset : 0);
+  }
 
   // When this layer is activated (normally via layer control) record that we're active and update settings
   onAdd() {
@@ -110,20 +151,21 @@ export class MapLayer {
     const tileExt = cfg.type == 'tiles' ? '.png' : '.jpg';
 
     let options = {
-      tileSize: L.point(cfg.tileRes, cfg.tileRes),  // Tile size is currently fixed
-      noWrap: true,                                 // tops map wrapping
-      updateInterval: -1,                           // Allows map to update as often as needed when panning
-      keepBuffer: 16,                               // More tiles loaded when panning 
-      minNativeZoom: 0, maxNativeZoom: 4,           // Zooming beyond this means auto-scaled
-      bounds: this.viewLatLngBounds,                // Tiles only loaded in this area
-      layerId: id,                                  // Store the name for the map
+      tileSize: L.point(cfg.tileRes, cfg.tileRes), // Tile size is currently fixed
+      noWrap: true, // tops map wrapping
+      updateInterval: -1, // Allows map to update as often as needed when panning
+      keepBuffer: 16, // More tiles loaded when panning
+      minNativeZoom: 0,
+      maxNativeZoom: 4, // Zooming beyond this means auto-scaled
+      bounds: this.viewLatLngBounds, // Tiles only loaded in this area
+      layerId: id, // Store the name for the map
     };
 
     if (id == mapId) {
-      options.attribution = '<a href="https://github.com/SupraGamesCommunity/maps" target="_blank">SupraGames Community</a>';
+      options.attribution =
+        '<a href="https://github.com/SupraGamesCommunity/maps" target="_blank">SupraGames Community</a>';
       tilesDir += 'base';
-    }
-    else {
+    } else {
       tilesDir += id;
     }
     return L_tileLayer(tilesDir + '/{z}/{x}/{y}' + tileExt, options);
@@ -140,19 +182,16 @@ export class MapLayer {
         this.active = true;
 
         this.layerObj = this.createTileLayer(map).addTo(map);
-      }
-      else {
+      } else {
         // The other selectable maps
         this.layerObj = L.layerGroup([], { layerId: this.id });
         this.active = false;
       }
-    }
-    else if (this.config.type == 'markers') {
+    } else if (this.config.type == 'markers') {
       if (this.config.type == 'tiles') {
         // An extra tile layer (used to be used for pipe/pad map overlay)
         this.layerObj = this.createTileLayer(map);
-      }
-      else {
+      } else {
         // A collection of markers
         this.layerObj = L.layerGroup([], { layerId: this.id });
       }
@@ -163,19 +202,18 @@ export class MapLayer {
       }
       this.layerObj.on('add', this.onAdd, this);
       this.layerObj.on('remove', this.onRemove, this);
-    }
-    else if(this.config.type == '_map') {
+    } else if (this.config.type == '_map') {
       this.layerObj = MapLayer._map;
-      this.active = true;      
+      this.active = true;
     }
   }
 
   // Reset layer to initial state (releasing layerObj)
   reset() {
-    if(this.config.type != '_map' && this.layerObj) {
+    if (this.config.type != '_map' && this.layerObj) {
       this.layerObj.off('add remove');
       this.layerObj.remove();
-    } 
+    }
     this.active = false;
     this.layerObj = null;
   }
@@ -190,15 +228,21 @@ export class MapLayer {
     return MapLayer._layers[layerId].layerObj;
   }
 
-  // Returns true if the specified layer will be selectable on the layer control 
-  static isEnabledFromId(layerId, mapId) { return !!MapLayer._layers[layerId]?.isEnabled(mapId); }
+  // Returns true if the specified layer will be selectable on the layer control
+  static isEnabledFromId(layerId, mapId) {
+    return !!MapLayer._layers[layerId]?.isEnabled(mapId);
+  }
 
   // Returns true if the specified layer is/will be active
-  static isActiveFromId(layerId) { return Boolean(MapLayer._layers?.[layerId].active); }
+  static isActiveFromId(layerId) {
+    return Boolean(MapLayer._layers?.[layerId].active);
+  }
 
-  static getZIndexOffsetFromId(layerId, found) { return MapLayer._layers[layerId].getZIndexOffset(found); }
+  static getZIndexOffsetFromId(layerId, found) {
+    return MapLayer._layers[layerId].getZIndexOffset(found);
+  }
 
-/*
+  /*
   // Retrieve list of the currently active layers
   static getActiveLayers() {
     let activeLayers = {};
@@ -265,8 +309,7 @@ export class MapLayer {
     for (const [id, layer] of Object.entries(MapLayer._layers)) {
       if (layer.config.type == 'base') {
         defaultActive[id] = map.mapId == id;
-      }
-      else {
+      } else {
         if (layer.config.defaultActive) {
           defaultActive[id] = true;
         }

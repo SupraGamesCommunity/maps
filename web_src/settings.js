@@ -18,7 +18,6 @@ import { SaveObjectToJsonFile } from './utils.js';
 // TODO: Could add a load of assertions to check for misuse
 
 export class Settings {
-
   // Key used for localStorage API
   static _localDataName = 'supragamescommunity_maps_v2';
 
@@ -35,8 +34,12 @@ export class Settings {
   static _global = Settings._localData;
   static _map = Settings._localData[Settings._defaultMapId];
 
-  static get global() { return Settings._global; }
-  static get map() { return Settings._map; }
+  static get global() {
+    return Settings._global;
+  }
+  static get map() {
+    return Settings._map;
+  }
 
   // Specify default Map Id and load settings from local storage
   static init(defaultMapId) {
@@ -66,8 +69,7 @@ export class Settings {
   // Specify the default value for global setting
   static globalSetDefault(name, value) {
     Settings._defaults[name] = value;
-    if (!(name in Settings._global))
-      Settings._global[name] = value;
+    if (!(name in Settings._global)) Settings._global[name] = value;
   }
 
   // Specify the default value for global setting.
@@ -86,8 +88,7 @@ export class Settings {
       for (const id in Settings._global.maps) {
         Settings._global.maps[id] = Object.assign({}, Settings._mapDefaults);
       }
-    }
-    else {
+    } else {
       Settings._global.maps[Settings.mapId] = Object.assign({}, Settings._mapDefaults);
     }
   }
@@ -107,7 +108,6 @@ export class Settings {
     SaveObjectToJsonFile(Settings._localData, fileName);
   }
 }
-
 
 /*
 Don't think these are needed unless we want to auto-commit on every change

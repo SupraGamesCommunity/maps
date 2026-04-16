@@ -1,10 +1,26 @@
 import { GameClasses } from './gameClasses.js';
-import { browser } from './utils.js'
+import { browser } from './utils.js';
 
 export const locStr = {
-
   // These are the languages we support
-  _locales: ['en', 'de', 'es', 'fi', 'fr', 'hu', 'it-IT', 'ja', 'ko', 'pl', 'pt-PT', 'ru', 'sr', 'tr', 'zh-Hans', 'zh-Hant'],
+  _locales: [
+    'en',
+    'de',
+    'es',
+    'fi',
+    'fr',
+    'hu',
+    'it-IT',
+    'ja',
+    'ko',
+    'pl',
+    'pt-PT',
+    'ru',
+    'sr',
+    'tr',
+    'zh-Hans',
+    'zh-Hant',
+  ],
 
   // Current selected language
   _language: 'en',
@@ -31,7 +47,7 @@ export const locStr = {
 
   // Return value for key or otherwise provided string
   str: function (enStr, lkey) {
-    return this._locStr && lkey && this._locStr[lkey] || enStr;
+    return (this._locStr && lkey && this._locStr[lkey]) || enStr;
   },
 
   // Replace the form of template literals in the loc strings.
@@ -56,8 +72,7 @@ export const locStr = {
     if (obj) {
       if (mapIdKey in obj) {
         str = this.str(obj[mapIdKey], obj[mapIdKey + '_key']);
-      }
-      else {
+      } else {
         str = this.str(obj[dkey], obj[dkey + '_key']);
       }
     }
@@ -65,8 +80,7 @@ export const locStr = {
       const gc = GameClasses.get(ctype);
       if (mapIdKey in gc) {
         str = this.str(gc[mapIdKey], gc[mapIdKey + '_key']);
-      }
-      else {
+      } else {
         str = this.str(gc[dkey], gc[dkey + '_key']);
       }
     }
@@ -80,7 +94,12 @@ export const locStr = {
   // but it is the simplest place to put it.
   humanReadable: function (type) {
     let s = type;
-    s = s.replace('BP_Purchase', '').replace('BP_Buy', '').replace('BP_', '').replace('Purchase_', '').replace('Buy', '')
+    s = s
+      .replace('BP_Purchase', '')
+      .replace('BP_Buy', '')
+      .replace('BP_', '')
+      .replace('Purchase_', '')
+      .replace('Buy', '');
     s = s.replace(/_C$/, '').replace(/.*:/, '').replace('^_', '');
     s = s.replace(/([A-Z]+|[\d]+)/g, ' $1').replace(/^ /, ''); // camel case to space-separated
     return s;
@@ -115,5 +134,5 @@ export const locStr = {
     };
     priceType = priceType || 0;
     return `${price} ${priceTypes[priceType]}${price != 1 && priceType != 5 ? 's' : ''}`;
-  }
-}
+  },
+};

@@ -1,29 +1,26 @@
-
 // Helper for dealing with the loadMap parameters configuration
 export class MapParam {
   constructor(param) {
     let mp = param;
-    if(typeof param === 'string'){
+    if (typeof param === 'string') {
       mp = {};
       if (param.length > 1) {
         for (const s of param.slice(1).toLowerCase().split('&')) {
           let [k, v] = s.split('=');
           mp[k] = v;
         }
-      }  
+      }
     }
     this.mapId = mp.mapId || mp.mapid;
 
-    if('alt' in mp) {
+    if ('alt' in mp) {
       this.alt = mp.alt;
-      if('show' in mp) {
-        this.show = (mp.show === 'true');
+      if ('show' in mp) {
+        this.show = mp.show === 'true';
       }
-    }
-    else if ('n' in mp && 's' in mp && 'e' in mp && 'w' in mp) {
+    } else if ('n' in mp && 's' in mp && 'e' in mp && 'w' in mp) {
       [this.n, this.w, this.s, this.e] = [mp.n, mp.w, mp.s, mp.e];
-    }
-    else {
+    } else {
       if ('zoom' in mp) {
         this.zoom = mp.zoom;
       }
@@ -32,32 +29,69 @@ export class MapParam {
       }
     }
   }
-  hasAlt() { return 'alt' in this; }
-  hasView() { return 'zoom' in this || 'lat' in this; }
-  hasBounds() { return 'n' in this; }
+  hasAlt() {
+    return 'alt' in this;
+  }
+  hasView() {
+    return 'zoom' in this || 'lat' in this;
+  }
+  hasBounds() {
+    return 'n' in this;
+  }
 
-  getAlt() { return this.alt; }
-  getShow() { return 'show' in this ? this.show : false; }
+  getAlt() {
+    return this.alt;
+  }
+  getShow() {
+    return 'show' in this ? this.show : false;
+  }
 
-  getZoom(def) { return 'zoom' in this ? this.zoom : def; }
-  getCenter(def) { return 'lat' in this ? [this.lat, this.lng] : def; }
-  getBounds(def) { return 'n' in this ? [[this.n, this.w], [this.s, this.e]] : def; }
-  get bounds() { return [[this.n, this.w], [this.s, this.e]] }
+  getZoom(def) {
+    return 'zoom' in this ? this.zoom : def;
+  }
+  getCenter(def) {
+    return 'lat' in this ? [this.lat, this.lng] : def;
+  }
+  getBounds(def) {
+    return 'n' in this
+      ? [
+          [this.n, this.w],
+          [this.s, this.e],
+        ]
+      : def;
+  }
+  get bounds() {
+    return [
+      [this.n, this.w],
+      [this.s, this.e],
+    ];
+  }
 
   // Generate our URL format based on current state
   // {base url}#map={sl|slc|siu}&W={bounds west lng}&N={north}&E={east}&S={south}
   static getViewURL(map) {
-    const base = window.location.href.replace(/#.*$/, '')
+    const base = window.location.href.replace(/#.*$/, '');
     const b = map.getBounds();
-    const vars = { mapId: map.mapId, W: Math.round(b.getWest()), N: Math.round(b.getNorth()), E: Math.round(b.getEast()), S: Math.round(b.getSouth()) };
-    const url = base + '#' + Object.entries(vars).map((e) => e[0] + '=' + encodeURIComponent(e[1])).join('&');
+    const vars = {
+      mapId: map.mapId,
+      W: Math.round(b.getWest()),
+      N: Math.round(b.getNorth()),
+      E: Math.round(b.getEast()),
+      S: Math.round(b.getSouth()),
+    };
+    const url =
+      base +
+      '#' +
+      Object.entries(vars)
+        .map((e) => e[0] + '=' + encodeURIComponent(e[1]))
+        .join('&');
     return url;
   }
 
   // Generate a URL for specified object / flag
   // {base url}#alt={alt}&show={true|false}
-  static getMapObjectURL(map, alt, showPopup=false){
-    const base = window.location.href.replace(/#.*$/, '')
+  static getMapObjectURL(map, alt, showPopup = false) {
+    const base = window.location.href.replace(/#.*$/, '');
     const url = `${base}#mapId=${map.mapId}&alt=${alt}&show=${showPopup}`;
     return url;
   }

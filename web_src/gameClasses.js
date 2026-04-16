@@ -7,15 +7,15 @@
 export class GameClasses {
   static _data;
   static _defaultClass = {
-    'friendly': null,
-    'icon': 'question_mark',
-    'layer': 'dev',
-    'nospoiler': null,
-    'lines': 'dev',
+    friendly: null,
+    icon: 'question_mark',
+    layer: 'dev',
+    nospoiler: null,
+    lines: 'dev',
   };
 
   static async loadClasses() {
-    const response = await fetch('data/gameClasses.json')
+    const response = await fetch('data/gameClasses.json');
     const j = await response.json();
     this._data = j;
   }

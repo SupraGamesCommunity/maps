@@ -17,7 +17,7 @@ import { MapParam } from './mapParam.js';
 // Static data members:
 //
 // _mapObjects                - Map id(alt) -> MapObject instance
-// 
+//
 // Instance data members:
 //
 // o                          - object description data from markers json files
@@ -70,11 +70,11 @@ import { MapParam } from './mapParam.js';
 //  showAlt                    - shows the map object specified
 
 export class MapObject {
-  static _mapObjects;               // Map from id to a MapObject (or subclass)
+  static _mapObjects; // Map from id to a MapObject (or subclass)
   static _playerStartPosition;
 
-  o = {};     // The json data loaded from the various marker files
-  alt;        // Our unique 'alt' name (normally area:name)
+  o = {}; // The json data loaded from the various marker files
+  alt; // Our unique 'alt' name (normally area:name)
 
   // Constructor just stores reference to the json object data and our alt name
   constructor(alt, obj) {
@@ -95,8 +95,8 @@ export class MapObject {
     this.releaseSaveListeners();
   }
 
-  // Retrieves unique mouser over text for this map object depending on friendly mode (or dev mode) 
-  // Includes a name, what it spawns, 
+  // Retrieves unique mouser over text for this map object depending on friendly mode (or dev mode)
+  // Includes a name, what it spawns,
   getTooltipText(mapId) {
     const friendly = !Settings.global.buildMode;
     const o = this.o;
@@ -107,9 +107,8 @@ export class MapObject {
       if (o.spawns) {
         text += ` (${locStr.friendly(null, o.spawns, mapId)})`;
       }
-    }
-    else {
-      text = MapObject.makeAlt(o.area, o.name);                    // Ensures non-friendly version is unique
+    } else {
+      text = MapObject.makeAlt(o.area, o.name); // Ensures non-friendly version is unique
       if (o.spawns) {
         text += ` (${o.spawns})`;
       }
@@ -117,7 +116,7 @@ export class MapObject {
 
     // spawns and coins should be mutally exclusive
     if (o.coins) {
-      text += ` (${o.coins} coin${o.coins > 1 ? "s" : ""})`;
+      text += ` (${o.coins} coin${o.coins > 1 ? 's' : ''})`;
     }
 
     if (o.cost) {
@@ -125,7 +124,7 @@ export class MapObject {
     }
 
     if (friendly) {
-      text += ` (${o.lng.toFixed(0)},${o.lat.toFixed(0)})`;   // Ensures friendly version is unique
+      text += ` (${o.lng.toFixed(0)},${o.lat.toFixed(0)})`; // Ensures friendly version is unique
     } else {
       text += ' of ' + o.type;
     }
@@ -136,18 +135,24 @@ export class MapObject {
   // Creates and returns a marker.
   createMarker(map, layerId, cicon) {
     const mapLayer = MapLayer.get(layerId);
-    if (!mapLayer?.isEnabled(map.mapId))
-      return;
+    if (!mapLayer?.isEnabled(map.mapId)) return;
 
     const iconName = (cicon && (this.o.icon || cicon)) || mapLayer.config.defaultIcon;
     const icon = Icons.get({ iconName: iconName, variant: this.o.variant, game: map.mapId }).addTo(map);
-    const options = { icon: icon, zIndexOffset: mapLayer.getZIndexOffset(), title: this.getTooltipText(map.mapId), alt: this.alt, o: this.o, layerId: layerId }
+    const options = {
+      icon: icon,
+      zIndexOffset: mapLayer.getZIndexOffset(),
+      title: this.getTooltipText(map.mapId),
+      alt: this.alt,
+      o: this.o,
+      layerId: layerId,
+    };
     const marker = L.marker([this.o.lat, this.o.lng], options)
-      .addTo(mapLayer.id == '_map' ? map : mapLayer.layerObj)                 // Add to relevant mapLayer (or the group)
+      .addTo(mapLayer.id == '_map' ? map : mapLayer.layerObj) // Add to relevant mapLayer (or the group)
       .bindPopup('')
-      .on('popupopen', this.onPopupOpen, this)  // We set popup text on demand 
-      .on('mouseover', this.onMouseOver, this)  // We update tooltip text on demand
-      .on('add', this.onAdd, this)              // We may need to resize icons when they're layer is displayed
+      .on('popupopen', this.onPopupOpen, this) // We set popup text on demand
+      .on('mouseover', this.onMouseOver, this) // We update tooltip text on demand
+      .on('add', this.onAdd, this) // We may need to resize icons when they're layer is displayed
       .on('contextmenu', this.onContextMenu, this);
 
     return marker;
@@ -162,10 +167,9 @@ export class MapObject {
     // TODO: reverse sense - make collectable but if it has a price then put it in shop
     // If nospoiler is shop but it has no price - put it on the collectable nospoiler layer (as opposed to shop)
     const layerId = c.nospoiler != 'shop' || (this.o.cost && this.o.price_type != 7) ? c.nospoiler : 'collectable';
-    if(!layerId)
-      return;
+    if (!layerId) return;
 
-    let cicon = c.noSpoilIcon || this.o.spawns && c.icon;
+    let cicon = c.noSpoilIcon || (this.o.spawns && c.icon);
 
     // Group marker uses icon from layer it is on (ignores class/spawns/object icon)
     let marker;
@@ -186,29 +190,33 @@ export class MapObject {
     }
   }
 
-  // Add any lines to the map 
+  // Add any lines to the map
   createLines(map) {
     const c = GameClasses.get(this.o.type);
     const o = this.o;
     const lineslayer = c.lines || this.primeMarker?.options.layerId;
-  
+
     if (o.linetype && MapLayer.isEnabledFromId(lineslayer, map.mapId) && o.twoway != 2) {
       const mapLayer = MapLayer.get(lineslayer);
       let endxys = o?.target ? [o.target] : o.targets;
 
       // need to add title as a single space (leaflet search issue), but not the full title so it doesn't appear in search
       let options = {
-        zIndexOffset: mapLayer.getZIndexOffset(), title: ' ', interactive: false, alt: this.alt, o: o,
-        layerId: lineslayer, className: 'line-' + o.linetype + (o.linetype == 'jumppad' ? ' ' + o.variant : ''),
-      }
+        zIndexOffset: mapLayer.getZIndexOffset(),
+        title: ' ',
+        interactive: false,
+        alt: this.alt,
+        o: o,
+        layerId: lineslayer,
+        className: 'line-' + o.linetype + (o.linetype == 'jumppad' ? ' ' + o.variant : ''),
+      };
       if (o.twoway) {
         options.arrow = 'none';
       }
       this.lines = [];
       for (let endxy of endxys) {
         let line = L_arrowLine([o.lat, o.lng], [endxy.y, endxy.x], options);
-        line.addTo(mapLayer.id == '_map' ? map : mapLayer.layerObj)
-          .on('add', this.onAdd, this);             // We may need to resize icons when they're layer is displayed
+        line.addTo(mapLayer.id == '_map' ? map : mapLayer.layerObj).on('add', this.onAdd, this); // We may need to resize icons when they're layer is displayed
 
         this.lines.push(line);
       }
@@ -223,7 +231,7 @@ export class MapObject {
     if (this._foundLockedState === undefined && this.o.notsaved) {
       this._foundLockedState = false;
     }
-  
+
     // If subclass hasn't set default set it based on setfound
     if (this._foundLockedState === undefined && 'setfound' in c) {
       this._foundLockedState = c.setfound;
@@ -232,8 +240,10 @@ export class MapObject {
     // Give subclass a chance to change things
     this.subclassInit?.(map);
 
-    if (!MapLayer.isEnabledFromId(c.layer, map.mapId) && !MapLayer.isEnabledFromId(c.nospoiler, map.mapId)
-      || !L.latLngBounds(MapLayer.get(map.mapId).viewLatLngBounds).contains([this.o.lat, this.o.lng])) {
+    if (
+      (!MapLayer.isEnabledFromId(c.layer, map.mapId) && !MapLayer.isEnabledFromId(c.nospoiler, map.mapId)) ||
+      !L.latLngBounds(MapLayer.get(map.mapId).viewLatLngBounds).contains([this.o.lat, this.o.lng])
+    ) {
       this.release();
       return;
     }
@@ -251,7 +261,7 @@ export class MapObject {
 
     this.addSaveListeners();
 
-    if(this._foundLockedState){
+    if (this._foundLockedState) {
       this.markFound(true);
     }
 
@@ -260,10 +270,16 @@ export class MapObject {
 
   // Default behaviour is to add a save file listener with 'alt' (or the _saveFileId member if set)
   // This default behaviour can be cancelled by setting _saveFileId to null
-  // _saveFileId, _filter and _defaultSaveData may be set by subclasses 
+  // _saveFileId, _filter and _defaultSaveData may be set by subclasses
   addSaveListeners() {
     if (this._saveFileId !== null /*&& this._foundLockedState === undefined*/) {
-      SaveFileSystem.setListener(this._saveFileId || this.alt, this.onSaveEvent, this, this._saveFilter, this._defaultSaveData);
+      SaveFileSystem.setListener(
+        this._saveFileId || this.alt,
+        this.onSaveEvent,
+        this,
+        this._saveFilter,
+        this._defaultSaveData
+      );
     }
   }
 
@@ -276,16 +292,14 @@ export class MapObject {
 
   // Callback from saveFileSystem when save data changes
   onSaveEvent(id, data) {
-    if(this._foundLockedState === undefined)
-      this.markFound(data);
+    if (this._foundLockedState === undefined) this.markFound(data);
   }
 
   // Returns true if MapObject is 'found'
   isFound() {
     if (this._foundLockedState !== undefined) {
       return this._foundLockedState;
-    }
-    else {
+    } else {
       return Boolean(Settings.map.saveData[this._saveFileId || this.alt]);
     }
   }
@@ -298,8 +312,7 @@ export class MapObject {
     if (found) {
       Settings.map.saveData[this._saveFileId || this.alt] = true;
       this.markFound(true);
-    }
-    else {
+    } else {
       delete Settings.map.saveData[this._saveFileId || this.alt];
       this.markFound(false);
     }
@@ -320,7 +333,7 @@ export class MapObject {
     [].forEach.call(divs, function (div) {
       // If linesFound has been passed in and this is a line then we want to use lineFound instead of found
       const useLines = lineFound !== undefined && div.getAttribute('class').includes('line-');
-      if (!useLines && found || useLines && lineFound) {
+      if ((!useLines && found) || (useLines && lineFound)) {
         div.classList.add('found');
       } else {
         div.classList.remove('found');
@@ -343,9 +356,9 @@ export class MapObject {
   onContextMenu(e) {
     // If 'found' isn't locked then context menu toggles found
     if (this._foundLockedState === undefined) {
-        this.toggleFound();
-        e.target.closePopup();
-      }
+      this.toggleFound();
+      e.target.closePopup();
+    }
   }
 
   // Called before tooltip is displayed
@@ -359,7 +372,7 @@ export class MapObject {
     }
   }
 
-  setLatLng(latLng){
+  setLatLng(latLng) {
     [this.o.lat, this.o.lng] = [latLng.lat, latLng.lng];
 
     if (this.groupMarker?._icon) {
@@ -379,69 +392,64 @@ export class MapObject {
     buildMode.marker = this;
     buildMode.object = o;
 
-    let text = ''
-    const hidden = (o?.hidden == 'true' ? ' (hidden)' : ''); 
+    let text = '';
+    const hidden = o?.hidden == 'true' ? ' (hidden)' : '';
 
     const fmtheading = (str) => {
-      return `<div class="marker-popup-heading">${str}</div>`
-    }
+      return `<div class="marker-popup-heading">${str}</div>`;
+    };
 
-    text += fmtheading(`${locStr.friendly(o, o.type, mapId)}${hidden}`)
-  
-    text += '<div class="marker-popup-text">'
+    text += fmtheading(`${locStr.friendly(o, o.type, mapId)}${hidden}`);
+
+    text += '<div class="marker-popup-text">';
 
     const fmtrow = (title, value) => {
-      return `<br><span class="marker-popup-col">${title}</span><span class="marker-popup-col2">${value}</span>`
-    }
+      return `<br><span class="marker-popup-col">${title}</span><span class="marker-popup-col2">${value}</span>`;
+    };
 
-    if(o.spawns)
-      text += fmtrow('Contains', locStr.friendly(null, o.spawns, mapId));
+    if (o.spawns) text += fmtrow('Contains', locStr.friendly(null, o.spawns, mapId));
 
-    if(o.coins)
-      text += fmtrow('Coins', `${o.coins} coin${o.coins > 1 ? "s" : ""}`);
+    if (o.coins) text += fmtrow('Coins', `${o.coins} coin${o.coins > 1 ? 's' : ''}`);
 
-    if(o.scrapamount)
-      text += fmtrow('Amount', `${o.scrapamount} coin${o.scrapamount > 1 ? "s" : ""}`);
+    if (o.scrapamount) text += fmtrow('Amount', `${o.scrapamount} coin${o.scrapamount > 1 ? 's' : ''}`);
 
-    if(o.cost)
-      text += fmtrow('Price', locStr.cost(o.price_type, o.cost));
+    if (o.cost) text += fmtrow('Price', locStr.cost(o.price_type, o.cost));
 
-    if(o.area_tag)
-      text += fmtrow('Area', o.area_tag);
+    if (o.area_tag) text += fmtrow('Area', o.area_tag);
 
-    if(o.prog_tag)
-      text += fmtrow('Act', o.prog_tag);
+    if (o.prog_tag) text += fmtrow('Act', o.prog_tag);
 
-    if(o.abilities)
-      text += fmtrow('Requires', o.abilities);
+    if (o.abilities) text += fmtrow('Requires', o.abilities);
 
-    if(o.loop)
-      text += fmtrow('Loop', o.loop);
+    if (o.loop) text += fmtrow('Loop', o.loop);
 
-    if(o.variant)
-      text += fmtrow('Variant', o.variant);
+    if (o.variant) text += fmtrow('Variant', o.variant);
 
-    if(o.description || GameClasses.get(o.type).description)
+    if (o.description || GameClasses.get(o.type).description)
       text += fmtrow('Description', locStr.description(o, o.type, mapId));
 
-    if(o.comment)
-      text += fmtrow('Comment', o.comment);
+    if (o.comment) text += fmtrow('Comment', o.comment);
 
-    if(o.spoiler_help)
-      text += fmtrow('Spoiler help', `<details><summary>Click to show/hide</summary><span>${o.spoiler_help}</span></details>`);
+    if (o.spoiler_help)
+      text += fmtrow(
+        'Spoiler help',
+        `<details><summary>Click to show/hide</summary><span>${o.spoiler_help}</span></details>`
+      );
 
-    text += fmtrow('XYZ pos', `(${o.lng.toFixed(0)}, ${o.lat.toFixed(0)}, ${o.alt.toFixed(0)})`)
+    text += fmtrow('XYZ pos', `(${o.lng.toFixed(0)}, ${o.lat.toFixed(0)}, ${o.alt.toFixed(0)})`);
 
-    text += '<br><br></div>'
+    text += '<br><br></div>';
 
     if (o.yt_video) {
       let ytSrc = 'https://www.youtube-nocookie.com/embed/' + o.yt_video + '?controls=0';
 
       function hmsToSecs(str) {
-        var p = str.split(':'), s = 0, m = 1;
+        var p = str.split(':'),
+          s = 0,
+          m = 1;
         while (p.length > 0) {
-            s += m * Number(p.pop());
-            m *= 60;
+          s += m * Number(p.pop());
+          m *= 60;
         }
         return s;
       }
@@ -449,8 +457,11 @@ export class MapObject {
       if (o.yt_start) ytSrc += '&start=' + hmsToSecs(o.yt_start);
       if (o.yt_end) ytSrc += '&end=' + hmsToSecs(o.yt_end);
 
-      text = text + '<iframe width="300" height="169" src="' + ytSrc
-        + '" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
+      text =
+        text +
+        '<iframe width="300" height="169" src="' +
+        ytSrc +
+        '" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
     }
 
     //text += '<div class="marker-popup-subheading">' + o.area + '</div><br>'
@@ -460,10 +471,9 @@ export class MapObject {
     if (this._foundLockedState === undefined) {
       let value = this.isFound() ? 'checked' : '';
       text += '<div class="marker-popup-found">';
-      text += `<input type="checkbox" id="${this.alt}" ${value} onclick=window.mapObjectFound("${this.alt}",this.checked)><label for="${this.alt}">`
+      text += `<input type="checkbox" id="${this.alt}" ${value} onclick=window.mapObjectFound("${this.alt}",this.checked)><label for="${this.alt}">`;
       text += 'Found</label></div>';
-    }
-    else{
+    } else {
       text += '<div class="marker-popup-found">&nbsp;</div>';
     }
 
@@ -474,16 +484,16 @@ export class MapObject {
 
     if (Settings.global.buildMode) {
       const dbgrow = (title, value) => {
-        value = JSON.stringify(value, null, ' ').replaceAll('"','').replaceAll('\n','');
+        value = JSON.stringify(value, null, ' ').replaceAll('"', '').replaceAll('\n', '');
         //value = value.replaceAll(' ', '&nbsp;');
-        return `<span class="marker-popup-debug-col">${title}</span><span class="marker-popup-debug-col2">${value}</span><br>`
-      }
+        return `<span class="marker-popup-debug-col">${title}</span><span class="marker-popup-debug-col2">${value}</span><br>`;
+      };
 
       text += '<div class="marker-popup-debug"><br><details><summary><b>Full JSON (dev)</b></summary>';
-      for(const [key, value] of Object.entries(o)){
+      for (const [key, value] of Object.entries(o)) {
         text += dbgrow(key, value);
       }
-      text += '</details></div>'
+      text += '</details></div>';
     }
 
     if (Settings.global.buildMode) {
@@ -491,22 +501,27 @@ export class MapObject {
       text += '<div class="marker-popup-edit"><details><summary><b>Edit JSON (dev)</b></summary>';
 
       const editrow = (title, value) => {
-        return `<span class="marker-popup-edit-col">${title}</span>`
-          +    '<span class="marker-popup-edit-col2">'
-          +       `<input type="text" id="${title}" onchange="updateBuildModeValue(event);" value="${value}"></input>`
-          +     '</span><br>';
-      }
+        return (
+          `<span class="marker-popup-edit-col">${title}</span>` +
+          '<span class="marker-popup-edit-col2">' +
+          `<input type="text" id="${title}" onchange="updateBuildModeValue(event);" value="${value}"></input>` +
+          '</span><br>'
+        );
+      };
 
-      Object.getOwnPropertyNames(o).forEach(
-        function (propName) {
-          if (propName != 'name' && propName != 'area') {
-            const value = typeof o[propName] === 'string' ? o[propName] : JSON.stringify(o[propName]).replaceAll('"', '&quot;');
-            text += editrow(propName, value);
-          }
+      Object.getOwnPropertyNames(o).forEach(function (propName) {
+        if (propName != 'name' && propName != 'area') {
+          const value =
+            typeof o[propName] === 'string' ? o[propName] : JSON.stringify(o[propName]).replaceAll('"', '&quot;');
+          text += editrow(propName, value);
         }
-      );
-      if (!('yt_video' in o)) { text += editrow('yt_video', ""); }
-      if (!('yt_start' in o)) { text += editrow('yt_start', ""); }
+      });
+      if (!('yt_video' in o)) {
+        text += editrow('yt_video', '');
+      }
+      if (!('yt_start' in o)) {
+        text += editrow('yt_start', '');
+      }
       text += '<button onclick="commitCurrentBuildModeChanges();">Save</button>';
       text += '</details></div>';
     }
@@ -515,7 +530,7 @@ export class MapObject {
   }
 
   // returns URL for this map object
-  getURL(showPopup=false){
+  getURL(showPopup = false) {
     MapParam.getMapObjectURL(this.alt, showPopup);
   }
 
@@ -524,8 +539,7 @@ export class MapObject {
     if (this.primeMarker) {
       const layerId = this.primeMarker.options.layerId;
       MapLayer.get(layerId).addTo(map);
-    }
-    else if (this.groupMarker) {
+    } else if (this.groupMarker) {
       const layerId = this.groupMarker.options.layerId;
       MapLayer.get(layerId).addTo(map);
     }
@@ -539,15 +553,13 @@ export class MapObject {
       mapObject = MapObject._mapObjects[alt];
       if (mapObject) {
         mapObject.mergeJson(obj);
-      }
-      else if ('type' in obj) {
+      } else if ('type' in obj) {
         mapObject = new objectToSubclass(obj)(alt, obj);
       }
 
       // Delete any flagged properties completely
-      for (const [prop, value] of Object.entries(obj)){
-        if(value == '!')
-          delete mapObject.o[prop];
+      for (const [prop, value] of Object.entries(obj)) {
+        if (value == '!') delete mapObject.o[prop];
       }
 
       // Delete object if that key is present
@@ -555,9 +567,8 @@ export class MapObject {
         mapObject.release();
         mapObject = null;
       }
-    }
-    else {
-        ("Warning: Marker JSON entry area:name must both be specified in all markers*.json")
+    } else {
+      ('Warning: Marker JSON entry area:name must both be specified in all markers*.json');
     }
     return mapObject;
   }
@@ -582,9 +593,9 @@ export class MapObject {
 
   // Called after loadObjects to add all the markers to the map
   static initObjects(map) {
-
     // Initialise all the objects we've constructed
-    for (const mapObject of Object.values(this._mapObjects)) {   // Use values so object can release itself if required
+    for (const mapObject of Object.values(this._mapObjects)) {
+      // Use values so object can release itself if required
       mapObject.init(map);
     }
 
@@ -606,26 +617,26 @@ export class MapObject {
     return this._mapObjects[id];
   }
 
-  static get_ignorecase(id){
+  static get_ignorecase(id) {
     id = id.toLowerCase();
-    return this._mapObjects[Object.keys(this._mapObjects).find(k => k.toLowerCase() === id)];
+    return this._mapObjects[Object.keys(this._mapObjects).find((k) => k.toLowerCase() === id)];
   }
 
   // Return alt id from string arguments (normally area, name)
   static makeAlt(...args) {
-    return args.filter(a => a).join(':');   // Join all truthy arguments (a !== null && a !== undefined && a !== '') might by better?
+    return args.filter((a) => a).join(':'); // Join all truthy arguments (a !== null && a !== undefined && a !== '') might by better?
   }
 
   // Move view point to object specified and optionallly show popup
-  static showAlt(alt, showPopup=false) {
+  static showAlt(alt, showPopup = false) {
     const mapObj = MapObject.get_ignorecase(alt);
-    if(mapObj){
-      const map = MapLayer._map
+    if (mapObj) {
+      const map = MapLayer._map;
       map.closePopup();
       map.setView([mapObj.o.lat, mapObj.o.lng], map._loaded ? map.getZoom(0) : 0);
       mapObj.activateTopLayer(map);
-      if(showPopup){
-        (mapObj.primeMarker || mapObj.groupMarker)?.openPopup(); 
+      if (showPopup) {
+        (mapObj.primeMarker || mapObj.groupMarker)?.openPopup();
       }
     }
   }
@@ -635,10 +646,10 @@ function mapObject(...args) {
   return new MapObject(...args);
 }
 
-// Handler for found checkbox on MapObject popup 
+// Handler for found checkbox on MapObject popup
 export const mapObjectFound = function (id, found = true) {
   MapObject._mapObjects[id].setFound(found);
-}
+};
 
 //=================================================================================================
 // MapObject subclasses
@@ -646,13 +657,12 @@ export const mapObjectFound = function (id, found = true) {
 //-------------------------------------------------------------------------------------------------
 // MapObject subclass for o.type=='PlayerStart' or o.type=='SupraworldPlayerStart_C'
 //
-// First one created stores it's position as static member of MapObject and spawns an _PlayerPosition 
+// First one created stores it's position as static member of MapObject and spawns an _PlayerPosition
 class MapPlayerStart extends MapObject {
   _foundLockedState = false;
 
   subclassInit(map) {
     if (!MapObject._playerStartPosition) {
-
       const objJson = Object.assign({}, this.o);
       objJson.type = map.mapId == 'sw' ? '_SWPlayerPosition' : '_PlayerPosition';
       objJson.area = '';
@@ -684,9 +694,8 @@ class MapPlayerPosition extends MapObject {
   onSaveEvent(id, data) {
     if (!data) {
       Object.assign(this.o, MapObject._playerStartPosition);
-      this.setLatLng({lat: this.o.lat, lng: this.o.lng});
-    }
-    else {
+      this.setLatLng({ lat: this.o.lat, lng: this.o.lng });
+    } else {
       if (this.primeMarker) {
         this.primeMarker.closePopup();
       }
@@ -697,15 +706,13 @@ class MapPlayerPosition extends MapObject {
       let value;
       if ('Translation' in data) {
         value = data['Translation'].value;
-      }
-      else {
+      } else {
         value = data.value;
       }
       if (value) {
         this.o.alt = value.z;
-        this.setLatLng({lat: value.y, lng: value.x});
-      }
-      else {
+        this.setLatLng({ lat: value.y, lng: value.x });
+      } else {
         return;
       }
     }
@@ -730,12 +737,11 @@ class MapPipesystem extends MapObject {
       if (this.o.twoway && otherPipe && otherPipe.o.nearest_cap == undefined) {
         this._triggerOtherPipe = true;
       }
-    }
-    else {
+    } else {
       // If oneway and no pipecap or twoway both ends no pipecap then notsaved should be set, so _foundLockedState should be true
       // (we could do a cross-check here for notsaved)
       //
-      // However, if twoway and the other end does have a pipecap then we want to let the other end handle save file events 
+      // However, if twoway and the other end does have a pipecap then we want to let the other end handle save file events
       if (this.o.twoway && otherPipe && otherPipe.o.nearest_cap !== undefined) {
         this._saveFileId = null;
       }
@@ -758,7 +764,7 @@ class MapPipesystem extends MapObject {
 
   // For two way pipes where the other end doesn't have a nearest_cap it should match found
   onSaveEvent(id, data) {
-    super.onSaveEvent()
+    super.onSaveEvent();
     if (this._triggerOtherPipe) {
       MapObject._mapObjects[this.o.other_pipe].onSaveEvent(this.o.other_pipe, data);
     }
@@ -774,7 +780,6 @@ function mapPipesystem(...args) {
 // For twoway jumppads we special case the line found behaviour, to be found if either end is found.
 // Plus, if only one end found, the line gains an arrow pointing at the unfound end
 class MapJumppad extends MapObject {
-
   // This is only called by other end of line on markFound
   updateLineFound(found2) {
     const found = this.isFound();
@@ -782,7 +787,7 @@ class MapJumppad extends MapObject {
     // Just add/remove found from the line elements
     var divs = document.querySelectorAll('*[alt="' + this.alt + '"]');
     [].forEach.call(divs, function (div) {
-      if (div.getAttribute("class").includes('line-jumppad')) {
+      if (div.getAttribute('class').includes('line-jumppad')) {
         if (found || found2) {
           div.classList.add('found');
         } else {
@@ -796,7 +801,7 @@ class MapJumppad extends MapObject {
 
   // Overloading of markFound to handle special line behaviour
   markFound(found) {
-    if(found == undefined){
+    if (found == undefined) {
       found = this.isFound();
     }
 
@@ -809,8 +814,7 @@ class MapJumppad extends MapObject {
 
         this.lines[0].setArrow(found == found2 ? 'none' : found ? 'tip' : 'back');
         lineFound = found || found2;
-      }
-      else {
+      } else {
         // Twoway pad, secondary end, get line updated for other end, and super will do the rest
         MapObject._mapObjects[o.other_pad]?.updateLineFound(found);
       }
@@ -829,7 +833,6 @@ function mapJumppad(...args) {
 // Coin stack's found status is true if all the coins it contains are found, so we need to listen
 // for all coins save data, plus if the found is toggled we need to update the save data for them.
 class MapCoinStack extends MapObject {
-
   subclassInit() {
     this._coinsFound = new Set();
   }
@@ -850,7 +853,7 @@ class MapCoinStack extends MapObject {
     }
   }
 
-  // Overload save event handler. Track the coins we're listening for 
+  // Overload save event handler. Track the coins we're listening for
   onSaveEvent(id, data) {
     const oldFound = this.isFound();
 
@@ -858,8 +861,7 @@ class MapCoinStack extends MapObject {
     this._coinsFound = this._coinsFound || new Set();
     if (data) {
       this._coinsFound.add(coin);
-    }
-    else {
+    } else {
       this._coinsFound.delete(coin);
     }
     const found = this.isFound();
@@ -871,7 +873,7 @@ class MapCoinStack extends MapObject {
 
   // Checks the set of coins found rather than normal settings
   isFound() {
-    return (this._coinsFound.size == Object.keys(this.o.old_coins).length)
+    return this._coinsFound.size == Object.keys(this.o.old_coins).length;
   }
 
   // Changes the saveData for all the coins we're attached to
@@ -881,8 +883,7 @@ class MapCoinStack extends MapObject {
         Settings.map.saveData[MapObject.makeAlt(this.o.area, coin)] = true;
         this._coinsFound.add(coin);
       }
-    }
-    else {
+    } else {
       for (const coin in this.o.old_coins) {
         delete Settings.map.saveData[MapObject.makeAlt(this.o.area, coin)];
       }
@@ -899,14 +900,14 @@ function mapCoinStack(...args) {
 //-------------------------------------------------------------------------------------------------
 // MapObject subclass for type 'Juicer_C'
 //
-// The save file property is based on player property flag values instead of the object alt id 
+// The save file property is based on player property flag values instead of the object alt id
 class MapJuicer extends MapObject {
   // Juicer's use player properties for their found/unfound state
   subclassInit() {
     const saveIdMap = {
       'Map:Juicer2': 'PlayerDoubleHealth',
       'Map:Juicer3': 'PlayerDrankHealthPlusJuice',
-      'Map:Juicer_286': 'PlayerStrong'
+      'Map:Juicer_286': 'PlayerStrong',
     };
     const id = saveIdMap[this.alt];
     if (id !== undefined) {
@@ -951,19 +952,18 @@ function mapDeadHeroIndy(...args) {
   return new MapDeadHeroIndy(...args);
 }
 
-// Returns class to instantiate given 
+// Returns class to instantiate given
 function objectToSubclass(o) {
-
   // Object types that have MapObject subclass
   const typeMap = {
-    '_PlayerPosition': mapPlayerPosition,
-    '_SWPlayerPosition': mapPlayerPosition,
-    'PlayerStart': mapPlayerStart,
-    'SupraworldPlayerStart_C': mapPlayerStart,
-    'EnemySpawn3_C': mapGraveVolcano,
-    'CrashEnemySpawner_C': mapBonesSpawner,
-    '_CoinStack_C': mapCoinStack,
-    'Juicer_C': mapJuicer
+    _PlayerPosition: mapPlayerPosition,
+    _SWPlayerPosition: mapPlayerPosition,
+    PlayerStart: mapPlayerStart,
+    SupraworldPlayerStart_C: mapPlayerStart,
+    EnemySpawn3_C: mapGraveVolcano,
+    CrashEnemySpawner_C: mapBonesSpawner,
+    _CoinStack_C: mapCoinStack,
+    Juicer_C: mapJuicer,
   };
   let cls = typeMap[o.type];
   if (cls) {
@@ -972,14 +972,14 @@ function objectToSubclass(o) {
 
   // Object names that have MapObject subclass
   const nameMap = {
-    'DeadHeroIndy': mapDeadHeroIndy
-  }
+    DeadHeroIndy: mapDeadHeroIndy,
+  };
   cls = nameMap[o.name];
   if (cls) {
     return cls;
   }
 
-  // Types identified by substring that have 
+  // Types identified by substring that have
   const typeIncludes = [
     ['Pipesystem', mapPipesystem],
     ['Jumppad', mapJumppad],
