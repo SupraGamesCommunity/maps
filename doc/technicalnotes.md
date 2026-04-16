@@ -117,3 +117,9 @@ so may not map to extracted data. In particular coinstash are represented as jus
 loads of coins in SIU.
 
 * https://github.com/joric/viva-games
+
+* Front end tools
+* USMAP files
+* Fog and SW Map
+* SLC Map
+

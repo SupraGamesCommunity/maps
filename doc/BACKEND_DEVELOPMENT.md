@@ -62,16 +62,17 @@ public/tiles/           Map tile hierarchy for each game. Each tile is a 512x512
                         {sl|slc|siu}/{base}/{z}/{x}/{y}.jpg
                         where z=zoom [0-4] x/y tile pos within map
                         Full maps are 8k. Zoom 0 is 1x1 - Zoom 4 is 16x16
-
+public/data/            Data directly used and output to by the tools and
+                        also read by front end.
 scripts/                Utility scripts for working with the backend data.
-    gentiles.py			    Generates map tile hierarchy from a full resolution map image.
-    run.cmd             CLI script to help launch supraland_parser.py
+    findslpaks.cmd      Helper script to locate game install directories and set environment variables
+    export.cmd          CLI script used to extract and parse data from the game
     supraland_parser.py Script to extract map data from Supraland UE4 games
                         Options for raw data, markers and map textures
-    gentiles.py         Utility to split large map into hierarchy of tiles suitable for Leaflet TileLayer.
-    findslpaks.cmd      Helper script to locate game install directories and set environment variables
+    run.cmd             CLI script to help launch supraland_parser.py (retired)
+source/                 Data extracted from the game is placed here temporarily
+                        see notes on running builds.
 ```
-
 
 ## Running Python scripts
 
