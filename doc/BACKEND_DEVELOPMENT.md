@@ -102,7 +102,7 @@ python scripts/some_script.py argument1 argument2 ...
 ```
 
 
-## Auto-formatting Python scripts
+## Auto-formatting and linting Python scripts
 
 To automatically format Python scripts in a consistent way, run:
 
@@ -112,4 +112,11 @@ uv run black scripts/*.py
 
 # Use isort to sort imports in a consistent way
 uv run isort scripts/*.py
+```
+
+
+Run the flake8 linter over the Python scripts to find common problems with Python code:
+
+```sh
+uv run flake8 scripts/*.py
 ```
