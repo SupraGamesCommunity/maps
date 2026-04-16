@@ -19,9 +19,6 @@ site-packages/
 bin/
 obj/
 
-# Ignore source data extracted from games or from other repositories
-source/**
-
 # Editor directories and files
 .vscode/*
 .vs
