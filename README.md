@@ -39,10 +39,12 @@ In addition you can share a link to a specific map, zoom level and position:
 - `lat/lng` are the X Y position on the map.
 
 ## Credits
-All credit for these amazing games goes to [David Münnich](http://www.david-m.org) and the [Supra Games Team](https://store.steampowered.com/developer/SupraGames).  
+All credit for these amazing games goes to [David Münnich](http://www.david-m.org) and
+the [Supra Games Team](https://store.steampowered.com/developer/SupraGames).
 Original maps and data created by [Supra Games Community](https://github.com/supragamescommunity).  
 Complete rewrite based on game data extraction and merge of 3 maps by [Joric](https://github.com/joric/supraland).  
-Fork of Joric's map to SupraMaps project and tweaks to finish in preparation for Supra World by [Supra Games Community](https://github.com/SupraGamesCommunity/).  
+Fork of Joric's map to SupraMaps project and tweaks to finish in preparation for Supra World
+by [Supra Games Community](https://github.com/SupraGamesCommunity/).
 
 ### Credits
 - [Cal (Egasuas)](https://github.com/Egasuas)
@@ -62,19 +64,10 @@ Fork of Joric's map to SupraMaps project and tweaks to finish in preparation for
 - Gludek
 - Zookster 
 
-## Assets and Dependencies
-The original maps were extracted using [UE4Parse](https://github.com/MinshuG/pyUE4Parse), a Python library by [MountainFlash](https://github.com/MinshuG/). With Supraworld it was updated to use [CUE4Parse.CLI](https://github.com/joric/CUE4Parse.CLI) which is based on CUE4Parse a much more up to date reader of UE data.
-Many marker icons supplied by DavidM from game assets and others made by the community.
+## Development
 
-For front-end technologies, see [FRONTEND_DEVELOPMENT.md](doc/FRONTEND_DEVELOPMENT.md).
-
-- [UE4Parse](https://github.com/MinshuG/pyUE4Parse) - UE4 PAK file reader for Python.
-- [joric/UE4Parse](https://github.com/joric/pyUE4Parse.git) - Joric's fork of the UE4 parse (modified).
-- [joric/CUE4Parse.CLI](https://github.com/joric/CUE4Parse.CLI)
-- [gentiles.py](https://github.com/danizen/campaign-map/blob/master/gentiles.py) from [Jeff Thompson](jeffreythomson.org), [Dan Davis](danizen.net) and [Joric](https://github.com/joric/)
-
-- [ImageMagick](https://imagemagick.org/index.php) - command line image manipulation.
-- [Voidtools: Everything](https://www.voidtools.com/downloads/) - fast file search.
+For a guide on developing this project, refer to [FRONTEND_DEVELOPMENT](doc/FRONTEND_DEVELOPMENT.md) and
+[BACKEND_DEVELOPMENT](doc/BACKEND_DEVELOPMENT.md).
 
 ## License
 This project uses some code Joric's Supraland project, the original [SupraGamesCommunity](https://github.com/SupraGamesCommunity/) map code and media files. Most of the media content is copyrighted by [Supra Games UG](www.supragames.de). Joric developed scripts to import data from the original game and fixed some bugs. This project is an unlicensed public domain, feel free to copy, sell and modify.
