@@ -3,7 +3,7 @@ from itertools import groupby
 from mathutils import Vector, Matrix, Euler, Quaternion
 from math import radians
 from PIL import Image
-import logging, json, gc, os, sys, csv, re, argparse
+import json, os, sys, re, argparse
 import numpy as np
 from sklearn.neighbors import KDTree
 import networkx as nx
@@ -319,7 +319,7 @@ ea_fog_height = 0
 # Classes that potentially have a travel target
 travel_types = [
     'Balloon_C',
-    'DashLauncher_C'
+    'DashLauncher_C',
     'GuardVolume_C',
     'Jumppad_C',
     'Jumppad_TwoPath_C',
@@ -417,15 +417,19 @@ def camel_to_snake(s):
     return ''.join(['_'+c.lower() if c.isupper() else c for c in s]).lstrip('_')
 
 # Returns list of numbers in the specified string (ie "a1b98" return ["1", "98"])
-get_ints = lambda s:[''.join(group) for key, group in groupby(s, lambda e:e.isdigit()) if key]
+def get_ints(s):
+    return [''.join(group) for key, group in groupby(s, lambda e:e.isdigit()) if key]
 
 # Returns last number in the specified string
-get_last_int = lambda s: ints[-1] if (ints := get_ints(s)) else ''
+def get_last_int(s):
+    return ints[-1] if (ints := get_ints(s)) else ''
 
 # Returns number at end of the specified string or empty string if it isn't one
 # Note: we could do this more simply with a regexp but it seems inefficient
-# get_last_int = lamda s: m.group() if (m := re.search('\d+$', s)) else ''
-get_end_int = lambda s: get_ints(s)[-1] if s and s[-1].isdigit() else ''  
+# def get_last_int(s):
+#     return m.group() if (m := re.search('\d+$', s)) else ''
+def get_end_int(s):
+    return get_ints(s)[-1] if s and s[-1].isdigit() else ''
 
 # Return True if this string looks like some kind of enumeration
 def isenum(s):
@@ -766,14 +770,29 @@ def export_sw_markers(cache_dir, game):
     area_mtx = {}   # Transform for each area map geometry
     data = []       # Output marker data
  
-    optEnum= lambda s:int(s[len(s.rstrip('0123456789')):]or 0) if type(s) is str and '::' in s else s
-    optArea= lambda a,k,v: v if a==k else ':'.join((k,v))
-    optColor=lambda p:p and '#'+''.join(hex(int(p[c]))[2:] for c in 'RGB')
-    optKey = lambda d,k,v: v is not None and d.__setitem__(k,optEnum(v))
-    getVec = lambda d,v=0: Vector((d['X'], d['Y'], d['Z'])) if d else Vector((v,v,v))
-    getRot = lambda d,v=0: Euler(( radians(-d['Roll']), -radians(d['Pitch']), radians(d['Yaw'])) ) if d else Euler((v,v,v))
-    getQuat= lambda d,v=0: Quaternion((d['W'], d['X'], d['Y'], d['Z'])) if d else Quaternion((v,v,v,v))
-    getXYZ = lambda v:{'x':v.x, 'y': v.y, 'z': v.z}
+    def optEnum(s):
+        return int(s[len(s.rstrip('0123456789')):] or 0) if type(s) is str and '::' in s else s
+
+    def optArea(a, k, v):
+        return v if a == k else ':'.join((k, v))
+
+    def optColor(p):
+        return p and '#'+''.join(hex(int(p[c]))[2:] for c in 'RGB')
+
+    def optKey(d, k, v):
+        return v is not None and d.__setitem__(k, optEnum(v))
+
+    def getVec(d, v=0):
+        return Vector((d['X'], d['Y'], d['Z'])) if d else Vector((v, v, v))
+
+    def getRot(d, v=0):
+        return Euler((radians(-d['Roll']), -radians(d['Pitch']), radians(d['Yaw']))) if d else Euler((v, v, v))
+
+    def getQuat(d, v=0):
+        return Quaternion((d['W'], d['X'], d['Y'], d['Z'])) if d else Quaternion((v, v, v, v))
+
+    def getXYZ(v):
+        return dict(x=v.x, y=v.y, z=v.z)
 
     # Phase 1: Read all the map json files in and build a look up table for references
     # Also get any area/map file matrices (for streaming levels)
@@ -1301,7 +1320,7 @@ def calc_pads(data):
     #allowed_points = lambda o: o['type'] in ('Jumppad_C') # jump pads only
 
     points = [(o['lng'], o['lat'], o['alt']) for o in data if allowed_points(o)]
-    data_indices = [i for i,o in enumerate(data) if allowed_points(o)]
+    # data_indices = [i for i,o in enumerate(data) if allowed_points(o)]
 
     print('collected', len(points), 'terrain points, calculating targets...')
 
@@ -1464,7 +1483,7 @@ brick_types = {
     2: 'metal',
     3: 'diamond',
     4: 'gold',
-};
+}
 
 # Number of coins given by classes if not explicit
 # Coin pots provide 1 if the flag is true
@@ -1511,6 +1530,10 @@ exported_properties = [
     'yt_video', 'yt_start', 'yt_end',      # data pulled from matched legacy data
 ]
 
+
+
+
+
 # The purpose of this code is to walk through all the objects we've gathered and prepare them for
 # display by the map.
 #
@@ -1519,6 +1542,11 @@ exported_properties = [
 # data is an array of the same objects
 # each object is a dictionary of k,v pairs
 def cleanup_objects(game, classes_found, data_lookup, data):
+    def get_xyz(o):
+        return dict(x=o['lng'], y=o['lat'], z=o['alt'])
+
+    def get_nc_xyz(o):
+        return get_xyz(data_lookup[o['nearest_cap']]) if 'nearest_cap' in o else get_xyz(o)
 
     # Read the set of pads and pipes we found save data for
     savedpadpipes = read_savedpadpipes(game)
@@ -1597,8 +1625,6 @@ def cleanup_objects(game, classes_found, data_lookup, data):
                 del o['spawns']
 
         # Create line data
-        get_xyz = lambda o: { 'x':o['lng'], 'y':o['lat'], 'z':o['alt'] }
-        get_nc_xyz = lambda o: get_xyz(data_lookup[o['nearest_cap']]) if 'nearest_cap' in o else get_xyz(o)
 
         if o.get('other_pipe'):
             o['linetype'] = 'pipe'
@@ -1607,7 +1633,7 @@ def cleanup_objects(game, classes_found, data_lookup, data):
                 nc = data_lookup[o['nearest_cap']]
                 o['lat'], o['lng'], o['alt'] = nc['lat'], nc['lng'], nc['alt']
             if o['other_pipe'] == alt:
-                del o['linetype'];
+                del o['linetype']
                 del o['other_pipe']     # Some pipes point at themselves (basically in only)
             else:
                 opo = data_lookup[o['other_pipe']]
@@ -1617,7 +1643,7 @@ def cleanup_objects(game, classes_found, data_lookup, data):
                     opo['twoway'] = 2
         elif o['type'] == 'Jumppad_C':
             o['linetype'] = 'jumppad' 
-            if o.get('allow_stomp') or o.get('disable_movement_in_air') == False:
+            if o.get('allow_stomp') or not o.get('disable_movement_in_air'):
                 o['variant'] = 'blue'
             else:
                 o['variant'] = 'red'
@@ -1655,7 +1681,7 @@ def cleanup_objects(game, classes_found, data_lookup, data):
     if stripUnusedProperties:
         for o in data:
             for prop in list(o.keys()):
-                if not prop in exported_properties:
+                if prop not in exported_properties:
                     del o[prop]
 
 
@@ -1776,7 +1802,7 @@ def main():
 
     try:
         Path(args.cache_dir, args.game).mkdir(exist_ok=True, parents=True)
-    except Exception as e:
+    except Exception:
         pass
 
     if args.preproc:
