@@ -13,6 +13,7 @@ import { MapObject } from './mapObject.js';
 import { MapPins } from './mapPins.js';
 import { L_Control_supraSearch } from './supraSearch.js';
 import { L_supraMap } from './supraMap.js';
+import { initSidepanel } from './sidepanel/init.jsx';
 
 const skipConfirms = browser.isCode;
 
@@ -130,7 +131,6 @@ function setupKeyControls(map, searchControl){
   });
 
   map.on('keydown', function (e) {
-    const le = e;
     e = e.originalEvent;
 
     if (e.target.localName == 'input' || e.target.id.startsWith('searchtext')) {
@@ -201,6 +201,17 @@ async function loadMap(mapParam) {
   L.control.zoom({ position: 'bottomright' }).addTo(map);
   L.control.fullscreen({ position: 'bottomright', forceSeparateButton: true }).addTo(map);
   L.control.mousePosition({ numDigits: 0, lngFirst: true }).addTo(map);
+
+  const sidepanelLeft = L.control.sidepanel('sidepanel', {
+    panelPosition: 'left',
+    hasTabs: true,
+    tabsPosition: 'left',
+    darkMode: false,
+    pushControls: true,
+    startTab: 'tab-1'
+  });
+  sidepanelLeft.addTo(map);
+  initSidepanel();
 
 
   // Sort out the layer configuration and create the layers

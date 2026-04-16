@@ -23,6 +23,7 @@ and publish the web application.
   * [leaflet-hash](https://github.com/mlevans/leaflet-hash): Dynamic URL hashes to web pages with Leaflet maps (modified).
   * [leaflet-search](https://github.com/stefanocudini/leaflet-search): Search icon.
   * [leaflet.toolbar](https://github.com/Leaflet/Leaflet.toolbar): Flexible, extensible toolbar interfaces.
+  * [Leaflet.SidePanel](https://github.com/maxwell-ilai/Leaflet.SidePanel): Slide side panel plugin.
 * [React](https://react.dev): A library for building user interfaces.
 * [Prettier](https://prettier.io): Auto-format JavaScript source files.
 

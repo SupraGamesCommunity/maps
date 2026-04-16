@@ -30,6 +30,7 @@
     <link rel="stylesheet" href="web_src/css/L.Control.MousePosition.css" />
     <link rel="stylesheet" href="web_src/css/Control.FullScreen.css" />
     <link rel="stylesheet" href="web_src/css/leaflet-search.src.min.css" />
+    <link rel="stylesheet" href="web_src/css/leaflet-sidepanel.css" />
 
     <link rel="stylesheet" href="web_src/css/main.css" />
 
@@ -40,9 +41,18 @@
     <script src="js/lib/leaflet-search.src.min.js"></script>
     <script src="js/lib/L.Control.MousePosition.js"></script>
     <script src="js/lib/leaflet.polylineDecorator.min.js"></script>
+    <script src="js/lib/leaflet-sidepanel.min.js"></script>
   </head>
   <body>
-    <div id="map"></div>
+    <div id="map">
+      <div id="sidepanel" class="sidepanel opened" aria-label="side panel" aria-hidden="false">
+        <div class="sidepanel-inner-wrapper" id="sidepanel-inner"></div>
+        <div class="sidepanel-toggle-container">
+          <button class="sidepanel-toggle-button" type="button" aria-label="toggle side panel"></button>
+        </div>
+      </div>
+    </div>
+
     <script type="module" src="web_src/main.js"></script>
   </body>
 </html>
