@@ -39,7 +39,7 @@ this once.
 
 1. Install Node JS
 
-Follow Node's guide to install it your system: [Node.js download](https://nodejs.org/en/download)
+Follow [Node's installation guide](https://nodejs.org/en/download).
 
 Note that on MacOS, it may be more convenient to use methods like [Homebrew](https://brew.sh) to install tools,
 e.g. with `brew install node`.
