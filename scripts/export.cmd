@@ -356,7 +356,7 @@ echo %colGrn%Generating map tiles in %tiledir% from %mappng%%colDef%
 
 if not exist "%tiledir%" md "%tiledir%""
 
-python gentiles.py -t jpg -w 512 %mappng% 0-4 %tiledir%
+uv run gentiles.py -t jpg -w 512 %mappng% 0-4 %tiledir%
 
 goto :eof
 
