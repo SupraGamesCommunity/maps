@@ -11,15 +11,15 @@ in frameworks like leaflet.js, MapBox, etc.
 
 ARGS:
 input_file      large image file to split (JPG, PNG, or TIFF)
-zoom_level              zoom level(s) to generate (0 to 18); either 
+zoom_level              zoom level(s) to generate (0 to 18); either
             integer or range (ex: 2-6)
-output_folder           folder name to write tiles to (will be created 
+output_folder           folder name to write tiles to (will be created
             if does not exist)
 
 OPTIONAL:
 -h, --help              show this help message and exit
 -w --resize_width   dimension in pixels for outputted tiles (default 256px)
--q, --quiet             suppress all output from program (useful for 
+-q, --quiet             suppress all output from program (useful for
             integrating into larger projects)
 
 DETAILS:
@@ -33,7 +33,7 @@ Way more info here:
 http://wiki.openstreetmap.org/wiki/Slippy_map_tilenames#Resolution_and_Scale
 
 REQUIRES:
-ImageMagick and Python bindings for splitting 
+ImageMagick and Python bindings for splitting
 images, resizing tiles, etc
 http://www.imagemagick.org
 https://github.com/ahupp/python-magic
@@ -49,7 +49,7 @@ For example, if using leaflet.js, you would use:
     tiles/{z}/{x}/{y}.png
 
 ADDING MORE ZOOM LEVELS
-Want to add more levels? Just run this script again; it 
+Want to add more levels? Just run this script again; it
 will append the new zoom level to the same location.
 
 CREATING A SOURCE IMAGE
@@ -80,6 +80,7 @@ When working with extra big images, ImageMagick makes
 some suggestions where RAM may run out:
 http://www.imagemagick.org/Usage/files/#massive
 """
+
 import argparse
 import glob
 import logging
@@ -88,7 +89,7 @@ import os
 import re
 import shutil
 import sys
-from argparse import ArgumentParser, ArgumentError
+from argparse import ArgumentError, ArgumentParser
 from pathlib import Path
 
 from PIL import Image, UnidentifiedImageError
@@ -98,7 +99,7 @@ LOG = logging.getLogger('gentiles')
 
 def power_of(num, base):
     """checks if a number is a power another"""
-    while(num % base == 0):
+    while num % base == 0:
         num = num / base
     return num == 1
 
@@ -115,14 +116,13 @@ def generate(image, outpath, zoom_level, resize_width, format='png'):
     # get image dims (without loading into memory)
     # via: http://stackoverflow.com/a/19035508/1167783
     LOG.info('Getting source image dimensions...')
-    width, height = image.size    
+    width, height = image.size
     LOG.info('%d x %d pixels', width, height)
 
     # get details for ImageMagick
     LOG.info('Splitting to...')
     tile_width = int(math.ceil(width / num_tiles))
     LOG.info('' + str(tile_width) + ' x ' + str(tile_width) + ' px tiles')
-    pad = len(str(num_tiles * num_tiles))
 
     # create output directory
     outpath.mkdir(exist_ok=True)
@@ -130,7 +130,7 @@ def generate(image, outpath, zoom_level, resize_width, format='png'):
     outpath.mkdir(exist_ok=True)
 
     # Remove existing children
-    for child in outpath.rglob('*.'+format):
+    for child in outpath.rglob('*.' + format):
         child.unlink()
 
     for x in range(num_tiles):
@@ -142,9 +142,9 @@ def generate(image, outpath, zoom_level, resize_width, format='png'):
             bottom = top + tile_width
             tile = image.crop([left, top, right, bottom])
             tile = tile.resize([resize_width, resize_width])
-            tile_path = outpath.joinpath(f'{x}/{y}.'+format)
+            tile_path = outpath.joinpath(f'{x}/{y}.' + format)
             tile.save(tile_path, quality=85)
-            #tile.save(tile_path)
+            # tile.save(tile_path)
             print('.', end='')
             sys.stdout.flush()
             # Note on quality: We were using about 75 but it comes out with lots of JPG compression artefacts
@@ -168,7 +168,7 @@ def zoom_range_type(value):
             if zoom_min < 0:
                 raise ArgumentError('should be a zoom level or range')
         else:
-            zoom_min = zoom_max = int(value) 
+            zoom_min = zoom_max = int(value)
             if zoom_min < 0:
                 raise ArgumentError('should be a zoom level or range')
     except ValueError:
@@ -188,18 +188,29 @@ def positive_int_type(rawvalue):
 
 def create_parser(prog_name):
     parser = ArgumentParser(prog=prog_name, description="Generate map files for leaflet")
-    parser.add_argument('input_file',
-                        help='large image file to split (JPG, PNG, or TIFF)')
-    parser.add_argument('zoom_level', type=zoom_range_type,
-                        help='zoom level(s) to generate (0 to 18); either integer or range (ex: 2-6)')
-    parser.add_argument('output_folder',
-                        help='folder name to write tiles to (will be created if does not exist)')
-    parser.add_argument('-w', '--resize_width', metavar='', type=positive_int_type, default=256,
-                        help='dimension in pixels for outputted tiles (default 256px)')
-    parser.add_argument('-q', '--quiet', action='store_true', default=False,
-                        help='suppress all output from program (useful for integrating into larger projects)')
-    parser.add_argument('-t', '--format', default='png',
-                        help='output format (png or jpeg)')
+    parser.add_argument('input_file', help='large image file to split (JPG, PNG, or TIFF)')
+    parser.add_argument(
+        'zoom_level',
+        type=zoom_range_type,
+        help='zoom level(s) to generate (0 to 18); either integer or range (ex: 2-6)',
+    )
+    parser.add_argument('output_folder', help='folder name to write tiles to (will be created if does not exist)')
+    parser.add_argument(
+        '-w',
+        '--resize_width',
+        metavar='',
+        type=positive_int_type,
+        default=256,
+        help='dimension in pixels for outputted tiles (default 256px)',
+    )
+    parser.add_argument(
+        '-q',
+        '--quiet',
+        action='store_true',
+        default=False,
+        help='suppress all output from program (useful for integrating into larger projects)',
+    )
+    parser.add_argument('-t', '--format', default='png', help='output format (png or jpeg)')
     return parser
 
 
@@ -234,11 +245,10 @@ def main():
 
     output_path = Path(output_folder)
 
-    LOG.info('Generating tiles for leaflet.js for zoom levels %d to %d to %s',
-             zoom_min, zoom_max, output_folder)
+    LOG.info('Generating tiles for leaflet.js for zoom levels %d to %d to %s', zoom_min, zoom_max, output_folder)
 
     # if multiple zoom levels, run them all
-    for z in range(zoom_min, zoom_max+1):
+    for z in range(zoom_min, zoom_max + 1):
         LOG.info('generate zoom level %d' % z)
         generate(image, output_path, z, resize_width, format)
     # that's it!
