@@ -92,11 +92,21 @@ After installing Node and running `npm install`, you can start a local developme
 npm run dev
 ```
 
+Must be run in root directory of the project.
+
 This will start a server on `http://localhost:5173/`. Visiting that URLin your browser should immediate display
 the application with the initial map (SupraLand).
 
 The development server also watches the filesystem for changes, and will automatically reload the application when
 you save files. It is typically *not* necessary to hit "Reload" in your browser after saving source files.
+
+You can also run:
+```
+npx vite  dev --open
+```
+To run launch the development server and open the URL in your default browser.
+
+If running VS Code there is a launch.json configuration 'Launch Vite Dev Server'
 
 
 ## Building for production

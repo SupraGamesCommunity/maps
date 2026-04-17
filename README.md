@@ -1,10 +1,11 @@
 # Supra Maps
 * Interactive maps for:
-  - [Supraland](https://store.steampowered.com/app/813630/Supraland/) : [Map](https://supragamescommunity.github.io/maps#mapId=sl)
-  - [Crash](https://store.steampowered.com/app/1093730/Supraland_Crash/) : [Map](https://supragamescommunity.github.io/maps#mapId=slc)
-  - [Supraland: Six Inches Under](https://store.steampowered.com/app/1522870/Supraland_Six_Inches_Under/) : [Map](https://supragamescommunity.github.io/maps#mapId=siu)
-  - [Supraworld](https://store.steampowered.com/app/1869290/Supraworld/) : [Map](https://supragamescommunity.github.io/maps#mapId=sw)
+  - [Supraland](https://store.steampowered.com/app/813630/Supraland/) : [Map](https://supragamescommunity.github.io/maps#mapId=sl) ([wiki](https://supraverse.fandom.com/wiki/supraverse.fandom.com/wiki/Supraland))
+  - [Crash](https://store.steampowered.com/app/1093730/Supraland_Crash/) : [Map](https://supragamescommunity.github.io/maps#mapId=slc) ([wiki](https://supraverse.fandom.com/wiki/supraverse.fandom.com/wiki/Supraland:_Crash))
+  - [Supraland: Six Inches Under](https://store.steampowered.com/app/1522870/Supraland_Six_Inches_Under/) : [Map](https://supragamescommunity.github.io/maps#mapId=siu) ([wiki](https://supraverse.fandom.com/wiki/supraverse.fandom.com/wiki/:Supraland:_Six_Inches_Under))
+  - [Supraworld](https://store.steampowered.com/app/1869290/Supraworld/) : [Map](https://supragamescommunity.github.io/maps#mapId=sw) (https://supraverse.fandom.com/wiki/Supraworld)
 * Repository: [SupraGamesCommunity/maps](https://github.com/SupraGamesCommunity/maps)
+- Reference assets: [SupraGamesCommunity/reference](https://github.com/SupraGamesCommunity/reference)
 
 ## Features
 * Supports all games.
@@ -38,6 +39,16 @@ In addition you can share a link to a specific map, zoom level and position:
 - `zoom` is 0-8  where 0 is all the way zoomed out.
 - `lat/lng` are the X Y position on the map.
 
+An area of the map:
+
+`https://supragamescommunity.github.io/maps/#mapId={map}&W={left}&N={top}&E={right}&S={bottom}`
+
+Or a specific object:
+
+`https://supragamescommunity.github.io/maps/#mapId={map}&alt={area}:{name}&show={true|false}`
+- `area:name` is the underlying unique identifier for a map object
+- `show=true` if set to true it will open the popup dialog for the object
+
 ## Credits
 All credit for these amazing games goes to [David Münnich](http://www.david-m.org) and
 the [Supra Games Team](https://store.steampowered.com/developer/SupraGames).
@@ -66,21 +77,16 @@ by [Supra Games Community](https://github.com/SupraGamesCommunity/).
 
 ## Development
 
-For a guide on developing this project, refer to [FRONTEND_DEVELOPMENT](doc/FRONTEND_DEVELOPMENT.md) and
-[BACKEND_DEVELOPMENT](doc/BACKEND_DEVELOPMENT.md).
+For a guide on developing this project, refer to [EDITING_DATA](doc/EDITING_DATA.md), [FRONTEND_DEVELOPMENT](doc/FRONTEND_DEVELOPMENT.md), [BACKEND_DEVELOPMENT](doc/BACKEND_DEVELOPMENT.md) or [DATA_EXTRACTION](doc/DATA_EXTRACTION.md).
 
 ## License
 This project uses some code Joric's Supraland project, the original [SupraGamesCommunity](https://github.com/SupraGamesCommunity/) map code and media files. Most of the media content is copyrighted by [Supra Games UG](www.supragames.de). Joric developed scripts to import data from the original game and fixed some bugs. This project is an unlicensed public domain, feel free to copy, sell and modify.
 
 See [LICENSE](https://github.com/SupraGamesCommunity/maps/blob/main/LICENSE) for details.
 
-## Other Maps
+## Other Maps and Links
 - Original interactive maps for [Supraland](https://supragamescommunity.github.io/map-sl/), [Crash](https://supragamescommunity.github.io/map-slc/) and [Six Inches Under](https://supragamescommunity.github.io/map-siu/)
 - [Joric's combined map](https://joric.github.io/supraland)
 - [Joric's experimental 3D map](https://joric.github.io/supraland/3d/)
 - [Joric's Supraworld map](https://joric.github.io/supraworld/)
-
-## Technical Documentation
-- [Technical Notes](https://github.com/SupraGamesCommunity/maps/blob/main/doc/technicalnotes.md)
 - [Joric's Supraland Map Wiki](https://github.com/joric/supraland/wiki) - some details of the system
-

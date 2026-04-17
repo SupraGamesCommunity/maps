@@ -1,0 +1,41 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Node Debug: Current File",
+            "type": "node",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "cwd": "${fileDirname}",
+            "args": ["-p", "..\\source"] //-g", "sw", "-s", "GreenFirstRun"]//"$(command:PickArgs)"
+        },
+        {
+            "name": "Python Debug: Current File",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "cwd": "${fileDirname}",
+            "args": "-d ..\\source -g sw -m"    // ${command:pickArgs}"
+        },
+        {
+            "name": "Launch Vite DEV server",
+            "request": "launch",
+            "cwd": "${workspaceRoot}",
+            "runtimeExecutable": "npx",
+            "runtimeArgs": [ "vite", "dev" ],
+            "type": "node",
+            "env": { "NO_COLOR": "1" },
+            "serverReadyAction": {
+                "killOnServerStop": true,
+                "pattern": "Local:   http://localhost:([0-9]+)/",
+                "uriFormat": "http://localhost:%s",
+                "action":"openExternally"
+            }
+        }
+    ]
+}

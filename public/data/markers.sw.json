@@ -264,9 +264,9 @@
     "name": "5Cent_C_UAID_ACB480ECFC8436BC02_1622657000",
     "type": "5Cent_C",
     "area": "Supraworld",
-    "lat": -31140.654296875,
-    "lng": 12308.958984375,
-    "alt": 2965.84912109375,
+    "lat": -32380.90625,
+    "lng": 12244.95703125,
+    "alt": 2828.8330078125,
     "coins": 5
   },
   {
@@ -275,7 +275,7 @@
     "area": "Supraworld",
     "lat": -30577.216796875,
     "lng": 12617.287109375,
-    "alt": 3083.229248046875,
+    "alt": 3087.85107421875,
     "coins": 5
   },
   {
@@ -3565,6 +3565,22 @@
     "linetype": "target"
   },
   {
+    "name": "LaunchBox_C_UAID_ACB480ECFC847FCF02_1493499001",
+    "type": "LaunchBox_C",
+    "area": "Supraworld",
+    "lat": -32372.822265625,
+    "lng": 12238.2412109375,
+    "alt": 2794.2265625,
+    "targets": [
+      {
+        "x": 11651.982,
+        "y": -30350.334,
+        "z": 3493.3215
+      }
+    ],
+    "linetype": "target"
+  },
+  {
     "name": "LaunchBox_C_UAID_ACB480ECFC8485C702_1379094467",
     "type": "LaunchBox_C",
     "area": "Supraworld",
@@ -5826,6 +5842,15 @@
     "lat": 8050.990234375,
     "lng": 12093.7744140625,
     "alt": 2530.787353515625
+  },
+  {
+    "name": "PuzzleCloud_C_UAID_ACB480ECFC8480CF02_1260082284",
+    "type": "PuzzleCloud_C",
+    "area": "Supraworld",
+    "lat": -31061.462890625,
+    "lng": 12496.8876953125,
+    "alt": 3738.5,
+    "variant": "purple"
   },
   {
     "name": "PuzzleCloud_C_UAID_ACB480ECFC84839202_1695992306",

@@ -1089,7 +1089,7 @@ def export_sw_markers(cache_dir, game):  # noqa: C901 - disable complexity warni
                 variant = v
 
             if otype == 'SupraworldPlayerStart_C':
-                o['variant'] = 'red'
+                variant = 'red'
 
             # Only keep gold variant of Nailscrew_C
             if otype == 'Nailscrew_C' and variant != 'gold':
