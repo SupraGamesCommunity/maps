@@ -6,13 +6,13 @@ const _super = L.Polygon.prototype;
 
 export const L_ArrowLine = L.Polygon.extend({
   options: {
-    arrow: 'none',      // Can be 'tip', 'back', 'twoway', 'mid', 'none'
-    arrowSize: 0,       // Arrow size (0 means it's just a pointer) with shadow wings
-    arrowAngle: 45,     // angle at point of arrow 60 would be equilateral triangle (> 0 < 180)
-    lineWidth: 5,       // width of the line in pixels
-    shadowWidth: 2,     // width of shadow in pixels (can be changed with stroke-width in CSS)
-    offset: 0,          // Offset from start position where arrow  should start
-    endOffset: 0,       // Offset from end position where arrow tip should be
+    arrow: 'none', // Can be 'tip', 'back', 'twoway', 'mid', 'none'
+    arrowSize: 0, // Arrow size (0 means it's just a pointer) with shadow wings
+    arrowAngle: 45, // angle at point of arrow 60 would be equilateral triangle (> 0 < 180)
+    lineWidth: 5, // width of the line in pixels
+    shadowWidth: 2, // width of shadow in pixels (can be changed with stroke-width in CSS)
+    offset: 0, // Offset from start position where arrow  should start
+    endOffset: 0, // Offset from end position where arrow tip should be
 
     // fillColor/fillOpacity are colour and opacity of the line
     // color/opacity are colour and opacity of the shadow
@@ -36,14 +36,22 @@ export const L_ArrowLine = L.Polygon.extend({
 
     // Override default options with the CSS configuration
     if (className) {
-      let cssOpts = browser.cssGetProps(className, ['--arrow', '--arrow-size', '--arrow-angle', '--line-width', '--shadow-width', '--offset', '--end-offset']);
+      let cssOpts = browser.cssGetProps(className, [
+        '--arrow',
+        '--arrow-size',
+        '--arrow-angle',
+        '--line-width',
+        '--shadow-width',
+        '--offset',
+        '--end-offset',
+      ]);
       for (const [k, v] of Object.entries(cssOpts)) {
         delete cssOpts[k];
         cssOpts[k.slice(2).snakeToCamelCase()] = v;
       }
       this.options = Object.assign({}, this.options, cssOpts);
     }
-    
+
     L.setOptions(this, options);
 
     this._startLatLng = start;
@@ -91,7 +99,7 @@ export const L_ArrowLine = L.Polygon.extend({
   redraw: function () {
     if (this._map) {
       this.options.fill = true;
-      this.options.stroke = (this.options.shadowWidth > 0);
+      this.options.stroke = this.options.shadowWidth > 0;
       this.options.weight = this.options.shadowWidth * this._map.getPixelResizeScale();
 
       this._setLatLngs(this._buildArrowLine(this._startLatLng, this._endLatLng));
@@ -177,7 +185,7 @@ export const L_ArrowLine = L.Polygon.extend({
 
     // Line is too short (could be zero or negative length). If it appears
     // at all it will be just shadow
-    if (lineLen <= (opts.offset + opts.endOffset)) {
+    if (lineLen <= opts.offset + opts.endOffset) {
       return [[start], [end]];
     }
 
@@ -205,35 +213,34 @@ export const L_ArrowLine = L.Polygon.extend({
     const sinArrowAngle = Math.sin(radArrowAngle);
     const tanArrowAngle = Math.tan(radArrowAngle);
 
-    const strokeY = (opts.lineWidth + opts.shadowWidth) * 0.5;      // Stroke Y (dist from centre line)
-    const d = opts.shadowWidth * 0.5 / sinArrowAngle;               // Distance from tip of line to center of stroke line
-    const ad = (opts.arrowSize + opts.lineWidth * 0.5) / tanArrowAngle;   // Length of filled arrow from tip to corner
-    const h = d + ad + opts.shadowWidth * 0.5;                     // Length of stroke arrow from tip to corner
-    const cornerY = h * tanArrowAngle;                              // Distance from line to arrow corner
+    const strokeY = (opts.lineWidth + opts.shadowWidth) * 0.5; // Stroke Y (dist from centre line)
+    const d = (opts.shadowWidth * 0.5) / sinArrowAngle; // Distance from tip of line to center of stroke line
+    const ad = (opts.arrowSize + opts.lineWidth * 0.5) / tanArrowAngle; // Length of filled arrow from tip to corner
+    const h = d + ad + opts.shadowWidth * 0.5; // Length of stroke arrow from tip to corner
+    const cornerY = h * tanArrowAngle; // Distance from line to arrow corner
 
-    const drawArrows = true;//(lineLen - opts.offset - opts.endOffset) >= h * (opts.arrow == 'twoway' ? 2 : 1);
+    const drawArrows = true; //(lineLen - opts.offset - opts.endOffset) >= h * (opts.arrow == 'twoway' ? 2 : 1);
 
     if (drawArrows && (opts.arrow == 'back' || opts.arrow == 'twoway')) {
-      const tx = opts.offset - d;     // Arrow stroke is drawn just back from filled arrow start
-      const cx = tx + h;              // Arrow corner is just arrow "height" from tip
+      const tx = opts.offset - d; // Arrow stroke is drawn just back from filled arrow start
+      const cx = tx + h; // Arrow corner is just arrow "height" from tip
       addPoint(tx, 0);
       addPoint(cx, cornerY);
-      addPoint(cx, strokeY)
-    }
-    else {
-      const ofs = (opts.arrow == 'twowway' || opts.arrow == 'back') ? opts.offset : 0;
-      addPoint(-opts.shadowWidth * 0.5 + ofs, strokeY)
+      addPoint(cx, strokeY);
+    } else {
+      const ofs = opts.arrow == 'twowway' || opts.arrow == 'back' ? opts.offset : 0;
+      addPoint(-opts.shadowWidth * 0.5 + ofs, strokeY);
     }
 
     if (drawArrows && opts.arrow == 'mid') {
-      const mx = (opts.offset + (lineLen - opts.endOffset)) * 0.5;    // Mid point of line
-      const cd = (cornerY - opts.lineWidth * 0.5) / tanArrowAngle;      // Arrow distance from corner to mid-point (D)
-      const cx = mx - cd / 2 * scale;
-      const dx = mx + cd / 2 * scale;
+      const mx = (opts.offset + (lineLen - opts.endOffset)) * 0.5; // Mid point of line
+      const cd = (cornerY - opts.lineWidth * 0.5) / tanArrowAngle; // Arrow distance from corner to mid-point (D)
+      const cx = mx - (cd / 2) * scale;
+      const dx = mx + (cd / 2) * scale;
 
-      addPoint(cx, strokeY);     // lower corner up
-      addPoint(cx, cornerY);     // upper corner up
-      addPoint(dx, strokeY);     // front up
+      addPoint(cx, strokeY); // lower corner up
+      addPoint(cx, cornerY); // upper corner up
+      addPoint(dx, strokeY); // front up
     }
 
     if (drawArrows && (opts.arrow == 'tip' || opts.arrow == 'twoway')) {
@@ -242,15 +249,14 @@ export const L_ArrowLine = L.Polygon.extend({
       addPoint(cx, strokeY);
       addPoint(cx, cornerY);
       addPoint(tx, 0);
-    }
-    else {
-      const ofs = (opts.arrow == 'tip' || opts.arrow == 'twoway') ? -opts.endOffset : 0;
+    } else {
+      const ofs = opts.arrow == 'tip' || opts.arrow == 'twoway' ? -opts.endOffset : 0;
       addPoint(lineLen + opts.shadowWidth * 0.5 + ofs, strokeY); // Line end
     }
 
     points = points.concat(downPoints.reverse());
 
-    return points.map(pt => this._map.containerPointToLatLng(pt, this._map.getZoom()));
+    return points.map((pt) => this._map.containerPointToLatLng(pt, this._map.getZoom()));
   },
 
   _calcScalePower: function () {
@@ -259,7 +265,7 @@ export const L_ArrowLine = L.Polygon.extend({
 
   _getScale: function (zoom) {
     return Math.pow(2, zoom * this._scalePower) * this.options.scaleZoom0;
-  }
+  },
 });
 
 export const L_arrowLine = function (start, end, options) {

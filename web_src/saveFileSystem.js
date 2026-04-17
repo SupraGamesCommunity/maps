@@ -12,7 +12,9 @@ import { MapObject } from './mapObject.js';
 export class SaveFileSystem {
   static _listeners = {};
 
-  static _falseFn = () => { return false; };
+  static _falseFn = () => {
+    return false;
+  };
 
   static hasListener(id) {
     return id in this._listeners;
@@ -28,7 +30,7 @@ export class SaveFileSystem {
   // Add function/context to be called when event fired. Overwrites any previous listener
   // Note: default defaultValue is false
   static setListener(id, fn, context, filter, defaultValue) {
-    const listener = this._listeners[id] = { fn };
+    const listener = (this._listeners[id] = { fn });
     if (context !== undefined) {
       listener.ctx = context;
     }
@@ -59,7 +61,7 @@ export class SaveFileSystem {
     const listener = this._listeners[id];
     if (listener) {
       listener.fn.call(listener.ctx, id, data);
-    };
+    }
   }
 
   // Clear all listeners (without calling)
@@ -87,11 +89,10 @@ export class SaveFileSystem {
       return;
     }
 
-    const defaultValue = (listener.def !== undefined ? listener.def : false);
+    const defaultValue = listener.def !== undefined ? listener.def : false;
     if (data === defaultValue) {
       delete Settings.map.saveData[id];
-    }
-    else {
+    } else {
       Settings.map.saveData[id] = data;
     }
     Settings.commit();
@@ -123,69 +124,73 @@ export class SaveFileSystem {
     }
   }
 
-  // Read array data loaded from UE4 save file and call any listeners set up with data, saving it to settings if listener 
+  // Read array data loaded from UE4 save file and call any listeners set up with data, saving it to settings if listener
   static _processLoadedArray(arrayData) {
-
     // If there is a listener for this object then add it as found (data)
     const addToSaveData = (area, name, filter, data = true) => {
       const id = MapObject.makeAlt(area, name);
       if (this._testFire(id, filter)) {
         Settings.map.saveData[id] = data;
       }
-    }
+    };
 
     this.ClearAll();
 
-    if(this.mapId == 'sw') {
+    if (this.mapId == 'sw') {
       // Get string and data views on the buffer
       let dataview = new DataView(arrayData, arrayData.byteOffset, arrayData.byteLength);
-      let strview = new TextDecoder("latin1").decode(dataview);
+      let strview = new TextDecoder('latin1').decode(dataview);
 
       // We're searching for any strings that start with PersistentLevel. following a nul
-      const srchStr = '\0PersistentLevel.'
+      const srchStr = '\0PersistentLevel.';
       const re_match = new RegExp(srchStr, 'gi');
       let m;
 
       // Go through all matching strings
       while ((m = re_match.exec(strview)) != null) {
-          const nameidx = m.index + srchStr.length;
-          const namelen = dataview.getInt32(m.index+1-4, true) - srchStr.length + 1;
-          const name = strview.slice(nameidx, nameidx + namelen);
-          addToSaveData('Supraworld', name);
+        const nameidx = m.index + srchStr.length;
+        const namelen = dataview.getInt32(m.index + 1 - 4, true) - srchStr.length + 1;
+        const name = strview.slice(nameidx, nameidx + namelen);
+        addToSaveData('Supraworld', name);
       }
-    }
-    else {
+    } else {
       const loadedSave = new UESaveObject(arrayData);
 
       for (const o of loadedSave.Properties) {
         // Skip things we don't knoww how to deal with
-        if (!o.type || !o.name || o.name == 'None' || o.name == 'EOF'
-          || (o.type == 'ObjectPropetty')   // Only player music uses this so skip it
-          || (o.type == 'ArrayProperty' && o.value.innerType && o.value.innerType == 'StructProperty')
-          || (o.type == 'MapProperty' && (this.mapId != 'siu' || o.name != 'ActorSaveData'))) {
+        if (
+          !o.type ||
+          !o.name ||
+          o.name == 'None' ||
+          o.name == 'EOF' ||
+          o.type == 'ObjectPropetty' || // Only player music uses this so skip it
+          (o.type == 'ArrayProperty' && o.value.innerType && o.value.innerType == 'StructProperty') ||
+          (o.type == 'MapProperty' && (this.mapId != 'siu' || o.name != 'ActorSaveData'))
+        ) {
           continue;
         }
 
-        if (o.name == 'ActorSaveData') {  // This is for SIU PipeCap's
+        if (o.name == 'ActorSaveData') {
+          // This is for SIU PipeCap's
           const actorSaveData = o.value.innerValue;
           const re_match = new RegExp('([^.:]*):PersistentLevel.([^\\0]*?pipecap[^\\0]*)', 'gi');
           let m;
           while ((m = re_match.exec(actorSaveData)) != null) {
             addToSaveData(m[1], m[2], o.name);
           }
-        }
-        else if (o.type == 'ArrayProperty') {  // One of 'ThingsToRemove', 'ThingsToActivate', 'ThingsToOpenForever'
+        } else if (o.type == 'ArrayProperty') {
+          // One of 'ThingsToRemove', 'ThingsToActivate', 'ThingsToOpenForever'
           for (let x of o.value.value) {
             // map '/Game/FirstPersonBP/Maps/DLC2_Complete.DLC2_Complete:PersistentLevel.Coin442_41' to 'DLC2_Complete:Coin442_41'
-            let area = x.split("/").pop().split('.')[0];
-            let name = x.split(".").pop();
+            let area = x.split('/').pop().split('.')[0];
+            let name = x.split('.').pop();
             if (name != 'None') {
-              name = name.capitalised();  // Shell2_1957 appears as shell2_1957 in the save file
+              name = name.capitalised(); // Shell2_1957 appears as shell2_1957 in the save file
               addToSaveData(area, name, o.name);
             }
           }
-        }
-        else {    // Mostly Player upgrade and other properties
+        } else {
+          // Mostly Player upgrade and other properties
           addToSaveData('', o.name, null, o.value);
         }
       }
@@ -195,14 +200,14 @@ export class SaveFileSystem {
     for (const id in Settings.map.saveData) {
       this._fire(id, Settings.map.saveData[id]);
     }
-  };
+  }
 
   // Load save file given by Blob (taken from UI)
   static loadFile(blob, mapId) {
     if (!(blob instanceof Blob)) {
       return;
     }
-    if(mapId){
+    if (mapId) {
       this.mapId = mapId;
     }
 
@@ -211,22 +216,22 @@ export class SaveFileSystem {
     reader.onloadend = (evt) => {
       try {
         this._processLoadedArray(evt.target.result);
-      } catch (e) {      // eslint-disable-line no-unused-vars
+      } catch (e) {
+        // eslint-disable-line no-unused-vars
         alert(`Could not load file, incompatible format: ${blob.name}`);
       }
-    }
+    };
 
     reader.onerror = () => {
-      alert(`Error reading file, ${reader.error.message}: ${blob.name}`)
-    }
+      alert(`Error reading file, ${reader.error.message}: ${blob.name}`);
+    };
 
     reader.readAsArrayBuffer(blob);
   }
-  
+
   // Prompt user to select '.sav' file and then load it
   static loadFileDialog(mapId) {
     this.mapId = mapId;
     browser.openLoadFileDialog('.sav', SaveFileSystem.loadFile, SaveFileSystem);
   }
-
 }

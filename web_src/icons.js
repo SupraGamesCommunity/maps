@@ -1,4 +1,4 @@
-import { L_mapIcon } from './mapIcon.js'
+import { L_mapIcon } from './mapIcon.js';
 import { toSupraColor, isSupraColor } from './supraDefs.js';
 
 //=================================================================================================
@@ -33,49 +33,49 @@ import { toSupraColor, isSupraColor } from './supraDefs.js';
 //      }
 
 export class Icons {
-
   static _iconConfigsFile = 'data/iconConfigs.json';
 
-  static _imgPath = 'img/markers/';                   // Relative path to marker icon directory
-  static _imgExt = {            // Maps style to file extension
+  static _imgPath = 'img/markers/'; // Relative path to marker icon directory
+  static _imgExt = {
+    // Maps style to file extension
     fapng: '.png',
     fasvg: '.svg',
     png: '.png',
     svg: '.svg',
   };
   static _defaultIconName = 'question_mark';
-  
+
   static _pointConfig = {
-    type:          'point',     // Point style marker icon
-    style:         'png',       // Raw PNG style
-    iconSize:      [32,  32],   // Base size for icon in pixels (can be overriden)
-    iconAnchor:    [16,  16],   // Anchor position in pixels from top left corner
-    popupAnchor:   [ 0, -16],   // Popup position in pixels from anchor point
-    tooltipAnchor: [16,  16],   // Tooltip position in pixels from anchor point (if there is one)
-  }
+    type: 'point', // Point style marker icon
+    style: 'png', // Raw PNG style
+    iconSize: [32, 32], // Base size for icon in pixels (can be overriden)
+    iconAnchor: [16, 16], // Anchor position in pixels from top left corner
+    popupAnchor: [0, -16], // Popup position in pixels from anchor point
+    tooltipAnchor: [16, 16], // Tooltip position in pixels from anchor point (if there is one)
+  };
 
   static _pinConfig = {
-    type:          'pin',       // Pin style marker icon
-    style:         'png',       // Font Awesome Solid (options: fas..., fapng, png)
-    iconSize:      [32,  32],   // Base size for icon in pixels (can be overriden)
-    iconAnchor:    [16,  32],   // Anchor position in pixels from top left corner
-    popupAnchor:   [ 0, -32],   // Popup position in pixels from anchor point
-    tooltipAnchor: [16,   0],   // Tooltip position in pixels from anchor point (if there is one)
-  }
+    type: 'pin', // Pin style marker icon
+    style: 'png', // Font Awesome Solid (options: fas..., fapng, png)
+    iconSize: [32, 32], // Base size for icon in pixels (can be overriden)
+    iconAnchor: [16, 32], // Anchor position in pixels from top left corner
+    popupAnchor: [0, -32], // Popup position in pixels from anchor point
+    tooltipAnchor: [16, 0], // Tooltip position in pixels from anchor point (if there is one)
+  };
 
-  static _iconConfigs = {};       // Dictionary from base name or fullname to icon config
+  static _iconConfigs = {}; // Dictionary from base name or fullname to icon config
 
-  static _icons = {};             // Dictionary from class name to icon object
+  static _icons = {}; // Dictionary from class name to icon object
 
   // Load in icon configurations
   static async loadIconConfigs() {
-    const response = await fetch('data/iconConfigs.json')
+    const response = await fetch('data/iconConfigs.json');
     const j = await response.json();
     this._iconConfigs = j;
-    let icondecodes = []
-    for(const cfg in this._iconConfigs){
-      const style = this._iconConfigs[cfg].style; 
-      if(style == 'fapng' || style == 'fasvg'){
+    let icondecodes = [];
+    for (const cfg in this._iconConfigs) {
+      const style = this._iconConfigs[cfg].style;
+      if (style == 'fapng' || style == 'fasvg') {
         this._iconConfigs[cfg].img = new Image();
         this._iconConfigs[cfg].img.src = this._imgPath + this._iconConfigs[cfg].iconName + this._imgExt[style];
         icondecodes.push(this._iconConfigs[cfg].img.decode());
@@ -88,26 +88,25 @@ export class Icons {
   static getConfig(className) {
     const filename = className.replace('-', '.');
     const cfg = this._iconConfigs[filename] || this._iconConfigs[filename.before('.')] || {};
-    return Object.assign({}, (cfg.type == 'pin' ? this._pinConfig : this._pointConfig), cfg); // fill in defaults
+    return Object.assign({}, cfg.type == 'pin' ? this._pinConfig : this._pointConfig, cfg); // fill in defaults
   }
 
   // Render a Font Awesome Icon and return an Image URL
   static renderFAIconToImageURL(
-      isPin,          // Boolean true for pin, false for point
-      style,          // FA prefix (fas=solid, far=regular, fal=light, fat=thin, dad=duotone, fab=brands)
-      iconName,       // Name of an FA Icon
-      bg,             // Background colour
-      fg = 'white'    // Foreground colour
-    ) {
-
-    const faPin = 'location-pin';        // FA icon used for map pin marker background
-    const faPoint = 'circle';            // FA icon used for map point marker background
+    isPin, // Boolean true for pin, false for point
+    style, // FA prefix (fas=solid, far=regular, fal=light, fat=thin, dad=duotone, fab=brands)
+    iconName, // Name of an FA Icon
+    bg, // Background colour
+    fg = 'white' // Foreground colour
+  ) {
+    const faPin = 'location-pin'; // FA icon used for map pin marker background
+    const faPoint = 'circle'; // FA icon used for map point marker background
     const faDefault = 'question-circle'; // FA icon used if asked for unknown icon
-    const size = 48;                     // Size to render icons
-    const outlineSize = size * 0.976;    // Scale adjustment between shadow and background
-    const pinCentreOfs = size * -0.125;  // Y offset from centre of icon to centre for a pin
-    const pinIconSize = size * 0.5;      // Size to draw the FA icon on a pin marker
-    const ptIconSize = size * 0.55;      // Size to draw the FA icon on a point marker
+    const size = 48; // Size to render icons
+    const outlineSize = size * 0.976; // Scale adjustment between shadow and background
+    const pinCentreOfs = size * -0.125; // Y offset from centre of icon to centre for a pin
+    const pinIconSize = size * 0.5; // Size to draw the FA icon on a pin marker
+    const ptIconSize = size * 0.55; // Size to draw the FA icon on a point marker
 
     // We're going to draw the icon to a canvas
     const canvas = document.createElement('canvas');
@@ -116,9 +115,8 @@ export class Icons {
 
     // This function draws one of the icon layers in some colour
     function drawFAIcon(prefix, iconName, color, pixelSize, dy = 0) {
-      // Get a font awesome icon specified by prefix and icon name 
-      let icon = FontAwesome.icon({ prefix, iconName })
-        || FontAwesome.icon({ prefix:'fa', iconName: faDefault });
+      // Get a font awesome icon specified by prefix and icon name
+      let icon = FontAwesome.icon({ prefix, iconName }) || FontAwesome.icon({ prefix: 'fa', iconName: faDefault });
 
       // Extract the width/height and SVG path data from the icon
       const [w, h, , , path] = icon.icon;
@@ -150,35 +148,43 @@ export class Icons {
     drawFAIcon('fas', isPin ? faPin : faPoint, 'black', size);
     drawFAIcon('fas', isPin ? faPin : faPoint, bg, outlineSize);
 
-    if(style == 'fapng' || style == 'fasvg')
+    if (style == 'fapng' || style == 'fasvg')
       drawImageIcon(iconName, size, isPin ? pinIconSize : ptIconSize, isPin ? pinCentreOfs : 0);
     else
-      drawFAIcon(style, iconName, toSupraColor(fg || 'white'), isPin ? pinIconSize : ptIconSize, isPin ? pinCentreOfs : 0);
+      drawFAIcon(
+        style,
+        iconName,
+        toSupraColor(fg || 'white'),
+        isPin ? pinIconSize : ptIconSize,
+        isPin ? pinCentreOfs : 0
+      );
 
-    return canvas.toDataURL('image/png'); 
+    return canvas.toDataURL('image/png');
   }
 
   // Returns icon options given iconName, variant and game
   static getIconOptions(options) {
-      // Shallow copy so we don't mess up callers version but make sure we have a valid iconName
+    // Shallow copy so we don't mess up callers version but make sure we have a valid iconName
     const opts = Object.assign({}, options, { iconName: options.iconName || this._defaultIconName });
 
     // Split out flags
     const [baseName, flags] = [...opts.iconName.split(':'), ''];
 
     // Decode the flag values and get each element
-    opts.variant = flags.includes('v') && opts.variant || '';
-    opts.game = flags.includes('g') && opts.game || '';
+    opts.variant = (flags.includes('v') && opts.variant) || '';
+    opts.game = (flags.includes('g') && opts.game) || '';
 
     const match = flags.match(/x[\d.]+/);
-    opts.baseScale = parseFloat(match && match[0].slice(1)) || 1;    // :x{scale}
+    opts.baseScale = parseFloat(match && match[0].slice(1)) || 1; // :x{scale}
 
     // Generate options required for L.MapIcon
-    opts.className = [baseName, opts.variant, opts.game, `x${opts.baseScale.toString().replace('.', '-')}`].filter(Boolean).join('-');
+    opts.className = [baseName, opts.variant, opts.game, `x${opts.baseScale.toString().replace('.', '-')}`]
+      .filter(Boolean)
+      .join('-');
     opts.iconConfig = this.getConfig(opts.className);
-    opts.iconConfig.bg = (isSupraColor(opts.variant) ? opts.variant : opts.iconConfig.bg);
+    opts.iconConfig.bg = isSupraColor(opts.variant) ? opts.variant : opts.iconConfig.bg;
     let ext;
-    if(ext = this._imgExt[opts.iconConfig.style])
+    if ((ext = this._imgExt[opts.iconConfig.style]))
       opts.iconUrl = `${this._imgPath}${[opts.iconConfig.iconName || baseName, opts.variant, opts.game].filter(Boolean).join('.')}${ext}`;
 
     return opts;
@@ -192,8 +198,8 @@ export class Icons {
     let icon = this._icons[opts.className];
     if (!icon) {
       // If not a PNG then we need to generate it
-      if(opts.iconConfig.style != 'png') {
-        const isPin = (opts.iconConfig.type == 'pin');
+      if (opts.iconConfig.style != 'png') {
+        const isPin = opts.iconConfig.type == 'pin';
         const style = opts.iconConfig.style;
         const iconName = style in this._imgExt ? opts.iconConfig.img : opts.iconConfig.iconName;
         opts.iconUrl = this.renderFAIconToImageURL(isPin, style, iconName, opts.iconConfig.bg, opts.iconConfig.fg);

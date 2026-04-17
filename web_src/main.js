@@ -16,17 +16,17 @@ import { L_supraMap } from './supraMap.js';
 
 const skipConfirms = browser.isCode;
 
-let map = null;         // Leaflet map object containing current game map and all its markers
+let map = null; // Leaflet map object containing current game map and all its markers
 
 //=================================================================================================
 // BuildMode hanlding
 
 export const buildMode = {
-  marker: undefined,    // Current marker we're editing in Build Mode
-  object: undefined,    // Current object we're editing in Build Mode
-  objectChanges: [],    // Current object's changed values before they are committed to the list
-  changeList: []        // Changes made in the current Build Mode session
-}
+  marker: undefined, // Current marker we're editing in Build Mode
+  object: undefined, // Current object we're editing in Build Mode
+  objectChanges: [], // Current object's changed values before they are committed to the list
+  changeList: [], // Changes made in the current Build Mode session
+};
 
 function toggleDevMode() {
   Settings.globalSetDefault('devMode', false);
@@ -44,20 +44,18 @@ function toggleBuildMode() {
 
 function updateBuildModeValue(event) {
   let el = event.target;
-  let value = ('{["'.includes((el.value+' ').charAt(0))) ? JSON.parse(el.value) : el.value;
+  let value = '{["'.includes((el.value + ' ').charAt(0)) ? JSON.parse(el.value) : el.value;
   buildMode.object[el.id] = value;
   buildMode.objectChanges[MapObject.makeAlt(buildMode.object.area, buildMode.object.name) + '|' + el.id] = value;
 }
 window.updateBuildModeValue = function (event) {
-    updateBuildModeValue(event);
-}
+  updateBuildModeValue(event);
+};
 
 function commitCurrentBuildModeChanges() {
-  Object.getOwnPropertyNames(buildMode.objectChanges).forEach(
-    function (i) {
-      buildMode.changeList[i] = buildMode.objectChanges[i];
-    }
-  );
+  Object.getOwnPropertyNames(buildMode.objectChanges).forEach(function (i) {
+    buildMode.changeList[i] = buildMode.objectChanges[i];
+  });
   let newLat = buildMode.object.lat;
   let newLng = buildMode.object.lng;
 
@@ -66,19 +64,22 @@ function commitCurrentBuildModeChanges() {
   map.closePopup();
 }
 window.commitCurrentBuildModeChanges = function () {
-    commitCurrentBuildModeChanges();
-}
+  commitCurrentBuildModeChanges();
+};
 
 function exportBuildChanges() {
   // It might be worth accummulating the changes in this structure as we make them, but this works
-  let jsonobj = {}
-  Object.getOwnPropertyNames(buildMode.changeList).filter(function (e) { return e !== 'length' }).forEach(
-    function (k) {
+  let jsonobj = {};
+  Object.getOwnPropertyNames(buildMode.changeList)
+    .filter(function (e) {
+      return e !== 'length';
+    })
+    .forEach(function (k) {
       let alt, prop, area, name;
       [alt, prop] = k.split('|');
       [area, name] = alt.split(':');
       if (!jsonobj[alt]) {
-        jsonobj[alt] = {}
+        jsonobj[alt] = {};
       }
       jsonobj[alt]['name'] = name;
       jsonobj[alt]['area'] = area;
@@ -87,7 +88,7 @@ function exportBuildChanges() {
   jsonobj = Object.values(jsonobj);
 
   console.log(buildMode.changeList);
-  let t = JSON.stringify(jsonobj, null, 2)
+  let t = JSON.stringify(jsonobj, null, 2);
   browser.copyTextToClipboard(t);
   skipConfirms || alert('Build mode changes have been placed on the clipboard.');
 }
@@ -95,16 +96,19 @@ function exportBuildChanges() {
 //=================================================================================================
 // setupKeyControls
 
-function setupKeyControls(map, searchControl){
+function setupKeyControls(map, searchControl) {
   // Keys currently pressed [code]=true
   let pressed = {};
 
   // Called every browser animation timestep following call to requestAnimationFrame
-  function update() { // (timestep)
+  function update() {
+    // (timestep)
     // Keys mappings for pan and zoom map controls
     const bindings = {
-      KeyA: ['x', +1], KeyD: ['x', -1],
-      KeyW: ['y', +1], KeyS: ['y', -1],
+      KeyA: ['x', +1],
+      KeyD: ['x', -1],
+      KeyW: ['y', +1],
+      KeyS: ['y', -1],
       //KeyT: ['z', +1], KeyG: ['z', -1],   // Could be used for zoom
     };
     let step = 100;
@@ -120,53 +124,70 @@ function setupKeyControls(map, searchControl){
     window.requestAnimationFrame(update);
   }
 
-  map.on('blur', function () {  // (e)
+  map.on('blur', function () {
+    // (e)
     pressed = {}; // prevent sticky keys
   });
 
-  // When a key goes up remove it from the list 
+  // When a key goes up remove it from the list
   map.on('keyup', (e) => {
     delete pressed[e.originalEvent.code];
   });
 
-  map.on('keydown', function (e) {
-    const le = e;
-    e = e.originalEvent;
+  map.on(
+    'keydown',
+    function (e) {
+      const le = e;
+      e = e.originalEvent;
 
-    if (e.target.localName == 'input' || e.target.id.startsWith('searchtext')) {
-      return;
-    }
-  
-    pressed[e.code] = true;
-    switch (e.code) {
-      case 'KeyF':        // F (no ctrl) to toggle fullscreen
-        if (e.ctrlKey) {
+      if (e.target.localName == 'input' || e.target.id.startsWith('searchtext')) {
+        return;
+      }
+
+      pressed[e.code] = true;
+      switch (e.code) {
+        case 'KeyF': // F (no ctrl) to toggle fullscreen
+          if (e.ctrlKey) {
+            searchControl.expand(true);
+            e.preventDefault();
+          } else {
+            map.toggleFullscreen();
+          }
+          break;
+        case 'Slash': // Ctrl+F or / to search
           searchControl.expand(true);
           e.preventDefault();
-        } else {
-          map.toggleFullscreen();
-        }
-        break;
-      case 'Slash':     // Ctrl+F or / to search
-        searchControl.expand(true);
-        e.preventDefault();
-        break;
-      case 'KeyR':
-        if (!e.ctrlKey && !e.altKey) {
-          const playerPos = MapObject.get('PlayerPosition');
-          map.flyTo(playerPos ? [playerPos.o.lat, playerPos.o.lng] : MapLayer._layers[map.mapId].viewCenterLngLat);
-        } else if (e.altKey) {
-          SaveFileSystem.loadFileDialog(map.mapId);
-        }
-        break;
-      case 'Digit1': loadMap(new MapParam({ mapId: 'sl'  })); break;
-      case 'Digit2': loadMap(new MapParam({ mapId: 'slc' })); break;
-      case 'Digit3': loadMap(new MapParam({ mapId: 'siu' })); break;
-      case 'Digit4': loadMap(new MapParam({ mapId: 'sw'  })); break;
-      case 'KeyT': map.zoomIn(1); break;
-      case 'KeyG': map.zoomOut(1); break;
-    }
-  }, this);
+          break;
+        case 'KeyR':
+          if (!e.ctrlKey && !e.altKey) {
+            const playerPos = MapObject.get('PlayerPosition');
+            map.flyTo(playerPos ? [playerPos.o.lat, playerPos.o.lng] : MapLayer._layers[map.mapId].viewCenterLngLat);
+          } else if (e.altKey) {
+            SaveFileSystem.loadFileDialog(map.mapId);
+          }
+          break;
+        case 'Digit1':
+          loadMap(new MapParam({ mapId: 'sl' }));
+          break;
+        case 'Digit2':
+          loadMap(new MapParam({ mapId: 'slc' }));
+          break;
+        case 'Digit3':
+          loadMap(new MapParam({ mapId: 'siu' }));
+          break;
+        case 'Digit4':
+          loadMap(new MapParam({ mapId: 'sw' }));
+          break;
+        case 'KeyT':
+          map.zoomIn(1);
+          break;
+        case 'KeyG':
+          map.zoomOut(1);
+          break;
+      }
+    },
+    this
+  );
 
   window.requestAnimationFrame(update);
 }
@@ -174,11 +195,10 @@ function setupKeyControls(map, searchControl){
 //=================================================================================================
 // loadMap
 //
-// Called when Window loads or base map changes  
+// Called when Window loads or base map changes
 async function loadMap(mapParam) {
-
   // Protect against being called while in the middle of loading
-  if(loadMap.isLoading){
+  if (loadMap.isLoading) {
     return;
   }
   loadMap.isLoading = true;
@@ -196,28 +216,28 @@ async function loadMap(mapParam) {
   // Create the map
   map = L_supraMap(mapParam);
 
-
   // Add zoom, fullscreen toggle and mousePosition controls to the map
   L.control.zoom({ position: 'bottomright' }).addTo(map);
   L.control.fullscreen({ position: 'bottomright', forceSeparateButton: true }).addTo(map);
   L.control.mousePosition({ numDigits: 0, lngFirst: true }).addTo(map);
 
-
   // Sort out the layer configuration and create the layers
   MapLayer.setupLayers(map);
 
-
   // Add the layer control to the map
-  const layerControl = L.control.layers({}, {}, {
-    collapsed: true,
-    position: 'topright',
-  });
+  const layerControl = L.control.layers(
+    {},
+    {},
+    {
+      collapsed: true,
+      position: 'topright',
+    }
+  );
 
   MapLayer.forEachEnabled(map.mapId, (id, layer) => {
     if (layer.type == 'base') {
       layerControl.addBaseLayer(layer.layerObj, layer.name);
-    }
-    else if (layer.type == 'markers') {
+    } else if (layer.type == 'markers') {
       layerControl.addOverlay(layer.layerObj, layer.name);
     }
   });
@@ -229,11 +249,16 @@ async function loadMap(mapParam) {
     }
   });
 
-
   // Add the tool bars to the map
   let subAction = L.Toolbar2.Action.extend({
-    initialize: function (map, myAction) { this.map = map; this.myAction = myAction; L.Toolbar2.Action.prototype.initialize.call(this); },
-    addHooks: function () { this.myAction.disable(); }
+    initialize: function (map, myAction) {
+      this.map = map;
+      this.myAction = myAction;
+      L.Toolbar2.Action.prototype.initialize.call(this);
+    },
+    addHooks: function () {
+      this.myAction.disable();
+    },
   });
   new L.Toolbar2.Control({
     position: 'bottomleft',
@@ -249,30 +274,33 @@ async function loadMap(mapParam) {
                 addHooks: function () {
                   MapPins.add(map, { activateLayer: true });
                   subAction.prototype.addHooks.call(this); // closes sub-action
-                }
+                },
               }),
               subAction.extend({
                 options: { toolbarIcon: { html: 'clear', tooltip: 'Clears all pins added to map' } },
                 addHooks: function () {
-                  if (MapPins.hasAny() && (skipConfirms || confirm("Are you sure you want to clear all custom pins?"))) {
+                  if (
+                    MapPins.hasAny() &&
+                    (skipConfirms || confirm('Are you sure you want to clear all custom pins?'))
+                  ) {
                     MapPins.clearAll();
                   }
                   subAction.prototype.addHooks.call(this); // closes sub-action
-                }
+                },
               }),
               subAction.extend({
                 options: { toolbarIcon: { html: 'copy', tooltip: 'Copy pin positions to clip board' } },
                 addHooks: function () {
                   MapPins.copyToClipboard();
                   subAction.prototype.addHooks.call(this); // closes sub-action
-                }
+                },
               }),
               subAction.extend({
-                options: { toolbarIcon: { html: '&times;', tooltip: 'Close' } }
+                options: { toolbarIcon: { html: '&times;', tooltip: 'Close' } },
               }),
             ],
-          })
-        }
+          }),
+        },
       }),
       // build mode button
       L.Toolbar2.Action.extend({
@@ -285,28 +313,33 @@ async function loadMap(mapParam) {
                 addHooks: function () {
                   toggleDevMode();
                   subAction.prototype.addHooks.call(this); // closes sub-action
-                }
+                },
               }),
               subAction.extend({
                 options: { toolbarIcon: { html: 'Build', tooltip: 'Toggles Build mode on or off' } },
                 addHooks: function () {
                   toggleBuildMode();
                   subAction.prototype.addHooks.call(this); // closes sub-action
-                }
+                },
               }),
               subAction.extend({
-                options: { toolbarIcon: { html: 'Copy Changes', tooltip: 'Copies the changes made in this session to the Clipboard' } },
+                options: {
+                  toolbarIcon: {
+                    html: 'Copy Changes',
+                    tooltip: 'Copies the changes made in this session to the Clipboard',
+                  },
+                },
                 addHooks: function () {
                   exportBuildChanges();
                   subAction.prototype.addHooks.call(this); // closes sub-action
-                }
+                },
               }),
               subAction.extend({
-                options: { toolbarIcon: { html: '&times;', tooltip: 'Close' } }
+                options: { toolbarIcon: { html: '&times;', tooltip: 'Close' } },
               }),
             ],
-          })
-        }
+          }),
+        },
       }),
       // share button
       L.Toolbar2.Action.extend({
@@ -319,14 +352,14 @@ async function loadMap(mapParam) {
                 addHooks: function () {
                   browser.copyTextToClipboard(MapParam.getViewURL(map));
                   subAction.prototype.addHooks.call(this); // closes sub-action
-                }
+                },
               }),
               subAction.extend({
-                options: { toolbarIcon: { html: '&times;', tooltip: 'Close' } }
+                options: { toolbarIcon: { html: '&times;', tooltip: 'Close' } },
               }),
             ],
-          })
-        }
+          }),
+        },
       }),
       // load game button
       L.Toolbar2.Action.extend({
@@ -335,27 +368,37 @@ async function loadMap(mapParam) {
           subToolbar: new L.Toolbar2({
             actions: [
               subAction.extend({
-                options: { toolbarIcon: { html: 'Browse...', tooltip: 'Load game save (*.sav) to mark collected items (Alt+R)' } },
+                options: {
+                  toolbarIcon: { html: 'Browse...', tooltip: 'Load game save (*.sav) to mark collected items (Alt+R)' },
+                },
                 addHooks: function () {
-                  if (Object.keys(Settings.map.saveData).length == 0 ||
-                    skipConfirms || confirm("Are you sure you want to overwrite existing items marked found?")) {
+                  if (
+                    Object.keys(Settings.map.saveData).length == 0 ||
+                    skipConfirms ||
+                    confirm('Are you sure you want to overwrite existing items marked found?')
+                  ) {
                     SaveFileSystem.loadFileDialog(map.mapId);
                   }
                   subAction.prototype.addHooks.call(this);
-                }
+                },
               }),
               subAction.extend({
-                options: { toolbarIcon: { html: 'Copy File Path', tooltip: 'Copy default Windows game save file path to the Clipboard' } },
+                options: {
+                  toolbarIcon: {
+                    html: 'Copy File Path',
+                    tooltip: 'Copy default Windows game save file path to the Clipboard',
+                  },
+                },
                 addHooks: function () {
                   const savedPaths = {
-                    'sl':  '%LocalAppData%\\Supraland\\Saved\\SaveGames',
-                    'slc': '%LocalAppData%\\Supraland\\Saved\\SaveGames',
-                    'siu': '%LocalAppData%\\SupralandSIU\\Saved\\SaveGames',
-                    'sw':  '%LocalAppData%\\Supraworld\\Saved\\SaveGames\\Supraworld',
-                  }
+                    sl: '%LocalAppData%\\Supraland\\Saved\\SaveGames',
+                    slc: '%LocalAppData%\\Supraland\\Saved\\SaveGames',
+                    siu: '%LocalAppData%\\SupralandSIU\\Saved\\SaveGames',
+                    sw: '%LocalAppData%\\Supraworld\\Saved\\SaveGames\\Supraworld',
+                  };
                   browser.copyTextToClipboard(savedPaths[map.mapId]);
                   subAction.prototype.addHooks.call(this);
-                }
+                },
               }),
               subAction.extend({
                 options: { toolbarIcon: { html: 'Unmark Found', tooltip: 'Unmark all found items' } },
@@ -364,18 +407,17 @@ async function loadMap(mapParam) {
                     SaveFileSystem.ClearAll();
                   }
                   subAction.prototype.addHooks.call(this);
-                }
+                },
               }),
               subAction.extend({
-                options: { toolbarIcon: { html: '&times;', tooltip: 'Close' } }
+                options: { toolbarIcon: { html: '&times;', tooltip: 'Close' } },
               }),
             ],
-          })
-        }
+          }),
+        },
       }),
     ],
   }).addTo(map);
-
 
   // Add search control to the map
   Settings.mapSetDefault('searchText', '');
@@ -390,26 +432,24 @@ async function loadMap(mapParam) {
 
   const searchControl = L_Control_supraSearch({ layer: searchLayer }).addTo(map);
 
-
   // Add the markers to the map
-  await MapObject.loadObjects(map.mapId); 
+  await MapObject.loadObjects(map.mapId);
   MapObject.initObjects(map);
   MapPins.restoreMapPins(map);
-
 
   // Setup keyboard controls
   setupKeyControls(map, searchControl);
 
-  if(mapParam.hasAlt()){
+  if (mapParam.hasAlt()) {
     MapObject.showAlt(mapParam.getAlt(), mapParam.getShow());
   }
 
   // This is a fix for the map tiles going black when you reactivate a tab/window containing
   // the map. If it happens zooming in/out or refreshing fixes it. Seems to be a problem with
   // leaflet - though I've not found a good reference discussing it.
-  window.addEventListener("visibilitychange", () => {
+  window.addEventListener('visibilitychange', () => {
     if (!window.document.hidden && map) {
-        map.invalidateSize();
+      map.invalidateSize();
     }
   });
 
@@ -418,33 +458,37 @@ async function loadMap(mapParam) {
 } // end of loadmap
 
 //=================================================================================================
-window.onhashchange = function () {   // (e)
+window.onhashchange = function () {
+  // (e)
   const mapParam = new MapParam(browser.getHashAndClear());
 
-  if (!map || mapParam.mapId && mapParam.mapId != map.mapId) {
+  if (!map || (mapParam.mapId && mapParam.mapId != map.mapId)) {
     loadMap(mapParam);
-  }
-  else if (mapParam.hasAlt()) {
+  } else if (mapParam.hasAlt()) {
     MapObject.showAlt(mapParam.getAlt(), mapParam.getShow());
-  }
-  else if (mapParam.hasView()) {
+  } else if (mapParam.hasView()) {
     map.setView(mapParam.getCenter(map.getCenter()), mapParam.getZoom(map.getZoom()));
-  }
-  else if (mapParam.hasBounds()) {
+  } else if (mapParam.hasBounds()) {
     map.fitBounds(mapParam.bounds);
   }
-}
+};
 
 //=================================================================================================
-window.onload = async function () {    // (event)
+window.onload = async function () {
+  // (event)
 
   // Initialise/load settings
   Settings.init('sl');
   Settings.globalSetDefault('language', null); // ie use browser default language
-  
+
   // Initialise all the modules that load config from Json but are indepedent of map selection
-  await Promise.all([locStr.loadStrings(Settings.global.language), GameClasses.loadClasses(), Icons.loadIconConfigs(), MapLayer.loadConfigs()]);
+  await Promise.all([
+    locStr.loadStrings(Settings.global.language),
+    GameClasses.loadClasses(),
+    Icons.loadIconConfigs(),
+    MapLayer.loadConfigs(),
+  ]);
 
   // Load map based on hash parameters or defaults. Clearing location hash
   loadMap(new MapParam(browser.getHashAndClear()));
-}
+};
