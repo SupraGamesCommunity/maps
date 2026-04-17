@@ -6,7 +6,7 @@ export const MapSelectorRadioButtons = ({ options, onChange }) => {
         <label key={option.value} style={{ display: 'block', margin: '5px 0' }}>
           <input
             type="radio"
-            name={"select_map"}
+            name={'select_map'}
             value={option.value}
             checked={option.isSelected}
             onChange={(e) => onChange(e.target.value)}
@@ -35,10 +35,10 @@ export const LayerSelector = ({ mapSelections, overlaySelections, onMapChange, o
       <div style={{ marginBottom: '30px' }}>
         <h2>Map selector</h2>
         <MapSelectorRadioButtons
-            options={mapSelections.options}
-            selectedValue={mapSelections.selectedValue}
-            onChange={onMapChange}
-          />
+          options={mapSelections.options}
+          selectedValue={mapSelections.selectedValue}
+          onChange={onMapChange}
+        />
       </div>
 
       <div style={{ marginBottom: '30px' }}>

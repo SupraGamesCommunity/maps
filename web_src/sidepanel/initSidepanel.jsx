@@ -21,7 +21,6 @@ export function initSidepanelDom() {
   root = createRoot(sidepanelContainer);
 }
 
-
 /*
  * Initializes the sidepanel, with a specific MapLayer map.
  * This is called whenever the user switches the game map (e.g. SupraLand, SupraWorld, etc)

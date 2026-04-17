@@ -87,7 +87,6 @@ export class LayerSelect_Data {
     this.map.fire('baselayerchange', uiLayer.leafletLayer);
   }
 
-
   // Subscribe to state changes
   subscribe(listener) {
     this.listeners.add(listener);
@@ -98,5 +97,4 @@ export class LayerSelect_Data {
   notifyListeners() {
     this.listeners.forEach((listener) => listener());
   }
-
 }

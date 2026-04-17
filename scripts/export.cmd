@@ -153,17 +153,21 @@ echo.
 echo {game} is one of sl, slc, siu or sw (slc ignored for most commands) (use all or put multiple games in quotes)
 echo {mode} is one of images, maps or list (put multiple modes in quotes)
 echo.
-echo levels   extracts .umap level data for the specified game to ..\source\*.json
-echo bp       extracts .uasset blueprint files to .json
-echo mapimg   extracts .png map image files and merges them together in ..\source\mapimg
-echo gentiles takes ..\source\{game}map-final.png and generates tiles in ..\tiles\{game}\base 
-echo loc      extracts .locres/.locmeta localistation files for the specified game
-echo enums    extracts all the enumerations and their member names/numbers (..\source\{game}.enums.json)
-echo list     generates a list of all files in the specified game ({game}.list.txt)
-echo parse    runs extraction with custom arguments (optional flatten argument)
-echo          ie export {game} parse [flatten] -p */{file}.uasset
-echo getfog   extract editable for fog map from [{savename}] or from source\sw
-echo applyfog combine swmapfog.png and swmap.png into swmap-fogged.png
+echo Multiple games or modes can be triggered by putting a list in quotes, thus:
+echo   export "sl sw" "list levels"
+echo.
+echo Commands:
+echo  levels   extracts .umap level data for the specified game to ..\source\*.json
+echo  bp       extracts .uasset blueprint files to .json
+echo  mapimg   extracts .png map image files and merges them together in ..\source\mapimg
+echo  gentiles takes ..\source\{game}map-final.png and generates tiles in ..\tiles\{game}\base 
+echo  loc      extracts .locres/.locmeta localistation files for the specified game
+echo  enums    extracts all the enumerations and their member names/numbers (..\source\{game}.enums.json)
+echo  list     generates a list of all files in the specified game ({game}.list.txt)
+echo  parse    runs extraction with custom arguments (optional flatten argument)
+echo           ie export {game} parse [flatten] -p */{file}.uasset
+echo  getfog   extract editable for fog map from [{savename}] or from source\sw
+echo  applyfog combine swmapfog.png and swmap.png into swmap-fogged.png
 echo.
 echo Files and directories are placed in ..\source\{game}\
 
@@ -356,7 +360,7 @@ echo %colGrn%Generating map tiles in %tiledir% from %mappng%%colDef%
 
 if not exist "%tiledir%" md "%tiledir%""
 
-python gentiles.py -t jpg -w 512 %mappng% 0-4 %tiledir%
+uv run gentiles.py -t jpg -w 512 %mappng% 0-4 %tiledir%
 
 goto :eof
 

@@ -1,6 +1,0 @@
-libpysal==4.13.0
-mathutils==3.3.0
-networkx==3.4.2
-numpy==2.4.4
-Pillow==12.2.0
-scikit_learn==1.8.0

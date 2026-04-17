@@ -1,6 +1,11 @@
-import sys, json, os, csv, argparse
-from pathlib import Path
+import argparse
+import csv
+import json
+import os
+import sys
 from inspect import currentframe, getframeinfo
+from pathlib import Path
+
 
 # Output a warning message
 def warning(warnmsg):
@@ -8,6 +13,7 @@ def warning(warnmsg):
     filename = os.path.basename(frameinfo.filename)
     lineno = frameinfo.lineno
     print(f"{filename}({lineno}): warning: {warnmsg}")
+
 
 # Output an error and terminate
 def error_exit(errmsg, parser=None):
@@ -28,7 +34,7 @@ def error_exit(errmsg, parser=None):
 #
 # To convert to a JSON we create an array of dictionaries corresponding to the
 # CSV rows with each dictionary mapping from column/field name to the value,
-# and stripping out any empty/null values. 
+# and stripping out any empty/null values.
 #
 # If one of the columns has unique values the rows may be turned into a
 # dictionary with the values of that column as the key.
@@ -55,10 +61,12 @@ def error_exit(errmsg, parser=None):
 #   ...
 # }
 
+
 class CSVData:
     def __init__(self, fieldnames=[], rowdicts=[]):
         self.fieldnames = fieldnames
         self.rowdicts = rowdicts
+
 
 # Load a CSV file as a dictionary
 def load_csv_file(path):
@@ -69,6 +77,7 @@ def load_csv_file(path):
         fieldnames = list(next(reader).keys())
         return CSVData(fieldnames=fieldnames, rowdicts=list(reader))
 
+
 def save_csv_file(csv_data, path):
     with open(path, 'w', newline='') as csvfile:
         writer = csv.DictWriter(csvfile, csv_data.fieldnames)
@@ -76,29 +85,37 @@ def save_csv_file(csv_data, path):
         for rowdict in csv_data.rowdicts:
             writer.writerow(rowdict)
 
+
 def load_json_file(path):
     return json.load(open(path, 'r', encoding="utf-8-sig"))
+
 
 def save_json_file(json_data, path):
     path.parent.mkdir(exist_ok=True, parents=True)
     with open(path, 'w') as file:
-        json.dump(json_data, file, indent = 2)
+        json.dump(json_data, file, indent=2)
+
 
 def empty_cell(cell):
-    return (cell == None or cell == '')
+    return cell is None or cell == ''
+
 
 def csv2json(csv_data, keyname=None):
     if keyname and keyname in csv_data.fieldnames:
-       json = { rowdict[keyname]: { k: v for k,v in rowdict.items() if k != keyname and not empty_cell(v) } for rowdict in csv_data.rowdicts }
+        json = {
+            rowdict[keyname]: {k: v for k, v in rowdict.items() if k != keyname and not empty_cell(v)}
+            for rowdict in csv_data.rowdicts
+        }
     else:
-       json = [ { k: v for k,v in rowdict.items() if not empty_cell(v) } for rowdict in csv_data.rowdicts ]
+        json = [{k: v for k, v in rowdict.items() if not empty_cell(v)} for rowdict in csv_data.rowdicts]
     return json
+
 
 def json2csv(json_data, keyname=None):
     if isinstance(json_data, dict):
         if not keyname:
             keyname = 'key'
-        rowdicts = [ { keyname: key, **rowdict } for key, rowdict in json_data.items() ]
+        rowdicts = [{keyname: key, **rowdict} for key, rowdict in json_data.items()]
     else:
         rowdicts = json_data
 
@@ -124,12 +141,12 @@ def main():
     if '\\' in args.files or '/' in args.files:
         error_exit("files argument should not contain '\\' or '/'\n'")
 
-    args.files = '**\\'+args.files if args.recursive else args.files
+    args.files = '**\\' + args.files if args.recursive else args.files
 
     ip = Path(args.inpath)
     if args.outpath is None:
         args.outpath = args.inpath
-    op = Path(args.outpath)    
+    op = Path(args.outpath)
 
     for infile in ip.glob(args.files):
         outfile = op.joinpath(infile.with_suffix(outext).relative_to(ip))
@@ -141,6 +158,7 @@ def main():
             json_data = load_json_file(infile)
             if csv_data := json2csv(json_data, args.keyname):
                 save_csv_file(csv_data, outfile)
+
 
 if __name__ == '__main__':
     main()

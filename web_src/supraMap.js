@@ -1,7 +1,7 @@
 /* globals L */
 
-import { Settings } from './settings.js'
-import { MapLayer } from "./mapLayer.js";
+import { Settings } from './settings.js';
+import { MapLayer } from './mapLayer.js';
 
 //=================================================================================================
 // SupraMap a specialised version of Leaflet Map
@@ -22,20 +22,19 @@ export const L_SupraMap = L.Map.extend({
     // things get bigger relative to the map. To counteract this provides a zoom dependent scale
     // to apply to icons sizes and similar pixel space characteristics.
 
-    resizeScaleZoom0: 0.6,          // Scale factor when map zoom is 0
-    resizeZoom1: 3,                 // Zoom when scale should be 1:1 (set to -1 for no dynamic scaling)
+    resizeScaleZoom0: 0.6, // Scale factor when map zoom is 0
+    resizeZoom1: 3, // Zoom when scale should be 1:1 (set to -1 for no dynamic scaling)
 
     // We set the defaults for these two in initialize
     // crs: ?
     // maxBounds: ?
   },
 
-  initialize(mapParam, id = 'map', options = {}){
-
-    if(options === undefined){
+  initialize(mapParam, id = 'map', options = {}) {
+    if (options === undefined) {
       options = {};
     }
-    if(!id){
+    if (!id) {
       id = 'map';
     }
 
@@ -44,7 +43,7 @@ export const L_SupraMap = L.Map.extend({
     Settings.mapId = mapParam.mapId || Settings.mapId;
 
     Settings.globalSetDefault('devMode', false);
-    
+
     Settings.commit();
     this.mapId = Settings.mapId;
 
@@ -59,18 +58,26 @@ export const L_SupraMap = L.Map.extend({
     const mapMinResolution = Math.pow(2, tileMaxSet);
 
     const crs = L.CRS.Simple;
-    crs.transformation = new L.Transformation(mapScale, -mapLayer.mapLatLngBounds[0][1] * mapScale, mapScale, -mapLayer.mapLatLngBounds[0][0] * mapScale);
-    crs.scale = function (zoom) { return Math.pow(2, zoom) / mapMinResolution; };
-    crs.zoom = function (scale) { return Math.log(scale * mapMinResolution) / Math.LN2; };
+    crs.transformation = new L.Transformation(
+      mapScale,
+      -mapLayer.mapLatLngBounds[0][1] * mapScale,
+      mapScale,
+      -mapLayer.mapLatLngBounds[0][0] * mapScale
+    );
+    crs.scale = function (zoom) {
+      return Math.pow(2, zoom) / mapMinResolution;
+    };
+    crs.zoom = function (scale) {
+      return Math.log(scale * mapMinResolution) / Math.LN2;
+    };
     this.options.crs = crs;
 
     // Set the bounds
-    this.options.maxBounds =  L.latLngBounds(mapLayer.viewLatLngBounds).pad(0.25), // elastic-y bounds + elastic-x bounds
-
-    L.setOptions(this, options);
+    ((this.options.maxBounds = L.latLngBounds(mapLayer.viewLatLngBounds).pad(0.25)), // elastic-y bounds + elastic-x bounds
+      L.setOptions(this, options));
 
     // Set the div background colour to match the map
-    document.querySelector('#'+id).style.backgroundColor = mapLayer.config.backgroundColor;
+    document.querySelector('#' + id).style.backgroundColor = mapLayer.config.backgroundColor;
 
     _super.initialize.call(this, id, options);
 
@@ -82,17 +89,22 @@ export const L_SupraMap = L.Map.extend({
     // Set the initial view
     Settings.mapSetDefault('bounds', mapLayer.viewLatLngBounds);
     if (mapParam.hasView()) {
-      this.setView(mapParam.getCenter(this._loaded ? this.getCenter() : [0,0]), mapParam.getZoom(this._loaded ? this.getZoom() : 0));
-    }
-    else {
+      this.setView(
+        mapParam.getCenter(this._loaded ? this.getCenter() : [0, 0]),
+        mapParam.getZoom(this._loaded ? this.getZoom() : 0)
+      );
+    } else {
       this.fitBounds(mapParam.getBounds(Settings.map.bounds));
     }
   },
 
   // Called to fire the moveend and zoomend events, we track changes view bounds
-  onViewChanged: function(){
+  onViewChanged: function () {
     const b = this.getBounds();
-    Settings.map.bounds = [[Math.round(b.getNorth()), Math.round(b.getWest())], [Math.round(b.getSouth()), Math.round(b.getEast())]]
+    Settings.map.bounds = [
+      [Math.round(b.getNorth()), Math.round(b.getWest())],
+      [Math.round(b.getSouth()), Math.round(b.getEast())],
+    ];
     Settings.commit();
   },
 
@@ -101,7 +113,6 @@ export const L_SupraMap = L.Map.extend({
     const scalePower = -Math.log2(this.options.resizeScaleZoom0) / this.options.resizeZoom1;
     return Math.pow(2, this._zoom * scalePower) * this.options.resizeScaleZoom0;
   },
-
 });
 
 export const L_supraMap = function (mapParam, id = 'map', options = {}) {

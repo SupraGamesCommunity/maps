@@ -19,11 +19,6 @@ site-packages/
 bin/
 obj/
 
-# Ignore source data extracted from games or from other repositories
-/source/
-/scripts/source/
-*.bak
-
 # Editor directories and files
 .vscode/*
 .vs
@@ -35,3 +30,4 @@ obj/
 *.njsproj
 *.sln
 *.sw?
+*.bak

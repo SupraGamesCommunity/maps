@@ -225,6 +225,25 @@ async function loadMap(mapParam) {
   MapLayer.setupLayers(map);
   initSidepanel(map);
 
+  // Add the layer control to the map
+  const layerControl = L.control.layers(
+    {},
+    {},
+    {
+      collapsed: true,
+      position: 'topright',
+    }
+  );
+
+  MapLayer.forEachEnabled(map.mapId, (id, layer) => {
+    if (layer.type == 'base') {
+      layerControl.addBaseLayer(layer.layerObj, layer.name);
+    } else if (layer.type == 'markers') {
+      layerControl.addOverlay(layer.layerObj, layer.name);
+    }
+  });
+  layerControl.addTo(map); // triggers baselayerchange which will be ignored
+
   map.on('baselayerchange', function (e) {
     if (map.mapId != e.options.layerId) {
       loadMap(new MapParam({ mapId: e.options.layerId }));
