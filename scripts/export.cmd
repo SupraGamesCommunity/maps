@@ -1,7 +1,5 @@
 @echo off
 
-
-
 :: Needs the games installed with their locations set in envvars
 :: Uses CUE4Parse.exe from the path/current directory
 :: Spits out files into game specific subdirectories of "source"
@@ -22,6 +20,7 @@ set colGrn=%ESC%[32m
 :: Specifies where various things are
 set CUE4Parse=CUE4Parse.exe
 set basedir=..\source
+set datadir="..\public\data"
 
 :: Make sure we have the relevant environment variables set up
 for %%i in ( "%SLROOT%" "%SIUROOT%" "%SWROOT%" ) do if "%%~i"=="" goto env_error
@@ -65,6 +64,12 @@ for %%i in ( %games% ) do (
     )
 ) 
 
+endlocal && (
+    set "SLMAPIMAGE=%slmapimage%"
+    set "SIUMAPIMAGE=%siumapimage%"
+    set "SWMAPIMAGE=%swmapimage%"
+)
+
 exit /b
 
 
@@ -78,11 +83,11 @@ for %%i in (sl siu sw) do if "%%i"=="%game%" set gameopt=good
 if %gameopt%==bad goto :cli_error
 
 set modeopt=bad
-for %%i in (levels loc bp mapimg gentiles enums list parse getfog applyfog ) do if "%%i"=="%mode%" set modeopt=good
+for %%i in (levels loc bp mapimg gentiles enums list parse getfog applyfog preproc markers loc ) do if "%%i"=="%mode%" set modeopt=good
 if %modeopt%==bad goto :cli_error
 
 :: Make sure the game output directory exists (this creates basedir and basedir\game)
-set "gameout=%basedir%\%game%"
+if "%game%"=="slc" set "gameout=%basedir%\sl" else set "gameout=%basedir%\%game%"
 if not exist "%gameout%" md "%gameout%"
 
 :: Set up envars for CUE4Parse options based on the game 
@@ -112,6 +117,8 @@ goto :eof
 echo %colRed%This batch file requires SLROOT, SIUROOT and SWROOT environment variables
 echo to be set up to work correctly. You can set them manually or use the
 echo findslpaks.cmd batch file to set them up automatically%colDef%
+
+endlocal
 
 exit /b
 
@@ -157,17 +164,20 @@ echo Multiple games or modes can be triggered by putting a list in quotes, thus:
 echo   export "sl sw" "list levels"
 echo.
 echo Commands:
+echo  list     generates a list of all files in the specified game ({game}.list.txt)
 echo  levels   extracts .umap level data for the specified game to ..\source\*.json
+echo  preproc  outputs information about map files and applies enum mappings
 echo  bp       extracts .uasset blueprint files to .json
+echo  enums    extracts all the enumerations and their member names/numbers (..\source\{game}.enums.json)
+echo  markers  generates marker data from the maps
+echo  version  update version numbers (versions.json)
+echo  getfog   extract editable for fog map from [{savename}] or from source\sw
+echo  applyfog combine swmapfog.png and swmap.png into swmap-fogged.png
 echo  mapimg   extracts .png map image files and merges them together in ..\source\mapimg
 echo  gentiles takes ..\source\{game}map-final.png and generates tiles in ..\tiles\{game}\base 
 echo  loc      extracts .locres/.locmeta localistation files for the specified game
-echo  enums    extracts all the enumerations and their member names/numbers (..\source\{game}.enums.json)
-echo  list     generates a list of all files in the specified game ({game}.list.txt)
 echo  parse    runs extraction with custom arguments (optional flatten argument)
 echo           ie export {game} parse [flatten] -p */{file}.uasset
-echo  getfog   extract editable for fog map from [{savename}] or from source\sw
-echo  applyfog combine swmapfog.png and swmap.png into swmap-fogged.png
 echo.
 echo Files and directories are placed in ..\source\{game}\
 
@@ -332,11 +342,13 @@ if exist "%gameout%\mapimg\%mapimage%*.hdr" set "hdropt=-colorspace RGB %hdropt%
 
 if not "%game%"=="sw" (
     :: Stitch the PNG images into two rows and two columns
-    magick montage "%gameout%\mapimg\%mapimage%*.png" -geometry +0+0 %gameout%\mapimg\%game%map.png 
+    magick montage "%gameout%\mapimg\%mapimage%*.png" -geometry +0+0 %gameout%\mapimg\%game%map.png
 ) else (
     :: Resize all images to 4k x 4k and adjust colours handling linear colourspace if HDR
     magick "%gameout%\mapimg\%mapimage%*.*" -resize 4096x4096 %hdropt% miff:- | magick montage miff:- -geometry +0+0 "%gameout%\mapimg\%game%map.png"
 )
+
+for %%a in ( "%gameout%\mapimg\%mapimage%*.*" ) do set %game%mapimage=%%~na
 
 :: Cleanup intermediate files
 del "%gameout%\mapimg\%mapimage%*.*"
@@ -482,5 +494,58 @@ goto :eof
 @echo %colGrn%Applying fog image swmapfog.png to swmap.png and outputting swmap-fogged.png (in %gameout%\mapimg)%colDef%
 
 magick "%gameout%\mapimg\swmap.png" "%gameout%\mapimg\swmapfog.png" -compose Multiply -composite "%gameout%\mapimg\swmap-fogged.png"
+
+goto :eof
+
+
+::=================================================================================================
+:: Python supraland_parser commands
+::
+:: Handles processing of extracted data
+
+:sl_preproc
+:slc_preproc
+:siu_preproc
+:sw_preproc
+set sourcedir=%gameout%
+set parser_cmd=--preproc
+
+@echo %colGrn%Running pre-processing set on %game% files%colDef%
+
+goto call_parser
+
+:sl_markers
+:slc_markers
+:siu_markers
+:sw_markers
+set sourcedir=%gameout%
+set parser_cmd=--markers
+
+@echo %colGrn%Exporting map markers for %game% 
+
+goto call_parser
+
+:sl_version
+:slc_version
+:siu_version
+echo %colGrn%Ignoring %game% version command (only support for sw)%colDef%
+goto :eof
+
+:sw_version
+set sourcedir=!%game%ROOT!
+set parser_cmd=--version
+goto call_parser
+
+:sl_loc
+:slc_loc
+:siu_loc
+:sw_loc
+set sourcedir=%gameout%
+set parser_cmd=--loc
+goto call_parser
+
+:call_parser
+
+python supraland_parser.py -g "%game%" -d %datadir% -s %sourcedir% %parser_cmd%
 
 goto :eof
