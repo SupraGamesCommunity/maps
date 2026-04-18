@@ -1,0 +1,59 @@
+{
+  "sl": {
+    "ue": {
+      "major": 4,
+      "minor": 26,
+      "ver": "4.26.2.0"
+    },
+    "game": {
+      "version": "1.23.7",
+      "date": "May 18 2022",
+      "branch": "public",
+      "type": "Shipping",
+      "mapver": "V1"
+    }
+  },
+  "slc": {
+    "ue": {
+      "major": 4,
+      "minor": 26,
+      "ver": "4.26.2.0"
+    },
+    "game": {
+      "version": "1.23.7",
+      "date": "May 18 2022",
+      "branch": "public",
+      "type": "Shipping",
+      "mapver": "V1"
+    }
+  },
+  "siu": {
+    "ue": {
+      "major": 4,
+      "minor": 27,
+      "ver": "4.27.2.0"
+    },
+    "game": {
+      "version": "1.2.3349",
+      "date": "May 6 2024",
+      "branch": "public",
+      "type": "Shipping",
+      "mapver": "V7"
+    }
+  },
+  "sw": {
+    "ue": {
+      "major": 5,
+      "minor": 6,
+      "ver": "5.6.1.0"
+    },
+    "game": {
+      "version": "EarlyAccess",
+      "build": "10596",
+      "date": "08/04/2026 - 13:37 UTC",
+      "branch": "public",
+      "type": "Shipping",
+      "mapver": "V8"
+    }
+  }
+}
