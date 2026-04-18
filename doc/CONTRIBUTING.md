@@ -1,0 +1,1 @@
+Guide to making any kind of contribution; i.e. how to fork, branch, pointers to the other docs with more specific instructions about frontend/backend changes, making a PR, expectations around code review, etc.
