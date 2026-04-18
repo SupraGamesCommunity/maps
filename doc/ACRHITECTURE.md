@@ -1,0 +1,1 @@
+Overview of how the codebase is laid out; not just the file structure, but how all the pieces fit together. This is to give the reader a mental model of the data, the code, and the processes. Also if there are any terms / jargon that needs to be defined, it can go here.
