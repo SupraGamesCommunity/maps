@@ -12,15 +12,19 @@
 
 setlocal enabledelayedexpansion
 
-for /f %%a in ('echo prompt $E^| cmd') do set "ESC=%%a"
-set colDef=%ESC%[0m
-set colRed=%ESC%[31m
-set colGrn=%ESC%[32m
+:: Script expects to be run from the scripts directory
+cd %~dp0
 
 :: Specifies where various things are
 set CUE4Parse=CUE4Parse.exe
 set basedir=..\source
 set datadir="..\public\data"
+
+:: Setup some colour escape sequences
+for /f %%a in ('echo prompt $E^| cmd') do set "ESC=%%a"
+set colDef=%ESC%[0m
+set colRed=%ESC%[31m
+set colGrn=%ESC%[32m
 
 :: Make sure we have the relevant environment variables set up
 for %%i in ( "%SLROOT%" "%SIUROOT%" "%SWROOT%" ) do if "%%~i"=="" goto env_error
