@@ -1,6 +1,9 @@
 import { LayerSelector } from './LayerSelectComponents.jsx';
 import { useState } from 'react';
 import classnames from 'classnames';
+import { About } from './About.jsx';
+import { Settings } from '../settings.js';
+import { DevBuildSettingsTab } from './DevBuildSettings.jsx';
 
 /* The HTML component that renders the entire Sidepanel (including navigation tabs and content) */
 export const Sidepanel = (props) => {
@@ -10,6 +13,7 @@ export const Sidepanel = (props) => {
   const tabs = [
     { id: 'map_select', title: 'Maps' },
     { id: 'settings', title: 'Settings' },
+    { id: 'about', title: 'About' },
   ];
 
   return (
@@ -51,7 +55,11 @@ export const Sidepanel = (props) => {
             </div>
 
             <div className={classnames('sidepanel-tab-content', { active: currentTab === 1 })} datatabcontent="tab-1">
-              <p>Settings page.</p>
+              <DevBuildSettingsTab />
+            </div>
+
+            <div className={classnames('sidepanel-tab-content', { active: currentTab === 2 })} datatabcontent="tab-2">
+              <About />
             </div>
           </div>
         </div>

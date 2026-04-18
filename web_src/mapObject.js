@@ -1,6 +1,5 @@
 /* globals L */
 
-import { buildMode } from './main.js';
 import { mergeDeep } from './utils.js';
 import { L_arrowLine } from './arrowLine.js';
 import { locStr } from './locStr.js';
@@ -10,6 +9,9 @@ import { GameClasses } from './gameClasses.js';
 import { MapLayer } from './mapLayer.js';
 import { SaveFileSystem } from './saveFileSystem.js';
 import { MapParam } from './mapParam.js';
+// TechDebt: refer to this function directly, instead of relying on it being added to the window global object.
+// import { buildMode, commitCurrentBuildModeChanges } from './devBuildMode.js';
+import { buildMode } from './devBuildMode.js';
 
 //=================================================================================================
 // MapObject class

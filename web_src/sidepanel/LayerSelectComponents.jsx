@@ -1,3 +1,5 @@
+import { Checkbox } from './Checkbox.jsx';
+
 /* The Radio buttons that let the user select the game map (SupraLand, SupraWorld, etc) */
 export const MapSelectorRadioButtons = ({ options, onChange }) => {
   return (
@@ -15,16 +17,6 @@ export const MapSelectorRadioButtons = ({ options, onChange }) => {
         </label>
       ))}
     </div>
-  );
-};
-
-/* A single Checkbox used to toggle a map layer on/off */
-export const Checkbox = ({ label, value, checked, onChange }) => {
-  return (
-    <label style={{ display: 'block', margin: '5px 0' }}>
-      <input type="checkbox" value={value} checked={checked} onChange={(e) => onChange(value, e.target.checked)} />
-      {label}
-    </label>
   );
 };
 
