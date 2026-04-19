@@ -940,7 +940,7 @@ def export_sw_markers(game, datadir, sourcedir):  # noqa: C901 - disable complex
 
     game_classes = load_json_file(datadir, 'gameClasses.json')
 
-    load_ea_fog(sourcedir, game)
+    load_ea_fog(sourcedir)
 
     # Phase 2: Go through all the objects which have types we're interested in
     for area in maps:
@@ -1001,12 +1001,12 @@ def export_sw_markers(game, datadir, sourcedir):  # noqa: C901 - disable complex
 
             # Hidden Flag
             if (
-                p.get('bHidden')
-                or p.get('bHiddenInGame')
-                or not p.get('bExists')
-                or not p.get('InitialExists')
-                or not p.get('Spawn on Level Start')
-                or not p.get('bItemIsAvailable_Initial')
+                p.get('bHidden') == True
+                or p.get('bHiddenInGame') == True
+                or p.get('bExists') == False
+                or p.get('InitialExists') == False
+                or p.get('Spawn on Level Start') == False
+                or p.get('bItemIsAvailable_Initial') == False
             ):
                 data[-1]['hidden'] = 'true'
 
