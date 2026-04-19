@@ -17,16 +17,11 @@ dev = [
     "networkx>=3.6.1",
     "numpy>=2.4.4",
     "pillow>=12.2.0",
+    "pywin32>=311",
     "scikit-learn>=1.8.0",
-    "ue4parse",
 ]
 
 [tool.black]
 line-length = 120
 target-version = ['py312']
 skip-string-normalization = true
-
-[tool.uv.sources]
-# Note this is Joric's copy and originally installed as follows:
-#   pip install UE4Parse[tex]@git+https://github.com/MinshuG/pyUE4Parse.git
-ue4parse = { git = "https://github.com/joric/pyUE4Parse.git" }
