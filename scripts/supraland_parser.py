@@ -1008,7 +1008,7 @@ def export_sw_markers(game, datadir, sourcedir):  # noqa: C901 - disable complex
             if (
                 p.get('bHidden') is True
                 or p.get('bHiddenInGame') is True
-                or p.get('bExists') == False
+                or p.get('bExists') is False
                 or p.get('InitialExists') is False
                 or p.get('Spawn on Level Start') is False
                 or p.get('bItemIsAvailable_Initial') is False
@@ -1960,6 +1960,7 @@ def main():
         export_loc_files(args.game, args.data, sourcedir)
     else:
         parser.print_help()
+
 
 if __name__ == '__main__':
     main()
