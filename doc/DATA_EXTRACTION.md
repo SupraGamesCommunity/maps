@@ -127,19 +127,6 @@ export sw gentiles
 ```
 which splits the `png` into a hierarchy of `jpg` tiles in the   `public/tiles` directory which should be added to source control when major changes are made.
 
-## Map Marker Data
-
-The frontend reads JSON files from the data directory:
-
-- __layerConfigs.json__ configures the categories/groups and the base map data.
-- __iconConfigs.json__ configures the icons used on the map.
-- __gameClasses.json__ configures the different types of objects that the map deals with and how to display them (written to to add localisation).
-- __markers.{game}.json__ hold the extracted data from the game about each marker on the map (written to by extraction).
-- __custom-markers.{game}.json__ allows customisations to be applied to the extracted data, overriding or deleting markers or marker fields.
-- __ytdata.{game}.json__ is the same as `custom-markers` but it intended to be used to add YouTube links to the map maerkes.
-
-- __custom-loc.json__ can be used to customise the localisation data extracted from the game and included in gameClasses.json.
-- __loc/locstr-{lang}.json__ are the stripped down localisation strings extracted from the game and associated with each type of object (see localisation).
 
 ### Data Extraction
 

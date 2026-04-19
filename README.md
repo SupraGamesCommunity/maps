@@ -77,7 +77,13 @@ by [Supra Games Community](https://github.com/SupraGamesCommunity/).
 
 ## Development
 
-For a guide on developing this project, refer to [EDITING_DATA](doc/EDITING_DATA.md), [FRONTEND_DEVELOPMENT](doc/FRONTEND_DEVELOPMENT.md), [BACKEND_DEVELOPMENT](doc/BACKEND_DEVELOPMENT.md) or [DATA_EXTRACTION](doc/DATA_EXTRACTION.md).
+For information on developing this project, refer to:
+
+- [CONTRIBUTING](doc/CONTRIBUTING.md) - how to contribute changes to the project
+- [EDITING_DATA](doc/EDITING_DATA.md) - how to customise data and frontend presentation
+- [DATA_EXTRACTION](doc/DATA_EXTRACTION.md) - how to update the data extracted from the games.
+- [FRONTEND_DEVELOPMENT](doc/FRONTEND_DEVELOPMENT.md) - how to make changes to the frontend website
+- [BACKEND_DEVELOPMENT](doc/BACKEND_DEVELOPMENT.md) - how to make changes to the backend extraction tools
 
 ## License
 This project uses some code Joric's Supraland project, the original [SupraGamesCommunity](https://github.com/SupraGamesCommunity/) map code and media files. Most of the media content is copyrighted by [Supra Games UG](www.supragames.de). Joric developed scripts to import data from the original game and fixed some bugs. This project is an unlicensed public domain, feel free to copy, sell and modify.
@@ -86,7 +92,10 @@ See [LICENSE](https://github.com/SupraGamesCommunity/maps/blob/main/LICENSE) for
 
 ## Other Maps and Links
 - Original interactive maps for [Supraland](https://supragamescommunity.github.io/map-sl/), [Crash](https://supragamescommunity.github.io/map-slc/) and [Six Inches Under](https://supragamescommunity.github.io/map-siu/)
-- [Joric's combined map](https://joric.github.io/supraland)
-- [Joric's experimental 3D map](https://joric.github.io/supraland/3d/)
-- [Joric's Supraworld map](https://joric.github.io/supraworld/)
-- [Joric's Supraland Map Wiki](https://github.com/joric/supraland/wiki) - some details of the system
+- Joric's [combined map](https://joric.github.io/supraland)
+, [experimental 3D map](https://joric.github.io/supraland/3d/), and [Supraworld map](https://joric.github.io/supraworld/)
+- Joric's [Supraland Map Wiki](https://github.com/joric/supraland/wiki) - some details of the system
+- Joric's [SupraTools Wiki](https://github.com/joric/SupraTools/wiki) - some additional modding and tools info
+- Fandom Supraverse [Wiki](https://supraverse.fandom.com/wiki/Supraverse_Wiki)
+ 
+
