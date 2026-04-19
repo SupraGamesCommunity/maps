@@ -13,11 +13,7 @@ from libpysal import weights
 from mathutils import Euler, Matrix, Quaternion, Vector
 from PIL import Image
 from sklearn.neighbors import KDTree
-
-stripUnusedClasses = False  # strip any instances that have a type we don't explicitly support in gameClasses.js
-stripUnusedProperties = (
-    True  # strip any properties we don't explicitly require from all objects (defined in exported_properties)
-)
+import win32com.client
 
 '''
 References to other UE objects the level files and blueprints often use a pair
@@ -214,38 +210,33 @@ def makeObjectKey(area, outer, name):
 
 # Data about each game based on the game code sl, slc, siu, sw
 #
+# appid     Steam application id
 # pathmap   gives the mapping for file references that is used
 #           by ObjectName/ObjectPath and AssetPathName/SubPathString
-# mapsdir   directory where the maps live
 # maps      gives the name of the maps that we're actually interested in
-# images    paths/names of the ingame map textures
 config = {
     'sl': {
+        'appid': '813630',
+        'basename': 'Supraland',
         'pathmap': {
             'Game': 'Supraland/Content',
         },
-        'mapsdir': 'Supraland/Content/FirstPersonBP/Maps/',
-        'maps': ['Map'],
-        'images': [
-            'Supraland/Content/Blueprints/PlayerMap/Textures/T_Downscale0',
-            'Supraland/Content/Blueprints/PlayerMap/Textures/T_Downscale1',
-            'Supraland/Content/Blueprints/PlayerMap/Textures/T_Downscale2',
-            'Supraland/Content/Blueprints/PlayerMap/Textures/T_Downscale3',
-        ],
+        'maps': ['Map']
     },
     'slc': {
+        'appid': '813630',
+        'basename': 'Supraland',
         'pathmap': {
             'Game': 'Supraland/Content',
         },
-        'mapsdir': 'Supraland/Content/FirstPersonBP/Maps/',
-        'maps': ['Crash'],
-        'images': [],
+        'maps': ['Crash']
     },
     'siu': {
+        'appid': '1522870',
+        'basename': 'SupralandSIU',
         'pathmap': {
             'Game': 'SupralandSIU/Content',
         },
-        'mapsdir': 'SupralandSIU/Content/FirstPersonBP/Maps/',
         'maps': [
             'DLC2_Area0_Below',
             'DLC2_Area0',
@@ -258,31 +249,21 @@ config = {
             'DLC2_RainbowTown',
             'DLC2_SecretLavaArea',
             'DLC2_Splash',
-        ],
-        'images': [
-            'SupralandSIU/Content/Blueprints/PlayerMap/Textures/T_SIUMapV7Q0',
-            'SupralandSIU/Content/Blueprints/PlayerMap/Textures/T_SIUMapV7Q1',
-            'SupralandSIU/Content/Blueprints/PlayerMap/Textures/T_SIUMapV7Q2',
-            'SupralandSIU/Content/Blueprints/PlayerMap/Textures/T_SIUMapV7Q3',
-        ],
+        ]
     },
     'sw': {
+        'appid': '1869291',
+        'basename': 'Supraworld',
         'pathmap': {
             'Game': 'Supraworld/Content',
             'Supraworld': 'Supraworld/Plugins/GameFeatures/Supraworld/Supraworld/Content/',
             'SupraAssets': 'Supraworld/Plugins/Supra/SupraAssets/Content/',
             'SupraCore': 'Supraworld/Plugins/Supra/SupraCore/Content/',
         },
-        'mappath': 'Supraworld/Plugins/GameFeatures/Supraworld/Supraworld/Content/Maps/',
-        'maps': ['Supraworld'],
-        'images': [
-            'Supraworld/Plugins/Supra/PlayerMap/Content/Textures/T_SupraworldMapV7Q0',
-            'Supraworld/Plugins/Supra/PlayerMap/Content/Textures/T_SupraworldMapV7Q1',
-            'Supraworld/Plugins/Supra/PlayerMap/Content/Textures/T_SupraworldMapV7Q2',
-            'Supraworld/Plugins/Supra/PlayerMap/Content/Textures/T_SupraworldMapV7Q3',
-        ],
-    },
+        'maps': ['Supraworld']
+    }
 }
+
 
 # Early Access Filter data
 ea_filter = True
@@ -359,106 +340,6 @@ dietype2typeprefix = {
 # Lootpool2: Inventory_DashDamage_C, Inventory_DashBurstRange_C, Inventory_ToothpickDamage_C, Inventory_MaxHealth_C
 # Lootpool3Money: Inventory_Coin3_C
 
-
-marker_types = {
-    'PlayerStart',
-    'Jumppad_C',
-    'Bones_C',
-    'Chest_C',
-    'BarrelColor_C',
-    'BarrelRed_C',
-    'Battery_C',
-    'BP_A3_StrengthQuest_C',
-    'Lift1_C',
-    'DeadHero_C',
-    'ExplodingBattery_C',
-    'GoldBlock_C',
-    'GoldNugget_C',
-    'Jumppillow_C',
-    'MoonTake_C',
-    'Plumbus_C',
-    'Stone_C',
-    'ValveCarriable_C',
-    'ValveSlot_C',
-    'Valve_C',
-    'MatchBox_C',
-    'Shell_C',
-    'BarrelClosed_Blueprint_C',
-    'MetalBall_C',
-    'Supraball_C',
-    'Key_C',
-    'KeyLock_C',
-    'KeycardColor_C',
-    'PipeCap_C',
-    'Sponge_C',
-    'Juicer_C',
-    'Seed_C',
-    'Anvil_C',
-    'Map_C',
-    'NomNomFlies_C',
-    'CarrotPhysical_C',
-    'RingColorer_C',
-    'RespawnActor_C',
-    'CarryStones_Heavy_C',
-    'CarryStones_C',
-    'Crystal_C',
-    'RingRusty_C',
-    'SecretFound_C',
-    # slc
-    'Scrap_C',
-    'TalkingSpeaker_C',
-    'Sponge_Large_C',
-    # siu
-    'HealingStation_C',
-    'BP_EngagementCup_Base_C',
-    'SlumBurningQuest_C',
-    'Trash_C',
-    'BP_Area2_Uncloged_Quest_C',
-    'BathGuyVolume_C',
-    'BP_A3_RobBoss_C',
-    'BP_Area2_FatGuyQuest_C',
-    'BP_ParanoidQuest_C',
-    'BP_A3_BBQ_C',
-    'BP_RebuildSlum_C',
-}
-
-starts_with = {
-    'Pipesystem',
-    'Buy',
-    'BP_Buy',
-    'BP_Purchase',
-    'BP_Unlock',
-    'Purchase',
-    'Upgrade',
-    'Button',
-    'Smallbutton',
-    'Coin',
-    'Lighttrigger',
-    'LotsOfCoins',
-    'EnemySpawn',
-    'Destroyable',
-    'BP_Pickaxe',
-    'Door',
-    'Key',
-    'ProjectileShooter',
-    'MinecraftBrick',  # can be MinecraftBrick_C and MinecraftBrickRespawnable_C
-    'CrashEnemySpawner_C',
-}
-
-ends_with = {
-    'Chest_C',
-    'Button_C',
-    'Lever_C',
-    'Meat_C',
-    'Loot_C',
-    'Detector_C',
-    'Door_C',
-    'Flower_C',
-    'Coin_C',
-    'Guy_C',
-    'TriggerVolume_C',  # opens pipes in SIU
-}
-
 properties = [
     'IsInShop',
     'canBePickedUp',
@@ -488,31 +369,6 @@ properties = [
     'bDoesntRotate',  # Coin_C, CoinBig_C
     'Scrapamount',  # Scrap_C
 ]
-
-actions = {
-    'OpenWhenTake',
-    'Actor',
-    'Actors',
-    'ActivateActors',
-    'Actor To Move',
-    'More Actors to Turn On',
-    'ActorsToActivate',
-    'Actors to Open',
-    'Actors To Enable/Disable',
-    'ObjectsToInvert',
-    'ActivateThese',
-    'Actors to Activate',
-    'ActorsToOpen',
-    'ObjectsToDestroy',
-    'OpenOnDestroy',
-    'ActorsToOpenOnOpen',
-    'PostTownCelebration_Open',
-    'ActionsOnOpen',
-    'openWhenPlayerEnters',
-    'UniqueActorBeginOverlap',
-    'Objects',  # used by TriggerVolume_C in SL/SLC
-}
-
 
 # Unreal mostly uses PascalCase / UpperCamelCase for its naming. This function converts a string of this form
 # to snake case ie all lower case with underscores. It has special handling for flags converting 'bMyVar' to
@@ -606,20 +462,103 @@ class UEEnums:
             self.types.add(ue[0 : ue.find('::')])
 
 
+#def get_file_metadata(path, file, ext):
+#    sh = win32com.client.gencache.EnsureDispatch('Shell.Application', 0)
+#    ns = sh.NameSpace(path.lower())
+#
+#    metadata = {}
+#
+#    file = file.lower()
+#    for item in ns.Items():
+#        filepath = item.Path.lower()
+#        if (filepath.split('\\')[-1].lower().startswith(file) and filepath.endswith(ext)):
+#            for col in range(500):
+#               if ((colval := ns.GetDetailsOf(item, col)) and (colname := ns.GetDetailsOf(None, col))):
+#                   metadata[colname] = {'idx': col, 'value': colval}
+#            break
+#
+#    return metadata
+def get_unreal_version(exepath):
+    uever = {}
+    sh = win32com.client.gencache.EnsureDispatch('Shell.Application', 0)
+    ns = sh.NameSpace(str(exepath.parent))
+    item = ns.Items()[exepath.name]
+    uever['ver'] = ns.GetDetailsOf(item, 166)
+    vernums = uever['ver'].split('.')
+    uever['major'] = int(vernums[0])
+    uever['minor'] = int(vernums[1])
+    return uever
+
+# Retrieves the steam branch name
+def get_steam_branch(game, path):
+    branch = 'public'
+
+    # Get path to app manifest from game install path and appid
+    manifest = Path(path[0:path.find('common')] + 'appmanifest_' + config[game]['appid'] + '.acf')
+
+    # If the file exists, open it and read contents
+    if manifest.is_file():
+        with open(manifest, 'r') as file:
+            contents = file.read()
+
+        # Search for the current user config beta key
+        if match := re.search(r'UserConfig"[\s\S]*?"BetaKey"\s*"([^"]*)', contents):
+            branch = match.group(1)
+
+    return branch
+
+def get_swbuild_info(installdir):
+    path = Path(installdir, 'build.vc')
+    with open(path, 'r') as file:
+        build =  file.readline().rstrip()
+        date = file.readline().rstrip()
+    return { "build": build, "date": date }
+
+# Update Suprawowlrd version information based on steam version installed in 'installdir'
+def update_swversion_info(game, datadir, sourcedir, mapimage):
+
+    versions = load_json_file(datadir, 'versions.json')
+
+    # versions JSON looks something like this:
+    # {
+    #     ...
+    #     "sw": {
+    #         "ue": {"major": 5, "minor": 6, "ver": "5.6.1.0" },
+    #         "game": {"version": "EarlyAccess", "build": 10596, "date": "08/04/2026 - 13:37 UTC", "branch": "public", "type": "Shipping", "mapver": "V8" }
+    #     }
+    # }
+
+    basename = config['sw']['basename']
+    exe_file =  Path(list(Path(sourcedir, basename, 'Binaries\\Win64').glob(basename+'-Win64*.exe'))[0])
+
+    uever = get_unreal_version(exe_file)
+    versions['sw']['ue'].update(uever)
+
+    gamever = get_swbuild_info(sourcedir)
+    gamever['branch'] = get_steam_branch('sw', sourcedir)
+    gamever['type'] = exe_file.stem.split('-')[-1]
+
+    if mapimage:
+        gamever['mapver'] = 'V'+str(get_ints(mapimage)[0])
+
+    versions['sw']['game'].update(gamever)
+
+    save_json_file(versions, datadir, 'versions.json')
+
 # We presume export.cmd has been used to export a set of map files for the game to
-# a sub-directory of 'cache_dir'. We are going to go through the map and generate
+# a sub-directory of 'sourcedir'. We are going to go through the map and generate
 # information about the
-def preproc_levels(cache_dir, game):  # noqa: C901 - disable complexity warning
+def preproc_levels(game, datadir, sourcedir):  # noqa: C901 - disable complexity warning
     # Load in any enumerations we have found / extracted
     ueenums = UEEnums()
-    for filename in Path(cache_dir, game, 'enums').glob('*.json'):
+    for filename in Path(sourcedir, 'enums').glob('*.json'):
         ueenums.loadenumbp(filename)
 
     # Load current gameClasses.json so we know which classes we currently know about for this game
-    game_classes = load_json_file('..\\public\\data', 'gameClasses.json')
+    game_classes = load_json_file(datadir, 'gameClasses.json')
 
     # Load the game's PAK file list so we can look up where to find enums
-    gamefilelist = load_filelist(cache_dir, game)
+    gamefilelist = load_filelist(sourcedir)
 
     # Set of blueprint CUE4Parse asset paths for types in gameClasses.json
     # and set of other classes which end in _C
@@ -632,7 +571,7 @@ def preproc_levels(cache_dir, game):  # noqa: C901 - disable complexity warning
     propset = {'Root': set(), 'Properties': set(), 'Other': set()}
 
     # Loop through all the level json's we've extracted
-    for filename in Path(cache_dir, game, 'levels').glob('*.json'):
+    for filename in Path(sourcedir, 'levels').glob('*.json'):
         # Area name is everything between last '\' and the '.json'
         filestr = str(filename)
         area = filestr[filestr.rfind('\\') + 1 : -5]
@@ -742,9 +681,9 @@ def preproc_levels(cache_dir, game):  # noqa: C901 - disable complexity warning
         if level_changed:
             save_json_file(level, filename)
 
-    save_assetlist(bp_assetlist, gamefilelist, cache_dir, game, 'bpassetlist.txt')
-    save_assetlist(ueenums.types, gamefilelist, cache_dir, game, 'enumassetlist.txt', prefer="Enums")
-    save_text_file(sorted(area_names), cache_dir, game, "areanames.txt")
+    save_assetlist(bp_assetlist, gamefilelist, sourcedir, 'bpassetlist.txt')
+    save_assetlist(ueenums.types, gamefilelist, sourcedir, 'enumassetlist.txt', prefer="Enums")
+    save_text_file(sorted(area_names), sourcedir, "areanames.txt")
 
     for k, v in classprops.items():
         classprops[k] = sorted(list(v))
@@ -757,7 +696,7 @@ def preproc_levels(cache_dir, game):  # noqa: C901 - disable complexity warning
         "Properties": sorted(list(propset['Properties'])),
         "OtherProps": sorted(list(propset['Other'])),
     }
-    save_json_file(levelprops, cache_dir, game, 'levelprops.json')
+    save_json_file(levelprops, sourcedir, 'levelprops.json')
 
 
 # Load the filelist we have extracted from the specific game which gives the
@@ -811,7 +750,7 @@ def save_assetlist(items, filelist, *path, quiet=False, prefer=None):  # noqa: C
 # together with '\\' and adding '.txt'
 #
 # For game specific source data this is usually something like:
-#   cache_dir:  ..\\source             (but can be any path)
+#   sourcedir:  ..\\source             (but can be any path)
 #   game:       'sl', 'siu', 'sw'      (note Crash files are in sl source directories)
 #   dir:        'levels', 'enums', 'bps', 'loc', 'mapimg'
 #   filename:   'Map'
@@ -945,7 +884,7 @@ def getXYZ(v):
     return dict(x=v.x, y=v.y, z=v.z)
 
 
-def export_sw_markers(cache_dir, game):  # noqa: C901 - disable complexity warning
+def export_sw_markers(game, datadir, sourcedir):  # noqa: C901 - disable complexity warning
     maps = {}  # dictionary from map name to json data list
     toyeggs = {}  # Collected chocolate eggs
     meshmats = {}  # dictionary from outer name to mesh material variant
@@ -957,7 +896,7 @@ def export_sw_markers(cache_dir, game):  # noqa: C901 - disable complexity warni
     # Also get any area/map file matrices (for streaming levels)
     for area in config[game]['maps']:
         # Store the map data
-        maps[area] = load_json_file(cache_dir, game, 'levels', area + '.json')
+        maps[area] = load_json_file(sourcedir, 'levels', area + '.json')
 
         # Go through all objects in the map data and store lookups for later
         for oidx, o in enumerate(maps[area]):
@@ -999,9 +938,9 @@ def export_sw_markers(cache_dir, game):  # noqa: C901 - disable complexity warni
                     Matrix.Translation(getVec(t.get('Translation'))) @ getQuat(t.get('Rotation')).to_matrix().to_4x4()
                 )
 
-    game_classes = read_game_classes()
+    game_classes = load_json_file(datadir, 'gameClasses.json')
 
-    load_ea_fog(cache_dir, game)
+    load_ea_fog(sourcedir)
 
     # Phase 2: Go through all the objects which have types we're interested in
     for area in maps:
@@ -1062,12 +1001,12 @@ def export_sw_markers(cache_dir, game):  # noqa: C901 - disable complexity warni
 
             # Hidden Flag
             if (
-                p.get('bHidden')
-                or p.get('bHiddenInGame')
-                or not p.get('bExists')
-                or not p.get('InitialExists')
-                or not p.get('Spawn on Level Start')
-                or not p.get('bItemIsAvailable_Initial')
+                p.get('bHidden') == True
+                or p.get('bHiddenInGame') == True
+                or p.get('bExists') == False
+                or p.get('InitialExists') == False
+                or p.get('Spawn on Level Start') == False
+                or p.get('bItemIsAvailable_Initial') == False
             ):
                 data[-1]['hidden'] = 'true'
 
@@ -1209,15 +1148,15 @@ def export_sw_markers(cache_dir, game):  # noqa: C901 - disable complexity warni
             if comment:
                 data[-1]['comment'] = comment
 
-    save_json_file(data, "..\\public\\data", f'markers.{game}.json')
+    save_json_file(data, datadir, f'markers.{game}.json')
     print("Done")
 
 
-def export_class_loc(cache_dir):  # noqa: C901 - disable complexity warning
-    game_classes = read_game_classes()
+def export_class_loc(game, datadir, sourcedir):  # noqa: C901 - disable complexity warning
+    game_classes = load_json_file(datadir, 'gameClasses.json')
 
     for game in ['sl', 'siu']:
-        path = os.path.join(cache_dir, 'blueprints.' + game + '.json')
+        path = os.path.join(sourcedir, 'blueprints.' + game + '.json')
         blueprints = json.load(open(path, 'r'))
 
         def optKey(game_class, cls, k, v):
@@ -1253,19 +1192,17 @@ def export_class_loc(cache_dir):  # noqa: C901 - disable complexity warning
                                         game_classes, gcls, 'description_key', props['UpgradeDescription'].get('Key')
                                     )
 
-    with open("gameClasses.json", 'w') as f:
-        print("Writing loc data to gameClasses.json...")
-        json.dump(game_classes, f, indent=2)
+    save_json_file(datadir, 'gameClasses.json')
 
 
-def export_loc_files(cache_dir):  # noqa: C901 - disable complexity warning
+def export_loc_files(game, datadir, sourcedir):  # noqa: C901 - disable complexity warning
     # Merge custom-loc.json into gameClasses.json
     print('Merging custom-loc.json into gameClasses.json...')
-    classes = json.load(open('../public/data/gameClasses.json', 'r', encoding='utf-8'))
-    customLoc = json.load(open('../public/data/custom-loc.json', 'r', encoding='utf-8'))
+    classes = load_json_file(datadir, 'gameClasses.json')
+    customLoc = load_json_file(datadir, 'custom-loc.json')
     for c, d in customLoc.items():
         classes[c] = classes[c] | d
-    json.dump(classes, open('gameClasses.json', 'w', encoding='utf-8'), indent=2)
+    save_json_file(classes, datadir, 'gameClasses.json')
 
     # Make a list of the keys that are referenced in the various files
     keys = set()
@@ -1282,9 +1219,9 @@ def export_loc_files(cache_dir):  # noqa: C901 - disable complexity warning
     ]
     print('Reading files to determine loc keys required...')
     for fn in key_files:
-        path = '../public/data/' + fn
-        if os.path.exists(path):
-            data = json.load(open(path, 'r'))
+        path = Path(datadir, fn)
+        if path.exists():
+            data = load_json_file(path)
             for entry in data if type(data) is list else data.values():
                 for k in ['friendly_key', 'name_key', 'description_key', 'key']:
                     if entry.get(k):
@@ -1314,7 +1251,7 @@ def export_loc_files(cache_dir):  # noqa: C901 - disable complexity warning
     for loc in loc_names:
         newlocstr = {}
         for game in ['sl', 'siu']:
-            fn = os.path.join(cache_dir, f'LOC/{game}/{loc}/Game.json')
+            fn = os.path.join(sourcedir, f'LOC/{game}/{loc}/Game.json')
             locstr = json.load(open(fn, 'r', encoding='utf-8'))
             for k in locstr.keys():
                 if k in keys:
@@ -1323,10 +1260,10 @@ def export_loc_files(cache_dir):  # noqa: C901 - disable complexity warning
                     #    print(f'SIU {locstr[k]}')
                     newlocstr[k] = locstr[k]
         print(f'Writing to ../public/data/loc/locstr-{loc}.json')
-        json.dump(newlocstr, open(f'../public/data/loc/locstr-{loc}.json', 'w', encoding='utf-8'), indent=2)
+        save_json_file(newlocstr, datadir, '/loc/locstr-{loc}.json')
 
 
-def export_markers(cache_dir, game):  # noqa: C901 - disable complexity warning
+def export_markers(game, datadir, sourcedir):  # noqa: C901 - disable complexity warning
     maps = {}  # dictionary from map name to json data list
     area_mtx = {}  # Transform for each area map geometry
     data = []  # Output marker data
@@ -1335,13 +1272,14 @@ def export_markers(cache_dir, game):  # noqa: C901 - disable complexity warning
     objects = {}
 
     data_lookup = {}
-    classes_found = set()
+
+    game_classes = load_json_file(datadir, 'gameClasses.json')
 
     # Phase 1: Read all the map json files in and build a look up table for references
     # Also get any area/map file matrices (for streaming levels)
     for area in config[game]['maps']:
         # Store the map data
-        maps[area] = load_json_file(cache_dir, game, 'levels', area + '.json')
+        maps[area] = load_json_file(sourcedir, 'levels', area + '.json')
 
         # Go through all objects in the map data and store lookups for later
         for oidx, o in enumerate(maps[area]):
@@ -1392,13 +1330,8 @@ def export_markers(cache_dir, game):  # noqa: C901 - disable complexity warning
             if not o.get('Outer') or not (p := o.get('Properties')):
                 continue
 
-            allowed_items = (
-                o['Type'] in marker_types
-                or any(o['Type'].startswith(s) for s in starts_with)
-                or any(o['Type'].endswith(s) for s in ends_with)
-            )
-
-            if not allowed_items:
+            gc = game_classes.get(otype)
+            if not gc or (gc and not gc['layer'] and not gc['nospoiler']):
                 continue
 
             def getObject(p):
@@ -1439,7 +1372,6 @@ def export_markers(cache_dir, game):  # noqa: C901 - disable complexity warning
                         # special type, an item
 
             data.append({'name': o['Name'], 'type': o['Type'], 'area': area})
-            classes_found.add(o['Type'])
             data_lookup[':'.join((area, o['Name']))] = data[-1]
 
             t = matrix.to_translation()
@@ -1466,12 +1398,10 @@ def export_markers(cache_dir, game):  # noqa: C901 - disable complexity warning
     calc_pipes(data)
 
     # Merge in custom and legacy data, clean the properties and remove ones we don't need
-    cleanup_objects(game, classes_found, data_lookup, data)
+    cleanup_objects(game, sourcedir, data_lookup, data)
 
     print('collected %d markers' % (len(data)))
-    json_file = 'markers.' + game + '.json'
-    print('writing "%s" ...' % json_file)
-    json.dump(data, open(json_file, 'w'), indent=2)
+    save_json_file(data, datadir, 'markers.' + game + '.json')
 
 
 def calc_pipes(data):
@@ -1779,7 +1709,7 @@ exported_properties = [
 # lookup is a dictionary from area:name to objects
 # data is an array of the same objects
 # each object is a dictionary of k,v pairs
-def cleanup_objects(game, classes_found, data_lookup, data):  # noqa: C901 - disable complexity warning
+def cleanup_objects(game, sourcedir, data_lookup, data):  # noqa: C901 - disable complexity warning
     def get_xyz(o):
         return dict(x=o['lng'], y=o['lat'], z=o['alt'])
 
@@ -1787,26 +1717,7 @@ def cleanup_objects(game, classes_found, data_lookup, data):  # noqa: C901 - dis
         return get_xyz(data_lookup[o['nearest_cap']]) if 'nearest_cap' in o else get_xyz(o)
 
     # Read the set of pads and pipes we found save data for
-    savedpadpipes = read_savedpadpipes(game)
-
-    classes = read_game_classes()
-
-    # Make a set of all the classes found that are not in gameClasses.js
-    # Write out a file for optional insertion into gameClasses.js
-    classes_to_filter = []
-    if stripUnusedClasses:
-        classes_to_filter = [
-            k
-            for k in classes_found
-            if k not in classes
-            or classes[k]['layer'] == 'extra'
-            or not classes[k]['layer']
-            and not classes[k]['nospoiler']
-        ]
-        print(f'Writing {len(classes_to_filter)} gameClasses to "filtered_classes.js"')
-        with open('filtered_classes.js', 'w') as fh:
-            for c in sorted(classes_to_filter):
-                fh.write("    '{:<36}: new GameClass(),\n".format(c))
+    savedpadpipes = read_savedpadpipes(game, sourcedir)
 
     # Walk the remaining instances and fix up entries
     for o in data:
@@ -1891,15 +1802,6 @@ def cleanup_objects(game, classes_found, data_lookup, data):  # noqa: C901 - dis
                 o['variant'] = 'blue'
             else:
                 o['variant'] = 'red'
-        elif o.get('actors'):
-            targets = []
-            for actor in o['actors']:
-                a = actor if ':' in actor else ':'.join((o['area'], actor))
-                if (ao := data_lookup.get(a)) and ao in data and ao['type'] not in classes_to_filter:
-                    targets.append(get_xyz(data_lookup[a]))
-            if targets != []:
-                o['linetype'] = 'trigger'
-                o['targets'] = targets
 
         # Mark pads/pipes for which we haven't identified save information
         if o['type'] == 'Jumppad_C' and alt not in savedpadpipes['pads']:
@@ -1914,22 +1816,11 @@ def cleanup_objects(game, classes_found, data_lookup, data):  # noqa: C901 - dis
     # Convert piles of non-rotating coins to stack markers
     create_coinstacks(data_lookup, data)
 
-    # Remove entries that match the specified set of classes
-    # note they still exist in data_lookup if needed (for references)
-    if stripUnusedClasses:
-        i = len(data)
-        print(f'lengths {i} {len(data_lookup.values())}')
-        for o in data_lookup.values():
-            if o['type'] in classes_to_filter:
-                data.remove(o)
-        print(f'Removed {i - len(data)} instances of {len(classes_to_filter)} classes')
-
     # Strip properties we don't need to export
-    if stripUnusedProperties:
-        for o in data:
-            for prop in list(o.keys()):
-                if prop not in exported_properties:
-                    del o[prop]
+    for o in data:
+        for prop in list(o.keys()):
+            if prop not in exported_properties:
+                del o[prop]
 
 
 # Goes through all the non-rotating coins and looks for groups of more than 3 to combine into coinstacks
@@ -2012,75 +1903,58 @@ def friendly_name(cls):
     return n
 
 
-# Read gameClasses.json and return data
-def read_game_classes(fn='..\\public\\data\\gameClasses.json'):
-    print('Reading "' + fn + '"...')
-
-    # Open and read the whole js file if it exists
-    if not os.path.exists(fn):
-        sys.exit(f'{fn} not found, exiting')
-
-    with open(fn, 'r', encoding='utf-8') as f:
-        classes = json.load(f)
-
-    return classes
-
-
-# Write the specified data to gameClasses.json
-def write_game_classes(classes, fn='..\\public\\data\\gameClasses.json'):
-    with open(fn, 'w') as f:
-        print(f"Writing loc data to {fn}...")
-        json.dump(classes, f, indent=2)
-
-
 # This file is generated using hard coded information and info from a save
 # file. It is generated by dumpsavefile.js
-def read_savedpadpipes(game):
+def read_savedpadpipes(game, sourcedir):
 
-    fn = f'savedpadpipes.{game}.json'
+    path = Path(sourcedir, f'savedpadpipes.{game}.json')
 
     # Open and read the whole js file if it exists
-    if os.path.exists(fn):
-        print('Reading "' + fn + '"...')
-        return json.load(open(fn, 'r', encoding='utf-8'))
+    if path.exists():
+        print('Reading "' + path + '"...')
+        return json.load(open(path, 'r', encoding='utf-8'))
 
-    print(f'Warning: {fn} not found, skipping')
+    print(f'Warning: {path} not found, skipping')
     return {'pipes': [], 'pads': []}
 
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument(
-        '-d', '--cache_dir', default='..\\source', help='directory where extracted and generated data is stored'
-    )
-    parser.add_argument('-g', '--game', default='siu', help='game name (sl, slc, siu, sw)')
+
+    # game, data and source directory used by all commands
+    parser.add_argument('-g', '--game', default='sw', help='game name (sl, slc, siu, sw)')
+    parser.add_argument('-d', '--data', default='..\\public\\data', help='output json data directory')
+    parser.add_argument('-s', '--source', default='..\\source', help='location of game data needed by command')
+
+    # these are the core operations
     parser.add_argument('-p', '--preproc', action='store_true', help='preprocess level files to gather ')
     parser.add_argument('-m', '--markers', action='store_true', help='export markers as json (need json levels)')
-    parser.add_argument(
-        '-b', '--blueprints', action='store_true', help='read loc from blueprints and export to gameClasses'
-    )
+    parser.add_argument('-v', '--version', action='store_true', help='update version information (set source to install directory)')
+    parser.add_argument('-b', '--blueprints', action='store_true', help='read loc from blueprints and export to gameClasses')
     parser.add_argument('-o', '--loc', action='store_true', help='extract required loc strings for game')
     args = parser.parse_args()
 
-    try:
-        Path(args.cache_dir, args.game).mkdir(exist_ok=True, parents=True)
-    except Exception:
-        pass
+    # If source dir is default then add the game directory
+    sourcedir = args.source
+    if sourcedir == '..\\source':
+        sourcedir += '\\' + (args.game if args.game != 'slc' else 'sl')
 
     if args.preproc:
-        preproc_levels(args.cache_dir, args.game)
+        preproc_levels(args.game, args.data, sourcedir)
     elif args.markers:
         if args.game == 'sw':
-            export_sw_markers(args.cache_dir, args.game)
+            export_sw_markers(args.game, args.data, sourcedir)
         else:
-            export_markers(args.cache_dir, args.game)
+            export_markers(args.game, args.data, sourcedir)
+    elif args.version:
+        if args.game == 'sw':
+            update_swversion_info(args.game, args.data, args.source or os.environ.get('SWROOT'), os.environ.get('SWMAPIMAGE'))
     elif args.blueprints:
-        export_class_loc(args.cache_dir)
+        export_class_loc(args.game, args.data, sourcedir)
     elif args.loc:
-        export_loc_files(args.cache_dir)
+        export_loc_files(args.game, args.data, sourcedir)
     else:
         parser.print_help()
-
 
 if __name__ == '__main__':
     main()
