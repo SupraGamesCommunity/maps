@@ -16162,6 +16162,87 @@
     "alt": 5780.14013671875
   },
   {
+    "name": "StaticMeshActor_UAID_7085C2B20F0E287702_1809706688",
+    "type": "_PokerChip_C",
+    "area": "Supraworld",
+    "lat": -10910.4521484375,
+    "lng": 3789.200439453125,
+    "alt": 1334.4085693359375,
+    "variant": "black"
+  },
+  {
+    "name": "StaticMeshActor_UAID_7085C2B20F0E287702_1843574689",
+    "type": "_PokerChip_C",
+    "area": "Supraworld",
+    "lat": -11387.849609375,
+    "lng": 6956.8671875,
+    "alt": 1084.2318115234375,
+    "variant": "blue"
+  },
+  {
+    "name": "StaticMeshActor_UAID_7085C2B20F0E287702_1863423690",
+    "type": "_PokerChip_C",
+    "area": "Supraworld",
+    "lat": -1073.26025390625,
+    "lng": 3714.8984375,
+    "alt": 1805.8697509765625,
+    "variant": "pink"
+  },
+  {
+    "name": "StaticMeshActor_UAID_7085C2B20F0E287702_2025921705",
+    "type": "_PokerChip_C",
+    "area": "Supraworld",
+    "lat": -3504.32470703125,
+    "lng": -590.9420776367188,
+    "alt": 936.724609375,
+    "variant": "purple"
+  },
+  {
+    "name": "StaticMeshActor_UAID_7085C2B20F0E297702_1922854914",
+    "type": "_PokerChip_C",
+    "area": "Supraworld",
+    "lat": -14967.0146484375,
+    "lng": -1424.05859375,
+    "alt": 1100.466796875,
+    "variant": "yellowblack"
+  },
+  {
+    "name": "StaticMeshActor_UAID_7085C2B20F0E2A7702_1364504091",
+    "type": "_PokerChip_C",
+    "area": "Supraworld",
+    "lat": -12216.3974609375,
+    "lng": 5963.1396484375,
+    "alt": 2245.649658203125,
+    "variant": "yellow"
+  },
+  {
+    "name": "StaticMeshActor_UAID_7085C2B20F0E2A7702_1400670092",
+    "type": "_PokerChip_C",
+    "area": "Supraworld",
+    "lat": -1719.8953857421875,
+    "lng": 6129.30126953125,
+    "alt": 1945.1142578125,
+    "variant": "red"
+  },
+  {
+    "name": "StaticMeshActor_UAID_7085C2B20F0E2A7702_1634274093",
+    "type": "_PokerChip_C",
+    "area": "Supraworld",
+    "lat": -7378.1318359375,
+    "lng": 2586.447265625,
+    "alt": 2078.212158203125,
+    "variant": "green"
+  },
+  {
+    "name": "StaticMeshActor_UAID_7085C2B20F0E2A7702_1684719094",
+    "type": "_PokerChip_C",
+    "area": "Supraworld",
+    "lat": -10318.7578125,
+    "lng": 766.5582885742188,
+    "alt": 846.735595703125,
+    "variant": "brown"
+  },
+  {
     "name": "SupraPlayerStart_C_UAID_7085C2B20F0EB23201_1743122355",
     "type": "SupraworldPlayerStart_C",
     "area": "Supraworld",
