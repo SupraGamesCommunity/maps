@@ -107,7 +107,7 @@ This pulls the latest version of the map tiles and uses image magick to recolour
 
 #### Applying Fog
 
-You can extract fog from a Supraworld save file using `export sw getfog {save name}` which will output 8k `swmapfog.png` and 2k `swmapfog-2k.png` to `source/sw/mapimg`.
+You can extract fog from a Supraworld save file using `export sw getfog {save name}` which will output 8k `swmapfog.png` and 2k `swmapfog-ea.png` to `source/sw/mapimg`.
 
 You may then edit the 8k version to customise the fog before applying it to mask out the areas of the original map that have yet to be released.
 
@@ -116,7 +116,7 @@ export sw applyfog
 ```
 To apply `swmapfog.png` to `swmap.png` and generate `source/sw/mapimg/swmap-fogged.png`.
 
-If the 2k version is renamed to `swmapfog-ea.png` then it will be used to filter out objects extracted from the game so they will not be added to the map.
+If the 2k version `swmapfog-ea.png` will be used to filter out objects extracted from the game so they will not be added to the map.
 
 #### Generating Tiles
 
@@ -127,19 +127,6 @@ export sw gentiles
 ```
 which splits the `png` into a hierarchy of `jpg` tiles in the   `public/tiles` directory which should be added to source control when major changes are made.
 
-## Map Marker Data
-
-The frontend reads JSON files from the data directory:
-
-- __layerConfigs.json__ configures the categories/groups and the base map data.
-- __iconConfigs.json__ configures the icons used on the map.
-- __gameClasses.json__ configures the different types of objects that the map deals with and how to display them (written to to add localisation).
-- __markers.{game}.json__ hold the extracted data from the game about each marker on the map (written to by extraction).
-- __custom-markers.{game}.json__ allows customisations to be applied to the extracted data, overriding or deleting markers or marker fields.
-- __ytdata.{game}.json__ is the same as `custom-markers` but it intended to be used to add YouTube links to the map maerkes.
-
-- __custom-loc.json__ can be used to customise the localisation data extracted from the game and included in gameClasses.json.
-- __loc/locstr-{lang}.json__ are the stripped down localisation strings extracted from the game and associated with each type of object (see localisation).
 
 ### Data Extraction
 
@@ -157,32 +144,37 @@ We also generate some intermediate files:
 - __enumassetlist.txt__ lists all the enumeration blueprints we find
 - __levelprops.json__ lists the properties found in the level files
 
-Extracting the data is a multi-step process:
+Extracting the data is a multi-step process.
 
-1. Generate a list of all the files (`export sw list`)
-2. Extract the level files (`export sw levels`)
-3. Preprocess level files (`export sw preproc`)
-4. Extract enums and blueprints found in levels (`export sw "bp enums")
-5. Update level files with enum mappings (`export sw preproc`)
-6. Extract the map markers (`export sw markers`)
-7. Extract the raw localisation data (`export sw loc`)
-8. Apply the localisation data (`export sw applyloc`)
+#### Step 1: Extraction and Preprocessing
 
-You can also use `export sw parse {arguments}` run CUE4Parse.exe and extract additional files to `source/{game}/parse` 
+Use the command: `export {game} setup`
 
-The `all` command will run all these steps sequentially:
+This pulls the instance map files, blueprints and enum data out of the relevant game and generates the intermediate files. For Supraworld it also updates the [version info](../public/data/versions.json).
 
-```sh
-export sw all
-```
+Setup runs multiple operations sequentially.
+
+#### Step 2: Marker Generation
+
+Use the command: `export {game} markers`
+
+This reads the map files (containing the instances) and writes out markers.{game}.json to the public data files. Containing all the properties needed for the map.
+
+#### Step 3: Localisation
+
+Use the command `export {game} doloc`
+
+This uses the extracted localisation data to update the keys and strings database used by the frontend.
+
+Note: Supraworld is currently unlocalised and the code needs to be updated.
+
+
+## Other Notes
 
 A few notes:
 - The extraction process reads gameClasses.json to decide which classes we are interested in and ignores anything else.
-- We write localisation keys to gameClasses.json during the _applyloc_ step. 
+- We write localisation keys to gameClasses.json during the _doloc_ step. 
 - For SW we filter out anything marked as beyond current EA release and anything in the black regions of swmapfog-ea.png.
 - The enums translation is required for successful extraction of markers
 - We read the blueprint files to find default values for some things (and for localisation).
-- For SW we get the version number in the preproc step
-
-- ___Steps 5 , 7 and 8 are currently incomplete___
-- ___SL, SLC, SIU map extraction is in an unknown state whilst updates are made for SW___
+- For SW we update version numbers when the mapimg or levels steps are run

@@ -56,45 +56,12 @@ Note: See separate notes on convenient setup/extensions to use with VS Code
 Run `uv sync`. This will download a compatible Python binary (if necessary), and create a `.venv` directory
 to store the Python virtual environment. (This directory is not intended to be committed to the codebase.)
 
+##  Main Scripts
 
-## File structure overview
+findslpaks.cmd      Helper script to locate game install directories and set environment variables
+export.cmd          CLI script used to extract and parse data from the game
+supraland_parser.py Script to extract map data from Supraland UE4 games: options for raw data, markers and map textures
 
-```
-/                       SupraGamesCommunity Maps repository directory
-|                           into this directory for distribution.
-+-- doc/                Documentation
-+-- LOC/                Complete extracted localisation strings (should be removed)
-+-- public/             Static files. Anythin under this directory is delivered 'as-is' to the browser, and are
-|   |                       never modified by the Vite local server. Vite serves this directory as if it was from the
-|   |                       server's root `/`.
-|   +-- data/           JSON files describing map elements (Pins, Icons etc).
-|   |   +-- loc/        Localisation strings for each language supported
-|   +-- images/         Images required by 3rd party libraries (mostly leaflet)
-|   +-- img/            Images used by frontend
-|   +-- markers/        Images used for map marker icons
-|   +-- js/             Unmodified JavaScript. This directory is typically used for 3rd-party libraries and/or
-|   |   |                   JavaScript that is not compatible with ES6 modules. It is not optimized by Vite.
-|   |   +-- lib/        3rd party front end scripts
-|   +-- tiles/          Map tile hierarchy for each game. Each tile is a 512x512 jpg
-|                           {sl|slc|siu}/{base}/{z}/{x}/{y}.jpg
-|                           where z=zoom [0-4] x/y tile pos within map
-|                           Full maps are 8k. Zoom 0 is 1x1 - Zoom 4 is 16x16
-+-- scripts/                Tool scripts for extracting/preparing data for frontend
-|  +-- findslpaks.cmd      Helper script to locate game install directories and set environment variables
-|  +-- export.cmd          CLI script used to extract and parse data from the game
-|  +-- supraland_parser.py Script to extract map data from Supraland UE4 games
-|                           Options for raw data, markers and map textures
-+-- source/             Data extracted from the game is placed here temporarily (mostly not under source control)
-|                           see notes on running builds.
-+-- web_src/            JavaScript, CSS, and other web assets. Unlike the public/ directory above, the contents
-|                           of this directory are transformed by Vite to transpile, minify, and cache source files
-+-- css/                Frontend source CSS 
-+-- lib/                Frontend libraries built from source
-
-+-- dist/               When the production site is built, all front-end assets (HTML, CSS, JavaScript) are placed.
-+-- node_modules/       Development-only. Stores tools and libraries. Should not be committed to the codebase.
-+-- .venv/              Development-only. Python virtual environment. Should not be committed to the codebase.
-```
 
 ## Running Windows Scripts
 

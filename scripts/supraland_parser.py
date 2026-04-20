@@ -370,6 +370,7 @@ properties = [
     'Scrapamount',  # Scrap_C
 ]
 
+
 # Unreal mostly uses PascalCase / UpperCamelCase for its naming. This function converts a string of this form
 # to snake case ie all lower case with underscores. It has special handling for flags converting 'bMyVar' to
 # 'is_my_var' and 'MyVar?' to 'my_var_flag'
@@ -462,7 +463,7 @@ class UEEnums:
             self.types.add(ue[0 : ue.find('::')])
 
 
-#def get_file_metadata(path, file, ext):
+# def get_file_metadata(path, file, ext):
 #    sh = win32com.client.gencache.EnsureDispatch('Shell.Application', 0)
 #    ns = sh.NameSpace(path.lower())
 #
@@ -489,6 +490,7 @@ def get_unreal_version(exepath):
     uever['minor'] = int(vernums[1])
     return uever
 
+
 # Retrieves the steam branch name
 def get_steam_branch(game, path):
     branch = 'public'
@@ -507,12 +509,14 @@ def get_steam_branch(game, path):
 
     return branch
 
+
 def get_swbuild_info(installdir):
     path = Path(installdir, 'build.vc')
     with open(path, 'r') as file:
-        build =  file.readline().rstrip()
+        build = file.readline().rstrip()
         date = file.readline().rstrip()
-    return { "build": build, "date": date }
+    return {"build": build, "date": date}
+
 
 # Update Suprawowlrd version information based on steam version installed in 'installdir'
 def update_swversion_info(game, datadir, sourcedir, mapimage):
@@ -529,7 +533,7 @@ def update_swversion_info(game, datadir, sourcedir, mapimage):
     # }
 
     basename = config['sw']['basename']
-    exe_file =  Path(list(Path(sourcedir, basename, 'Binaries\\Win64').glob(basename+'-Win64*.exe'))[0])
+    exe_file = Path(list(Path(sourcedir, basename, 'Binaries\\Win64').glob(basename + '-Win64*.exe'))[0])
 
     uever = get_unreal_version(exe_file)
     versions['sw']['ue'].update(uever)
@@ -539,11 +543,12 @@ def update_swversion_info(game, datadir, sourcedir, mapimage):
     gamever['type'] = exe_file.stem.split('-')[-1]
 
     if mapimage:
-        gamever['mapver'] = 'V'+str(get_ints(mapimage)[0])
+        gamever['mapver'] = 'V' + str(get_ints(mapimage)[0])
 
     versions['sw']['game'].update(gamever)
 
     save_json_file(versions, datadir, 'versions.json')
+
 
 # We presume export.cmd has been used to export a set of map files for the game to
 # a sub-directory of 'sourcedir'. We are going to go through the map and generate
@@ -1001,12 +1006,12 @@ def export_sw_markers(game, datadir, sourcedir):  # noqa: C901 - disable complex
 
             # Hidden Flag
             if (
-                p.get('bHidden') == True
-                or p.get('bHiddenInGame') == True
-                or p.get('bExists') == False
-                or p.get('InitialExists') == False
-                or p.get('Spawn on Level Start') == False
-                or p.get('bItemIsAvailable_Initial') == False
+                p.get('bHidden') is True
+                or p.get('bHiddenInGame') is True
+                or p.get('bExists') is False
+                or p.get('InitialExists') is False
+                or p.get('Spawn on Level Start') is False
+                or p.get('bItemIsAvailable_Initial') is False
             ):
                 data[-1]['hidden'] = 'true'
 
@@ -1955,6 +1960,7 @@ def main():
         export_loc_files(args.game, args.data, sourcedir)
     else:
         parser.print_help()
+
 
 if __name__ == '__main__':
     main()
