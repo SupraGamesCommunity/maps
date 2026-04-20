@@ -244,6 +244,7 @@
 
   "Weight_Draggable_C"              : { "friendly": "Weight",              "icon": "weight",             "layer": "swcarriable",   "nospoiler": null,          "games": ["sw"], "setfound": false                },
   "AAABattery_C"                    : { "friendly": "AAA Battery",         "icon": "aaabattery",         "layer": "swcarriable",   "nospoiler": null,          "games": ["sw"], "setfound": false                },
+  "Handcuffs_C"                     : { "friendly": "Hand Cuffs",          "icon": "handcuffs",          "layer": "swcarriable",   "nospoiler": null,          "games": ["sw"]                                   },
 
   "Balloon_C"                       : { "friendly": "Balloon",             "icon": "balloon",            "layer": "swlaunchers",   "nospoiler": null,          "games": ["sw"]                                   },
   "DashLauncher_C"                  : { "friendly": "Dash Launcher",       "icon": "dash_launcher",      "layer": "swlaunchers",   "nospoiler": null,          "games": ["sw"]                                   },
@@ -295,7 +296,6 @@
 
   "DetectiveCase_ArmChair_C"        : { "friendly": "Detective Case",      "icon": "mag_glass",          "layer": "swquests",      "nospoiler": null,          "games": ["sw"]                                   },
   "DetectiveCase_ChocolateFactory_C": { "friendly": "Detective Case",      "icon": "mag_glass",          "layer": "swquests",      "nospoiler": null,          "games": ["sw"]                                   },
-  "Handcuffs_C"                     : { "friendly": "Hand Cuffs",          "icon": "handcuffs",          "layer": "swquests",      "nospoiler": null,          "games": ["sw"]                                   },
 
   "HayGuy_C"                        : { "friendly": "Hay Guy",             "icon": "npc_blue",           "layer": "swquests",      "nospoiler": null,          "games": ["sw"]                                   },
   "_ThreadGuy_C"                    : { "friendly": "Thread Guy",          "icon": "npc_blue",           "layer": "swquests",      "nospoiler": null,          "games": ["sw"]                                   },
