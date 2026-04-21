@@ -36,14 +36,21 @@ export const About = () => {
         </li>
       </ul>
 
-      <h2>GitHub</h2>
-      <p>
-        <a href="https://github.com/SupraGamesCommunity/maps">{'https://github.com/SupraGamesCommunity/maps'}</a>
-      </p>
+
+      <h2>Discord</h2>
+      <p>Need more help or just want to chat with Supraland fans and developers?</p>
+      <p>Join the official <a href="https://discord.gg/DhWbSbfMqx" target="_blank" rel="noopener">Supraland Discord</a>.</p>
+
 
       <h2>Credits</h2>
       <p>
         <a href="https://github.com/SupraGamesCommunity/maps#credits-1">Refer to the README</a>
+      </p>
+
+
+      <h2>GitHub</h2>
+      <p>
+        <a href="https://github.com/SupraGamesCommunity/maps">{'https://github.com/SupraGamesCommunity/maps'}</a>
       </p>
     </>
   );
