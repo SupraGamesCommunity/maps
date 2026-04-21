@@ -13,7 +13,8 @@ import { MapObject } from './mapObject.js';
 import { MapPins } from './mapPins.js';
 import { L_Control_supraSearch } from './supraSearch.js';
 import { L_supraMap } from './supraMap.js';
-import { initSidepanel, initSidepanelDom } from './sidepanel/initSidepanel.jsx';
+import { initSidepanelDom } from './sidepanel/initSidepanel.jsx';
+import { renderSidepanel } from './sidepanel/renderSidepanel.jsx';
 
 const skipConfirms = browser.isCode;
 
@@ -148,7 +149,7 @@ async function loadMap(mapParam) {
 
   // Sort out the layer configuration and create the layers
   MapLayer.setupLayers(map);
-  initSidepanel(map);
+  renderSidepanel(map);
 
   // Add the layer control to the map
   const layerControl = L.control.layers(

@@ -1,11 +1,8 @@
 /* global L */
 
-import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import { Sidepanel } from './Sidepanel.jsx';
-import { LayerSelect_Data } from './LayerSelect_Data.jsx';
 
-let root = null;
+export let sidepanelRoot = null;
 
 /* Initializes the DOM to support the sidepanel. */
 export function initSidepanelDom() {
@@ -18,35 +15,22 @@ export function initSidepanelDom() {
   // and 'touchstart' events (plus browser variants).
   L.DomEvent.disableClickPropagation(sidepanelContainer);
 
-  root = createRoot(sidepanelContainer);
+  sidepanelRoot = createRoot(sidepanelContainer);
 }
 
-/*
- * Initializes the sidepanel, with a specific MapLayer map.
- * This is called whenever the user switches the game map (e.g. SupraLand, SupraWorld, etc)
- */
-export function initSidepanel(map) {
-  let layerSelectData = new LayerSelect_Data(map);
-
-  function render() {
-    const layerSelectorProps = {
-      mapSelections: layerSelectData.getMapSelectorProps(),
-      overlaySelections: layerSelectData.getOverlayLayerProps(),
-      onMapChange: (name, value) => layerSelectData.onMapChangeHandler(name, value),
-      onOverlayChange: (value, isChecked) => layerSelectData.onOverlayChangeHandler(value, isChecked),
-    };
-    root.render(
-      <StrictMode>
-        <Sidepanel layerSelectorProps={layerSelectorProps} />
-      </StrictMode>
-    );
+/* Sets up CSS on the Leaflet map so that any left-side controls are pushed to the right while the sidebar
+ * is open (so that the controls are not hidden by the sidebar). */
+export const setLeafletMapPushCss = (sidebarIsOpen) => {
+  let leaflet_map = document.querySelector('.leaflet-control-container');
+  if (!leaflet_map) {
+    return;
   }
-
-  // Subscribe to state changes and re-render when state updates
-  layerSelectData.subscribe(() => {
-    render();
-  });
-
-  // Initial render
-  render();
-}
+  leaflet_map.classList.add('leaflet-anim-control-container');
+  if (sidebarIsOpen) {
+    leaflet_map.classList.add('left-opened');
+    leaflet_map.classList.remove('left-closed');
+  } else {
+    leaflet_map.classList.add('left-closed');
+    leaflet_map.classList.remove('left-opened');
+  }
+};

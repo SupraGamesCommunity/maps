@@ -4,6 +4,7 @@ import classnames from 'classnames';
 import { About } from './About.jsx';
 import { Settings } from '../settings.js';
 import { DevBuildSettingsTab } from './DevBuildSettings.jsx';
+import { setLeafletMapPushCss } from './initSidepanel.jsx';
 
 /* The HTML component that renders the entire Sidepanel (including navigation tabs and content) */
 export const Sidepanel = (props) => {
@@ -71,6 +72,7 @@ export const Sidepanel = (props) => {
             aria-label="toggle side panel"
             onClick={() => {
               setIsOpen(!isOpen);
+              setLeafletMapPushCss(!isOpen);
             }}
           ></button>
         </div>

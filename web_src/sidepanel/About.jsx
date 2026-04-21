@@ -4,10 +4,11 @@ export const About = () => {
     <>
       <h2>About</h2>
       <p>
-        {"Maps for the games made by "}
+        {'Maps for the games made by '}
         <a href="https://store.steampowered.com/developer/SupraGames/" target="_blank" rel="noopener">
           Supra Games UG
-        </a>{", including:"}
+        </a>
+        {', including:'}
       </p>
       <ul>
         <li>
@@ -36,17 +37,20 @@ export const About = () => {
         </li>
       </ul>
 
-
       <h2>Discord</h2>
-      <p>Need more help or just want to chat with Supraland fans and developers?</p>
-      <p>Join the official <a href="https://discord.gg/DhWbSbfMqx" target="_blank" rel="noopener">Supraland Discord</a>.</p>
-
+      <p>{'Need more help or just want to chat with Supraland fans and developers?'}</p>
+      <p>
+        {'Join the official '}
+        <a href="https://discord.gg/DhWbSbfMqx" target="_blank" rel="noopener">
+          {'Supraland Discord'}
+        </a>
+        {'.'}
+      </p>
 
       <h2>Credits</h2>
       <p>
         <a href="https://github.com/SupraGamesCommunity/maps#credits-1">Refer to the README</a>
       </p>
-
 
       <h2>GitHub</h2>
       <p>
