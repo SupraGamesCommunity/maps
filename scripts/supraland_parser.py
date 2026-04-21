@@ -464,7 +464,7 @@ class UEEnums:
 
 
 # Load all enumerations
-def load_all_enumbp(*path):
+def load_all_enumbp(*path: str):
     ueenums = UEEnums()
     for filename in Path(*path).glob('*.json'):
         ueenums.loadenumbp(filename)
@@ -862,7 +862,8 @@ sw_blueprint_keys_used = [
 
 
 # Read properties from the blueprints for the specified set of property keys
-def load_blueprint_keys(sourcedir, def_keys, type_keys={}):
+def load_blueprint_keys(sourcedir: str, def_keys: list[str], type_keys: dict[str, str] = None):
+    if type_keys is None: type_keys = {}
     path = Path(sourcedir, 'bp')
     bp_defaults = {}
     for filename in path.glob('*.json'):
