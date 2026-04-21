@@ -20,7 +20,7 @@
             "program": "${file}",
             "console": "integratedTerminal",
             "cwd": "${fileDirname}",
-            "args": "-d ..\\source -g sw -m"    // ${command:pickArgs}"
+            "args": "-g sw -d ..\\public\\data -s ..\\source\\sw -m"    // ${command:pickArgs}"
         },
         {
             "name": "Launch Vite DEV server",
