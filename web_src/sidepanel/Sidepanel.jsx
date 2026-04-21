@@ -12,9 +12,9 @@ export const Sidepanel = (props) => {
   const [currentTab, setCurrentTab] = useState(0);
 
   const tabs = [
-    { id: 'map_select', title: 'Maps' },
-    { id: 'settings', title: 'Settings' },
-    { id: 'about', title: 'About' },
+    { id: 'map_select', icon: 'fa-regular fa-map', title: 'Maps' },
+    { id: 'settings', icon: 'fa-solid fa-gears', title: 'Settings' },
+    { id: 'about', icon: 'fa-solid fa-circle-info', title: 'About' },
   ];
 
   return (
@@ -33,15 +33,13 @@ export const Sidepanel = (props) => {
                   href="#"
                   className={classnames('sidebar-tab-link', { active: idx == currentTab })}
                   role="tab"
+                  title={tab.title}
                   datatablink={`tab-${idx}`}
                   onClick={() => {
                     setCurrentTab(idx);
                   }}
                 >
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor">
-                    <path fillRule="evenodd" />
-                  </svg>
-                  {tab.title}
+                <i className={tab.icon} width="24" height="24"></i>
                 </a>
               </li>
             ))}
