@@ -14,18 +14,16 @@ export const buildMode = {
   changeList: [], // Changes made in the current Build Mode session
 };
 
-export function toggleDevMode() {
+export function setDevMode(newDevMode) {
   Settings.globalSetDefault('devMode', false);
-  Settings.global.devMode = !Settings.global.devMode;
+  Settings.global.devMode = newDevMode;
   Settings.commit();
-  skipConfirms || alert('Dev mode is now set to ' + Settings.global.devMode + '.');
 }
 
-export function toggleBuildMode() {
+export function setBuildMode(newBuildMode) {
   Settings.globalSetDefault('buildMode', false);
-  Settings.global.buildMode = !Settings.global.buildMode;
+  Settings.global.buildMode = newBuildMode;
   Settings.commit();
-  skipConfirms || alert('Build mode is now set to ' + Settings.global.buildMode + '.');
 }
 
 function updateBuildModeValue(event) {
