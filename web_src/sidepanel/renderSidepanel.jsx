@@ -14,6 +14,7 @@ export function renderSidepanel(map) {
 
   function render() {
     const layerSelectorProps = {
+      leafletMap: map,
       mapSelections: layerSelectData.getMapSelectorProps(),
       overlaySelections: layerSelectData.getOverlayLayerProps(),
       onMapChange: (name, value) => layerSelectData.onMapChangeHandler(name, value),

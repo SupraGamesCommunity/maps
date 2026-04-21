@@ -1,5 +1,5 @@
 /* HTML component that displays the contents of the "About" tab in the sidebar. */
-export const About = () => {
+export const AboutTab = () => {
   return (
     <>
       <h2>About</h2>

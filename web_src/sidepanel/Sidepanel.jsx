@@ -1,7 +1,7 @@
-import { LayerSelector } from './LayerSelectComponents.jsx';
+import { MapsTab } from './MapsTab.jsx';
 import { useState } from 'react';
 import classnames from 'classnames';
-import { About } from './About.jsx';
+import { AboutTab } from './AboutTab.jsx';
 import { Settings } from '../settings.js';
 import { DevBuildSettingsTab } from './DevBuildSettings.jsx';
 import { setLeafletMapPushCss } from './initSidepanel.jsx';
@@ -39,7 +39,7 @@ export const Sidepanel = (props) => {
                     setCurrentTab(idx);
                   }}
                 >
-                <i className={tab.icon} width="24" height="24"></i>
+                  <i className={tab.icon} width="24" height="24"></i>
                 </a>
               </li>
             ))}
@@ -50,7 +50,7 @@ export const Sidepanel = (props) => {
         <div className="sidepanel-content-wrapper">
           <div className="sidepanel-content">
             <div className={classnames('sidepanel-tab-content', { active: currentTab === 0 })} datatabcontent="tab-0">
-              <LayerSelector {...props.layerSelectorProps} />
+              <MapsTab {...props.layerSelectorProps} />
             </div>
 
             <div className={classnames('sidepanel-tab-content', { active: currentTab === 1 })} datatabcontent="tab-1">
@@ -58,7 +58,7 @@ export const Sidepanel = (props) => {
             </div>
 
             <div className={classnames('sidepanel-tab-content', { active: currentTab === 2 })} datatabcontent="tab-2">
-              <About />
+              <AboutTab />
             </div>
           </div>
         </div>
