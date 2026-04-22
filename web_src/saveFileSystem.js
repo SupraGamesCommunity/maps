@@ -1,7 +1,7 @@
 import { UESaveObject } from './lib/UE4Reader.js';
 import { browser } from './utils.js';
 import { Settings } from './settings.js';
-import { MapObject } from './mapObject.js';
+import { MapObject } from './mapObject.jsx';
 
 // Tracks a set of listeners for specific Id's from the save data (one listener per id)
 // Id's are either area:name or property name

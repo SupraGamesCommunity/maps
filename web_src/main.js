@@ -9,7 +9,7 @@ import { MapParam } from './mapParam.js';
 import { Icons } from './icons.js';
 import { GameClasses } from './gameClasses.js';
 import { MapLayer } from './mapLayer.js';
-import { MapObject } from './mapObject.js';
+import { MapObject } from './mapObject.jsx';
 import { MapPins } from './mapPins.js';
 import { L_Control_supraSearch } from './supraSearch.js';
 import { L_supraMap } from './supraMap.js';

@@ -12,6 +12,8 @@ import { MapParam } from './mapParam.js';
 // TechDebt: refer to this function directly, instead of relying on it being added to the window global object.
 // import { buildMode, commitCurrentBuildModeChanges } from './devBuildMode.js';
 import { buildMode } from './devBuildMode.js';
+import { createRoot } from 'react-dom/client';
+import { PinContent } from './PinContent.jsx';
 
 //=================================================================================================
 // MapObject class
@@ -151,7 +153,7 @@ export class MapObject {
     };
     const marker = L.marker([this.o.lat, this.o.lng], options)
       .addTo(mapLayer.id == '_map' ? map : mapLayer.layerObj) // Add to relevant mapLayer (or the group)
-      .bindPopup('')
+      .bindPopup('', { minWidth: 300 })
       .on('popupopen', this.onPopupOpen, this) // We set popup text on demand
       .on('mouseover', this.onMouseOver, this) // We update tooltip text on demand
       .on('add', this.onAdd, this) // We may need to resize icons when they're layer is displayed
@@ -394,6 +396,7 @@ export class MapObject {
     buildMode.marker = this;
     buildMode.object = o;
 
+    /*
     let text = '';
     const hidden = o?.hidden == 'true' ? ' (hidden)' : '';
 
@@ -465,11 +468,13 @@ export class MapObject {
         ytSrc +
         '" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
     }
+    */
 
     //text += '<div class="marker-popup-subheading">' + o.area + '</div><br>'
     //text += '<br><br><div class="marker-popup-footnote">Lat: ' + o.lat + '<br>Lng: ' + o.lng + '<br>Alt: ' + o.alt + '</div>'
     //<p><span class="a">foo</span>  <span class="b">=</span>  <span class="c">"abcDeveloper"</span>
 
+    /*
     if (this._foundLockedState === undefined) {
       let value = this.isFound() ? 'checked' : '';
       text += '<div class="marker-popup-found">';
@@ -478,12 +483,26 @@ export class MapObject {
     } else {
       text += '<div class="marker-popup-found">&nbsp;</div>';
     }
+    */
+
+    let popUpContentDiv = document.createElement('div');
+
+    let sidepanelRoot = createRoot(popUpContentDiv);
+    let hasFoundState = this._foundLockedState === undefined;
+    let isFound = hasFoundState && this.isFound();
+    let foundAlt = hasFoundState && this.alt;
+    sidepanelRoot.render(
+      <PinContent o={o} mapId={mapId} hasFoundState={hasFoundState} isFound={isFound} foundAlt={foundAlt} />
+    );
+    e.popup.setContent(popUpContentDiv);
+    return;
 
     //let base = window.location.href.replace(/#.*$/,'');
     //let vars = {mapId:mapId, lat:Math.round(map.getCenter().lat), lng:Math.round(map.getCenter().lng), zoom:map.getZoom()};
     //let url = base +'#' + Object.entries(vars).map(e=>e[0]+'='+encodeURIComponent(e[1])).join('&');
     //let a = '<a href="'+url+'" onclick="return false">Map URL</a>';
 
+    /*
     if (Settings.global.buildMode) {
       const dbgrow = (title, value) => {
         value = JSON.stringify(value, null, ' ').replaceAll('"', '').replaceAll('\n', '');
@@ -529,6 +548,7 @@ export class MapObject {
     }
 
     e.popup.setContent(text);
+ */
   }
 
   // returns URL for this map object

@@ -2,7 +2,7 @@
 /*global L, map */
 
 import { browser } from './utils.js';
-import { MapObject } from './mapObject.js';
+import { MapObject } from './mapObject.jsx';
 import { Settings } from './settings.js';
 
 const skipConfirms = browser.isCode;
