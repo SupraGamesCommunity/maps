@@ -1,6 +1,7 @@
 import { locStr } from './locStr.js';
 import { GameClasses } from './gameClasses.js';
 import { useState } from 'react';
+import { updateBuildModeValue } from './devBuildMode.js';
 
 const StaticRow = ({ title, value }) => {
   return (
@@ -12,19 +13,82 @@ const StaticRow = ({ title, value }) => {
   );
 };
 
-const EditRow = ({ title, value, updateBuildModeValue }) => {
+const PropertyRow = ({ title, value }) => {
+  let jsonStr = JSON.stringify(value, null, ' ').replaceAll('"', '').replaceAll('\n', '');
+  return (
+    <>
+      <span className="marker-popup-debug-col">{title}</span>
+      <span className="marker-popup-debug-col2">{jsonStr}</span>
+      <br />
+    </>
+  );
+};
+
+const JsonProperties = ({ o }) => {
+  return (
+    <>
+      <div className="marker-popup-debug">
+        <br />
+        <details>
+          <summary>
+            <b>Full JSON (dev)</b>
+          </summary>
+          {Object.entries(o).map(([object_key, value], idx) => {
+            return <PropertyRow title={object_key} value={value} key={idx} />;
+          })}
+        </details>
+      </div>
+    </>
+  );
+};
+
+const EditRow = ({ title, value }) => {
+  const [textInputValue, setTextInputValue] = useState(value);
+
   return (
     <>
       <span className="marker-popup-edit-col">{title}</span>
       <span className="marker-popup-edit-col2">
-        <input type="text" id={title} onChange={(e) => updateBuildModeValue(e)} value={value} />
+        <input
+          type="text"
+          id={title}
+          onChange={(e) => {
+            setTextInputValue(e.target.value);
+            updateBuildModeValue(e);
+          }}
+          value={textInputValue}
+        />
       </span>
       <br />
     </>
   );
 };
 
-export const PinContent = ({ o, mapId, hasFoundState, isFound, foundAlt }) => {
+const BuildForm = ({ o }) => {
+  return (
+    <>
+      <hr />
+      <div className="marker-popup-edit">
+        <details>
+          <summary>
+            <b>Edit JSON (dev)</b>
+          </summary>
+          {Object.getOwnPropertyNames(o)
+            .filter((propName) => propName != 'name' && propName != 'area')
+            .map((propName, idx) => {
+              let value =
+                typeof o[propName] === 'string' ? o[propName] : JSON.stringify(o[propName]).replaceAll('"', '&quot;');
+              return <EditRow title={propName} value={value} key={idx} />;
+            })}
+          {!('yt_video' in o) && <EditRow title="yt_video" value="" key={'yt_video'} />}
+          {!('yt_start' in o) && <EditRow title="yt_start" value="" key={'yt_start'} />}
+        </details>
+      </div>
+    </>
+  );
+};
+
+export const PinContent = ({ o, mapId, hasFoundState, isFound, foundAlt, buildMode }) => {
   let ytSrc = null;
 
   const [isFoundCheckbox, setIsFoundCheckbox] = useState(isFound);
@@ -115,6 +179,8 @@ export const PinContent = ({ o, mapId, hasFoundState, isFound, foundAlt }) => {
           <>&nbsp;</>
         )}
       </div>
+      {buildMode && <JsonProperties o={o} />}
+      {buildMode && <BuildForm o={o} />}
     </>
   );
 };

@@ -26,7 +26,7 @@ export function setBuildMode(newBuildMode) {
   Settings.commit();
 }
 
-function updateBuildModeValue(event) {
+export function updateBuildModeValue(event) {
   let el = event.target;
   let value = '{["'.includes((el.value + ' ').charAt(0)) ? JSON.parse(el.value) : el.value;
   buildMode.object[el.id] = value;

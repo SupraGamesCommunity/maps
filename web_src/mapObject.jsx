@@ -468,13 +468,7 @@ export class MapObject {
         ytSrc +
         '" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
     }
-    */
 
-    //text += '<div class="marker-popup-subheading">' + o.area + '</div><br>'
-    //text += '<br><br><div class="marker-popup-footnote">Lat: ' + o.lat + '<br>Lng: ' + o.lng + '<br>Alt: ' + o.alt + '</div>'
-    //<p><span class="a">foo</span>  <span class="b">=</span>  <span class="c">"abcDeveloper"</span>
-
-    /*
     if (this._foundLockedState === undefined) {
       let value = this.isFound() ? 'checked' : '';
       text += '<div class="marker-popup-found">';
@@ -483,26 +477,7 @@ export class MapObject {
     } else {
       text += '<div class="marker-popup-found">&nbsp;</div>';
     }
-    */
 
-    let popUpContentDiv = document.createElement('div');
-
-    let sidepanelRoot = createRoot(popUpContentDiv);
-    let hasFoundState = this._foundLockedState === undefined;
-    let isFound = hasFoundState && this.isFound();
-    let foundAlt = hasFoundState && this.alt;
-    sidepanelRoot.render(
-      <PinContent o={o} mapId={mapId} hasFoundState={hasFoundState} isFound={isFound} foundAlt={foundAlt} />
-    );
-    e.popup.setContent(popUpContentDiv);
-    return;
-
-    //let base = window.location.href.replace(/#.*$/,'');
-    //let vars = {mapId:mapId, lat:Math.round(map.getCenter().lat), lng:Math.round(map.getCenter().lng), zoom:map.getZoom()};
-    //let url = base +'#' + Object.entries(vars).map(e=>e[0]+'='+encodeURIComponent(e[1])).join('&');
-    //let a = '<a href="'+url+'" onclick="return false">Map URL</a>';
-
-    /*
     if (Settings.global.buildMode) {
       const dbgrow = (title, value) => {
         value = JSON.stringify(value, null, ' ').replaceAll('"', '').replaceAll('\n', '');
@@ -546,9 +521,21 @@ export class MapObject {
       text += '<button onclick="commitCurrentBuildModeChanges();">Save</button>';
       text += '</details></div>';
     }
+    */
 
-    e.popup.setContent(text);
- */
+    let popUpContentDiv = document.createElement('div');
+    let sidepanelRoot = createRoot(popUpContentDiv);
+    let content = {
+      o,
+      mapId,
+      hasFoundState: this._foundLockedState === undefined,
+      isFound: this.isFound(),
+      foundAlt: this.alt,
+      buildMode: Settings.global.buildMode,
+    };
+
+    sidepanelRoot.render(<PinContent {...content} />);
+    e.popup.setContent(popUpContentDiv);
   }
 
   // returns URL for this map object
