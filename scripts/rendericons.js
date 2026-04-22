@@ -29,11 +29,12 @@ const supraColors = {
   "lime":        "#00FF00",
   "magenta":     "#FF00FF",
   "orange":      "#FF7700",
-  "pink":        "#A74472",
+  "pink":        "#FFB6C1",
   "purple":      "#800080",
   "red":         "#FF0000",
   "white":       "#FFFFFF",
-  "yellow":      "#FFFF00",
+  "yellow":      "#ffe731",
+  "yellowblack": "#8f8f00",
   "gold":        "#FFD700", // #EEE8AA, #FFD700, #EFBF04, #FFBF00, #DAA520, #CFB53B, #B8860B
 }
 

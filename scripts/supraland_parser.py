@@ -320,6 +320,14 @@ travel_types = [
 # Override Material Variants
 material_types = ["Nailscrew_C", "PuzzleCloud_C"]
 
+tracked_staticmeshes = [
+    'Poker_Chip_1'
+]
+
+staticmesh2variant = {
+    'Poker_Chip_1': 'red'
+}
+
 material2variant = {
     'Metal_Base_Golden': 'gold',
     'CloudPurple': 'purple',
@@ -327,7 +335,17 @@ material2variant = {
     'CloudRed': 'red',
     'CloudBlue': 'blue',
     'CloudWhite': 'white',
+    'Poker_Chip_Base_Red': 'red',
+    'Poker_Chip_Black': 'black',
+    'Poker_Chip_Blue': 'blue',
+    'Poker_Chip_Brown': 'brown',
+    'Poker_Chip_Green': 'green',
+    'Poker_Chip_Pink': 'pink',
+    'Poker_Chip_Purple': 'purple',
+    'Poker_Chip_Yellow': 'yellow',
+    'Poker_Chip_YellowBlack': 'yellowblack',
 }
+
 
 dietype2typeprefix = {
     'DieType::D6': 'D6',
@@ -965,6 +983,7 @@ def getXYZ(v):
 def export_sw_markers(game, datadir, sourcedir):  # noqa: C901 - disable complexity warning
     maps = {}  # dictionary from map name to json data list
     toyeggs = {}  # Collected chocolate eggs
+    staticmeshes = {} # dictionary from outer name to static mesh name
     meshmats = {}  # dictionary from outer name to mesh material variant
     targets = {}  # dictionary from outer name to target positions
     area_mtx = {}  # Transform for each area map geometry
@@ -989,15 +1008,24 @@ def export_sw_markers(game, datadir, sourcedir):  # noqa: C901 - disable complex
             otype = o['Type']
 
             # Keep list of static meshes by parent/outer
-            if otype == 'StaticMeshComponent' and (oms := p.get('OverrideMaterials')):
-                for om in oms:
-                    if (
-                        om
-                        and (v := om.get('ObjectName'))
-                        and (v := material2variant.get(v.split("'")[-2].split('.')[-1]))
+            if otype == 'StaticMeshComponent':
+                if (
+                        (sm := p.get('StaticMesh', {}).get('ObjectName'))
+                        and (sm := sm.split("'")[-2]) in tracked_staticmeshes
                     ):
-                        meshmats[outer] = v
+                    staticmeshes[outer] = sm
+                    if (sm in staticmesh2variant):
+                        meshmats[outer] = staticmesh2variant[sm]
 
+                if (oms := p.get('OverrideMaterials')):
+                    for om in oms:
+                        if (
+                                om
+                                and (v := om.get('ObjectName'))
+                                and (v := material2variant.get(v.split("'")[-2].split('.')[-1]))
+                            ):
+                            meshmats[outer] = v
+    
             # Keep list of Chocolate Egg interior objects
             if otype == 'ChocolateEgg_C' and (v := p.get('ToyEgg')):
                 toyeggs[objectRefStr(v)] = o
@@ -1078,6 +1106,11 @@ def export_sw_markers(game, datadir, sourcedir):  # noqa: C901 - disable complex
             if toyeggs.get(area + '.' + str(oidx)):
                 continue
 
+            # Convert poker chip static meshes to custom Poker Chip class
+            if ((v := staticmeshes.get(oname))
+                    and v == 'Poker_Chip_1'):
+                otype = '_PokerChip_C'
+
             # Add the standard data to the object
             data.append({'name': oname, 'type': otype, 'area': area, 'lat': pos.y, 'lng': pos.x, 'alt': pos.z})
 
@@ -1106,7 +1139,7 @@ def export_sw_markers(game, datadir, sourcedir):  # noqa: C901 - disable complex
                     variant = color.removeprefix("ESupraColors::").lower()
                     break
 
-            # Currently gold screws and puzzle cloud's
+            # Currently gold screws, puzzle cloud's and poker chips
             if v := meshmats.get(oname):
                 variant = v
 
