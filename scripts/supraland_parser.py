@@ -422,7 +422,7 @@ class UEEnums:
 
     def loadenumbp(self, *path):
         # Read the file as a JSON
-        j = load_json_file(*path)
+        j = load_json_file(*path, quiet=True)
 
         # Check that it is formatted as we expect
         if (
@@ -447,8 +447,8 @@ class UEEnums:
         self.types.add(name)
 
     # If s is an enumeration name we're aware of convert it to the source form
-    def ue2source(self, s):
-        return self.map.get(s)
+    def ue2source(self, s, default=None):
+        return self.map.get(s, default)
 
     # Returns true if the two enum strings match. First may be a UE renamed enum
     # or a source enum, second should be an untranslated source name
@@ -461,6 +461,14 @@ class UEEnums:
             if s and s != ue:
                 self.map[ue] = s
             self.types.add(ue[0 : ue.find('::')])
+
+
+# Load all enumerations
+def load_all_enumbp(*path_components: str):
+    ueenums = UEEnums()
+    for filename in Path(*path_components).glob('*.json'):
+        ueenums.loadenumbp(filename)
+    return ueenums
 
 
 # def get_file_metadata(path, file, ext):
@@ -554,10 +562,9 @@ def update_swversion_info(game, datadir, sourcedir, mapimage):
 # a sub-directory of 'sourcedir'. We are going to go through the map and generate
 # information about the
 def preproc_levels(game, datadir, sourcedir):  # noqa: C901 - disable complexity warning
+
     # Load in any enumerations we have found / extracted
-    ueenums = UEEnums()
-    for filename in Path(sourcedir, 'enums').glob('*.json'):
-        ueenums.loadenumbp(filename)
+    ueenums = load_all_enumbp(sourcedir, 'enums')
 
     # Load current gameClasses.json so we know which classes we currently know about for this game
     game_classes = load_json_file(datadir, 'gameClasses.json')
@@ -594,7 +601,7 @@ def preproc_levels(game, datadir, sourcedir):  # noqa: C901 - disable complexity
                 print(f'Warning: Object missing something in {filename} Type:{otype} Name:{oname} BP:{obp}')
                 continue
 
-            # Collect any claases which use the properties we're interested
+            # Collect any classes which use the properties we're interested
             if p := obj.get('Properties'):
                 for prop in [
                     'RequiredAbilities',
@@ -607,6 +614,7 @@ def preproc_levels(game, datadir, sourcedir):  # noqa: C901 - disable complexity
                     'CoinValue',
                     'Coins',
                     'CoinPool',
+                    'Cost',
                     'Pickup Class',
                     'CustomShopItem',
                     'InventoryItem',
@@ -617,6 +625,8 @@ def preproc_levels(game, datadir, sourcedir):  # noqa: C901 - disable complexity
                     'AltLaunchComp',
                     'SpawnerTags',
                     'Spawn on Level Start',
+                    'DisplayName',
+                    'DisplayDescription',
                 ]:
                     if prop in p:
                         classprops[otype] = set([*list(classprops.get(otype, set())), prop])
@@ -635,8 +645,12 @@ def preproc_levels(game, datadir, sourcedir):  # noqa: C901 - disable complexity
                     'ButtonColor',
                     'LiquidColor',
                     'RuneColor',
-                    'bExists',
                     'bHidden',
+                    'bHiddenInGame',
+                    'bInitialExists',
+                    'bExists',
+                    'Spawn on Level Start',
+                    'bItemIsAvailable_Initial',
                 ]:
                     if prop in p:
                         classprops[otype] = set([*list(classprops.get(otype, set())), prop])
@@ -808,6 +822,64 @@ def save_text_file(lines, *path, quiet=False):
                 file.write(line + '\n')
 
 
+sw_blueprint_keys_used = [
+    'RequiredAbilities',
+    'Area',
+    'ProgressionGroup',
+    'AdditionalRequirementHints',
+    'AdditionalRequirements',
+    'DieType',
+    'Value',
+    'CoinValue',
+    'Coins',
+    'CoinPool',
+    'Cost',
+    'Pickup Class',
+    'CustomShopItem',
+    'InventoryItem',
+    'Initial Shop Inventory',
+    'SupraworldLaunchComponent',
+    'FrontSupraworldLaunchComponent',
+    'BackSupraworldLaunchComponent',
+    'AltLaunchComp',
+    'SpawnerTags',
+    'Spawn on Level Start',
+    'DisplayName',
+    'DisplayDescription',
+    'Color',
+    'Color_Initial',
+    'Initial_Color',
+    'ButtonColor',
+    'LiquidColor',
+    'RuneColor',
+    'bHidden',
+    'bHiddenInGame',
+    'bInitialExists',
+    'bExists',
+    'Spawn on Level Start',
+    'bItemIsAvailable_Initial',
+]
+
+
+# Read properties from the blueprints for the specified set of property keys
+def load_blueprint_keys(sourcedir: str, def_keys: list[str], type_keys: dict[str, str] = None):
+    if type_keys is None: type_keys = {}
+    path = Path(sourcedir, 'bp')
+    bp_defaults = {}
+    for filename in path.glob('*.json'):
+        json = load_json_file(str(filename), quiet=True)
+        otype = filename.stem + '_C'
+        bp_defaults[otype] = {}
+        for obj in json:
+            keys = def_keys if obj['Type'] == otype else type_keys.get(obj['Type'])
+            if keys and (p := obj.get('Properties')):
+                bp_defaults[otype] |= {key: p[key] for key in keys if key in p}
+        if not bp_defaults[otype]:
+            del bp_defaults[otype]
+
+    return bp_defaults
+
+
 # Load in a PNG file containing RGB values
 def load_ea_fog(*path):
     path = os.path.join(*path, 'mapimg', ea_fogfile)
@@ -826,9 +898,10 @@ def in_earlyaccess(otype, p, pos):  # noqa: C901 - disable complexity warning
         return True
 
     # If it has a progression and it's not in released content then reject
-    if (proggroup := p.get('ProgressionGroup', {}).get('TagName')) and not any(
-        proggroup.endswith(s) for s in ea_proggroups
-    ):
+    if ((proggroup := p.get('ProgressionGroup', {}).get('TagName'))
+            and proggroup != "None"
+            and not any(proggroup.endswith(s) for s in ea_proggroups)
+        ):
         return False
 
     # If it has an area that's not
@@ -897,6 +970,11 @@ def export_sw_markers(game, datadir, sourcedir):  # noqa: C901 - disable complex
     area_mtx = {}  # Transform for each area map geometry
     data = []  # Output marker data
 
+    # Load in any enumerations we have found / extracted
+    ueenums = load_all_enumbp(sourcedir, 'enums')
+
+    bp_defaults = load_blueprint_keys(sourcedir, sw_blueprint_keys_used, {"InvFrag_SupraworldShopItem": ["Cost"]})
+
     # Phase 1: Read all the map json files in and build a look up table for references
     # Also get any area/map file matrices (for streaming levels)
     for area in config[game]['maps']:
@@ -955,6 +1033,9 @@ def export_sw_markers(game, datadir, sourcedir):  # noqa: C901 - disable complex
             if not (outer := o.get('Outer')) or not (p := o.get('Properties')):
                 continue
 
+            if otype in bp_defaults:
+                p = bp_defaults[otype] | p
+
             def getObject(p):
                 ref = objectRef(p)
                 return maps[ref[0]][ref[1]]
@@ -989,10 +1070,6 @@ def export_sw_markers(game, datadir, sourcedir):  # noqa: C901 - disable complex
                 matrix = area_mtx[area] @ matrix
             pos = matrix.to_translation()
 
-            # Fix up classes that have weird defaults in the blueprint
-            if otype == 'DetectiveCase_ChocolateFactory':
-                o['ProgressionGroup'] = {"TagName": "Supraworld.Story.Act2.Blue"}
-
             # Check for early access based on type, properties and map position
             if not in_earlyaccess(otype, p, pos):
                 continue
@@ -1025,6 +1102,7 @@ def export_sw_markers(game, datadir, sourcedir):  # noqa: C901 - disable complex
             # Variants from colours or override materials
             for colkey in ['RuneColor', 'Color', 'Color_Initial', 'LiquidColor', 'ButtonColor']:
                 if (color := p.get(colkey)) and isinstance(color, str):
+                    color = ueenums.ue2source(color, color)
                     variant = color.removeprefix("ESupraColors::").lower()
                     break
 
@@ -1059,7 +1137,7 @@ def export_sw_markers(game, datadir, sourcedir):  # noqa: C901 - disable complex
                 data[-1]['area_tag'] = v.split('.')[-1]
 
             # Grab progression tag
-            if v := p.get('ProgressionGroup', {}).get('TagName'):
+            if (v := p.get('ProgressionGroup', {}).get('TagName')) and v != "None":
                 data[-1]['prog_tag'] = v.removeprefix('Supraworld.Story.').replace('.', ':')
 
             # Grab secret required abilities if there are any
@@ -1088,6 +1166,11 @@ def export_sw_markers(game, datadir, sourcedir):  # noqa: C901 - disable complex
             if spawn_props.get('bFromLootPool'):
                 spawns = '_LootPool_C'
 
+            # Cost
+            if ((v := bp_defaults.get(spawns, {}).get('Cost'))
+                    and otype in ['ShopItemSpawner_C', 'ShopEgg_C', 'ChocolateEgg_C', 'ShopSlot_C']):
+                data[-1]['cost'] = v
+
             # These classes just spawn stuff so we change the type to what it spawns
             if otype in [
                 'ItemSpawner_C',
@@ -1105,7 +1188,7 @@ def export_sw_markers(game, datadir, sourcedir):  # noqa: C901 - disable complex
             if (v := coin_defaults.get(otype)) or (v := coin_defaults.get(spawns)):
                 coins = v
             if (v := p.get('Value')) and v.startswith('CoinValue::'):  # RealCoinPickup_C/5Cent_C
-                coins = int(get_end_int(v))
+                coins = int(get_end_int(ueenums.ue2source(v,v)))
             if v := p.get('CoinPool'):  # Gumball_Machine_C
                 coins = v
             if coins:
@@ -1118,11 +1201,11 @@ def export_sw_markers(game, datadir, sourcedir):  # noqa: C901 - disable complex
             if otype == 'PresentBox_Lootpools_C' and not (coins or spawns):
                 spawns = '_LootPool_C'
 
-            if spawns != '':
+            if spawns:
                 data[-1]['spawns'] = spawns
 
-            # Remove any empty eggs
-            if otype in ['ShopEgg_C', 'ChocolateEgg_C'] and not spawns:
+            elif otype in ['ShopEgg_C', 'ChocolateEgg_C']:
+                # Remove any empty eggs
                 del data[-1]
                 continue
 
