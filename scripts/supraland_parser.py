@@ -482,9 +482,9 @@ class UEEnums:
 
 
 # Load all enumerations
-def load_all_enumbp(*path: str):
+def load_all_enumbp(*path_components: str):
     ueenums = UEEnums()
-    for filename in Path(*path).glob('*.json'):
+    for filename in Path(*path_components).glob('*.json'):
         ueenums.loadenumbp(filename)
     return ueenums
 
