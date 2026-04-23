@@ -224,15 +224,13 @@ def main() -> None:
     input_path = args.input_file
     zoom_min, zoom_max = args.zoom_level
     output_path = args.output_folder
-    resize_width = args.resize_width
-    format = args.format
-    setup_logging(args.quiet)
+    setup_logging(quiet=args.quiet)
 
     # open the image
     try:
         image = Image.open(str(input_path))
         width, height = image.size
-        if not power_of(width, 2):
+        if not power_of(num=width, base=2):
             LOG.warning('Source image dims should be power of 2! Continuing anyway...', extra=dict(width=width))
         if width != height:
             LOG.error("Source image should be square! Quitting...", extra=dict(width=width, height=height))
@@ -249,7 +247,7 @@ def main() -> None:
     # if multiple zoom levels, run them all
     for z in range(zoom_min, zoom_max + 1):
         LOG.info("generate zoom level", extra=dict(zoom_level=z))
-        generate(image=image, outpath=output_path, zoom_level=z, resize_width=resize_width, format=format)
+        generate(image=image, outpath=output_path, zoom_level=z, resize_width=args.resize_width, format=args.format)
     # that's it!
     LOG.info('FINISHED!')
 

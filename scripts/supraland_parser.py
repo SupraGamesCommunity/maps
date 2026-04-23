@@ -1,19 +1,26 @@
-import argparse
 import json
-import os
 import re
 import sys
+from argparse import ArgumentParser
 from itertools import groupby
 from math import radians
+from os import environ
 from pathlib import Path
+from typing import Any, Optional
 
 import networkx as nx
 import numpy as np
-import win32com.client
 from libpysal import weights
 from mathutils import Euler, Matrix, Quaternion, Vector
 from PIL import Image
 from sklearn.neighbors import KDTree
+
+try:
+    import win32com.client
+except ModuleNotFoundError:
+    pass
+
+type JsonData = Any
 
 '''
 References to other UE objects the level files and blueprints often use a pair
@@ -180,12 +187,12 @@ So we can normally decode the reference to:
 # "ObjectPath": "/Supraworld/Maps/Supraworld.60177"
 # }
 # Returns 'Supraworld.60177'
-def objectRefStr(p):
+def objectRefStr(p: dict[str, str]) -> str:
     return p['ObjectPath'].split('/')[-1]
 
 
 # Returns ['Supraworld', 60177]
-def objectRef(p):
+def objectRef(p: dict[str, str]) -> list:
     t = objectRefStr(p).split('.')[-2:]
     return [t[0], int(t[1])]
 
@@ -195,13 +202,13 @@ def objectRef(p):
 # "ObjectPath": "/Supraworld/Maps/Supraworld.60177"
 # }
 # Returns 'Supraworld:PersistentLevel.ShopEgg_C_UAID_FC3497C34610BB6D01_1671702339'
-def objectKey(p):
+def objectKey(p: dict[str, str]) -> str:
     return p['Objectpath'].split("'")[1]
 
 
 # Returns a key for an object based on it's area, outer and name. Won't be useful for objects
 # deeper than root or next level in the hierarchy
-def makeObjectKey(area, outer, name):
+def makeObjectKey(area: str, outer: str, name: str) -> str:
     key = area + ':PersistentLevel.'
     if outer != 'PersistentLevel':
         key += outer
@@ -388,7 +395,7 @@ properties = [
 # Unreal mostly uses PascalCase / UpperCamelCase for its naming. This function converts a string of this form
 # to snake case ie all lower case with underscores. It has special handling for flags converting 'bMyVar' to
 # 'is_my_var' and 'MyVar?' to 'my_var_flag'
-def camel_to_snake(s):
+def camel_to_snake(s: str) -> str:
     if s[-1] == '?':
         s = s[:-1] + 'Flag'
     if s.startswith('b'):
@@ -398,12 +405,12 @@ def camel_to_snake(s):
 
 
 # Returns list of numbers in the specified string (ie "a1b98" return ["1", "98"])
-def get_ints(s):
+def get_ints(s: str) -> list[str]:
     return [''.join(group) for key, group in groupby(s, lambda e: e.isdigit()) if key]
 
 
 # Returns last number in the specified string
-def get_last_int(s):
+def get_last_int(s: str) -> str:
     return ints[-1] if (ints := get_ints(s)) else ''
 
 
@@ -411,12 +418,12 @@ def get_last_int(s):
 # Note: we could do this more simply with a regexp but it seems inefficient
 # def get_last_int(s):
 #     return m.group() if (m := re.search('\d+$', s)) else ''
-def get_end_int(s):
+def get_end_int(s: str) -> str:
     return get_ints(s)[-1] if s and s[-1].isdigit() else ''
 
 
 # Return True if this string looks like some kind of enumeration
-def isenum(s):
+def isenum(s: Any) -> bool:
     return (
         isinstance(s, str)
         and '::' in s
@@ -425,7 +432,7 @@ def isenum(s):
 
 
 # Return True if this string looks like an Unreal renamed enumeration
-def isueenum(s):
+def isueenum(s: Any) -> bool:
     return isinstance(s, str) and '::NewEnumerator' in s
 
 
@@ -434,9 +441,9 @@ class UEEnums:
         self.map = {}
         self.types = set()
 
-    def loadenumbp(self, *path):
+    def loadenumbp(self, path: Path):
         # Read the file as a JSON
-        j = load_json_file(*path, quiet=True)
+        j = load_json_file(path=path, quiet=True)
 
         # Check that it is formatted as we expect
         if (
@@ -461,16 +468,16 @@ class UEEnums:
         self.types.add(name)
 
     # If s is an enumeration name we're aware of convert it to the source form
-    def ue2source(self, s, default=None):
+    def ue2source(self, s: str, default: Optional[str] = None) -> str:
         return self.map.get(s, default)
 
     # Returns true if the two enum strings match. First may be a UE renamed enum
     # or a source enum, second should be an untranslated source name
-    def match(self, ue, s):
+    def match(self, ue: str, s: str) -> bool:
         return ue == s or self.ue2source(ue) == s
 
     # If first argument is a UE enum then add it
-    def addueattr(self, ue, s=None):
+    def addueattr(self, ue: str, s: Optional[str] = None) -> None:
         if isueenum(ue):
             if s and s != ue:
                 self.map[ue] = s
@@ -478,9 +485,9 @@ class UEEnums:
 
 
 # Load all enumerations
-def load_all_enumbp(*path_components: str):
+def load_all_enumbp(path: Path) -> UEEnums:
     ueenums = UEEnums()
-    for filename in Path(*path_components).glob('*.json'):
+    for filename in path.glob('*.json'):
         ueenums.loadenumbp(filename)
     return ueenums
 
@@ -501,7 +508,7 @@ def load_all_enumbp(*path_components: str):
 #            break
 #
 #    return metadata
-def get_unreal_version(exepath):
+def get_unreal_version(exepath: Path) -> dict[str, int]:
     uever = {}
     sh = win32com.client.gencache.EnsureDispatch('Shell.Application', 0)
     ns = sh.NameSpace(str(exepath.parent))
@@ -514,7 +521,7 @@ def get_unreal_version(exepath):
 
 
 # Retrieves the steam branch name
-def get_steam_branch(game, path):
+def get_steam_branch(game: str, path: Path) -> str:
     branch = 'public'
 
     # Get path to app manifest from game install path and appid
@@ -522,28 +529,24 @@ def get_steam_branch(game, path):
 
     # If the file exists, open it and read contents
     if manifest.is_file():
-        with open(manifest, 'r') as file:
-            contents = file.read()
-
         # Search for the current user config beta key
-        if match := re.search(r'UserConfig"[\s\S]*?"BetaKey"\s*"([^"]*)', contents):
+        if match := re.search(r'UserConfig"[\s\S]*?"BetaKey"\s*"([^"]*)', manifest.read_text()):
             branch = match.group(1)
 
     return branch
 
 
-def get_swbuild_info(installdir):
-    path = Path(installdir, 'build.vc')
-    with open(path, 'r') as file:
+def get_swbuild_info(installdir: Path) -> dict[str, str]:
+    with installdir.joinpath('build.vc').open('r') as file:
         build = file.readline().rstrip()
         date = file.readline().rstrip()
     return {"build": build, "date": date}
 
 
 # Update Suprawowlrd version information based on steam version installed in 'installdir'
-def update_swversion_info(game, datadir, sourcedir, mapimage):
+def update_swversion_info(game: str, datadir: Path, sourcedir: Path, mapimage: Optional[str] = None) -> None:
 
-    versions = load_json_file(datadir, 'versions.json')
+    versions = load_json_file(path=datadir.joinpath('versions.json'))
 
     # versions JSON looks something like this:
     # {
@@ -555,13 +558,13 @@ def update_swversion_info(game, datadir, sourcedir, mapimage):
     # }
 
     basename = config['sw']['basename']
-    exe_file = Path(list(Path(sourcedir, basename, 'Binaries\\Win64').glob(basename + '-Win64*.exe'))[0])
+    exe_file = Path(list(sourcedir.joinpath(basename, 'Binaries\\Win64').glob(f"{basename}-Win64*.exe"))[0])
 
-    uever = get_unreal_version(exe_file)
+    uever = get_unreal_version(exepath=exe_file)
     versions['sw']['ue'].update(uever)
 
-    gamever = get_swbuild_info(sourcedir)
-    gamever['branch'] = get_steam_branch('sw', sourcedir)
+    gamever = get_swbuild_info(installdir=sourcedir)
+    gamever['branch'] = get_steam_branch(game='sw', path=sourcedir)
     gamever['type'] = exe_file.stem.split('-')[-1]
 
     if mapimage:
@@ -569,22 +572,22 @@ def update_swversion_info(game, datadir, sourcedir, mapimage):
 
     versions['sw']['game'].update(gamever)
 
-    save_json_file(versions, datadir, 'versions.json')
+    save_json_file(data=versions, path=datadir.joinpath('versions.json'))
 
 
 # We presume export.cmd has been used to export a set of map files for the game to
 # a sub-directory of 'sourcedir'. We are going to go through the map and generate
 # information about the
-def preproc_levels(game, datadir, sourcedir):  # noqa: C901 - disable complexity warning
+def preproc_levels(game: str, datadir: Path, sourcedir: Path) -> None:  # noqa: C901 - disable complexity warning
 
     # Load in any enumerations we have found / extracted
-    ueenums = load_all_enumbp(sourcedir, 'enums')
+    ueenums = load_all_enumbp(path=sourcedir.joinpath('enums'))
 
     # Load current gameClasses.json so we know which classes we currently know about for this game
-    game_classes = load_json_file(datadir, 'gameClasses.json')
+    game_classes = load_json_file(path=datadir.joinpath('gameClasses.json'))
 
     # Load the game's PAK file list so we can look up where to find enums
-    gamefilelist = load_filelist(sourcedir)
+    gamefilelist = load_filelist(path=sourcedir)
 
     # Set of blueprint CUE4Parse asset paths for types in gameClasses.json
     # and set of other classes which end in _C
@@ -597,14 +600,14 @@ def preproc_levels(game, datadir, sourcedir):  # noqa: C901 - disable complexity
     propset = {'Root': set(), 'Properties': set(), 'Other': set()}
 
     # Loop through all the level json's we've extracted
-    for filename in Path(sourcedir, 'levels').glob('*.json'):
+    for filename in sourcedir.joinpath('levels').glob('*.json'):
         # Area name is everything between last '\' and the '.json'
         filestr = str(filename)
         area = filestr[filestr.rfind('\\') + 1 : -5]
         area_names.add(area)
 
         # Read the level file in and loop through the outer list of objects)
-        level = load_json_file(filename)
+        level = load_json_file(path=filename)
         level_changed = False
         for obj in level:
             if (
@@ -673,7 +676,7 @@ def preproc_levels(game, datadir, sourcedir):  # noqa: C901 - disable complexity
 
             # Walk all data in the level remembering property names/types
             # Any enum types used and if possible remap enum attributes to source names
-            def gather_properties(obj, setkey):
+            def gather_properties(obj: dict, setkey: str):
                 nonlocal level_changed
 
                 for ref, value in obj.items() if isinstance(obj, dict) else enumerate(obj):
@@ -706,17 +709,19 @@ def preproc_levels(game, datadir, sourcedir):  # noqa: C901 - disable complexity
                         propset[setkey].add(ref + ':' + proptype)
 
                     if isinstance(value, (dict, list)):
-                        gather_properties(value, 'Properties' if ref == 'Properties' else 'Other')
+                        gather_properties(obj=value, setkey='Properties' if ref == 'Properties' else 'Other')
 
-            gather_properties(obj, 'Root')
+            gather_properties(obj=obj, setkey='Root')
 
         # If we changed this level map's enumerations then write it out again
         if level_changed:
-            save_json_file(level, filename)
+            save_json_file(data=level, path=filename)
 
-    save_assetlist(bp_assetlist, gamefilelist, sourcedir, 'bpassetlist.txt')
-    save_assetlist(ueenums.types, gamefilelist, sourcedir, 'enumassetlist.txt', prefer="Enums")
-    save_text_file(sorted(area_names), sourcedir, "areanames.txt")
+    save_assetlist(items=bp_assetlist, filelist=gamefilelist, path=sourcedir.joinpath('bpassetlist.txt'))
+    save_assetlist(
+        items=ueenums.types, filelist=gamefilelist, path=sourcedir.joinpath('enumassetlist.txt'), prefer="Enums"
+    )
+    save_text_file(lines=sorted(area_names), path=sourcedir.joinpath("areanames.txt"))
 
     for k, v in classprops.items():
         classprops[k] = sorted(list(v))
@@ -729,14 +734,14 @@ def preproc_levels(game, datadir, sourcedir):  # noqa: C901 - disable complexity
         "Properties": sorted(list(propset['Properties'])),
         "OtherProps": sorted(list(propset['Other'])),
     }
-    save_json_file(levelprops, sourcedir, 'levelprops.json')
+    save_json_file(data=levelprops, path=sourcedir.joinpath('levelprops.json'))
 
 
 # Load the filelist we have extracted from the specific game which gives the
 # path of all files, so that we can look for files corresponding to enums and
 # structures which don't include the path in the object instance
-def load_filelist(*path, quiet=False):
-    lines = load_text_file(*path, 'gamefilelist.txt', quiet=quiet)
+def load_filelist(path: Path, quiet: Optional[bool] = False):
+    lines = load_text_file(path=path.joinpath('gamefilelist.txt'), quiet=quiet)
     basedict = {}
     for line in lines:
         basename, ext = line.split('/')[-1].split('.')
@@ -754,7 +759,9 @@ def load_filelist(*path, quiet=False):
 # Write an asset list for use by CUE4Parse to select which files to extract
 # from the game PAK file. Blueprints needed for localisation and enums just
 # for understanding data
-def save_assetlist(items, filelist, *path, quiet=False, prefer=None):  # noqa: C901 - disable complexity warning
+def save_assetlist(  # noqa: C901 - disable complexity warning
+    items: list[str], filelist: dict, path: Path, quiet: Optional[bool] = False, prefer: Optional[str] = None
+) -> None:
     lines = []
     basedict = filelist['basedict']
     for item in items:
@@ -776,7 +783,7 @@ def save_assetlist(items, filelist, *path, quiet=False, prefer=None):  # noqa: C
                     if line.lower().endswith(fullname.lower()):
                         lines.append(line)
     lines.sort()
-    save_text_file(lines, *path, quiet=quiet)
+    save_text_file(lines=lines, path=path, quiet=quiet)
 
 
 # The following load/save functions make a path by joining all the varargs
@@ -795,45 +802,40 @@ def save_assetlist(items, filelist, *path, quiet=False, prefer=None):  # noqa: C
 
 
 # Reads a json file and converts it do an object data structure
-def load_json_file(*path_args, quiet=False):
-    path = Path(*path_args)
+def load_json_file(path: Path, quiet: bool = False):
     if not path.exists():
         sys.exit(f'{path} not found, exiting')
     if not quiet:
         print(f'Reading "{path}"...')
-    return json.load(open(path, encoding="utf-8-sig"))
+    with path.open('r', encoding="utf-8-sig") as fh:
+        return json.load(fh)
 
 
 # Converts object to JSON format and writes it to the specified location
-def save_json_file(object, *path, quiet=False):
-    path = os.path.join(*path[0:-1], path[-1])
-    with open(path, 'w') as file:
+def save_json_file(data: JsonData, path: Path, quiet: bool = False) -> None:
+    with path.open('w') as file:
         if not quiet:
             print(f'Writing "{path}"...')
-        json.dump(object, file, indent=2)
+        json.dump(data, file, indent=2)
 
 
 # Load a text file into a string list with an entry for each line
 # Removes newlines from end of each line
-def load_text_file(*path, quiet=False):
-    path = os.path.join(*path[0:-1], path[-1])
-    if not os.path.exists(path):
+def load_text_file(path: Path, quiet: Optional[bool] = False) -> list[str]:
+    if not path.exists():
         sys.exit(f'{path} not found, exiting')
     if not quiet:
         print(f'Reading "{path}"...')
-    with open(path) as file:
-        return file.read().splitlines()
+    return path.read_text().splitlines()
 
 
 # Overwrite file with each string in lines list adding newline to each
-def save_text_file(lines, *path, quiet=False):
-    path = os.path.join(*path[0:-1], path[-1])
-    with open(path, 'w') as file:
-        if not quiet:
-            print(f'Writing "{path}"...')
-        with open(path, 'w') as file:
-            for line in lines:
-                file.write(line + '\n')
+def save_text_file(lines: list[str], path: Path, quiet: Optional[bool] = False) -> None:
+    if not quiet:
+        print(f'Writing "{path}"...')
+    with path.open('w') as file:
+        for line in lines:
+            file.write(line + '\n')
 
 
 sw_blueprint_keys_used = [
@@ -876,13 +878,13 @@ sw_blueprint_keys_used = [
 
 
 # Read properties from the blueprints for the specified set of property keys
-def load_blueprint_keys(sourcedir: str, def_keys: list[str], type_keys: dict[str, str] = None):
+def load_blueprint_keys(sourcedir: Path, def_keys: list[str], type_keys: dict[str, str] = None):
     if type_keys is None:
         type_keys = {}
-    path = Path(sourcedir, 'bp')
+    path = sourcedir.joinpath('bp')
     bp_defaults = {}
     for filename in path.glob('*.json'):
-        json = load_json_file(str(filename), quiet=True)
+        json = load_json_file(path=filename, quiet=True)
         otype = filename.stem + '_C'
         bp_defaults[otype] = {}
         for obj in json:
@@ -896,12 +898,12 @@ def load_blueprint_keys(sourcedir: str, def_keys: list[str], type_keys: dict[str
 
 
 # Load in a PNG file containing RGB values
-def load_ea_fog(*path):
-    path = os.path.join(*path, 'mapimg', ea_fogfile)
-    if not os.path.exists(path):
+def load_ea_fog(path: Path) -> Optional[Image]:
+    path = path.joinpath('mapimg', ea_fogfile)
+    if not path.exists():
         print(f'Warning: Failed to load fog png ({path})')
         return None
-    with Image.open(path) as im:
+    with Image.open(str(path)) as im:
         global ea_fog_width, ea_fog_height, ea_fog_pixels
         ea_fog_width = im.width
         ea_fog_height = im.height
@@ -978,7 +980,7 @@ def getXYZ(v):
     return dict(x=v.x, y=v.y, z=v.z)
 
 
-def export_sw_markers(game, datadir, sourcedir):  # noqa: C901 - disable complexity warning
+def export_sw_markers(game: str, datadir: Path, sourcedir: Path):  # noqa: C901 - disable complexity warning
     maps = {}  # dictionary from map name to json data list
     toyeggs = {}  # Collected chocolate eggs
     staticmeshes = {}  # dictionary from outer name to static mesh name
@@ -988,15 +990,17 @@ def export_sw_markers(game, datadir, sourcedir):  # noqa: C901 - disable complex
     data = []  # Output marker data
 
     # Load in any enumerations we have found / extracted
-    ueenums = load_all_enumbp(sourcedir, 'enums')
+    ueenums = load_all_enumbp(path=sourcedir.joinpath('enums'))
 
-    bp_defaults = load_blueprint_keys(sourcedir, sw_blueprint_keys_used, {"InvFrag_SupraworldShopItem": ["Cost"]})
+    bp_defaults = load_blueprint_keys(
+        sourcedir=sourcedir, def_keys=sw_blueprint_keys_used, type_keys={"InvFrag_SupraworldShopItem": ["Cost"]}
+    )
 
     # Phase 1: Read all the map json files in and build a look up table for references
     # Also get any area/map file matrices (for streaming levels)
     for area in config[game]['maps']:
         # Store the map data
-        maps[area] = load_json_file(sourcedir, 'levels', area + '.json')
+        maps[area] = load_json_file(path=sourcedir.joinpath('levels', f"{area}.json"))
 
         # Go through all objects in the map data and store lookups for later
         for oidx, o in enumerate(maps[area]):
@@ -1046,9 +1050,9 @@ def export_sw_markers(game, datadir, sourcedir):  # noqa: C901 - disable complex
                     Matrix.Translation(getVec(t.get('Translation'))) @ getQuat(t.get('Rotation')).to_matrix().to_4x4()
                 )
 
-    game_classes = load_json_file(datadir, 'gameClasses.json')
+    game_classes = load_json_file(path=datadir.joinpath('gameClasses.json'))
 
-    load_ea_fog(sourcedir)
+    load_ea_fog(path=sourcedir)
 
     # Phase 2: Go through all the objects which have types we're interested in
     for area in maps:
@@ -1269,16 +1273,15 @@ def export_sw_markers(game, datadir, sourcedir):  # noqa: C901 - disable complex
             if comment:
                 data[-1]['comment'] = comment
 
-    save_json_file(data, datadir, f'markers.{game}.json')
+    save_json_file(data=data, path=datadir.joinpath(f'markers.{game}.json'))
     print("Done")
 
 
-def export_class_loc(game, datadir, sourcedir):  # noqa: C901 - disable complexity warning
-    game_classes = load_json_file(datadir, 'gameClasses.json')
+def export_class_loc(game: str, datadir: Path, sourcedir: Path) -> None:  # noqa: C901 - disable complexity warning
+    game_classes = load_json_file(path=datadir.joinpath('gameClasses.json'))
 
     for game in ['sl', 'siu']:
-        path = os.path.join(sourcedir, 'blueprints.' + game + '.json')
-        blueprints = json.load(open(path, 'r'))
+        blueprints = load_json_file(path=sourcedir.joinpath(f'blueprints.{game}.json'))
 
         def optKey(game_class, cls, k, v):
             if v:
@@ -1313,17 +1316,17 @@ def export_class_loc(game, datadir, sourcedir):  # noqa: C901 - disable complexi
                                         game_classes, gcls, 'description_key', props['UpgradeDescription'].get('Key')
                                     )
 
-    save_json_file(datadir, 'gameClasses.json')
+    save_json_file(data=game_classes, path=datadir.joinpath('gameClasses.json'))
 
 
-def export_loc_files(game, datadir, sourcedir):  # noqa: C901 - disable complexity warning
+def export_loc_files(game: str, datadir: Path, sourcedir: Path) -> None:  # noqa: C901 - disable complexity warning
     # Merge custom-loc.json into gameClasses.json
     print('Merging custom-loc.json into gameClasses.json...')
-    classes = load_json_file(datadir, 'gameClasses.json')
-    customLoc = load_json_file(datadir, 'custom-loc.json')
+    classes = load_json_file(path=datadir.joinpath('gameClasses.json'))
+    customLoc = load_json_file(path=datadir.joinpath('custom-loc.json'))
     for c, d in customLoc.items():
         classes[c] = classes[c] | d
-    save_json_file(classes, datadir, 'gameClasses.json')
+    save_json_file(data=classes, path=datadir.joinpath('gameClasses.json'))
 
     # Make a list of the keys that are referenced in the various files
     keys = set()
@@ -1340,9 +1343,9 @@ def export_loc_files(game, datadir, sourcedir):  # noqa: C901 - disable complexi
     ]
     print('Reading files to determine loc keys required...')
     for fn in key_files:
-        path = Path(datadir, fn)
+        path = datadir.joinpath(fn)
         if path.exists():
-            data = load_json_file(path)
+            data = load_json_file(path=path)
             for entry in data if type(data) is list else data.values():
                 for k in ['friendly_key', 'name_key', 'description_key', 'key']:
                     if entry.get(k):
@@ -1372,8 +1375,7 @@ def export_loc_files(game, datadir, sourcedir):  # noqa: C901 - disable complexi
     for loc in loc_names:
         newlocstr = {}
         for game in ['sl', 'siu']:
-            fn = os.path.join(sourcedir, f'LOC/{game}/{loc}/Game.json')
-            locstr = json.load(open(fn, 'r', encoding='utf-8'))
+            locstr = load_json_file(path=sourcedir.joinpath(f'LOC/{game}/{loc}/Game.json'))
             for k in locstr.keys():
                 if k in keys:
                     # if newlocstr.get(k) and newlocstr[k] != locstr[k]:
@@ -1381,10 +1383,10 @@ def export_loc_files(game, datadir, sourcedir):  # noqa: C901 - disable complexi
                     #    print(f'SIU {locstr[k]}')
                     newlocstr[k] = locstr[k]
         print(f'Writing to ../public/data/loc/locstr-{loc}.json')
-        save_json_file(newlocstr, datadir, '/loc/locstr-{loc}.json')
+        save_json_file(data=newlocstr, path=datadir.joinpath(f'loc/locstr-{loc}.json'))
 
 
-def export_markers(game, datadir, sourcedir):  # noqa: C901 - disable complexity warning
+def export_markers(game: str, datadir: Path, sourcedir: Path) -> None:  # noqa: C901 - disable complexity warning
     maps = {}  # dictionary from map name to json data list
     area_mtx = {}  # Transform for each area map geometry
     data = []  # Output marker data
@@ -1394,13 +1396,13 @@ def export_markers(game, datadir, sourcedir):  # noqa: C901 - disable complexity
 
     data_lookup = {}
 
-    game_classes = load_json_file(datadir, 'gameClasses.json')
+    game_classes = load_json_file(path=datadir.joinpath('gameClasses.json'))
 
     # Phase 1: Read all the map json files in and build a look up table for references
     # Also get any area/map file matrices (for streaming levels)
     for area in config[game]['maps']:
         # Store the map data
-        maps[area] = load_json_file(sourcedir, 'levels', area + '.json')
+        maps[area] = load_json_file(path=sourcedir.joinpath('levels', f"{area}.json"))
 
         # Go through all objects in the map data and store lookups for later
         for oidx, o in enumerate(maps[area]):
@@ -1519,10 +1521,10 @@ def export_markers(game, datadir, sourcedir):  # noqa: C901 - disable complexity
     calc_pipes(data)
 
     # Merge in custom and legacy data, clean the properties and remove ones we don't need
-    cleanup_objects(game, sourcedir, data_lookup, data)
+    cleanup_objects(game=game, sourcedir=sourcedir, data_lookup=data_lookup, data=data)
 
     print('collected %d markers' % (len(data)))
-    save_json_file(data, datadir, 'markers.' + game + '.json')
+    save_json_file(data=data, path=datadir.joinpath(f'markers.{game}.json'))
 
 
 def calc_pipes(data):
@@ -1830,7 +1832,9 @@ exported_properties = [
 # lookup is a dictionary from area:name to objects
 # data is an array of the same objects
 # each object is a dictionary of k,v pairs
-def cleanup_objects(game, sourcedir, data_lookup, data):  # noqa: C901 - disable complexity warning
+def cleanup_objects(  # noqa: C901 - disable complexity warning
+    game: str, sourcedir: Path, data_lookup: dict, data: dict
+) -> None:
     def get_xyz(o):
         return dict(x=o['lng'], y=o['lat'], z=o['alt'])
 
@@ -1838,7 +1842,7 @@ def cleanup_objects(game, sourcedir, data_lookup, data):  # noqa: C901 - disable
         return get_xyz(data_lookup[o['nearest_cap']]) if 'nearest_cap' in o else get_xyz(o)
 
     # Read the set of pads and pipes we found save data for
-    savedpadpipes = read_savedpadpipes(game, sourcedir)
+    savedpadpipes = read_savedpadpipes(game=game, sourcedir=sourcedir)
 
     # Walk the remaining instances and fix up entries
     for o in data:
@@ -1946,7 +1950,7 @@ def cleanup_objects(game, sourcedir, data_lookup, data):  # noqa: C901 - disable
 
 # Goes through all the non-rotating coins and looks for groups of more than 3 to combine into coinstacks
 # Adds the new stack objects to our collection and removes the original coins
-def create_coinstacks(data_lookup, data):
+def create_coinstacks(data_lookup, data) -> None:
 
     threshold = 400
 
@@ -2010,7 +2014,7 @@ def create_coinstacks(data_lookup, data):
 
 
 # Somewhat hacky code to convert class name to a more friendly name
-def friendly_name(cls):
+def friendly_name(cls: str):
     n = re.sub(r'(?:_C$)|(?:^BP_)|(?:Purchase)|(?:Buy)|_|DLC2|DLC|New', '', cls)
     n = n.replace('pct', '%')
     n = re.sub(r'x([0-9])', r'*\1', n)
@@ -2026,24 +2030,23 @@ def friendly_name(cls):
 
 # This file is generated using hard coded information and info from a save
 # file. It is generated by dumpsavefile.js
-def read_savedpadpipes(game, sourcedir):
-
-    path = Path(sourcedir, f'savedpadpipes.{game}.json')
+def read_savedpadpipes(game: str, sourcedir: Path) -> dict[str, list]:
+    path = sourcedir.joinpath(f'savedpadpipes.{game}.json')
 
     # Open and read the whole js file if it exists
     if path.exists():
         print('Reading "' + path + '"...')
-        return json.load(open(path, 'r', encoding='utf-8'))
+        return load_json_file(path=path)
 
     print(f'Warning: {path} not found, skipping')
     return {'pipes': [], 'pads': []}
 
 
-def main():
-    parser = argparse.ArgumentParser()
+def main() -> None:
+    parser = ArgumentParser()
 
     # game, data and source directory used by all commands
-    parser.add_argument('-g', '--game', default='sw', help='game name (sl, slc, siu, sw)')
+    parser.add_argument('-g', '--game', choices=['sl', 'slc', 'siu', 'sw'], default='sw', help='game name')
     parser.add_argument('-d', '--data', default='..\\public\\data', help='output json data directory')
     parser.add_argument('-s', '--source', default='..\\source', help='location of game data needed by command')
 
@@ -2064,22 +2067,26 @@ def main():
     if sourcedir == '..\\source':
         sourcedir += '\\' + (args.game if args.game != 'slc' else 'sl')
 
+    datadir = Path(args.data)
+    sourcedir = Path(sourcedir)
     if args.preproc:
-        preproc_levels(args.game, args.data, sourcedir)
+        preproc_levels(game=args.game, datadir=datadir, sourcedir=sourcedir)
     elif args.markers:
         if args.game == 'sw':
-            export_sw_markers(args.game, args.data, sourcedir)
+            export_sw_markers(game=args.game, datadir=datadir, sourcedir=sourcedir)
         else:
-            export_markers(args.game, args.data, sourcedir)
+            export_markers(game=args.game, datadir=datadir, sourcedir=sourcedir)
     elif args.version:
         if args.game == 'sw':
+            if not args.source:
+                sourcedir = Path(environ.get('SWROOT'))
             update_swversion_info(
-                args.game, args.data, args.source or os.environ.get('SWROOT'), os.environ.get('SWMAPIMAGE')
+                game=args.game, datadir=datadir, sourcedir=sourcedir, mapimage=environ.get('SWMAPIMAGE')
             )
     elif args.blueprints:
-        export_class_loc(args.game, args.data, sourcedir)
+        export_class_loc(game=args.game, datadir=datadir, sourcedir=sourcedir)
     elif args.loc:
-        export_loc_files(args.game, args.data, sourcedir)
+        export_loc_files(game=args.game, datadir=datadir, sourcedir=sourcedir)
     else:
         parser.print_help()
 
