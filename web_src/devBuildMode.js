@@ -1,5 +1,5 @@
 /*eslint strict: ["error", "global"]*/
-/*global L, map */
+/*global L */
 
 import { browser } from './utils.js';
 import { MapObject } from './mapObject.jsx';
@@ -36,7 +36,7 @@ window.updateBuildModeValue = function (event) {
   updateBuildModeValue(event);
 };
 
-function commitCurrentBuildModeChanges() {
+export function commitCurrentBuildModeChanges() {
   Object.getOwnPropertyNames(buildMode.objectChanges).forEach(function (i) {
     buildMode.changeList[i] = buildMode.objectChanges[i];
   });
@@ -45,12 +45,7 @@ function commitCurrentBuildModeChanges() {
 
   buildMode.marker.setLatLng(new L.LatLng(newLat, newLng));
   buildMode.objectChanges = [];
-  map.closePopup();
 }
-
-window.commitCurrentBuildModeChanges = function () {
-  commitCurrentBuildModeChanges();
-};
 
 export function exportBuildChanges() {
   // It might be worth accummulating the changes in this structure as we make them, but this works

@@ -9,8 +9,6 @@ import { GameClasses } from './gameClasses.js';
 import { MapLayer } from './mapLayer.js';
 import { SaveFileSystem } from './saveFileSystem.js';
 import { MapParam } from './mapParam.js';
-// TechDebt: refer to this function directly, instead of relying on it being added to the window global object.
-// import { buildMode, commitCurrentBuildModeChanges } from './devBuildMode.js';
 import { buildMode } from './devBuildMode.js';
 import { createRoot } from 'react-dom/client';
 import { PinContent } from './PinContent.jsx';
@@ -523,11 +521,17 @@ export class MapObject {
     }
     */
 
-    let popUpContentDiv = document.createElement('div');
-    let sidepanelRoot = createRoot(popUpContentDiv);
-    let content = {
+    const popUpContentDiv = document.createElement('div');
+    const sidepanelRoot = createRoot(popUpContentDiv);
+    const leafletMap = e.target._map;
+    const closePopup = () => {
+      sidepanelRoot.unmount();
+      leafletMap.closePopup();
+    }
+    const content = {
       o,
       mapId,
+      closePopup,
       hasFoundState: this._foundLockedState === undefined,
       isFound: this.isFound(),
       foundAlt: this.alt,

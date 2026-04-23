@@ -2,6 +2,7 @@ import { locStr } from './locStr.js';
 import { GameClasses } from './gameClasses.js';
 import { useState } from 'react';
 import { updateBuildModeValue } from './devBuildMode.js';
+import { commitCurrentBuildModeChanges } from './devBuildMode.js';
 
 const StaticRow = ({ title, value }) => {
   return (
@@ -64,7 +65,12 @@ const EditRow = ({ title, value }) => {
   );
 };
 
-const BuildForm = ({ o }) => {
+const BuildForm = ({ o, closePopup }) => {
+  const saveHandler = () => {
+    commitCurrentBuildModeChanges();
+    closePopup();
+  }
+
   return (
     <>
       <hr />
@@ -82,13 +88,14 @@ const BuildForm = ({ o }) => {
             })}
           {!('yt_video' in o) && <EditRow title="yt_video" value="" key={'yt_video'} />}
           {!('yt_start' in o) && <EditRow title="yt_start" value="" key={'yt_start'} />}
+          <button onClick={() => saveHandler()}>Save</button>
         </details>
       </div>
     </>
   );
 };
 
-export const PinContent = ({ o, mapId, hasFoundState, isFound, foundAlt, buildMode }) => {
+export const PinContent = ({ o, mapId, closePopup, hasFoundState, isFound, foundAlt, buildMode }) => {
   let ytSrc = null;
 
   const [isFoundCheckbox, setIsFoundCheckbox] = useState(isFound);
@@ -180,7 +187,7 @@ export const PinContent = ({ o, mapId, hasFoundState, isFound, foundAlt, buildMo
         )}
       </div>
       {buildMode && <JsonProperties o={o} />}
-      {buildMode && <BuildForm o={o} />}
+      {buildMode && <BuildForm o={o} closePopup={closePopup} />}
     </>
   );
 };
