@@ -254,7 +254,7 @@
   "LaunchBox_C"                     : { "friendly": "Chest",               "icon": "swchest",            "layer": "swcollectable", "nospoiler": "swnospoiler", "games": ["sw"]                                   },
   "LaunchVolume_C"                  : { "friendly": "Launch Volume",       "icon": "launch_volume",      "layer": null,            "nospoiler": null,          "games": ["sw"],                    "lines": null },
   "RubberBand_C"                    : { "friendly": "Rubber Band",         "icon": "rubber_band",        "layer": "swlaunchers",   "nospoiler": null,          "games": ["sw"]                                   },
-  "RubberBand_CustomDeform_C"       : { "friendly": "Custom Rubber Band",  "icon": "rubber_band_custom", "layer": "swlaunchers",   "nospoiler": null,          "games": ["sw"]                                   },
+  "RubberBand_CustomDeform_C"       : { "friendly": "Rubber Band",         "icon": "rubber_band",        "layer": "swlaunchers",   "nospoiler": null,          "games": ["sw"]                                   },
   "WobbleSpring_C"                  : { "friendly": "Spring",              "icon": "spring",             "layer": "swlaunchers",   "nospoiler": null,          "games": ["sw"]                                   },
 
   "5Cent_C"                         : { "friendly": "5 Cent",              "icon": "swcoin:x0.5",        "layer": "swcoin",        "nospoiler": null,          "games": ["sw"]                                   },
@@ -285,6 +285,7 @@
   "StandardFashionStore_C"          : { "friendly": "Fashion Store",       "icon": "fashion_slot",       "layer": "poi",           "nospoiler": null,          "games": ["sw"], "setfound": false                },
   "StandardShop_C"                  : { "friendly": "Item Shop",           "icon": "gift_box_gold",      "layer": "poi",           "nospoiler": null,          "games": ["sw"], "setfound": false                },
   "SupraworldPlayerStart_C"         : { "friendly": "Player Start",        "icon": "playerstart",        "layer": "poi",           "nospoiler": null,          "games": ["sw"], "setfound": false                },
+  "_PokerChip_C"                    : { "friendly": "Poker Chip",          "icon": "pokerchip:vx0.75",        "layer": "poi",           "nospoiler": null,          "games": ["sw"]                                   },
   "_SWPlayerPosition"               : { "friendly": "Player Position",     "icon": "swplayerpos",        "layer": "_map",          "nospoiler": null,          "games": ["sw"]                                   },
 
   "ChocolateEgg_C"                  : { "friendly": "Chocolate Egg",       "icon": "chocolate_egg",      "layer": "swcollectable", "nospoiler": "swnospoiler", "games": ["sw"]                                   },
