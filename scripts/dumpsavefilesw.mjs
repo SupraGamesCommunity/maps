@@ -79,7 +79,7 @@ function readSavFile(game, file) {
     let lastCheckpointActor;
 
     while ((m = re_match.exec(strview)) != null) {
-        const foundStr = strview.slice(m.index+1)
+        const foundStr = strview.slice(m.index+1, re_match.lastIndex)
         if(foundStr.startsWith('LastCheckpointActor')){
             foundLastCheckpointActor = true;
             continue;
