@@ -24,7 +24,7 @@ export const EditorTab = () => {
       </div>
 
       <div style={{ paddingBottom: '3em' }}>
-        <button onClick={() => exportBuildChanges()}>Copy changes</button>
+        <button onClick={() => exportBuildChanges()}><i className="fa-regular fa-copy"></i>Copy changes</button>
         <p>{'Copies changes made in this session to the Clipboard.'}</p>
       </div>
     </>

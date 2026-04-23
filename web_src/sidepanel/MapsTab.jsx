@@ -56,7 +56,7 @@ export const MapsTab = ({ leafletMap, mapSelections, overlaySelections, onMapCha
               browser.copyTextToClipboard(MapParam.getViewURL(leafletMap));
             }}
           >
-            <i className="fa-solid fa-copy"></i>
+            <i className="fa-regular fa-copy"></i>
             {' Copy'}
           </button>
           {' Copy map URL to the clipboard'}
