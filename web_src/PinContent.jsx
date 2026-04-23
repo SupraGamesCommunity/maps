@@ -69,7 +69,7 @@ const BuildForm = ({ o, closePopup }) => {
   const saveHandler = () => {
     commitCurrentBuildModeChanges();
     closePopup();
-  }
+  };
 
   return (
     <>
@@ -163,9 +163,9 @@ export const PinContent = ({ o, mapId, closePopup, hasFoundState, isFound, found
           height="169"
           src={ytSrc}
           title="YouTube video player"
-          frameborder="0"
+          frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
+          allowFullScreen
         ></iframe>
       )}
       <div className="marker-popup-found">

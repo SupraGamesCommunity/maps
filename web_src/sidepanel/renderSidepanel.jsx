@@ -1,7 +1,28 @@
+/* global L */
+
 import { StrictMode } from 'react';
 import { Sidepanel } from './Sidepanel.jsx';
 import { LayerSelect_Data } from './LayerSelect_Data.jsx';
-import { sidepanelRoot, setLeafletMapPushCss } from './initSidepanel.jsx';
+import { createRoot } from 'react-dom/client';
+import { setLeafletMapPushCss } from './setLeafletMapPushCss.jsx';
+
+let sidepanelRoot = null;
+
+function getSidepanelContainer() {
+  return document.getElementById('sidepanel');
+}
+
+/* Initializes the DOM to support the sidepanel. */
+export function initSidepanelDom() {
+  const sidepanelContainer = getSidepanelContainer();
+  // sidepanelContainer.replaceChildren(); // Clear all child elements
+
+  // Adds stopPropagation to the element's 'wheel' events (plus browser variants).
+  L.DomEvent.disableScrollPropagation(sidepanelContainer);
+  // Adds stopPropagation to the element's 'click', 'dblclick', 'contextmenu', 'mousedown'
+  // and 'touchstart' events (plus browser variants).
+  L.DomEvent.disableClickPropagation(sidepanelContainer);
+}
 
 /*
  * Initializes the sidepanel, with a specific MapLayer map.
@@ -9,6 +30,10 @@ import { sidepanelRoot, setLeafletMapPushCss } from './initSidepanel.jsx';
  */
 export function renderSidepanel(map) {
   let layerSelectData = new LayerSelect_Data(map);
+
+  if (sidepanelRoot === null) {
+    sidepanelRoot = createRoot(getSidepanelContainer());
+  }
 
   setLeafletMapPushCss(true);
 
@@ -34,4 +59,12 @@ export function renderSidepanel(map) {
 
   // Initial render
   render();
+}
+
+/* When changing maps, gracefully destroy the React root container. */
+export function destroySidepanel() {
+  if (sidepanelRoot !== null) {
+    sidepanelRoot.unmount();
+    sidepanelRoot = null;
+  }
 }

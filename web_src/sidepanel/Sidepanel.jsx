@@ -4,7 +4,7 @@ import classnames from 'classnames';
 import { AboutTab } from './AboutTab.jsx';
 import { Settings } from '../settings.js';
 import { DevBuildSettingsTab } from './DevBuildSettings.jsx';
-import { setLeafletMapPushCss } from './initSidepanel.jsx';
+import { setLeafletMapPushCss } from './setLeafletMapPushCss.jsx';
 
 /* The HTML component that renders the entire Sidepanel (including navigation tabs and content) */
 export const Sidepanel = (props) => {

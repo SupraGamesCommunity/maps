@@ -527,7 +527,7 @@ export class MapObject {
     const closePopup = () => {
       sidepanelRoot.unmount();
       leafletMap.closePopup();
-    }
+    };
     const content = {
       o,
       mapId,

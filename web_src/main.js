@@ -13,8 +13,7 @@ import { MapObject } from './mapObject.jsx';
 import { MapPins } from './mapPins.js';
 import { L_Control_supraSearch } from './supraSearch.js';
 import { L_supraMap } from './supraMap.js';
-import { initSidepanelDom } from './sidepanel/initSidepanel.jsx';
-import { renderSidepanel } from './sidepanel/renderSidepanel.jsx';
+import { initSidepanelDom, renderSidepanel, destroySidepanel } from './sidepanel/renderSidepanel.jsx';
 
 const skipConfirms = browser.isCode;
 
@@ -153,6 +152,7 @@ async function loadMap(mapParam) {
 
   map.on('baselayerchange', function (e) {
     if (map.mapId != e.options.layerId) {
+      destroySidepanel();
       loadMap(new MapParam({ mapId: e.options.layerId }));
     }
   });
