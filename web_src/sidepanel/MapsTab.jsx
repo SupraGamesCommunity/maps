@@ -84,7 +84,7 @@ export const MapsTab = ({ leafletMap, mapSelections, overlaySelections, onMapCha
               browser.copyTextToClipboard(MapParam.getViewURL(leafletMap));
             }}
           >
-            <i className="fa-solid fa-link"></i>
+            <i className="fa-solid fa-copy"></i>
             {' Copy'}
           </button>
           {' Copy map URL to the clipboard'}
@@ -110,7 +110,7 @@ export const MapsTab = ({ leafletMap, mapSelections, overlaySelections, onMapCha
               copySaveFilePathHandler();
             }}
           >
-            <i className="fa-regular fa-folder-open"></i>
+            <i className="fa-regular fa-copy"></i>
             {' Copy path'}
           </button>
           {' Copy the default Windows game save-file path to the clipboard.'}
@@ -121,7 +121,7 @@ export const MapsTab = ({ leafletMap, mapSelections, overlaySelections, onMapCha
               unmarkAllHandler();
             }}
           >
-            <i className="fa-solid fa-arrow-rotate-left"></i>
+            <i className="fa-solid fa-border-none"></i>
             {' Unmark found'}
           </button>
           {' Unmark all found items.'}
