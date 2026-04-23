@@ -82,8 +82,7 @@ const BuildForm = ({ o, closePopup }) => {
           {Object.getOwnPropertyNames(o)
             .filter((propName) => propName != 'name' && propName != 'area')
             .map((propName, idx) => {
-              let value =
-                typeof o[propName] === 'string' ? o[propName] : JSON.stringify(o[propName]).replaceAll('"', '&quot;');
+              let value = typeof o[propName] === 'string' ? o[propName] : JSON.stringify(o[propName]);
               return <EditRow title={propName} value={value} key={idx} />;
             })}
           {!('yt_video' in o) && <EditRow title="yt_video" value="" key={'yt_video'} />}
