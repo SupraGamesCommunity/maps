@@ -1,19 +1,21 @@
 import { MapsTab } from './MapsTab.jsx';
+import { GameSaveTab } from './GameSaveTab.jsx';
 import { useState } from 'react';
 import classnames from 'classnames';
 import { AboutTab } from './AboutTab.jsx';
 import { Settings } from '../settings.js';
-import { DevBuildSettingsTab } from './DevBuildSettings.jsx';
+import { EditorTab } from './EditorTab.jsx';
 import { setLeafletMapPushCss } from './setLeafletMapPushCss.jsx';
 
 /* The HTML component that renders the entire Sidepanel (including navigation tabs and content) */
-export const Sidepanel = (props) => {
+export const Sidepanel = ({ layerSelectorProps, mapId }) => {
   const [isOpen, setIsOpen] = useState(true);
   const [currentTab, setCurrentTab] = useState(0);
 
   const tabs = [
     { id: 'map_select', icon: 'fa-regular fa-map', title: 'Maps' },
-    { id: 'settings', icon: 'fa-solid fa-gears', title: 'Settings' },
+    { id: 'game_save', icon: 'fa-regular fa-folder-open', title: 'Game Saves' },
+    { id: 'edit_mode', icon: 'fa-solid fa-gears', title: 'Editing tools' },
     { id: 'about', icon: 'fa-solid fa-circle-info', title: 'About' },
   ];
 
@@ -50,14 +52,18 @@ export const Sidepanel = (props) => {
         <div className="sidepanel-content-wrapper">
           <div className="sidepanel-content">
             <div className={classnames('sidepanel-tab-content', { active: currentTab === 0 })} datatabcontent="tab-0">
-              <MapsTab {...props.layerSelectorProps} />
+              <MapsTab {...layerSelectorProps} />
             </div>
 
             <div className={classnames('sidepanel-tab-content', { active: currentTab === 1 })} datatabcontent="tab-1">
-              <DevBuildSettingsTab />
+              <GameSaveTab mapId={mapId} />
             </div>
 
             <div className={classnames('sidepanel-tab-content', { active: currentTab === 2 })} datatabcontent="tab-2">
+              <EditorTab />
+            </div>
+
+            <div className={classnames('sidepanel-tab-content', { active: currentTab === 3 })} datatabcontent="tab-3">
               <AboutTab />
             </div>
           </div>

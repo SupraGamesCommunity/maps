@@ -47,7 +47,7 @@ export function renderSidepanel(map) {
     };
     sidepanelRoot.render(
       <StrictMode>
-        <Sidepanel layerSelectorProps={layerSelectorProps} />
+        <Sidepanel layerSelectorProps={layerSelectorProps} mapId={map.mapId} />
       </StrictMode>
     );
   }
