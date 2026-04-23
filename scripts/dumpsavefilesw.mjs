@@ -107,7 +107,7 @@ function readSavFile(game, file) {
     }
 
     if(lastCheckpointActor){
-         console.log("SavePoint: "+lastCheckpointActor);
+         console.log("SavePoint: ", lastCheckpointActor);
     }
 
     let foundSecrets = { 'all': { 'total': 0, 'found': 0, missed: [] }}
@@ -161,7 +161,7 @@ function getPlayerPosition(game, file) {
             let name = strview.slice(nameidx, nameidx+namelen);
             let alt = 'Supraworld:'+name;
 
-            console.log(`Player Position: ${alt}`);
+            console.log('Player Position: ', alt);
         }
     }
 
