@@ -81,30 +81,27 @@ some suggestions where RAM may run out:
 http://www.imagemagick.org/Usage/files/#massive
 """
 
-import argparse
-import glob
 import logging
 import math
-import os
 import re
-import shutil
 import sys
 from argparse import ArgumentError, ArgumentParser
 from pathlib import Path
+from typing import Any, Optional
 
 from PIL import Image, UnidentifiedImageError
 
-LOG = logging.getLogger('gentiles')
+LOG = logging.getLogger(__name__)
 
 
-def power_of(num, base):
+def power_of(num: int, base: int) -> bool:
     """checks if a number is a power another"""
     while num % base == 0:
         num = num / base
     return num == 1
 
 
-def generate(image, outpath, zoom_level, resize_width, format='png'):
+def generate(image: Image, outpath: Path, zoom_level: int, resize_width: int, format: str = 'png') -> None:
     """
     generates map tiles from large image
     """
@@ -125,16 +122,15 @@ def generate(image, outpath, zoom_level, resize_width, format='png'):
     LOG.info('' + str(tile_width) + ' x ' + str(tile_width) + ' px tiles')
 
     # create output directory
-    outpath.mkdir(exist_ok=True)
     outpath = outpath.joinpath(str(zoom_level))
-    outpath.mkdir(exist_ok=True)
+    outpath.mkdir(exist_ok=True, parents=True)
 
     # Remove existing children
     for child in outpath.rglob('*.' + format):
         child.unlink()
 
     for x in range(num_tiles):
-        outpath.joinpath(str(x)).mkdir(exist_ok=True)
+        outpath.joinpath(str(x)).mkdir(exist_ok=True, parents=True)
         for y in range(num_tiles):
             left = tile_width * x
             top = tile_width * y
@@ -154,7 +150,7 @@ def generate(image, outpath, zoom_level, resize_width, format='png'):
     LOG.info('- done!')
 
 
-def zoom_range_type(value):
+def zoom_range_type(value: Any) -> tuple[int, int]:
     try:
         value = value.strip()
         if '-' in value:
@@ -176,7 +172,7 @@ def zoom_range_type(value):
     return (zoom_min, zoom_max)
 
 
-def positive_int_type(rawvalue):
+def positive_int_type(rawvalue: Any) -> int:
     try:
         value = int(rawvalue.strip())
     except ValueError:
@@ -186,15 +182,17 @@ def positive_int_type(rawvalue):
     return value
 
 
-def create_parser(prog_name):
-    parser = ArgumentParser(prog=prog_name, description="Generate map files for leaflet")
-    parser.add_argument('input_file', help='large image file to split (JPG, PNG, or TIFF)')
+def create_parser() -> ArgumentParser:
+    parser = ArgumentParser(description="Generate map files for leaflet")
+    parser.add_argument('input_file', type=Path, help='large image file to split (JPG, PNG, or TIFF)')
     parser.add_argument(
         'zoom_level',
         type=zoom_range_type,
         help='zoom level(s) to generate (0 to 18); either integer or range (ex: 2-6)',
     )
-    parser.add_argument('output_folder', help='folder name to write tiles to (will be created if does not exist)')
+    parser.add_argument(
+        'output_folder', type=Path, help='folder name to write tiles to (will be created if does not exist)'
+    )
     parser.add_argument(
         '-w',
         '--resize_width',
@@ -214,43 +212,44 @@ def create_parser(prog_name):
     return parser
 
 
-def setup_logging(quiet=False):
+def setup_logging(quiet: bool = False) -> None:
     logging.basicConfig(format='%(levelname)s: %(message)s', stream=sys.stderr)
     LOG.setLevel(logging.WARNING if quiet else logging.INFO)
 
 
-def main():
-    parser = create_parser(sys.argv[0])
-    args = parser.parse_args(sys.argv[1:])
+def main() -> None:
+    parser = create_parser()
+    args = parser.parse_args()
 
     input_path = args.input_file
     zoom_min, zoom_max = args.zoom_level
-    output_folder = args.output_folder
+    output_path = args.output_folder
     resize_width = args.resize_width
     format = args.format
     setup_logging(args.quiet)
 
     # open the image
     try:
-        image = Image.open(input_path)
+        image = Image.open(str(input_path))
         width, height = image.size
         if not power_of(width, 2):
-            LOG.warning('Source image dims should be power of 2! Continuing anyway...')
+            LOG.warning('Source image dims should be power of 2! Continuing anyway...', extra=dict(width=width))
         if width != height:
-            LOG.error('Source image should be square! Quitting...')
+            LOG.error("Source image should be square! Quitting...", extra=dict(width=width, height=height))
             sys.exit(1)
     except UnidentifiedImageError:
-        LOG.error('%s: cannot open image file', input_path)
+        LOG.error("Cannot open image file", extra=dict(input_path=str(input_path)))
         sys.exit(1)
 
-    output_path = Path(output_folder)
-
-    LOG.info('Generating tiles for leaflet.js for zoom levels %d to %d to %s', zoom_min, zoom_max, output_folder)
+    LOG.info(
+        "Generating tiles for leaflet.js for zoom levels",
+        extra=dict(zoom_min=zoom_min, zoom_max=zoom_max, output_path=str(output_path)),
+    )
 
     # if multiple zoom levels, run them all
     for z in range(zoom_min, zoom_max + 1):
-        LOG.info('generate zoom level %d' % z)
-        generate(image, output_path, z, resize_width, format)
+        LOG.info("generate zoom level", extra=dict(zoom_level=z))
+        generate(image=image, outpath=output_path, zoom_level=z, resize_width=resize_width, format=format)
     # that's it!
     LOG.info('FINISHED!')
 

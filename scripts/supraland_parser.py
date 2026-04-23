@@ -9,11 +9,11 @@ from pathlib import Path
 
 import networkx as nx
 import numpy as np
+import win32com.client
 from libpysal import weights
 from mathutils import Euler, Matrix, Quaternion, Vector
 from PIL import Image
 from sklearn.neighbors import KDTree
-import win32com.client
 
 '''
 References to other UE objects the level files and blueprints often use a pair
@@ -221,7 +221,7 @@ config = {
         'pathmap': {
             'Game': 'Supraland/Content',
         },
-        'maps': ['Map']
+        'maps': ['Map'],
     },
     'slc': {
         'appid': '813630',
@@ -229,7 +229,7 @@ config = {
         'pathmap': {
             'Game': 'Supraland/Content',
         },
-        'maps': ['Crash']
+        'maps': ['Crash'],
     },
     'siu': {
         'appid': '1522870',
@@ -249,7 +249,7 @@ config = {
             'DLC2_RainbowTown',
             'DLC2_SecretLavaArea',
             'DLC2_Splash',
-        ]
+        ],
     },
     'sw': {
         'appid': '1869291',
@@ -260,8 +260,8 @@ config = {
             'SupraAssets': 'Supraworld/Plugins/Supra/SupraAssets/Content/',
             'SupraCore': 'Supraworld/Plugins/Supra/SupraCore/Content/',
         },
-        'maps': ['Supraworld']
-    }
+        'maps': ['Supraworld'],
+    },
 }
 
 
@@ -320,13 +320,9 @@ travel_types = [
 # Override Material Variants
 material_types = ["Nailscrew_C", "PuzzleCloud_C"]
 
-tracked_staticmeshes = [
-    'Poker_Chip_1'
-]
+tracked_staticmeshes = ['Poker_Chip_1']
 
-staticmesh2variant = {
-    'Poker_Chip_1': 'red'
-}
+staticmesh2variant = {'Poker_Chip_1': 'red'}
 
 material2variant = {
     'Metal_Base_Golden': 'gold',
@@ -522,7 +518,7 @@ def get_steam_branch(game, path):
     branch = 'public'
 
     # Get path to app manifest from game install path and appid
-    manifest = Path(path[0:path.find('common')] + 'appmanifest_' + config[game]['appid'] + '.acf')
+    manifest = Path(path[0 : path.find('common')] + 'appmanifest_' + config[game]['appid'] + '.acf')
 
     # If the file exists, open it and read contents
     if manifest.is_file():
@@ -881,7 +877,8 @@ sw_blueprint_keys_used = [
 
 # Read properties from the blueprints for the specified set of property keys
 def load_blueprint_keys(sourcedir: str, def_keys: list[str], type_keys: dict[str, str] = None):
-    if type_keys is None: type_keys = {}
+    if type_keys is None:
+        type_keys = {}
     path = Path(sourcedir, 'bp')
     bp_defaults = {}
     for filename in path.glob('*.json'):
@@ -916,10 +913,11 @@ def in_earlyaccess(otype, p, pos):  # noqa: C901 - disable complexity warning
         return True
 
     # If it has a progression and it's not in released content then reject
-    if ((proggroup := p.get('ProgressionGroup', {}).get('TagName'))
-            and proggroup != "None"
-            and not any(proggroup.endswith(s) for s in ea_proggroups)
-        ):
+    if (
+        (proggroup := p.get('ProgressionGroup', {}).get('TagName'))
+        and proggroup != "None"
+        and not any(proggroup.endswith(s) for s in ea_proggroups)
+    ):
         return False
 
     # If it has an area that's not
@@ -983,7 +981,7 @@ def getXYZ(v):
 def export_sw_markers(game, datadir, sourcedir):  # noqa: C901 - disable complexity warning
     maps = {}  # dictionary from map name to json data list
     toyeggs = {}  # Collected chocolate eggs
-    staticmeshes = {} # dictionary from outer name to static mesh name
+    staticmeshes = {}  # dictionary from outer name to static mesh name
     meshmats = {}  # dictionary from outer name to mesh material variant
     targets = {}  # dictionary from outer name to target positions
     area_mtx = {}  # Transform for each area map geometry
@@ -1009,23 +1007,22 @@ def export_sw_markers(game, datadir, sourcedir):  # noqa: C901 - disable complex
 
             # Keep list of static meshes by parent/outer
             if otype == 'StaticMeshComponent':
-                if (
-                        (sm := p.get('StaticMesh', {}).get('ObjectName'))
-                        and (sm := sm.split("'")[-2]) in tracked_staticmeshes
-                    ):
+                if (sm := p.get('StaticMesh', {}).get('ObjectName')) and (
+                    sm := sm.split("'")[-2]
+                ) in tracked_staticmeshes:
                     staticmeshes[outer] = sm
-                    if (sm in staticmesh2variant):
+                    if sm in staticmesh2variant:
                         meshmats[outer] = staticmesh2variant[sm]
 
-                if (oms := p.get('OverrideMaterials')):
+                if oms := p.get('OverrideMaterials'):
                     for om in oms:
                         if (
-                                om
-                                and (v := om.get('ObjectName'))
-                                and (v := material2variant.get(v.split("'")[-2].split('.')[-1]))
-                            ):
+                            om
+                            and (v := om.get('ObjectName'))
+                            and (v := material2variant.get(v.split("'")[-2].split('.')[-1]))
+                        ):
                             meshmats[outer] = v
-    
+
             # Keep list of Chocolate Egg interior objects
             if otype == 'ChocolateEgg_C' and (v := p.get('ToyEgg')):
                 toyeggs[objectRefStr(v)] = o
@@ -1107,8 +1104,7 @@ def export_sw_markers(game, datadir, sourcedir):  # noqa: C901 - disable complex
                 continue
 
             # Convert poker chip static meshes to custom Poker Chip class
-            if ((v := staticmeshes.get(oname))
-                    and v == 'Poker_Chip_1'):
+            if (v := staticmeshes.get(oname)) and v == 'Poker_Chip_1':
                 otype = '_PokerChip_C'
 
             # Add the standard data to the object
@@ -1200,8 +1196,12 @@ def export_sw_markers(game, datadir, sourcedir):  # noqa: C901 - disable complex
                 spawns = '_LootPool_C'
 
             # Cost
-            if ((v := bp_defaults.get(spawns, {}).get('Cost'))
-                    and otype in ['ShopItemSpawner_C', 'ShopEgg_C', 'ChocolateEgg_C', 'ShopSlot_C']):
+            if (v := bp_defaults.get(spawns, {}).get('Cost')) and otype in [
+                'ShopItemSpawner_C',
+                'ShopEgg_C',
+                'ChocolateEgg_C',
+                'ShopSlot_C',
+            ]:
                 data[-1]['cost'] = v
 
             # These classes just spawn stuff so we change the type to what it spawns
@@ -1221,7 +1221,7 @@ def export_sw_markers(game, datadir, sourcedir):  # noqa: C901 - disable complex
             if (v := coin_defaults.get(otype)) or (v := coin_defaults.get(spawns)):
                 coins = v
             if (v := p.get('Value')) and v.startswith('CoinValue::'):  # RealCoinPickup_C/5Cent_C
-                coins = int(get_end_int(ueenums.ue2source(v,v)))
+                coins = int(get_end_int(ueenums.ue2source(v, v)))
             if v := p.get('CoinPool'):  # Gumball_Machine_C
                 coins = v
             if coins:
@@ -2050,8 +2050,12 @@ def main():
     # these are the core operations
     parser.add_argument('-p', '--preproc', action='store_true', help='preprocess level files to gather ')
     parser.add_argument('-m', '--markers', action='store_true', help='export markers as json (need json levels)')
-    parser.add_argument('-v', '--version', action='store_true', help='update version information (set source to install directory)')
-    parser.add_argument('-b', '--blueprints', action='store_true', help='read loc from blueprints and export to gameClasses')
+    parser.add_argument(
+        '-v', '--version', action='store_true', help='update version information (set source to install directory)'
+    )
+    parser.add_argument(
+        '-b', '--blueprints', action='store_true', help='read loc from blueprints and export to gameClasses'
+    )
     parser.add_argument('-o', '--loc', action='store_true', help='extract required loc strings for game')
     args = parser.parse_args()
 
@@ -2069,7 +2073,9 @@ def main():
             export_markers(args.game, args.data, sourcedir)
     elif args.version:
         if args.game == 'sw':
-            update_swversion_info(args.game, args.data, args.source or os.environ.get('SWROOT'), os.environ.get('SWMAPIMAGE'))
+            update_swversion_info(
+                args.game, args.data, args.source or os.environ.get('SWROOT'), os.environ.get('SWMAPIMAGE')
+            )
     elif args.blueprints:
         export_class_loc(args.game, args.data, sourcedir)
     elif args.loc:
