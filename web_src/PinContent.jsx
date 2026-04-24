@@ -170,16 +170,18 @@ export const PinContent = ({ o, mapId, closePopup, hasFoundState, isFound, found
       <div className="marker-popup-found">
         {hasFoundState ? (
           <>
-            <input
-              type="checkbox"
-              id={foundAlt}
-              checked={isFoundCheckbox}
-              onChange={() => {
-                setIsFoundCheckbox(!isFoundCheckbox);
-                window.mapObjectFound(foundAlt, isFoundCheckbox);
-              }}
-            />
-            <label htmlFor={foundAlt}>{'Found'}</label>
+            <label>
+              <input
+                type="checkbox"
+                id={foundAlt}
+                checked={isFoundCheckbox}
+                onChange={() => {
+                  setIsFoundCheckbox(!isFoundCheckbox);
+                  window.mapObjectFound(foundAlt, isFoundCheckbox);
+                }}
+              />
+              {'Found'}
+            </label>
           </>
         ) : (
           <>&nbsp;</>

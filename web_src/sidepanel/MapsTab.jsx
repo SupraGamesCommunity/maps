@@ -7,7 +7,7 @@ export const MapSelectorRadioButtons = ({ options, onChange }) => {
   return (
     <div className="radio-group">
       {options.map((option) => (
-        <label key={option.value} style={{ display: 'block', margin: '5px 0' }}>
+        <label key={option.value}>
           <input
             type="radio"
             name={'select_map'}
@@ -26,8 +26,8 @@ export const MapSelectorRadioButtons = ({ options, onChange }) => {
 export const MapsTab = ({ leafletMap, mapSelections, overlaySelections, onMapChange, onOverlayChange }) => {
   return (
     <div>
-      <div style={{ marginBottom: '3em' }}>
-        <h2>Map selector</h2>
+      <div className="sidepanel-info-block">
+        <h2>Game map</h2>
         <MapSelectorRadioButtons
           options={mapSelections.options}
           selectedValue={mapSelections.selectedValue}
@@ -35,20 +35,22 @@ export const MapsTab = ({ leafletMap, mapSelections, overlaySelections, onMapCha
         />
       </div>
 
-      <div style={{ marginBottom: '3em' }}>
+      <div className="sidepanel-info-block">
         <h2>Layers</h2>
-        {overlaySelections.map((overlaySelection) => (
-          <Checkbox
-            key={overlaySelection.value}
-            label={overlaySelection.label}
-            value={overlaySelection.value}
-            checked={overlaySelection.isChecked}
-            onChange={onOverlayChange}
-          />
-        ))}
+        <div className="checkbox-group">
+          {overlaySelections.map((overlaySelection) => (
+            <Checkbox
+              key={overlaySelection.value}
+              label={overlaySelection.label}
+              value={overlaySelection.value}
+              checked={overlaySelection.isChecked}
+              onChange={onOverlayChange}
+            />
+          ))}
+        </div>
       </div>
 
-      <div style={{ marginBottom: '3em' }}>
+      <div className="sidepanel-info-block">
         <h2>Map URL</h2>
         <p>
           <button

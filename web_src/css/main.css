@@ -71,9 +71,20 @@ path[alt=''] { opacity: 100% }
 .marker-popup-found {
   background-color: lightblue;
   color: black;
-  text-align: center;
   font-weight: bold;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
+.marker-popup-found label {
+  display: flex;
+  gap: 0.3em;
+}
+.marker-popup-found input {
+  margin: 0;
+}
+
 .marker-popup-footnote {
   font-size: .75em;
 }
@@ -195,4 +206,38 @@ path[alt=''] { opacity: 100% }
   fill-opacity: 100%;
   stroke: #000;
   opacity: 100%;
+}
+
+/* Override the default sidebar-tab-link to provide better spacing */
+a.sidebar-tab-link {
+  flex-direction: column !important;
+  text-transform: none !important;
+  height: 6em !important;
+  text-align: center !important;
+}
+
+.sidepanel-info-block {
+  padding-bottom: 2em;
+}
+
+.radio-group label {
+  display: flex;
+  margin-bottom: 1em;
+  margin-left: 1em;
+  align-items: center;
+  gap: 0.3em;
+}
+.radio-group input {
+  margin: 0;
+}
+
+.checkbox-group label {
+  display: flex;
+  margin-bottom: 0.5em;
+  margin-left: 1em;
+  align-items: center;
+  gap: 0.3em;
+}
+.checkbox-group input {
+  margin: 0;
 }

@@ -32,7 +32,7 @@ export const GameSaveTab = ({ mapId }) => {
 
   return (
     <div>
-      <div style={{ marginBottom: '3em' }}>
+      <div className="sidepanel-info-block">
         <h2>Game save-files</h2>
         <p>
           <button

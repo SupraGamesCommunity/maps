@@ -14,8 +14,8 @@ export const Sidepanel = ({ layerSelectorProps, mapId }) => {
 
   const tabs = [
     { id: 'map_select', icon: 'fa-regular fa-map', title: 'Maps' },
-    { id: 'game_save', icon: 'fa-regular fa-folder-open', title: 'Game Saves' },
-    { id: 'edit_mode', icon: 'fa-solid fa-gears', title: 'Editing tools' },
+    { id: 'game_save', icon: 'fa-regular fa-folder-open', title: 'Game saves' },
+    { id: 'build_tools', icon: 'fa-solid fa-gears', title: 'Build tools' },
     { id: 'about', icon: 'fa-solid fa-circle-info', title: 'About' },
   ];
 
@@ -41,7 +41,10 @@ export const Sidepanel = ({ layerSelectorProps, mapId }) => {
                     setCurrentTab(idx);
                   }}
                 >
-                  <i className={tab.icon} width="24" height="24"></i>
+                  <div>
+                    <i className={tab.icon} width="24" height="24"></i>
+                  </div>
+                  <div>{tab.title}</div>
                 </a>
               </li>
             ))}

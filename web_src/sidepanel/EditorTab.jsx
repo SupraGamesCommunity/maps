@@ -9,8 +9,8 @@ export const EditorTab = () => {
 
   return (
     <>
-      <h2>Editing tools</h2>
-      <div style={{ paddingBottom: '3em' }}>
+      <div className="sidepanel-info-block">
+        <h2>Build tools</h2>
         <Checkbox
           label="Build Mode"
           value="1"
@@ -23,8 +23,10 @@ export const EditorTab = () => {
         <p>Build Mode enables editing pin data, which can be later exported and contributed back to the project.</p>
       </div>
 
-      <div style={{ paddingBottom: '3em' }}>
-        <button onClick={() => exportBuildChanges()}><i className="fa-regular fa-copy"></i>Copy changes</button>
+      <div className="sidepanel-info-block">
+        <button onClick={() => exportBuildChanges()}>
+          <i className="fa-regular fa-copy"></i>Copy changes
+        </button>
         <p>{'Copies changes made in this session to the Clipboard.'}</p>
       </div>
     </>
