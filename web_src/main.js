@@ -454,7 +454,7 @@ async function loadMap(mapParam) {
   });
   window.document.addEventListener('resume', () => {
     if (map) {
-      map.invalidateSize();
+      MapLayer.getLayerObj(map.mapId).redraw();
     }
   });
 
