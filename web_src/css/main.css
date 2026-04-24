@@ -212,7 +212,7 @@ path[alt=''] { opacity: 100% }
 a.sidebar-tab-link {
   flex-direction: column !important;
   text-transform: none !important;
-  height: 6em !important;
+  height: 5em !important;
   text-align: center !important;
 }
 
