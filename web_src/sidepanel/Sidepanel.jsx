@@ -42,7 +42,7 @@ export const Sidepanel = ({ layerSelectorProps, mapId }) => {
                   }}
                 >
                   <div>
-                    <i className={tab.icon} width="24" height="24"></i>
+                    <i className={tab.icon}></i>
                   </div>
                   <div>{tab.title}</div>
                 </a>
