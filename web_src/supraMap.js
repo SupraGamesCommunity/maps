@@ -115,6 +115,6 @@ export const L_SupraMap = L.Map.extend({
   },
 });
 
-export const L_supraMap = function (mapParam, id = 'map', options = { preferCanvas: true }) {
+export const L_supraMap = function (mapParam, id = 'map', options = { }) {
   return new L_SupraMap(mapParam, id, options);
 };
