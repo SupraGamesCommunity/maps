@@ -14,12 +14,13 @@ export const supraColors = {
   lime: '#00FF00',
   magenta: '#FF00FF',
   orange: '#FF7700',
-  pink: '#A74472',
+  pink: '#FFB6C1',
   purple: '#800080',
   red: '#FF0000',
   teal: '#00EBFF',
   white: '#FFFFFF',
-  yellow: '#d1bb0f', //"#FFFF00",
+  yellow: '#ffe731', //"#FFFF00",
+  yellowblack: '#8f8f00',
 };
 
 export const toSupraColor = (col) => {
