@@ -453,9 +453,10 @@ async function loadMap(mapParam) {
     }
   });
   window.addEventListener('resume', () => {
-    if (map) {
-      map.invalidateSize();
-    }
+    loadMap(new MapParam({ mapId: map.mapId || 'sw' }));
+    //if (map) {
+    //  map.invalidateSize();
+    //}
   });
 
   // Done loading so ok to switch maps
