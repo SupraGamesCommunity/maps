@@ -1,13 +1,39 @@
-html, body, #map { width:100%; height:100%; margin:0; padding:0; z-index: 1; background: #000; contain: paint; }
-.leaflet-control { user-select: none;}
+html,
+body,
+#map {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  z-index: 1;
+  background: #000;
+  contain: paint;
+}
+.leaflet-control {
+  user-select: none;
+}
 
-.found { opacity: 30%; }
-.hidden { visibility: hidden; }
+.found {
+  opacity: 30%;
+}
+.hidden {
+  visibility: hidden;
+}
 
-path { opacity: 100%; fill-opacity: 100%; filter: brightness(100%) }
-path.found { opacity: 50%; fill-opacity: 50%; filter: brightness(100%) }
+path {
+  opacity: 100%;
+  fill-opacity: 100%;
+  filter: brightness(100%);
+}
+path.found {
+  opacity: 50%;
+  fill-opacity: 50%;
+  filter: brightness(100%);
+}
 
-path[alt=''] { opacity: 100% }
+path[alt=''] {
+  opacity: 100%;
+}
 
 .leaflet-control-search .search-input {
   width: 230px;
@@ -19,7 +45,6 @@ path[alt=''] { opacity: 100% }
   width: 285px;
   max-height: 207px;
   margin-top: 2px;
-  
 }
 
 .leaflet-control-search .search-tip {
@@ -30,7 +55,7 @@ path[alt=''] { opacity: 100% }
   background: #fff;
 }
 
-.leaflet-control-toolbar .leaflet-toolbar-1>li>.leaflet-toolbar-icon {
+.leaflet-control-toolbar .leaflet-toolbar-1 > li > .leaflet-toolbar-icon {
   /* background-color:#f4f4f4; */
   /* color: #333; */
 }
@@ -65,7 +90,6 @@ path[alt=''] { opacity: 100% }
 }
 
 .marker-popup-text {
-  
 }
 
 .marker-popup-found {
@@ -86,11 +110,11 @@ path[alt=''] { opacity: 100% }
 }
 
 .marker-popup-footnote {
-  font-size: .75em;
+  font-size: 0.75em;
 }
 
 .marker-popup-debug {
-  font-size: .75em;
+  font-size: 0.75em;
   word-wrap: break-word;
 }
 
@@ -130,35 +154,54 @@ path[alt=''] { opacity: 100% }
   vertical-align: top;
 }
 
-
 /* Jumppad line drawing */
 .line-jumppad {
-  --arrow: tip;         /* Can be 'tip', 'mid', 'none' */
-  --arrow-size: 3px;    /* Arrow head size, if not set no arrow drawn, only used for long one way lines */
-  --arrow-angle: 45;    /* Angle arrow pointer will be drawn with */
-  --line-width: 5px;    /* Width of the basic line */
-  --shadow-width: 3px;  /* Width of shadow border (also stroke-width) */
-  --offset: 0px;        /* How far along line should first arrow appear, pixels also ok */
-  --end-offset: 0px;    /* How far from end should last arrow appear */
+  --arrow: tip; /* Can be 'tip', 'mid', 'none' */
+  --arrow-size: 3px; /* Arrow head size, if not set no arrow drawn, only used for long one way lines */
+  --arrow-angle: 45; /* Angle arrow pointer will be drawn with */
+  --line-width: 5px; /* Width of the basic line */
+  --shadow-width: 3px; /* Width of shadow border (also stroke-width) */
+  --offset: 0px; /* How far along line should first arrow appear, pixels also ok */
+  --end-offset: 0px; /* How far from end should last arrow appear */
 
   opacity: 100%;
   fill-opacity: 100%;
 }
 .line-jumppad.red {
   stroke: #000;
-  fill: #f00;         /* inherited by arrow */
+  fill: #f00; /* inherited by arrow */
 }
 
-.line-jumppad.red, .jumppad-red-x1  {opacity: 30%; fill-opacity: 30%; filter: brightness(100%) }
-.line-jumppad.red.found, .jumppad-red-x1.found {opacity: 100%; fill-opacity: 100%; filter: brightness(100%) }
+.line-jumppad.red,
+.jumppad-red-x1 {
+  opacity: 30%;
+  fill-opacity: 30%;
+  filter: brightness(100%);
+}
+.line-jumppad.red.found,
+.jumppad-red-x1.found {
+  opacity: 100%;
+  fill-opacity: 100%;
+  filter: brightness(100%);
+}
 
 .line-jumppad.blue {
   stroke: #000;
-  fill: #1E90FF;      /* inherited by arrow */
+  fill: #1e90ff; /* inherited by arrow */
 }
 
-.line-jumppad.blue, .jumppad-blue-x1  {opacity: 30%; fill-opacity: 30%; filter: brightness(100%) }
-.line-jumppad.blue.found, .jumppad-blue-x1.found {opacity: 100%; fill-opacity: 100%; filter: brightness(100%) }
+.line-jumppad.blue,
+.jumppad-blue-x1 {
+  opacity: 30%;
+  fill-opacity: 30%;
+  filter: brightness(100%);
+}
+.line-jumppad.blue.found,
+.jumppad-blue-x1.found {
+  opacity: 100%;
+  fill-opacity: 100%;
+  filter: brightness(100%);
+}
 
 .line-pipe {
   --arrow: tip;
@@ -169,14 +212,24 @@ path[alt=''] { opacity: 100% }
   --offset: 16px;
   --end-offset: 16px;
 
-  fill: #4DFF00;
+  fill: #4dff00;
   fill-opacity: 100%;
   stroke: #000;
   opacity: 100%;
 }
 
-.line-pipe, .pipe-x1  {opacity: 30%; fill-opacity: 30%; filter: brightness(100%) }
-.line-pipe.found, .pipe-x1.found {opacity: 100%; fill-opacity: 100%; filter: brightness(100%) }
+.line-pipe,
+.pipe-x1 {
+  opacity: 30%;
+  fill-opacity: 30%;
+  filter: brightness(100%);
+}
+.line-pipe.found,
+.pipe-x1.found {
+  opacity: 100%;
+  fill-opacity: 100%;
+  filter: brightness(100%);
+}
 
 .line-target {
   --arrow: tip;
@@ -202,42 +255,8 @@ path[alt=''] { opacity: 100% }
   --offset: 0;
   --end-offset: 16px;
 
-  fill: #FFF;
+  fill: #fff;
   fill-opacity: 100%;
   stroke: #000;
   opacity: 100%;
-}
-
-/* Override the default sidebar-tab-link to provide better spacing */
-a.sidebar-tab-link {
-  flex-direction: column !important;
-  text-transform: none !important;
-  height: 5em !important;
-  text-align: center !important;
-}
-
-.sidepanel-info-block {
-  padding-bottom: 2em;
-}
-
-.radio-group label {
-  display: flex;
-  margin-bottom: 1em;
-  margin-left: 1em;
-  align-items: center;
-  gap: 0.3em;
-}
-.radio-group input {
-  margin: 0;
-}
-
-.checkbox-group label {
-  display: flex;
-  margin-bottom: 0.5em;
-  margin-left: 1em;
-  align-items: center;
-  gap: 0.3em;
-}
-.checkbox-group input {
-  margin: 0;
 }

@@ -9,7 +9,7 @@ import { setLeafletMapPushCss } from './setLeafletMapPushCss.jsx';
 let sidepanelRoot = null;
 
 function getSidepanelContainer() {
-  return document.getElementById('sidepanel');
+  return document.getElementById('sidebar_container');
 }
 
 /* Initializes the DOM to support the sidepanel. */

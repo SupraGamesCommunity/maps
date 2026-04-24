@@ -13,77 +13,50 @@ export const Sidepanel = ({ layerSelectorProps, mapId }) => {
   const [currentTab, setCurrentTab] = useState(0);
 
   const tabs = [
-    { id: 'map_select', icon: 'fa-regular fa-map', title: 'Maps' },
-    { id: 'game_save', icon: 'fa-regular fa-folder-open', title: 'Game saves' },
-    { id: 'build_tools', icon: 'fa-solid fa-gears', title: 'Build tools' },
-    { id: 'about', icon: 'fa-solid fa-circle-info', title: 'About' },
+    { id: 'map_select', icon: 'fa-regular fa-map', title: 'Maps', content: <MapsTab {...layerSelectorProps} /> },
+    { id: 'game_save', icon: 'fa-regular fa-folder-open', title: 'Game saves', content: <GameSaveTab mapId={mapId} /> },
+    { id: 'build_tools', icon: 'fa-solid fa-gears', title: 'Build tools', content: <EditorTab /> },
+    { id: 'about', icon: 'fa-solid fa-circle-info', title: 'About', content: <AboutTab /> },
   ];
 
   return (
-    <div
-      className={classnames('sidepanel', 'sidepanel-left', 'tabs-left', { opened: isOpen, closed: !isOpen })}
-      aria-label="side panel"
-      aria-hidden="false"
-    >
-      <div className="sidepanel-inner-wrapper">
-        {/* The side tab selector */}
-        <nav className="sidepanel-tabs-wrapper" aria-label="sidepanel tab navigation">
-          <ul className="sidepanel-tabs">
-            {tabs.map((tab, idx) => (
-              <li key={idx} className="sidepanel-tab">
-                <a
-                  href="#"
-                  className={classnames('sidebar-tab-link', { active: idx == currentTab })}
-                  role="tab"
-                  title={tab.title}
-                  datatablink={`tab-${idx}`}
-                  onClick={() => {
-                    setCurrentTab(idx);
-                  }}
-                >
-                  <div>
-                    <i className={tab.icon}></i>
-                  </div>
-                  <div>{tab.title}</div>
-                </a>
-              </li>
-            ))}
-          </ul>
-        </nav>
-
-        {/* The content sections */}
-        <div className="sidepanel-content-wrapper">
-          <div className="sidepanel-content">
-            <div className={classnames('sidepanel-tab-content', { active: currentTab === 0 })} datatabcontent="tab-0">
-              <MapsTab {...layerSelectorProps} />
-            </div>
-
-            <div className={classnames('sidepanel-tab-content', { active: currentTab === 1 })} datatabcontent="tab-1">
-              <GameSaveTab mapId={mapId} />
-            </div>
-
-            <div className={classnames('sidepanel-tab-content', { active: currentTab === 2 })} datatabcontent="tab-2">
-              <EditorTab />
-            </div>
-
-            <div className={classnames('sidepanel-tab-content', { active: currentTab === 3 })} datatabcontent="tab-3">
-              <AboutTab />
-            </div>
-          </div>
-        </div>
-
-        {/* The button that show/hides the sidebar */}
-        <div className="sidepanel-toggle-container">
+    <div className={classnames('sidebar', { collapsed: !isOpen })}>
+      <div className="nav-tabs">
+        {tabs.map((tab, idx) => (
           <button
-            className="sidepanel-toggle-button"
-            aria-label="toggle side panel"
+            key={idx}
+            className={classnames('nav-tab', { active: idx == currentTab })}
             onClick={() => {
-              setIsOpen(!isOpen);
-              setLeafletMapPushCss(!isOpen);
+              setCurrentTab(idx);
             }}
-          ></button>
-        </div>
+            dataTarget={tab.id}
+          >
+            <div>
+              <i className={tab.icon}></i>
+            </div>
+            <div>{tab.title}</div>
+          </button>
+        ))}
       </div>
+
+      <div className="content-panel">
+        {tabs.map((tab, idx) => (
+          <div className={classnames('content-section', { active: currentTab === idx })}>{tab.content}</div>
+        ))}
+      </div>
+
+      {/* The button that show/hides the sidebar */}
+      <button
+        className="toggle-btn"
+        id="toggleBtn"
+        onClick={() => {
+          setIsOpen(!isOpen);
+          setLeafletMapPushCss(!isOpen);
+        }}
+        aria-label="toggle side panel"
+      >
+        {isOpen ? '◀' : '▶'}
+      </button>
     </div>
   );
 };
