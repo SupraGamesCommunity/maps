@@ -18,5 +18,14 @@
     "name": "PresentBox_C_UAID_7085C2B20F0ED96602_1438589775",
     "area": "Supraworld",
     "delete": "saved object removed in update"
+  },
+  {
+    "name": "_CustomPOI_C_01",
+    "type": "_CustomPOI_C",
+    "area": "Supraworld",
+    "lat": -4340,
+    "lng": 2321,
+    "alt": 323,
+    "friendly": "Floor Town"
   }
 ]
