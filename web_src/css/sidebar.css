@@ -203,12 +203,12 @@ body {
 
 
 /* Styling for leaflet to push the on-page controls when the sidebar is opened/closed. */
-.leaflet-anim-control-container.left-opened {
+.leaflet-anim-control-container.left-opened .leaflet-left {
   left: 320px;
   transition: left 0.3s ease;
   position: absolute;
 }
-.leaflet-anim-control-container.left-closed {
+.leaflet-anim-control-container.left-closed .leaflet-left {
   left: 15px;
   transition: left 0.3s ease;
   position: absolute;
