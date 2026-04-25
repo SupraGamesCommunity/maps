@@ -6,7 +6,7 @@ import { Settings } from './settings.js';
 
 // L.tileLayer.canvas() is faster than L.tileLayer() and fixes a visible line between tiles on most browsers
 // However on Firefox it makes the lines much worse, so we choose based on which browser
-const L_tileLayer = browser.isFirefox ? L.tileLayer : L.tileLayer; //.canvas;
+const L_tileLayer = browser.isFirefox ? L.tileLayer : L.tileLayer.canvas;
 
 function boundsShrink(b, d) {
   return [
