@@ -5,6 +5,7 @@ import * as process from 'process';
 import * as path from 'path';
 import { parseArgs } from 'util';
 import { fileURLToPath } from "node:url";
+import { faL } from '@fortawesome/free-solid-svg-icons';
 
 const __filename = fileURLToPath(import.meta.url);
 const filename = path.basename(__filename);
@@ -56,7 +57,7 @@ else {
         saveFileName = `${localAppData}\\${saveFileBaseDirs[game]}\\Saved\\SaveGames\\${saveFileBaseNames[game]}${saveSlot}.sav`;
 }
 
-let markerFileName = `..\\data\\markers.${game}.json`;
+let markerFileName = `..\\public\\data\\markers.${game}.json`;
 const jsonData = JSON.parse(fs.readFileSync(markerFileName));
 var jsonMap = {};
 for(const o of jsonData) {
@@ -70,14 +71,31 @@ function readSavFile(game, file) {
     let strview = new TextDecoder("latin1").decode(dataview);
 
     let notOnMap = [];
-    const srchStr = '\0PersistentLevel.'
-    const re_match = new RegExp(srchStr, 'gi');
+    const srchStr = ['PersistentLevel.', 'LastCheckpointActor'];
+
+    const re_match = new RegExp('('+'\0'+srchStr.join('|\0')+')', 'gi');
     let m;
+    let foundLastCheckpointActor = false;
+    let lastCheckpointActor;
+
     while ((m = re_match.exec(strview)) != null) {
-        let namelen = dataview.getInt32(m.index+1-4, true)-srchStr.length+1;
-        let nameidx = m.index + srchStr.length;
+        const foundStr = strview.slice(m.index+1, re_match.lastIndex)
+        if(foundStr.startsWith('LastCheckpointActor')){
+            foundLastCheckpointActor = true;
+            continue;
+        }
+
+        let namelen = dataview.getInt32(m.index+1-4, true)-m[0].length+1;
+        let nameidx = m.index + m[0].length;
         let name = strview.slice(nameidx, nameidx+namelen);
         let alt = 'Supraworld:'+name;
+
+        if(foundLastCheckpointActor){
+            foundLastCheckpointActor = false;
+            lastCheckpointActor = alt;            
+            continue;
+        }
+
         if(name.startsWith('SecretVolume_C')) {
             if(alt in jsonMap) {
                 jsonMap[alt].found = true;
@@ -86,6 +104,10 @@ function readSavFile(game, file) {
                 notOnMap.push(name);
             }
         }
+    }
+
+    if(lastCheckpointActor){
+         console.log("SavePoint: ", lastCheckpointActor);
     }
 
     let foundSecrets = { 'all': { 'total': 0, 'found': 0, missed: [] }}
@@ -122,6 +144,34 @@ function readSavFile(game, file) {
     return {};
 }
 
+function getPlayerPosition(game, file) {
+    let data = fs.readFileSync(file);
+    let dataview = new DataView(data.buffer, data.byteOffset, data.byteLength);
+    let strview = new TextDecoder("latin1").decode(dataview);
+
+    const srchStr = '\0LastCheckpointActor\0';
+    const re_lastcheckpoint = new RegExp(srchStr, 'gi');
+    const re_nextactor = new RegExp('PersistentLevel.', 'gi')
+    let m1, m2;
+    if ((m1 = re_lastcheckpoint.exec(strview)) != null) {
+        re_nextactor.lastIndex = re_lastcheckpoint.lastIndex;
+        if((m2 = re_nextactor.exec(strview)) != null) {
+            let namelen = dataview.getInt32(m2.index-4, true)-'PersistentLevel.'.length;
+            let nameidx = m2.index + 'PersistentLevel.'.length;
+            let name = strview.slice(nameidx, nameidx+namelen);
+            let alt = 'Supraworld:'+name;
+
+            console.log('Player Position: ', alt);
+        }
+    }
+
+    function capitalise(s){return s.charAt(0).toUpperCase()+s.slice(1)}
+    function camel2ui(s){return capitalise(s).replace(/([A-Z])/g, ' $1').trim()}
+    function snake2ui(s){return s.split('_').map(f => f.charAt(0).toUpperCase() + f.slice(1)).join(' ')}
+
+}
+
+
 let dump_markers = readSavFile(game, saveFileName);
 
 let json = JSON.stringify(dump_markers, null, 2);
@@ -129,3 +179,5 @@ let count = json.split(/\r\n|\r|\n/).length;
 //fs.writeFileSync(outputFileName, json);
 
 //console.log(`${count} lines written to "${outputFileName}"`)
+
+getPlayerPosition(game, saveFileName);
