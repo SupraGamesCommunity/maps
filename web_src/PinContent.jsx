@@ -1,5 +1,6 @@
 import { locStr } from './locStr.js';
 import { GameClasses } from './gameClasses.js';
+import { MapObject } from './mapObject.jsx'
 import { useState } from 'react';
 import { updateBuildModeValue } from './devBuildMode.js';
 import { commitCurrentBuildModeChanges } from './devBuildMode.js';
@@ -121,6 +122,11 @@ export const PinContent = ({ o, mapId, closePopup, hasFoundState, isFound, found
     }
   }
 
+  const pz = MapObject._mapObjects?.PlayerPosition?.o.alt;
+  const dz = this.o.alt - (mapId == 'sw' && pz ? pz : 0);
+  const col = dz < 0 ? 'red' : 'green';
+  const height = `<span style="color:${col}">${dz>0?'+':''}${dz.toFixed(0)}</span>`;
+
   return (
     <>
       <div className="marker-popup-heading">
@@ -152,7 +158,7 @@ export const PinContent = ({ o, mapId, closePopup, hasFoundState, isFound, found
             }
           />
         )}
-        <StaticRow title="XYZ pos" value={`(${o.lng.toFixed(0)}, ${o.lat.toFixed(0)}, ${o.alt.toFixed(0)})`} />
+        <StaticRow title="XYZ pos" value={`(${o.lng.toFixed(0)}, ${o.lat.toFixed(0)}, ${o.alt.toFixed(0)}) ${height}`} />
         <br />
         <br />
       </div>
