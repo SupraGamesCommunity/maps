@@ -15,6 +15,22 @@ const StaticRow = ({ title, value }) => {
   );
 };
 
+// TODO: Probably not the right way to do this
+const XYZRow = ({ title, xyz, dz }) => {
+  return (
+    <>
+      <br />
+      <span className="marker-popup-col">{title}</span>
+      <span className="marker-popup-col2">{xyz}
+        <span style={{color:dz < 0 ? 'red' : 'green'}}>
+          {(dz > 0 ? ' +':' ') + dz.toFixed(0)}
+        </span>
+      </span>
+    </>
+  );
+};
+
+
 const PropertyRow = ({ title, value }) => {
   let jsonStr = JSON.stringify(value, null, ' ').replaceAll('"', '').replaceAll('\n', '');
   return (
@@ -123,10 +139,7 @@ export const PinContent = ({ o, mapId, closePopup, hasFoundState, isFound, found
   }
 
   const pz = MapObject._mapObjects?.PlayerPosition?.o.alt;
-  const dz = this.o.alt - (mapId == 'sw' && pz ? pz : 0);
-  const col = dz < 0 ? 'red' : 'green';
-  const height = `<span style="color:${col}">${dz>0?'+':''}${dz.toFixed(0)}</span>`;
-
+  const dz = o.alt - (mapId == 'sw' && pz ? pz : 0);
   return (
     <>
       <div className="marker-popup-heading">
@@ -158,7 +171,8 @@ export const PinContent = ({ o, mapId, closePopup, hasFoundState, isFound, found
             }
           />
         )}
-        <StaticRow title="XYZ pos" value={`(${o.lng.toFixed(0)}, ${o.lat.toFixed(0)}, ${o.alt.toFixed(0)}) ${height}`} />
+        <XYZRow title="XYZ pos" xyz={`(${o.lng.toFixed(0)}, ${o.lat.toFixed(0)}, ${o.alt.toFixed(0)})`} dz={dz}
+          />
         <br />
         <br />
       </div>
