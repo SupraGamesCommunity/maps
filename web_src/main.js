@@ -246,6 +246,12 @@ async function loadMap(mapParam) {
       map.invalidateSize();
     }
   });
+  window.document.addEventListener('resume', () => {
+    if (map) {
+      map.invalidateSize();
+      MapLayer.getLayerObj(map.mapId).redraw();
+    }
+  });
 
   // Done loading so ok to switch maps
   loadMap.isLoading = false;
