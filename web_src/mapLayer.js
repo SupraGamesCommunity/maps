@@ -318,15 +318,15 @@ export class MapLayer {
     Settings.mapSetDefault('activeLayers', defaultActive);
 
     // Initialise layer instances
-    for (const layer of Object.values(MapLayer._layers)) {
-      layer.init(map);
+    for (const mapLayer of Object.values(MapLayer._layers)) {
+      mapLayer.init(map);
     }
   }
 
   // Restore MapLayer to initial state
   static resetLayers() {
-    for (const layer of Object.values(MapLayer._layers)) {
-      layer.reset();
+    for (const mapLayer of Object.values(MapLayer._layers)) {
+      mapLayer.reset();
     }
     MapLayer._map = null;
   }
