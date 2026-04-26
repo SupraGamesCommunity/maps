@@ -213,8 +213,24 @@ async function loadMap(mapParam) {
     map = null;
   }
 
+  const mapOptions = {
+    contextmenu: true,
+    contextmenuWidth: 140,
+    contextmenuItems: [
+      {
+        text: 'Show coordinates',
+        callback: function showCoordinates (e) { alert(e.latlng); }
+      },
+      {
+        text: 'Center map here',
+        callback: function centerMap (e) { map.panTo(e.latlng); }
+      },
+      '-'
+    ]
+  }
+
   // Create the map
-  map = L_supraMap(mapParam);
+  map = L_supraMap(mapParam, 'map', mapOptions);
 
   // Add zoom, fullscreen toggle and mousePosition controls to the map
   L.control.zoom({ position: 'bottomright' }).addTo(map);

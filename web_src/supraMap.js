@@ -30,7 +30,9 @@ export const L_SupraMap = L.Map.extend({
     // maxBounds: ?
   },
 
-  initialize(mapParam, id = 'map', options = {}) {
+
+
+  initialize(mapParam, id, options = {}) {
     if (options === undefined) {
       options = {};
     }
@@ -77,7 +79,7 @@ export const L_SupraMap = L.Map.extend({
       L.setOptions(this, options));
 
     // Set the div background colour to match the map
-    document.querySelector('#' + id).style.backgroundColor = mapLayer.config.backgroundColor;
+    //document.querySelector('#' + id).style.backgroundColor = mapLayer.config.backgroundColor;
 
     _super.initialize.call(this, id, options);
 
@@ -115,6 +117,6 @@ export const L_SupraMap = L.Map.extend({
   },
 });
 
-export const L_supraMap = function (mapParam, id = 'map', options = { }) {
+export const L_supraMap = function (mapParam, id, options = { }) {
   return new L_SupraMap(mapParam, id, options);
 };
