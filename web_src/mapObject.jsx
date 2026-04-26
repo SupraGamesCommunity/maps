@@ -110,26 +110,18 @@ export class MapObject {
         text += ` (${locStr.friendly(null, o.spawns, mapId)})`;
       }
     } else {
-      text = MapObject.makeAlt(o.area, o.name); // Ensures non-friendly version is unique
+      text = (mapId != 'siu' ? o.name : MapObject.makeAlt(o.area, o.name)); // Ensures non-friendly version is unique
       if (o.spawns) {
         text += ` (${o.spawns})`;
       }
     }
 
-    // spawns and coins should be mutally exclusive
-    if (o.coins) {
-      text += ` (${o.coins} coin${o.coins > 1 ? 's' : ''})`;
-    }
-
-    if (o.cost) {
-      text += ` [${locStr.cost(o.price_type, o.cost)}]`;
-    }
-
-    if (friendly) {
-      text += ` (${o.lng.toFixed(0)},${o.lat.toFixed(0)})`; // Ensures friendly version is unique
-    } else {
+    const pz = MapObject._mapObjects?.PlayerPosition?.o.alt;
+    const dz = this.o.alt - (mapId == 'sw' && pz ? pz : 0);
+    if (!friendly) {
       text += ' of ' + o.type;
     }
+    text += ` (${o.lng.toFixed(0)},${o.lat.toFixed(0)},${dz>0?'+':''}${dz.toFixed(0)})`; // Ensures friendly version is unique
 
     return text;
   }
