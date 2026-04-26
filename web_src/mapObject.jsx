@@ -488,6 +488,7 @@ export class MapObject {
   static resetAll() {
     SaveFileSystem.reset();
     this._mapObjects = [];
+    this._playerStartPosition = undefined;
     delete window.mapObjectFound;
   }
 
