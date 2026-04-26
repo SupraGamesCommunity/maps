@@ -5,7 +5,14 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Node Debug: Current File",
+            "name": "Frontend Debug (npm run dev 1st)",
+            "request": "launch",
+            "type": "chrome",
+            "url": "http://localhost:5173",
+            "webRoot": "${workspaceFolder}"
+        },
+        {
+            "name": "Node.js Debug: Current File",
             "type": "node",
             "request": "launch",
             "program": "${file}",
