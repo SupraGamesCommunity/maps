@@ -65,6 +65,7 @@ import { PinContent } from './PinContent.jsx';
 //
 //  loadObjects                - called to load/construct/init all MapObjects from the various Json files
 //  initObjects                - called after loadObjects to add all the markers to the map
+//  updateTitles               - call if the state of the system has changed to refresh all the marker titles
 //
 //  addObjectFromJson          - called by load to instantiate or merge a MapObject
 //  resetAll                   - called to reset us to initial state (also resets SaveFileSystem)
@@ -492,6 +493,29 @@ export class MapObject {
     delete window.mapObjectFound;
   }
 
+  // Refresh the titles for all markers
+  static updateTitles() {
+    // This could be done by calling map.eachLayer and checking if layer is a marker 
+    for(const mapObject of Object.values(this._mapObjects)) {
+      const title = mapObject.getTooltipText(Settings.mapId);
+      if(mapObject.primeMarker)
+        mapObject.primeMarker.options.title = title;
+      if(mapObject.groupMarker)
+        mapObject.groupMarker.options.title = title;
+    }
+  }
+
+  static movePlayerPosition(mapObject) {
+    const p = MapObject._mapObjects.PlayerPosition;
+    if(p){
+      p.o.lat = mapObject.o.lat;
+      p.o.lng = mapObject.o.lng;
+      p.o.alt = mapObject.o.alt;
+      p.setLatLng({lat: p.o.lat, lng: p.o.lng});
+      MapObject.updateTitles();
+    }
+  }
+
   static get(id) {
     return this._mapObjects[id];
   }
@@ -591,6 +615,7 @@ class MapPlayerPosition extends MapObject {
       if (value) {
         this.o.alt = value.z;
         this.setLatLng({ lat: value.y, lng: value.x });
+        MapObject.updateTitles();
       } else {
         return;
       }
