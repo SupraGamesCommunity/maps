@@ -260,3 +260,10 @@ path[alt=''] {
   stroke: #000;
   opacity: 100%;
 }
+
+.xyz-delta-z-negative {
+  color: red;
+}
+.xyz-delta-z-positive {
+  color: green;
+}

@@ -29,7 +29,6 @@ export const Sidepanel = ({ layerSelectorProps, mapId }) => {
             onClick={() => {
               setCurrentTab(idx);
             }}
-            dataTarget={tab.id}
           >
             <div>
               <i className={tab.icon}></i>
@@ -41,7 +40,7 @@ export const Sidepanel = ({ layerSelectorProps, mapId }) => {
 
       <div className="content-panel">
         {tabs.map((tab, idx) => (
-          <div className={classnames('content-section', { active: currentTab === idx })}>{tab.content}</div>
+          <div key={idx} className={classnames('content-section', { active: currentTab === idx })}>{tab.content}</div>
         ))}
       </div>
 

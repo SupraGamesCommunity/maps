@@ -14,6 +14,20 @@ const StaticRow = ({ title, value }) => {
   );
 };
 
+const XYZRow = ({ xyz, playerDeltaZ }) => {
+  return (
+    <>
+      <br />
+      <span className="marker-popup-col">XYZ</span>
+      <span className="marker-popup-col2">{xyz}
+        <span className={playerDeltaZ >= 0 ? 'xyz-delta-z-positive' : 'xyz-delta-z-negative'}>
+          {(playerDeltaZ > 0 ? ' +':' ') + playerDeltaZ.toFixed(0)}
+        </span>
+      </span>
+    </>
+  );
+};
+
 const PropertyRow = ({ title, value }) => {
   let jsonStr = JSON.stringify(value, null, ' ').replaceAll('"', '').replaceAll('\n', '');
   return (
@@ -94,7 +108,7 @@ const BuildForm = ({ o, closePopup }) => {
   );
 };
 
-export const PinContent = ({ o, mapId, closePopup, hasFoundState, isFound, foundAlt, buildMode }) => {
+export const PinContent = ({ o, mapId, closePopup, hasFoundState, isFound, foundAlt, buildMode, playerDeltaZ }) => {
   let ytSrc = null;
 
   const [isFoundCheckbox, setIsFoundCheckbox] = useState(isFound);
@@ -152,7 +166,7 @@ export const PinContent = ({ o, mapId, closePopup, hasFoundState, isFound, found
             }
           />
         )}
-        <StaticRow title="XYZ pos" value={`(${o.lng.toFixed(0)}, ${o.lat.toFixed(0)}, ${o.alt.toFixed(0)})`} />
+        <XYZRow xyz={`(${o.lng.toFixed(0)}, ${o.lat.toFixed(0)}, ${o.alt.toFixed(0)})`} playerDeltaZ={playerDeltaZ} />
         <br />
         <br />
       </div>

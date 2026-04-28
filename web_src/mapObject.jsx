@@ -110,26 +110,17 @@ export class MapObject {
         text += ` (${locStr.friendly(null, o.spawns, mapId)})`;
       }
     } else {
-      text = MapObject.makeAlt(o.area, o.name); // Ensures non-friendly version is unique
+      text = (mapId != 'siu' ? o.name : MapObject.makeAlt(o.area, o.name)); // Ensures non-friendly version is unique
       if (o.spawns) {
         text += ` (${o.spawns})`;
       }
     }
 
-    // spawns and coins should be mutally exclusive
-    if (o.coins) {
-      text += ` (${o.coins} coin${o.coins > 1 ? 's' : ''})`;
-    }
-
-    if (o.cost) {
-      text += ` [${locStr.cost(o.price_type, o.cost)}]`;
-    }
-
-    if (friendly) {
-      text += ` (${o.lng.toFixed(0)},${o.lat.toFixed(0)})`; // Ensures friendly version is unique
-    } else {
+    const playerDeltaZ = this.getPlayerDeltaZ(mapId);
+    if (!friendly) {
       text += ' of ' + o.type;
     }
+    text += ` (${o.lng.toFixed(0)},${o.lat.toFixed(0)},${playerDeltaZ>0?'+':''}${playerDeltaZ.toFixed(0)})`; // Ensures friendly version is unique
 
     return text;
   }
@@ -394,6 +385,7 @@ export class MapObject {
     buildMode.marker = this;
     buildMode.object = o;
 
+    const playerDeltaZ = this.getPlayerDeltaZ(mapId);
     const popUpContentDiv = document.createElement('div');
     const sidepanelRoot = createRoot(popUpContentDiv);
     const leafletMap = e.target._map;
@@ -409,10 +401,17 @@ export class MapObject {
       isFound: this.isFound(),
       foundAlt: this.alt,
       buildMode: Settings.global.buildMode,
+      playerDeltaZ,
     };
 
     sidepanelRoot.render(<PinContent {...content} />);
     e.popup.setContent(popUpContentDiv);
+  }
+
+  getPlayerDeltaZ(mapId) {
+    const playerZ = MapObject._mapObjects?.PlayerPosition?.o.alt;
+    let playerDeltaZ = this.o.alt - (mapId == 'sw' && playerZ ? playerZ : 0);
+    return playerDeltaZ;
   }
 
   // returns URL for this map object
@@ -536,6 +535,7 @@ function mapObject(...args) {
 export const mapObjectFound = function (id, found = true) {
   MapObject._mapObjects[id].setFound(found);
 };
+
 
 //=================================================================================================
 // MapObject subclasses
