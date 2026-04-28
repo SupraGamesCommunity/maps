@@ -1,6 +1,5 @@
 /* globals L */
 
-import { buildMode } from './main.js';
 import { mergeDeep } from './utils.js';
 import { L_arrowLine } from './arrowLine.js';
 import { locStr } from './locStr.js';
@@ -10,6 +9,9 @@ import { GameClasses } from './gameClasses.js';
 import { MapLayer } from './mapLayer.js';
 import { SaveFileSystem } from './saveFileSystem.js';
 import { MapParam } from './mapParam.js';
+import { buildMode } from './devBuildMode.js';
+import { createRoot } from 'react-dom/client';
+import { PinContent } from './PinContent.jsx';
 
 //=================================================================================================
 // MapObject class
@@ -108,18 +110,17 @@ export class MapObject {
         text += ` (${locStr.friendly(null, o.spawns, mapId)})`;
       }
     } else {
-      text = (mapId != 'siu' ? o.name : MapObject.makeAlt(o.area, o.name)); // Ensures non-friendly version is unique
+      text = mapId != 'siu' ? o.name : MapObject.makeAlt(o.area, o.name); // Ensures non-friendly version is unique
       if (o.spawns) {
         text += ` (${o.spawns})`;
       }
     }
 
-    const pz = MapObject._mapObjects?.PlayerPosition?.o.alt;
-    const dz = this.o.alt - (mapId == 'sw' && pz ? pz : 0);
+    const playerDeltaZ = this.getPlayerDeltaZ(mapId);
     if (!friendly) {
       text += ' of ' + o.type;
     }
-    text += ` (${o.lng.toFixed(0)},${o.lat.toFixed(0)},${dz>0?'+':''}${dz.toFixed(0)})`; // Ensures friendly version is unique
+    text += ` (${o.lng.toFixed(0)},${o.lat.toFixed(0)},${playerDeltaZ > 0 ? '+' : ''}${playerDeltaZ.toFixed(0)})`; // Ensures friendly version is unique
 
     return text;
   }
@@ -141,7 +142,7 @@ export class MapObject {
     };
     const marker = L.marker([this.o.lat, this.o.lng], options)
       .addTo(mapLayer.id == '_map' ? map : mapLayer.layerObj) // Add to relevant mapLayer (or the group)
-      .bindPopup('')
+      .bindPopup('', { minWidth: 300 })
       .on('popupopen', this.onPopupOpen, this) // We set popup text on demand
       .on('mouseover', this.onMouseOver, this) // We update tooltip text on demand
       .on('add', this.onAdd, this) // We may need to resize icons when they're layer is displayed
@@ -384,146 +385,33 @@ export class MapObject {
     buildMode.marker = this;
     buildMode.object = o;
 
-    let text = '';
-    const hidden = o?.hidden == 'true' ? ' (hidden)' : '';
-
-    const fmtheading = (str) => {
-      return `<div class="marker-popup-heading">${str}</div>`;
+    const playerDeltaZ = this.getPlayerDeltaZ(mapId);
+    const popUpContentDiv = document.createElement('div');
+    const sidepanelRoot = createRoot(popUpContentDiv);
+    const leafletMap = e.target._map;
+    const closePopup = () => {
+      sidepanelRoot.unmount();
+      leafletMap.closePopup();
+    };
+    const content = {
+      o,
+      mapId,
+      closePopup,
+      hasFoundState: this._foundLockedState === undefined,
+      isFound: this.isFound(),
+      foundAlt: this.alt,
+      buildMode: Settings.global.buildMode,
+      playerDeltaZ,
     };
 
-    text += fmtheading(`${locStr.friendly(o, o.type, mapId)}${hidden}`);
+    sidepanelRoot.render(<PinContent {...content} />);
+    e.popup.setContent(popUpContentDiv);
+  }
 
-    text += '<div class="marker-popup-text">';
-
-    const fmtrow = (title, value) => {
-      return `<br><span class="marker-popup-col">${title}</span><span class="marker-popup-col2">${value}</span>`;
-    };
-
-    if (o.spawns) text += fmtrow('Contains', locStr.friendly(null, o.spawns, mapId));
-
-    if (o.coins) text += fmtrow('Coins', `${o.coins} coin${o.coins > 1 ? 's' : ''}`);
-
-    if (o.scrapamount) text += fmtrow('Amount', `${o.scrapamount} coin${o.scrapamount > 1 ? 's' : ''}`);
-
-    if (o.cost) text += fmtrow('Price', locStr.cost(o.price_type, o.cost));
-
-    if (o.area_tag) text += fmtrow('Area', o.area_tag);
-
-    if (o.prog_tag) text += fmtrow('Act', o.prog_tag);
-
-    if (o.abilities) text += fmtrow('Requires', o.abilities);
-
-    if (o.loop) text += fmtrow('Loop', o.loop);
-
-    if (o.variant) text += fmtrow('Variant', o.variant);
-
-    if (o.description || GameClasses.get(o.type).description)
-      text += fmtrow('Description', locStr.description(o, o.type, mapId));
-
-    if (o.comment) text += fmtrow('Comment', o.comment);
-
-    if (o.spoiler_help)
-      text += fmtrow(
-        'Spoiler help',
-        `<details><summary>Click to show/hide</summary><span>${o.spoiler_help}</span></details>`
-      );
-
-    const pz = MapObject._mapObjects?.PlayerPosition?.o.alt;
-    const dz = this.o.alt - (mapId == 'sw' && pz ? pz : 0);
-    const col = dz < 0 ? 'red' : 'green';
-    const height = `<span style="color:${col}">${dz>0?'+':''}${dz.toFixed(0)}</span>`;
-
-    text += fmtrow('XYZ pos', `(${o.lng.toFixed(0)}, ${o.lat.toFixed(0)}, ${o.alt.toFixed(0)}) ${height}`);
-
-    text += '<br><br></div>';
-
-    if (o.yt_video) {
-      let ytSrc = 'https://www.youtube-nocookie.com/embed/' + o.yt_video + '?controls=0';
-
-      function hmsToSecs(str) {
-        var p = str.split(':'),
-          s = 0,
-          m = 1;
-        while (p.length > 0) {
-          s += m * Number(p.pop());
-          m *= 60;
-        }
-        return s;
-      }
-
-      if (o.yt_start) ytSrc += '&start=' + hmsToSecs(o.yt_start);
-      if (o.yt_end) ytSrc += '&end=' + hmsToSecs(o.yt_end);
-
-      text =
-        text +
-        '<iframe width="300" height="169" src="' +
-        ytSrc +
-        '" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
-    }
-
-    //text += '<div class="marker-popup-subheading">' + o.area + '</div><br>'
-    //text += '<br><br><div class="marker-popup-footnote">Lat: ' + o.lat + '<br>Lng: ' + o.lng + '<br>Alt: ' + o.alt + '</div>'
-    //<p><span class="a">foo</span>  <span class="b">=</span>  <span class="c">"abcDeveloper"</span>
-
-    if (this._foundLockedState === undefined) {
-      let value = this.isFound() ? 'checked' : '';
-      text += '<div class="marker-popup-found">';
-      text += `<input type="checkbox" id="${this.alt}" ${value} onclick=window.mapObjectFound("${this.alt}",this.checked)><label for="${this.alt}">`;
-      text += 'Found</label></div>';
-    } else {
-      text += '<div class="marker-popup-found">&nbsp;</div>';
-    }
-
-    //let base = window.location.href.replace(/#.*$/,'');
-    //let vars = {mapId:mapId, lat:Math.round(map.getCenter().lat), lng:Math.round(map.getCenter().lng), zoom:map.getZoom()};
-    //let url = base +'#' + Object.entries(vars).map(e=>e[0]+'='+encodeURIComponent(e[1])).join('&');
-    //let a = '<a href="'+url+'" onclick="return false">Map URL</a>';
-
-    if (Settings.global.buildMode) {
-      const dbgrow = (title, value) => {
-        value = JSON.stringify(value, null, ' ').replaceAll('"', '').replaceAll('\n', '');
-        //value = value.replaceAll(' ', '&nbsp;');
-        return `<span class="marker-popup-debug-col">${title}</span><span class="marker-popup-debug-col2">${value}</span><br>`;
-      };
-
-      text += '<div class="marker-popup-debug"><br><details><summary><b>Full JSON (dev)</b></summary>';
-      for (const [key, value] of Object.entries(o)) {
-        text += dbgrow(key, value);
-      }
-      text += '</details></div>';
-    }
-
-    if (Settings.global.buildMode) {
-      text += '<hr>';
-      text += '<div class="marker-popup-edit"><details><summary><b>Edit JSON (dev)</b></summary>';
-
-      const editrow = (title, value) => {
-        return (
-          `<span class="marker-popup-edit-col">${title}</span>` +
-          '<span class="marker-popup-edit-col2">' +
-          `<input type="text" id="${title}" onchange="updateBuildModeValue(event);" value="${value}"></input>` +
-          '</span><br>'
-        );
-      };
-
-      Object.getOwnPropertyNames(o).forEach(function (propName) {
-        if (propName != 'name' && propName != 'area') {
-          const value =
-            typeof o[propName] === 'string' ? o[propName] : JSON.stringify(o[propName]).replaceAll('"', '&quot;');
-          text += editrow(propName, value);
-        }
-      });
-      if (!('yt_video' in o)) {
-        text += editrow('yt_video', '');
-      }
-      if (!('yt_start' in o)) {
-        text += editrow('yt_start', '');
-      }
-      text += '<button onclick="commitCurrentBuildModeChanges();">Save</button>';
-      text += '</details></div>';
-    }
-
-    e.popup.setContent(text);
+  getPlayerDeltaZ(mapId) {
+    const playerZ = MapObject._mapObjects?.PlayerPosition?.o.alt;
+    let playerDeltaZ = this.o.alt - (mapId == 'sw' && playerZ ? playerZ : 0);
+    return playerDeltaZ;
   }
 
   // returns URL for this map object
@@ -607,6 +495,7 @@ export class MapObject {
   static resetAll() {
     SaveFileSystem.reset();
     this._mapObjects = [];
+    this._playerStartPosition = undefined;
     delete window.mapObjectFound;
   }
 

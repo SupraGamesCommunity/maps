@@ -1,7 +1,7 @@
 /* globals L */
 
 import { Settings } from './settings.js';
-import { MapObject } from './mapObject.js';
+import { MapObject } from './mapObject.jsx';
 
 //=================================================================================================
 // L.Control.SupraSearch

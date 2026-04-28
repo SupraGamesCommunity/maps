@@ -49,7 +49,7 @@
         "games"          : ["sl", "slc", "siu", "sw"]
     },
 
-    "_map": { "type": "_map", "category": "_map", "name": "_map", "defaultIcon": null, "defaultActive": true, "zDepth": 0, "games": ["sl", "slc", "siu", "sw"] },
+    "_map": { "type": "_map", "category": "_map", "name": "_map", "defaultIcon": null, "defaultActive": true, "zDepth": 15, "games": ["sl", "slc", "siu", "sw"] },
 
     "jumppads"   : { "type": "markers", "category": "Travel",        "name": "Pads",          "name_key": "", "defaultIcon": "jumppad",       "defaultActive": false, "zDepth":  3, "games": ["sl", "slc", "siu"] },
     "pipesys"    : { "type": "markers", "category": "Travel",        "name": "Pipes",         "name_key": "", "defaultIcon": "pipe",          "defaultActive": false, "zDepth":  4, "games": ["sl", "siu"       ] },
