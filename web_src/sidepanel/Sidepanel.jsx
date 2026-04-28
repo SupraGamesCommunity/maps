@@ -40,7 +40,9 @@ export const Sidepanel = ({ layerSelectorProps, mapId }) => {
 
       <div className="content-panel">
         {tabs.map((tab, idx) => (
-          <div key={idx} className={classnames('content-section', { active: currentTab === idx })}>{tab.content}</div>
+          <div key={idx} className={classnames('content-section', { active: currentTab === idx })}>
+            {tab.content}
+          </div>
         ))}
       </div>
 

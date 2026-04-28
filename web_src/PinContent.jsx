@@ -19,9 +19,10 @@ const XYZRow = ({ xyz, playerDeltaZ }) => {
     <>
       <br />
       <span className="marker-popup-col">XYZ</span>
-      <span className="marker-popup-col2">{xyz}
+      <span className="marker-popup-col2">
+        {xyz}
         <span className={playerDeltaZ >= 0 ? 'xyz-delta-z-positive' : 'xyz-delta-z-negative'}>
-          {(playerDeltaZ > 0 ? ' +':' ') + playerDeltaZ.toFixed(0)}
+          {(playerDeltaZ > 0 ? ' +' : ' ') + playerDeltaZ.toFixed(0)}
         </span>
       </span>
     </>

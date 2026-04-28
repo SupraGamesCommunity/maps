@@ -110,7 +110,7 @@ export class MapObject {
         text += ` (${locStr.friendly(null, o.spawns, mapId)})`;
       }
     } else {
-      text = (mapId != 'siu' ? o.name : MapObject.makeAlt(o.area, o.name)); // Ensures non-friendly version is unique
+      text = mapId != 'siu' ? o.name : MapObject.makeAlt(o.area, o.name); // Ensures non-friendly version is unique
       if (o.spawns) {
         text += ` (${o.spawns})`;
       }
@@ -120,7 +120,7 @@ export class MapObject {
     if (!friendly) {
       text += ' of ' + o.type;
     }
-    text += ` (${o.lng.toFixed(0)},${o.lat.toFixed(0)},${playerDeltaZ>0?'+':''}${playerDeltaZ.toFixed(0)})`; // Ensures friendly version is unique
+    text += ` (${o.lng.toFixed(0)},${o.lat.toFixed(0)},${playerDeltaZ > 0 ? '+' : ''}${playerDeltaZ.toFixed(0)})`; // Ensures friendly version is unique
 
     return text;
   }
@@ -495,6 +495,7 @@ export class MapObject {
   static resetAll() {
     SaveFileSystem.reset();
     this._mapObjects = [];
+    this._playerStartPosition = undefined;
     delete window.mapObjectFound;
   }
 
@@ -535,7 +536,6 @@ function mapObject(...args) {
 export const mapObjectFound = function (id, found = true) {
   MapObject._mapObjects[id].setFound(found);
 };
-
 
 //=================================================================================================
 // MapObject subclasses

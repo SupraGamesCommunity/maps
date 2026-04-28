@@ -143,28 +143,29 @@ export class SaveFileSystem {
 
       // We're searching for any strings that start with PersistentLevel. following a nul
       const srchStr = ['PersistentLevel.', 'LastCheckpointActor'];
-      const re_match = new RegExp('('+'\0'+srchStr.join('|\0')+')', 'gi');
+      const re_match = new RegExp('(' + '\0' + srchStr.join('|\0') + ')', 'gi');
       let m;
       let prevFoundStr;
 
       // Go through all matching strings
       while ((m = re_match.exec(strview)) != null) {
-        const foundStr = strview.slice(m.index+1, re_match.lastIndex);
+        const foundStr = strview.slice(m.index + 1, re_match.lastIndex);
 
-        if(foundStr === 'PersistentLevel.'){
+        if (foundStr === 'PersistentLevel.') {
           const namelen = dataview.getInt32(m.index - 3, true) - m[0].length + 1;
           const nameidx = m.index + m[0].length;
           const name = strview.slice(nameidx, nameidx + namelen);
 
-          if(prevFoundStr !== 'LastCheckpointActor'){
+          if (prevFoundStr !== 'LastCheckpointActor') {
             addToSaveData('Supraworld', name);
-          }
-          else {
+          } else {
             // Convert the LastCheckpointActor to a Player Position state ala the old save system
             // It might be better to change the _SWPlayerPosition/SupraworldStartPosition to use
             // this data more directly
-            const saveObj = MapObject.get('Supraworld:'+name);
-            addToSaveData('', 'Player Position', null, {value: { x: saveObj.o.lng, y: saveObj.o.lat, z: saveObj.o.alt }});
+            const saveObj = MapObject.get('Supraworld:' + name);
+            addToSaveData('', 'Player Position', null, {
+              value: { x: saveObj.o.lng, y: saveObj.o.lat, z: saveObj.o.alt },
+            });
           }
         }
         prevFoundStr = foundStr;
