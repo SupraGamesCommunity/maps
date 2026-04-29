@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 import * as fs from 'fs';
 import * as path from 'path';
@@ -6,18 +6,18 @@ import * as process from 'process';
 import { parseArgs } from 'util';
 import { fileURLToPath } from 'url';
 
-import { createCanvas,  CanvasRenderingContext2D, Image  } from 'canvas';
-import { Path2D,  applyPath2DToCanvasRenderingContext } from "path2d";
+import { createCanvas, CanvasRenderingContext2D, Image } from 'canvas';
+import { Path2D, applyPath2DToCanvasRenderingContext } from 'path2d';
 
-import { library, icon as fa_icon } from '@fortawesome/fontawesome-svg-core'
-import { fas } from '@fortawesome/free-solid-svg-icons'
-import { far } from '@fortawesome/free-regular-svg-icons'
+import { library, icon as fa_icon } from '@fortawesome/fontawesome-svg-core';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+import { far } from '@fortawesome/free-regular-svg-icons';
 
-import { supraColors } from '../web_src/supraDefs.js' 
+import { supraColors } from '../web_src/supraDefs.js';
 import { mergeDeep } from '../web_src/utils.js';
 
 applyPath2DToCanvasRenderingContext(CanvasRenderingContext2D);
-library.add(fas, far)
+library.add(fas, far);
 
 //---------------------------------------------------------------------------------------------------------------------
 // Set up default directories
@@ -31,44 +31,70 @@ const iconsPath = path.join(__dirname, '..\\public\\img\\markers');
 // Parse Command Line Options
 
 const cliOptions = {
-  game: { type: 'string', short: 'g', default: ['sw'], help: '{sl|siu|sw|all} game to run icon generation for', multiple: true },
-  datapath: { type: 'string', short: 'd', default: dataPath.toString(), help: '{path} to config JSONs [' + dataPath + ']' },
-  iconspath: { type: 'string', short: 'i', default: iconsPath.toString(), help: '{path} to icons images [' + iconsPath + ']' },
+  game: {
+    type: 'string',
+    short: 'g',
+    default: ['sw'],
+    help: '{sl|siu|sw|all} game to run icon generation for',
+    multiple: true,
+  },
+  datapath: {
+    type: 'string',
+    short: 'd',
+    default: dataPath.toString(),
+    help: '{path} to config JSONs [' + dataPath + ']',
+  },
+  iconspath: {
+    type: 'string',
+    short: 'i',
+    default: iconsPath.toString(),
+    help: '{path} to icons images [' + iconsPath + ']',
+  },
   logging: { type: 'string', short: 'l', default: 'info', help: 'set logging level (quiet, error, info, debug)' },
   help: { type: 'boolean', short: 'h', default: false, help: 'display usage text' },
-}
-const args = parseArgs({ options: cliOptions, allowPositionals: true, strict: false, });
-args.unrecognisedOptions = Object.keys(args.values).some(x => !(x in cliOptions))
+};
+const args = parseArgs({ options: cliOptions, allowPositionals: true, strict: false });
+args.unrecognisedOptions = Object.keys(args.values).some((x) => !(x in cliOptions));
 
 // Fix up 'all' to all the games
-if('all' in args.values.game){
+if ('all' in args.values.game) {
   args.values.game = ['sl', 'siu', 'slc', 'sw'];
 }
 
 //---------------------------------------------------------------------------------------------------------------------
 // Setup logging functions
 const loggingLevelNames = { quiet: 1, fatal: 0, error: 1, warn: 2, info: 3, debug: 4, trace: 5 };
-function getLoggingLevel(levelName){
+function getLoggingLevel(levelName) {
   return loggingLevelNames[levelName] ?? loggingLevelNames.info;
 }
 const loggingLevel = getLoggingLevel(args.values.logging);
-function log() { console.log.apply(null, arguments); }
-function log_error(){ if(loggingLevelNames.error <= loggingLevel) console.log.apply(null, arguments); }
-function log_info() { if(loggingLevelNames.info  <= loggingLevel) console.log.apply(null, arguments); }
-function log_debug(){ if(loggingLevelNames.debug <= loggingLevel) console.log.apply(null, arguments); }
-function log_trace(){ if(loggingLevelNames.trace <= loggingLevel) console.log.apply(null, arguments); }
+function log() {
+  console.log.apply(null, arguments);
+}
+function log_error() {
+  if (loggingLevelNames.error <= loggingLevel) console.log.apply(null, arguments);
+}
+function log_info() {
+  if (loggingLevelNames.info <= loggingLevel) console.log.apply(null, arguments);
+}
+function log_debug() {
+  if (loggingLevelNames.debug <= loggingLevel) console.log.apply(null, arguments);
+}
+function log_trace() {
+  if (loggingLevelNames.trace <= loggingLevel) console.log.apply(null, arguments);
+}
 
 //---------------------------------------------------------------------------------------------------------------------
 // Usage information
-if(args.values.help || args.positionals.length > 0 || args.unrecognisedOptions) {
-    log('Usage: node rendericons.js [options]\noptions:')
-    for(const [name, opt] of Object.entries(cliOptions)){
-      log(`--${name}, -${opt.short}\t${opt.help}`);
-    }
-    if(!args.values.help){
-      log_error('\nError: unrecognised arguments:', process.argv.slice(2).join(' '));
-    }
-    process.exit();
+if (args.values.help || args.positionals.length > 0 || args.unrecognisedOptions) {
+  log('Usage: node rendericons.js [options]\noptions:');
+  for (const [name, opt] of Object.entries(cliOptions)) {
+    log(`--${name}, -${opt.short}\t${opt.help}`);
+  }
+  if (!args.values.help) {
+    log_error('\nError: unrecognised arguments:', process.argv.slice(2).join(' '));
+  }
+  process.exit();
 }
 
 //---------------------------------------------------------------------------------------------------------------------
@@ -78,23 +104,21 @@ log_trace('loggingLevel:', args.values.logging, loggingLevel);
 log_trace('datapath:', args.values.datapath);
 log_trace('iconspath:', args.values.iconspath);
 
-
 //---------------------------------------------------------------------------------------------------------------------
 // Read Json File
-function readJsonFile(jsonPath){
-  if(fs.existsSync(jsonPath)){
+function readJsonFile(jsonPath) {
+  if (fs.existsSync(jsonPath)) {
     log_info('Reading JSON "' + jsonPath + '"');
     return JSON.parse(fs.readFileSync(jsonPath));
-  }
-  else {
-    log_error('Error: file does not exist "' + jsonPath + '"')
+  } else {
+    log_error('Error: file does not exist "' + jsonPath + '"');
     process.exit();
   }
 }
 
 //---------------------------------------------------------------------------------------------------------------------
 // Load all marker data
-function loadMarkers(game, dataPath){
+function loadMarkers(game, dataPath) {
   // Read the base marker file
   const markers = readJsonFile(path.join(dataPath, 'markers.' + game + '.json'));
 
@@ -104,16 +128,16 @@ function loadMarkers(game, dataPath){
   function makeAlt(marker) {
     return marker.area + ':' + marker.name;
   }
-  let markerMap = {}
-  markers.forEach(marker => {
+  let markerMap = {};
+  markers.forEach((marker) => {
     markerMap[makeAlt(marker)] = marker;
   });
 
   // Merge custom marker data into base markers
-  function mergeCustomMarkers(markerMap, path){
+  function mergeCustomMarkers(markerMap, path) {
     const customMarkers = readJsonFile(path);
     log_trace(customMarkers.length, ' custom markers merged');
-    customMarkers.forEach(marker => {
+    customMarkers.forEach((marker) => {
       mergeDeep(markerMap[makeAlt(marker)], marker);
     });
   }
@@ -125,17 +149,15 @@ function loadMarkers(game, dataPath){
   return markers;
 }
 
-
 //---------------------------------------------------------------------------------------------------------------------
 // Read gameClasses and work out all variants used by them
 const gameClasses = readJsonFile(path.join(args.values.datapath, 'gameClasses.json'));
 
-
 // Figure out what variants are used across all instances in our marker data and add them to game classes
-for(const game of args.values.game){
+for (const game of args.values.game) {
   const markers = loadMarkers(game, args.values.datapath);
-  markers.forEach(marker => {
-    if('variant' in marker){
+  markers.forEach((marker) => {
+    if ('variant' in marker) {
       gameClasses[marker.type].variants = (gameClasses[marker.type].variants ?? new Set()).add(marker.variant);
     }
   });
@@ -146,29 +168,28 @@ for(const game of args.values.game){
 const iconConfigs = readJsonFile(path.join(args.values.datapath, 'iconConfigs.json'));
 
 // Add a set of variants we need for each class to each iconConfig
-for(const classConfig of Object.values(gameClasses)){
-  if(classConfig.icon) {
+for (const classConfig of Object.values(gameClasses)) {
+  if (classConfig.icon) {
     // Get the icon name and flags this class uses
     const [iconName, flags] = [...classConfig.icon.split(':'), ''];
 
     // Get a list of games and variants we need based on the flags and defaults
-    const games = flags.includes('g') ? [...classConfig.games ?? ['sl', 'slc', 'siu']] : [];
-    const variants = flags.includes('v') ? [...classConfig.variants ?? []] : [];
+    const games = flags.includes('g') ? [...(classConfig.games ?? ['sl', 'slc', 'siu'])] : [];
+    const variants = flags.includes('v') ? [...(classConfig.variants ?? [])] : [];
 
     // Add the icon variations to a set of icons we should have
-    if(iconName in iconConfigs) {
+    if (iconName in iconConfigs) {
       iconConfigs[iconName].variants = new Set([iconName]);
-      games.forEach(g => {
+      games.forEach((g) => {
         iconConfigs[iconName].variants.add(iconName + '.' + g);
       });
-      variants.forEach(v => {
+      variants.forEach((v) => {
         iconConfigs[iconName].variants.add(iconName + '.' + v);
-        games.forEach(g => {
+        games.forEach((g) => {
           iconConfigs[iconName].variants.add(iconName + '.' + v + '.' + g);
-        })
+        });
       });
-    }
-    else{
+    } else {
       log_info(iconName, 'not found in iconConfigs.json');
     }
   }
@@ -176,38 +197,36 @@ for(const classConfig of Object.values(gameClasses)){
 
 // Convert supraColor to the hex colour code
 function toSupraColor(col) {
- return supraColors[col] || col;
-} 
-
+  return supraColors[col] || col;
+}
 
 const imgPath = 'img/markers/'; // Relative path to marker icon directory
 const imgExt = {
-    // Maps style to file extension
-    fapng: '.png',
-    fasvg: '.svg',
-    png: '.png',
-    svg: '.svg',
-  };
+  // Maps style to file extension
+  fapng: '.png',
+  fasvg: '.svg',
+  png: '.png',
+  svg: '.svg',
+};
 const defaultIconName = 'question_mark';
 
 const pointConfig = {
-    type: 'point', // Point style marker icon
-    style: 'png', // Raw PNG style
-    iconSize: [32, 32], // Base size for icon in pixels (can be overriden)
-    iconAnchor: [16, 16], // Anchor position in pixels from top left corner
-    popupAnchor: [0, -16], // Popup position in pixels from anchor point
-    tooltipAnchor: [16, 16], // Tooltip position in pixels from anchor point (if there is one)
-  };
+  type: 'point', // Point style marker icon
+  style: 'png', // Raw PNG style
+  iconSize: [32, 32], // Base size for icon in pixels (can be overriden)
+  iconAnchor: [16, 16], // Anchor position in pixels from top left corner
+  popupAnchor: [0, -16], // Popup position in pixels from anchor point
+  tooltipAnchor: [16, 16], // Tooltip position in pixels from anchor point (if there is one)
+};
 
 const pinConfig = {
-    type: 'pin', // Pin style marker icon
-    style: 'png', // Font Awesome Solid (options: fas..., fapng, png)
-    iconSize: [32, 32], // Base size for icon in pixels (can be overriden)
-    iconAnchor: [16, 32], // Anchor position in pixels from top left corner
-    popupAnchor: [0, -32], // Popup position in pixels from anchor point
-    tooltipAnchor: [16, 0], // Tooltip position in pixels from anchor point (if there is one)
-  };
-
+  type: 'pin', // Pin style marker icon
+  style: 'png', // Font Awesome Solid (options: fas..., fapng, png)
+  iconSize: [32, 32], // Base size for icon in pixels (can be overriden)
+  iconAnchor: [16, 32], // Anchor position in pixels from top left corner
+  popupAnchor: [0, -32], // Popup position in pixels from anchor point
+  tooltipAnchor: [16, 0], // Tooltip position in pixels from anchor point (if there is one)
+};
 
 // Render a Font Awesome Icon and return an Image URL
 function renderFAIconToImageURL(
@@ -217,7 +236,6 @@ function renderFAIconToImageURL(
   bg, // Background colour
   fg = 'white' // Foreground colour
 ) {
-
   const faPin = 'location-pin'; // FA icon used for map pin marker background
   const faPoint = 'circle'; // FA icon used for map point marker background
   const faDefault = 'question-circle'; // FA icon used if asked for unknown icon
@@ -291,14 +309,13 @@ function renderFAIconToImageURL(
 //    Generate icon variant:
 //      Look for image file with variant
 //      Set foreground colour based on variant
-//  
-
-iconData['misc'] = {"class": "fa-solid fa-circle-question", "bg": "grey"};
+//    Write PNG to output directory
+// Note: Configure size of icon
 
 for (const [k, v] of Object.entries(iconData)) {
-    const buffer = renderFAIconToImageURL(v.class, v.color, v.background, 48);
-    const outPNG = path.join(args.values.path, 'icons', k + '_pin.png');
-    fs.writeFileSync(outPNG, buffer)
+  const buffer = renderFAIconToImageURL(v.class, v.color, v.background, 48);
+  const outPNG = path.join(args.values.path, 'icons', k + '_pin.png');
+  fs.writeFileSync(outPNG, buffer);
 }
 
-console.log(`${Object.keys(iconData).length} icon files written to "${path.join(args.values.path, 'icons')}"`)
+console.log(`${Object.keys(iconData).length} icon files written to "${path.join(args.values.path, 'icons')}"`);
