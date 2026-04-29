@@ -1,0 +1,12 @@
+{
+    "python-envs.defaultEnvManager": "ms-python.python:venv",
+    "explorer.excludeGitIgnore": true,
+    "terminal.integrated.profiles.windows": {
+        "Maps Export": {
+            "path": "C:\\Windows\\System32\\cmd.exe",
+            "cwd": "${workspaceFolder}\\scripts",
+            "args": [ "/K shellstartup.cmd" ]
+        }
+    }
+
+}
