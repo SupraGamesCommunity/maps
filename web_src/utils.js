@@ -39,12 +39,12 @@ export const browser = {
     return locales[0];
   },
 
-  // Retrieves the CSS for 'className' and builds a dictionary from property to value
-  // for any of the properties in 'props' specified in the CSS. Very much doesn't handle
+  // Retrieves the CSS for 'className' (which may be a space-separated list of classes) and builds a dictionary from
+  // property to value for any of the properties in 'props' specified in the CSS. Very much doesn't handle
   // the full CSS syntax.
   cssGetProps: function (className, props) {
     const div = document.createElement('div');
-    div.classList.add(className);
+    div.className = className;
     document.body.append(div);
     let cssProps = {};
     for (const p of props) {
