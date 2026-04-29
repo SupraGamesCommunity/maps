@@ -14,6 +14,10 @@ import { MapPins } from './mapPins.js';
 import { L_Control_supraSearch } from './supraSearch.js';
 import { L_supraMap } from './supraMap.js';
 import { initSidepanelDom, renderSidepanel, destroySidepanel } from './sidepanel/renderSidepanel.jsx';
+import { library, icon as fa_icon } from '@fortawesome/fontawesome-svg-core';
+import { faMapPin } from '@fortawesome/free-solid-svg-icons';
+
+library.add(faMapPin);
 
 const skipConfirms = browser.isCode;
 
@@ -174,7 +178,7 @@ async function loadMap(mapParam) {
       // build mode button
       L.Toolbar2.Action.extend({
         options: {
-          toolbarIcon: { html: '<i class="fa fa-map-pin"></i>', tooltip: 'Map pins' },
+          toolbarIcon: { html: fa_icon({ prefix: 'fa', iconName: 'map-pin' }).html, tooltip: 'Map pins' },
           subToolbar: new L.Toolbar2({
             actions: [
               subAction.extend({

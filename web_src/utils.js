@@ -1,5 +1,3 @@
-/* global $ */
-
 //=================================================================================================
 // Utility functions
 
@@ -45,11 +43,14 @@ export const browser = {
   // for any of the properties in 'props' specified in the CSS. Very much doesn't handle
   // the full CSS syntax.
   cssGetProps: function (className, props) {
-    const div = $('<div>').addClass(className).appendTo(document.body);
+    const div = document.createElement('div');
+    div.classList.add(className);
+    document.body.append(div);
     let cssProps = {};
     for (const p of props) {
-      if (div.css(p)) {
-        let val = div.css(p);
+      let computedStyle = window.getComputedStyle(div).getPropertyValue(p);
+      if (computedStyle) {
+        let val = computedStyle;
         val = !isNaN(val)
           ? Number(val)
           : val.endsWith('px')
@@ -81,8 +82,7 @@ export const browser = {
       navigator.clipboard.writeText(text).catch(() => {
         browser.fallbackCopyTextToClipboard(text);
       });
-    } catch (error) {
-      // eslint-disable-line no-unused-vars
+    } catch {
       browser.fallbackCopyTextToClipboard(text);
     }
     /*  // Firefox doesn't support this permissions query so it's easier just to try the writeText and fallback if it fails

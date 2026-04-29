@@ -10,11 +10,11 @@ import { Path2D,  applyPath2DToCanvasRenderingContext } from "path2d";
 
 applyPath2DToCanvasRenderingContext(CanvasRenderingContext2D);
 
-import * as FontAwesome from '@fortawesome/fontawesome-svg-core'
+import { library, icon as fa_icon } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import { far } from '@fortawesome/free-regular-svg-icons'
 
-FontAwesome.library.add(fas, far)
+library.add(fas, far)
 
 const supraColors = {
   "aqua":        "#00FFFF",
@@ -61,9 +61,9 @@ function renderFAIconToImageURL(fa_class, bg, fg=toSupraColor('white'), size=48)
   const ctx = canvas.getContext('2d');
 
   function drawFAIcon(prefix, iconName, color, pixelSize, dy = 0) {
-    let icon = FontAwesome.icon({ prefix, iconName });
+    let icon = fa_icon({ prefix, iconName });
 
-    if (!icon) icon = FontAwesome.icon({ prefix:'fa', iconName: 'question-circle' });
+    if (!icon) icon = fa_icon({ prefix:'fa', iconName: 'question-circle' });
 
     const [w, h, , , path] = icon.icon;
     const scale = pixelSize / h;

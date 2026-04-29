@@ -1,5 +1,10 @@
 import { L_mapIcon } from './mapIcon.js';
 import { toSupraColor, isSupraColor } from './supraDefs.js';
+import { library, icon as fa_icon } from '@fortawesome/fontawesome-svg-core';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+import { far } from '@fortawesome/free-regular-svg-icons';
+
+library.add(fas, far); // Import all FontAwesome icons
 
 //=================================================================================================
 // static class Icons
@@ -116,7 +121,7 @@ export class Icons {
     // This function draws one of the icon layers in some colour
     function drawFAIcon(prefix, iconName, color, pixelSize, dy = 0) {
       // Get a font awesome icon specified by prefix and icon name
-      let icon = FontAwesome.icon({ prefix, iconName }) || FontAwesome.icon({ prefix: 'fa', iconName: faDefault });
+      let icon = fa_icon({ prefix, iconName }) || fa_icon({ prefix: 'fa', iconName: faDefault });
 
       // Extract the width/height and SVG path data from the icon
       const [w, h, , , path] = icon.icon;

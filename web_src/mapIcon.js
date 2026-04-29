@@ -1,4 +1,4 @@
-/* globals L, $ */
+/* globals L */
 
 // These options are provided to Icons.create:
 //
@@ -84,11 +84,11 @@ export const L_MapIcon = L.Icon.extend({
 
     if (rescaleCss) {
       // Apply scale to icon CSS
-      $(`#${map._container.id} .${this.options.className}`).css({
-        width: `${this.options.iconSize[0]}px`,
-        height: `${this.options.iconSize[1]}px`,
-        'margin-left': `${-this.options.iconAnchor[0]}px`,
-        'margin-top': `${-this.options.iconAnchor[1]}px`,
+      document.querySelectorAll(`#${map._container.id} .${this.options.className}`).forEach((el) => {
+        el.style.setProperty('width', `${this.options.iconSize[0]}px`);
+        el.style.setProperty('height', `${this.options.iconSize[1]}px`);
+        el.style.setProperty('margin-left', `${-this.options.iconAnchor[0]}px`);
+        el.style.setProperty('margin-top', `${-this.options.iconAnchor[1]}px`);
       });
 
       this._iconRefresh = false;

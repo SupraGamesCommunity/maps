@@ -1,6 +1,12 @@
 import { Checkbox } from './Checkbox.jsx';
 import { browser } from '../utils.js';
 import { MapParam } from '../mapParam.js';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+import { far } from '@fortawesome/free-regular-svg-icons';
+
+library.add(fas, far); // Import all FontAwesome icons
 
 /* The Radio buttons that let the user select the game map (SupraLand, SupraWorld, etc) */
 export const MapSelectorRadioButtons = ({ options, onChange }) => {
@@ -58,7 +64,7 @@ export const MapsTab = ({ leafletMap, mapSelections, overlaySelections, onMapCha
               browser.copyTextToClipboard(MapParam.getViewURL(leafletMap));
             }}
           >
-            <i className="fa-regular fa-copy"></i>
+            <FontAwesomeIcon icon="fa-regular fa-copy" />
             {' Copy'}
           </button>
           {' Copy map URL to the clipboard'}

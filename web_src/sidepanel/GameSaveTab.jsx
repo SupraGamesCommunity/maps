@@ -1,6 +1,12 @@
 import { Settings } from '../settings.js';
 import { browser } from '../utils.js';
 import { SaveFileSystem } from '../saveFileSystem.js';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+import { far } from '@fortawesome/free-regular-svg-icons';
+
+library.add(fas, far); // Import all FontAwesome icons
 
 /* Renders the Game Saves tab UI */
 export const GameSaveTab = ({ mapId }) => {
@@ -40,7 +46,7 @@ export const GameSaveTab = ({ mapId }) => {
               loadFileHandler();
             }}
           >
-            <i className="fa-regular fa-folder-open"></i>
+            <FontAwesomeIcon icon="fa-regular fa-folder-open" />
             {' Load'}
           </button>
           {' Load a game save (*.sav) to mark collected items (Alt+R)'}
@@ -51,7 +57,7 @@ export const GameSaveTab = ({ mapId }) => {
               copySaveFilePathHandler();
             }}
           >
-            <i className="fa-regular fa-copy"></i>
+            <FontAwesomeIcon icon="fa-regular fa-copy" />
             {' Copy path'}
           </button>
           {' Copy the default Windows game save-file path to the clipboard.'}
@@ -62,7 +68,7 @@ export const GameSaveTab = ({ mapId }) => {
               unmarkAllHandler();
             }}
           >
-            <i className="fa-solid fa-border-none"></i>
+            <FontAwesomeIcon icon="fa-solid fa-border-none" />
             {' Unmark found'}
           </button>
           {' Unmark all found items.'}
