@@ -1,5 +1,3 @@
-/* global $ */
-
 export const supraColors = {
   aqua: '#00FFFF',
   black: '#030303',
