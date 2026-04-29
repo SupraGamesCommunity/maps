@@ -24,6 +24,7 @@ export function setBuildMode(newBuildMode) {
   Settings.globalSetDefault('buildMode', false);
   Settings.global.buildMode = newBuildMode;
   Settings.commit();
+  MapObject.updateTitles();
 }
 
 export function updateBuildModeValue(event) {
