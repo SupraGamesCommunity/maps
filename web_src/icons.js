@@ -110,9 +110,9 @@ export class Icons {
     const size = 48; // Size to render icons
     const outlineSize = size * 0.976; // Scale adjustment between shadow and background
     const pinIconSize = size * 0.5; // Size to draw the FA icon on a pin marker
-    const pinCentreOfs = pinIconSize * -0.25; // Y offset from centre of icon to centre for a pin
+    const pinCentreYOffset = pinIconSize * -0.25; // Y offset from centre of icon to centre for a pin
     const ptIconSize = size * 0.7; // Size to draw the FA icon on a point marker
-    const ptCentreOfs = ptIconSize * -0.2; // Y offset from centre of icon to centre for a pin
+    const ptCentreYOffset = ptIconSize * -0.2; // Y offset from centre of icon to centre for a pin
 
     // We're going to draw the icon to a canvas
     const canvas = document.createElement('canvas');
@@ -155,7 +155,7 @@ export class Icons {
     drawFAIcon('fas', isPin ? faPin : faPoint, bg, outlineSize);
 
     if (style == 'fapng' || style == 'fasvg')
-      drawImageIcon(iconName, size, isPin ? pinIconSize : ptIconSize, isPin ? pinCentreOfs : ptCentreOfs);
+      drawImageIcon(iconName, size, isPin ? pinIconSize : ptIconSize, isPin ? pinCentreYOffset : ptCentreYOffset);
     else
       drawFAIcon(
         style,
