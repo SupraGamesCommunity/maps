@@ -19,6 +19,29 @@ site-packages/
 bin/
 obj/
 
+# Ignore some of the source directories
+source/sl/*.txt
+source/sl/*.json
+source/sl/bp/**
+source/sl/enums/**
+source/sl/parse/**
+source/sl/levels/**
+source/sl/loc/**
+source/siu/*.txt
+source/siu/*.json
+source/siu/bp/**
+source/siu/enums/**
+source/siu/parse/**
+source/siu/levels/**
+source/siu/loc/**
+source/sw/*.txt
+source/sw/*.json
+source/sw/bp/**
+source/sw/enums/**
+source/sw/parse/**
+source/sw/levels/**
+source/sw/loc/**
+
 # Editor directories and files
 .vscode/*
 .vs

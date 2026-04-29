@@ -5,13 +5,38 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Frontend Debug (npm run dev 1st)",
+            "request": "launch",
+            "type": "chrome",
+            "url": "http://localhost:5173",
+            "webRoot": "${workspaceFolder}"
+        },
+        {
+            "name": "Debug rendericons.js",
+            "type": "node",
+            "request": "launch",
+            "program": "scripts\\rendericons.js",
+            "console": "integratedTerminal",
+            "cwd": "${fileDirname}",
+            "args": ["-g", "all", "-d", "..\\public\\data", "-i", "..\\public\\img\\markers", "-l", "debug"]
+        },
+        {
+            "name": "Debug supraland_parser.py",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "scripts\\supraland_parser.py",
+            "console": "integratedTerminal",
+            "cwd": "${fileDirname}",
+            "args": "-g sw -d ..\\public\\data -s ..\\source\\sw -m"
+        },
+        {
             "name": "Node Debug: Current File",
             "type": "node",
             "request": "launch",
             "program": "${file}",
             "console": "integratedTerminal",
             "cwd": "${fileDirname}",
-            "args": ["-p", "..\\source"] //-g", "sw", "-s", "GreenFirstRun"]//"$(command:PickArgs)"
+            "args": [ "" ] //"-g", "sw", "-s", "GreenFirstRun"]//"$(command:PickArgs)"
         },
         {
             "name": "Python Debug: Current File",
