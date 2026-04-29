@@ -2,3 +2,26 @@
 # just add noise to PR reviews, so we hide them.
 package-lock.json linguist-generated=true
 uv.lock linguist-generated=true
+
+# Default to CRLF
+* text=auto eol=crlf
+
+# Files executed in Linux/Unix environments must be LF
+*.sh       text eol=lf
+Dockerfile text eol=lf
+
+# Windows‑specific files must use CRLF
+*.bat     text eol=crlf
+*.cmd     text eol=crlf
+*.ps1     text eol=crlf
+*.sln     text eol=crlf
+*.vcxproj text eol=crlf
+*.csproj  text eol=crlf
+
+# Never convert binaries
+*.png -text
+*.jpg -text
+*.gif -text
+*.pdf -text
+*.zip -text
+

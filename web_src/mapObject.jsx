@@ -502,24 +502,22 @@ export class MapObject {
 
   // Refresh the titles for all markers
   static updateTitles() {
-    // This could be done by calling map.eachLayer and checking if layer is a marker 
-    for(const mapObject of Object.values(this._mapObjects)) {
+    // This could be done by calling map.eachLayer and checking if layer is a marker
+    for (const mapObject of Object.values(this._mapObjects)) {
       const title = mapObject.getTooltipText(Settings.mapId);
-      if(mapObject.primeMarker)
-        mapObject.primeMarker.options.title = title;
-      if(mapObject.groupMarker)
-        mapObject.groupMarker.options.title = title;
+      if (mapObject.primeMarker) mapObject.primeMarker.options.title = title;
+      if (mapObject.groupMarker) mapObject.groupMarker.options.title = title;
     }
   }
 
   // Move player position marker / altitude reference to specified object
   static movePlayerPosition(mapObject) {
     const p = MapObject._mapObjects.PlayerPosition;
-    if(p){
+    if (p) {
       p.o.lat = mapObject.o.lat;
       p.o.lng = mapObject.o.lng;
       p.o.alt = mapObject.o.alt;
-      p.setLatLng({lat: p.o.lat, lng: p.o.lng});
+      p.setLatLng({ lat: p.o.lat, lng: p.o.lng });
       MapObject.updateTitles();
     }
   }
@@ -609,7 +607,7 @@ class MapPlayerPosition extends MapObject {
 
       // Mouse over / search titles which include the relative altitude may have changed
       MapObject.updateTitles();
-     } else {
+    } else {
       if (this.primeMarker) {
         this.primeMarker.closePopup();
       }
