@@ -6,6 +6,12 @@ import { AboutTab } from './AboutTab.jsx';
 import { Settings } from '../settings.js';
 import { EditorTab } from './EditorTab.jsx';
 import { setLeafletMapPushCss } from './setLeafletMapPushCss.jsx';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+import { far } from '@fortawesome/free-regular-svg-icons';
+
+library.add(fas, far); // Import all FontAwesome icons
 
 /* The HTML component that renders the entire Sidepanel (including navigation tabs and content) */
 export const Sidepanel = ({ layerSelectorProps, mapId }) => {
@@ -31,7 +37,7 @@ export const Sidepanel = ({ layerSelectorProps, mapId }) => {
             }}
           >
             <div>
-              <i className={tab.icon}></i>
+              <FontAwesomeIcon icon={tab.icon} />
             </div>
             <div>{tab.title}</div>
           </button>
