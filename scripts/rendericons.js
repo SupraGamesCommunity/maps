@@ -96,7 +96,7 @@ function readJsonFile(jsonPath){
 // Load all marker data
 function loadMarkers(game, dataPath){
   // Read the base marker file
-  const markers = readJsonFile(path.join(dataPath, `markers.', game, '.json`));
+  const markers = readJsonFile(path.join(dataPath, 'markers.' + game + '.json'));
 
   log_trace(markers.length, ' markers read');
 
@@ -119,9 +119,12 @@ function loadMarkers(game, dataPath){
   }
 
   // Custom-markers and custom youtube data
-  mergeCustomMarkers(markerMap, path.join(dataPath, 'custom-markers.', game, '.json'));
-  mergeCustomMarkers(markerMap, path.join(dataPath, 'ytdata.', game, '.json'));
+  mergeCustomMarkers(markerMap, path.join(dataPath, 'custom-markers.' + game + '.json'));
+  mergeCustomMarkers(markerMap, path.join(dataPath, 'ytdata.' + game + '.json'));
+
+  return markers;
 }
+
 
 //---------------------------------------------------------------------------------------------------------------------
 // Read gameClasses and work out all variants used by them
@@ -129,7 +132,7 @@ const gameClasses = readJsonFile(path.join(args.values.datapath, 'gameClasses.js
 
 
 // Figure out what variants are used across all instances in our marker data and add them to game classes
-for(const game in args.values.game){
+for(const game of args.values.game){
   const markers = loadMarkers(game, args.values.datapath);
   markers.forEach(marker => {
     if('variant' in marker){
@@ -142,43 +145,34 @@ for(const game in args.values.game){
 // Read iconConfigs
 const iconConfigs = readJsonFile(path.join(args.values.datapath, 'iconConfigs.json'));
 
-// For each class add any variants or games required to icon
-for(const classConfig in Object.values(gameClasses)){
-  const [iconName, flags] = [...classConfig.icon.split(':'), ''];
+// Add a set of variants we need for each class to each iconConfig
+for(const classConfig of Object.values(gameClasses)){
+  if(classConfig.icon) {
+    // Get the icon name and flags this class uses
+    const [iconName, flags] = [...classConfig.icon.split(':'), ''];
 
-  const games = 'g' in flags ? [...classConfig.games ?? ['sl', 'slc', 'siu']] : [];
-  const variants = 'v' in flags ? [...classConfig.variants ?? []] : [];
+    // Get a list of games and variants we need based on the flags and defaults
+    const games = flags.includes('g') ? [...classConfig.games ?? ['sl', 'slc', 'siu']] : [];
+    const variants = flags.includes('v') ? [...classConfig.variants ?? []] : [];
 
-  icons = new Set(iconName);
-  variants.forEach(v => {
-    games.forEach(g => {
-
-    })
-  })
-  icons.add()
-  games.
-
-  iconConfigs[iconName].variants = iconConfigs[iconName].variants ?? new Set();
-
-
-  iconConfigs[iconName].variants = classConfig.variants * iconName.games
-  iconName
-  v iconName.[variants]
-  vg iconName.[variants].[games]
-  g iconName.[games]
-  
-  if('v' in flags){
-    iconConfigs[iconName].variants = iconConfigs[iconName].variants.union(classConfig.variants) ?? classConfig.variants;
-  }
-  if('g' in flags){
-    iconConfigs[iconName].games = iconConfigs[iconName].games.union(games) ?? new Set(classConfig.games ?? ['sl', 'slc', 'siu']);  
+    // Add the icon variations to a set of icons we should have
+    if(iconName in iconConfigs) {
+      iconConfigs[iconName].variants = new Set([iconName]);
+      games.forEach(g => {
+        iconConfigs[iconName].variants.add(iconName + '.' + g);
+      });
+      variants.forEach(v => {
+        iconConfigs[iconName].variants.add(iconName + '.' + v);
+        games.forEach(g => {
+          iconConfigs[iconName].variants.add(iconName + '.' + v + '.' + g);
+        })
+      });
+    }
+    else{
+      log_info(iconName, 'not found in iconConfigs.json');
+    }
   }
 }
-
-iconConfigs.variants = merge gameClasses.variants
-iconConfigs.games = gameClasses.games
-
-
 
 // Convert supraColor to the hex colour code
 function toSupraColor(col) {
@@ -290,12 +284,14 @@ function renderFAIconToImageURL(
   return canvas.toDataURL('image/png');
 }
 
-renderFAIconToImageURL(
-
-)
-
-
-
+// Go through iconConfigs
+// For each icon name in variant:
+//  See if specific config exists - skip
+//  Otherwise: if its a generate config (FAPNG/FASVG/FA)
+//    Generate icon variant:
+//      Look for image file with variant
+//      Set foreground colour based on variant
+//  
 
 iconData['misc'] = {"class": "fa-solid fa-circle-question", "bg": "grey"};
 
