@@ -233,8 +233,7 @@ export class SaveFileSystem {
     reader.onloadend = (evt) => {
       try {
         this._processLoadedArray(evt.target.result);
-      } catch (e) {
-        // eslint-disable-line no-unused-vars
+      } catch {
         alert(`Could not load file, incompatible format: ${blob.name}`);
       }
     };
