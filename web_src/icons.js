@@ -162,7 +162,7 @@ export class Icons {
         iconName,
         toSupraColor(fg || 'white'),
         isPin ? pinIconSize : ptIconSize,
-        isPin ? pinCentreOfs : 0
+        isPin ? pinCentreYOffset : 0
       );
 
     return canvas.toDataURL('image/png');
