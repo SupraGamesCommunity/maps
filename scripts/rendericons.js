@@ -200,33 +200,14 @@ function toSupraColor(col) {
   return supraColors[col] || col;
 }
 
-const imgPath = 'img/markers/'; // Relative path to marker icon directory
+// Maps style to file extension
 const imgExt = {
-  // Maps style to file extension
   fapng: '.png',
   fasvg: '.svg',
   png: '.png',
   svg: '.svg',
 };
 const defaultIconName = 'question_mark';
-
-const pointConfig = {
-  type: 'point', // Point style marker icon
-  style: 'png', // Raw PNG style
-  iconSize: [32, 32], // Base size for icon in pixels (can be overriden)
-  iconAnchor: [16, 16], // Anchor position in pixels from top left corner
-  popupAnchor: [0, -16], // Popup position in pixels from anchor point
-  tooltipAnchor: [16, 16], // Tooltip position in pixels from anchor point (if there is one)
-};
-
-const pinConfig = {
-  type: 'pin', // Pin style marker icon
-  style: 'png', // Font Awesome Solid (options: fas..., fapng, png)
-  iconSize: [32, 32], // Base size for icon in pixels (can be overriden)
-  iconAnchor: [16, 32], // Anchor position in pixels from top left corner
-  popupAnchor: [0, -32], // Popup position in pixels from anchor point
-  tooltipAnchor: [16, 0], // Tooltip position in pixels from anchor point (if there is one)
-};
 
 // Render a Font Awesome Icon and return an Image URL
 function renderFAIconToImageURL(
@@ -242,9 +223,9 @@ function renderFAIconToImageURL(
   const size = 48; // Size to render icons
   const outlineSize = size * 0.976; // Scale adjustment between shadow and background
   const pinIconSize = size * 0.5; // Size to draw the FA icon on a pin marker
-  const pinCentreOfs = pinIconSize * -0.25; // Y offset from centre of icon to centre for a pin
+  const pinCentreYOffset = pinIconSize * -0.25; // Y offset from centre of icon to centre for a pin
   const ptIconSize = size * 0.7; // Size to draw the FA icon on a point marker
-  const ptCentreOfs = ptIconSize * -0.2; // Y offset from centre of icon to centre for a pin
+  const ptCentreYOffset = ptIconSize * -0.2; // Y offset from centre of icon to centre for a pin
 
   // We're going to draw the icon to a canvas
   const canvas = createCanvas(size, size);
@@ -296,7 +277,7 @@ function renderFAIconToImageURL(
       iconName,
       toSupraColor(fg || 'white'),
       isPin ? pinIconSize : ptIconSize,
-      isPin ? pinCentreOfs : 0
+      isPin ? pinCentreYOffset : ptCentreYOffset
     );
 
   return canvas.toDataURL('image/png');
@@ -312,10 +293,31 @@ function renderFAIconToImageURL(
 //    Write PNG to output directory
 // Note: Configure size of icon
 
-for (const [k, v] of Object.entries(iconData)) {
-  const buffer = renderFAIconToImageURL(v.class, v.color, v.background, 48);
-  const outPNG = path.join(args.values.path, 'icons', k + '_pin.png');
-  fs.writeFileSync(outPNG, buffer);
-}
+for(const [icon, config] of Object.entries(iconConfigs)){
+  for(const variant of config.variants){
+    // If variant is explicitly configured somewhere else skip it
+    if(iconConfigs.includes(variant) && iconConfigs[variant] !== config){
+      continue;
+    }
+    if(config.style.startsWith('fa'))
 
-console.log(`${Object.keys(iconData).length} icon files written to "${path.join(args.values.path, 'icons')}"`);
+    
+    const isPin = (config.type == 'pin');
+    const style = config.style;
+    const iconName = ; 
+    const bg = variant;
+    const fg = ;
+//  isPin, // Boolean true for pin, false for point
+//  style, // FA prefix (fas=solid, far=regular, fal=light, fat=thin, dad=duotone, fab=brands)
+//  iconName, // Name of an FA Icon
+//  bg, // Background colour
+//  fg = 'white' // Foreground colour
+
+
+  for(const variant of config.variants){
+    const buffer = renderFAIconToImageURL(v.class, v.color, v.background, 48);
+    const outPNG = path.join(args.values.iconspath, 'icons', variant + '.png');
+
+    fs.writeFileSync(outPNG, buffer);
+  }
+}
