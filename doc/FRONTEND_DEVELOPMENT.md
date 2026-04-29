@@ -20,7 +20,6 @@ and publish the web application.
   * [L.Control.FullScreen](https://github.com/brunob/leaflet.fullscreen): Fullscreen button.
   * [L.Control.MousePosition](https://github.com/ardhi/Leaflet.MousePosition): Display mouse XY map position.
   * [L.TileLayer.Canvas](https://github.com/GIAPspzoo/L.TileLayer.Canvas): Use map tile hierarchy.
-  * [leaflet-hash](https://github.com/mlevans/leaflet-hash): Dynamic URL hashes to web pages with Leaflet maps (modified).
   * [leaflet-search](https://github.com/stefanocudini/leaflet-search): Search icon.
   * [leaflet.toolbar](https://github.com/Leaflet/Leaflet.toolbar): Flexible, extensible toolbar interfaces.
 * [React](https://react.dev): A library for building user interfaces.
