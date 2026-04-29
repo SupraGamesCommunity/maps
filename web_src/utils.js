@@ -45,7 +45,7 @@ export const browser = {
   cssGetProps: function (className, props) {
     const div = document.createElement('div');
     div.classList.add(className);
-    div.appendTo(document.body);
+    document.body.append(div);
     let cssProps = {};
     for (const p of props) {
       let computedStyle = window.getComputedStyle(div).getPropertyValue(p);
