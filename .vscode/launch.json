@@ -15,18 +15,18 @@
             "name": "Debug rendericons.js",
             "type": "node",
             "request": "launch",
-            "program": "scripts\\rendericons.js",
+            "program": "rendericons.js",
             "console": "integratedTerminal",
-            "cwd": "${fileDirname}",
-            "args": ["-g", "all", "-d", "..\\public\\data", "-i", "..\\public\\img\\markers", "-l", "debug"]
+            "cwd": "${workspaceRoot}\\scripts",
+            "args": ["-g", "all", "-d", "..\\public\\data", "-i", "..\\public\\img\\markers", "-o", "..\\public\\img\\icons", "-l", "trace"]
         },
         {
             "name": "Debug supraland_parser.py",
             "type": "debugpy",
             "request": "launch",
-            "program": "scripts\\supraland_parser.py",
+            "program": "supraland_parser.py",
             "console": "integratedTerminal",
-            "cwd": "${fileDirname}",
+            "cwd": "${workspaceRoot}\\scripts",
             "args": "-g sw -d ..\\public\\data -s ..\\source\\sw -m"
         },
         {
