@@ -27,7 +27,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 let dataPath = path.join(__dirname, '..\\public\\data');
 let iconsPath = path.join(__dirname, '..\\public\\img\\markers');
 let outPath = path.join(__dirname, '..\\public\\img\\markers');
-let games = ['sw'];
+let games = ['all'];
 let loggingLevelName = 'info';
 
 //---------------------------------------------------------------------------------------------------------------------
@@ -38,7 +38,7 @@ const cliOptions = {
     type: 'string',
     short: 'g',
     default: games,
-    help: '{sl|siu|sw|all} game to run icon generation for',
+    help: '{sl|siu|sw|all} game to run icon generation for [all]',
     multiple: true,
   },
   datapath: {
@@ -124,7 +124,7 @@ log_trace('iconspath:', iconsPath);
 // Read Json File
 function readJsonFile(jsonPath) {
   if (fs.existsSync(jsonPath)) {
-    log_info('Reading JSON "' + jsonPath + '"');
+    log_debug('Reading JSON "' + jsonPath + '"');
     return JSON.parse(fs.readFileSync(jsonPath));
   } else {
     log_error('Error: file does not exist "' + jsonPath + '"');
@@ -216,15 +216,6 @@ function toSupraColor(col) {
   return supraColors[col] || col;
 }
 
-// Maps style to file extension
-const imgExt = {
-  fapng: '.png',
-  fasvg: '.svg',
-  png: '.png',
-  svg: '.svg',
-};
-const defaultIconName = 'question_mark';
-
 // Render a Font Awesome Icon and return an Image URL
 function renderFAIconToImageURL(
   isPin, // Boolean true for pin, false for point
@@ -309,6 +300,8 @@ if (!fs.existsSync(outPath)) {
   fs.mkdirSync(outPath, { recursive: true });
 }
 
+let iconCount = 0;
+
 // Go through all the icon configurations that have 'fa' in their style
 for (const [iconName, config] of Object.entries(iconConfigs)) {
   if (config.style?.startsWith('fa')) {
@@ -328,7 +321,10 @@ for (const [iconName, config] of Object.entries(iconConfigs)) {
         const outPNG = path.join(outPath, variant.iconName + '.png');
         log_trace('Config: ', iconName, ' => ', outPNG);
         fs.writeFileSync(outPNG, buffer);
+        iconCount++;
       }
     }
   }
 }
+
+log_info('Generated', iconCount, 'icons in', outPath);
