@@ -38,7 +38,7 @@ const cliOptions = {
     type: 'string',
     short: 'g',
     default: games,
-    help: '{sl|siu|sw|all} game to run icon generation for [all]',
+    help: '{sl|siu|sw|all} game to run icon generation for [' + games.join(',') + ']',
     multiple: true,
   },
   datapath: {
@@ -63,7 +63,7 @@ const cliOptions = {
     type: 'string',
     short: 'l',
     default: loggingLevelName,
-    help: 'set logging level (quiet, error, info, debug)',
+    help: 'set logging level (quiet, error, info, debug) ['+ loggingLevelName + ']',
   },
   help: { type: 'boolean', short: 'h', default: false, help: 'display usage text' },
 };
