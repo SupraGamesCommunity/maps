@@ -1,6 +1,28 @@
 /*eslint strict: ["error", "global"]*/
 /*global L */
 
+/* While 'leaflet' is distributed as a proper ESM module, its plugins are often in AMD/UMD/CommonJS formats that
+ * assume 'leaflet' was already loaded as a global var 'L'. To import Leaflet in our code in the modern ES6-style,
+ * it's necessary to recreate the global 'L' object so that the plugins will function.
+ * We do this by importing leaflet as a namespace import [1], then copy each function/attribute from the namespace
+ * to the global 'L' object. 
+ * [1] https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import#namespace_import
+ */
+import * as leaflet from 'leaflet';
+window.L = {}
+for (const [key, value] of Object.entries(leaflet)) {
+  window.L[key] = value;
+}
+// Now that the global 'L' object is defined, we can safely import the old-style plugins.
+// Note: order is important here; screenfull must be imported before Control.FullScreen.
+import "./lib/leaflet.toolbar.min.js";
+import "./lib/L.TileLayer.Canvas.js";
+import "./lib/screenfull.js";
+import "./lib/Control.FullScreen.js";
+import "./lib/leaflet-search.src.min.js";
+import "./lib/L.Control.MousePosition.js";
+
+
 import { browser } from './utils.js';
 import { Settings } from './settings.js';
 import { locStr } from './locStr.js';
