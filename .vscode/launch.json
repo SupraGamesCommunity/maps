@@ -18,7 +18,7 @@
             "program": "rendericons.js",
             "console": "integratedTerminal",
             "cwd": "${workspaceRoot}\\scripts",
-            "args": ["-g", "all", "-d", "..\\public\\data", "-i", "..\\public\\img\\markers", "-o", "..\\public\\img\\icons", "-l", "trace"]
+            "args": ["-g", "all", "-d", "..\\public\\data", "-i", "..\\public\\img\\markers", "-o", "..\\public\\img\\markers", "-l", "trace"]
         },
         {
             "name": "Debug supraland_parser.py",
