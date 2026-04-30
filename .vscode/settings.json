@@ -1,6 +1,7 @@
 {
     "python-envs.defaultEnvManager": "ms-python.python:venv",
     "explorer.excludeGitIgnore": true,
+    "debug.javascript.autoAttachFilter": "smart",
     "terminal.integrated.profiles.windows": {
         "Maps Export": {
             "path": "C:\\Windows\\System32\\cmd.exe",
@@ -8,5 +9,4 @@
             "args": [ "/K shellstartup.cmd" ]
         }
     }
-
 }
