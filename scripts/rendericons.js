@@ -59,7 +59,12 @@ const cliOptions = {
     default: outPath,
     help: '{path} to write generated icons to [' + outPath + ']',
   },
-  logging: { type: 'string', short: 'l', default: loggingLevelName, help: 'set logging level (quiet, error, info, debug)' },
+  logging: {
+    type: 'string',
+    short: 'l',
+    default: loggingLevelName,
+    help: 'set logging level (quiet, error, info, debug)',
+  },
   help: { type: 'boolean', short: 'h', default: false, help: 'display usage text' },
 };
 const args = parseArgs({ options: cliOptions, allowPositionals: true, strict: false });
@@ -168,7 +173,7 @@ const gameClasses = readJsonFile(path.join(dataPath, 'gameClasses.json'));
 for (const game of games) {
   const markers = loadMarkers(game, dataPath);
   markers.forEach((marker) => {
-    if(marker.type in gameClasses){
+    if (marker.type in gameClasses) {
       gameClasses[marker.type].variants = (gameClasses[marker.type].variants ?? new Set()).add(marker.variant ?? '');
     }
   });
@@ -196,10 +201,9 @@ for (const classConfig of Object.values(gameClasses)) {
       // an empty string then we need the default variant
       variants.forEach((v) => {
         const gvname = gname + (v ? '.' + v : '');
-        if(iconName in iconConfigs){
+        if (iconName in iconConfigs) {
           iconConfigs[gname].variants = (iconConfigs[gname].variants ?? []).concat({ iconName: gvname, variant: v });
-        }
-        else if(!v) {
+        } else if (!v) {
           log_info(gname, 'not found in iconConfigs.json (', gvname, ')');
         }
       });
@@ -227,7 +231,7 @@ function renderFAIconToImageURL(
   style, // FA prefix (fas=solid, far=regular, fal=light, fat=thin, dad=duotone, fab=brands)
   iconName, // Name of an FA Icon
   bg, // Background colour
-  fg  // Foreground colour
+  fg // Foreground colour
 ) {
   const faPin = 'location-pin'; // FA icon used for map pin marker background
   const faPoint = 'circle'; // FA icon used for map point marker background
@@ -280,33 +284,47 @@ function renderFAIconToImageURL(
   drawFAIcon('fas', isPin ? faPin : faPoint, '#000000', size);
   drawFAIcon('fas', isPin ? faPin : faPoint, bg || '#808080', outlineSize);
 
-  if (style == 'fapng' || style == 'fasvg'){
-    drawImageIcon(path.join(iconsPath, iconName + '.' + style.slice(2)),
-      size, isPin ? pinIconSize : ptIconSize, isPin ? pinCentreYOffset : ptCentreYOffset);
-  }
-  else {
-    drawFAIcon(style, iconName, fg || '#FFFFFF', isPin ? pinIconSize : ptIconSize, isPin ? pinCentreYOffset : ptCentreYOffset);
+  if (style == 'fapng' || style == 'fasvg') {
+    drawImageIcon(
+      path.join(iconsPath, iconName + '.' + style.slice(2)),
+      size,
+      isPin ? pinIconSize : ptIconSize,
+      isPin ? pinCentreYOffset : ptCentreYOffset
+    );
+  } else {
+    drawFAIcon(
+      style,
+      iconName,
+      fg || '#FFFFFF',
+      isPin ? pinIconSize : ptIconSize,
+      isPin ? pinCentreYOffset : ptCentreYOffset
+    );
   }
 
   return canvas.toBuffer('image/png');
 }
 
 // Make sure icons path exists
-if (!fs.existsSync(outPath)){
-    fs.mkdirSync(outPath, { recursive: true });
+if (!fs.existsSync(outPath)) {
+  fs.mkdirSync(outPath, { recursive: true });
 }
 
 // Go through all the icon configurations that have 'fa' in their style
-for(const [iconName, config] of Object.entries(iconConfigs)){
+for (const [iconName, config] of Object.entries(iconConfigs)) {
   if (config.style?.startsWith('fa')) {
-
     // Go through all the variants we've found in our instance/class data
     // If we didn't find any variants do the default version anyway
-    for(const variant of config.variants ?? [{ iconName: iconName, variant: '' }]){
-
+    for (const variant of config.variants ?? [{ iconName: iconName, variant: '' }]) {
       // If this variant isn't specifically specified elsewhere then create a PNG for it
-      if(variant.iconName == iconName || !(variant.iconName in iconConfigs)){
-        const buffer = renderFAIconToImageURL(config.type == 'pin', config.style, config.iconName, variant.variant || config.bg, config.fg, 48);
+      if (variant.iconName == iconName || !(variant.iconName in iconConfigs)) {
+        const buffer = renderFAIconToImageURL(
+          config.type == 'pin',
+          config.style,
+          config.iconName,
+          variant.variant || config.bg,
+          config.fg,
+          48
+        );
         const outPNG = path.join(outPath, variant.iconName + '.png');
         log_trace('Config: ', iconName, ' => ', outPNG);
         fs.writeFileSync(outPNG, buffer);
