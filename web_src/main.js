@@ -16,18 +16,24 @@ for (const [key, value] of Object.entries(leaflet)) {
 }
 // Now that the global 'L' object is defined, we can safely import the old-style plugins.
 // Note: order is important here; screenfull must be imported before Control.FullScreen.
+import "./css/leaflet.toolbar.min.css";
 import "./lib/leaflet.toolbar.min.js";
-import "./lib/leaflet.toolbar.min.js";
+
 import "./lib/L.TileLayer.Canvas.js";
+
 import "./lib/screenfull.js";
 import "./lib/Control.FullScreen.js";
+import "./css/Control.FullScreen.css";
 
 import "leaflet-search/dist/leaflet-search.src.css";
 import "leaflet-search";
 
+import "./css/L.Control.MousePosition.css";
 import "./lib/L.Control.MousePosition.js";
 
 
+import "./css/sidebar.css";
+import "./css/main.css";
 import { browser } from './utils.js';
 import { Settings } from './settings.js';
 import { locStr } from './locStr.js';
