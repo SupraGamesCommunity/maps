@@ -1,12 +1,11 @@
-/* global L */
-
 import { browser } from './utils.js';
 import { locStr } from './locStr.js';
 import { Settings } from './settings.js';
+import { tileLayer, point, layerGroup } from 'leaflet';
 
-// L.tileLayer.canvas() is faster than L.tileLayer() and fixes a visible line between tiles on most browsers
+// leaflet.tileLayer.canvas() is faster than leaflet.tileLayer() and fixes a visible line between tiles on most browsers
 // However on Firefox it makes the lines much worse, so we choose based on which browser
-const L_tileLayer = browser.isFirefox ? L.tileLayer : L.tileLayer.canvas;
+const L_tileLayer = browser.isFirefox ? tileLayer : tileLayer.canvas;
 
 function boundsShrink(b, d) {
   return [
@@ -151,7 +150,7 @@ export class MapLayer {
     const tileExt = cfg.type == 'tiles' ? '.png' : '.jpg';
 
     let options = {
-      tileSize: L.point(cfg.tileRes, cfg.tileRes), // Tile size is currently fixed
+      tileSize: point(cfg.tileRes, cfg.tileRes), // Tile size is currently fixed
       noWrap: true, // tops map wrapping
       updateInterval: -1, // Allows map to update as often as needed when panning
       keepBuffer: 16, // More tiles loaded when panning
@@ -184,7 +183,7 @@ export class MapLayer {
         this.layerObj = this.createTileLayer(map).addTo(map);
       } else {
         // The other selectable maps
-        this.layerObj = L.layerGroup([], { layerId: this.id });
+        this.layerObj = layerGroup([], { layerId: this.id });
         this.active = false;
       }
     } else if (this.config.type == 'markers') {
@@ -193,7 +192,7 @@ export class MapLayer {
         this.layerObj = this.createTileLayer(map);
       } else {
         // A collection of markers
-        this.layerObj = L.layerGroup([], { layerId: this.id });
+        this.layerObj = layerGroup([], { layerId: this.id });
       }
       this.active = !!Settings.map.activeLayers[this.id];
 

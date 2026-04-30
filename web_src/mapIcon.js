@@ -1,4 +1,4 @@
-/* globals L */
+import { Icon, setOptions } from 'leaflet';
 
 // These options are provided to Icons.create:
 //
@@ -20,10 +20,10 @@
 // popupAnchor:   Popup position in pixels from anchor point
 // tooltipAnchor: Tooltip position in pixels from anchor point (if there is one)
 
-export const L_MapIcon = L.Icon.extend({
+export const L_MapIcon = Icon.extend({
   // Pass on the options as passed in and apply scaled config
   initialize: function (options) {
-    L.setOptions(this, options);
+    setOptions(this, options);
 
     this._iconScale = 1; // Current scale embodied by options
     this._iconRefresh = false; // Do we need to refresh CSS for icons?
@@ -36,7 +36,7 @@ export const L_MapIcon = L.Icon.extend({
     // Icon has been created while not added to map so may need CSS updating
     this._iconRefresh = !this._mapAdded;
 
-    return L.Icon.prototype.createIcon.call(this, oldIcon);
+    return Icon.prototype.createIcon.call(this, oldIcon);
   },
 
   // Resize icon on zoomend or overlayadd events
@@ -101,7 +101,7 @@ export const L_MapIcon = L.Icon.extend({
   },
 });
 
-// Traditional syntactic sugar for leaflet extended object to allow instance = L.mapIcon({options}).addTo(map)
+// Traditional syntactic sugar for leaflet extended object to allow instance = leaflet.mapIcon({options}).addTo(map)
 export const L_mapIcon = function (options) {
   return new L_MapIcon(options);
 };

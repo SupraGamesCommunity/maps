@@ -1,14 +1,13 @@
-/* globals L */
-
 import { Settings } from './settings.js';
 import { MapLayer } from './mapLayer.js';
+import { Map, CRS, Transformation, latLngBounds, setOptions } from 'leaflet';
 
 //=================================================================================================
 // SupraMap a specialised version of Leaflet Map
 
-const _super = L.Map.prototype;
+const _super = Map.prototype;
 
-export const L_SupraMap = L.Map.extend({
+export const L_SupraMap = Map.extend({
   options: {
     fadeAnimation: true,
     minZoom: 1,
@@ -57,8 +56,8 @@ export const L_SupraMap = L.Map.extend({
     const tileMaxSet = 4;
     const mapMinResolution = Math.pow(2, tileMaxSet);
 
-    const crs = L.CRS.Simple;
-    crs.transformation = new L.Transformation(
+    const crs = CRS.Simple;
+    crs.transformation = new Transformation(
       mapScale,
       -mapLayer.mapLatLngBounds[0][1] * mapScale,
       mapScale,
@@ -73,8 +72,8 @@ export const L_SupraMap = L.Map.extend({
     this.options.crs = crs;
 
     // Set the bounds
-    ((this.options.maxBounds = L.latLngBounds(mapLayer.viewLatLngBounds).pad(0.25)), // elastic-y bounds + elastic-x bounds
-      L.setOptions(this, options));
+    ((this.options.maxBounds = latLngBounds(mapLayer.viewLatLngBounds).pad(0.25)), // elastic-y bounds + elastic-x bounds
+      setOptions(this, options));
 
     // Set the div background colour to match the map
     document.querySelector('#' + id).style.backgroundColor = mapLayer.config.backgroundColor;

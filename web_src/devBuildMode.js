@@ -1,9 +1,8 @@
 /*eslint strict: ["error", "global"]*/
-/*global L */
-
 import { browser } from './utils.js';
 import { MapObject } from './mapObject.jsx';
 import { Settings } from './settings.js';
+import { LatLng } from 'leaflet';
 
 const skipConfirms = browser.isCode;
 
@@ -44,7 +43,7 @@ export function commitCurrentBuildModeChanges() {
   let newLat = buildMode.object.lat;
   let newLng = buildMode.object.lng;
 
-  buildMode.marker.setLatLng(new L.LatLng(newLat, newLng));
+  buildMode.marker.setLatLng(new LatLng(newLat, newLng));
   buildMode.objectChanges = [];
 }
 

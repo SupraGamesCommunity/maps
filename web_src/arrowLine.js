@@ -1,10 +1,9 @@
-/* global L */
-
 import { browser } from './utils.js';
+import { Polygon, Point, setOptions } from 'leaflet';
 
-const _super = L.Polygon.prototype;
+const _super = Polygon.prototype;
 
-export const L_ArrowLine = L.Polygon.extend({
+export const L_ArrowLine = Polygon.extend({
   options: {
     arrow: 'none', // Can be 'tip', 'back', 'twoway', 'mid', 'none'
     arrowSize: 0, // Arrow size (0 means it's just a pointer) with shadow wings
@@ -52,7 +51,7 @@ export const L_ArrowLine = L.Polygon.extend({
       this.options = Object.assign({}, this.options, cssOpts);
     }
 
-    L.setOptions(this, options);
+    setOptions(this, options);
 
     this._startLatLng = start;
     this._endLatLng = end;
@@ -76,14 +75,14 @@ export const L_ArrowLine = L.Polygon.extend({
   },
 
   setStyle: function (style) {
-    L.setOptions(this, style);
+    setOptions(this, style);
     this.redraw();
   },
 
   onAdd: function (map) {
     _super.onAdd.call(this, map);
 
-    // set alt for polylines (attributes are not populated to paths) (we could put this in L.Polyline.include({onAdd...})
+    // set alt for polylines (attributes are not populated to paths) (we could put this in Polyline.include({onAdd...})
     this._path.setAttribute('alt', this.options.alt);
 
     this._map.on('zoomend', this.redraw, this);
@@ -192,7 +191,7 @@ export const L_ArrowLine = L.Polygon.extend({
     // Generate a point on the line, as if line is running left to right. Hence x is the offset from the start
     // y is the distance from the line (positive up (thus left))
     function linePoint(start, fwd, x, y) {
-      return new L.Point(start.x + fwd.x * x - fwd.y * y, start.y + fwd.y * x + fwd.x * y);
+      return new Point(start.x + fwd.x * x - fwd.y * y, start.y + fwd.y * x + fwd.x * y);
     }
 
     // Line points we're generating
