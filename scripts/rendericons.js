@@ -24,8 +24,11 @@ library.add(fas, far);
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-const dataPath = path.join(__dirname, '..\\public\\data');
-const iconsPath = path.join(__dirname, '..\\public\\img\\markers');
+let dataPath = path.join(__dirname, '..\\public\\data');
+let iconsPath = path.join(__dirname, '..\\public\\img\\markers');
+let outPath = path.join(__dirname, '..\\public\\img\\icons');
+let games = ['sw'];
+let loggingLevelName = 'info';
 
 //---------------------------------------------------------------------------------------------------------------------
 // Parse Command Line Options
@@ -34,32 +37,40 @@ const cliOptions = {
   game: {
     type: 'string',
     short: 'g',
-    default: ['sw'],
+    default: games,
     help: '{sl|siu|sw|all} game to run icon generation for',
     multiple: true,
   },
   datapath: {
     type: 'string',
     short: 'd',
-    default: dataPath.toString(),
+    default: dataPath,
     help: '{path} to config JSONs [' + dataPath + ']',
   },
   iconspath: {
     type: 'string',
     short: 'i',
-    default: iconsPath.toString(),
-    help: '{path} to icons images [' + iconsPath + ']',
+    default: iconsPath,
+    help: '{path} to find icon images [' + iconsPath + ']',
   },
-  logging: { type: 'string', short: 'l', default: 'info', help: 'set logging level (quiet, error, info, debug)' },
+  outpath: {
+    type: 'string',
+    short: 'o',
+    default: outPath,
+    help: '{path} to write generated icons to [' + outPath + ']',
+  },
+  logging: { type: 'string', short: 'l', default: loggingLevelName, help: 'set logging level (quiet, error, info, debug)' },
   help: { type: 'boolean', short: 'h', default: false, help: 'display usage text' },
 };
 const args = parseArgs({ options: cliOptions, allowPositionals: true, strict: false });
 args.unrecognisedOptions = Object.keys(args.values).some((x) => !(x in cliOptions));
 
-// Fix up 'all' to all the games
-if ('all' in args.values.game) {
-  args.values.game = ['sl', 'siu', 'slc', 'sw'];
-}
+// Set up based on arguments
+games = args.values.game.includes('all') ? ['sl', 'siu', 'slc', 'sw'] : args.values.game;
+iconsPath = args.values.iconspath;
+dataPath = args.values.datapath;
+outPath = args.values.outpath;
+loggingLevelName = args.values.logging;
 
 //---------------------------------------------------------------------------------------------------------------------
 // Setup logging functions
@@ -67,7 +78,7 @@ const loggingLevelNames = { quiet: 1, fatal: 0, error: 1, warn: 2, info: 3, debu
 function getLoggingLevel(levelName) {
   return loggingLevelNames[levelName] ?? loggingLevelNames.info;
 }
-const loggingLevel = getLoggingLevel(args.values.logging);
+const loggingLevel = getLoggingLevel(loggingLevelName);
 function log() {
   console.log.apply(null, arguments);
 }
@@ -99,10 +110,10 @@ if (args.values.help || args.positionals.length > 0 || args.unrecognisedOptions)
 
 //---------------------------------------------------------------------------------------------------------------------
 // Log the command line
-log_trace('games:', args.values.game);
+log_trace('games:', games);
 log_trace('loggingLevel:', args.values.logging, loggingLevel);
-log_trace('datapath:', args.values.datapath);
-log_trace('iconspath:', args.values.iconspath);
+log_trace('datapath:', dataPath);
+log_trace('iconspath:', iconsPath);
 
 //---------------------------------------------------------------------------------------------------------------------
 // Read Json File
@@ -151,21 +162,21 @@ function loadMarkers(game, dataPath) {
 
 //---------------------------------------------------------------------------------------------------------------------
 // Read gameClasses and work out all variants used by them
-const gameClasses = readJsonFile(path.join(args.values.datapath, 'gameClasses.json'));
+const gameClasses = readJsonFile(path.join(dataPath, 'gameClasses.json'));
 
 // Figure out what variants are used across all instances in our marker data and add them to game classes
-for (const game of args.values.game) {
-  const markers = loadMarkers(game, args.values.datapath);
+for (const game of games) {
+  const markers = loadMarkers(game, dataPath);
   markers.forEach((marker) => {
-    if ('variant' in marker) {
-      gameClasses[marker.type].variants = (gameClasses[marker.type].variants ?? new Set()).add(marker.variant);
+    if(marker.type in gameClasses){
+      gameClasses[marker.type].variants = (gameClasses[marker.type].variants ?? new Set()).add(marker.variant ?? '');
     }
   });
 }
 
 //---------------------------------------------------------------------------------------------------------------------
 // Read iconConfigs
-const iconConfigs = readJsonFile(path.join(args.values.datapath, 'iconConfigs.json'));
+const iconConfigs = readJsonFile(path.join(dataPath, 'iconConfigs.json'));
 
 // Add a set of variants we need for each class to each iconConfig
 for (const classConfig of Object.values(gameClasses)) {
@@ -174,24 +185,25 @@ for (const classConfig of Object.values(gameClasses)) {
     const [iconName, flags] = [...classConfig.icon.split(':'), ''];
 
     // Get a list of games and variants we need based on the flags and defaults
-    const games = flags.includes('g') ? [...(classConfig.games ?? ['sl', 'slc', 'siu'])] : [];
+    const games = flags.includes('g') ? [...(classConfig.games ?? ['sl', 'slc', 'siu'])] : [''];
     const variants = flags.includes('v') ? [...(classConfig.variants ?? [])] : [];
 
-    // Add the icon variations to a set of icons we should have
-    if (iconName in iconConfigs) {
-      iconConfigs[iconName].variants = new Set([iconName]);
-      games.forEach((g) => {
-        iconConfigs[iconName].variants.add(iconName + '.' + g);
-      });
+    // Should never be empty list
+    games.forEach((g) => {
+      const gname = iconName + (g ? '.' + g : '');
+
+      // If the class has no markers variants could be empty, if it contains
+      // an empty string then we need the default variant
       variants.forEach((v) => {
-        iconConfigs[iconName].variants.add(iconName + '.' + v);
-        games.forEach((g) => {
-          iconConfigs[iconName].variants.add(iconName + '.' + v + '.' + g);
-        });
+        const gvname = gname + (v ? '.' + v : '');
+        if(gvname in iconConfigs){
+          iconConfigs[iconName].variants = (iconConfigs[iconName].variants ?? []).concat({ iconName: gvname, variant: v });
+        }
+        else if(!v) {
+          log_info(gvname, 'not found in iconConfigs.json');
+        }
       });
-    } else {
-      log_info(iconName, 'not found in iconConfigs.json');
-    }
+    });
   }
 }
 
@@ -215,7 +227,7 @@ function renderFAIconToImageURL(
   style, // FA prefix (fas=solid, far=regular, fal=light, fat=thin, dad=duotone, fab=brands)
   iconName, // Name of an FA Icon
   bg, // Background colour
-  fg = 'white' // Foreground colour
+  fg  // Foreground colour
 ) {
   const faPin = 'location-pin'; // FA icon used for map pin marker background
   const faPoint = 'circle'; // FA icon used for map point marker background
@@ -225,7 +237,7 @@ function renderFAIconToImageURL(
   const pinIconSize = size * 0.5; // Size to draw the FA icon on a pin marker
   const pinCentreYOffset = pinIconSize * -0.25; // Y offset from centre of icon to centre for a pin
   const ptIconSize = size * 0.7; // Size to draw the FA icon on a point marker
-  const ptCentreYOffset = ptIconSize * -0.2; // Y offset from centre of icon to centre for a pin
+  const ptCentreYOffset = 0; // Y offset from centre of icon to centre for a pin
 
   // We're going to draw the icon to a canvas
   const canvas = createCanvas(size, size);
@@ -237,7 +249,7 @@ function renderFAIconToImageURL(
   // This function draws one of the icon layers in some colour
   function drawFAIcon(prefix, iconName, color, pixelSize, dy = 0) {
     // Get a font awesome icon specified by prefix and icon name
-    let icon = fa_icon.icon({ prefix, iconName }) || fa_icon.icon({ prefix: 'fa', iconName: faDefault });
+    let icon = fa_icon({ prefix, iconName }) || fa_icon({ prefix: 'fa', iconName: faDefault });
 
     // Extract the width/height and SVG path data from the icon
     const [w, h, , , path] = icon.icon;
@@ -257,67 +269,48 @@ function renderFAIconToImageURL(
   }
 
   // Draw a PNG as the Icon instead of an FA icon
-  function drawImageIcon(iconName, tgtSize, iconSize, dy = 0) {
-    ctx.drawImage(iconName, (size - iconSize) * 0.5, 0 - dy, iconSize, iconSize);
+  function drawImageIcon(iconPath, tgtSize, iconSize, dy = 0) {
+    let img = new Image();
+    img.src = iconPath;
+    ctx.drawImage(img, (size - iconSize) * 0.5, 0 - dy, iconSize, iconSize);
   }
-
-  bg = toSupraColor(bg) || 'grey';
-  fg = toSupraColor(fg) || 'white';
 
   // We draw FA icons in three layers, a shadow, a slightly smaller background,
   // and then some centred icon to actually represent it.
-  drawFAIcon('fas', isPin ? faPin : faPoint, 'black', size);
-  drawFAIcon('fas', isPin ? faPin : faPoint, bg, outlineSize);
+  drawFAIcon('fas', isPin ? faPin : faPoint, '#000000', size);
+  drawFAIcon('fas', isPin ? faPin : faPoint, bg || '#808080', outlineSize);
 
-  if (style == 'fapng' || style == 'fasvg')
-    drawImageIcon(iconName, size, isPin ? pinIconSize : ptIconSize, isPin ? pinCentreOfs : ptCentreOfs);
-  else
-    drawFAIcon(
-      style,
-      iconName,
-      toSupraColor(fg || 'white'),
-      isPin ? pinIconSize : ptIconSize,
-      isPin ? pinCentreYOffset : ptCentreYOffset
-    );
+  if (style == 'fapng' || style == 'fasvg'){
+    drawImageIcon(path.join(iconsPath, iconName + '.' + style.slice(2)),
+      size, isPin ? pinIconSize : ptIconSize, isPin ? pinCentreYOffset : ptCentreYOffset);
+  }
+  else {
+    drawFAIcon(style, iconName, fg || '#FFFFFF', isPin ? pinIconSize : ptIconSize, isPin ? pinCentreYOffset : ptCentreYOffset);
+  }
 
-  return canvas.toDataURL('image/png');
+  return canvas.toBuffer('image/png');
 }
 
-// Go through iconConfigs
-// For each icon name in variant:
-//  See if specific config exists - skip
-//  Otherwise: if its a generate config (FAPNG/FASVG/FA)
-//    Generate icon variant:
-//      Look for image file with variant
-//      Set foreground colour based on variant
-//    Write PNG to output directory
-// Note: Configure size of icon
+// Make sure icons path exists
+if (!fs.existsSync(outPath)){
+    fs.mkdirSync(outPath, { recursive: true });
+}
 
-for(const [icon, config] of Object.entries(iconConfigs)){
-  for(const variant of config.variants){
-    // If variant is explicitly configured somewhere else skip it
-    if(iconConfigs.includes(variant) && iconConfigs[variant] !== config){
-      continue;
+// Go through all the icon configurations that have 'fa' in their style
+for(const [iconName, config] of Object.entries(iconConfigs)){
+  if (config.style?.startsWith('fa')) {
+
+    // Go through all the variants we've found in our instance/class data
+    // If we didn't find any variants do the default version anyway
+    for(const variant of config.variants ?? [{ iconName: iconName, variant: '' }]){
+
+      // If this variant isn't specifically specified elsewhere then create a PNG for it
+      if(variant.iconName == iconName || !iconConfigs.includes(variant.iconName)){
+        const buffer = renderFAIconToImageURL(config.type == 'pin', config.style, config.iconName, variant.variant || config.bg, config.fg, 48);
+        const outPNG = path.join(outPath, variant.iconName + '.png');
+        log_trace('Config: ', iconName, ' => ', outPNG);
+        fs.writeFileSync(outPNG, buffer);
+      }
     }
-    if(config.style.startsWith('fa'))
-
-    
-    const isPin = (config.type == 'pin');
-    const style = config.style;
-    const iconName = ; 
-    const bg = variant;
-    const fg = ;
-//  isPin, // Boolean true for pin, false for point
-//  style, // FA prefix (fas=solid, far=regular, fal=light, fat=thin, dad=duotone, fab=brands)
-//  iconName, // Name of an FA Icon
-//  bg, // Background colour
-//  fg = 'white' // Foreground colour
-
-
-  for(const variant of config.variants){
-    const buffer = renderFAIconToImageURL(v.class, v.color, v.background, 48);
-    const outPNG = path.join(args.values.iconspath, 'icons', variant + '.png');
-
-    fs.writeFileSync(outPNG, buffer);
   }
 }
