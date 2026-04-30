@@ -179,9 +179,9 @@ async function loadMap(mapParam) {
   map = L_supraMap(mapParam);
 
   // Add zoom, fullscreen toggle and mousePosition controls to the map
-  L.control.zoom({ position: 'bottomright' }).addTo(map);
-  L.control.fullscreen({ position: 'bottomright', forceSeparateButton: true }).addTo(map);
-  L.control.mousePosition({ numDigits: 0, lngFirst: true }).addTo(map);
+  leaflet.control.zoom({ position: 'bottomright' }).addTo(map);
+  leaflet.control.fullscreen({ position: 'bottomright', forceSeparateButton: true }).addTo(map);
+  leaflet.control.mousePosition({ numDigits: 0, lngFirst: true }).addTo(map);
 
   // Sort out the layer configuration and create the layers
   MapLayer.setupLayers(map);
@@ -259,7 +259,7 @@ async function loadMap(mapParam) {
       layerObjArray.push(layer.layerObj);
     }
   });
-  const searchLayer = L.layerGroup(layerObjArray);
+  const searchLayer = leaflet.layerGroup(layerObjArray);
 
   const searchControl = L_Control_supraSearch({ layer: searchLayer }).addTo(map);
 
