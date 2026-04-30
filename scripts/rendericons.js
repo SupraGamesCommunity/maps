@@ -196,11 +196,11 @@ for (const classConfig of Object.values(gameClasses)) {
       // an empty string then we need the default variant
       variants.forEach((v) => {
         const gvname = gname + (v ? '.' + v : '');
-        if(gvname in iconConfigs){
-          iconConfigs[iconName].variants = (iconConfigs[iconName].variants ?? []).concat({ iconName: gvname, variant: v });
+        if(iconName in iconConfigs){
+          iconConfigs[gname].variants = (iconConfigs[gname].variants ?? []).concat({ iconName: gvname, variant: v });
         }
         else if(!v) {
-          log_info(gvname, 'not found in iconConfigs.json');
+          log_info(gname, 'not found in iconConfigs.json (', gvname, ')');
         }
       });
     });
@@ -305,7 +305,7 @@ for(const [iconName, config] of Object.entries(iconConfigs)){
     for(const variant of config.variants ?? [{ iconName: iconName, variant: '' }]){
 
       // If this variant isn't specifically specified elsewhere then create a PNG for it
-      if(variant.iconName == iconName || !iconConfigs.includes(variant.iconName)){
+      if(variant.iconName == iconName || !(variant.iconName in iconConfigs)){
         const buffer = renderFAIconToImageURL(config.type == 'pin', config.style, config.iconName, variant.variant || config.bg, config.fg, 48);
         const outPNG = path.join(outPath, variant.iconName + '.png');
         log_trace('Config: ', iconName, ' => ', outPNG);
