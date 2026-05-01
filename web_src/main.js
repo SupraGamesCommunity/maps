@@ -5,35 +5,32 @@
  * assume 'leaflet' was already loaded as a global var 'L'. To import Leaflet in our code in the modern ES6-style,
  * it's necessary to recreate the global 'L' object so that the plugins will function.
  * We do this by importing leaflet as a namespace import [1], then copy each function/attribute from the namespace
- * to the global 'L' object. 
+ * to the global 'L' object.
  * [1] https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import#namespace_import
  */
-import "leaflet/dist/leaflet.css";
+import 'leaflet/dist/leaflet.css';
 import * as leaflet from 'leaflet';
-window.L = {}
+window.L = {};
 for (const [key, value] of Object.entries(leaflet)) {
   window.L[key] = value;
 }
 // Now that the global 'L' object is defined, we can safely import the old-style plugins.
-// Note: order is important here; screenfull must be imported before Control.FullScreen.
-import "./css/leaflet.toolbar.min.css";
-import "./lib/leaflet.toolbar.min.js";
+import './css/lib/leaflet.toolbar.min.css';
+import './lib/leaflet.toolbar.min.js';
 
-import "./lib/L.TileLayer.Canvas.js";
+import './lib/L.TileLayer.Canvas.js';
 
-import "./lib/screenfull.js";
-import "./lib/Control.FullScreen.js";
-import "./css/Control.FullScreen.css";
+import 'leaflet.fullscreen/dist/Control.FullScreen.css';
+import { FullScreen } from 'leaflet.fullscreen';
 
-import "leaflet-search/dist/leaflet-search.src.css";
-import "leaflet-search";
+import 'leaflet-search/dist/leaflet-search.src.css';
+import 'leaflet-search';
 
-import "./css/L.Control.MousePosition.css";
-import "./lib/L.Control.MousePosition.js";
+import './css/lib/L.Control.MousePosition.css';
+import './lib/L.Control.MousePosition.js';
 
-
-import "./css/sidebar.css";
-import "./css/main.css";
+import './css/sidebar.css';
+import './css/main.css';
 import { browser } from './utils.js';
 import { Settings } from './settings.js';
 import { locStr } from './locStr.js';
@@ -180,7 +177,7 @@ async function loadMap(mapParam) {
 
   // Add zoom, fullscreen toggle and mousePosition controls to the map
   leaflet.control.zoom({ position: 'bottomright' }).addTo(map);
-  leaflet.control.fullscreen({ position: 'bottomright', forceSeparateButton: true }).addTo(map);
+  map.addControl(new FullScreen({ position: 'bottomright', forceSeparateButton: true }));
   leaflet.control.mousePosition({ numDigits: 0, lngFirst: true }).addTo(map);
 
   // Sort out the layer configuration and create the layers
