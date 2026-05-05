@@ -267,7 +267,7 @@
   "RealCoinPickup_C"                : { "friendly": "Coins",               "icon": "swcoin:x0.5",        "layer": "swcoin",        "nospoiler": null,          "games": ["sw"]                                   },
 
   "SecretVolume_C"                  : { "friendly": "Secret Area",         "icon": "swsecret:x0.75",     "layer": "swsecret",      "nospoiler": null,          "games": ["sw"]                                   },
-  "YouMissedNSecrets_C"             : { "friendly": "Puzzle Master",       "icon": "npc_purple",         "layer": "swsecret",      "nospoiler": null,          "games": ["sw"], "setfound": false                },
+  "YouMissedNSecrets_C"             : { "friendly": "Puzzle Master",       "icon": "swnpc.purple",       "layer": "swsecret",      "nospoiler": null,          "games": ["sw"], "setfound": false                },
 
   "Gumball_Machine_C"               : { "friendly": "Gumball Machine",     "icon": "gumball_machine",    "layer": "swcoin",        "nospoiler": "swnospoiler", "games": ["sw"]                                   },
 
@@ -299,8 +299,8 @@
   "DetectiveCase_ArmChair_C"        : { "friendly": "Detective Case",      "icon": "mag_glass",          "layer": "swquests",      "nospoiler": null,          "games": ["sw"]                                   },
   "DetectiveCase_ChocolateFactory_C": { "friendly": "Detective Case",      "icon": "mag_glass",          "layer": "swquests",      "nospoiler": null,          "games": ["sw"]                                   },
 
-  "HayGuy_C"                        : { "friendly": "Hay Guy",             "icon": "npc_blue",           "layer": "swquests",      "nospoiler": null,          "games": ["sw"]                                   },
-  "_ThreadGuy_C"                    : { "friendly": "Thread Guy",          "icon": "npc_blue",           "layer": "swquests",      "nospoiler": null,          "games": ["sw"]                                   },
+  "HayGuy_C"                        : { "friendly": "Hay Guy",             "icon": "swnpc.blue",         "layer": "swquests",      "nospoiler": null,          "games": ["sw"]                                   },
+  "_ThreadGuy_C"                    : { "friendly": "Thread Guy",          "icon": "swnpc.blue",         "layer": "swquests",      "nospoiler": null,          "games": ["sw"]                                   },
   "Jimmy_C"                         : { "friendly": "Jimmy",               "icon": "pawn",               "layer": "swquests",      "nospoiler": null,          "games": ["sw"]                                   },
   "Key_C"                           : { "friendly": "Key",                 "icon": "swkey",              "layer": "swquests",      "nospoiler": null,          "games": ["sw"], "setfound": false                },
   "SW:KeyPlastic_C"                 : { "friendly": "Plastic Key",         "icon": "swkey",              "layer": "swquests",      "nospoiler": null,          "games": ["sw"], "setfound": false                },

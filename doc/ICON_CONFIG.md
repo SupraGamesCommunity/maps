@@ -95,8 +95,8 @@ By default, if the class specifies icon variants then the frontend will load an 
 The renderer will render `cloud.blue.png` using the corresponding entry in [iconConfigs.json](../public/data/iconConfigs.json). If there is no corresponding entry it will render the icon using the rule `cloud` rule.
 
 ```
-  "cloud" :      {"type": "pin", "style": "fas",   "iconName": "cloud",   "bg": "lightgrey", "fg": "v:white" },
-  "cloud.blue":  {"type": "pin", "style": "fas",   "iconName": "cloud",   "bg": "white",     "fg": "orange" },
+  "cloud" :      {"type": "pin", "style": "fas",   "iconName": "cloud",   "bg": "lightgrey", "fg": "white:v" },
+  "cloud.blue":  {"type": "pin", "style": "fas",   "iconName": "cloud",   "bg": "white",     "fg": "orange:-" },
   "cloud.purple":{"type": "pin", "style": "fapng", "iconName": "mycloud", "bg": "yellow" },
 ```
 
@@ -104,12 +104,13 @@ There are white (empty variant), blue and purple puzzle cloud variants, so this 
 
 |Rendered PNG | Background | Foreground |
 |-|-|-|
-|cloud.png| lightgrey| white FA cloud |
-|cloud.blue.png| white| orange FA cloud|
+|cloud.png|lightgrey| white FA cloud |
+|cloud.blue.png|white| orange+ FA cloud|
 |cloud.purple.png|yellow| marker/mycloud.png|
 |cloud.red.png |lightgrey|red* FA cloud| 
 
-* If the v: option was not included in 'fg' for cloud, then cloud.red.png would have a red background and a white foreground.
++ If the :- option was not included the default is to use the variant so this would be blue
+* If the :v option was not included in 'fg' for cloud, then cloud.red.png would have a red background and a white foreground.
 
 ### Changing Icon Relative Size
 
