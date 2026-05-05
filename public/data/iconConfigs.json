@@ -114,7 +114,7 @@
 
   "swmisc"                  : {"type": "pin", "style": "fas", "iconName": "question-circle",          "bg": "grey"                        },
 
-  "cloud"                   : {"type": "pin", "style": "fas", "iconName": "cloud",                    "bg": "lightgrey", "fg": "v:white"       },
+  "cloud"                   : {"type": "pin", "style": "fas", "iconName": "cloud",                    "bg": "lightgrey", "fg": "white:v"       },
 
   "hat"                     : {"type": "pin", "style": "fas", "iconName": "hat-cowboy",               "bg": "chocolate"                    },
   "button_hat"              : {"type": "pin", "style": "fas", "iconName": "compact-disc",             "bg": "tan"                          },
@@ -137,7 +137,7 @@
   "gas_mask"                : {"type": "pin", "style": "fas", "iconName": "head-side-mask",           "bg": "olive"                        },
   "redherring"              : {"type": "pin", "style": "fas", "iconName": "fish",                     "bg": "tan"                          },
   "salad_leaf"              : {"type": "pin", "style": "fas", "iconName": "seedling",                 "bg": "yellowgreen"                  },
-  "simcard"                 : {"type": "pin", "style": "fas", "iconName": "sd-card",                  "bg": "grey", "fg": "v:white"        },
+  "simcard"                 : {"type": "pin", "style": "fas", "iconName": "sd-card",                  "bg": "grey", "fg": "white:v"        },
   "spider"                  : {"type": "pin", "style": "fas", "iconName": "spider",                   "bg": "black"                        },
   "thimble"                 : {"type": "pin", "style": "fas", "iconName": "glass-water",              "bg": "slategrey"                    },
   "traffic_cone"            : {"type": "pin", "style": "fas", "iconName": "mountain",                 "bg": "orange"                       },
@@ -161,20 +161,20 @@
   "swsecret"                : {"type": "pin", "style": "fapng", "iconName": "greensecret",            "bg": "black"                        },
   "npc_purple"              : {"type": "pin", "style": "fas", "iconName": "person",                   "bg": "purple",        "fg": "yellow"},
 
-  "gift_box"                : {"type": "pin", "style": "fapng", "iconName": "giftboxyellow",          "bg": "v:grey"                      },
+  "gift_box"                : {"type": "pin", "style": "fapng", "iconName": "giftboxyellow",          "bg": "grey:v"                      },
   "gift_box.yellow"         : {"type": "pin", "style": "fapng", "iconName": "giftboxyellow",          "bg": "grey"                        },
   "gift_box.green"          : {"type": "pin", "style": "fapng", "iconName": "giftboxgreen",           "bg": "grey"                        },
   "gift_box.gold"           : {"type": "pin", "style": "fas", "iconName": "gift",                     "bg": "grey", "fg": "goldenrod"     },
-  "gift_box.orange"         : {"type": "pin", "style": "fas", "iconName": "gift",                     "bg": "grey", "fg": "orange"        },
+  "gift_box.orange"         : {"type": "pin", "style": "fas", "iconName": "gift",                     "bg": "grey", "fg": "orange:-"        },
 
   "screw"                   : {"type": "pin", "style": "fas", "iconName": "circle-xmark",             "bg": "gold"                         },
-  "bush"                    : {"type": "pin", "style": "fas", "iconName": "cloud",                    "bg": "yellowgreen"                  },
+  "bush"                    : {"type": "pin", "style": "fas", "iconName": "cloud",                    "bg": "yellowgreen", "fg":":v"      },
 
   "raft"                    : {"type": "pin", "style": "fas", "iconName": "ship",                     "bg": "chocolate"                    },
   "disk"                    : {"type": "pin", "style": "fas", "iconName": "floppy-disk",              "bg": "darkslategrey"                },
   "health_dispencer"        : {"type": "pin", "style": "fas", "iconName": "pills",                    "bg": "red"                          },
   "fashion_slot"            : {"type": "pin", "style": "fas", "iconName": "hat-cowboy",               "bg": "grey"                         },
-  "pokerchip"               : {"type": "point", "style": "fas", "iconName": "circle-dot",               "bg": "lightgrey", "fg": "v:red"        },
+  "pokerchip"               : {"type": "point", "style": "fas", "iconName": "circle-dot",               "bg": "lightgrey", "fg": "red:v"        },
   "playerstart"             : {"type": "pin", "style": "fas", "iconName": "face-smile",               "bg": "red"                          },
   "swplayerpos"             : {"type": "pin", "style": "fapng", "iconName": "player.red",             "bg": "red"                          },
 

@@ -221,8 +221,8 @@ function renderFAIconToImageURL(
   isPin, // Boolean true for pin, false for point
   style, // FA prefix (fas=solid, far=regular, fal=light, fat=thin, dad=duotone, fab=brands)
   iconName, // Name of an FA Icon
+  fg, // Foreground colour
   bg, // Background colour
-  fg // Foreground colour
 ) {
   const faPin = 'location-pin'; // FA icon used for map pin marker background
   const faPoint = 'circle'; // FA icon used for map point marker background
@@ -272,12 +272,7 @@ function renderFAIconToImageURL(
 
   // We draw FA icons in three layers, a shadow, a slightly smaller background,
   // and then some centred icon to actually represent it.
-  drawFAIcon('fas', isPin ? faPin : faPoint, '#000000', size);
-
-  if (fg == 'variant' || !fg) fg = '#FFFFFF';
-
-  if (bg == 'variant' || !bg) bg = '#808080';
-
+  drawFAIcon('fas', isPin ? faPin : faPoint, 'black', size);
   drawFAIcon('fas', isPin ? faPin : faPoint, bg, outlineSize);
 
   if (style == 'fapng' || style == 'fasvg') {
@@ -314,14 +309,20 @@ for (const [configName, config] of Object.entries(iconConfigs)) {
 
       // If this variant isn't specifically specified elsewhere then create a PNG for it
       if (variantConfigName == configName || !(variantConfigName in iconConfigs)) {
-        // Choose variant colour for background or foreground but not both
-        const useVariantForFG = config.fg && config.fg.startsWith('v:');
+        // Split bg and fg values into colour and flags
+        const [fg='white', fgFlag=''] = config.fg?.split(':') || ['white',''];
+        let   [bg='grey', bgFlag=''] = config.bg?.split(':') || ['grey',''];
+
+        // If neither is explicitly set to then make bg default to variant
+        if(fgFlag == '' && bgFlag == '')
+          bgFlag = 'v';
+
         const buffer = renderFAIconToImageURL(
           config.type == 'pin',
           config.style,
           config.iconName,
-          (useVariantForFG ? '' : variant) || config.bg?.replace(':v', ''),
-          useVariantForFG ? variant || config.fg.slice(2) : config.fg,
+          (fgFlag == 'v' && variant) ? variant : fg,
+          (bgFlag == 'v' && variant) ? variant : bg,
           48
         );
         const outPNG = path.join(outPath, variantConfigName + '.png');
