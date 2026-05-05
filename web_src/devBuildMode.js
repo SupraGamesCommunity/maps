@@ -1,9 +1,8 @@
 /*eslint strict: ["error", "global"]*/
-/*global L */
-
 import { browser } from './utils.js';
 import { MapObject } from './mapObject.jsx';
 import { Settings } from './settings.js';
+import { LatLng } from 'leaflet';
 
 const skipConfirms = browser.isCode;
 
@@ -30,7 +29,7 @@ export function setBuildMode(newBuildMode) {
 // YouTube video id is an 11 character base 64 string following embed+{separator} or {separator}v=
 // and followed by end of line or a separator. If there's a matrch we assign it to group id with (?<id>...)
 function getYTUrlVideoId(url){
-  return url.match(/(embed[/?#]|[/?#&]v=|^)(?<id>[0-9a-zA-Z_-]{11})($|[/?#&])/)?.groups.id;
+  return url.match(/(embed[/?#]|[/]|[/?#&]v=|^)(?<id>[0-9a-zA-Z_-]{11})($|[/?#&])/)?.groups.id;
 }
 
 // Try to extract the video id, start and end time from the string. If it doesn't find a video id
@@ -95,7 +94,7 @@ export function commitCurrentBuildModeChanges() {
   let newLat = buildMode.object.lat;
   let newLng = buildMode.object.lng;
 
-  buildMode.marker.setLatLng(new L.LatLng(newLat, newLng));
+  buildMode.marker.setLatLng(new LatLng(newLat, newLng));
   buildMode.objectChanges = [];
 }
 
