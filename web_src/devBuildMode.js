@@ -30,7 +30,7 @@ export function setBuildMode(newBuildMode) {
 // YouTube video id is an 11 character base 64 string following embed+{separator} or {separator}v=
 // and followed by end of line or a separator. If there's a matrch we assign it to group id with (?<id>...)
 function getYTUrlVideoId(url){
-  return url.match(/(embed[/?#]|[/?#&]v=|^)(?<id>[0-9a-zA-Z_-]{11})($|[/?#&])/)?.groups.id;
+  return url.match(/(embed[/?#]|[/]|[/?#&]v=|^)(?<id>[0-9a-zA-Z_-]{11})($|[/?#&])/)?.groups.id;
 }
 
 // Try to extract the video id, start and end time from the string. If it doesn't find a video id
