@@ -1,5 +1,4 @@
 /*eslint strict: ["error", "global"]*/
-/*global L */
 
 /* While 'leaflet' is distributed as a proper ESM module, its plugins are often in AMD/UMD/CommonJS formats that
  * assume 'leaflet' was already loaded as a global var 'L'. To import Leaflet in our code in the modern ES6-style,
@@ -9,14 +8,10 @@
  * [1] https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import#namespace_import
  */
 import 'leaflet/dist/leaflet.css';
-import * as leaflet from 'leaflet';
-window.L = {};
-for (const [key, value] of Object.entries(leaflet)) {
-  window.L[key] = value;
-}
+import L from 'leaflet';
 // Now that the global 'L' object is defined, we can safely import the old-style plugins.
 import './css/lib/leaflet.toolbar.min.css';
-import './lib/leaflet.toolbar.min.js';
+import './lib/leaflet.toolbar-src.js';
 
 import './lib/L.TileLayer.Canvas.js';
 
@@ -176,9 +171,9 @@ async function loadMap(mapParam) {
   map = L_supraMap(mapParam);
 
   // Add zoom, fullscreen toggle and mousePosition controls to the map
-  leaflet.control.zoom({ position: 'bottomright' }).addTo(map);
+  L.control.zoom({ position: 'bottomright' }).addTo(map);
   map.addControl(new FullScreen({ position: 'bottomright', forceSeparateButton: true }));
-  leaflet.control.mousePosition({ numDigits: 0, lngFirst: true }).addTo(map);
+  L.control.mousePosition({ numDigits: 0, lngFirst: true }).addTo(map);
 
   // Sort out the layer configuration and create the layers
   MapLayer.setupLayers(map);
@@ -256,7 +251,7 @@ async function loadMap(mapParam) {
       layerObjArray.push(layer.layerObj);
     }
   });
-  const searchLayer = leaflet.layerGroup(layerObjArray);
+  const searchLayer = L.layerGroup(layerObjArray);
 
   const searchControl = L_Control_supraSearch({ layer: searchLayer }).addTo(map);
 
