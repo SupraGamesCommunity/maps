@@ -1,4 +1,6 @@
-L.Control.MousePosition = L.Control.extend({
+import { Control, DomEvent, DomUtil, Util, Map } from 'leaflet';
+
+export const MousePosition = Control.extend({
   options: {
     position: 'bottomleft',
     separator: ' : ',
@@ -11,8 +13,8 @@ L.Control.MousePosition = L.Control.extend({
   },
 
   onAdd: function (map) {
-    this._container = L.DomUtil.create('div', 'leaflet-control-mouseposition');
-    L.DomEvent.disableClickPropagation(this._container);
+    this._container = DomUtil.create('div', 'leaflet-control-mouseposition');
+    DomEvent.disableClickPropagation(this._container);
     map.on('mousemove', this._onMouseMove, this);
     this._container.innerHTML=this.options.emptyString;
     return this._container;
@@ -23,8 +25,8 @@ L.Control.MousePosition = L.Control.extend({
   },
 
   _onMouseMove: function (e) {
-    var lng = this.options.lngFormatter ? this.options.lngFormatter(e.latlng.lng) : L.Util.formatNum(e.latlng.lng, this.options.numDigits);
-    var lat = this.options.latFormatter ? this.options.latFormatter(e.latlng.lat) : L.Util.formatNum(e.latlng.lat, this.options.numDigits);
+    var lng = this.options.lngFormatter ? this.options.lngFormatter(e.latlng.lng) : Util.formatNum(e.latlng.lng, this.options.numDigits);
+    var lat = this.options.latFormatter ? this.options.latFormatter(e.latlng.lat) : Util.formatNum(e.latlng.lat, this.options.numDigits);
     var value = this.options.lngFirst ? lng + this.options.separator + lat : lat + this.options.separator + lng;
     var prefixAndValue = this.options.prefix + ' ' + value;
     this._container.innerHTML = prefixAndValue;
@@ -32,17 +34,13 @@ L.Control.MousePosition = L.Control.extend({
 
 });
 
-L.Map.mergeOptions({
+Map.mergeOptions({
     positionControl: false
 });
 
-L.Map.addInitHook(function () {
+Map.addInitHook(function () {
     if (this.options.positionControl) {
-        this.positionControl = new L.Control.MousePosition();
+        this.positionControl = new MousePosition();
         this.addControl(this.positionControl);
     }
 });
-
-L.control.mousePosition = function (options) {
-    return new L.Control.MousePosition(options);
-};

@@ -22,7 +22,7 @@ import 'leaflet-search/dist/leaflet-search.src.css';
 import 'leaflet-search';
 
 import './css/lib/L.Control.MousePosition.css';
-import './lib/L.Control.MousePosition.js';
+import { MousePosition } from './lib/L.Control.MousePosition.js';
 
 import './css/sidebar.css';
 import './css/main.css';
@@ -36,7 +36,7 @@ import { GameClasses } from './gameClasses.js';
 import { MapLayer } from './mapLayer.js';
 import { MapObject } from './mapObject.jsx';
 import { MapPins } from './mapPins.js';
-import { L_Control_supraSearch } from './supraSearch.js';
+import { SupraSearch } from './supraSearch.js';
 import { L_supraMap } from './supraMap.js';
 import { initSidepanelDom, renderSidepanel, destroySidepanel } from './sidepanel/renderSidepanel.jsx';
 import { library, icon as fa_icon } from '@fortawesome/fontawesome-svg-core';
@@ -173,7 +173,7 @@ async function loadMap(mapParam) {
   // Add zoom, fullscreen toggle and mousePosition controls to the map
   L.control.zoom({ position: 'bottomright' }).addTo(map);
   map.addControl(new FullScreen({ position: 'bottomright', forceSeparateButton: true }));
-  L.control.mousePosition({ numDigits: 0, lngFirst: true }).addTo(map);
+  map.addControl(new MousePosition({ numDigits: 0, lngFirst: true }));
 
   // Sort out the layer configuration and create the layers
   MapLayer.setupLayers(map);
@@ -253,7 +253,8 @@ async function loadMap(mapParam) {
   });
   const searchLayer = L.layerGroup(layerObjArray);
 
-  const searchControl = L_Control_supraSearch({ layer: searchLayer }).addTo(map);
+  const searchControl = new SupraSearch({ layer: searchLayer });
+  map.addControl(searchControl);
 
   // Add the markers to the map
   await MapObject.loadObjects(map.mapId);

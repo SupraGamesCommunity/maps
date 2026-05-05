@@ -19,7 +19,7 @@ import { Control, setOptions, DomEvent } from 'leaflet';
 
 const _super = Control.Search.prototype;
 
-const L_SupraSearch = Control.Search.extend({
+export const SupraSearch = Control.Search.extend({
   options: {
     marker: false, // no red circle
     initial: false, // search any substring
@@ -138,8 +138,3 @@ const L_SupraSearch = Control.Search.extend({
     _super.cancel.call(this);
   },
 });
-
-// Leaflet style wrapper for constructor
-export const L_Control_supraSearch = function (options) {
-  return new L_SupraSearch(options);
-};
