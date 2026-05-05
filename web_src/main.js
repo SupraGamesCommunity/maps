@@ -16,9 +16,6 @@ import './lib/leaflet.toolbar-src.js';
 import 'leaflet.fullscreen/dist/Control.FullScreen.css';
 import { FullScreen } from 'leaflet.fullscreen';
 
-import 'leaflet-search/dist/leaflet-search.src.css';
-import 'leaflet-search';
-
 import './css/lib/L.Control.MousePosition.css';
 import { MousePosition } from './lib/L.Control.MousePosition.js';
 

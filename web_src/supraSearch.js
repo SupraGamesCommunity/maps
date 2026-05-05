@@ -1,6 +1,8 @@
 import { Settings } from './settings.js';
 import { MapObject } from './mapObject.jsx';
-import { Control, setOptions, DomEvent } from 'leaflet';
+import { setOptions, DomEvent } from 'leaflet';
+import './css/lib/leaflet-search.css';
+import { Search } from './lib/leaflet-search.js';
 
 //=================================================================================================
 // leaflet.Control.SupraSearch
@@ -17,9 +19,9 @@ import { Control, setOptions, DomEvent } from 'leaflet';
 //  Handles saving of search text to Settings
 //  When opening with search text, show list
 
-const _super = Control.Search.prototype;
+const _super = Search.prototype;
 
-export const SupraSearch = Control.Search.extend({
+export const SupraSearch = Search.extend({
   options: {
     marker: false, // no red circle
     initial: false, // search any substring
