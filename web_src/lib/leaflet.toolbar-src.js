@@ -1,6 +1,4 @@
 /* global L */
-// Note: This source has been modified so that it uses ES6 exports instead of binding to the global 'L' variable.
-// import { Layer, Class } from 'leaflet';
 
 // L.Layer was introduced in Leaflet 1.0 and is not present in earlier releases.
 L.Toolbar2 = (L.Layer || L.Class).extend({
