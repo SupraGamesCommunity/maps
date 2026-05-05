@@ -33,7 +33,7 @@ function getYTUrlVideoId(url){
   return url.match(/(embed[/?#]|[/?#&]v=|^)(?<id>[0-9a-zA-Z_-]{11})($|[/?#&])/)?.groups.id;
 }
 
-// Try to extract the video id, start and end time from the url. If it doesn't find a video id
+// Try to extract the video id, start and end time from the string. If it doesn't find a video id
 // returns undefined, otherwise returns { yt_video: {video id} ?start: {seconds} ?end: {seconds} }
 function getYTUrlTime(url, end = false){
     const timeParts =
@@ -50,7 +50,8 @@ function getYTUrlTime(url, end = false){
         + Number(timeParts.s ?? 0)).toString() : undefined;
 }
 
-// We'll call it a URL if it contains any URL characters
+// If it's not a exactly just video id, see if it contains what looks like
+// some youtube parameters for video id and timestemps and extract them.
 function getVideoParams(url) {
     let params = {};
     params.yt_video ??= getYTUrlVideoId(url);
