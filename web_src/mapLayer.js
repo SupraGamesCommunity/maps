@@ -2,10 +2,11 @@ import { browser } from './utils.js';
 import { locStr } from './locStr.js';
 import { Settings } from './settings.js';
 import { tileLayer, point, layerGroup } from 'leaflet';
+import { L_tileLayer_canvas } from './lib/L.TileLayer.Canvas.js';
 
 // leaflet.tileLayer.canvas() is faster than leaflet.tileLayer() and fixes a visible line between tiles on most browsers
 // However on Firefox it makes the lines much worse, so we choose based on which browser
-const L_tileLayer = browser.isFirefox ? tileLayer : tileLayer.canvas;
+const L_tileLayer = browser.isFirefox ? tileLayer : L_tileLayer_canvas;
 
 function boundsShrink(b, d) {
   return [

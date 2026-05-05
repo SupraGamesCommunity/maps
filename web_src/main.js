@@ -13,8 +13,6 @@ import L from 'leaflet';
 import './css/lib/leaflet.toolbar.min.css';
 import './lib/leaflet.toolbar-src.js';
 
-import './lib/L.TileLayer.Canvas.js';
-
 import 'leaflet.fullscreen/dist/Control.FullScreen.css';
 import { FullScreen } from 'leaflet.fullscreen';
 
