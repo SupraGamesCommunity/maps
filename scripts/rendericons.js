@@ -310,8 +310,8 @@ for (const [configName, config] of Object.entries(iconConfigs)) {
       // If this variant isn't specifically specified elsewhere then create a PNG for it
       if (variantConfigName == configName || !(variantConfigName in iconConfigs)) {
         // Split bg and fg values into colour and flags
-        const [fg='white', fgFlag=''] = config.fg?.split(':') || ['white',''];
-        let   [bg='grey', bgFlag=''] = config.bg?.split(':') || ['grey',''];
+        const [fg='white', fgFlag=''] = config.fg?.split(':') || [];
+        let   [bg='grey', bgFlag=''] = config.bg?.split(':') || [];
 
         // If neither is explicitly set to then make bg default to variant
         if(fgFlag == '' && bgFlag == '')
