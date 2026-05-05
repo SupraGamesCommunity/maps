@@ -4,9 +4,13 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "start": "call scripts/shellstartup.cmd",
+    "predev": "node scripts/rendericons.js",
     "dev": "vite",
+    "prebuild": "node scripts/rendericons.js",
     "build": "vite build",
     "lint": "eslint .",
+    "prepreview": "node scripts/rendericons.js && vite build",
     "preview": "vite preview",
     "prettier": "prettier . --write"
   },

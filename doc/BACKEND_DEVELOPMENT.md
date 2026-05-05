@@ -56,12 +56,14 @@ Note: See separate notes on convenient setup/extensions to use with VS Code
 Run `uv sync`. This will download a compatible Python binary (if necessary), and create a `.venv` directory
 to store the Python virtual environment. (This directory is not intended to be committed to the codebase.)
 
+Run `npm install`. This will set download all the node.js dependencies
+
 ##  Main Scripts
 
 findslpaks.cmd      Helper script to locate game install directories and set environment variables
-export.cmd          CLI script used to extract and parse data from the game
+export.cmd          CLI script used to extract and parse data from the games (uses supraland_parser.py)
 supraland_parser.py Script to extract map data from Supraland UE4 games: options for raw data, markers and map textures
-
+rendericons.py      Sciprt to render icons based on Font Awesome SVG to markers/rendered/*.png
 
 ## Running Windows Scripts
 
@@ -69,7 +71,7 @@ Scripts are written for Windows CMD.exe and expect the tools (above) to be insta
 
 The main extraction scripts use [CUE4Parse.exe](https://github.com/joric/CUE4Parse.CLI) which is included.
 
-Most of the scripts rely on environment variables set up by findslpaks.cmd.
+The export scripts rely on environment variables set up by findslpaks.cmd.
 
 It would likely be possible to run them under Wine (https://gitlab.winehq.org/wine/wine/-/wikis/Download)
 
@@ -142,5 +144,6 @@ node {some script.js} argument1 argument2 ...
 
 ## Auto-formatting JS scripts
 
-?
-
+```sh
+npm run prettier
+```

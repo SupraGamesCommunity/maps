@@ -12,7 +12,7 @@ call npm --silent install
 
 @echo.
 @echo running 'findslpaks'
-call findslpaks.cmd
+call %~dp0\findslpaks.cmd
 
 @echo.
 @echo To run web server use command: 'npm run dev'

@@ -19,6 +19,9 @@ site-packages/
 bin/
 obj/
 
+# Ignore the generated icons
+public/img/rendered/**
+
 # Ignore some of the source directories
 source/sl/*.txt
 source/sl/*.json

@@ -259,7 +259,7 @@
 
   "5Cent_C"                         : { "friendly": "5 Cent",              "icon": "swcoin:x0.5",        "layer": "swcoin",        "nospoiler": null,          "games": ["sw"]                                   },
   "Coin:LaunchBox_C"                : { "friendly": "Chest",               "icon": "swchest_coin",       "layer": "swcoin",        "nospoiler": "swnospoiler",          "games": ["sw"]                                   },
-  "Coin:PresentBox_C"               : { "friendly": "Present Box",         "icon": "gift_box_orange:V",  "layer": "swcoin",        "nospoiler": "swnospoiler",          "games": ["sw"]                                   },
+  "Coin:PresentBox_C"               : { "friendly": "Present Box",         "icon": "gift_box.orange",    "layer": "swcoin",        "nospoiler": "swnospoiler",          "games": ["sw"]                                   },
   "Inventory_Coin_C"                : { "friendly": "Coins",               "icon": "swcoin:x0.5",        "layer": "swcoin",        "nospoiler": null,          "games": ["sw"]                                   },
   "Inventory_Coin3_C"               : { "friendly": "Coins",               "icon": "swcoin:x0.5",        "layer": "swcoin",        "nospoiler": null,          "games": ["sw"]                                   },
   "Inventory_Coin5_C"               : { "friendly": "Coins",               "icon": "swcoin:x0.5",        "layer": "swcoin",        "nospoiler": null,          "games": ["sw"]                                   },
@@ -278,12 +278,12 @@
   "Nailscrew_C"                     : { "friendly": "Gold Screw",          "icon": "screw",              "layer": "special",       "nospoiler": null,          "games": ["sw"], "setfound": false                },
   "GoldenScrew_C"                   : { "friendly": "Gold Screw",          "icon": "screw",              "layer": "special",       "nospoiler": null,          "games": ["sw"], "setfound": false                },
 
-  "FloatingRaft_C"                  : { "friendly": "Raft",                "icon": "gift_box_gold",      "layer": "poi",           "nospoiler": null,          "games": ["sw"], "setfound": false                },
+  "FloatingRaft_C"                  : { "friendly": "Raft",                "icon": "raft",               "layer": "poi",           "nospoiler": null,          "games": ["sw"], "setfound": false                },
   "FloppyDisk_SavePoint_C"          : { "friendly": "Floppy Disk",         "icon": "disk",               "layer": "poi",           "nospoiler": null,          "games": ["sw"], "setfound": false                },
   "HealthDispenser_C"               : { "friendly": "Health Dispenser",    "icon": "health_dispencer",   "layer": "poi",           "nospoiler": null,          "games": ["sw"], "setfound": false                },
   "SmallHeart_Healing_C"            : { "friendly": "Health",              "icon": "heart",              "layer": "poi",           "nospoiler": null,          "games": ["sw"], "setfound": false                },
   "StandardFashionStore_C"          : { "friendly": "Fashion Store",       "icon": "fashion_slot",       "layer": "poi",           "nospoiler": null,          "games": ["sw"], "setfound": false                },
-  "StandardShop_C"                  : { "friendly": "Item Shop",           "icon": "gift_box_gold",      "layer": "poi",           "nospoiler": null,          "games": ["sw"], "setfound": false                },
+  "StandardShop_C"                  : { "friendly": "Item Shop",           "icon": "gift_box.gold",      "layer": "poi",           "nospoiler": null,          "games": ["sw"], "setfound": false                },
   "SupraworldPlayerStart_C"         : { "friendly": "Player Start",        "icon": "playerstart",        "layer": "poi",           "nospoiler": null,          "games": ["sw"], "setfound": false                },
   "_PokerChip_C"                    : { "friendly": "Poker Chip",          "icon": "pokerchip:vx0.75",        "layer": "poi",           "nospoiler": null,          "games": ["sw"]                                   },
   "_SWPlayerPosition"               : { "friendly": "Player Position",     "icon": "swplayerpos",        "layer": "_map",          "nospoiler": null,          "games": ["sw"]                                   },
