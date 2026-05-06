@@ -12,7 +12,12 @@
     "lint": "eslint .",
     "prepreview": "node scripts/rendericons.js && vite build",
     "preview": "vite preview",
-    "prettier": "prettier . --write"
+    "prettier": "prettier . --write",
+    "prettier-check": "prettier . --check",
+    "black": "uvx black .",
+    "black-check": "uvx black --check .",
+    "format-all": "npm run prettier && npm run black",
+    "deploy-to-gh-pages": "node scripts/preview_gh_pages.cjs"
   },
   "dependencies": {
     "@fortawesome/react-fontawesome": "^3.3.1",
@@ -37,6 +42,7 @@
     "eslint": "^10.2.1",
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.5.2",
+    "gh-pages": "^6.3.0",
     "globals": "^17.4.0",
     "path2d": "^0.3.1",
     "prettier": "3.8.3",

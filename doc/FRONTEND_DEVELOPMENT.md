@@ -127,3 +127,38 @@ build. To test the production build locally:
 npm run build       # Install the files into the dist/ directory
 npm run preview     # Start a new webserver on https://localhost:4173/ that serves the dist/ directory.
 ```
+
+
+## Deploying to GitHub Pages
+
+### Publishing to production
+
+The main production app at https://supragamescommunity.github.io/maps/ is hosted via
+[GitHub Pages](https://docs.github.com/en/pages). When a branch is merged to the `main` branch in the `maps` repo,
+a GitHub Actions workflow will automatically rebuild and publish the site.
+
+
+### Publishing to your local GitHub Pages
+
+Developers may find it useful to preview changes to their forked repo's GitHub Pages, so that they can (for example)
+share work-in-progress with other developers, or facilitate testing the app with mobile browsers.
+
+1. Ensure that you have set up your local repository according to the setup steps in [CONTRIBUTING](./CONTRIBUTING.md).
+   This includes forking the upstream repo, and cloning it locally. **Important:** Your `origin` remote should
+   point to your forked repo. To confirm, run `git remote -v` and check that `origin` points to something like
+   `https://github.com/YOUR_GITHUB_USERNAME/maps.git`.
+
+2. Make a production build of the site locally. This will place the files in the `dist/` directory.
+
+```
+npm run build
+```
+
+3. Deploy to your GitHub Pages at `https://YOUR_GITHUB_USERNAME.github.io/maps`:
+
+```
+npm run deploy-to-gh-pages
+```
+
+The process make take a few minutes. If successful, you should see a "Deployment complete" message. You can
+than view the site at `https://YOUR_GITHUB_USERNAME.github.io/maps`.
