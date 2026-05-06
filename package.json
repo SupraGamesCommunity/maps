@@ -12,7 +12,11 @@
     "lint": "eslint .",
     "prepreview": "node scripts/rendericons.js && vite build",
     "preview": "vite preview",
-    "prettier": "prettier . --write"
+    "prettier": "prettier . --write",
+    "prettier-check": "prettier . --check",
+    "black": "uvx black .",
+    "black-check": "uvx black --check .",
+    "format-all": "npm run prettier && npm run black"
   },
   "dependencies": {
     "@fortawesome/react-fontawesome": "^3.3.1",
