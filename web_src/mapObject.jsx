@@ -1,5 +1,3 @@
-/* globals L */
-
 import { mergeDeep } from './utils.js';
 import { L_arrowLine } from './arrowLine.js';
 import { locStr } from './locStr.js';
@@ -12,6 +10,7 @@ import { MapParam } from './mapParam.js';
 import { buildMode } from './devBuildMode.js';
 import { createRoot } from 'react-dom/client';
 import { PinContent } from './PinContent.jsx';
+import { marker as leaflet_marker, latLngBounds } from 'leaflet';
 
 //=================================================================================================
 // MapObject class
@@ -141,7 +140,7 @@ export class MapObject {
       o: this.o,
       layerId: layerId,
     };
-    const marker = L.marker([this.o.lat, this.o.lng], options)
+    const marker = leaflet_marker([this.o.lat, this.o.lng], options)
       .addTo(mapLayer.id == '_map' ? map : mapLayer.layerObj) // Add to relevant mapLayer (or the group)
       .bindPopup('', { minWidth: 300 })
       .on('popupopen', this.onPopupOpen, this) // We set popup text on demand
@@ -236,7 +235,7 @@ export class MapObject {
 
     if (
       (!MapLayer.isEnabledFromId(c.layer, map.mapId) && !MapLayer.isEnabledFromId(c.nospoiler, map.mapId)) ||
-      !L.latLngBounds(MapLayer.get(map.mapId).viewLatLngBounds).contains([this.o.lat, this.o.lng])
+      !latLngBounds(MapLayer.get(map.mapId).viewLatLngBounds).contains([this.o.lat, this.o.lng])
     ) {
       this.release();
       return;

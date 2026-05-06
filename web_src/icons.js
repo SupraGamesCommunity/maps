@@ -4,7 +4,7 @@ import { isSupraColor } from './supraDefs.js';
 //=================================================================================================
 // static class Icons
 //
-// L.MapIcon creates a dynamically sized Icon object
+// leaflet.MapIcon creates a dynamically sized Icon object
 //
 // Call Icons.init() to load the iconConfig.json
 //      Defines the icon size, anchor, popup anchor and tooltip anchor
@@ -96,7 +96,7 @@ export class Icons {
     const match = flags.match(/x[\d.]+/);
     opts.baseScale = parseFloat(match && match[0].slice(1)) || 1; // :x{scale}
 
-    // Generate options required for L.MapIcon
+    // Generate options required for leaflet.MapIcon
     opts.className = [baseName, opts.variant, opts.game, `x${opts.baseScale.toString().replace('.', '-')}`]
       .filter(Boolean)
       .join('-');

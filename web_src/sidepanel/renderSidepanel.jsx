@@ -1,10 +1,9 @@
-/* global L */
-
 import { StrictMode } from 'react';
 import { Sidepanel } from './Sidepanel.jsx';
 import { LayerSelect_Data } from './LayerSelect_Data.jsx';
 import { createRoot } from 'react-dom/client';
 import { setLeafletMapPushCss } from './setLeafletMapPushCss.jsx';
+import { DomEvent } from 'leaflet';
 
 let sidepanelRoot = null;
 
@@ -18,10 +17,10 @@ export function initSidepanelDom() {
   // sidepanelContainer.replaceChildren(); // Clear all child elements
 
   // Adds stopPropagation to the element's 'wheel' events (plus browser variants).
-  L.DomEvent.disableScrollPropagation(sidepanelContainer);
+  DomEvent.disableScrollPropagation(sidepanelContainer);
   // Adds stopPropagation to the element's 'click', 'dblclick', 'contextmenu', 'mousedown'
   // and 'touchstart' events (plus browser variants).
-  L.DomEvent.disableClickPropagation(sidepanelContainer);
+  DomEvent.disableClickPropagation(sidepanelContainer);
 }
 
 /*

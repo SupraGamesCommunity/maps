@@ -1,8 +1,7 @@
-/* globals L */
-
 import { browser } from './utils.js';
 import { Settings } from './settings.js';
 import { MapLayer } from './mapLayer.js';
+import { marker as leaflet_marker } from 'leaflet';
 
 //=================================================================================================
 // MapPins
@@ -53,7 +52,7 @@ export class MapPins {
 
     const alt = MapPins.getAlt(idx);
     if (!(alt in this._markers)) {
-      const marker = L.marker(pos, {
+      const marker = leaflet_marker(pos, {
         zIndexOffset: MapLayer.frontZIndexOffset,
         draggable: true,
         title: this.getPinTitle(idx),

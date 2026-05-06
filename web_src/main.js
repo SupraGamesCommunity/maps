@@ -1,6 +1,26 @@
 /*eslint strict: ["error", "global"]*/
-/*global L */
 
+/* While 'leaflet' is distributed as a proper ESM module, its plugins are often in AMD/UMD/CommonJS formats that
+ * assume 'leaflet' was already loaded as a global var 'L'. To import Leaflet in our code in the modern ES6-style,
+ * it's necessary to recreate the global 'L' object so that the plugins will function.
+ * We do this by importing leaflet as a namespace import [1], then copy each function/attribute from the namespace
+ * to the global 'L' object.
+ * [1] https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import#namespace_import
+ */
+import 'leaflet/dist/leaflet.css';
+import L from 'leaflet';
+// Now that the global 'L' object is defined, we can safely import the old-style plugins.
+import './css/lib/leaflet.toolbar.min.css';
+import './lib/leaflet.toolbar-src.js';
+
+import 'leaflet.fullscreen/dist/Control.FullScreen.css';
+import { FullScreen } from 'leaflet.fullscreen';
+
+import './css/lib/L.Control.MousePosition.css';
+import { MousePosition } from './lib/L.Control.MousePosition.js';
+
+import './css/sidebar.css';
+import './css/main.css';
 import { browser } from './utils.js';
 import { Settings } from './settings.js';
 import { locStr } from './locStr.js';
@@ -11,7 +31,7 @@ import { GameClasses } from './gameClasses.js';
 import { MapLayer } from './mapLayer.js';
 import { MapObject } from './mapObject.jsx';
 import { MapPins } from './mapPins.js';
-import { L_Control_supraSearch } from './supraSearch.js';
+import { SupraSearch } from './supraSearch.js';
 import { L_supraMap } from './supraMap.js';
 import { initSidepanelDom, renderSidepanel, destroySidepanel } from './sidepanel/renderSidepanel.jsx';
 import { library, icon as fa_icon } from '@fortawesome/fontawesome-svg-core';
@@ -147,8 +167,8 @@ async function loadMap(mapParam) {
 
   // Add zoom, fullscreen toggle and mousePosition controls to the map
   L.control.zoom({ position: 'bottomright' }).addTo(map);
-  L.control.fullscreen({ position: 'bottomright', forceSeparateButton: true }).addTo(map);
-  L.control.mousePosition({ numDigits: 0, lngFirst: true }).addTo(map);
+  map.addControl(new FullScreen({ position: 'bottomright', forceSeparateButton: true }));
+  map.addControl(new MousePosition({ numDigits: 0, lngFirst: true }));
 
   // Sort out the layer configuration and create the layers
   MapLayer.setupLayers(map);
@@ -228,7 +248,8 @@ async function loadMap(mapParam) {
   });
   const searchLayer = L.layerGroup(layerObjArray);
 
-  const searchControl = L_Control_supraSearch({ layer: searchLayer }).addTo(map);
+  const searchControl = new SupraSearch({ layer: searchLayer });
+  map.addControl(searchControl);
 
   // Add the markers to the map
   await MapObject.loadObjects(map.mapId);

@@ -1,10 +1,11 @@
-/* globals L */
-
 import { Settings } from './settings.js';
 import { MapObject } from './mapObject.jsx';
+import { setOptions, DomEvent } from 'leaflet';
+import './css/lib/leaflet-search.css';
+import { Search } from './lib/leaflet-search.js';
 
 //=================================================================================================
-// L.Control.SupraSearch
+// leaflet.Control.SupraSearch
 //
 // Various customisations to the behaviour of stfanocudini's leaflet-search control.
 //
@@ -18,9 +19,9 @@ import { MapObject } from './mapObject.jsx';
 //  Handles saving of search text to Settings
 //  When opening with search text, show list
 
-const _super = L.Control.Search.prototype;
+const _super = Search.prototype;
 
-L.Control.SupraSearch = L.Control.Search.extend({
+export const SupraSearch = Search.extend({
   options: {
     marker: false, // no red circle
     initial: false, // search any substring
@@ -30,7 +31,7 @@ L.Control.SupraSearch = L.Control.Search.extend({
 
   // Slightly changes default options plus creates a LayerGroup containing a filtered version of 'our' layers
   initialize: function (options) {
-    L.setOptions(this, options);
+    setOptions(this, options);
 
     _super.initialize.call(this, options);
   },
@@ -40,7 +41,7 @@ L.Control.SupraSearch = L.Control.Search.extend({
   _createInput: function (text, className) {
     const input = _super._createInput.call(this, text, className);
 
-    L.DomEvent.on(
+    DomEvent.on(
       input,
       'focus',
       function (e) {
@@ -68,8 +69,8 @@ L.Control.SupraSearch = L.Control.Search.extend({
     }
 
     // When user clicks on the tip store the text, go to the tip location
-    L.DomEvent.disableClickPropagation(tip)
-      .on(tip, 'click', L.DomEvent.stop, this)
+    DomEvent.disableClickPropagation(tip)
+      .on(tip, 'click', DomEvent.stop, this)
       .on(
         tip,
         'click',
@@ -139,8 +140,3 @@ L.Control.SupraSearch = L.Control.Search.extend({
     _super.cancel.call(this);
   },
 });
-
-// Leaflet style wrapper for constructor
-export const L_Control_supraSearch = function (options) {
-  return new L.Control.SupraSearch(options);
-};

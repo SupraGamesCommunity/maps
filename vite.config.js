@@ -13,6 +13,9 @@ export default defineConfig(() => {
         input: {
           main: './index.html',
         },
+        output: {
+          strictExecutionOrder: true,
+        },
       },
     },
   };

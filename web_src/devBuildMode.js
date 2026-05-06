@@ -1,9 +1,8 @@
 /*eslint strict: ["error", "global"]*/
-/*global L */
-
 import { browser } from './utils.js';
 import { MapObject } from './mapObject.jsx';
 import { Settings } from './settings.js';
+import { LatLng } from 'leaflet';
 
 const skipConfirms = browser.isCode;
 
@@ -29,40 +28,36 @@ export function setBuildMode(newBuildMode) {
 
 // YouTube video id is an 11 character base 64 string following embed+{separator} or {separator}v=
 // and followed by end of line or a separator. If there's a matrch we assign it to group id with (?<id>...)
-function getYTUrlVideoId(url){
+function getYTUrlVideoId(url) {
   return url.match(/(embed[/?#]|[/]|[/?#&]v=|^)(?<id>[0-9a-zA-Z_-]{11})($|[/?#&])/)?.groups.id;
 }
 
 // Try to extract the video id, start and end time from the string. If it doesn't find a video id
 // returns undefined, otherwise returns { yt_video: {video id} ?start: {seconds} ?end: {seconds} }
-function getYTUrlTime(url, end = false){
-    const timeParts =
-        url.match(
-            new RegExp(
-                  '[?&#]'
-                + (end ? 'end=' : '(start|t)=')
-                + '((?<h>[0-9]+)(h))?((?<m>[0-9]+)(m))?((?<s>[0-9]+)(s|[&?#]|$))?'
-            )
-        )?.groups;
-    return timeParts ?
-        ( Number(timeParts.h ?? 0) * 60 * 60
-        + Number(timeParts.m ?? 0) * 60
-        + Number(timeParts.s ?? 0)).toString() : undefined;
+function getYTUrlTime(url, end = false) {
+  const timeParts = url.match(
+    new RegExp(
+      '[?&#]' + (end ? 'end=' : '(start|t)=') + '((?<h>[0-9]+)(h))?((?<m>[0-9]+)(m))?((?<s>[0-9]+)(s|[&?#]|$))?'
+    )
+  )?.groups;
+  return timeParts
+    ? (Number(timeParts.h ?? 0) * 60 * 60 + Number(timeParts.m ?? 0) * 60 + Number(timeParts.s ?? 0)).toString()
+    : undefined;
 }
 
 // If it's not a exactly just video id, see if it contains what looks like
 // some youtube parameters for video id and timestemps and extract them.
 function getVideoParams(url) {
-    let params = {};
-    params.yt_video ??= getYTUrlVideoId(url);
-    if(params.yt_video) {
-        if(url.length != 11) {
-          params.yt_start ??= getYTUrlTime(url);
-          params.yt_end ??= getYTUrlTime(url, {end: true} );
-        }
-      return params;
+  let params = {};
+  params.yt_video ??= getYTUrlVideoId(url);
+  if (params.yt_video) {
+    if (url.length != 11) {
+      params.yt_start ??= getYTUrlTime(url);
+      params.yt_end ??= getYTUrlTime(url, { end: true });
     }
-    return { yt_video: url };
+    return params;
+  }
+  return { yt_video: url };
 }
 
 export function updateBuildModeValue(event) {
@@ -74,13 +69,11 @@ export function updateBuildModeValue(event) {
     buildMode.objectChanges[MapObject.makeAlt(buildMode.object.area, buildMode.object.name) + '|' + id] = value;
   }
 
-  if(el.id == 'yt_video'){
+  if (el.id == 'yt_video') {
     Object.entries(getVideoParams(value)).forEach(([id, value]) => {
-      if(value)
-        buildModeSetValue(id, value)
+      if (value) buildModeSetValue(id, value);
     });
-  }
-  else {
+  } else {
     buildModeSetValue(el.id, value);
   }
 }
@@ -95,7 +88,7 @@ export function commitCurrentBuildModeChanges() {
   let newLat = buildMode.object.lat;
   let newLng = buildMode.object.lng;
 
-  buildMode.marker.setLatLng(new L.LatLng(newLat, newLng));
+  buildMode.marker.setLatLng(new LatLng(newLat, newLng));
   buildMode.objectChanges = [];
 }
 

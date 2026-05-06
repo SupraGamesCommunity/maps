@@ -1,4 +1,7 @@
-L.TileLayer.Canvas = L.TileLayer.extend({
+import { TileLayer, Util, DomUtil } from 'leaflet';
+
+
+export const TileLayerCanvas = TileLayer.extend({
   _delays: {},
   _delaysForZoom: null,
   createCanvas: function (tile, coords, done) {
@@ -82,12 +85,12 @@ L.TileLayer.Canvas = L.TileLayer.extend({
         img = this._tilesImages[i] || {};
         tile = this._tiles[i].el;
 
-        img.onload = L.Util.falseFn;
-        img.onerror = L.Util.falseFn;
+        img.onload = Util.falseFn;
+        img.onerror = Util.falseFn;
 
         if (!tile.complete) {
-          img.src = L.Util.emptyImageUrl;
-          L.DomUtil.remove(img);
+          img.src = Util.emptyImageUrl;
+          DomUtil.remove(img);
           delete this._tilesImages[i];
           delete this._tiles[i];
         }
@@ -96,6 +99,7 @@ L.TileLayer.Canvas = L.TileLayer.extend({
   }
 });
 
-L.tileLayer.canvas = function tileLayerCanvas(url, options) {
-  return new L.TileLayer.Canvas(url, options);
+
+export const L_tileLayer_canvas = function (url, options) {
+  return new TileLayerCanvas(url, options);
 };
