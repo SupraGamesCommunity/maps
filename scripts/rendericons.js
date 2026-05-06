@@ -222,7 +222,7 @@ function renderFAIconToImageURL(
   style, // FA prefix (fas=solid, far=regular, fal=light, fat=thin, dad=duotone, fab=brands)
   iconName, // Name of an FA Icon
   fg, // Foreground colour
-  bg, // Background colour
+  bg // Background colour
 ) {
   const faPin = 'location-pin'; // FA icon used for map pin marker background
   const faPoint = 'circle'; // FA icon used for map point marker background
@@ -310,19 +310,18 @@ for (const [configName, config] of Object.entries(iconConfigs)) {
       // If this variant isn't specifically specified elsewhere then create a PNG for it
       if (variantConfigName == configName || !(variantConfigName in iconConfigs)) {
         // Split bg and fg values into colour and flags
-        const [fg='white', fgFlag=''] = config.fg?.split(':') || [];
-        let   [bg='grey', bgFlag=''] = config.bg?.split(':') || [];
+        const [fg = 'white', fgFlag = ''] = config.fg?.split(':') || [];
+        let [bg = 'grey', bgFlag = ''] = config.bg?.split(':') || [];
 
         // If neither is explicitly set to then make bg default to variant
-        if(fgFlag == '' && bgFlag == '')
-          bgFlag = 'v';
+        if (fgFlag == '' && bgFlag == '') bgFlag = 'v';
 
         const buffer = renderFAIconToImageURL(
           config.type == 'pin',
           config.style,
           config.iconName,
-          (fgFlag == 'v' && variant) ? variant : fg,
-          (bgFlag == 'v' && variant) ? variant : bg,
+          fgFlag == 'v' && variant ? variant : fg,
+          bgFlag == 'v' && variant ? variant : bg,
           48
         );
         const outPNG = path.join(outPath, variantConfigName + '.png');
