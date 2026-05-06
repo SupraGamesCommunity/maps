@@ -108,6 +108,15 @@ To run launch the development server and open the URL in your default browser.
 If running VS Code there is a launch.json configuration 'Launch Vite Dev Server'
 
 
+## Running automated tests
+
+To verify that your changes are working correctly, run some simple smoketests:
+
+* `npm run test`: Run tests headlessly (a Chromium browser with no window)
+* `npm run test:ui`: Run tests with interactive UI.
+* `npm run test:headed`: Run tests in visible browser
+
+
 ## Building for production
 
 To serve the application on a static site like Github Pages, the source code must be transformed by Vite into static
