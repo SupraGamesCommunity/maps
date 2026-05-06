@@ -13,6 +13,10 @@
     "prepreview": "node scripts/rendericons.js && vite build",
     "preview": "vite preview",
     "prettier": "prettier . --write",
+    "prettier-check": "prettier . --check",
+    "black": "uvx black .",
+    "black-check": "uvx black --check .",
+    "format-all": "npm run prettier && npm run black",
     "deploy-to-gh-pages": "node scripts/preview_gh_pages.cjs"
   },
   "dependencies": {
