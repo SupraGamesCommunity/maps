@@ -14272,6 +14272,16 @@
     "abilities": "Crouch"
   },
   {
+    "name": "SecretVolume_C_UAID_7085C2B20F0E1E6202_1607417635",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": 2910.5810546875,
+    "lng": 3667.495361328125,
+    "alt": -112.62963104248047,
+    "area_tag": "OutskirtsStartTown",
+    "comment": "Obvious Area"
+  },
+  {
     "name": "SecretVolume_C_UAID_7085C2B20F0E277301_1155332857",
     "type": "SecretVolume_C",
     "area": "Supraworld",
