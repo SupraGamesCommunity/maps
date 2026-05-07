@@ -192,7 +192,7 @@ export const PinContent = ({ o, mapId, closePopup, hasFoundState, isFound, found
                 checked={isFoundCheckbox}
                 onChange={() => {
                   setIsFoundCheckbox(!isFoundCheckbox);
-                  window.mapObjectFound(foundAlt, isFoundCheckbox);
+                  window.mapObjectFound(foundAlt, !isFoundCheckbox);
                 }}
               />
               {'Found'}
