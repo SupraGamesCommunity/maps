@@ -947,13 +947,13 @@ def in_earlyaccess(otype, p, pos):  # noqa: C901 - disable complexity warning
     # If it has a progression and it's not in released content then reject
     if (
         (proggroup := p.get('ProgressionGroup', {}).get('TagName'))
-        and proggroup != "None"
+        and proggroup != 'None'
         and not any(proggroup.endswith(s) for s in ea_proggroups)
     ):
         return False
 
     # If it has an area that's not
-    if (swarea := p.get('Area', {}).get('TagName')) and not any(swarea.endswith(s) for s in ea_areas):
+    if (swarea := p.get('Area', {}).get('TagName')) and swarea != 'None' and not any(swarea.endswith(s) for s in ea_areas):
         return False
 
     # Some classes should be rejected if they have no area tag
@@ -1158,7 +1158,7 @@ def export_sw_markers(game: str, datadir: Path, sourcedir: Path):  # noqa: C901 
             # Handle the Obvious Area secret
             comment = None
             if o.get('ActorLabel') == "ObviousAreaOuttaTown":
-                p['Area'] = {'TagName': 'OutskirtsStartTown'}
+                # p['Area'] = {'TagName': 'OutskirtsStartTown'}
                 comment = 'Obvious Area'
 
             variant = ''
