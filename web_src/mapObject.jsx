@@ -220,18 +220,18 @@ export class MapObject {
   init(map) {
     const c = GameClasses.get(this.o.type);
 
-    // If instance is marked as not saved then we want to show as not found
-    if (this._foundLockedState === undefined && this.o.notsaved) {
-      this._foundLockedState = false;
-    }
+    // Give subclass a chance to change things
+    this.subclassInit?.(map);
 
     // If subclass hasn't set default set it based on setfound
-    if (this._foundLockedState === undefined && 'setfound' in c) {
+    if (/*this._foundLockedState === undefined &&*/ 'setfound' in c) {
       this._foundLockedState = c.setfound;
     }
 
-    // Give subclass a chance to change things
-    this.subclassInit?.(map);
+    // If instance is marked as not saved then we want to show as not found
+    if (/*this._foundLockedState === undefined &&*/ this.o.notsaved !== undefined) {
+      this._foundLockedState = this.o.notsaved;
+    }
 
     if (
       (!MapLayer.isEnabledFromId(c.layer, map.mapId) && !MapLayer.isEnabledFromId(c.nospoiler, map.mapId)) ||
