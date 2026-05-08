@@ -2095,10 +2095,12 @@ def main() -> None:
     parser.add_argument('-o', '--loc', action='store_true', help='extract required loc strings for game')
     args = parser.parse_args()
 
-    # If source dir is default then add the game directory
+    # Grab source directory and cleanup slc differences
     sourcedir = args.source
     if sourcedir == '..\\source':
         sourcedir += '\\' + (args.game if args.game != 'slc' else 'sl')
+    if sourcedir.endswith('\\slc'):
+        sourcedir = sourcedir[:-1]
 
     datadir = Path(args.data)
     sourcedir = Path(sourcedir)
