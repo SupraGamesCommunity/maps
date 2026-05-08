@@ -249,7 +249,7 @@ config = {
             'DLC2_Area0',
             'DLC2_Complete',
             'DLC2_FinalBoss',
-            'DLC2_LateChanges',
+            # 'DLC2_LateChanges',
             'DLC2_Menu_Splash',
             'DLC2_Menu',
             'DLC2_PostRainbow',
