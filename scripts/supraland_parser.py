@@ -361,6 +361,34 @@ dietype2typeprefix = {
 # Lootpool2: Inventory_DashDamage_C, Inventory_DashBurstRange_C, Inventory_ToothpickDamage_C, Inventory_MaxHealth_C
 # Lootpool3Money: Inventory_Coin3_C
 
+marker_types = {
+  'PlayerStart','Jumppad_C','Bones_C','Chest_C','BarrelColor_C', 'BarrelRed_C','Battery_C',
+  'BP_A3_StrengthQuest_C','Lift1_C', 'DeadHero_C','ExplodingBattery_C', 'GoldBlock_C',
+  'GoldNugget_C', 'Jumppillow_C', 'MoonTake_C', 'Plumbus_C','Stone_C', 'ValveCarriable_C',
+  'ValveSlot_C', 'Valve_C','MatchBox_C','Shell_C','BarrelClosed_Blueprint_C','MetalBall_C',
+  'Supraball_C','Key_C','KeyLock_C','KeycardColor_C','PipeCap_C','Sponge_C','Juicer_C','Seed_C',
+  'Anvil_C','Map_C','NomNomFlies_C','CarrotPhysical_C','RingColorer_C','RespawnActor_C',
+  'CarryStones_Heavy_C','CarryStones_C','Crystal_C','RingRusty_C','SecretFound_C',
+  # slc
+  'Scrap_C','TalkingSpeaker_C','Sponge_Large_C',
+  # siu
+  'HealingStation_C','BP_EngagementCup_Base_C','SlumBurningQuest_C','Trash_C',
+  'BP_Area2_Uncloged_Quest_C', 'BathGuyVolume_C', 'BP_A3_RobBoss_C', 'BP_Area2_FatGuyQuest_C',
+  'BP_ParanoidQuest_C', 'BP_A3_BBQ_C', 'BP_RebuildSlum_C'         
+}
+
+starts_with = {
+    'Pipesystem','Buy','BP_Buy','BP_Purchase','BP_Unlock', 'Purchase','Upgrade','Button','Smallbutton','Coin',
+    'Lighttrigger','LotsOfCoins','EnemySpawn','Destroyable','BP_Pickaxe','Door','Key','ProjectileShooter',
+    'MinecraftBrick', # can be MinecraftBrick_C and MinecraftBrickRespawnable_C
+    'CrashEnemySpawner_C',
+}
+
+ends_with = {
+    'Chest_C','Button_C','Lever_C','Meat_C','Loot_C','Detector_C','Door_C','Flower_C','Coin_C','Guy_C',
+    'TriggerVolume_C', # opens pipes in SIU
+}
+
 properties = [
     'IsInShop',
     'canBePickedUp',
@@ -1396,8 +1424,6 @@ def export_markers(game: str, datadir: Path, sourcedir: Path) -> None:  # noqa: 
 
     data_lookup = {}
 
-    game_classes = load_json_file(path=datadir.joinpath('gameClasses.json'))
-
     # Phase 1: Read all the map json files in and build a look up table for references
     # Also get any area/map file matrices (for streaming levels)
     for area in config[game]['maps']:
@@ -1450,11 +1476,14 @@ def export_markers(game: str, datadir: Path, sourcedir: Path) -> None:  # noqa: 
         for oidx, o in enumerate(maps[area]):
             otype = o['Type']
             oname = o['Name']
-            if not o.get('Outer') or not (p := o.get('Properties')):
-                continue
 
-            gc = game_classes.get(otype)
-            if not gc or (gc and not gc['layer'] and not gc['nospoiler']):
+            allowed_items = (marker_types and otype in marker_types
+                or any(otype.startswith(s) for s in starts_with)
+                or any(otype.endswith(s) for s in ends_with)
+            )
+            if not allowed_items: continue
+
+            if not o.get('Outer') or not (p := o.get('Properties')):
                 continue
 
             def getObject(p):
@@ -1484,7 +1513,7 @@ def export_markers(game: str, datadir: Path, sourcedir: Path) -> None:  # noqa: 
                 matrix = area_mtx[area] @ matrix
 
             # some MetalBall_C are Anvils, do the replacement
-            if o['Type'] == 'MetalBall_C' and o.get('Properties', {}).get('Mesh?', {}).get('ObjectName') == 'Anvil':
+            if o['Type'] == 'MetalBall_C' and o.get('Properties', {}).get('Mesh?', {}).get('ObjectName') == "StaticMesh'Anvil'":
                 o['Type'] = 'Anvil_C'
 
             # some RingRusty_C are pickaxes, cannot be determined by meshes
@@ -1505,8 +1534,12 @@ def export_markers(game: str, datadir: Path, sourcedir: Path) -> None:  # noqa: 
             for key in properties:
                 optKey(data[-1], camel_to_snake(key), p.get(key))
 
-            optKey(data[-1], 'spawns', p.get('Spawnthing', {}).get('ObjectName'))
-            optKey(data[-1], 'spawns', p.get('Class', {}).get('ObjectName'))
+            def class_from_objectname(properties: dict, prop: str):
+                c = properties.get(prop, {}).get('ObjectName')
+                return c.split("'")[1] if c else None
+
+            optKey(data[-1], 'spawns', class_from_objectname(p, 'Spawnthing'))
+            optKey(data[-1], 'spawns', class_from_objectname(p, 'Class'))
             optKey(data[-1], 'other_pipe', pipes.get(':'.join((area, o['Name']))))
             optKey(data[-1], 'custom_color', optColor(p.get('CustomColor')))
 
@@ -1623,8 +1656,8 @@ def calc_pads(data):  # noqa: C901 - disable complexity warning
         k = o.get('relative_velocity', 1000)
         v = o.get('direction', {'x': 0, 'y': 0, 'z': 0})
 
-        vx = -v['x'] * k
-        vy = -v['y'] * k
+        vx = v['x'] * k
+        vy = v['y'] * k
         vz = v['z'] * k
 
         if (v := o.get('velocity')) and o.get('allow_stomp'):
@@ -1923,7 +1956,7 @@ def cleanup_objects(  # noqa: C901 - disable complexity warning
                     opo['twoway'] = 2
         elif o['type'] == 'Jumppad_C':
             o['linetype'] = 'jumppad'
-            if o.get('allow_stomp') or not o.get('disable_movement_in_air'):
+            if o.get('allow_stomp') or o.get('disable_movement_in_air') == False:
                 o['variant'] = 'blue'
             else:
                 o['variant'] = 'red'
@@ -2035,7 +2068,7 @@ def read_savedpadpipes(game: str, sourcedir: Path) -> dict[str, list]:
 
     # Open and read the whole js file if it exists
     if path.exists():
-        print('Reading "' + path + '"...')
+        print('Reading "' + str(path) + '"...')
         return load_json_file(path=path)
 
     print(f'Warning: {path} not found, skipping')
