@@ -44,6 +44,7 @@ source/sw/enums/**
 source/sw/parse/**
 source/sw/levels/**
 source/sw/loc/**
+!source/*/savedpadpipes.*
 
 # Editor directories and files
 .vscode/*

@@ -121,14 +121,14 @@ path[alt=''] {
 .marker-popup-debug-col {
   text-align: top;
   display: inline-block;
-  width: 40px;
+  width: 45px;
   font-weight: bold;
   vertical-align: top;
 }
 
 .marker-popup-debug-col2 {
   display: inline-block;
-  width: 260px;
+  width: 255px;
   word-wrap: break-word;
   vertical-align: top;
   user-select: all;
