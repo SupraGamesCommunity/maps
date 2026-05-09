@@ -1277,30 +1277,50 @@ def export_sw_markers(game: str, datadir: Path, sourcedir: Path):  # noqa: C901 
     print("Done")
 
 
-# Go through all the extracted blueprints in source dir and add strings and
-# localisation keys to the corresponding class definition in gameClasses
+# Read's gameClasses.json and then tries to find friendly names and descriptions and their
+# corresponding loc keys by reading the corresponding blueprint files looking for the strings
+# It avoids overwriting values in gameClasses
+#
+# SIU and SL share class names, so we use the same strings for both, which one is chosen depends
+# on which is read first (traditionally SL then SIU)
+#
+# For some things we didn't find the strings/keys in the blueprint but hand added the values
+# by finding the strings in the loc data.
+#
+# Further edits were made to the strings/keys to make a few fixups to the english
 def export_class_loc(game: str, datadir: Path, sourcedir: Path) -> None:  # noqa: C901 - disable complexity warning
 
     game_classes = load_json_file(path=datadir.joinpath('gameClasses.json'))
 
+    classes = set()
+    propcount = 0
+    propmatches = 0
+
     def optKey(game_class, cls, k, v):
+        nonlocal propcount, propmatches
         if v:
             if cls not in game_class:
                 game_class[cls] = {}
+            classes.add(cls)
+            propcount += 1
             if k not in game_class[cls]:
+                print(f'{cls}.{k} => "{v}"')
                 game_class[cls][k] = v
+            elif game_class[cls][k] == v:
+                propmatches += 1
+            else:
+                print(f'{cls}.{k} == "{game_class[cls][k]}" != "{v}"')
 
     def is_class_used(cls_name):
-        return cls_name in game_classes and game  in game_classes[cls_name].get('games', ['sl', 'slc', 'siu'])
-
+        return cls_name in game_classes and game in game_classes[cls_name].get('games', ['sl', 'slc', 'siu'])
 
     # Loop through all the blueprint files we find that are referenced in gameClasses.json
-    for blueprint_file in sourcedir.joinpath('bp', f'blueprints.{game}.json').glob('*.json'):
+    for blueprint_file in sourcedir.joinpath('bp').glob('*.json'):
         cls_name = blueprint_file.stem + '_C'
         if not is_class_used(cls_name):
             continue
 
-        blueprints = load_json_file(path=blueprint_file)
+        blueprints = load_json_file(path=blueprint_file, quiet=True)
 
         def bp_may_have_strings(bp):
             return ((otype := bp.get('Type')) == cls_name or otype == 'TextRenderComponent') and 'Properties' in bp
@@ -1309,7 +1329,7 @@ def export_class_loc(game: str, datadir: Path, sourcedir: Path) -> None:  # noqa
         for bp in (bp for bp in blueprints if bp_may_have_strings(bp)):
 
             # Loop through game classes for that include the base class name (handles something like 'Coin:Chest_C')
-            for gc in (gc for gc in game_classes if cls_name in gc):
+            for gc in (c for c in game_classes if cls_name in c):
                 props = bp['Properties']
 
                 if props.get('Text'):
@@ -1331,9 +1351,14 @@ def export_class_loc(game: str, datadir: Path, sourcedir: Path) -> None:  # noqa
                         game_classes, gc, 'description_key', props['UpgradeDescription'].get('Key')
                     )
 
+    print("Classes: ", len(classes), "Props: ", propcount, "Matches: ", propmatches)
     save_json_file(data=game_classes, path=datadir.joinpath('gameClasses.json'))
 
 
+# Read custom-loc.json and merge it into gameClasses.json and write it out
+# Then collect all the keys found the various frontend data files and
+# come up with a stripped down version of the loc files with the keys for
+# all of them
 def export_loc_files(game: str, datadir: Path, sourcedir: Path) -> None:  # noqa: C901 - disable complexity warning
     # Merge custom-loc.json into gameClasses.json
     print('Merging custom-loc.json into gameClasses.json...')
@@ -1349,12 +1374,8 @@ def export_loc_files(game: str, datadir: Path, sourcedir: Path) -> None:  # noqa
         'gameClasses.json',
         'layerConfigs.json',
         'custom-loc.json',
-        'markers.sl.json',
-        'markers.slc.json',
-        'markers.siu.json',
-        'custom-markers.sl.json',
-        'custom-markers.slc.json',
-        'custom-markers.siu.json',
+        f'markers.{game}.json',
+        f'custom-markers.{game}.json',
     ]
     print('Reading files to determine loc keys required...')
     for fn in key_files:
@@ -1368,37 +1389,22 @@ def export_loc_files(game: str, datadir: Path, sourcedir: Path) -> None:  # noqa
 
     print(f'Found {len(keys)} keys')
 
-    loc_names = [
-        'en',
-        'de',
-        'es',
-        'fi',
-        'fr',
-        'hu',
-        'it-IT',
-        'ja',
-        'ko',
-        'pl',
-        'pt-PT',
-        'ru',
-        'sr',
-        'tr',
-        'zh-Hans',
-        'zh-Hant',
-    ]
     print('Writing loc files to data directory')
-    for loc in loc_names:
-        newlocstr = {}
-        for game in ['sl', 'siu']:
-            locstr = load_json_file(path=sourcedir.joinpath(f'LOC/{game}/{loc}/Game.json'))
-            for k in locstr.keys():
-                if k in keys:
-                    # if newlocstr.get(k) and newlocstr[k] != locstr[k]:
-                    #    print(f'SL  {newlocstr[k]}')
-                    #    print(f'SIU {locstr[k]}')
-                    newlocstr[k] = locstr[k]
-        print(f'Writing to ../public/data/loc/locstr-{loc}.json')
-        save_json_file(data=newlocstr, path=datadir.joinpath(f'loc/locstr-{loc}.json'))
+
+    # Loop through all languages present
+    for loc in sourcedir.joinpath('loc').glob('*/'):
+        loc_file = datadir.joinpath(f'loc/locstr-{loc.name}.json')
+
+        # Read existing keys if there are any
+        usedlocstr = load_json_file(path=loc_file) if loc_file.exists() else {}
+
+        # Read the games data for this language and add key/string pairs that we're interested in
+        locstr = load_json_file(path=sourcedir.joinpath(f'loc/{loc.name}/Game.json'))['']
+        for k in locstr.keys():
+            if k in keys:
+                usedlocstr[k] = locstr[k]
+
+        save_json_file(data=usedlocstr, path=loc_file)
 
 
 def export_markers(game: str, datadir: Path, sourcedir: Path) -> None:  # noqa: C901 - disable complexity warning
