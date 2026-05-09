@@ -1277,44 +1277,59 @@ def export_sw_markers(game: str, datadir: Path, sourcedir: Path):  # noqa: C901 
     print("Done")
 
 
+# Go through all the extracted blueprints in source dir and add strings and
+# localisation keys to the corresponding class definition in gameClasses
 def export_class_loc(game: str, datadir: Path, sourcedir: Path) -> None:  # noqa: C901 - disable complexity warning
+
     game_classes = load_json_file(path=datadir.joinpath('gameClasses.json'))
 
-    for game in ['sl', 'siu']:
-        blueprints = load_json_file(path=sourcedir.joinpath(f'blueprints.{game}.json'))
+    def optKey(game_class, cls, k, v):
+        if v:
+            if cls not in game_class:
+                game_class[cls] = {}
+            if k not in game_class[cls]:
+                game_class[cls][k] = v
 
-        def optKey(game_class, cls, k, v):
-            if v:
-                if cls not in game_class:
-                    game_class[cls] = {}
-                if k not in game_class[cls]:
-                    game_class[cls][k] = v
+    def is_class_used(cls_name):
+        return cls_name in game_classes and game  in game_classes[cls_name].get('games', ['sl', 'slc', 'siu'])
 
-        for cls, bps in blueprints.items():
-            if cls in game_classes:
-                for bp in bps:
-                    t = bp.get("Type")
-                    if (t == 'TextRenderComponent' or t == cls) and bp.get('Properties'):
-                        props = bp['Properties']
-                        for gcls in game_classes:
-                            if cls in gcls:
-                                if props.get('Text'):
-                                    #                    optKey(game_classes, gcls, 'Invariant',       props['Text'].get('CultureInvariantString'))
-                                    optKey(game_classes, gcls, 'friendly', props['Text'].get('SourceString'))
-                                    optKey(game_classes, gcls, 'friendly_key', props['Text'].get('Key'))
-                                if props.get('UpgradeName'):
-                                    optKey(game_classes, gcls, 'friendly', props['UpgradeName'].get('SourceString'))
-                                    optKey(game_classes, gcls, 'friendly_key', props['UpgradeName'].get('Key'))
-                                if props.get('UpgradeDescription'):
-                                    optKey(
-                                        game_classes,
-                                        gcls,
-                                        'description',
-                                        props['UpgradeDescription'].get('SourceString'),
-                                    )
-                                    optKey(
-                                        game_classes, gcls, 'description_key', props['UpgradeDescription'].get('Key')
-                                    )
+
+    # Loop through all the blueprint files we find that are referenced in gameClasses.json
+    for blueprint_file in sourcedir.joinpath('bp', f'blueprints.{game}.json').glob('*.json'):
+        cls_name = blueprint_file.stem + '_C'
+        if not is_class_used(cls_name):
+            continue
+
+        blueprints = load_json_file(path=blueprint_file)
+
+        def bp_may_have_strings(bp):
+            return ((otype := bp.get('Type')) == cls_name or otype == 'TextRenderComponent') and 'Properties' in bp
+
+        # Loop through array of blueprints from json file that may have strings
+        for bp in (bp for bp in blueprints if bp_may_have_strings(bp)):
+
+            # Loop through game classes for that include the base class name (handles something like 'Coin:Chest_C')
+            for gc in (gc for gc in game_classes if cls_name in gc):
+                props = bp['Properties']
+
+                if props.get('Text'):
+                    optKey(game_classes, gc, 'friendly', props['Text'].get('SourceString'))
+                    optKey(game_classes, gc, 'friendly_key', props['Text'].get('Key'))
+
+                if props.get('UpgradeName'):
+                    optKey(game_classes, gc, 'friendly', props['UpgradeName'].get('SourceString'))
+                    optKey(game_classes, gc, 'friendly_key', props['UpgradeName'].get('Key'))
+
+                if props.get('UpgradeDescription'):
+                    optKey(
+                        game_classes,
+                        gc,
+                        'description',
+                        props['UpgradeDescription'].get('SourceString'),
+                    )
+                    optKey(
+                        game_classes, gc, 'description_key', props['UpgradeDescription'].get('Key')
+                    )
 
     save_json_file(data=game_classes, path=datadir.joinpath('gameClasses.json'))
 
