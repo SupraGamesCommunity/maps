@@ -26,7 +26,6 @@ See the [README](../README.md) for list of documentation of these elements.
     dist/               When the production site is built, all front-end assets (HTML, CSS, JavaScript) are placed into
                         this directory for distribution.
     doc/                Documentation.
-    LOC/                Complete extracted localisation strings (should be removed).
     public/             Static files. Anything under this directory is delivered 'as-is' to the browser, and are never
                         modified by the Vite local server. Vite serves this directory as if it was from the server's
                         root `/`.
