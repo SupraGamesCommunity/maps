@@ -132,7 +132,7 @@ So we can normally decode the reference to:
         type/name  in the blueprint file it will be in the name field (file names normally exclude _C)
         ref        index of class within blueprint (not required)
 
-    type,ref = p.get('ObjectName').split("'")[0:1]
+    type, ref = p.get('ObjectName').split("'")[0:1]
 
     return (type, ref.
     def objectName(p):
@@ -244,12 +244,14 @@ config = {
         'pathmap': {
             'Game': 'SupralandSIU/Content',
         },
+        # 'DLC2_LateChanges' contains an additional set of items which may appear in the game,
+        # but this needs to be confirmed before they are added to the map, so leaving it out
+        # for now.
         'maps': [
             'DLC2_Area0_Below',
             'DLC2_Area0',
             'DLC2_Complete',
             'DLC2_FinalBoss',
-            'DLC2_LateChanges',
             'DLC2_Menu_Splash',
             'DLC2_Menu',
             'DLC2_PostRainbow',
@@ -360,6 +362,34 @@ dietype2typeprefix = {
 # Lootpool1: Inventory_BlowgunBlowTime1_C
 # Lootpool2: Inventory_DashDamage_C, Inventory_DashBurstRange_C, Inventory_ToothpickDamage_C, Inventory_MaxHealth_C
 # Lootpool3Money: Inventory_Coin3_C
+
+marker_types = {
+  'PlayerStart', 'Jumppad_C', 'Bones_C', 'Chest_C', 'BarrelColor_C', 'BarrelRed_C', 'Battery_C',
+  'BP_A3_StrengthQuest_C', 'Lift1_C', 'DeadHero_C', 'ExplodingBattery_C', 'GoldBlock_C',
+  'GoldNugget_C', 'Jumppillow_C', 'MoonTake_C', 'Plumbus_C', 'Stone_C', 'ValveCarriable_C',
+  'ValveSlot_C', 'Valve_C', 'MatchBox_C', 'Shell_C', 'BarrelClosed_Blueprint_C', 'MetalBall_C',
+  'Supraball_C', 'Key_C', 'KeyLock_C', 'KeycardColor_C', 'PipeCap_C', 'Sponge_C', 'Juicer_C', 'Seed_C',
+  'Anvil_C', 'Map_C', 'NomNomFlies_C', 'CarrotPhysical_C', 'RingColorer_C', 'RespawnActor_C',
+  'CarryStones_Heavy_C', 'CarryStones_C', 'Crystal_C', 'RingRusty_C', 'SecretFound_C',
+  # slc
+  'Scrap_C', 'TalkingSpeaker_C', 'Sponge_Large_C',
+  # siu
+  'HealingStation_C', 'BP_EngagementCup_Base_C', 'SlumBurningQuest_C', 'Trash_C',
+  'BP_Area2_Uncloged_Quest_C', 'BathGuyVolume_C', 'BP_A3_RobBoss_C', 'BP_Area2_FatGuyQuest_C',
+  'BP_ParanoidQuest_C', 'BP_A3_BBQ_C', 'BP_RebuildSlum_C'
+}
+
+starts_with = {
+    'Pipesystem', 'Buy', 'BP_Buy', 'BP_Purchase', 'BP_Unlock', 'Purchase', 'Upgrade', 'Button', 'Smallbutton', 'Coin',
+    'Lighttrigger', 'LotsOfCoins', 'EnemySpawn', 'Destroyable', 'BP_Pickaxe', 'Door', 'Key', 'ProjectileShooter',
+    'MinecraftBrick',  # can be MinecraftBrick_C and MinecraftBrickRespawnable_C
+    'CrashEnemySpawner_C',
+}
+
+ends_with = {
+    'Chest_C', 'Button_C', 'Lever_C', 'Meat_C', 'Loot_C', 'Detector_C', 'Door_C', 'Flower_C', 'Coin_C', 'Guy_C',
+    'TriggerVolume_C',  # opens pipes in SIU
+}
 
 properties = [
     'IsInShop',
@@ -898,16 +928,18 @@ def load_blueprint_keys(sourcedir: Path, def_keys: list[str], type_keys: dict[st
 
 
 # Load in a PNG file containing RGB values
-def load_ea_fog(path: Path) -> Optional[Image]:
+def load_ea_fog(path: Path) -> bool:
     path = path.joinpath('mapimg', ea_fogfile)
     if not path.exists():
         print(f'Warning: Failed to load fog png ({path})')
-        return None
-    with Image.open(str(path)) as im:
-        global ea_fog_width, ea_fog_height, ea_fog_pixels
-        ea_fog_width = im.width
-        ea_fog_height = im.height
-        ea_fog_pixels = im.getchannel(0).load()
+        return False
+    else:
+        with Image.open(str(path)) as im:
+            global ea_fog_width, ea_fog_height, ea_fog_pixels
+            ea_fog_width = im.width
+            ea_fog_height = im.height
+            ea_fog_pixels = im.getchannel(0).load()
+        return True
 
 
 def in_earlyaccess(otype, p, pos):  # noqa: C901 - disable complexity warning
@@ -1175,7 +1207,7 @@ def export_sw_markers(game: str, datadir: Path, sourcedir: Path):  # noqa: C901 
 
             # Grab secret required abilities if there are any
             if otype == 'SecretVolume_C' and (v := p.get('RequiredAbilities')):
-                data[-1]['abilities'] = ','.join(
+                data[-1]['abilities'] = ', '.join(
                     [a.removeprefix('GameplayAbilitySystem.Ability.').replace('.', ' ') for a in v]
                 )
 
@@ -1417,8 +1449,6 @@ def export_markers(game: str, datadir: Path, sourcedir: Path) -> None:  # noqa: 
 
     data_lookup = {}
 
-    game_classes = load_json_file(path=datadir.joinpath('gameClasses.json'))
-
     # Phase 1: Read all the map json files in and build a look up table for references
     # Also get any area/map file matrices (for streaming levels)
     for area in config[game]['maps']:
@@ -1471,11 +1501,14 @@ def export_markers(game: str, datadir: Path, sourcedir: Path) -> None:  # noqa: 
         for oidx, o in enumerate(maps[area]):
             otype = o['Type']
             oname = o['Name']
-            if not o.get('Outer') or not (p := o.get('Properties')):
-                continue
 
-            gc = game_classes.get(otype)
-            if not gc or (gc and not gc['layer'] and not gc['nospoiler']):
+            allowed_items = (marker_types and otype in marker_types
+                or any(otype.startswith(s) for s in starts_with)
+                or any(otype.endswith(s) for s in ends_with)
+            )
+            if not allowed_items: continue
+
+            if not o.get('Outer') or not (p := o.get('Properties')):
                 continue
 
             def getObject(p):
@@ -1505,7 +1538,7 @@ def export_markers(game: str, datadir: Path, sourcedir: Path) -> None:  # noqa: 
                 matrix = area_mtx[area] @ matrix
 
             # some MetalBall_C are Anvils, do the replacement
-            if o['Type'] == 'MetalBall_C' and o.get('Properties', {}).get('Mesh?', {}).get('ObjectName') == 'Anvil':
+            if o['Type'] == 'MetalBall_C' and o.get('Properties', {}).get('Mesh?', {}).get('ObjectName') == "StaticMesh'Anvil'":
                 o['Type'] = 'Anvil_C'
 
             # some RingRusty_C are pickaxes, cannot be determined by meshes
@@ -1526,8 +1559,12 @@ def export_markers(game: str, datadir: Path, sourcedir: Path) -> None:  # noqa: 
             for key in properties:
                 optKey(data[-1], camel_to_snake(key), p.get(key))
 
-            optKey(data[-1], 'spawns', p.get('Spawnthing', {}).get('ObjectName'))
-            optKey(data[-1], 'spawns', p.get('Class', {}).get('ObjectName'))
+            def class_from_objectname(properties: dict, prop: str):
+                c = properties.get(prop, {}).get('ObjectName')
+                return c.split("'")[1] if c else None
+
+            optKey(data[-1], 'spawns', class_from_objectname(p, 'Spawnthing'))
+            optKey(data[-1], 'spawns', class_from_objectname(p, 'Class'))
             optKey(data[-1], 'other_pipe', pipes.get(':'.join((area, o['Name']))))
             optKey(data[-1], 'custom_color', optColor(p.get('CustomColor')))
 
@@ -1542,7 +1579,7 @@ def export_markers(game: str, datadir: Path, sourcedir: Path) -> None:  # noqa: 
     calc_pipes(data)
 
     # Merge in custom and legacy data, clean the properties and remove ones we don't need
-    cleanup_objects(game=game, sourcedir=sourcedir, data_lookup=data_lookup, data=data)
+    cleanup_objects(game=game, datadir=datadir, sourcedir=sourcedir, data_lookup=data_lookup, data=data)
 
     print('collected %d markers' % (len(data)))
     save_json_file(data=data, path=datadir.joinpath(f'markers.{game}.json'))
@@ -1590,8 +1627,8 @@ def calc_pipes(data):
     # update caps with cross-references
     # not all pipes have caps, unfortunately
     # some only have level geometry that's not in the classes
-    for i,o in enumerate(data):
-        if o['type'] not in ('PipesystemNew_C','PipesystemNewDLC_C'):
+    for i, o in enumerate(data):
+        if o['type'] not in ('PipesystemNew_C', 'PipesystemNewDLC_C'):
             continue
         # get nearest cap, get other pipe, update other pipe's cap
         if 'nearest_cap' in o and 'other_pipe' in o:
@@ -1623,7 +1660,7 @@ def calc_pads(data):  # noqa: C901 - disable complexity warning
     #     return o['type'] in ('Jumppad_C') # jump pads only
 
     points = [(o['lng'], o['lat'], o['alt']) for o in data if allowed_points(o)]
-    # data_indices = [i for i,o in enumerate(data) if allowed_points(o)]
+    # data_indices = [i for i, o in enumerate(data) if allowed_points(o)]
 
     print('collected', len(points), 'terrain points, calculating targets...')
 
@@ -1644,8 +1681,8 @@ def calc_pads(data):  # noqa: C901 - disable complexity warning
         k = o.get('relative_velocity', 1000)
         v = o.get('direction', {'x': 0, 'y': 0, 'z': 0})
 
-        vx = -v['x'] * k
-        vy = -v['y'] * k
+        vx = v['x'] * k
+        vy = v['y'] * k
         vz = v['z'] * k
 
         if (v := o.get('velocity')) and o.get('allow_stomp'):
@@ -1675,13 +1712,13 @@ def calc_pads(data):  # noqa: C901 - disable complexity warning
 
             dist = (Vector((x, y, z)) - s).length
 
-            # print([round(v,2) for v in [x,y,z]], 'h', round(h,2), 'nearest triangle', [ data[data_indices[j]]['name']+':'+str([round(x,2)for x in points[j]]) for j in indices])
+            # print([round(v, 2) for v in [x, y, z]], 'h', round(h, 2), 'nearest triangle', [ data[data_indices[j]]['name']+':'+str([round(x, 2)for x in points[j]]) for j in indices])
             if dist > 250 and last_z > z and h > z:  # only check on decline
                 break
 
             last_z = z
 
-        # print('pad', o['name'], 'velocity', vx,vy,vz, 'target', x,y,z)
+        # print('pad', o['name'], 'velocity', vx, vy, vz, 'target', x, y, z)
         data[i].update({'target': {'x': x, 'y': y, 'z': z}})
 
     # Now we try to find pairs of jumppads. For each jump pad, find all the other jumppads close to the target
@@ -1727,7 +1764,7 @@ def calc_pads(data):  # noqa: C901 - disable complexity warning
             # Check that the pads are pointing in opposite directions
             # And that the pads are facing each other (rather than opposite directions)
             if dist < 0.3 * tdist and do.dot(dt) < -0.98 and no2j.dot(do) > 0.97 and no2j.dot(dt) < -0.97:
-                # print(o['name'], tj['name'], do.dot(dt), no2j.dot(do), no2j.dot(-dt), round(dist/tdist,2))
+                # print(o['name'], tj['name'], do.dot(dt), no2j.dot(do), no2j.dot(-dt), round(dist/tdist, 2))
                 alt = ':'.join((o['area'], o['name']))
                 matches[alt]['targets'].append(tj)
 
@@ -1852,9 +1889,9 @@ exported_properties = [
 # classes is a set of all 'type' names
 # lookup is a dictionary from area:name to objects
 # data is an array of the same objects
-# each object is a dictionary of k,v pairs
+# each object is a dictionary of k, v pairs
 def cleanup_objects(  # noqa: C901 - disable complexity warning
-    game: str, sourcedir: Path, data_lookup: dict, data: dict
+    game: str, datadir: Path, sourcedir: Path, data_lookup: dict, data: list[dict]
 ) -> None:
     def get_xyz(o):
         return dict(x=o['lng'], y=o['lat'], z=o['alt'])
@@ -1865,11 +1902,22 @@ def cleanup_objects(  # noqa: C901 - disable complexity warning
     # Read the set of pads and pipes we found save data for
     savedpadpipes = read_savedpadpipes(game=game, sourcedir=sourcedir)
 
-    # Walk the remaining instances and fix up entries
-    for o in data:
-        if not o.get('type'):
-            print(f'{o}')
+    # Filter out classes that won't get used
+    # Note: consider checking for 'dev' layers as well as undefined
+    game_classes = load_json_file(path=datadir.joinpath('gameClasses.json'))
 
+    def is_class_used(item: dict) -> bool:
+        return ((gc := game_classes.get(item['type']))
+            and game in gc.get('games', ['sl', 'slc', 'siu'])
+            and (gc.get('layer') or gc.get('nospoiler')))
+
+    for item in data[:]:
+        if not is_class_used(item):
+            data.remove(item)
+
+    # Walk the remaining instances and fix up entries
+    # We loop over a copy to allow us to remove entries we don't want
+    for o in data[:]:
         alt = ':'.join((o['area'], o['name']))
 
         # Merge the various gold properties into one (we'll remove the properties later)
@@ -1944,7 +1992,8 @@ def cleanup_objects(  # noqa: C901 - disable complexity warning
                     opo['twoway'] = 2
         elif o['type'] == 'Jumppad_C':
             o['linetype'] = 'jumppad'
-            if o.get('allow_stomp') or not o.get('disable_movement_in_air'):
+            if (o.get('allow_stomp')
+                    or o.get('disable_movement_in_air') == False):   # noqa: E712 default for DisableMovementInAir is True
                 o['variant'] = 'blue'
             else:
                 o['variant'] = 'red'
@@ -2041,7 +2090,7 @@ def friendly_name(cls: str):
     n = re.sub(r'x([0-9])', r'*\1', n)
     n = re.sub(r'([A-Z+-]+)', r'.\1', n)
     n = re.sub(r'([a-z])([0-9])', r'\1.\2', n)
-    n = re.sub(r'([0-9])([a-z]{2,20})', r'\1.\2', n)
+    n = re.sub(r'([0-9])([a-z]{2, 20})', r'\1.\2', n)
     n = n.replace('Smashdown', 'Stomp')
     n = n.replace('*', 'x')
     n = n.rstrip('.').lstrip('.')
@@ -2056,7 +2105,7 @@ def read_savedpadpipes(game: str, sourcedir: Path) -> dict[str, list]:
 
     # Open and read the whole js file if it exists
     if path.exists():
-        print('Reading "' + path + '"...')
+        print(f'Reading {path}...')
         return load_json_file(path=path)
 
     print(f'Warning: {path} not found, skipping')
@@ -2080,10 +2129,12 @@ def main() -> None:
     parser.add_argument('-o', '--loc', action='store_true', help='extract required loc strings for game')
     args = parser.parse_args()
 
-    # If source dir is default then add the game directory
+    # Grab source directory and cleanup slc differences
     sourcedir = args.source
     if sourcedir == '..\\source':
         sourcedir += '\\' + (args.game if args.game != 'slc' else 'sl')
+    if sourcedir.endswith('\\slc'):
+        sourcedir = sourcedir[:-1]
 
     datadir = Path(args.data)
     sourcedir = Path(sourcedir)
