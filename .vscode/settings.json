@@ -8,5 +8,9 @@
             "cwd": "${workspaceFolder}\\scripts",
             "args": [ "/K shellstartup.cmd" ]
         }
+    },
+    "files.trimTrailingWhitespace": true,
+    "[markdown]": {
+        "files.trimTrailingWhitespace": false
     }
 }
