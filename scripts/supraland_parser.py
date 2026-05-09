@@ -2077,9 +2077,6 @@ def main() -> None:
     parser.add_argument(
         '-v', '--version', action='store_true', help='update version information (set source to install directory)'
     )
-    parser.add_argument(
-        '-b', '--blueprints', action='store_true', help='read loc from blueprints and export to gameClasses'
-    )
     parser.add_argument('-o', '--loc', action='store_true', help='extract required loc strings for game')
     args = parser.parse_args()
 
@@ -2104,9 +2101,9 @@ def main() -> None:
             update_swversion_info(
                 game=args.game, datadir=datadir, sourcedir=sourcedir, mapimage=environ.get('SWMAPIMAGE')
             )
-    elif args.blueprints:
-        export_class_loc(game=args.game, datadir=datadir, sourcedir=sourcedir)
     elif args.loc:
+        # Read the blueprint files to get the keys we need and then process the loc strings
+        export_class_loc(game=args.game, datadir=datadir, sourcedir=sourcedir)
         export_loc_files(game=args.game, datadir=datadir, sourcedir=sourcedir)
     else:
         parser.print_help()
