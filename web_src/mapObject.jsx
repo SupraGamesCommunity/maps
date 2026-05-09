@@ -220,16 +220,22 @@ export class MapObject {
   init(map) {
     const c = GameClasses.get(this.o.type);
 
+    // _foundLockedState is undefined in base class meaning object found state can be
+    // loaded from a save file. This can be overridden by subclass, then gameClasses
+    // and finally by instance data (as highest priority). We used to not allow override
+    // if the previous one has set it, reversing the priority but it wasn't used and this
+    // seems more useful.
+
     // Give subclass a chance to change things
     this.subclassInit?.(map);
 
-    // If subclass hasn't set default set it based on setfound
-    if (/*this._foundLockedState === undefined &&*/ 'setfound' in c) {
+    // If class has setfound property then apply it
+    if ('setfound' in c) {
       this._foundLockedState = c.setfound;
     }
 
-    // If instance is marked as not saved then we want to show as not found
-    if (/*this._foundLockedState === undefined &&*/ this.o.notsaved !== undefined) {
+    // If instance has not saved property then apply it
+    if (this.o.notsaved) {
       this._foundLockedState = this.o.notsaved;
     }
 
