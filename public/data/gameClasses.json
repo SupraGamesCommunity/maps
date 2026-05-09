@@ -302,10 +302,10 @@
   "HayGuy_C"                        : { "friendly": "Hay Guy",             "icon": "swnpc.blue",         "layer": "swquests",      "nospoiler": null,          "games": ["sw"]                                   },
   "_ThreadGuy_C"                    : { "friendly": "Thread Guy",          "icon": "swnpc.blue",         "layer": "swquests",      "nospoiler": null,          "games": ["sw"]                                   },
   "Jimmy_C"                         : { "friendly": "Jimmy",               "icon": "pawn",               "layer": "swquests",      "nospoiler": null,          "games": ["sw"]                                   },
-  "Key_C"                           : { "friendly": "Key",                 "icon": "swkey",              "layer": "swquests",      "nospoiler": null,          "games": ["sw"], "setfound": false                },
+  "Key_C"                           : { "friendly": "Key",                 "icon": "swkey:v",            "layer": "swquests",      "nospoiler": null,          "games": ["sw"], "setfound": false                },
   "SW:KeyPlastic_C"                 : { "friendly": "Plastic Key",         "icon": "swkey",              "layer": "swquests",      "nospoiler": null,          "games": ["sw"], "setfound": false                },
   "Pickup_Hay_C"                    : { "friendly": "Hay",                 "icon": "hay",                "layer": "swquests",      "nospoiler": null,          "games": ["sw"]                                   },
-  "Pickup_Rune_C"                   : { "friendly": "Rune",                "icon": "rune",               "layer": "swquests",      "nospoiler": null,          "games": ["sw"]                                   },
+  "Pickup_Rune_C"                   : { "friendly": "Rune",                "icon": "rune:v",             "layer": "swquests",      "nospoiler": null,          "games": ["sw"]                                   },
   "Pickup_Thread_C"                 : { "friendly": "Thread",              "icon": "spool",              "layer": "swquests",      "nospoiler": null,          "games": ["sw"]                                   },
 
   "Inventory_BlowGun_C"             : { "friendly": "Blowgun",             "icon": "blowgun",            "layer": "swupgrade",     "nospoiler": null,          "games": ["sw"]                                   },

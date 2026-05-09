@@ -189,12 +189,12 @@
   "gumball_machine"   : {"type": "pin",   "style": "fas",   "iconName": "blender",                  "bg": "red"                             },
   "handcuffs"         : {"type": "pin",   "style": "fas",   "iconName": "handcuffs",                "bg": "green"                           },
   "hay"               : {"type": "pin",   "style": "fas",   "iconName": "wheat-awn",                "bg": "goldenrod"                       },
-  "swkey"             : {"type": "pin",   "style": "fas",   "iconName": "key",                      "bg": "deepskyblue"                     },
+  "swkey"             : {"type": "pin",   "style": "fas",   "iconName": "key",                      "bg": "deepskyblue",   "fg": ":v"       },
 
   "mag_glass"         : {"type": "pin",   "style": "fas",   "iconName": "magnifying-glass",         "bg": "green"                           },
 
   "pawn"              : {"type": "pin",   "style": "fas",   "iconName": "chess-pawn",               "bg": "red"                             },
-  "rune"              : {"type": "pin",   "style": "fas",   "iconName": "gift",                     "bg": "violet"                          },
+  "rune"              : {"type": "pin",   "style": "fas",   "iconName": "circle",                   "bg": "white",            "fg": ":v"    },
   "spool"             : {"type": "pin",   "style": "fas",   "iconName": "database",                 "bg": "dimgrey"                         },
 
   "blowgun"           : {"type": "pin",   "style": "fas",   "iconName": "gun",                      "bg": "limegreen"                       },
