@@ -244,12 +244,14 @@ config = {
         'pathmap': {
             'Game': 'SupralandSIU/Content',
         },
+        # 'DLC2_LateChanges' contains an additional set of items which may appear in the game,
+        # but this needs to be confirmed before they are added to the map, so leaving it out
+        # for now.
         'maps': [
             'DLC2_Area0_Below',
             'DLC2_Area0',
             'DLC2_Complete',
             'DLC2_FinalBoss',
-            # 'DLC2_LateChanges',
             'DLC2_Menu_Splash',
             'DLC2_Menu',
             'DLC2_PostRainbow',
@@ -926,7 +928,7 @@ def load_blueprint_keys(sourcedir: Path, def_keys: list[str], type_keys: dict[st
 
 
 # Load in a PNG file containing RGB values
-def load_ea_fog(path: Path) -> Optional[bool]:
+def load_ea_fog(path: Path) -> bool:
     path = path.joinpath('mapimg', ea_fogfile)
     if not path.exists():
         print(f'Warning: Failed to load fog png ({path})')
@@ -1868,7 +1870,7 @@ exported_properties = [
 # data is an array of the same objects
 # each object is a dictionary of k, v pairs
 def cleanup_objects(  # noqa: C901 - disable complexity warning
-    game: str, datadir: Path, sourcedir: Path, data_lookup: dict, data: dict
+    game: str, datadir: Path, sourcedir: Path, data_lookup: dict, data: list[dict]
 ) -> None:
     def get_xyz(o):
         return dict(x=o['lng'], y=o['lat'], z=o['alt'])
@@ -1876,23 +1878,25 @@ def cleanup_objects(  # noqa: C901 - disable complexity warning
     def get_nc_xyz(o):
         return get_xyz(data_lookup[o['nearest_cap']]) if 'nearest_cap' in o else get_xyz(o)
 
-    # Read game classes
-    game_classes = load_json_file(path=datadir.joinpath('gameClasses.json'))
-
     # Read the set of pads and pipes we found save data for
     savedpadpipes = read_savedpadpipes(game=game, sourcedir=sourcedir)
+
+    # Filter out classes that won't get used
+    # Note: consider checking for 'dev' layers as well as undefined
+    game_classes = load_json_file(path=datadir.joinpath('gameClasses.json'))
+
+    def is_class_used(item: dict) -> bool:
+        return ((gc := game_classes.get(item['type']))
+            and game in gc.get('games', ['sl', 'slc', 'siu'])
+            and (gc.get('layer') or gc.get('nospoiler')))
+
+    for item in data[:]:
+        if not is_class_used(item):
+            data.remove(item)
 
     # Walk the remaining instances and fix up entries
     # We loop over a copy to allow us to remove entries we don't want
     for o in data[:]:
-        otype = o.get('type')
-        if (not (otype := o.get('type'))
-                or not (gc := game_classes.get(otype))
-                or game not in gc.get('games', ['sl', 'slc', 'siu'])
-                or (not gc.get('layer') and not gc.get('nospoiler'))):
-            data.remove(o)
-            continue
-
         alt = ':'.join((o['area'], o['name']))
 
         # Merge the various gold properties into one (we'll remove the properties later)
@@ -2080,7 +2084,7 @@ def read_savedpadpipes(game: str, sourcedir: Path) -> dict[str, list]:
 
     # Open and read the whole js file if it exists
     if path.exists():
-        print('Reading "' + str(path) + '"...')
+        print(f'Reading {path}...')
         return load_json_file(path=path)
 
     print(f'Warning: {path} not found, skipping')
