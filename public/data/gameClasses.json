@@ -2758,7 +2758,7 @@
   },
   "Key_C": {
     "friendly": "Key",
-    "icon": "swkey",
+    "icon": "swkey:v",
     "layer": "swquests",
     "nospoiler": null,
     "games": [
@@ -2787,7 +2787,7 @@
   },
   "Pickup_Rune_C": {
     "friendly": "Rune",
-    "icon": "rune",
+    "icon": "rune:v",
     "layer": "swquests",
     "nospoiler": null,
     "games": [
