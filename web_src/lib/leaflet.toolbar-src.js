@@ -197,6 +197,8 @@ L.Toolbar2.Action = L.Handler.extend({
 		this._link.setAttribute('href', '#');
 		this._link.setAttribute('title', iconOptions.tooltip);
 
+		L.DomEvent.disableClickPropagation(container);
+
 		L.DomUtil.addClass(this._link, this.constructor.baseClass);
 		if (iconOptions.className) {
 			L.DomUtil.addClass(this._link, iconOptions.className);

@@ -128,6 +128,9 @@ export const Search = Control.extend({
 	onAdd: function (map) {
 		this._map = map;
 		this._container = DomUtil.create('div', 'leaflet-control-search');
+
+		DomEvent.disableClickPropagation(this._container);
+
 		this._input = this._createInput(this.options.textPlaceholder, 'search-input');
 		this._tooltip = this._createTooltip('search-tooltip');
 		this._cancel = this._createCancel(this.options.textCancel, 'search-cancel');
