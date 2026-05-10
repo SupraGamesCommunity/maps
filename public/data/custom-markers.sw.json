@@ -179,6 +179,11 @@
     "delete": 0
   },
   {
+    "name": "RealCoinPickup_C_UAID_7085C2B20F0E3DD101_1617031980",
+    "area": "Supraworld",
+    "delete": 0
+  },
+  {
     "name": "RealCoinPickup_C_UAID_7085C2B20F0E5FD301_1956827893",
     "area": "Supraworld",
     "delete": 0
@@ -345,6 +350,82 @@
   },
   {
     "name": "RealCoinPickup_C_UAID_7085C2B20F0E1F4E01_1952154178",
+    "area": "Supraworld",
+    "delete": 0
+  },
+
+  {
+    "name": "Pickup_Rune_C_UAID_FC3497C34610B64102_2074938602",
+    "area": "Supraworld",
+    "delete": 0
+  },
+  {
+    "name": "Shop_C_UAID_7085C2B20F0EB29C01_1228438637",
+    "area": "Supraworld",
+    "delete": 0
+  },
+  {
+    "name": "StaticMeshActor_UAID_7085C2B20F0EB19C01_1423838431",
+    "area": "Supraworld",
+    "delete": 0
+  },
+  {
+    "name": "StaticMeshActor_UAID_7085C2B20F0EB19C01_1423844435",
+    "area": "Supraworld",
+    "delete": 0
+  },
+  {
+    "name": "StaticMeshActor_UAID_7085C2B20F0EB19C01_1450693446",
+    "area": "Supraworld",
+    "delete": 0
+  },
+  {
+    "name": "StaticMeshActor_UAID_7085C2B20F0EB19C01_1450684440",
+    "area": "Supraworld",
+    "delete": 0
+  },
+  {
+    "name": "StaticMeshActor_UAID_7085C2B20F0EB19C01_1450690444",
+    "area": "Supraworld",
+    "delete": 0
+  },
+  {
+    "name": "StaticMeshActor_UAID_7085C2B20F0EB19C01_1450665438",
+    "area": "Supraworld",
+    "delete": 0
+  },
+  {
+    "name": "StaticMeshActor_UAID_7085C2B20F0EB19C01_1450682439",
+    "area": "Supraworld",
+    "delete": 0
+  },
+  {
+    "name": "StaticMeshActor_UAID_7085C2B20F0EB19C01_1450685441",
+    "area": "Supraworld",
+    "delete": 0
+  },
+  {
+    "name": "StaticMeshActor_UAID_7085C2B20F0EB19C01_1423813429",
+    "area": "Supraworld",
+    "delete": 0
+  },
+  {
+    "name": "StaticMeshActor_UAID_7085C2B20F0EB19C01_1423836430",
+    "area": "Supraworld",
+    "delete": 0
+  },
+  {
+    "name": "GuardVolume_C_UAID_7085C2B20F0E5FD301_1868559889",
+    "area": "Supraworld",
+    "delete": 0
+  },
+  {
+    "name": "StandardFashionStore_C_UAID_7085C2B20F0EB29C01_1667706011",
+    "area": "Supraworld",
+    "delete": 0
+  },
+  {
+    "name": "Key_C_UAID_7085C2B20F0E69D301_2094190944",
     "area": "Supraworld",
     "delete": 0
   }
