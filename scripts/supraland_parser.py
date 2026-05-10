@@ -979,7 +979,7 @@ def in_earlyaccess(otype, p, pos):  # noqa: C901 - disable complexity warning
 
 
 def optEnum(s):
-    return int(s[len(s.rstrip('0123456789')) :] or 0) if type(s) is str and '::' in s else s
+    return int(s[len(s.rstrip('0123456789')) :] or 0) if type(s) is str and '::' in s and s[-1].isdigit() else s
 
 
 def optArea(a, k, v):
@@ -1205,7 +1205,7 @@ def export_sw_markers(game: str, datadir: Path, sourcedir: Path):  # noqa: C901 
 
             # Grab secret required abilities if there are any
             if otype == 'SecretVolume_C' and (v := p.get('RequiredAbilities')):
-                data[-1]['abilities'] = ', '.join(
+                data[-1]['abilities'] = ','.join(
                     [a.removeprefix('GameplayAbilitySystem.Ability.').replace('.', ' ') for a in v]
                 )
 
@@ -1806,6 +1806,16 @@ brick_types = {
     4: 'gold',
 }
 
+price_types = [
+    "coin",
+    "coal",
+    "iron",
+    "diamond",
+    "supranium",
+    "scrap",
+    "bone",
+]
+
 # Number of coins given by classes if not explicit
 # Coin pots provide 1 if the flag is true
 coin_defaults = {
@@ -1921,7 +1931,10 @@ def cleanup_objects(  # noqa: C901 - disable complexity warning
         # variant is set to the brick type
         if o['type'] == 'MinecraftBrick_C':
             if game == 'siu':
-                o['variant'] = brick_types[o.get('brick_type') or (4 if o.get('coins') else 0)]
+                if type(bt := o.get('brick_type')) is str:
+                    o['variant'] = bt.rsplit('::')[-1].lower()
+                else:
+                    o['variant'] = brick_types[4 if not bt and o.get('coins') else 0]
                 if o['variant'] == 'gold' and not o.get('coins'):
                     o['coins'] = 3
                 if o.get('coins') is not None and o['variant'] != 'gold':
@@ -1940,6 +1953,11 @@ def cleanup_objects(  # noqa: C901 - disable complexity warning
             color = o.get('color') or o.get('original_color')
             if color and type(color) is int and color >= 0 and color < len(colors):
                 o['variant'] = colors[color]
+            elif color and type(color) is str and (color := color.split('::')[-1]):
+                o['variant'] = color.lower()
+
+        if (pt := o.get('price_type')) is not None and type(pt) is str:
+            o['price_type'] = price_types.index(pt.split('::')[-1].lower())
 
         # Anything that has coins gets a subclass (chests, minecraft bricks, destroyable pots...)
         # Anything that provides coins and spawns we clear the spawns field (chests can't do both)
