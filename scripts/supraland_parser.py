@@ -244,20 +244,18 @@ config = {
         'pathmap': {
             'Game': 'SupralandSIU/Content',
         },
-        # 'DLC2_LateChanges' contains an additional set of items which may appear in the game,
-        # but this needs to be confirmed before they are added to the map, so leaving it out
-        # for now.
         'maps': [
-            'DLC2_Area0_Below',
-            'DLC2_Area0',
             'DLC2_Complete',
             'DLC2_FinalBoss',
-            'DLC2_Menu_Splash',
-            'DLC2_Menu',
-            'DLC2_PostRainbow',
-            'DLC2_RainbowTown',
+            'DLC2_Area0',
             'DLC2_SecretLavaArea',
+            'DLC2_PostRainbow',
+            'DLC2_Area0_Below',
+            'DLC2_RainbowTown',
+            'DLC2_Menu_Splash',
             'DLC2_Splash',
+            'DLC2_Menu',
+            'DLC2_LateChanges',
         ],
     },
     'sw': {
