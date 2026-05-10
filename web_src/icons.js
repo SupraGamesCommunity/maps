@@ -97,7 +97,7 @@ export class Icons {
     opts.baseScale = parseFloat(match && match[0].slice(1)) || 1; // :x{scale}
 
     // Generate options required for leaflet.MapIcon
-    opts.className = [baseName, opts.variant, opts.game, `x${opts.baseScale.toString().replace('.', '-')}`]
+    opts.className = [baseName.replace('.', '-'), opts.variant, opts.game, `x${opts.baseScale.toString().replace('.', '-')}`]
       .filter(Boolean)
       .join('-');
     opts.iconConfig = this.getConfig(opts.className);
