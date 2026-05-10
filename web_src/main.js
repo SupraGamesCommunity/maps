@@ -19,6 +19,9 @@ import { FullScreen } from 'leaflet.fullscreen';
 import './css/lib/L.Control.MousePosition.css';
 import { MousePosition } from './lib/L.Control.MousePosition.js';
 
+import './css/lib/leaflet.contextmenu.css';
+import { ContextMenu } from './lib/leaflet.contextmenu.js';
+
 import './css/sidebar.css';
 import './css/main.css';
 import { browser } from './utils.js';
@@ -163,7 +166,11 @@ async function loadMap(mapParam) {
   }
 
   // Create the map
-  map = L_supraMap(mapParam);
+  map = L_supraMap(mapParam, 'map', { contextmenu: true, });
+
+  // Add test context menu options
+  map.contextmenu.addItem({text: 'Marker item', index: 0});
+  map.contextmenu.addItem({separator: true, index: 1});
 
   // Add zoom, fullscreen toggle and mousePosition controls to the map
   L.control.zoom({ position: 'bottomright' }).addTo(map);
