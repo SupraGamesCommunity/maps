@@ -388,5 +388,90 @@
       "Coin620_27": 1,
       "Coin621_29": 1
     }
+  },
+  {
+    "name": "Coin695_54",
+    "area": "DLC2_Complete",
+    "delete": 0
+  },
+  {
+    "name": "Coin696",
+    "area": "DLC2_Complete",
+    "delete": 0
+  },
+  {
+    "area": "DLC2_Complete",
+    "name": "Coin695_54",
+    "delete": 0
+  },
+  {
+    "area": "DLC2_Complete",
+    "name": "Coin696",
+    "delete": 0
+  },
+  {
+    "area": "DLC2_Complete",
+    "name": "Coin697",
+    "delete": 0
+  },
+  {
+    "area": "DLC2_Complete",
+    "name": "Coin698",
+    "delete": 0
+  },
+  {
+    "area": "DLC2_Complete",
+    "name": "Coin699",
+    "delete": 0
+  },
+  {
+    "area": "DLC2_Complete",
+    "name": "Coin700",
+    "delete": 0
+  },
+  {
+    "area": "DLC2_Complete",
+    "name": "Coin701",
+    "delete": 0
+  },
+  {
+    "area": "DLC2_Complete",
+    "name": "Coin702",
+    "delete": 0
+  },
+  {
+    "area": "DLC2_Complete",
+    "name": "SecretFound71_2",
+    "delete": 0
+  },
+  {
+    "area": "DLC2_PostRainbow",
+    "name": "Coin57_23",
+    "delete": 0
+  },
+  {
+    "area": "DLC2_PostRainbow",
+    "name": "Coin61_35",
+    "delete": 0
+  },
+  {
+    "area": "DLC2_Complete",
+    "name": "SecretFound44_2",
+    "delete": 0
+  },
+  {
+    "area": "DLC2_Complete",
+    "name": "Coin11",
+    "delete": 0
+  },
+  {
+    "area": "DLC2_Menu_Splash",
+    "name": "SecretFound_2",
+    "delete": 0
+  },
+  {
+    "area": "DLC2_SecretLavaArea",
+    "name": "Coin59",
+    "delete": 0
   }
 ]
