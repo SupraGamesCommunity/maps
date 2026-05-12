@@ -46,6 +46,10 @@ source/sw/levels/**
 source/sw/loc/**
 !source/*/savedpadpipes.*
 
+# Automated test output directories
+playwright-report/
+test-results/
+
 # Editor directories and files
 .vscode/*
 .vs

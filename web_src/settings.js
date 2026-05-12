@@ -51,6 +51,12 @@ export class Settings {
     Settings._map = Settings._localData.maps[Settings.mapId];
   }
 
+  // Clear local storage and reset all Settings to defaults.
+  static reset(defaultMapId) {
+    localStorage.setItem(this._localDataName, {});
+    Settings.init(defaultMapId || 'sl');
+  }
+
   // Get/Set current map (ie what map settings are associated with)
   static get mapId() {
     return Settings._global.mapId;

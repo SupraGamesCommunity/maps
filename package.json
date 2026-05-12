@@ -17,7 +17,10 @@
     "black": "uvx black .",
     "black-check": "uvx black --check .",
     "format-all": "npm run prettier && npm run black",
-    "deploy-to-gh-pages": "node scripts/preview_gh_pages.cjs"
+    "deploy-to-gh-pages": "node scripts/preview_gh_pages.cjs",
+    "test": "playwright test",
+    "test:ui": "playwright test --ui",
+    "test:headed": "playwright test --headed"
   },
   "dependencies": {
     "@fortawesome/react-fontawesome": "^3.3.1",
@@ -33,6 +36,7 @@
     "@fortawesome/fontawesome-svg-core": "^7.2.0",
     "@fortawesome/free-regular-svg-icons": "^7.2.0",
     "@fortawesome/free-solid-svg-icons": "^7.2.0",
+    "@playwright/test": "^1.59.1",
     "@rolldown/plugin-babel": "^0.2.2",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
