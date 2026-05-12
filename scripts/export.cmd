@@ -66,7 +66,7 @@ for %%i in ( %games% ) do (
         set mode=%%j
         call :do_command
     )
-) 
+)
 
 endlocal && (
     set "SLMAPIMAGE=%slmapimage%"
@@ -94,7 +94,7 @@ if %modeopt%==bad goto :cli_error
 if "%game%"=="slc" (set "gameout=%basedir%\sl") else (set "gameout=%basedir%\%game%")
 if not exist "%gameout%" md "%gameout%"
 
-:: Set up envars for CUE4Parse options based on the game 
+:: Set up envars for CUE4Parse options based on the game
 call :setopt_%game%
 
 :: Opt is the default arguments for CUE4Parse
@@ -174,7 +174,7 @@ echo Map Images:
 echo  mapimg   extracts .png map image files and merges them together
 echo  getfog   extract editable for fog map from [{savename}]
 echo  applyfog combine swmapfog.png and swmap.png into swmap-fogged.png
-echo  gentiles takes ..\source\{game}map-final.png and generates tiles in ..\tiles\{game}\base 
+echo  gentiles takes ..\source\{game}map-final.png and generates tiles in ..\tiles\{game}\base
 echo.
 echo Data parsing:
 echo  version  update version numbers (versions.json)
@@ -225,7 +225,7 @@ goto :eof
 
 
 ::=================================================================================================
-:: Sets errorlevel to 0 if the string has a wildcard in it (* or ?) 
+:: Sets errorlevel to 0 if the string has a wildcard in it (* or ?)
 :has_wildcard
 echo %1 | find "*" >nul
 if not errorlevel 1 goto :eof
@@ -315,7 +315,7 @@ if not errorlevel 0 goto :eof
 
 for /r %%i in ( *.json ) do move /Y %%i ..\bp >nul
 popd
-rd /s /q "%gameout%\temp" 
+rd /s /q "%gameout%\temp"
 
 goto :eof
 
@@ -341,7 +341,7 @@ echo %colGrn%Extracting localisation json files to %gameout%\loc%colDef%
 if not exist "%gameout%\loc" md "%gameout%\loc"
 robocopy "%gameout%\temp\%gamename%\Content\Localization\Game" "%gameout%\loc" /s /move >nul
 
-rd /s /q "%gameout%\temp" 
+rd /s /q "%gameout%\temp"
 
 goto :eof
 
@@ -409,7 +409,7 @@ goto :eof
 
 
 ::=================================================================================================
-:: Extract and convert to JSON all files in the PAK in \Enums\ directories 
+:: Extract and convert to JSON all files in the PAK in \Enums\ directories
 
 :slc_enums
 echo %colGrn%Crash enums extracted from Supraland, skipping%colDef%
@@ -432,7 +432,7 @@ if not errorlevel 0 goto :eof
 
 for /r %%i in ( *.json ) do move /Y %%i ..\enums >nul
 popd
-rd /s /q "%gameout%\temp" 
+rd /s /q "%gameout%\temp"
 
 goto :eof
 
@@ -579,7 +579,7 @@ echo %colGrn%Updating version information for %game% %colDef%
 
 goto call_parser
 
-:: Do localisation
+:: Do localisation (update keys in gameClasses and loc-str key:string files)
 
 :sl_doloc
 :slc_doloc
@@ -587,12 +587,14 @@ goto call_parser
 :sw_doloc
 
 set sourcedir=%gameout%
-set parser_cmd=--loc
 
 echo %colGrn%Preparing localisation data for frontend%colDef%
 
+set parser_cmd=--loc
 goto call_parser
 
+
+:: Call the python parser
 :call_parser
 
 python supraland_parser.py -g "%game%" -d %datadir% -s %sourcedir% %parser_cmd%
