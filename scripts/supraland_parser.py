@@ -1328,20 +1328,20 @@ def export_class_loc(game: str, datadir: Path, sourcedir: Path) -> None:  # noqa
     propcount = 0
     propmatches = 0
 
-    def optKey(game_class, cls, k, v):
+    def optKeyLoc(game_class: dict, class_name: str, k: str, v):
         nonlocal propcount, propmatches
         if v:
-            if cls not in game_class:
-                game_class[cls] = {}
-            classes.add(cls)
+            if class_name not in game_class:
+                game_class[class_name] = {}
+            classes.add(class_name)
             propcount += 1
-            if k not in game_class[cls]:
-                print(f'{cls}.{k} => "{v}"')
-                game_class[cls][k] = v
-            elif game_class[cls][k] == v:
+            if k not in game_class[class_name]:
+                print(f'{class_name}.{k} => "{v}"')
+                game_class[class_name][k] = v
+            elif game_class[class_name][k] == v:
                 propmatches += 1
             else:
-                print(f'{cls}.{k} == "{game_class[cls][k]}" != "{v}"')
+                print(f'{class_name}.{k} == "{game_class[class_name][k]}" != "{v}"')
 
     def is_class_used(cls_name):
         return cls_name in game_classes and game in game_classes[cls_name].get('games', ['sl', 'slc', 'siu'])
@@ -1365,21 +1365,21 @@ def export_class_loc(game: str, datadir: Path, sourcedir: Path) -> None:  # noqa
                 props = bp['Properties']
 
                 if props.get('Text'):
-                    optKey(game_classes, gc, 'friendly', props['Text'].get('SourceString'))
-                    optKey(game_classes, gc, 'friendly_key', props['Text'].get('Key'))
+                    optKeyLoc(game_classes, gc, 'friendly', props['Text'].get('SourceString'))
+                    optKeyLoc(game_classes, gc, 'friendly_key', props['Text'].get('Key'))
 
                 if props.get('UpgradeName'):
-                    optKey(game_classes, gc, 'friendly', props['UpgradeName'].get('SourceString'))
-                    optKey(game_classes, gc, 'friendly_key', props['UpgradeName'].get('Key'))
+                    optKeyLoc(game_classes, gc, 'friendly', props['UpgradeName'].get('SourceString'))
+                    optKeyLoc(game_classes, gc, 'friendly_key', props['UpgradeName'].get('Key'))
 
                 if props.get('UpgradeDescription'):
-                    optKey(
+                    optKeyLoc(
                         game_classes,
                         gc,
                         'description',
                         props['UpgradeDescription'].get('SourceString'),
                     )
-                    optKey(
+                    optKeyLoc(
                         game_classes, gc, 'description_key', props['UpgradeDescription'].get('Key')
                     )
 
@@ -1431,6 +1431,8 @@ def export_loc_files(game: str, datadir: Path, sourcedir: Path) -> None:  # noqa
         usedlocstr = load_json_file(path=loc_file) if loc_file.exists() else {}
 
         # Read the games data for this language and add key/string pairs that we're interested in
+        # Note: for some reason file is of the form { "": {"loc key": "loc string"...  } } so
+        # get the dictionary entry for key ''
         locstr = load_json_file(path=sourcedir.joinpath(f'loc/{loc.name}/Game.json'))['']
         for k in locstr.keys():
             if k in keys:
