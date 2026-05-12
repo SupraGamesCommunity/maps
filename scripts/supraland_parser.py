@@ -244,6 +244,9 @@ config = {
         'pathmap': {
             'Game': 'SupralandSIU/Content',
         },
+        # Note: we don't include DLC2_Menu_Splash anymore as
+        # it we find one secret and one pipe both of which are not usable
+        # DLC2_LateChanges was added more recently
         'maps': [
             'DLC2_Complete',
             'DLC2_FinalBoss',
@@ -252,7 +255,6 @@ config = {
             'DLC2_PostRainbow',
             'DLC2_Area0_Below',
             'DLC2_RainbowTown',
-            'DLC2_Menu_Splash',
             'DLC2_Splash',
             'DLC2_Menu',
             'DLC2_LateChanges',

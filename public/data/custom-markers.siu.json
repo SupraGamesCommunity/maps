@@ -460,11 +460,6 @@
     "delete": 0
   },
   {
-    "area": "DLC2_Menu_Splash",
-    "name": "SecretFound_2",
-    "delete": 0
-  },
-  {
     "area": "DLC2_SecretLavaArea",
     "name": "Coin59",
     "delete": 0

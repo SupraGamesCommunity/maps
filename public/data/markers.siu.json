@@ -16358,23 +16358,6 @@
     "variant": "red"
   },
   {
-    "name": "PipesystemNewDLC4",
-    "type": "PipesystemNewDLC_C",
-    "area": "DLC2_Menu_Splash",
-    "lat": -16626.623046875,
-    "lng": -1226.4384765625,
-    "alt": 3545.9921875,
-    "notsaved": true
-  },
-  {
-    "name": "SecretFound_2",
-    "type": "SecretFound_C",
-    "area": "DLC2_Menu_Splash",
-    "lat": -21673.81640625,
-    "lng": 68.447265625,
-    "alt": 3713.098876953125
-  },
-  {
     "name": "SecretFound_2",
     "type": "SecretFound_C",
     "area": "DLC2_Splash",
