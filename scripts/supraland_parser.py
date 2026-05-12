@@ -244,20 +244,20 @@ config = {
         'pathmap': {
             'Game': 'SupralandSIU/Content',
         },
-        # 'DLC2_LateChanges' contains an additional set of items which may appear in the game,
-        # but this needs to be confirmed before they are added to the map, so leaving it out
-        # for now.
+        # Note: we don't include DLC2_Menu_Splash anymore as
+        # it we find one secret and one pipe both of which are not usable
+        # DLC2_LateChanges was added more recently
         'maps': [
-            'DLC2_Area0_Below',
-            'DLC2_Area0',
             'DLC2_Complete',
             'DLC2_FinalBoss',
-            'DLC2_Menu_Splash',
-            'DLC2_Menu',
-            'DLC2_PostRainbow',
-            'DLC2_RainbowTown',
+            'DLC2_Area0',
             'DLC2_SecretLavaArea',
+            'DLC2_PostRainbow',
+            'DLC2_Area0_Below',
+            'DLC2_RainbowTown',
             'DLC2_Splash',
+            'DLC2_Menu',
+            'DLC2_LateChanges',
         ],
     },
     'sw': {
@@ -980,8 +980,10 @@ def in_earlyaccess(otype, p, pos):  # noqa: C901 - disable complexity warning
     return True
 
 
-def optEnum(s):
-    return int(s[len(s.rstrip('0123456789')) :] or 0) if type(s) is str and '::' in s else s
+def optEnum(s: str | int):
+    if match := re.search('::.*([0-9]+)$', str(s)):
+        return int(match.group(1))
+    return s
 
 
 def optArea(a, k, v):
@@ -1207,7 +1209,7 @@ def export_sw_markers(game: str, datadir: Path, sourcedir: Path):  # noqa: C901 
 
             # Grab secret required abilities if there are any
             if otype == 'SecretVolume_C' and (v := p.get('RequiredAbilities')):
-                data[-1]['abilities'] = ', '.join(
+                data[-1]['abilities'] = ','.join(
                     [a.removeprefix('GameplayAbilitySystem.Ability.').replace('.', ' ') for a in v]
                 )
 
@@ -1309,48 +1311,81 @@ def export_sw_markers(game: str, datadir: Path, sourcedir: Path):  # noqa: C901 
     print("Done")
 
 
+# Read's gameClasses.json and then tries to find friendly names and descriptions and their
+# corresponding loc keys by reading the corresponding blueprint files looking for the strings
+# It avoids overwriting values in gameClasses
+#
+# SIU and SL share class names, so we use the same strings for both, which one is chosen depends
+# on which is read first (traditionally SL then SIU)
+#
+# For some things we didn't find the strings/keys in the blueprint but hand added the values
+# by finding the strings in the loc data.
+#
+# Further edits were made to the strings/keys to make a few fixups to the english
 def export_class_loc(game: str, datadir: Path, sourcedir: Path) -> None:  # noqa: C901 - disable complexity warning
+
     game_classes = load_json_file(path=datadir.joinpath('gameClasses.json'))
 
-    for game in ['sl', 'siu']:
-        blueprints = load_json_file(path=sourcedir.joinpath(f'blueprints.{game}.json'))
+    classes = set()
+    propcount = 0
+    propmatches = 0
 
-        def optKey(game_class, cls, k, v):
-            if v:
-                if cls not in game_class:
-                    game_class[cls] = {}
-                if k not in game_class[cls]:
-                    game_class[cls][k] = v
+    def optKeyLoc(class_name: str, k: str, v):
+        nonlocal propcount, propmatches
+        if v:
+            if class_name not in game_classes:
+                game_classes[class_name] = {}
+            classes.add(class_name)
+            propcount += 1
+            if k not in game_classes[class_name]:
+                print(f'{class_name}.{k} => "{v}"')
+                game_classes[class_name][k] = v
+            elif game_classes[class_name][k] == v:
+                propmatches += 1
+            else:
+                print(f'{class_name}.{k} == "{game_classes[class_name][k]}" != "{v}"')
 
-        for cls, bps in blueprints.items():
-            if cls in game_classes:
-                for bp in bps:
-                    t = bp.get("Type")
-                    if (t == 'TextRenderComponent' or t == cls) and bp.get('Properties'):
-                        props = bp['Properties']
-                        for gcls in game_classes:
-                            if cls in gcls:
-                                if props.get('Text'):
-                                    #                    optKey(game_classes, gcls, 'Invariant',       props['Text'].get('CultureInvariantString'))
-                                    optKey(game_classes, gcls, 'friendly', props['Text'].get('SourceString'))
-                                    optKey(game_classes, gcls, 'friendly_key', props['Text'].get('Key'))
-                                if props.get('UpgradeName'):
-                                    optKey(game_classes, gcls, 'friendly', props['UpgradeName'].get('SourceString'))
-                                    optKey(game_classes, gcls, 'friendly_key', props['UpgradeName'].get('Key'))
-                                if props.get('UpgradeDescription'):
-                                    optKey(
-                                        game_classes,
-                                        gcls,
-                                        'description',
-                                        props['UpgradeDescription'].get('SourceString'),
-                                    )
-                                    optKey(
-                                        game_classes, gcls, 'description_key', props['UpgradeDescription'].get('Key')
-                                    )
+    def is_class_used(cls_name):
+        return cls_name in game_classes and game in game_classes[cls_name].get('games', ['sl', 'slc', 'siu'])
 
+    # Loop through all the blueprint files we find that are referenced in gameClasses.json
+    for blueprint_file in sourcedir.joinpath('bp').glob('*.json'):
+        cls_name = blueprint_file.stem + '_C'
+        if not is_class_used(cls_name):
+            continue
+
+        blueprints = load_json_file(path=blueprint_file, quiet=True)
+
+        def bp_may_have_strings(bp):
+            return ((otype := bp.get('Type')) == cls_name or otype == 'TextRenderComponent') and 'Properties' in bp
+
+        # Loop through array of blueprints from json file that may have strings
+        for bp in (bp for bp in blueprints if bp_may_have_strings(bp)):
+
+            # Loop through game classes for that include the base class name (handles something like 'Coin:Chest_C')
+            for gc in (c for c in game_classes if cls_name in c):
+                props = bp['Properties']
+
+                if props.get('Text'):
+                    optKeyLoc(class_name=gc, k='friendly', v=props['Text'].get('SourceString'))
+                    optKeyLoc(class_name=gc, k='friendly_key', v=props['Text'].get('Key'))
+
+                if props.get('UpgradeName'):
+                    optKeyLoc(class_name=gc, k='friendly', v=props['UpgradeName'].get('SourceString'))
+                    optKeyLoc(class_name=gc, k='friendly_key', v=props['UpgradeName'].get('Key'))
+
+                if props.get('UpgradeDescription'):
+                    optKeyLoc(class_name=gc, k='description', v=props['UpgradeDescription'].get('SourceString'))
+                    optKeyLoc(class_name=gc, k='description_key', v=props['UpgradeDescription'].get('Key'))
+
+    print("Classes: ", len(classes), "Props: ", propcount, "Matches: ", propmatches)
     save_json_file(data=game_classes, path=datadir.joinpath('gameClasses.json'))
 
 
+# Read custom-loc.json and merge it into gameClasses.json and write it out
+# Then collect all the keys found the various frontend data files and
+# come up with a stripped down version of the loc files with the keys for
+# all of them
 def export_loc_files(game: str, datadir: Path, sourcedir: Path) -> None:  # noqa: C901 - disable complexity warning
     # Merge custom-loc.json into gameClasses.json
     print('Merging custom-loc.json into gameClasses.json...')
@@ -1366,12 +1401,8 @@ def export_loc_files(game: str, datadir: Path, sourcedir: Path) -> None:  # noqa
         'gameClasses.json',
         'layerConfigs.json',
         'custom-loc.json',
-        'markers.sl.json',
-        'markers.slc.json',
-        'markers.siu.json',
-        'custom-markers.sl.json',
-        'custom-markers.slc.json',
-        'custom-markers.siu.json',
+        f'markers.{game}.json',
+        f'custom-markers.{game}.json',
     ]
     print('Reading files to determine loc keys required...')
     for fn in key_files:
@@ -1385,37 +1416,24 @@ def export_loc_files(game: str, datadir: Path, sourcedir: Path) -> None:  # noqa
 
     print(f'Found {len(keys)} keys')
 
-    loc_names = [
-        'en',
-        'de',
-        'es',
-        'fi',
-        'fr',
-        'hu',
-        'it-IT',
-        'ja',
-        'ko',
-        'pl',
-        'pt-PT',
-        'ru',
-        'sr',
-        'tr',
-        'zh-Hans',
-        'zh-Hant',
-    ]
     print('Writing loc files to data directory')
-    for loc in loc_names:
-        newlocstr = {}
-        for game in ['sl', 'siu']:
-            locstr = load_json_file(path=sourcedir.joinpath(f'LOC/{game}/{loc}/Game.json'))
-            for k in locstr.keys():
-                if k in keys:
-                    # if newlocstr.get(k) and newlocstr[k] != locstr[k]:
-                    #    print(f'SL  {newlocstr[k]}')
-                    #    print(f'SIU {locstr[k]}')
-                    newlocstr[k] = locstr[k]
-        print(f'Writing to ../public/data/loc/locstr-{loc}.json')
-        save_json_file(data=newlocstr, path=datadir.joinpath(f'loc/locstr-{loc}.json'))
+
+    # Loop through all languages present
+    for loc in sourcedir.joinpath('loc').glob('*/'):
+        loc_file = datadir.joinpath(f'loc/locstr-{loc.name}.json')
+
+        # Read existing keys if there are any
+        usedlocstr = load_json_file(path=loc_file) if loc_file.exists() else {}
+
+        # Read the games data for this language and add key/string pairs that we're interested in
+        # Note: for some reason file is of the form { "": {"loc key": "loc string"...  } } so
+        # get the dictionary entry for key ''
+        locstr = load_json_file(path=sourcedir.joinpath(f'loc/{loc.name}/Game.json'))['']
+        for k in locstr.keys():
+            if k in keys:
+                usedlocstr[k] = locstr[k]
+
+        save_json_file(data=usedlocstr, path=loc_file)
 
 
 def export_markers(game: str, datadir: Path, sourcedir: Path) -> None:  # noqa: C901 - disable complexity warning
@@ -1808,6 +1826,16 @@ brick_types = {
     4: 'gold',
 }
 
+price_types = [
+    "coin",
+    "coal",
+    "iron",
+    "diamond",
+    "supranium",
+    "scrap",
+    "bone",
+]
+
 # Number of coins given by classes if not explicit
 # Coin pots provide 1 if the flag is true
 coin_defaults = {
@@ -1923,7 +1951,10 @@ def cleanup_objects(  # noqa: C901 - disable complexity warning
         # variant is set to the brick type
         if o['type'] == 'MinecraftBrick_C':
             if game == 'siu':
-                o['variant'] = brick_types[o.get('brick_type') or (4 if o.get('coins') else 0)]
+                if type(bt := o.get('brick_type')) is str:
+                    o['variant'] = bt.rsplit('::')[-1].lower()
+                else:
+                    o['variant'] = brick_types[4 if not bt and o.get('coins') else 0]
                 if o['variant'] == 'gold' and not o.get('coins'):
                     o['coins'] = 3
                 if o.get('coins') is not None and o['variant'] != 'gold':
@@ -1942,6 +1973,11 @@ def cleanup_objects(  # noqa: C901 - disable complexity warning
             color = o.get('color') or o.get('original_color')
             if color and type(color) is int and color >= 0 and color < len(colors):
                 o['variant'] = colors[color]
+            elif color and type(color) is str and (color := color.split('::')[-1]):
+                o['variant'] = color.lower()
+
+        if (pt := o.get('price_type')) is not None and type(pt) is str:
+            o['price_type'] = price_types.index(pt.split('::')[-1].lower())
 
         # Anything that has coins gets a subclass (chests, minecraft bricks, destroyable pots...)
         # Anything that provides coins and spawns we clear the spawns field (chests can't do both)
@@ -1972,7 +2008,7 @@ def cleanup_objects(  # noqa: C901 - disable complexity warning
         elif o['type'] == 'Jumppad_C':
             o['linetype'] = 'jumppad'
             if (o.get('allow_stomp')
-                    or o.get('disable_movement_in_air') == False):   # noqa: E712 default for DisableMovementInAir is True
+                    or o.get('disable_movement_in_air') == False):   # fmt: skip # noqa: E712 default for DisableMovementInAir is True
                 o['variant'] = 'blue'
             else:
                 o['variant'] = 'red'
@@ -2105,9 +2141,6 @@ def main() -> None:
     parser.add_argument(
         '-v', '--version', action='store_true', help='update version information (set source to install directory)'
     )
-    parser.add_argument(
-        '-b', '--blueprints', action='store_true', help='read loc from blueprints and export to gameClasses'
-    )
     parser.add_argument('-o', '--loc', action='store_true', help='extract required loc strings for game')
     args = parser.parse_args()
 
@@ -2134,9 +2167,9 @@ def main() -> None:
             update_swversion_info(
                 game=args.game, datadir=datadir, sourcedir=sourcedir, mapimage=environ.get('SWMAPIMAGE')
             )
-    elif args.blueprints:
-        export_class_loc(game=args.game, datadir=datadir, sourcedir=sourcedir)
     elif args.loc:
+        # Read the blueprint files to get the keys we need and then process the loc strings
+        export_class_loc(game=args.game, datadir=datadir, sourcedir=sourcedir)
         export_loc_files(game=args.game, datadir=datadir, sourcedir=sourcedir)
     else:
         parser.print_help()
