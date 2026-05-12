@@ -979,7 +979,9 @@ def in_earlyaccess(otype, p, pos):  # noqa: C901 - disable complexity warning
 
 
 def optEnum(s):
-    return int(s[len(s.rstrip('0123456789')) :] or 0) if type(s) is str and '::' in s and s[-1].isdigit() else s
+    if match := re.search('::.*([0-9]+)$', str(s)):
+        return int(match.group(1))
+    return s
 
 
 def optArea(a, k, v):
