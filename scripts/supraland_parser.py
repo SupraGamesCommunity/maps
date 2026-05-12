@@ -1328,20 +1328,20 @@ def export_class_loc(game: str, datadir: Path, sourcedir: Path) -> None:  # noqa
     propcount = 0
     propmatches = 0
 
-    def optKeyLoc(game_class: dict, class_name: str, k: str, v):
+    def optKeyLoc(class_name: str, k: str, v):
         nonlocal propcount, propmatches
         if v:
-            if class_name not in game_class:
-                game_class[class_name] = {}
+            if class_name not in game_classes:
+                game_classes[class_name] = {}
             classes.add(class_name)
             propcount += 1
-            if k not in game_class[class_name]:
+            if k not in game_classes[class_name]:
                 print(f'{class_name}.{k} => "{v}"')
-                game_class[class_name][k] = v
-            elif game_class[class_name][k] == v:
+                game_classes[class_name][k] = v
+            elif game_classes[class_name][k] == v:
                 propmatches += 1
             else:
-                print(f'{class_name}.{k} == "{game_class[class_name][k]}" != "{v}"')
+                print(f'{class_name}.{k} == "{game_classes[class_name][k]}" != "{v}"')
 
     def is_class_used(cls_name):
         return cls_name in game_classes and game in game_classes[cls_name].get('games', ['sl', 'slc', 'siu'])
@@ -1365,23 +1365,16 @@ def export_class_loc(game: str, datadir: Path, sourcedir: Path) -> None:  # noqa
                 props = bp['Properties']
 
                 if props.get('Text'):
-                    optKeyLoc(game_classes, gc, 'friendly', props['Text'].get('SourceString'))
-                    optKeyLoc(game_classes, gc, 'friendly_key', props['Text'].get('Key'))
+                    optKeyLoc(class_name=gc, k='friendly', v=props['Text'].get('SourceString'))
+                    optKeyLoc(class_name=gc, k='friendly_key', v=props['Text'].get('Key'))
 
                 if props.get('UpgradeName'):
-                    optKeyLoc(game_classes, gc, 'friendly', props['UpgradeName'].get('SourceString'))
-                    optKeyLoc(game_classes, gc, 'friendly_key', props['UpgradeName'].get('Key'))
+                    optKeyLoc(class_name=gc, k='friendly', v=props['UpgradeName'].get('SourceString'))
+                    optKeyLoc(class_name=gc, k='friendly_key', v=props['UpgradeName'].get('Key'))
 
                 if props.get('UpgradeDescription'):
-                    optKeyLoc(
-                        game_classes,
-                        gc,
-                        'description',
-                        props['UpgradeDescription'].get('SourceString'),
-                    )
-                    optKeyLoc(
-                        game_classes, gc, 'description_key', props['UpgradeDescription'].get('Key')
-                    )
+                    optKeyLoc(class_name=gc, k='description', v=props['UpgradeDescription'].get('SourceString'))
+                    optKeyLoc(class_name=gc, k='description_key', v=props['UpgradeDescription'].get('Key'))
 
     print("Classes: ", len(classes), "Props: ", propcount, "Matches: ", propmatches)
     save_json_file(data=game_classes, path=datadir.joinpath('gameClasses.json'))
@@ -1995,7 +1988,7 @@ def cleanup_objects(  # noqa: C901 - disable complexity warning
         elif o['type'] == 'Jumppad_C':
             o['linetype'] = 'jumppad'
             if (o.get('allow_stomp')
-                    or o.get('disable_movement_in_air') == False):   # noqa: E712 default for DisableMovementInAir is True
+                    or o.get('disable_movement_in_air') == False):   # fmt: skip # noqa: E712 default for DisableMovementInAir is True
                 o['variant'] = 'blue'
             else:
                 o['variant'] = 'red'
