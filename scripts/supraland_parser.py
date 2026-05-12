@@ -978,7 +978,7 @@ def in_earlyaccess(otype, p, pos):  # noqa: C901 - disable complexity warning
     return True
 
 
-def optEnum(s):
+def optEnum(s: str | int):
     if match := re.search('::.*([0-9]+)$', str(s)):
         return int(match.group(1))
     return s
