@@ -81,6 +81,15 @@
     "coins": 5
   },
   {
+    "name": "5Cent_C_UAID_ACB480ECFC841ED002_2026713995",
+    "type": "5Cent_C",
+    "area": "Supraworld",
+    "lat": -21558.59375,
+    "lng": 14211.7958984375,
+    "alt": 1751.0191650390625,
+    "coins": 1
+  },
+  {
     "name": "5Cent_C_UAID_ACB480ECFC8429A302_1811982364",
     "type": "5Cent_C",
     "area": "Supraworld",
@@ -366,6 +375,15 @@
     "lat": -26987.5078125,
     "lng": 5265.10498046875,
     "alt": 1817.713623046875,
+    "coins": 5
+  },
+  {
+    "name": "5Cent_C_UAID_ACB480ECFC848BD802_1638418822",
+    "type": "5Cent_C",
+    "area": "Supraworld",
+    "lat": -938.13916015625,
+    "lng": 11116.435546875,
+    "alt": -282.5770568847656,
     "coins": 5
   },
   {
@@ -744,6 +762,15 @@
     "lat": 21171.697265625,
     "lng": 11256.017578125,
     "alt": 6652.2607421875,
+    "coins": 5
+  },
+  {
+    "name": "5Cent_C_UAID_ACB480ECFC84E5D602_1449058690",
+    "type": "5Cent_C",
+    "area": "Supraworld",
+    "lat": 13474.2236328125,
+    "lng": -2105.63818359375,
+    "alt": 1858.746826171875,
     "coins": 5
   },
   {
@@ -1353,7 +1380,7 @@
     "name": "FloppyDisk_SavePoint_C_UAID_7085C2B20F0E1C2902_1141047165",
     "type": "FloppyDisk_SavePoint_C",
     "area": "Supraworld",
-    "lat": 3398.039794921875,
+    "lat": 3457.301025390625,
     "lng": 9753.8076171875,
     "alt": 382.27679443359375,
     "hidden": "true"
@@ -2112,7 +2139,7 @@
       {
         "x": 13362.152,
         "y": -25047.094,
-        "z": 1131.0559
+        "z": 1190.6257
       }
     ],
     "linetype": "target"
@@ -2697,8 +2724,8 @@
     "alt": 414.7320861816406,
     "targets": [
       {
-        "x": 7117.364,
-        "y": 26639.184,
+        "x": 7125.0356,
+        "y": 26638.992,
         "z": 342.6176
       }
     ],
@@ -3169,17 +3196,33 @@
     "alt": -764.5050659179688
   },
   {
+    "name": "Jumppad_C_UAID_ACB480ECFC84C2D302_1711223376",
+    "type": "SW:Jumppad_C",
+    "area": "Supraworld",
+    "lat": -25093.130859375,
+    "lng": -2338.114990234375,
+    "alt": 1028.513916015625,
+    "targets": [
+      {
+        "x": -2227.483,
+        "y": -27526.93,
+        "z": 1408.2397
+      }
+    ],
+    "linetype": "target"
+  },
+  {
     "name": "Jumppad_C_UAID_ACB480ECFC84C4CA02_1244405750",
     "type": "SW:Jumppad_C",
     "area": "Supraworld",
-    "lat": -18596.58203125,
-    "lng": 10222.5712890625,
-    "alt": 552.5142211914062,
+    "lat": -20437.134765625,
+    "lng": 9723.982421875,
+    "alt": 864.0144653320312,
     "targets": [
       {
-        "x": 10180.679,
-        "y": -19236.486,
-        "z": 1344.8413
+        "x": 8647.892,
+        "y": -20566.52,
+        "z": 1645.6178
       }
     ],
     "linetype": "target"
@@ -4557,6 +4600,36 @@
     "spawns": "_LootPool_C"
   },
   {
+    "name": "PresentBox_Lootpools_C_UAID_ACB480ECFC8495D602_1782327186",
+    "type": "PresentBox_Lootpools_C",
+    "area": "Supraworld",
+    "lat": 12741.1533203125,
+    "lng": -2133.54052734375,
+    "alt": 1091.938232421875,
+    "variant": "orange",
+    "spawns": "_LootPool_C"
+  },
+  {
+    "name": "PresentBox_Lootpools_C_UAID_ACB480ECFC8496D602_2066136392",
+    "type": "PresentBox_Lootpools_C",
+    "area": "Supraworld",
+    "lat": 3553.52099609375,
+    "lng": 17326.42578125,
+    "alt": 6305.4306640625,
+    "variant": "blue",
+    "spawns": "_LootPool_C"
+  },
+  {
+    "name": "PresentBox_Lootpools_C_UAID_ACB480ECFC8498D602_1528331773",
+    "type": "PresentBox_Lootpools_C",
+    "area": "Supraworld",
+    "lat": -17261.548828125,
+    "lng": 17185.484375,
+    "alt": 320.44537353515625,
+    "variant": "pink",
+    "spawns": "_LootPool_C"
+  },
+  {
     "name": "PresentBox_Lootpools_C_UAID_ACB480ECFC84AE9A02_1599760194",
     "type": "PresentBox_Lootpools_C",
     "area": "Supraworld",
@@ -5873,6 +5946,22 @@
     "variant": "purple"
   },
   {
+    "name": "PuzzleCloud_C_UAID_ACB480ECFC8482D802_1930569222",
+    "type": "PuzzleCloud_C",
+    "area": "Supraworld",
+    "lat": 4240.89208984375,
+    "lng": 11400.55078125,
+    "alt": -222.70901489257812
+  },
+  {
+    "name": "PuzzleCloud_C_UAID_ACB480ECFC8482D802_1946726223",
+    "type": "PuzzleCloud_C",
+    "area": "Supraworld",
+    "lat": 2009.5804443359375,
+    "lng": 10652.912109375,
+    "alt": -222.70901489257812
+  },
+  {
     "name": "PuzzleCloud_C_UAID_ACB480ECFC84839202_1695992306",
     "type": "PuzzleCloud_C",
     "area": "Supraworld",
@@ -5896,6 +5985,31 @@
     "lat": -6526.75634765625,
     "lng": -1706.1614990234375,
     "alt": 1827.6397705078125
+  },
+  {
+    "name": "PuzzleCloud_C_UAID_ACB480ECFC8495D602_1646837183",
+    "type": "PuzzleCloud_C",
+    "area": "Supraworld",
+    "lat": 14262.5634765625,
+    "lng": -1912.318359375,
+    "alt": 2554.865234375
+  },
+  {
+    "name": "PuzzleCloud_C_UAID_ACB480ECFC8497D602_1502800586",
+    "type": "PuzzleCloud_C",
+    "area": "Supraworld",
+    "lat": 2487.133544921875,
+    "lng": 17366.765625,
+    "alt": 7484.51171875
+  },
+  {
+    "name": "PuzzleCloud_C_UAID_ACB480ECFC84A0D102_2112826936",
+    "type": "PuzzleCloud_C",
+    "area": "Supraworld",
+    "lat": -25362.51953125,
+    "lng": 17074.728515625,
+    "alt": 1608.2423095703125,
+    "variant": "cyan"
   },
   {
     "name": "PuzzleCloud_C_UAID_ACB480ECFC84B1BF02_1582288749",
@@ -6028,6 +6142,15 @@
     "variant": "purple"
   },
   {
+    "name": "PuzzleCloud_C_UAID_ACB480ECFC84E2D102_1283261555",
+    "type": "PuzzleCloud_C",
+    "area": "Supraworld",
+    "lat": -24841.962890625,
+    "lng": 17199.978515625,
+    "alt": 7.489199638366699,
+    "variant": "cyan"
+  },
+  {
     "name": "PuzzleCloud_C_UAID_ACB480ECFC84F58502_1619941550",
     "type": "PuzzleCloud_C",
     "area": "Supraworld",
@@ -6116,7 +6239,8 @@
     "area": "Supraworld",
     "lat": -23448.49609375,
     "lng": 10947.1513671875,
-    "alt": 941.2109375
+    "alt": 941.2109375,
+    "variant": "cyan"
   },
   {
     "name": "Coin_C_UAID_7085C2B20F0E0DCA00_1322129440",
@@ -7001,22 +7125,13 @@
     "coins": 1
   },
   {
-    "name": "RealCoinPickup_C_UAID_7085C2B20F0E0DCE01_1899654381",
-    "type": "RealCoinPickup_C",
-    "area": "Supraworld",
-    "lat": 20938.951171875,
-    "lng": 13052.05078125,
-    "alt": 9506.7841796875,
-    "coins": 1
-  },
-  {
     "name": "RealCoinPickup_C_UAID_7085C2B20F0E0DCE01_1914263383",
     "type": "RealCoinPickup_C",
     "area": "Supraworld",
     "lat": 21149.23046875,
     "lng": 13052.05078125,
     "alt": 9515.3896484375,
-    "coins": 1
+    "coins": 5
   },
   {
     "name": "RealCoinPickup_C_UAID_7085C2B20F0E0DCE01_1935202384",
@@ -7322,7 +7437,7 @@
     "lat": 21109.791015625,
     "lng": 13185.1884765625,
     "alt": 10372.984375,
-    "coins": 1
+    "coins": 5
   },
   {
     "name": "RealCoinPickup_C_UAID_7085C2B20F0E1C6D02_1726717928",
@@ -8086,7 +8201,7 @@
     "area": "Supraworld",
     "lat": -7530.51171875,
     "lng": -897.9496459960938,
-    "alt": 19313.025390625,
+    "alt": 15489.755859375,
     "coins": 1
   },
   {
@@ -8095,7 +8210,7 @@
     "area": "Supraworld",
     "lat": -7530.51171875,
     "lng": -689.449462890625,
-    "alt": 19313.025390625,
+    "alt": 15489.755859375,
     "coins": 1
   },
   {
@@ -8104,7 +8219,7 @@
     "area": "Supraworld",
     "lat": -7530.51171875,
     "lng": -482.4508361816406,
-    "alt": 19313.025390625,
+    "alt": 15489.755859375,
     "coins": 1
   },
   {
@@ -8113,7 +8228,7 @@
     "area": "Supraworld",
     "lat": -10034.115234375,
     "lng": 1566.6290283203125,
-    "alt": 19317.626953125,
+    "alt": 15494.357421875,
     "coins": 1
   },
   {
@@ -8122,7 +8237,7 @@
     "area": "Supraworld",
     "lat": -9908.09375,
     "lng": 1566.6290283203125,
-    "alt": 19317.626953125,
+    "alt": 15494.357421875,
     "coins": 1
   },
   {
@@ -8131,7 +8246,7 @@
     "area": "Supraworld",
     "lat": -9749.849609375,
     "lng": 1566.6290283203125,
-    "alt": 19317.626953125,
+    "alt": 15494.357421875,
     "coins": 1
   },
   {
@@ -8140,7 +8255,7 @@
     "area": "Supraworld",
     "lat": -5057.8359375,
     "lng": 1562.9161376953125,
-    "alt": 19315.90625,
+    "alt": 15492.63671875,
     "coins": 1
   },
   {
@@ -8149,7 +8264,7 @@
     "area": "Supraworld",
     "lat": -5216.85888671875,
     "lng": 1562.9161376953125,
-    "alt": 19315.90625,
+    "alt": 15492.63671875,
     "coins": 1
   },
   {
@@ -8158,7 +8273,7 @@
     "area": "Supraworld",
     "lat": -5393.28955078125,
     "lng": 1562.9161376953125,
-    "alt": 19315.90625,
+    "alt": 15492.63671875,
     "coins": 1
   },
   {
@@ -8167,7 +8282,7 @@
     "area": "Supraworld",
     "lat": -7530.51171875,
     "lng": -280.8951416015625,
-    "alt": 19313.025390625,
+    "alt": 15489.755859375,
     "coins": 1
   },
   {
@@ -8176,7 +8291,7 @@
     "area": "Supraworld",
     "lat": -9594.419921875,
     "lng": 1566.6290283203125,
-    "alt": 19317.626953125,
+    "alt": 15494.357421875,
     "coins": 1
   },
   {
@@ -8185,7 +8300,7 @@
     "area": "Supraworld",
     "lat": -5586.87109375,
     "lng": 1562.9161376953125,
-    "alt": 19315.90625,
+    "alt": 15492.63671875,
     "coins": 1
   },
   {
@@ -11322,7 +11437,7 @@
     "area": "Supraworld",
     "lat": 14810.1953125,
     "lng": -1121.1090087890625,
-    "alt": 1329.5487060546875,
+    "alt": 1378.585205078125,
     "coins": 1
   },
   {
@@ -11644,9 +11759,9 @@
     "name": "RealCoinPickup_C_UAID_ACB480ECFC8468A302_1837658455",
     "type": "RealCoinPickup_C",
     "area": "Supraworld",
-    "lat": 3525.744873046875,
-    "lng": 17279.53515625,
-    "alt": 6329.51953125,
+    "lat": 6880.7451171875,
+    "lng": 15166.57421875,
+    "alt": 6462.912109375,
     "coins": 5
   },
   {
@@ -11947,15 +12062,6 @@
     "coins": 1
   },
   {
-    "name": "RealCoinPickup_C_UAID_ACB480ECFC84958602_1527925734",
-    "type": "RealCoinPickup_C",
-    "area": "Supraworld",
-    "lat": -17925.53125,
-    "lng": -3377.538330078125,
-    "alt": 319.838134765625,
-    "coins": 1
-  },
-  {
     "name": "RealCoinPickup_C_UAID_ACB480ECFC84958B02_1931449556",
     "type": "RealCoinPickup_C",
     "area": "Supraworld",
@@ -12089,6 +12195,33 @@
     "lng": 13701.71875,
     "alt": 13774.2900390625,
     "coins": 5
+  },
+  {
+    "name": "RealCoinPickup_C_UAID_ACB480ECFC84B7DA02_2040469432",
+    "type": "RealCoinPickup_C",
+    "area": "Supraworld",
+    "lat": 31191.6640625,
+    "lng": 16701.216796875,
+    "alt": 2839.80810546875,
+    "coins": 1
+  },
+  {
+    "name": "RealCoinPickup_C_UAID_ACB480ECFC84B7DA02_2047077433",
+    "type": "RealCoinPickup_C",
+    "area": "Supraworld",
+    "lat": 31060.244140625,
+    "lng": 16701.216796875,
+    "alt": 2839.80810546875,
+    "coins": 1
+  },
+  {
+    "name": "RealCoinPickup_C_UAID_ACB480ECFC84B7DA02_2048918434",
+    "type": "RealCoinPickup_C",
+    "area": "Supraworld",
+    "lat": 30921.466796875,
+    "lng": 16701.216796875,
+    "alt": 2839.80810546875,
+    "coins": 1
   },
   {
     "name": "RealCoinPickup_C_UAID_ACB480ECFC84C99302_1617551830",
@@ -12997,24 +13130,24 @@
     "name": "StaticMeshActor_UAID_7085C2B20F0E79D200_1317026153",
     "type": "RubberBand_C",
     "area": "Supraworld",
-    "lat": 22854.544921875,
-    "lng": 1909.0538330078125,
-    "alt": 1771.1470947265625,
-    "variant": "pink"
+    "lat": 22855.455078125,
+    "lng": 1909.0589599609375,
+    "alt": 1770.6727294921875,
+    "variant": "white"
   },
   {
     "name": "StaticMeshActor_UAID_7085C2B20F0E79D200_1317029156",
     "type": "RubberBand_C",
     "area": "Supraworld",
-    "lat": 22198.28125,
-    "lng": 1907.1826171875,
-    "alt": 2112.17919921875,
-    "variant": "pink",
+    "lat": 22198.6640625,
+    "lng": 1907.1866455078125,
+    "alt": 2111.97998046875,
+    "variant": "white",
     "targets": [
       {
-        "x": 1320.8304,
-        "y": 22300.67,
-        "z": 1696.5183
+        "x": 1321.0376,
+        "y": 22301.068,
+        "z": 1696.5216
       }
     ],
     "linetype": "target"
@@ -13023,15 +13156,15 @@
     "name": "StaticMeshActor_UAID_7085C2B20F0E79D200_1317030157",
     "type": "RubberBand_C",
     "area": "Supraworld",
-    "lat": 22213.884765625,
-    "lng": 1901.2515869140625,
-    "alt": 2142.052490234375,
-    "variant": "pink",
+    "lat": 22214.267578125,
+    "lng": 1901.255615234375,
+    "alt": 2141.853271484375,
+    "variant": "white",
     "targets": [
       {
-        "x": 1285.7698,
-        "y": 22314.043,
-        "z": 1696.2174
+        "x": 1285.9584,
+        "y": 22314.441,
+        "z": 1696.2203
       }
     ],
     "linetype": "target"
@@ -13040,14 +13173,14 @@
     "name": "StaticMeshActor_UAID_7085C2B20F0E79D200_1317030158",
     "type": "RubberBand_C",
     "area": "Supraworld",
-    "lat": 22489.892578125,
-    "lng": 1911.0615234375,
-    "alt": 1942.971923828125,
-    "variant": "pink",
+    "lat": 22491.16015625,
+    "lng": 1911.0675048828125,
+    "alt": 1942.3106689453125,
+    "variant": "white",
     "targets": [
       {
-        "x": 1297.8452,
-        "y": 22619.898,
+        "x": 1298.4545,
+        "y": 22621.213,
         "z": 1485.0981
       }
     ],
@@ -13057,14 +13190,14 @@
     "name": "StaticMeshActor_UAID_7085C2B20F0E79D200_1417821163",
     "type": "RubberBand_C",
     "area": "Supraworld",
-    "lat": 21892.521484375,
-    "lng": 1907.1826171875,
-    "alt": 2251.95849609375,
-    "variant": "pink",
+    "lat": 21892.904296875,
+    "lng": 1907.1866455078125,
+    "alt": 2251.75927734375,
+    "variant": "white",
     "targets": [
       {
-        "x": 1038.7548,
-        "y": 21978.05,
+        "x": 1038.8918,
+        "y": 21978.443,
         "z": 1485.0942
       }
     ],
@@ -13074,14 +13207,14 @@
     "name": "StaticMeshActor_UAID_7085C2B20F0E79D200_1417821164",
     "type": "RubberBand_C",
     "area": "Supraworld",
-    "lat": 21908.125,
-    "lng": 1901.4439697265625,
-    "alt": 2281.831787109375,
-    "variant": "pink",
+    "lat": 21908.5078125,
+    "lng": 1901.447998046875,
+    "alt": 2281.632568359375,
+    "variant": "white",
     "targets": [
       {
-        "x": 1013.07587,
-        "y": 21992.248,
+        "x": 1013.213,
+        "y": 21992.64,
         "z": 1485.0944
       }
     ],
@@ -13091,14 +13224,14 @@
     "name": "StaticMeshActor_UAID_7085C2B20F0E79D200_1443927166",
     "type": "RubberBand_C",
     "area": "Supraworld",
-    "lat": 21586.818359375,
-    "lng": 1908.601806640625,
-    "alt": 2390.352783203125,
-    "variant": "pink",
+    "lat": 21587.490234375,
+    "lng": 1908.6083984375,
+    "alt": 2390.0029296875,
+    "variant": "white",
     "targets": [
       {
-        "x": 949.5356,
-        "y": 21665.871,
+        "x": 949.7615,
+        "y": 21666.559,
         "z": 1485.0924
       }
     ],
@@ -13108,14 +13241,14 @@
     "name": "StaticMeshActor_UAID_7085C2B20F0E79D200_1443927167",
     "type": "RubberBand_C",
     "area": "Supraworld",
-    "lat": 21602.421875,
-    "lng": 1902.8631591796875,
-    "alt": 2420.22607421875,
-    "variant": "pink",
+    "lat": 21603.09375,
+    "lng": 1902.8697509765625,
+    "alt": 2419.876220703125,
+    "variant": "white",
     "targets": [
       {
-        "x": 925.10004,
-        "y": 21680.16,
+        "x": 925.32587,
+        "y": 21680.848,
         "z": 1485.0925
       }
     ],
@@ -13125,14 +13258,14 @@
     "name": "StaticMeshActor_UAID_7085C2B20F0E79D200_1522892170",
     "type": "RubberBand_C",
     "area": "Supraworld",
-    "lat": 22197.669921875,
-    "lng": 829.2506713867188,
-    "alt": 2130.99560546875,
-    "variant": "pink",
+    "lat": 22198.580078125,
+    "lng": 829.255859375,
+    "alt": 2130.521240234375,
+    "variant": "white",
     "targets": [
       {
-        "x": 1804.9551,
-        "y": 22420.432,
+        "x": 1804.5924,
+        "y": 22421.312,
         "z": 1485.097
       }
     ],
@@ -13142,14 +13275,14 @@
     "name": "StaticMeshActor_UAID_7085C2B20F0E79D200_1522892171",
     "type": "RubberBand_C",
     "area": "Supraworld",
-    "lat": 22213.2734375,
-    "lng": 823.5119018554688,
-    "alt": 2160.868896484375,
-    "variant": "pink",
+    "lat": 22214.18359375,
+    "lng": 823.51708984375,
+    "alt": 2160.39453125,
+    "variant": "white",
     "targets": [
       {
-        "x": 1821.635,
-        "y": 22437.738,
+        "x": 1821.2987,
+        "y": 22438.621,
         "z": 1485.0972
       }
     ],
@@ -13159,15 +13292,15 @@
     "name": "StaticMeshActor_UAID_7085C2B20F0E79D200_1522893173",
     "type": "RubberBand_C",
     "area": "Supraworld",
-    "lat": 21891.935546875,
-    "lng": 829.5909423828125,
-    "alt": 2270.82666015625,
-    "variant": "pink",
+    "lat": 21892.39453125,
+    "lng": 829.5951538085938,
+    "alt": 2270.588134765625,
+    "variant": "white",
     "targets": [
       {
-        "x": 1882.4468,
-        "y": 22114.74,
-        "z": 1523.6637
+        "x": 1882.4885,
+        "y": 22115.2,
+        "z": 1523.3732
       }
     ],
     "linetype": "target"
@@ -13176,15 +13309,15 @@
     "name": "StaticMeshActor_UAID_7085C2B20F0E79D200_1522894174",
     "type": "RubberBand_C",
     "area": "Supraworld",
-    "lat": 21907.5390625,
-    "lng": 823.8521728515625,
-    "alt": 2300.699951171875,
-    "variant": "pink",
+    "lat": 21907.998046875,
+    "lng": 823.8563842773438,
+    "alt": 2300.46142578125,
+    "variant": "white",
     "targets": [
       {
         "x": 1880.4637,
-        "y": 22130.588,
-        "z": 1548.1882
+        "y": 22131.045,
+        "z": 1547.956
       }
     ],
     "linetype": "target"
@@ -13193,15 +13326,15 @@
     "name": "StaticMeshActor_UAID_7085C2B20F0E79D200_1522895176",
     "type": "RubberBand_C",
     "area": "Supraworld",
-    "lat": 21586.232421875,
-    "lng": 831.0098876953125,
-    "alt": 2409.220947265625,
-    "variant": "pink",
+    "lat": 21586.69140625,
+    "lng": 831.0140991210938,
+    "alt": 2408.982421875,
+    "variant": "white",
     "targets": [
       {
         "x": 1881.1699,
-        "y": 21808.844,
-        "z": 1665.7946
+        "y": 21809.3,
+        "z": 1665.5619
       }
     ],
     "linetype": "target"
@@ -13213,7 +13346,7 @@
     "lat": 21601.8359375,
     "lng": 825.2716064453125,
     "alt": 2439.09423828125,
-    "variant": "pink",
+    "variant": "white",
     "targets": [
       {
         "x": 1880.7072,
@@ -13227,14 +13360,14 @@
     "name": "StaticMeshActor_UAID_7085C2B20F0E79D200_1538285183",
     "type": "RubberBand_C",
     "area": "Supraworld",
-    "lat": 22790.95703125,
-    "lng": 831.6072387695312,
-    "alt": 1822.87353515625,
-    "variant": "pink",
+    "lat": 22791.8671875,
+    "lng": 831.6124877929688,
+    "alt": 1822.399169921875,
+    "variant": "white",
     "targets": [
       {
-        "x": 1533.0437,
-        "y": 22988.652,
+        "x": 1532.5154,
+        "y": 22989.523,
         "z": 1485.1003
       }
     ],
@@ -13244,14 +13377,14 @@
     "name": "StaticMeshActor_UAID_7085C2B20F0E79D200_1538285184",
     "type": "RubberBand_C",
     "area": "Supraworld",
-    "lat": 22806.560546875,
-    "lng": 825.8684692382812,
-    "alt": 1852.7467041015625,
-    "variant": "pink",
+    "lat": 22807.470703125,
+    "lng": 825.8737182617188,
+    "alt": 1852.2723388671875,
+    "variant": "white",
     "targets": [
       {
-        "x": 1560.0496,
-        "y": 23006.578,
+        "x": 1559.5748,
+        "y": 23007.455,
         "z": 1485.1005
       }
     ],
@@ -13261,14 +13394,14 @@
     "name": "StaticMeshActor_UAID_7085C2B20F0E79D200_1538286185",
     "type": "RubberBand_C",
     "area": "Supraworld",
-    "lat": 22485.25390625,
-    "lng": 833.0261840820312,
-    "alt": 1961.2679443359375,
-    "variant": "pink",
+    "lat": 22486.1640625,
+    "lng": 833.0314331054688,
+    "alt": 1960.7935791015625,
+    "variant": "white",
     "targets": [
       {
-        "x": 1672.2393,
-        "y": 22692.793,
+        "x": 1671.8083,
+        "y": 22693.672,
         "z": 1485.0986
       }
     ],
@@ -13278,14 +13411,14 @@
     "name": "StaticMeshActor_UAID_7085C2B20F0E79D200_1538286186",
     "type": "RubberBand_C",
     "area": "Supraworld",
-    "lat": 22500.857421875,
-    "lng": 827.0955810546875,
-    "alt": 1991.1412353515625,
-    "variant": "pink",
+    "lat": 22501.767578125,
+    "lng": 827.1007690429688,
+    "alt": 1990.6668701171875,
+    "variant": "white",
     "targets": [
       {
-        "x": 1693.0413,
-        "y": 22710.287,
+        "x": 1692.647,
+        "y": 22711.17,
         "z": 1485.0988
       }
     ],
@@ -13295,24 +13428,24 @@
     "name": "StaticMeshActor_UAID_7085C2B20F0E79D200_1611237187",
     "type": "RubberBand_C",
     "area": "Supraworld",
-    "lat": 22607.939453125,
-    "lng": 920.7008056640625,
-    "alt": 3445.041015625,
-    "variant": "pink"
+    "lat": 22607.28515625,
+    "lng": 920.6985473632812,
+    "alt": 3444.740478515625,
+    "variant": "white"
   },
   {
     "name": "StaticMeshActor_UAID_7085C2B20F0E79D200_1611241190",
     "type": "RubberBand_C",
     "area": "Supraworld",
-    "lat": 21936.505859375,
-    "lng": 919.3984375,
-    "alt": 3134.948486328125,
-    "variant": "pink",
+    "lat": 21936.208984375,
+    "lng": 919.3963012695312,
+    "alt": 3134.811767578125,
+    "variant": "white",
     "targets": [
       {
         "x": -119.348404,
-        "y": 22056.361,
-        "z": 2495.5337
+        "y": 22056.062,
+        "z": 2495.4001
       }
     ],
     "linetype": "target"
@@ -13321,15 +13454,15 @@
     "name": "StaticMeshActor_UAID_7085C2B20F0E79D200_1611241191",
     "type": "RubberBand_C",
     "area": "Supraworld",
-    "lat": 21922.25,
-    "lng": 921.8916625976562,
-    "alt": 3165.923095703125,
-    "variant": "pink",
+    "lat": 21921.953125,
+    "lng": 921.8895263671875,
+    "alt": 3165.786376953125,
+    "variant": "white",
     "targets": [
       {
         "x": -119.34832,
-        "y": 22042.06,
-        "z": 2522.8809
+        "y": 22041.764,
+        "z": 2522.7473
       }
     ],
     "linetype": "target"
@@ -13338,15 +13471,15 @@
     "name": "StaticMeshActor_UAID_7085C2B20F0E79D200_1611241192",
     "type": "RubberBand_C",
     "area": "Supraworld",
-    "lat": 22248.955078125,
-    "lng": 919.3689575195312,
-    "alt": 3261.6806640625,
-    "variant": "pink",
+    "lat": 22248.658203125,
+    "lng": 919.3668212890625,
+    "alt": 3261.5439453125,
+    "variant": "white",
     "targets": [
       {
         "x": -119.348755,
-        "y": 22399.252,
-        "z": 2637.9856
+        "y": 22398.955,
+        "z": 2637.8518
       }
     ],
     "linetype": "target"
@@ -13355,15 +13488,15 @@
     "name": "StaticMeshActor_UAID_7085C2B20F0E79D200_1611244197",
     "type": "RubberBand_C",
     "area": "Supraworld",
-    "lat": 21638.662109375,
-    "lng": 915.7333984375,
-    "alt": 2979.037841796875,
-    "variant": "pink",
+    "lat": 21638.365234375,
+    "lng": 915.7312622070312,
+    "alt": 2978.901123046875,
+    "variant": "white",
     "targets": [
       {
         "x": -119.346344,
-        "y": 21764.555,
-        "z": 2346.03
+        "y": 21764.256,
+        "z": 2345.8962
       }
     ],
     "linetype": "target"
@@ -13372,15 +13505,15 @@
     "name": "StaticMeshActor_UAID_7085C2B20F0E79D200_1611244198",
     "type": "RubberBand_C",
     "area": "Supraworld",
-    "lat": 21624.421875,
-    "lng": 918.2264404296875,
-    "alt": 3010.0166015625,
-    "variant": "pink",
+    "lat": 21624.125,
+    "lng": 918.2243041992188,
+    "alt": 3009.8798828125,
+    "variant": "white",
     "targets": [
       {
         "x": -119.34626,
-        "y": 21750.277,
-        "z": 2373.3826
+        "y": 21749.98,
+        "z": 2373.249
       }
     ],
     "linetype": "target"
@@ -13392,7 +13525,7 @@
     "lat": 21342.08984375,
     "lng": 913.1573486328125,
     "alt": 2822.057373046875,
-    "variant": "pink",
+    "variant": "white",
     "targets": [
       {
         "x": 55.29932,
@@ -13406,15 +13539,15 @@
     "name": "StaticMeshActor_UAID_7085C2B20F0E79D200_1611246201",
     "type": "RubberBand_C",
     "area": "Supraworld",
-    "lat": 21327.837890625,
-    "lng": 915.6506958007812,
-    "alt": 2853.033447265625,
-    "variant": "pink",
+    "lat": 21327.541015625,
+    "lng": 915.6485595703125,
+    "alt": 2852.896728515625,
+    "variant": "white",
     "targets": [
       {
-        "x": 37.272255,
-        "y": 21457.592,
-        "z": 2428.6438
+        "x": 37.492626,
+        "y": 21457.3,
+        "z": 2428.787
       }
     ],
     "linetype": "target"
@@ -13426,7 +13559,7 @@
     "lat": 22202.962890625,
     "lng": 1857.4921875,
     "alt": 3254.366455078125,
-    "variant": "pink",
+    "variant": "white",
     "targets": [
       {
         "x": 2878.7344,
@@ -13443,7 +13576,7 @@
     "lat": 22187.568359375,
     "lng": 1864.5411376953125,
     "alt": 3284.066650390625,
-    "variant": "pink",
+    "variant": "white",
     "targets": [
       {
         "x": 2878.7344,
@@ -13465,7 +13598,7 @@
     "lat": 22508.580078125,
     "lng": 1851.058349609375,
     "alt": 3394.289306640625,
-    "variant": "pink",
+    "variant": "white",
     "targets": [
       {
         "x": 2878.7007,
@@ -13482,7 +13615,7 @@
     "lat": 22493.193359375,
     "lng": 1858.1060791015625,
     "alt": 3423.989990234375,
-    "variant": "pink",
+    "variant": "white",
     "targets": [
       {
         "x": 2878.7007,
@@ -13504,7 +13637,7 @@
     "lat": 22814.9296875,
     "lng": 1843.5093994140625,
     "alt": 3533.21826171875,
-    "variant": "pink",
+    "variant": "white",
     "targets": [
       {
         "x": 2878.6997,
@@ -13521,7 +13654,7 @@
     "lat": 22799.533203125,
     "lng": 1850.55419921875,
     "alt": 3562.91796875,
-    "variant": "pink",
+    "variant": "white",
     "targets": [
       {
         "x": 2878.6985,
@@ -13543,7 +13676,7 @@
     "lat": 21610.2578125,
     "lng": 1866.1458740234375,
     "alt": 2946.400390625,
-    "variant": "pink",
+    "variant": "white",
     "targets": [
       {
         "x": 2555.0474,
@@ -13560,7 +13693,7 @@
     "lat": 21594.853515625,
     "lng": 1873.1915283203125,
     "alt": 2976.10009765625,
-    "variant": "pink",
+    "variant": "white",
     "targets": [
       {
         "x": 2580.8345,
@@ -13582,7 +13715,7 @@
     "lat": 21915.810546875,
     "lng": 1858.6055908203125,
     "alt": 3084.916748046875,
-    "variant": "pink",
+    "variant": "white",
     "targets": [
       {
         "x": 2766.5977,
@@ -13599,7 +13732,7 @@
     "lat": 21899.9453125,
     "lng": 1865.6522216796875,
     "alt": 3114.37158203125,
-    "variant": "pink",
+    "variant": "white",
     "targets": [
       {
         "x": 2788.3208,
@@ -13621,7 +13754,7 @@
     "lat": 4817.8896484375,
     "lng": 1180.6241455078125,
     "alt": 696.39208984375,
-    "variant": "red",
+    "variant": "yellow",
     "targets": [
       {
         "x": 4881.1284,
@@ -13638,7 +13771,7 @@
     "lat": 4817.83837890625,
     "lng": 1156.53955078125,
     "alt": 747.1365966796875,
-    "variant": "red",
+    "variant": "yellow",
     "targets": [
       {
         "x": 4881.1284,
@@ -13815,12 +13948,12 @@
     "type": "RubberBand_C",
     "area": "Supraworld",
     "lat": 24140.0625,
-    "lng": 141.21896362304688,
+    "lng": 141.23245239257812,
     "alt": 7709.1328125,
-    "variant": "pink",
+    "variant": "white",
     "targets": [
       {
-        "x": -14.721604,
+        "x": -14.7081175,
         "y": 23096.475,
         "z": 6687.4614
       }
@@ -13834,7 +13967,7 @@
     "lat": 24139.3359375,
     "lng": -191.943115234375,
     "alt": 7695.9814453125,
-    "variant": "pink",
+    "variant": "white",
     "targets": [
       {
         "x": -354.52115,
@@ -13851,7 +13984,7 @@
     "lat": 24132.5,
     "lng": -191.96453857421875,
     "alt": 7729.4794921875,
-    "variant": "pink",
+    "variant": "white",
     "targets": [
       {
         "x": -354.59256,
@@ -13868,7 +14001,7 @@
     "lat": 24132.416015625,
     "lng": -526.6555786132812,
     "alt": 7718.8310546875,
-    "variant": "pink"
+    "variant": "white"
   },
   {
     "name": "StaticMeshActor_UAID_7085C2B20F0EEFD200_1242749876",
@@ -13877,19 +14010,19 @@
     "lat": 24125.57421875,
     "lng": -526.16015625,
     "alt": 7752.32763671875,
-    "variant": "pink"
+    "variant": "white"
   },
   {
     "name": "StaticMeshActor_UAID_7085C2B20F0EEFD200_1242749877",
     "type": "RubberBand_C",
     "area": "Supraworld",
     "lat": 24133.216796875,
-    "lng": 141.7265625,
+    "lng": 141.7517852783203,
     "alt": 7742.62451171875,
-    "variant": "pink",
+    "variant": "white",
     "targets": [
       {
-        "x": -14.307541,
+        "x": -14.282312,
         "y": 23096.5,
         "z": 6732.985
       }
@@ -13900,10 +14033,10 @@
     "name": "StaticMeshActor_UAID_7085C2B20F0EF06902_1801516993",
     "type": "RubberBand_C",
     "area": "Supraworld",
-    "lat": -356.5687561035156,
-    "lng": 4720.7509765625,
-    "alt": 406.0855407714844,
-    "variant": "red",
+    "lat": -356.56573486328125,
+    "lng": 4720.814453125,
+    "alt": 406.08575439453125,
+    "variant": "white",
     "targets": [
       {
         "x": 2176.0242,
@@ -13920,7 +14053,7 @@
     "lat": -379.8618469238281,
     "lng": 4721.66796875,
     "alt": 457.1900329589844,
-    "variant": "red",
+    "variant": "white",
     "targets": [
       {
         "x": 2176.0242,
@@ -13937,7 +14070,7 @@
     "lat": 3283.121826171875,
     "lng": -7817.9873046875,
     "alt": 408.25604248046875,
-    "variant": "red",
+    "variant": "yellow",
     "targets": [
       {
         "x": 1041.261,
@@ -13954,7 +14087,7 @@
     "lat": 3284.046875,
     "lng": -7841.06591796875,
     "alt": 459.45758056640625,
-    "variant": "red",
+    "variant": "white",
     "targets": [
       {
         "x": 1041.261,
@@ -15538,16 +15671,6 @@
     "abilities": "Dash,JumpHigh,Crouch"
   },
   {
-    "name": "SecretVolume_C_UAID_ACB480ECFC8468A302_1858252456",
-    "type": "SecretVolume_C",
-    "area": "Supraworld",
-    "lat": 3247.668701171875,
-    "lng": 17346.265625,
-    "alt": 6475.72900390625,
-    "area_tag": "BedKingdom",
-    "prog_tag": "Act2:Blue"
-  },
-  {
     "name": "SecretVolume_C_UAID_ACB480ECFC8468A302_2102925457",
     "type": "SecretVolume_C",
     "area": "Supraworld",
@@ -15643,6 +15766,17 @@
     "prog_tag": "Act2:Blue"
   },
   {
+    "name": "SecretVolume_C_UAID_ACB480ECFC848BD802_1666251824",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": -102.40889739990234,
+    "lng": 11088.9951171875,
+    "alt": -181.37989807128906,
+    "area_tag": "RecyclingArea",
+    "prog_tag": "Act2:Green",
+    "abilities": "MindControl Vision,Toothpick Dart"
+  },
+  {
     "name": "SecretVolume_C_UAID_ACB480ECFC848C9202_1138212029",
     "type": "SecretVolume_C",
     "area": "Supraworld",
@@ -15665,15 +15799,15 @@
     "abilities": "JumpHigh,MindControl Vision"
   },
   {
-    "name": "SecretVolume_C_UAID_ACB480ECFC84958602_1436864733",
+    "name": "SecretVolume_C_UAID_ACB480ECFC8498D602_1543639786",
     "type": "SecretVolume_C",
     "area": "Supraworld",
-    "lat": -17949.814453125,
-    "lng": -3389.836181640625,
-    "alt": 549.5196533203125,
-    "area_tag": "StartTown",
-    "prog_tag": "Act1",
-    "abilities": "Toothpick Stake,Dash"
+    "lat": -17144.5234375,
+    "lng": 17117.884765625,
+    "alt": 525.80322265625,
+    "area_tag": "ArmChairTown",
+    "prog_tag": "Act2:Green",
+    "abilities": "MindControl Vision"
   },
   {
     "name": "SecretVolume_C_UAID_ACB480ECFC84998B02_1453667457",
@@ -15789,6 +15923,17 @@
     "alt": 5810.2724609375,
     "area_tag": "BedKingdom",
     "prog_tag": "Act2:Blue"
+  },
+  {
+    "name": "SecretVolume_C_UAID_ACB480ECFC84E5D602_1469121691",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": 13809.5849609375,
+    "lng": -2093.988525390625,
+    "alt": 1953.7518310546875,
+    "area_tag": "OutskirtsCastle",
+    "prog_tag": "Act2:Green",
+    "abilities": "MindControl Vision"
   },
   {
     "name": "SecretVolume_C_UAID_ACB480ECFC84EFA502_1497033360",
