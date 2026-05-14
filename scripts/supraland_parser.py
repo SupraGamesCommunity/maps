@@ -811,6 +811,13 @@ def load_filelist(path: Path, quiet: Optional[bool] = False):
 def save_assetlist(  # noqa: C901 - disable complexity warning
     items: list[str], filelist: dict, path: Path, quiet: Optional[bool] = False, prefer: Optional[str] = None
 ) -> None:
+
+    def after_rfind_nth(s: str, ss: str, n: int):
+        idx = len(s)
+        for i in range(n):
+            idx = s.rfind(ss, 0, idx)
+        return s[idx if idx >= 0 else 0:]
+
     lines = []
     basedict = filelist['basedict']
     for item in items:
@@ -818,11 +825,14 @@ def save_assetlist(  # noqa: C901 - disable complexity warning
             if matching_lines := basedict.get(item):
                 match_idx = 0
                 if len(matching_lines) > 1:
-                    print(f'Warning: multiple options in gamefilelist.txt for assetlist item {item}')
                     if prefer:
                         for i, line in enumerate(matching_lines):
                             if prefer + '/' + item + '.uasset' in line:
                                 match_idx = i
+                    print(f'Warning: {len(matching_lines)} options for {item} '
+                          f'in gamefilelist.txt using #{match_idx} '
+                          f'(...{after_rfind_nth(matching_lines[match_idx], '/', 3)})'
+                        )
                 lines.append(matching_lines[match_idx])
         else:
             names = item.split('.')[0].split('/')
