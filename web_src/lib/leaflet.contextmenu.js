@@ -4,7 +4,7 @@
 
 	@preserve
 
-    Converted to modules from v1.5.1 Commit 69478af (https://github.com/aratcliffe/Leaflet.contextmenu) 
+    Converted to modules from v1.5.1 Commit 69478af (https://github.com/aratcliffe/Leaflet.contextmenu)
 */
 
 import { Map, Handler, Browser, LatLng, DomUtil, DomEvent, Util, Marker, Mixin, point as L_Point, setOptions, Path, extend } from 'leaflet'
@@ -214,12 +214,13 @@ export const ContextMenu = Handler.extend({
             callback = this._createEventHandler(el, options.callback, options.context, options.hideOnSelect),
             icon = this._getIcon(options),
             iconCls = this._getIconCls(options),
+            iconHtml = this._getIconHtml(options),
             html = '';
 
         if (icon) {
-            html = '<img class="' + ContextMenu.BASE_CLS + '-icon" src="' + icon + '"/>';
-        } else if (iconCls) {
-            html = '<span class="' + ContextMenu.BASE_CLS + '-icon ' + iconCls + '"></span>';
+            html = `<img class="${ContextMenu.BASE_CLS}-icon ${iconCls}" src="${icon}"/>`;
+        } else if (iconCls || iconHtml) {
+            html = `<span class="${ContextMenu.BASE_CLS}-icon ${iconCls}">${iconHtml}</span>`;
         }
 
         el.innerHTML = html + options.text;
@@ -391,7 +392,11 @@ export const ContextMenu = Handler.extend({
     },
 
     _getIconCls: function (options) {
-        return Browser.retina && options.retinaIconCls || options.iconCls;
+        return Browser.retina && options.retinaIconCls || options.iconCls || '';
+    },
+
+    _getIconHtml: function (options) {
+        return options.iconHtml || '';
     },
 
     _setPosition: function (pt) {
