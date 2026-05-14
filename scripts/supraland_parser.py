@@ -223,7 +223,7 @@ def makeObjectKey(area: str, outer: str, name: str) -> str:
 # maps      gives the name of the maps that we're actually interested in
 config = {
     'sl': {
-        'appid': '813630',
+        'appids': ['813630'],
         'basename': 'Supraland',
         'pathmap': {
             'Game': 'Supraland/Content',
@@ -231,7 +231,7 @@ config = {
         'maps': ['Map'],
     },
     'slc': {
-        'appid': '813630',
+        'appids': ['813630'],
         'basename': 'Supraland',
         'pathmap': {
             'Game': 'Supraland/Content',
@@ -239,7 +239,7 @@ config = {
         'maps': ['Crash'],
     },
     'siu': {
-        'appid': '1522870',
+        'appids': ['1522870'],
         'basename': 'SupralandSIU',
         'pathmap': {
             'Game': 'SupralandSIU/Content',
@@ -261,7 +261,7 @@ config = {
         ],
     },
     'sw': {
-        'appid': '1869291',
+        'appids': ['1869290', '1869291'],
         'basename': 'Supraworld',
         'pathmap': {
             'Game': 'Supraworld/Content',
@@ -543,7 +543,23 @@ def get_unreal_version(exepath: Path) -> dict[str, int]:
     sh = win32com.client.gencache.EnsureDispatch('Shell.Application', 0)
     ns = sh.NameSpace(str(exepath.parent))
     item = ns.Items()[exepath.name]
-    uever['ver'] = ns.GetDetailsOf(item, 166)
+
+    file_version_indices = [166, 167]
+    product_version_indices = [301]
+    for i in range(350):
+        prop = ns.GetDetailsOf(item.Name, i)
+        if 'version' in prop.lower():
+            if 'product' in prop.lower() and i not in product_version_indices:
+                print(f'Unexpected "{prop}" index {i}')
+            if 'file' in prop.lower():
+                if i not in file_version_indices:
+                    print(f'Unexpected "{prop}" index {i}')
+                file_version = ns.GetDetailsOf(item, i)
+    if not file_version:
+        print(f'Error: Failed to find file version for {exepath}')
+        exit(-1)
+
+    uever['ver'] = ns.GetDetailsOf(item, 167)
     vernums = uever['ver'].split('.')
     uever['major'] = int(vernums[0])
     uever['minor'] = int(vernums[1])
@@ -552,18 +568,19 @@ def get_unreal_version(exepath: Path) -> dict[str, int]:
 
 # Retrieves the steam branch name
 def get_steam_branch(game: str, path: Path) -> str:
-    branch = 'public'
 
     # Get path to app manifest from game install path and appid
-    manifest = Path(path[0 : path.find('common')] + 'appmanifest_' + config[game]['appid'] + '.acf')
+    basepath = str(path)[0 : str(path).find('common')]
+    for appid in config[game]['appids']:
+        manifest = Path(f'{basepath}appmanifest_{appid}.acf')
 
-    # If the file exists, open it and read contents
-    if manifest.is_file():
-        # Search for the current user config beta key
-        if match := re.search(r'UserConfig"[\s\S]*?"BetaKey"\s*"([^"]*)', manifest.read_text()):
-            branch = match.group(1)
+        # If the file exists, open it and read contents
+        if manifest.is_file():
+            # Search for the current user config beta key
+            if match := re.search(r'UserConfig"[\s\S]*?"BetaKey"\s*"([^"]*)', manifest.read_text()):
+                return match.group(1)
 
-    return branch
+    return 'public'
 
 
 def get_swbuild_info(installdir: Path) -> dict[str, str]:
@@ -573,7 +590,7 @@ def get_swbuild_info(installdir: Path) -> dict[str, str]:
     return {"build": build, "date": date}
 
 
-# Update Suprawowlrd version information based on steam version installed in 'installdir'
+# Update Supraworld version information based on steam version installed in 'installdir'
 def update_swversion_info(game: str, datadir: Path, sourcedir: Path, mapimage: Optional[str] = None) -> None:
 
     versions = load_json_file(path=datadir.joinpath('versions.json'))
@@ -603,6 +620,8 @@ def update_swversion_info(game: str, datadir: Path, sourcedir: Path, mapimage: O
     versions['sw']['game'].update(gamever)
 
     save_json_file(data=versions, path=datadir.joinpath('versions.json'))
+
+    print("SW Version: ", f'{gamever | {'ue': uever['ver']}}')  # version, build, date, branch, type, mapver
 
 
 # We presume export.cmd has been used to export a set of map files for the game to

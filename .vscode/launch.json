@@ -27,7 +27,8 @@
             "program": "supraland_parser.py",
             "console": "integratedTerminal",
             "cwd": "${workspaceRoot}\\scripts",
-            "args": "-g sw -d ..\\public\\data -s ..\\source\\sw -m"
+            //"args": "-g sw -d ..\\public\\data -s D:\\SteamLibrary\\steamapps\\common\\Supraworld -v"
+            "args": "-g sw -d ..\\public\\data -s ..\\source\\sw -v"
         },
         {
             "name": "Node Debug: Current File",
