@@ -356,30 +356,38 @@ export class MapObject {
   }
 
   updateContextMenuOptions(){
-    const canSetFound = (this._foundLockedState === undefined);
 
     let contextMenuOptions = {
-      contextmenu: canSetFound,
+      contextmenu: true,
       contextmenuInheritItems: false,
+      contextmenuItems: []
     }
 
-    if(canSetFound){
+    if((this._foundLockedState === undefined)){
       const isFound = this.isFound();
-      contextMenuOptions.contextmenuItems = [
-        {
-          text: isFound ? 'Clear found' : 'Mark found',
-          callback: function(data) {
-            this.toggleFound();
-            data.relatedTarget._map.closePopup();
-          },
-          context: this,
-          iconHtml: fa_icon(isFound
-            ? { prefix: 'far', iconName: 'square' }
-            : { prefix: 'fa', iconName: 'square-check' }).html,
-          iconCls: 'contextmenu-icon',
+      contextMenuOptions.contextmenuItems.push({
+        iconCls: 'contextmenu-icon',
+        text: isFound ? 'Clear found' : 'Mark found',
+        iconHtml: fa_icon(isFound
+          ? { prefix: 'far', iconName: 'square' }
+          : { prefix: 'fa', iconName: 'square-check' }).html,
+        callback: function() {
+          this.toggleFound();
+          (this.primeMarker || this.groupMarker)?._map.closePopup();
         },
-      ]
+        context: this,
+      });
     }
+
+    contextMenuOptions.contextmenuItems.push({
+        iconCls: 'contextmenu-icon',
+        text: 'Move player to marker',
+        iconHtml: fa_icon({ prefix: 'fa', iconName: 'location-crosshairs' }).html,
+        callback: function() {
+          MapObject.movePlayerPosition(this);
+        },
+        context: this,
+      });
 
     if (this.primeMarker) {
       this.primeMarker.bindContextMenu(contextMenuOptions);
