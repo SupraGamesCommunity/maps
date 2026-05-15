@@ -522,6 +522,9 @@ def load_all_enumbp(path: Path) -> UEEnums:
     return ueenums
 
 
+# Function to retrieve the names of possible meta properties of a file.
+# Not used at the moment, but if we need to extract extra information from
+# the game exe it is very handy.
 # def get_file_metadata(path, file, ext):
 #    sh = win32com.client.gencache.EnsureDispatch('Shell.Application', 0)
 #    ns = sh.NameSpace(path.lower())
@@ -544,9 +547,14 @@ def get_unreal_version(exepath: Path) -> dict[str, int]:
     ns = sh.NameSpace(str(exepath.parent))
     item = ns.Items()[exepath.name]
 
+    # The Windows shell uses named indices for the exended properties, I had thought that
+    # the indices were fixed during the beta the index for file version changed from 166 to
+    # 167. So this code now searches and logs when unexpected indices match the property names.
     file_version_indices = [166, 167]
     product_version_indices = [301]
+
     for i in range(350):
+        # Calling GetDetailsOf with the file name (or None) gets you the property name for index
         prop = ns.GetDetailsOf(item.Name, i)
         if 'version' in prop.lower():
             if 'product' in prop.lower() and i not in product_version_indices:
@@ -554,6 +562,7 @@ def get_unreal_version(exepath: Path) -> dict[str, int]:
             if 'file' in prop.lower():
                 if i not in file_version_indices:
                     print(f'Unexpected "{prop}" index {i}')
+                # Calling GetDetailsOf with the item gets you the value of the property
                 file_version = ns.GetDetailsOf(item, i)
     if not file_version:
         print(f'Error: Failed to find file version for {exepath}')
