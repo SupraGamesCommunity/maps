@@ -11,6 +11,7 @@ import { buildMode } from './devBuildMode.js';
 import { createRoot } from 'react-dom/client';
 import { PinContent } from './PinContent.jsx';
 import { marker as leaflet_marker, latLngBounds } from 'leaflet';
+import { icon as fa_icon } from '@fortawesome/fontawesome-svg-core';
 
 //=================================================================================================
 // MapObject class
@@ -140,13 +141,13 @@ export class MapObject {
       o: this.o,
       layerId: layerId,
     };
+
     const marker = leaflet_marker([this.o.lat, this.o.lng], options)
       .addTo(mapLayer.id == '_map' ? map : mapLayer.layerObj) // Add to relevant mapLayer (or the group)
       .bindPopup('', { minWidth: 300 })
       .on('popupopen', this.onPopupOpen, this) // We set popup text on demand
       .on('mouseover', this.onMouseOver, this) // We update tooltip text on demand
       .on('add', this.onAdd, this) // We may need to resize icons when they're layer is displayed
-      .on('contextmenu', this.onContextMenu, this);
 
     return marker;
   }
@@ -260,8 +261,10 @@ export class MapObject {
 
     this.addSaveListeners();
 
-    if (this._foundLockedState) {
-      this.markFound(true);
+    this.updateContextMenuOptions();
+
+    if (this._foundLockedState !== undefined) {
+      this.markFound(this._foundLockedState);
     }
 
     return this;
@@ -345,18 +348,44 @@ export class MapObject {
     if (this.groupMarker) {
       this.groupMarker.setZIndexOffset(MapLayer.getZIndexOffsetFromId(this.groupMarker.options.layerId, found));
     }
+    this.updateContextMenuOptions();
   }
 
   onAdd() {
     this.markFound();
   }
 
-  // Called when the user left clicks on the marker for this map object
-  onContextMenu(e) {
-    // If 'found' isn't locked then context menu toggles found
-    if (this._foundLockedState === undefined) {
-      this.toggleFound();
-      e.target.closePopup();
+  updateContextMenuOptions(){
+    const canSetFound = (this._foundLockedState === undefined);
+
+    let contextMenuOptions = {
+      contextmenu: canSetFound,
+      contextmenuInheritItems: false,
+    }
+
+    if(canSetFound){
+      const isFound = this.isFound();
+      contextMenuOptions.contextmenuItems = [
+        {
+          text: isFound ? 'Clear found' : 'Mark found',
+          callback: function(data) {
+            this.toggleFound();
+            data.relatedTarget._map.closePopup();
+          },
+          context: this,
+          iconHtml: fa_icon(isFound
+            ? { prefix: 'far', iconName: 'square' }
+            : { prefix: 'fa', iconName: 'square-check' }).html,
+          iconCls: 'contextmenu-icon',
+        },
+      ]
+    }
+
+    if (this.primeMarker) {
+      this.primeMarker.bindContextMenu(contextMenuOptions);
+    }
+    if (this.groupMarker) {
+      this.groupMarker.bindContextMenu(contextMenuOptions);
     }
   }
 
