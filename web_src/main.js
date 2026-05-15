@@ -166,16 +166,16 @@ async function loadMap(mapParam) {
   }
 
   // Create the map
-  map = L_supraMap(mapParam, 'map', { contextmenu: true, });
+  map = L_supraMap(mapParam, 'map', { contextmenu: true });
 
   // Add Map Pin from context menu
   map.contextmenu.addItem({
     text: 'Add Map Pin',
     iconCls: 'contextmenu-icon',
     iconHtml: fa_icon({ prefix: 'fa', iconName: 'map-pin' }).html,
-    callback: function(data){
+    callback: function (data) {
       MapPins.add(map, { activateLayer: true, pos: data.latlng });
-    }
+    },
   });
 
   // Add zoom, fullscreen toggle and mousePosition controls to the map
