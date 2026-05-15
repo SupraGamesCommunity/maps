@@ -522,48 +522,39 @@ def load_all_enumbp(path: Path) -> UEEnums:
     return ueenums
 
 
-# Function to retrieve the names of possible meta properties of a file.
-# Not used at the moment, but if we need to extract extra information from
-# the game exe it is very handy.
-# def get_file_metadata(path, file, ext):
-#    sh = win32com.client.gencache.EnsureDispatch('Shell.Application', 0)
-#    ns = sh.NameSpace(path.lower())
-#
-#    metadata = {}
-#
-#    file = file.lower()
-#    for item in ns.Items():
-#        filepath = item.Path.lower()
-#        if (filepath.split('\\')[-1].lower().startswith(file) and filepath.endswith(ext)):
-#            for col in range(500):
-#               if ((colval := ns.GetDetailsOf(item, col)) and (colname := ns.GetDetailsOf(None, col))):
-#                   metadata[colname] = {'idx': col, 'value': colval}
-#            break
-#
-#    return metadata
+# Retrieve Unreal version information from the EXE file properties using
+# windows shell API. These are the properties on the file properties -> details
+# tab in explorer.
+# The API NameSpace.GetDetailsOf usually has a fixed index to properties relationship,
+# but only some seem to be officially documented, we're after the 'File version' and
+# may at some point need 'Product version'. We've now seen two different indices for
+# 'File version' so we search rather than use a hard coded index and log the info for
+# awareness.
 def get_unreal_version(exepath: Path) -> dict[str, int]:
     uever = {}
     sh = win32com.client.gencache.EnsureDispatch('Shell.Application', 0)
     ns = sh.NameSpace(str(exepath.parent))
     item = ns.Items()[exepath.name]
 
-    # The Windows shell uses named indices for the exended properties, I had thought that
-    # the indices were fixed during the beta the index for file version changed from 166 to
-    # 167. So this code now searches and logs when unexpected indices match the property names.
+    print(f"Retrieving UE version from '{exepath}'")
     file_version_indices = [166, 167]
     product_version_indices = [301]
 
+    # Search all commonly used indices. We could probably narrow this range as many are fixed
     for i in range(350):
         # Calling GetDetailsOf with the file name (or None) gets you the property name for index
         prop = ns.GetDetailsOf(item.Name, i)
         if 'version' in prop.lower():
-            if 'product' in prop.lower() and i not in product_version_indices:
-                print(f'Unexpected "{prop}" index {i}')
+            # Calling GetDetailsOf with the item gets you the value of the property
+            value = ns.GetDetailsOf(item, i)
+
+            if 'product' in prop.lower():
+                print(f"'{prop}' index={i} ({value}) {'** unexpected index' if i not in product_version_indices else ''}")
+
             if 'file' in prop.lower():
-                if i not in file_version_indices:
-                    print(f'Unexpected "{prop}" index {i}')
-                # Calling GetDetailsOf with the item gets you the value of the property
-                file_version = ns.GetDetailsOf(item, i)
+                print(f"'{prop}' index={i} ({value}) {'** unexpected index' if i not in file_version_indices else ''}")
+                file_version = value
+
     if not file_version:
         print(f'Error: Failed to find file version for {exepath}')
         exit(-1)
@@ -585,6 +576,7 @@ def get_steam_branch(game: str, path: Path) -> str:
 
         # If the file exists, open it and read contents
         if manifest.is_file():
+            print(f"Retrieving branch from '{manifest}'")
             # Search for the current user config beta key
             if match := re.search(r'UserConfig"[\s\S]*?"BetaKey"\s*"([^"]*)', manifest.read_text()):
                 return match.group(1)
@@ -593,6 +585,7 @@ def get_steam_branch(game: str, path: Path) -> str:
 
 
 def get_swbuild_info(installdir: Path) -> dict[str, str]:
+    print(f"Retrieving build info from '{installdir}\\build.vc'")
     with installdir.joinpath('build.vc').open('r') as file:
         build = file.readline().rstrip()
         date = file.readline().rstrip()
