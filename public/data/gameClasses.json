@@ -2640,7 +2640,7 @@
   },
   "_SWPlayerPosition": {
     "friendly": "Player Position",
-    "icon": "swplayerpos",
+    "icon": "swplayerpos:x0.8",
     "layer": "_map",
     "nospoiler": null,
     "games": [
