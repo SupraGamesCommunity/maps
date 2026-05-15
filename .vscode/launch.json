@@ -27,6 +27,10 @@
             "program": "supraland_parser.py",
             "console": "integratedTerminal",
             "cwd": "${workspaceRoot}\\scripts",
+            // When debugging supraland_parser.py the -s option specifies source data. For -v it's the
+            // game root, for most other options its the place the game data has been extracted to.
+            // Customise for your own setup and whichever option you want to debug
+            //"args": "-g sw -d ..\\public\\data -s D:\\SteamLibrary\\steamapps\\common\\Supraworld -v"
             "args": "-g sw -d ..\\public\\data -s ..\\source\\sw -m"
         },
         {

@@ -11,11 +11,10 @@ call uv --quiet sync
 call npm --silent install
 
 @echo.
-@echo running 'findslpaks'
-call %~dp0\findslpaks.cmd
-
-@echo.
 @echo To run web server use command: 'npm run dev'
 @echo.
-@echo To run export process use 'export {options}'
+@echo To run export scripts:
+@echo   cd scripts       - Scripts are designed to run from 'scripts' sub-directory
+@echo   findslpaks       - Set up environment variables required by scripts
+@echo   export {options} - To run export script (leave blank for help)
 
