@@ -17,40 +17,72 @@ let saveDirName = '1';
 let outPath = path.join(__dirname, '../source/sw/');
 let saveName = 'SaveGame.sav';
 let loggingLevelName = 'info';
+let config = {
+  minLength: 5,
+  sort: false,
+  stripGenerics: true,
+  deDupe: false,
+  stripInst: true,
+}
 
 //---------------------------------------------------------------------------------------------------------------------
 // Parse Command Line Options
 
 const cliOptions = {
-  datapath: {
+  dataPath: {
     type: 'string',
     short: 'd',
     default: dataPath,
     help: '{path} to config JSONs [' + dataPath + ']',
   },
-  savespath: {
+  savesPath: {
     type: 'string',
     short: 'i',
     default: savesPath,
     help: '{path} to saves directory [' + savesPath + ']',
   },
-  savedirname: {
+  saveDirName: {
     type: 'string',
     short: 'n',
     default: saveDirName,
     help: '{name} of directory containing save [' + saveDirName + ']',
   },
-  savename: {
+  saveName: {
     type: 'string',
     short: 's',
     default: saveName,
     help: '{name} of save file [' + saveName + ']',
   },
-  outpath: {
+  outPath: {
     type: 'string',
     short: 'o',
     default: outPath,
     help: '{path} to write generated icons to [' + outPath + ']',
+  },
+  minLength: {
+    type: 'string',
+    default: `${config.minLength}`,
+    help: `length shortest string to dump (3-50) [${config.minLength}]`,
+  },
+  sort: {
+    type: 'boolean',
+    default: config.sort,
+    help: `sort strings before writing [${config.sort}]`,
+  },
+  stripGenerics: {
+    type: 'boolean',
+    default: config.stripGenerics,
+    help: `strip type and structural strings [${config.stripGenerics}]`,
+  },
+  deDupe: {
+    type: 'boolean',
+    default: config.deDupe,
+    help: `remove duplicate strings [${config.stripGenerics}]`,
+  },
+  stripInst: {
+    type: 'boolean',
+    default: config.stripInst,
+    help: `remove UAID_* from end of instance names [${config.stripGenerics}]`,
   },
   logging: {
     type: 'string',
@@ -60,15 +92,20 @@ const cliOptions = {
   },
   help: { type: 'boolean', short: 'h', default: false, help: 'display usage text' },
 };
-const args = parseArgs({ options: cliOptions, allowPositionals: false, strict: false });
+const args = parseArgs({ options: cliOptions, allowPositionals: false, strict: false, allowNegative: true });
 args.unrecognisedOptions = Object.keys(args.values).some((x) => !(x in cliOptions));
 
 // Set up based on arguments
-dataPath = args.values.datapath;
-savesPath = args.values.savespath;
-saveDirName = args.values.savedirname;
-saveName = args.values.savename;
-outPath = args.values.outpath;
+dataPath = args.values.dataPath;
+savesPath = args.values.savesPath;
+saveDirName = args.values.saveDirName;
+saveName = args.values.saveName;
+outPath = args.values.outPath;
+config.minLength = Number(args.values.minLength, 10);
+config.sort = args.values.sort;
+config.stripGenerics = args.values.stripGenerics;
+config.deDupe = args.values.deDupe;
+config.stripInst = args.values.stripInst;
 loggingLevelName = args.values.logging;
 
 //---------------------------------------------------------------------------------------------------------------------
@@ -107,7 +144,8 @@ function error_exit(msg) {
 if (args.values.help || args.positionals.length > 0 || args.unrecognisedOptions) {
   log('Usage: node rendericons.js [options]\noptions:');
   for (const [name, opt] of Object.entries(cliOptions)) {
-    log(`--${name}, -${opt.short}\t${opt.help}`);
+    const optStr = `--${name}` + (opt.short ? `, -${opt.short}` : '');
+    log(optStr, ' '.repeat(17 - optStr.length), opt.help);
   }
   if (!args.values.help) {
     log_error('\nError: unrecognised arguments:', process.argv.slice(2).join(' '));
@@ -118,11 +156,17 @@ if (args.values.help || args.positionals.length > 0 || args.unrecognisedOptions)
 //---------------------------------------------------------------------------------------------------------------------
 // Log the command line
 log_trace('loggingLevel:', args.values.logging, loggingLevel);
-log_trace('datapath:', dataPath);
-log_trace('savespath:', savesPath);
-log_trace('savedirname:', saveDirName);
-log_trace('savename:', saveName);
-log_trace('outpath:', outPath);
+log_trace('dataPath:', dataPath);
+log_trace('savesPath:', savesPath);
+log_trace('saveDirName:', saveDirName);
+log_trace('saveName:', saveName);
+log_trace('outPath:', outPath);
+log_trace('config', config)
+
+// Check the minLength makes sense
+if(isNaN(config.minLength) || config.minLength < 4 || config.minLength > 50){
+  error_exit('Error: minLength must be a number in the range 4-50');
+}
 
 //---------------------------------------------------------------------------------------------------------------------
 // Confirm the save file and output path exist
@@ -259,14 +303,11 @@ function readSaveFStrings(
   return fstrings_return;
 }
 
-const fstrings = readSaveFStrings(saveFile, {
-  minLength: 5,
-  sort: false,
-  stripGenerics: true,
-  deDupe: false,
-  stripInst: true,
-});
+log_info('Reading: ', saveFile);
+const fstrings = readSaveFStrings(saveFile, config);
 
 const saveData = fstrings.join('\n');
 
-fs.writeFileSync(path.join(outPath, `${saveDirName}.${saveName}.txt`.replace(/[/\\]/, '-')), saveData);
+const outFilePath = path.join(outPath, `${saveDirName}.${saveName}.txt`.replace(/[/\\]/, '-'));
+log_info(`Writing ${fstrings.length} strings to: ${outFilePath}`);
+fs.writeFileSync(outFilePath, saveData);
