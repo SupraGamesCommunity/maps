@@ -141,25 +141,26 @@ export class SaveFileSystem {
       let dataview = new DataView(arrayData, arrayData.byteOffset, arrayData.byteLength);
       let strview = new TextDecoder('latin1').decode(dataview);
 
-      // We're searching for any strings that start with PersistentLevel. following a nul
-      const srchStr = ['PersistentLevel.', 'LastCheckpointActor'];
-      const re_match = new RegExp('(' + '\0' + srchStr.join('|\0') + ')', 'gi');
+      // We're searching for any strings that start any of our target strings proceeded by a nul
+      const srchStr = ['PersistentLevel.', 'LastCheckpointActor', 'DetainedCharacter'];
+      const re_match = new RegExp(`(\0${srchStr.join('|\0')})`, 'gi');
       let m;
-      let prevFoundStr;
+      let foundStr = [ ];
 
-      // Go through all matching strings
-      while ((m = re_match.exec(strview)) != null) {
-        const foundStr = strview.slice(m.index + 1, re_match.lastIndex);
+      // Process the middle of three strings so we can look back and forward
+      function processFoundStr(foundStr){
+        const [ prevStr, processStr, nextStr ] = foundStr;
 
-        if (foundStr === 'PersistentLevel.') {
-          const namelen = dataview.getInt32(m.index - 3, true) - m[0].length + 1;
-          const nameidx = m.index + m[0].length;
-          const name = strview.slice(nameidx, nameidx + namelen);
+        // Do nothing for matches that don't star with PersistentLevel.
+        if (processStr.startsWith('PersistentLevel.')) {
+          const name = processStr.slice('PersistentLevel.'.length);
+          const detectiveCase = name.startsWith('DetectiveCase_');
+          if(detectiveCase){
+            console.debug(name);
+          }
 
-          if (prevFoundStr !== 'LastCheckpointActor') {
-            addToSaveData('Supraworld', name);
-          } else {
-            // Convert the LastCheckpointActor to a Player Position state ala the old save system
+          if(prevStr == 'LastCheckpointActor'){
+            // If it's proceeded by LastCheckpointActor then set the PlayerPosition ala the old save system
             // It might be better to change the _SWPlayerPosition/SupraworldStartPosition to use
             // this data more directly
             const saveObj = MapObject.get('Supraworld:' + name);
@@ -167,9 +168,36 @@ export class SaveFileSystem {
               value: { x: saveObj.o.lng, y: saveObj.o.lat, z: saveObj.o.alt },
             });
           }
+          else if(!detectiveCase || detectiveCase && nextStr == 'DetainedCharacter'){
+            // Filter out detective cases that aren't followed by 'DetainedCharacter'
+            addToSaveData('Supraworld', name);
+          }
         }
-        prevFoundStr = foundStr;
       }
+
+      // Go through all matching strings
+      while ((m = re_match.exec(strview)) != null) {
+
+        // FString format is 4 byte length followed by string which may include null terminator
+        const namelen = dataview.getInt32(m.index - 3, true);
+        const nameidx = m.index + 1;
+        let name = strview.slice(nameidx, nameidx + namelen);
+
+        // Remove any trailing nul
+        if(name.slice(-1) == '\0'){
+          name = name.slice(0,-1);
+        }
+
+        // Add it to the queue, once we have 3 start processing them
+        foundStr.push(name);
+        if (foundStr.length >= 3){
+          processFoundStr(foundStr);
+          foundStr.shift();
+        }
+      }
+      foundStr.push('');
+      processFoundStr(foundStr)
+
     } else {
       const loadedSave = new UESaveObject(arrayData);
 
