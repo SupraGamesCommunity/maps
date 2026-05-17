@@ -76,9 +76,9 @@ jobs:
       - name: Check Formatters and Linters
         if: |
           steps.js-lint-check.outcome != 'success' ||
-          steps.js-format-check != 'success' ||
+          steps.js-format-check.outcome != 'success' ||
           steps.py-lint-check.outcome != 'success' ||
-          steps.py-format-check != 'success'
+          steps.py-format-check.outcome != 'success'
         run: |
           echo Please fix all Linting or Format errors
           if [[ "${{steps.js-lint-check.outcome}}" != "success" ]]; then echo "Error: JS Linter Failed"; fi
