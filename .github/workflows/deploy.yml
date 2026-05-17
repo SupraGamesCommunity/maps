@@ -81,10 +81,10 @@ jobs:
           steps.py-format-check != 'success'
         run: |
           echo Please fix all Linting or Format errors
-          if [["${{steps.js-lint-check.outcome}}" != "success"]]; then echo "Error: JS Linter Failed"; fi
-          if [["${{steps.js-format-check.outcome}}" != "success"]]; then echo "Error: JS Format Check Failed"; fi
-          if [["${{steps.py-lint-check.outcome}}" != "success"]]; then echo "Error: PY Linter Failed"; fi
-          if [["${{steps.py-format-check.outcome}}" != "success"]]; then echo "Error: PY Format Check Failed"; fi
+          if [[ "${{steps.js-lint-check.outcome}}" != "success" ]]; then echo "Error: JS Linter Failed"; fi
+          if [[ "${{steps.js-format-check.outcome}}" != "success" ]]; then echo "Error: JS Format Check Failed"; fi
+          if [[ "${{steps.py-lint-check.outcome}}" != "success" ]]; then echo "Error: PY Linter Failed"; fi
+          if [[ "${{steps.py-format-check.outcome}}" != "success" ]]; then echo "Error: PY Format Check Failed"; fi
           exit 1
 
       - name: Install Playwright Browsers
