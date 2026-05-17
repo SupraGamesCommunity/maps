@@ -13,7 +13,7 @@
     "preview": "vite preview",
     "lint": "eslint .",
     "prettier-check": "prettier . --check",
-    "flake8": "flake8 .",
+    "flake8": "uvx flake8 .",
     "black-check": "uvx black --check .",
     "check-all": "npm run lint && npm run prettier-check && npm run flake8 && npm run black-check",
     "black": "uvx black .",
@@ -26,7 +26,6 @@
   "dependencies": {
     "@fortawesome/react-fontawesome": "^3.3.1",
     "classnames": "^2.5.1",
-    "flake8": "^0.0.1",
     "leaflet": "^1.9.4",
     "leaflet.fullscreen": "^5.3.1",
     "react": "^19.2.4",
