@@ -223,7 +223,7 @@ def makeObjectKey(area: str, outer: str, name: str) -> str:
 # maps      gives the name of the maps that we're actually interested in
 config = {
     'sl': {
-        'appid': '813630',
+        'appids': ['813630'],
         'basename': 'Supraland',
         'pathmap': {
             'Game': 'Supraland/Content',
@@ -231,7 +231,7 @@ config = {
         'maps': ['Map'],
     },
     'slc': {
-        'appid': '813630',
+        'appids': ['813630'],
         'basename': 'Supraland',
         'pathmap': {
             'Game': 'Supraland/Content',
@@ -239,7 +239,7 @@ config = {
         'maps': ['Crash'],
     },
     'siu': {
-        'appid': '1522870',
+        'appids': ['1522870'],
         'basename': 'SupralandSIU',
         'pathmap': {
             'Game': 'SupralandSIU/Content',
@@ -261,7 +261,7 @@ config = {
         ],
     },
     'sw': {
-        'appid': '1869291',
+        'appids': ['1869290', '1869291'],
         'basename': 'Supraworld',
         'pathmap': {
             'Game': 'Supraworld/Content',
@@ -522,28 +522,44 @@ def load_all_enumbp(path: Path) -> UEEnums:
     return ueenums
 
 
-# def get_file_metadata(path, file, ext):
-#    sh = win32com.client.gencache.EnsureDispatch('Shell.Application', 0)
-#    ns = sh.NameSpace(path.lower())
-#
-#    metadata = {}
-#
-#    file = file.lower()
-#    for item in ns.Items():
-#        filepath = item.Path.lower()
-#        if (filepath.split('\\')[-1].lower().startswith(file) and filepath.endswith(ext)):
-#            for col in range(500):
-#               if ((colval := ns.GetDetailsOf(item, col)) and (colname := ns.GetDetailsOf(None, col))):
-#                   metadata[colname] = {'idx': col, 'value': colval}
-#            break
-#
-#    return metadata
+# Retrieve Unreal version information from the EXE file properties using
+# windows shell API. These are the properties on the file properties -> details
+# tab in explorer.
+# The API NameSpace.GetDetailsOf usually has a fixed index to properties relationship,
+# but only some seem to be officially documented, we're after the 'File version' and
+# may at some point need 'Product version'. We've now seen two different indices for
+# 'File version' so we search rather than use a hard coded index and log the info for
+# awareness.
 def get_unreal_version(exepath: Path) -> dict[str, int]:
     uever = {}
     sh = win32com.client.gencache.EnsureDispatch('Shell.Application', 0)
     ns = sh.NameSpace(str(exepath.parent))
     item = ns.Items()[exepath.name]
-    uever['ver'] = ns.GetDetailsOf(item, 166)
+
+    print(f"Retrieving UE version from '{exepath}'")
+    file_version_indices = [166, 167]
+    product_version_indices = [301]
+
+    # Search all commonly used indices. We could probably narrow this range as many are fixed
+    for i in range(350):
+        # Calling GetDetailsOf with the file name (or None) gets you the property name for index
+        prop = ns.GetDetailsOf(item.Name, i)
+        if 'version' in prop.lower():
+            # Calling GetDetailsOf with the item gets you the value of the property
+            value = ns.GetDetailsOf(item, i)
+
+            if 'product' in prop.lower():
+                print(f"'{prop}' index={i} ({value}) {'** unexpected index' if i not in product_version_indices else ''}")
+
+            if 'file' in prop.lower():
+                print(f"'{prop}' index={i} ({value}) {'** unexpected index' if i not in file_version_indices else ''}")
+                file_version = value
+
+    if not file_version:
+        print(f'Error: Failed to find file version for {exepath}')
+        exit(-1)
+
+    uever['ver'] = ns.GetDetailsOf(item, 167)
     vernums = uever['ver'].split('.')
     uever['major'] = int(vernums[0])
     uever['minor'] = int(vernums[1])
@@ -552,28 +568,31 @@ def get_unreal_version(exepath: Path) -> dict[str, int]:
 
 # Retrieves the steam branch name
 def get_steam_branch(game: str, path: Path) -> str:
-    branch = 'public'
 
     # Get path to app manifest from game install path and appid
-    manifest = Path(path[0 : path.find('common')] + 'appmanifest_' + config[game]['appid'] + '.acf')
+    basepath = str(path)[0 : str(path).find('common')]
+    for appid in config[game]['appids']:
+        manifest = Path(f'{basepath}appmanifest_{appid}.acf')
 
-    # If the file exists, open it and read contents
-    if manifest.is_file():
-        # Search for the current user config beta key
-        if match := re.search(r'UserConfig"[\s\S]*?"BetaKey"\s*"([^"]*)', manifest.read_text()):
-            branch = match.group(1)
+        # If the file exists, open it and read contents
+        if manifest.is_file():
+            print(f"Retrieving branch from '{manifest}'")
+            # Search for the current user config beta key
+            if match := re.search(r'UserConfig"[\s\S]*?"BetaKey"\s*"([^"]*)', manifest.read_text()):
+                return match.group(1)
 
-    return branch
+    return 'public'
 
 
 def get_swbuild_info(installdir: Path) -> dict[str, str]:
+    print(f"Retrieving build info from '{installdir}\\build.vc'")
     with installdir.joinpath('build.vc').open('r') as file:
         build = file.readline().rstrip()
         date = file.readline().rstrip()
     return {"build": build, "date": date}
 
 
-# Update Suprawowlrd version information based on steam version installed in 'installdir'
+# Update Supraworld version information based on steam version installed in 'installdir'
 def update_swversion_info(game: str, datadir: Path, sourcedir: Path, mapimage: Optional[str] = None) -> None:
 
     versions = load_json_file(path=datadir.joinpath('versions.json'))
@@ -603,6 +622,8 @@ def update_swversion_info(game: str, datadir: Path, sourcedir: Path, mapimage: O
     versions['sw']['game'].update(gamever)
 
     save_json_file(data=versions, path=datadir.joinpath('versions.json'))
+
+    print("SW Version: ", f'{gamever | {'ue': uever['ver']}}')  # version, build, date, branch, type, mapver
 
 
 # We presume export.cmd has been used to export a set of map files for the game to
@@ -792,6 +813,13 @@ def load_filelist(path: Path, quiet: Optional[bool] = False):
 def save_assetlist(  # noqa: C901 - disable complexity warning
     items: list[str], filelist: dict, path: Path, quiet: Optional[bool] = False, prefer: Optional[str] = None
 ) -> None:
+
+    def after_rfind_nth(s: str, ss: str, n: int):
+        idx = len(s)
+        for i in range(n):
+            idx = s.rfind(ss, 0, idx)
+        return s[idx if idx >= 0 else 0:]
+
     lines = []
     basedict = filelist['basedict']
     for item in items:
@@ -799,11 +827,14 @@ def save_assetlist(  # noqa: C901 - disable complexity warning
             if matching_lines := basedict.get(item):
                 match_idx = 0
                 if len(matching_lines) > 1:
-                    print(f'Warning: multiple options in gamefilelist.txt for assetlist item {item}')
                     if prefer:
                         for i, line in enumerate(matching_lines):
                             if prefer + '/' + item + '.uasset' in line:
                                 match_idx = i
+                    print(f'Warning: {len(matching_lines)} options for {item} '
+                          f'in gamefilelist.txt using #{match_idx} '
+                          f'(...{after_rfind_nth(matching_lines[match_idx], '/', 3)})'
+                        )
                 lines.append(matching_lines[match_idx])
         else:
             names = item.split('.')[0].split('/')

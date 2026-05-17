@@ -10,7 +10,7 @@
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 // Now that the global 'L' object is defined, we can safely import the old-style plugins.
-import './css/lib/leaflet.toolbar.min.css';
+import './css/lib/leaflet.toolbar.css';
 import './lib/leaflet.toolbar-src.js';
 
 import 'leaflet.fullscreen/dist/Control.FullScreen.css';
