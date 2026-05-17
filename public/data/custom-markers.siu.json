@@ -1,5 +1,10 @@
 [
   {
+    "name": "Coin412_2",
+    "area": "DLC2_Complete",
+    "comment": "Missable if not collected before leaving Fire Redistributor area"
+  },
+  {
     "name": "Coin288",
     "type": "Hide:Coin_C",
     "area": "DLC2_Complete"
