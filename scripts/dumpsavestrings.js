@@ -23,7 +23,7 @@ let config = {
   stripGenerics: true,
   deDupe: false,
   stripInst: true,
-}
+};
 
 //---------------------------------------------------------------------------------------------------------------------
 // Parse Command Line Options
@@ -161,10 +161,10 @@ log_trace('savesPath:', savesPath);
 log_trace('saveDirName:', saveDirName);
 log_trace('saveName:', saveName);
 log_trace('outPath:', outPath);
-log_trace('config', config)
+log_trace('config', config);
 
 // Check the minLength makes sense
-if(isNaN(config.minLength) || config.minLength < 4 || config.minLength > 50){
+if (isNaN(config.minLength) || config.minLength < 4 || config.minLength > 50) {
   error_exit('Error: minLength must be a number in the range 4-50');
 }
 
