@@ -2,16 +2,15 @@
 
 import * as fs from 'fs';
 import * as process from 'process';
-import * as path from 'path';
+import { Path, basename as pathBasename } from 'path';
 import { parseArgs } from 'util';
 import { fileURLToPath } from 'node:url';
-import { faL } from '@fortawesome/free-solid-svg-icons';
 
 const __filename = fileURLToPath(import.meta.url);
-const filename = path.basename(__filename);
+const filename = pathBasename(__filename);
 
 const env = process.env;
-const scriptname = path.basename(filename);
+const scriptname = pathBasename(filename);
 
 const args = parseArgs({
   options: {
@@ -47,13 +46,18 @@ const saveFileBaseNames = {
 };
 
 let saveFileName;
+let outputFileName;
 if (args.values.file) {
   saveFileName = args.values.file;
+  outputFileName = 'dump.' + Path(saveFileName).filename + '.json';
 } else {
-  if (game == 'sw')
+  if (game == 'sw') {
     saveFileName = `${localAppData}\\${saveFileBaseDirs[game]}\\Saved\\SaveGames\\${saveFileBaseNames[game]}\\${saveSlot}\\SaveGame.sav`;
-  else
+    outputFileName = `dump.${saveSlot}.${Path(saveFileName).filename}.json`;
+  } else {
     saveFileName = `${localAppData}\\${saveFileBaseDirs[game]}\\Saved\\SaveGames\\${saveFileBaseNames[game]}${saveSlot}.sav`;
+    outputFileName = 'dump.' + Path(saveFileName).filename + '.json';
+  }
 }
 
 let markerFileName = `..\\public\\data\\markers.${game}.json`;
@@ -131,12 +135,6 @@ function readSavFile(game, file) {
       .replace(/([A-Z])/g, ' $1')
       .trim();
   }
-  function snake2ui(s) {
-    return s
-      .split('_')
-      .map((f) => f.charAt(0).toUpperCase() + f.slice(1))
-      .join(' ');
-  }
   console.log(
     `${foundSecrets.all.total - foundSecrets.all.found} missed of ${foundSecrets.all.total} (${((foundSecrets.all.found * 100) / foundSecrets.all.total).toFixed()}% found)`
   );
@@ -163,32 +161,17 @@ function getPlayerPosition(game, file) {
   const srchStr = '\0LastCheckpointActor\0';
   const re_lastcheckpoint = new RegExp(srchStr, 'gi');
   const re_nextactor = new RegExp('PersistentLevel.', 'gi');
-  let m1, m2;
-  if ((m1 = re_lastcheckpoint.exec(strview)) != null) {
+  let m;
+  if (re_lastcheckpoint.exec(strview) != null) {
     re_nextactor.lastIndex = re_lastcheckpoint.lastIndex;
-    if ((m2 = re_nextactor.exec(strview)) != null) {
-      let namelen = dataview.getInt32(m2.index - 4, true) - 'PersistentLevel.'.length;
-      let nameidx = m2.index + 'PersistentLevel.'.length;
+    if ((m = re_nextactor.exec(strview)) != null) {
+      let namelen = dataview.getInt32(m.index - 4, true) - 'PersistentLevel.'.length;
+      let nameidx = m.index + 'PersistentLevel.'.length;
       let name = strview.slice(nameidx, nameidx + namelen);
       let alt = 'Supraworld:' + name;
 
       console.log('Player Position: ', alt);
     }
-  }
-
-  function capitalise(s) {
-    return s.charAt(0).toUpperCase() + s.slice(1);
-  }
-  function camel2ui(s) {
-    return capitalise(s)
-      .replace(/([A-Z])/g, ' $1')
-      .trim();
-  }
-  function snake2ui(s) {
-    return s
-      .split('_')
-      .map((f) => f.charAt(0).toUpperCase() + f.slice(1))
-      .join(' ');
   }
 }
 
@@ -196,8 +179,8 @@ let dump_markers = readSavFile(game, saveFileName);
 
 let json = JSON.stringify(dump_markers, null, 2);
 let count = json.split(/\r\n|\r|\n/).length;
-//fs.writeFileSync(outputFileName, json);
+fs.writeFileSync(outputFileName, json);
 
-//console.log(`${count} lines written to "${outputFileName}"`)
+console.log(`${count} lines written to "${outputFileName}"`);
 
 getPlayerPosition(game, saveFileName);

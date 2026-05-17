@@ -121,12 +121,14 @@ function log() {
 function log_error() {
   if (loggingLevelNames.error <= loggingLevel) console.error.apply(null, arguments);
 }
+// eslint-disable-next-line no-unused-vars
 function log_warn() {
   if (loggingLevelNames.error <= loggingLevel) console.warn.apply(null, arguments);
 }
 function log_info() {
   if (loggingLevelNames.info <= loggingLevel) console.info.apply(null, arguments);
 }
+// eslint-disable-next-line no-unused-vars
 function log_debug() {
   if (loggingLevelNames.debug <= loggingLevel) console.debug.apply(null, arguments);
 }
