@@ -4,7 +4,7 @@
     "debug.javascript.autoAttachFilter": "smart",
     "terminal.integrated.profiles.windows": {
         "Maps Export": {
-            "path": "C:\\Windows\\System32\\cmd.exe",
+            "path": "cmd.exe",
             "cwd": "${workspaceFolder}\\scripts",
             "args": [ "/K shellstartup.cmd" ]
         }
@@ -12,5 +12,9 @@
     "files.trimTrailingWhitespace": true,
     "[markdown]": {
         "files.trimTrailingWhitespace": false
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.tabSize": 2
     }
 }
