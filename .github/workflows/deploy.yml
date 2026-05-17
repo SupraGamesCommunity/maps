@@ -44,6 +44,15 @@ jobs:
       - name: Build
         run: npm run build
 
+      # Install UV and use it to install python dependencies
+      - name: Install uv
+        uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b # v8.1.0
+        with:
+          # Install a specific version of uv.
+          version: "0.11.14"
+      - name: Install Python Deps
+        run: uv sync
+
       # Run the formatters and lints with continue on error so we have output from all of them
       # then check the results and fail if any have errors
       - name: JS Lint Checks (eslint)
