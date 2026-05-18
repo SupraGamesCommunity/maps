@@ -147,7 +147,7 @@ export class MapObject {
       .bindPopup('', { minWidth: 300 })
       .on('popupopen', this.onPopupOpen, this) // We set popup text on demand
       .on('mouseover', this.onMouseOver, this) // We update tooltip text on demand
-      .on('add', this.onAdd, this) // We may need to resize icons when they're layer is displayed
+      .on('add', this.onAdd, this); // We may need to resize icons when they're layer is displayed
 
     return marker;
   }
@@ -240,6 +240,11 @@ export class MapObject {
       this._foundLockedState = this.o.notsaved;
     }
 
+    // Set default save state if subclass hasn't done it
+    if (this._foundLockedState === undefined && this._defaultSaveData === undefined) {
+      this._defaultSaveData = false;
+    }
+
     if (
       (!MapLayer.isEnabledFromId(c.layer, map.mapId) && !MapLayer.isEnabledFromId(c.nospoiler, map.mapId)) ||
       !latLngBounds(MapLayer.get(map.mapId).viewLatLngBounds).contains([this.o.lat, this.o.lng])
@@ -260,12 +265,6 @@ export class MapObject {
     this.createLines(map);
 
     this.addSaveListeners();
-
-    this.updateContextMenuOptions();
-
-    if (this._foundLockedState !== undefined) {
-      this.markFound(this._foundLockedState);
-    }
 
     return this;
   }
@@ -355,23 +354,21 @@ export class MapObject {
     this.markFound();
   }
 
-  updateContextMenuOptions(){
-
+  updateContextMenuOptions() {
     let contextMenuOptions = {
       contextmenu: true,
       contextmenuInheritItems: false,
-      contextmenuItems: []
-    }
+      contextmenuItems: [],
+    };
 
-    if((this._foundLockedState === undefined)){
+    if (this._foundLockedState === undefined) {
       const isFound = this.isFound();
       contextMenuOptions.contextmenuItems.push({
         iconCls: 'contextmenu-icon',
         text: isFound ? 'Clear found' : 'Mark found',
-        iconHtml: fa_icon(isFound
-          ? { prefix: 'far', iconName: 'square' }
-          : { prefix: 'fa', iconName: 'square-check' }).html,
-        callback: function() {
+        iconHtml: fa_icon(isFound ? { prefix: 'far', iconName: 'square' } : { prefix: 'fa', iconName: 'square-check' })
+          .html,
+        callback: function () {
           this.toggleFound();
           (this.primeMarker || this.groupMarker)?._map.closePopup();
         },
@@ -380,14 +377,14 @@ export class MapObject {
     }
 
     contextMenuOptions.contextmenuItems.push({
-        iconCls: 'contextmenu-icon',
-        text: 'Move player to marker',
-        iconHtml: fa_icon({ prefix: 'fa', iconName: 'location-crosshairs' }).html,
-        callback: function() {
-          MapObject.movePlayerPosition(this);
-        },
-        context: this,
-      });
+      iconCls: 'contextmenu-icon',
+      text: 'Move player to marker',
+      iconHtml: fa_icon({ prefix: 'fa', iconName: 'location-crosshairs' }).html,
+      callback: function () {
+        MapObject.movePlayerPosition(this);
+      },
+      context: this,
+    });
 
     if (this.primeMarker) {
       this.primeMarker.bindContextMenu(contextMenuOptions);
@@ -638,6 +635,7 @@ class MapPlayerPosition extends MapObject {
 
   subclassInit() {
     MapObject._playerStartPosition = { lat: this.o.lat, lng: this.o.lng, alt: this.o.alt };
+    this._defaultSaveData = { ...MapObject._playerStartPosition };
   }
 
   // We're listening for a saveLoadEvent of Player Position. We will be called with a position
