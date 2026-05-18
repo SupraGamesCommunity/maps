@@ -2,7 +2,7 @@
 setlocal enabledelayedexpansion
 
 :: Assume we're going to do the deploy
-set DO_DEPLOY=Y
+set "DO_DEPLOY=Y"
 
 :: Fetch latest remote changes
 git fetch origin >nul 2>&1
@@ -11,11 +11,12 @@ git fetch origin >nul 2>&1
 for /f "delims=" %%i in ('git rev-parse --abbrev-ref HEAD') do set "BRANCH=%%i"
 
 :: Check for modified, staged or deleted
+set IS_DIRTY=
 for /F "delims=" %%i in ('git status --porcelain -uno 2^>nul') do (
-    set IS_DIRTY=1
+    set "IS_DIRTY=1"
 )
 if defined IS_DIRTY (
-    set DO_DEPLOY=N
+    set "DO_DEPLOY=N"
     echo Error: You have modfied, staged or deleted files
 )
 
@@ -25,7 +26,7 @@ for /F "delims=" %%i in ('git rev-list @{u}..HEAD --count 2^>nul') do (
     set "UNPUSHED_COUNT=%%i"
 )
 if not "%UNPUSHED_COUNT%"=="0" (
-    echo Error: You have %unpushed_count% unpushed commit(s)
+    echo Error: You have %unpushed_count% unpushed commits
     set DO_DEPLOY=N
 )
 
