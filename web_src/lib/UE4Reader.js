@@ -2,6 +2,7 @@
 //// UE4 Reader
 //// (c) 2022 LewisPattJr (initial version, https://github.com/SupraGamesCommunity/map-sl/commit/5c2daddbf)
 //// (c) 2024 joric/github (transform node)
+/* eslint-disable no-constant-condition, no-case-declarations, no-unused-vars */
 
 export class UESaveObject {
   constructor(binstr) {
@@ -291,7 +292,6 @@ export class UEReadHelper {
 
   getNestedValueByType(type, overlen) {
     let retVal = {};
-    let tCheck = 0;
     switch (type) {
       case 'DateTime':
         retVal.value = this.getInt64(); //this needs to be converted from a .net 64-bit datetime to a js date object
