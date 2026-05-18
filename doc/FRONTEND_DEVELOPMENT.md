@@ -154,10 +154,10 @@ share work-in-progress with other developers, or facilitate testing the app with
 to a branch on their forked repo:
 
 1. Ensure that you have set up your local repository according to the setup steps in [CONTRIBUTING](./CONTRIBUTING.md).
-   This includes forking the upstream repo, and cloning it locally. **Important:** Your `origin` remote should
-   point to your forked repo. To confirm, run `git remote -v` and check that `origin` points to something like
-   `https://github.com/YOUR_GITHUB_USERNAME/maps.git`.
+   This includes forking the upstream repo, and cloning it locally.  
 
+   **Important:** Your `origin` remote should point to your forked repo. To confirm, run `git remote -v` and check
+   that `origin` points to something like `https://github.com/YOUR_GITHUB_USERNAME/maps.git`.
 
 2. Ensure that the system is passing the the current set of checks and tests.
 
@@ -166,15 +166,24 @@ configuration (setting it up if required). Look for _Deployment branches and tag
 normally have `main` as the only branch allowed. Add your deployment branch to the rules. 
 See [here](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/managing-a-branch-protection-rule?versionId=free-pro-team%40latest&productId=pages&restPage=getting-started-with-github-pages%2Cconfiguring-a-publishing-source-for-your-github-pages-site).
 
-4. To publish go to your fork Github Actions `https://github.com/YOUR_GITHUB_USERNAME/maps/actions/deploy.yml`.
-Look for the _Run workflow_ button, click it, set the branch to your development branch and click _Run workflow_. 
-Alternatively from the command line in the maps directory with [gh installed](https://github.com/cli/cli#installation):
+4. Ensure you have passed checks and pushed the development branch to GitHub. 
 
-```
-gh workflow run "deploy.yml" --ref "YOUR_DEV_BRANCH"
-```
+5. Option 1: Web: Go to Github Actions `https://github.com/YOUR_GITHUB_USERNAME/maps/actions/deploy.yml`.
+Look for the _Run workflow_ button, click it, set the branch to your development branch and click _Run workflow_.  
 
-5. To see progress with the deployment go to `https://github.com/YOUR_GITHUB_USERNAME/maps/actions/deploy.yml`, open
+   To see progress with the deployment go to `https://github.com/YOUR_GITHUB_USERNAME/maps/actions/deploy.yml`, open
 the workflow run. Clicking on _build_ or _deploy_ will allow you to review the logs.
 
-6. Once the jobs are successful the branch will be live on `https://YOUR_GITHUB_USERNAME.github.io/maps/`
+6. Option 2: CLI: Alternatively from the command line in the maps directory with your branch checked out:  
+   ```
+   npm run deploy-gh-pages
+   ```
+   this will run checks and if they pass trigger the deploy on github with [deploy-gh-pages.cmd](../scripts/deploy-gh-pages.cmd).
+   and then leave a watch running until the job completes.  
+   You can also use:  
+   ```
+    npm run deploy-watch
+   ```
+   to monitor the progress of the most recent deployment with [deploy-watch.cmd](../scripts/deploy-watch.cmd)  
+
+7. Once the jobs are successful the branch will be live on `https://YOUR_GITHUB_USERNAME.github.io/maps/`
