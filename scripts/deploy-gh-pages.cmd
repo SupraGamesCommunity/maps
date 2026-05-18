@@ -34,7 +34,7 @@ if not "%UNPUSHED_COUNT%"=="0" (
 if "%DO_DEPLOY%"=="N" goto error_exit
 
 :: Confirm they really mean it
-CHOICE /M "Are you sure you want to deploy ^"%BRANCH%^" to GitHub Pages / github.io"
+CHOICE /M "Are you sure you want to deploy """%BRANCH%""" to GitHub Pages / github.io "
 if %ERRORLEVEL% EQU 2 goto error_exit
 
 echo.
