@@ -1,4 +1,5 @@
 @echo off
+setlocal
 
 :: Get the current Git branch name
 for /f "delims=" %%i in ('git rev-parse --abbrev-ref HEAD') do set "BRANCH=%%i"
@@ -8,3 +9,5 @@ for /f "delims=" %%i in ('gh run list --workflow "deploy.yml" --branch "%BRANCH%
 
 :: Report result of run or watch until it completes
 gh run watch %RUN_ID%
+
+endlocal
