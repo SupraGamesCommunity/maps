@@ -266,6 +266,12 @@ export class MapObject {
 
     this.addSaveListeners();
 
+    // If this marker is findable then the context menu will be set up when
+    // the save state is dealt with, so only do it now if it's unfindable
+    if(this._foundLockedState !== undefined) {
+      this.updateContextMenuOptions();
+    }
+
     return this;
   }
 
