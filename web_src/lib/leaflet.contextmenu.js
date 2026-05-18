@@ -307,7 +307,6 @@ export const ContextMenu = Handler.extend({
 
   _createEventHandler: function (el, func, context, hideOnSelect) {
     var me = this,
-      map = this._map,
       disabledCls = ContextMenu.BASE_CLS + '-item-disabled';
     hideOnSelect = hideOnSelect !== undefined ? hideOnSelect : true;
 
