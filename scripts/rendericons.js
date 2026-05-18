@@ -271,10 +271,6 @@ function renderFAIconToImageURL(
     ctx.drawImage(img, dx, dx + dy, iconSize, iconSize);
   }
 
-  if(iconName == 'face-smile' || iconName == 'player.red'){
-    console.log('playerstart');
-  }
-
   // We draw FA icons in three layers, a shadow, a slightly smaller background,
   // and then some centred icon to actually represent it.
   drawFAIcon('fas', isPin ? faPin : faPoint, 'black', size);
