@@ -210,7 +210,6 @@ export const ContextMenu = Handler.extend({
 
   _createItems: function () {
     var itemOptions = this._map.options.contextmenuItems,
-      item,
       i,
       l;
 
@@ -309,9 +308,10 @@ export const ContextMenu = Handler.extend({
   _createEventHandler: function (el, func, context, hideOnSelect) {
     var me = this,
       map = this._map,
-      disabledCls = ContextMenu.BASE_CLS + '-item-disabled',
-      hideOnSelect = hideOnSelect !== undefined ? hideOnSelect : true;
+      disabledCls = ContextMenu.BASE_CLS + '-item-disabled';
+    hideOnSelect = hideOnSelect !== undefined ? hideOnSelect : true;
 
+    // eslint-disable-next-line no-unused-vars
     return function (e) {
       if (DomUtil.hasClass(el, disabledCls)) {
         return;
@@ -371,8 +371,7 @@ export const ContextMenu = Handler.extend({
 
   _showAtPoint: function (pt, data) {
     if (this._items.length) {
-      var map = this._map,
-        event = extend(data || {}, { contextmenu: this });
+      var event = extend(data || {}, { contextmenu: this });
 
       this._showLocation = {
         containerPoint: pt,
