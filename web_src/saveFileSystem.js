@@ -155,9 +155,6 @@ export class SaveFileSystem {
         if (processStr.startsWith('PersistentLevel.')) {
           const name = processStr.slice('PersistentLevel.'.length);
           const detectiveCase = name.startsWith('DetectiveCase_');
-          if (detectiveCase) {
-            console.debug(name);
-          }
 
           if (prevStr == 'LastCheckpointActor') {
             // If it's proceeded by LastCheckpointActor then set the PlayerPosition ala the old save system

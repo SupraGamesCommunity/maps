@@ -14307,7 +14307,8 @@
     "lng": 8567.30859375,
     "alt": 2492.615966796875,
     "area_tag": "StartTown",
-    "prog_tag": "Act2:Blue"
+    "prog_tag": "Act2:Blue",
+    "abilities": "Dash"
   },
   {
     "name": "SecretVolume_C_UAID_7085C2B20F0E05BE01_1788544020",
