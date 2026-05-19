@@ -2,6 +2,7 @@
 //// UE4 Reader
 //// (c) 2022 LewisPattJr (initial version, https://github.com/SupraGamesCommunity/map-sl/commit/5c2daddbf)
 //// (c) 2024 joric/github (transform node)
+// Disable linter errors for whole file as we're treating this as library for now
 /* eslint-disable no-constant-condition, no-case-declarations, no-unused-vars */
 
 export class UESaveObject {
@@ -25,7 +26,6 @@ export class UESaveObject {
     this.SaveGameType = r.getString();
     this.Properties = [];
     for (x = 0; true; x++) {
-      // eslint-disable-line no-constant-condition
       this.Properties[x] = r.getNextProperty();
       if (this.Properties[x].name == 'EOF') {
         break;
