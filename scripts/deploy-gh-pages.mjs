@@ -9,10 +9,13 @@ import { execSync } from 'child_process';
 import readlineSync from 'readline-sync';
 import { parseArgs } from 'util';
 
+//-------------------------------------------------------------------------------------------------
+// Utilities
+
 let logger_error = console.error;
 let logger_debug = console.debug;
-let logger_info = console.info
-let logger = console.log
+let logger_info = console.info;
+let logger = console.log;
 
 function doCommand(message, cmd, exitOnError = true) {
   logger_info(`\nInfo: ${message}`);
@@ -27,9 +30,10 @@ function doCommand(message, cmd, exitOnError = true) {
   }
 }
 
-
+//-------------------------------------------------------------------------------------------------
+// Git status checks
 function doChecks(branch) {
- logger('\nRunning checks before deployment');
+  logger('\nRunning checks before deployment');
 
   doCommand('Ensure repository is up to date', 'git fetch origin');
 
@@ -50,12 +54,14 @@ function doChecks(branch) {
   }
 
   if (isDirty || unpushedCommits != 0) {
-    //process.exit(-1);
+    process.exit(-1);
   }
 }
 
+//-------------------------------------------------------------------------------------------------
+// User confirmation
 function doUserConfirm(branch, userConfirm = true) {
-  if(userConfirm) {
+  if (userConfirm) {
     const confirm = readlineSync.keyInYN(`\nAre you sure you want to deploy "${branch}" to GitHub Pages / github.io?`);
     if (!confirm) {
       logger_error('\nError: Exiting without deploying');
@@ -64,10 +70,14 @@ function doUserConfirm(branch, userConfirm = true) {
   }
 }
 
+//-------------------------------------------------------------------------------------------------
+// Deployment
 function doDeploy(branch) {
   doCommand(`Deploying ${branch} to repository github pages`, 'gh workflow run "deploy.yml" --ref "${branch}"');
 }
 
+//-------------------------------------------------------------------------------------------------
+// Deployment workflow status
 function doStatus(branch) {
   const runId = doCommand(
     'Retrieve github run id',
@@ -77,23 +87,25 @@ function doStatus(branch) {
   const deployStatus = doCommand('Check status of deployment', `gh run watch ${runId}`);
   console.log(`\n${deployStatus}`);
 
-  console.log(`To monitor status run: 'gh run watch ${runId}'`)
+  console.log(`To monitor status run: 'gh run watch ${runId}'`);
 }
 
-function displayHelp(){
- logger(
-    '\nUsage: node deploy-gh-pages.mjs {command} [options]'
-    + '\n'
-    + '\nModes:'
-    + '\n  check     run checks to confirm deploy available'
-    + '\n  status    get status of last deploy workflow'
-    + '\n  deploy    deploy current branch to gh pages'
-    + '\n'
-    + '\nOptions:'
-    + '\n  --debug   display debug and info messages'
-    + '\n  --verbose display info messages'
-    + '\n  --quiet   suppress logging'
-    + '\n  --help    display command and options'
+//-------------------------------------------------------------------------------------------------
+// Parse command line
+function displayHelp() {
+  logger(
+    '\nUsage: node deploy-gh-pages.mjs {command} [options]' +
+      '\n' +
+      '\nModes:' +
+      '\n  check     run checks to confirm deploy available' +
+      '\n  status    get status of last deploy workflow' +
+      '\n  deploy    deploy current branch to gh pages' +
+      '\n' +
+      '\nOptions:' +
+      '\n  --debug   display debug and info messages' +
+      '\n  --verbose display info messages' +
+      '\n  --quiet   suppress logging' +
+      '\n  --help    display command and options'
   );
 }
 
@@ -109,11 +121,10 @@ try {
     allowNegative: true,
     allowPositionals: true,
   });
-}
-catch(error){
-    logger_error('\nError:', error.message);
-    displayHelp();
-    process.exit(-1);
+} catch (error) {
+  logger_error('\nError:', error.message);
+  displayHelp();
+  process.exit(-1);
 }
 
 if (args.values.help) {
@@ -122,7 +133,7 @@ if (args.values.help) {
 }
 if (
   args.positionals.length != 1 ||
-  (args.quiet + args.values.debug + args.values.verbose) > 1 ||
+  args.quiet + args.values.debug + args.values.verbose > 1 ||
   !['check', 'watch', 'deploy'].includes(args.positionals[0])
 ) {
   logger_error('\nError: Unexpected command line options');
@@ -136,23 +147,25 @@ if (!args.values.debug) {
   logger_debug = function () {};
   if (!args.values.verbose) {
     logger_info = function () {};
-    if (args.values.quiet){
-     logger = function () {}
+    if (args.values.quiet) {
+      logger = function () {};
     }
   }
-
 }
+
+//-------------------------------------------------------------------------------------------------
+// Do the work
 
 const branch = doCommand('Retrieving current branch', 'git rev-parse --abbrev-ref HEAD').trim();
 
-if(mode == 'check' || mode == 'deploy') {
+if (mode == 'check' || mode == 'deploy') {
   doChecks(branch);
 }
 
-if(mode == 'deploy'){
+if (mode == 'deploy') {
   doUserConfirm(branch, args.values.confirm);
 
- logger(`\nDeploying ${branch} to github pages`);
+  logger(`\nDeploying ${branch} to github pages`);
 
   logger_info('\nWaiting 5 seconds for workflow run to start');
   await new Promise((resolve) => setTimeout(resolve, 5000));
@@ -160,7 +173,7 @@ if(mode == 'deploy'){
   doDeploy(branch);
 }
 
-if(mode == 'deploy' || mode == 'watch'){
+if (mode == 'deploy' || mode == 'watch') {
   doStatus(branch);
 }
 
