@@ -17,7 +17,7 @@ let logger_debug = console.debug;
 let logger_info = console.info;
 let logger = console.log;
 
-function doCommand(message, cmd, {exitOnError = true, stdio = 'pipe'}={}) {
+function doCommand(message, cmd, { exitOnError = true, stdio = 'pipe' } = {}) {
   logger_info(`\nInfo: ${message}`);
   logger_info(`> ${cmd}`);
   try {
