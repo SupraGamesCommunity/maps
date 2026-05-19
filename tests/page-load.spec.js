@@ -29,10 +29,7 @@ test.describe('Page Load Quality', () => {
     await page.goto('/');
     await page.waitForLoadState('networkidle');
 
-    expect(
-      failed404s,
-      `Found 404 errors:\n${failed404s.map((f) => `  ${f.url}`).join('\n')}`
-    ).toHaveLength(0);
+    expect(failed404s, `Found 404 errors:\n${failed404s.map((f) => `  ${f.url}`).join('\n')}`).toHaveLength(0);
   });
 
   test('should load without console errors', async ({ page }) => {
@@ -47,10 +44,7 @@ test.describe('Page Load Quality', () => {
     await page.goto('/');
     await page.waitForLoadState('networkidle');
 
-    expect(
-      consoleErrors,
-      `Found console errors:\n${consoleErrors.join('\n')}`
-    ).toHaveLength(0);
+    expect(consoleErrors, `Found console errors:\n${consoleErrors.join('\n')}`).toHaveLength(0);
   });
 
   test('should load without network failures', async ({ page }) => {

@@ -23,7 +23,7 @@ let config = {
   stripGenerics: true,
   deDupe: false,
   stripInst: true,
-}
+};
 
 //---------------------------------------------------------------------------------------------------------------------
 // Parse Command Line Options
@@ -121,12 +121,14 @@ function log() {
 function log_error() {
   if (loggingLevelNames.error <= loggingLevel) console.error.apply(null, arguments);
 }
+// eslint-disable-next-line no-unused-vars
 function log_warn() {
   if (loggingLevelNames.error <= loggingLevel) console.warn.apply(null, arguments);
 }
 function log_info() {
   if (loggingLevelNames.info <= loggingLevel) console.info.apply(null, arguments);
 }
+// eslint-disable-next-line no-unused-vars
 function log_debug() {
   if (loggingLevelNames.debug <= loggingLevel) console.debug.apply(null, arguments);
 }
@@ -161,10 +163,10 @@ log_trace('savesPath:', savesPath);
 log_trace('saveDirName:', saveDirName);
 log_trace('saveName:', saveName);
 log_trace('outPath:', outPath);
-log_trace('config', config)
+log_trace('config', config);
 
 // Check the minLength makes sense
-if(isNaN(config.minLength) || config.minLength < 4 || config.minLength > 50){
+if (isNaN(config.minLength) || config.minLength < 4 || config.minLength > 50) {
   error_exit('Error: minLength must be a number in the range 4-50');
 }
 

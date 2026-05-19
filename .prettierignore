@@ -1,15 +1,19 @@
 # Ignore artifacts
 dist/
+
 # Ignore anything in the public directory, which is expected to be delivered as-is.
 public/
 
-# Ignore the css directory (since it's vendored CSS from plugins)
-# except for main.css
-web_src/css/*
-!web_src/css/main.css
+# Ignore the css lib directory (since it's vendored CSS from plugins)
+web_src/css/lib/*
 
 # Ignore the lib directory (since it's vendored JS from plugins)
 web_src/lib/*
+
+# Ignored everything under source
+source/**
+.venv*/**
+node_modules/**
 
 # Don't reformat data files, YAML files, or Markdown
 *.json
