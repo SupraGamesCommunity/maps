@@ -167,10 +167,11 @@ if (mode == 'deploy') {
 
   logger(`\nDeploying ${branch} to github pages`);
 
+  doDeploy(branch);
+
+  // Wait for a while so the status check will actually get the right job
   logger_info('\nWaiting 5 seconds for workflow run to start');
   await new Promise((resolve) => setTimeout(resolve, 5000));
-
-  doDeploy(branch);
 }
 
 if (mode == 'deploy' || mode == 'status') {
