@@ -22,7 +22,7 @@
     "test": "playwright test",
     "test:ui": "playwright test --ui",
     "test:headed": "playwright test --headed",
-    "deploy-gh-pages": "npm run check-all && npm run test && call scripts/deploy-gh-pages.cmd",
+    "deploy-gh-pages": "npm run check-all && npm run test && node scripts/deploy-gh-pages.mjs deploy",
     "deploy-watch": "call scripts/deploy-watch.cmd"
   },
   "dependencies": {
@@ -31,7 +31,8 @@
     "leaflet": "^1.9.4",
     "leaflet.fullscreen": "^5.3.1",
     "react": "^19.2.4",
-    "react-dom": "^19.2.4"
+    "react-dom": "^19.2.4",
+    "readline-sync": "^1.4.10"
   },
   "devDependencies": {
     "@babel/core": "^7.29.0",
