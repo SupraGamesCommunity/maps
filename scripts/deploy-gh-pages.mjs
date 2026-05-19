@@ -133,8 +133,8 @@ if (args.values.help) {
 }
 if (
   args.positionals.length != 1 ||
-  args.quiet + args.values.debug + args.values.verbose > 1 ||
-  !['check', 'watch', 'deploy'].includes(args.positionals[0])
+  (args.quiet | 0 + args.values.debug | 0 + args.values.verbose | 0) > 1 ||
+  !['check', 'status', 'deploy'].includes(args.positionals[0])
 ) {
   logger_error('\nError: Unexpected command line options');
   displayHelp();
@@ -173,7 +173,7 @@ if (mode == 'deploy') {
   doDeploy(branch);
 }
 
-if (mode == 'deploy' || mode == 'watch') {
+if (mode == 'deploy' || mode == 'status') {
   doStatus(branch);
 }
 
