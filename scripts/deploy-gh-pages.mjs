@@ -73,7 +73,7 @@ function doUserConfirm(branch, userConfirm = true) {
 //-------------------------------------------------------------------------------------------------
 // Deployment
 function doDeploy(branch) {
-  doCommand(`Deploying ${branch} to repository github pages`, 'gh workflow run "deploy.yml" --ref "${branch}"');
+  doCommand(`Deploying ${branch} to repository github pages`, `gh workflow run "deploy.yml" --ref "${branch}"`);
 }
 
 //-------------------------------------------------------------------------------------------------
