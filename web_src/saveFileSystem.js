@@ -145,21 +145,18 @@ export class SaveFileSystem {
       const srchStr = ['PersistentLevel.', 'LastCheckpointActor', 'DetainedCharacter'];
       const re_match = new RegExp(`(\0${srchStr.join('|\0')})`, 'gi');
       let m;
-      let foundStr = [ ];
+      let foundStr = [];
 
       // Process the middle of three strings so we can look back and forward
-      function processFoundStr(foundStr){
-        const [ prevStr, processStr, nextStr ] = foundStr;
+      function processFoundStr(foundStr) {
+        const [prevStr, processStr, nextStr] = foundStr;
 
         // Do nothing for matches that don't star with PersistentLevel.
         if (processStr.startsWith('PersistentLevel.')) {
           const name = processStr.slice('PersistentLevel.'.length);
           const detectiveCase = name.startsWith('DetectiveCase_');
-          if(detectiveCase){
-            console.debug(name);
-          }
 
-          if(prevStr == 'LastCheckpointActor'){
+          if (prevStr == 'LastCheckpointActor') {
             // If it's proceeded by LastCheckpointActor then set the PlayerPosition ala the old save system
             // It might be better to change the _SWPlayerPosition/SupraworldStartPosition to use
             // this data more directly
@@ -167,8 +164,7 @@ export class SaveFileSystem {
             addToSaveData('', 'Player Position', null, {
               value: { x: saveObj.o.lng, y: saveObj.o.lat, z: saveObj.o.alt },
             });
-          }
-          else if(!detectiveCase || detectiveCase && nextStr == 'DetainedCharacter'){
+          } else if (!detectiveCase || (detectiveCase && nextStr == 'DetainedCharacter')) {
             // Filter out detective cases that aren't followed by 'DetainedCharacter'
             addToSaveData('Supraworld', name);
           }
@@ -177,27 +173,25 @@ export class SaveFileSystem {
 
       // Go through all matching strings
       while ((m = re_match.exec(strview)) != null) {
-
         // FString format is 4 byte length followed by string which may include null terminator
         const namelen = dataview.getInt32(m.index - 3, true);
         const nameidx = m.index + 1;
         let name = strview.slice(nameidx, nameidx + namelen);
 
         // Remove any trailing nul
-        if(name.slice(-1) == '\0'){
-          name = name.slice(0,-1);
+        if (name.slice(-1) == '\0') {
+          name = name.slice(0, -1);
         }
 
         // Add it to the queue, once we have 3 start processing them
         foundStr.push(name);
-        if (foundStr.length >= 3){
+        if (foundStr.length >= 3) {
           processFoundStr(foundStr);
           foundStr.shift();
         }
       }
       foundStr.push('');
-      processFoundStr(foundStr)
-
+      processFoundStr(foundStr);
     } else {
       const loadedSave = new UESaveObject(arrayData);
 
