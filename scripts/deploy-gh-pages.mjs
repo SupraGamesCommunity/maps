@@ -17,11 +17,11 @@ let logger_debug = console.debug;
 let logger_info = console.info;
 let logger = console.log;
 
-function doCommand(message, cmd, exitOnError = true) {
+function doCommand(message, cmd, {exitOnError = true, stdio = 'pipe'}={}) {
   logger_info(`\nInfo: ${message}`);
   logger_info(`> ${cmd}`);
   try {
-    return execSync(cmd, { encoding: 'utf8' });
+    return execSync(cmd, { encoding: 'utf8', stdio: stdio });
   } catch (error) {
     if (exitOnError) {
       process.exit(error.status);
@@ -77,17 +77,14 @@ function doDeploy(branch) {
 }
 
 //-------------------------------------------------------------------------------------------------
-// Deployment workflow status
-function doStatus(branch) {
+// Deployment workflow watch
+function doWatch(branch) {
   const runId = doCommand(
     'Retrieve github run id',
     `gh run list --workflow "deploy.yml" --branch "${branch}" --limit 1 --json databaseId --jq ".[0].databaseId"`
   ).trim();
 
-  const deployStatus = doCommand('Check status of deployment', `gh run watch ${runId}`);
-  console.log(`\n${deployStatus}`);
-
-  console.log(`To monitor status run: 'gh run watch ${runId}'`);
+  doCommand('Monitor status of deployment', `gh run watch ${runId}`, { stdio: 'inherit' });
 }
 
 //-------------------------------------------------------------------------------------------------
@@ -98,7 +95,7 @@ function displayHelp() {
       '\n' +
       '\nModes:' +
       '\n  check     run checks to confirm deploy available' +
-      '\n  status    get status of last deploy workflow' +
+      '\n  watch     monitor status of last deploy workflow' +
       '\n  deploy    deploy current branch to gh pages' +
       '\n' +
       '\nOptions:' +
@@ -134,7 +131,7 @@ if (args.values.help) {
 if (
   args.positionals.length != 1 ||
   (args.quiet | (0 + args.values.debug) | (0 + args.values.verbose) | 0) > 1 ||
-  !['check', 'status', 'deploy'].includes(args.positionals[0])
+  !['check', 'watch', 'deploy'].includes(args.positionals[0])
 ) {
   logger_error('\nError: Unexpected command line options');
   displayHelp();
@@ -174,8 +171,8 @@ if (mode == 'deploy') {
   await new Promise((resolve) => setTimeout(resolve, 5000));
 }
 
-if (mode == 'deploy' || mode == 'status') {
-  doStatus(branch);
+if (mode == 'deploy' || mode == 'watch') {
+  doWatch(branch);
 }
 
 process.exit(0);
