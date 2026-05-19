@@ -159,31 +159,45 @@ to a branch on their forked repo:
    **Important:** Your `origin` remote should point to your forked repo. To confirm, run `git remote -v` and check
    that `origin` points to something like `https://github.com/YOUR_GITHUB_USERNAME/maps.git`.
 
-2. Ensure that the system is passing the the current set of checks and tests.
+2. Ensure your branch passes all tests, lint and format checks.
 
-3. On the forked repository, go to _Code and Automation=>Settings->Environments_ and open the github-pages
-configuration (setting it up if required). Look for _Deployment branches and tags_. The main repository and forks
-normally have `main` as the only branch allowed. Add your deployment branch to the rules. 
-See [here](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/managing-a-branch-protection-rule?versionId=free-pro-team%40latest&productId=pages&restPage=getting-started-with-github-pages%2Cconfiguring-a-publishing-source-for-your-github-pages-site).
+   ```
+   npm run check-all
+   bpm run test
+   ```
 
-4. Ensure you have passed checks and pushed the development branch to GitHub. 
+3. Ensure you have the desired branch checked out, with uncommitted/pushed changes.
 
-5. Option 1: Web: Go to Github Actions `https://github.com/YOUR_GITHUB_USERNAME/maps/actions/deploy.yml`.
-Look for the _Run workflow_ button, click it, set the branch to your development branch and click _Run workflow_.  
+   ```
+   git status -uno
+   ```
 
-   To see progress with the deployment go to `https://github.com/YOUR_GITHUB_USERNAME/maps/actions/deploy.yml`, open
-the workflow run. Clicking on _build_ or _deploy_ will allow you to review the logs.
+4. If you don't already have github pages (`YOUR_GITHUB_USERNAME.github.io`) setup with the maps you may need to create
+it. Instructions can be found here: [Creating a GitHub Pages site](https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site) and here: [Managing environments for deployment](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/managing-a-branch-protection-rule).
 
-6. Option 2: CLI: Alternatively from the command line in the maps directory with your branch checked out:  
+  To match the maps project environment conifg set _Allow administrators to bypass configured protection rules_ and
+  adding `main` to the deployment branches and tags, so that by default only deployments from main branch are allowed.
+
+5. On the forked repository, go to `https://github.com/YOUR_GITHUB_USERNAME/maps/settings/environments_Code`
+   (or _Settings=>Code and automation->Environments_) and open the github-pages configuration. Look for
+   _Deployment branches and tags_. The main repository and forks normally have `main` as the only branch allowed.
+   Add your deployment branch to the rules. See [Managing environments for deployment](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/managing-a-branch-protection-rule).
+
+6. Run the deployment script:
+
    ```
    npm run deploy-gh-pages
    ```
-   this will run checks and if they pass trigger the deploy on github with [deploy-gh-pages.cmd](../scripts/deploy-gh-pages.cmd).
-   and then leave a watch running until the job completes.  
-   You can also use:  
-   ```
-    npm run deploy-watch
-   ```
-   to monitor the progress of the most recent deployment with [deploy-watch.cmd](../scripts/deploy-watch.cmd)  
+
+   This will do a build, run all the checks and tests and then, if everything passes, deploy the build to
+   your gh-pages site. During the build and deployment it will display progress.
+
+   Alternatively you can trigger the deployment from the Github website. Go to your forked repository then
+   _Actions->Deploy Map to Github Pages (github.io)_, click the `Run workflow` button, change the branch to the one
+   you want to deploy and select `Run workflow`.
+
+   (URL is https://github.com/YOUR_GITHUB_USERNAME/maps/actions/workflows/deploy.yml)
+
+   Once the job starts, you can click on the build or deploy steps to monitor progress.
 
 7. Once the jobs are successful the branch will be live on `https://YOUR_GITHUB_USERNAME.github.io/maps/`
