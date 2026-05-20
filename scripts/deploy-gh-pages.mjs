@@ -5,7 +5,7 @@
 
 import * as process from 'process';
 
-import { execSync } from 'child_process';
+import { execFileSync } from 'child_process';
 import readlineSync from 'readline-sync';
 import { parseArgs } from 'util';
 
@@ -17,12 +17,17 @@ let logger_debug = console.debug;
 let logger_info = console.info;
 let logger = console.log;
 
-function doCommand(message, cmd, { exitOnError = true, stdio = 'pipe' } = {}) {
+// message: String: message decribing what the command is doing
+// cmdArgs: String[]: command and arguments in an array
+// exitOnError: Boolean: if true and command fails exit process
+// stdio: String: stdio mode for execFileSync. pipe returns output, inherit sends it to console
+function doCommand(message, cmdArgs, { exitOnError = true, stdio = 'pipe' } = {}) {
   logger_info(`\nInfo: ${message}`);
-  logger_info(`> ${cmd}`);
+  logger_info('> ' + cmdArgs.join(' '));
   try {
-    return execSync(cmd, { encoding: 'utf8', stdio: stdio });
+    return execFileSync(cmdArgs[0], cmdArgs.slice(1), { encoding: 'utf8', stdio: stdio });
   } catch (error) {
+    logger_error('Error:', error.message);
     if (exitOnError) {
       process.exit(error.status);
     }
@@ -35,18 +40,21 @@ function doCommand(message, cmd, { exitOnError = true, stdio = 'pipe' } = {}) {
 function doChecks(branch) {
   logger('\nRunning checks before deployment');
 
-  doCommand('Ensure repository is up to date', 'git fetch origin');
+  doCommand('Ensure repository is up to date', ['git', 'fetch', 'origin']);
 
   logger_debug(`Debug: Current branch = '${branch}'`);
 
-  const isDirty = doCommand('Checking for modified, staged or deleted files', 'git status --porcelain -uno').length > 0;
+  const isDirty =
+    doCommand('Checking for modified, staged or deleted files', ['git', 'status', '--porcelain', '-uno']).length > 0;
   if (isDirty) {
     logger_error('\nError: Modified, staged or deleted files: ensure changes are committed before deployment');
   } else {
     logger_debug('Debug: No modified, staged or deleted files');
   }
 
-  const unpushedCommits = doCommand('Checking for unpushed commits', 'git rev-list @{u}..HEAD --count').trim();
+  const unpushedCommits = Number(
+    doCommand('Checking for unpushed commits', ['git', 'rev-list', '@{u}..HEAD', '--count']).trim()
+  );
   if (unpushedCommits != 0) {
     logger_error(`\nError: push ${unpushedCommits} commits to origin before deploying`);
   } else {
@@ -73,18 +81,29 @@ function doUserConfirm(branch, userConfirm = true) {
 //-------------------------------------------------------------------------------------------------
 // Deployment
 function doDeploy(branch) {
-  doCommand(`Deploying ${branch} to repository github pages`, `gh workflow run "deploy.yml" --ref "${branch}"`);
+  doCommand(`Deploying ${branch} to repository github pages`, ['gh', 'workflow', 'run', 'deploy.yml', '--ref', branch]);
 }
 
 //-------------------------------------------------------------------------------------------------
 // Deployment workflow watch
 function doWatch(branch) {
-  const runId = doCommand(
-    'Retrieve github run id',
-    `gh run list --workflow "deploy.yml" --branch "${branch}" --limit 1 --json databaseId --jq ".[0].databaseId"`
-  ).trim();
+  const runId = doCommand('Retrieve github run id', [
+    'gh',
+    'run',
+    'list',
+    '--workflow',
+    'deploy.yml',
+    '--branch',
+    branch,
+    '--limit',
+    '1',
+    '--json',
+    'databaseId',
+    '--jq',
+    '.[0].databaseId',
+  ]).trim();
 
-  doCommand('Monitor status of deployment', `gh run watch ${runId}`, { stdio: 'inherit' });
+  doCommand('Monitor status of deployment', ['gh', 'run', 'watch', runId], { stdio: 'inherit' });
 }
 
 //-------------------------------------------------------------------------------------------------
@@ -153,7 +172,7 @@ if (!args.values.debug) {
 //-------------------------------------------------------------------------------------------------
 // Do the work
 
-const branch = doCommand('Retrieving current branch', 'git rev-parse --abbrev-ref HEAD').trim();
+const branch = doCommand('Retrieving current branch', ['git', 'rev-parse', '--abbrev-ref', 'HEAD']).trim();
 
 if (mode == 'check' || mode == 'deploy') {
   doChecks(branch);
