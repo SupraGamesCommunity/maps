@@ -23,7 +23,7 @@
     "test:ui": "playwright test --ui",
     "test:headed": "playwright test --headed",
     "deploy-gh-pages": "npm run check-all && npm run test && node scripts/deploy-gh-pages.mjs deploy",
-    "deploy-watch": "call scripts/deploy-watch.cmd"
+    "deploy-watch": "node scripts/deploy-gh-pages.mjs watch"
   },
   "dependencies": {
     "@fortawesome/react-fontawesome": "^3.3.1",
