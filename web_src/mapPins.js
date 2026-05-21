@@ -1,6 +1,7 @@
 import { browser } from './utils.js';
 import { Settings } from './settings.js';
 import { MapLayer } from './mapLayer.js';
+import { mapPinContextMenu } from './contextmenu/init.js';
 import { marker as leaflet_marker } from 'leaflet';
 
 //=================================================================================================
@@ -30,8 +31,20 @@ export class MapPins {
 
   static getPinTitle = (idx) => {
     const pin = Settings.map.mapPins[idx];
-    return `${pin.type != undefined ? pin.type + ' ' : ''}${idx}: (${pin.pos.lng.toFixed(0)},${pin.pos.lat.toFixed(0)})`;
+    if(pin){
+      return `${pin?.type != undefined ? pin.type + ' ' : ''}${idx}: (${pin.pos.lng.toFixed(0)},${pin.pos.lat.toFixed(0)})`;
+    }
+    return undefined
   };
+
+  static getNextIdx() {
+      for (const idx in Settings.map.mapPins) {
+        if(!Settings.map.mapPins[idx].pos){
+          return idx;
+        }
+      }
+      return Settings.map.mapPins.length;
+  }
 
   // Add a pin or update it if it already exists
   static add(map, options) {
@@ -42,7 +55,7 @@ export class MapPins {
     if (!mapLayer?.isEnabled(map.mapId)) return;
 
     // Figure out index, position and type of pin
-    const idx = options.idx || Object.keys(Settings.map.mapPins).length;
+    const idx = options.idx || this.getNextIdx();
     const pos = options.pos || Settings.map.mapPins[idx]?.pos || map.getCenter();
     const type = options.type || Settings.map.mapPins[idx]?.type;
 
@@ -82,6 +95,7 @@ export class MapPins {
         .addTo(mapLayer.id == '_map' ? map : mapLayer.layerObj);
 
       this._markers[alt] = marker;
+      mapPinContextMenu(idx, marker, { hidePin: true, deletePin: true });
     } else {
       this._markers[alt].setLatLng(pos);
     }
@@ -89,6 +103,15 @@ export class MapPins {
     if (options.activateLayer) {
       mapLayer.addTo(map);
     }
+  }
+
+  static deletePin(pinIdx) {
+    const alt = this.getAlt(pinIdx);
+    const layerObj = this._markers[alt];
+    layerObj.remove();
+    layerObj.removeFrom(MapLayer.get(layerObj.options.layerId).layerObj);
+    Settings.map.mapPins[layerObj.options.pinIdx] = {};
+    delete this._markers[alt];
   }
 
   // Copies a string with a list of the current pins to the clipboard
@@ -115,8 +138,10 @@ export class MapPins {
     this._clearMarkers();
     if (MapLayer.isEnabledFromId(this._defaultLayer, map.mapId)) {
       Settings.mapSetDefault('mapPins', {});
-      for (const idx in Object.keys(Settings.map.mapPins)) {
-        this.add(map, { idx: idx, activateLayer: false });
+      for (const [idx, mapPin] of Object.entries(Settings.map.mapPins)) {
+        if(mapPin.pos){
+          this.add(map, { idx: idx, activateLayer: false });
+        }
       }
     }
   }

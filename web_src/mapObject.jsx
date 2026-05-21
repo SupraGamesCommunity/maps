@@ -10,6 +10,7 @@ import { MapParam } from './mapParam.js';
 import { buildMode } from './devBuildMode.js';
 import { createRoot } from 'react-dom/client';
 import { PinContent } from './PinContent.jsx';
+import { markerContextMenu } from './contextmenu/init.js';
 import { marker as leaflet_marker, latLngBounds } from 'leaflet';
 import { icon as fa_icon } from '@fortawesome/fontawesome-svg-core';
 
@@ -59,7 +60,6 @@ import { icon as fa_icon } from '@fortawesome/fontawesome-svg-core';
 //
 //  onContextMenu              - callback when marker is left clicked on
 //  onPopupOpen                - callback before popup displayed when marker is clicked on
-//  getURL                     - returns URL for this map object
 //
 // Static member functions:
 //
@@ -361,43 +361,31 @@ export class MapObject {
   }
 
   updateContextMenuOptions() {
-    let contextMenuOptions = {
-      contextmenu: true,
-      contextmenuInheritItems: false,
-      contextmenuItems: [],
-    };
+    let menuContent = {};
+
+    if (this.primeMarker && this.groupMarker) {
+      menuContent.layerObj2 = this.groupMarker;
+    }
 
     if (this._foundLockedState === undefined) {
-      const isFound = this.isFound();
-      contextMenuOptions.contextmenuItems.push({
-        iconCls: 'contextmenu-icon',
-        text: isFound ? 'Clear found' : 'Mark found',
-        iconHtml: fa_icon(isFound ? { prefix: 'far', iconName: 'square' } : { prefix: 'fa', iconName: 'square-check' })
-          .html,
-        callback: function () {
-          this.toggleFound();
-          (this.primeMarker || this.groupMarker)?._map.closePopup();
-        },
-        context: this,
-      });
+      if (this.isFound()) {
+        menuContent.clearFound = true;
+      } else {
+        menuContent.setFound = true;
+      }
     }
 
-    contextMenuOptions.contextmenuItems.push({
-      iconCls: 'contextmenu-icon',
-      text: 'Move player to marker',
-      iconHtml: fa_icon({ prefix: 'fa', iconName: 'location-crosshairs' }).html,
-      callback: function () {
-        MapObject.movePlayerPosition(this);
-      },
-      context: this,
-    });
+    if (this._disableMovePlayerPosition != true) {
+      menuContent.movePlayerPosition = true;
+    }
 
-    if (this.primeMarker) {
-      this.primeMarker.bindContextMenu(contextMenuOptions);
+    if(this.primeMarker.options.layerId != '_map'){
+      menuContent.hideMarker = true;
     }
-    if (this.groupMarker) {
-      this.groupMarker.bindContextMenu(contextMenuOptions);
-    }
+
+    menuContent.getMapObjectURL = true;
+
+    markerContextMenu(this, this.primeMarker || this.groupMarker, menuContent);
   }
 
   // Called before tooltip is displayed
@@ -458,11 +446,6 @@ export class MapObject {
     const playerZ = MapObject._mapObjects?.PlayerPosition?.o.alt;
     let playerDeltaZ = this.o.alt - (mapId == 'sw' && playerZ ? playerZ : 0);
     return playerDeltaZ;
-  }
-
-  // returns URL for this map object
-  getURL(showPopup = false) {
-    MapParam.getMapObjectURL(this.alt, showPopup);
   }
 
   // Activate all layers the MapObject is on
@@ -581,7 +564,7 @@ export class MapObject {
     return args.filter((a) => a).join(':'); // Join all truthy arguments (a !== null && a !== undefined && a !== '') might by better?
   }
 
-  // Move view point to object specified and optionallly show popup
+  // Move view point to object specified and optionally show popup
   static showAlt(alt, showPopup = false) {
     const mapObj = MapObject.get_ignorecase(alt);
     if (mapObj) {
@@ -638,6 +621,7 @@ function mapPlayerStart(...args) {
 class MapPlayerPosition extends MapObject {
   _saveFileId = 'Player Position';
   _foundLockedState = false;
+  _disableMovePlayerPosition = true;
 
   subclassInit() {
     MapObject._playerStartPosition = { lat: this.o.lat, lng: this.o.lng, alt: this.o.alt };
