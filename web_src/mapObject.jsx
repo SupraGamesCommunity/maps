@@ -12,7 +12,6 @@ import { createRoot } from 'react-dom/client';
 import { PinContent } from './PinContent.jsx';
 import { markerContextMenu } from './contextmenu/init.js';
 import { marker as leaflet_marker, latLngBounds } from 'leaflet';
-import { icon as fa_icon } from '@fortawesome/fontawesome-svg-core';
 
 //=================================================================================================
 // MapObject class
