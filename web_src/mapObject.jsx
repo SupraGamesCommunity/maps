@@ -10,6 +10,7 @@ import { MapParam } from './mapParam.js';
 import { buildMode } from './devBuildMode.js';
 import { createRoot } from 'react-dom/client';
 import { PinContent } from './PinContent.jsx';
+import { markerContextMenu } from './contextmenu/init.js';
 import { marker as leaflet_marker, latLngBounds } from 'leaflet';
 
 //=================================================================================================
@@ -58,7 +59,6 @@ import { marker as leaflet_marker, latLngBounds } from 'leaflet';
 //
 //  onContextMenu              - callback when marker is left clicked on
 //  onPopupOpen                - callback before popup displayed when marker is clicked on
-//  getURL                     - returns URL for this map object
 //
 // Static member functions:
 //
@@ -140,13 +140,13 @@ export class MapObject {
       o: this.o,
       layerId: layerId,
     };
+
     const marker = leaflet_marker([this.o.lat, this.o.lng], options)
       .addTo(mapLayer.id == '_map' ? map : mapLayer.layerObj) // Add to relevant mapLayer (or the group)
       .bindPopup('', { minWidth: 300 })
       .on('popupopen', this.onPopupOpen, this) // We set popup text on demand
       .on('mouseover', this.onMouseOver, this) // We update tooltip text on demand
-      .on('add', this.onAdd, this) // We may need to resize icons when they're layer is displayed
-      .on('contextmenu', this.onContextMenu, this);
+      .on('add', this.onAdd, this); // We may need to resize icons when they're layer is displayed
 
     return marker;
   }
@@ -239,6 +239,11 @@ export class MapObject {
       this._foundLockedState = this.o.notsaved;
     }
 
+    // Set default save state if subclass hasn't done it
+    if (this._foundLockedState === undefined && this._defaultSaveData === undefined) {
+      this._defaultSaveData = false;
+    }
+
     if (
       (!MapLayer.isEnabledFromId(c.layer, map.mapId) && !MapLayer.isEnabledFromId(c.nospoiler, map.mapId)) ||
       !latLngBounds(MapLayer.get(map.mapId).viewLatLngBounds).contains([this.o.lat, this.o.lng])
@@ -260,8 +265,10 @@ export class MapObject {
 
     this.addSaveListeners();
 
-    if (this._foundLockedState) {
-      this.markFound(true);
+    // If this marker is findable then the context menu will be set up when
+    // the save state is dealt with, so only do it now if it's unfindable
+    if (this._foundLockedState !== undefined) {
+      this.updateContextMenuOptions();
     }
 
     return this;
@@ -345,19 +352,39 @@ export class MapObject {
     if (this.groupMarker) {
       this.groupMarker.setZIndexOffset(MapLayer.getZIndexOffsetFromId(this.groupMarker.options.layerId, found));
     }
+    this.updateContextMenuOptions();
   }
 
   onAdd() {
     this.markFound();
   }
 
-  // Called when the user left clicks on the marker for this map object
-  onContextMenu(e) {
-    // If 'found' isn't locked then context menu toggles found
-    if (this._foundLockedState === undefined) {
-      this.toggleFound();
-      e.target.closePopup();
+  updateContextMenuOptions() {
+    let menuContent = {};
+
+    if (this.primeMarker && this.groupMarker) {
+      menuContent.layerObj2 = this.groupMarker;
     }
+
+    if (this._foundLockedState === undefined) {
+      if (this.isFound()) {
+        menuContent.clearFound = true;
+      } else {
+        menuContent.setFound = true;
+      }
+    }
+
+    if (this._disableMovePlayerPosition != true) {
+      menuContent.movePlayerPosition = true;
+    }
+
+    if (this.primeMarker.options.layerId != '_map') {
+      menuContent.hideMarker = true;
+    }
+
+    menuContent.getMapObjectURL = true;
+
+    markerContextMenu(this, this.primeMarker || this.groupMarker, menuContent);
   }
 
   // Called before tooltip is displayed
@@ -418,11 +445,6 @@ export class MapObject {
     const playerZ = MapObject._mapObjects?.PlayerPosition?.o.alt;
     let playerDeltaZ = this.o.alt - (mapId == 'sw' && playerZ ? playerZ : 0);
     return playerDeltaZ;
-  }
-
-  // returns URL for this map object
-  getURL(showPopup = false) {
-    MapParam.getMapObjectURL(this.alt, showPopup);
   }
 
   // Activate all layers the MapObject is on
@@ -541,7 +563,7 @@ export class MapObject {
     return args.filter((a) => a).join(':'); // Join all truthy arguments (a !== null && a !== undefined && a !== '') might by better?
   }
 
-  // Move view point to object specified and optionallly show popup
+  // Move view point to object specified and optionally show popup
   static showAlt(alt, showPopup = false) {
     const mapObj = MapObject.get_ignorecase(alt);
     if (mapObj) {
@@ -598,9 +620,11 @@ function mapPlayerStart(...args) {
 class MapPlayerPosition extends MapObject {
   _saveFileId = 'Player Position';
   _foundLockedState = false;
+  _disableMovePlayerPosition = true;
 
   subclassInit() {
     MapObject._playerStartPosition = { lat: this.o.lat, lng: this.o.lng, alt: this.o.alt };
+    this._defaultSaveData = { ...MapObject._playerStartPosition };
   }
 
   // We're listening for a saveLoadEvent of Player Position. We will be called with a position
