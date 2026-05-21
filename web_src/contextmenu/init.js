@@ -66,9 +66,9 @@ export function markerContextMenu(
       iconCls: 'contextmenu-icon',
       text: 'Clear found',
       iconHtml: fa_icon({ prefix: 'far', iconName: 'square' }).html,
-      callback: function () {
+      callback: function (data) {
         this.setFound(false);
-        this.closePopup();
+        data.relatedTarget._map.closePopup();
       },
       context: marker,
     });
