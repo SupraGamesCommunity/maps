@@ -31,19 +31,19 @@ export class MapPins {
 
   static getPinTitle = (idx) => {
     const pin = Settings.map.mapPins[idx];
-    if(pin){
+    if (pin) {
       return `${pin?.type != undefined ? pin.type + ' ' : ''}${idx}: (${pin.pos.lng.toFixed(0)},${pin.pos.lat.toFixed(0)})`;
     }
-    return undefined
+    return undefined;
   };
 
   static getNextIdx() {
-      for (const idx in Settings.map.mapPins) {
-        if(!Settings.map.mapPins[idx].pos){
-          return idx;
-        }
+    for (const idx in Settings.map.mapPins) {
+      if (!Settings.map.mapPins[idx].pos) {
+        return idx;
       }
-      return Settings.map.mapPins.length;
+    }
+    return Settings.map.mapPins.length;
   }
 
   // Add a pin or update it if it already exists
@@ -139,7 +139,7 @@ export class MapPins {
     if (MapLayer.isEnabledFromId(this._defaultLayer, map.mapId)) {
       Settings.mapSetDefault('mapPins', {});
       for (const [idx, mapPin] of Object.entries(Settings.map.mapPins)) {
-        if(mapPin.pos){
+        if (mapPin.pos) {
           this.add(map, { idx: idx, activateLayer: false });
         }
       }

@@ -379,7 +379,7 @@ export class MapObject {
       menuContent.movePlayerPosition = true;
     }
 
-    if(this.primeMarker.options.layerId != '_map'){
+    if (this.primeMarker.options.layerId != '_map') {
       menuContent.hideMarker = true;
     }
 

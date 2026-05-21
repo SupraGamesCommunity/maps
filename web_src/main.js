@@ -167,7 +167,7 @@ async function loadMap(mapParam) {
   map = L_supraMap(mapParam, 'map', { contextmenu: true });
 
   // Add the map level contextmenu to the map
-  mapContextMenu(map);
+  mapContextMenu(map, {});
 
   // Add zoom, fullscreen toggle and mousePosition controls to the map
   L.control.zoom({ position: 'bottomright' }).addTo(map);
