@@ -275,7 +275,6 @@ function drawImageIcon(ctx, iconPath, drawSize, canvasSize, dy) {
   ctx.drawImage(img, dx, dx + dy, drawSize, drawSize);
 }
 
-
 // Render a Font Awesome Icon and return an Image URL
 function renderFAIconToImageURL(
   isPin, // Boolean true for pin, false for point
@@ -299,7 +298,13 @@ function renderFAIconToImageURL(
 
   // Draw an image icon or an FA icon as the foreground icon
   if (style == 'fapng' || style == 'fasvg') {
-    drawImageIcon(ctx, path.join(iconsPath, iconName + '.' + style.slice(2)), c.fgIconSize, iconSizePx, c.fgIconYOffset);
+    drawImageIcon(
+      ctx,
+      path.join(iconsPath, iconName + '.' + style.slice(2)),
+      c.fgIconSize,
+      iconSizePx,
+      c.fgIconYOffset
+    );
   } else {
     drawFAIcon(ctx, style, iconName, fgCol, c.fgIconSize, iconSizePx, c.fgIconYOffset);
   }
