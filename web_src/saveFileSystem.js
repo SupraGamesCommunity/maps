@@ -2,6 +2,7 @@ import { UESaveObject } from './lib/UE4Reader.js';
 import { browser } from './utils.js';
 import { Settings } from './settings.js';
 import { MapObject } from './mapObject.jsx';
+import { UE5SaveDecoder } from './UE5SaveDecoder.js';
 
 // Tracks a set of listeners for specific Id's from the save data (one listener per id)
 // Id's are either area:name or property name
@@ -137,6 +138,23 @@ export class SaveFileSystem {
     }
   };
 
+  // TODO: Complete Refactor
+  // At the moment the special behaviour for classes is handled by the processLoadedArray but
+  // this can be moved into the MapObject subclasses by adding a decoder callback to the listener,
+  // whose job would be to do any further decoding required to get the state before calling the
+  // add function.
+  //
+  // The decoder callback would be passed the UE5SaveDecoder, the default decode being
+  // just calling with true if the instance is found in the file.
+  //
+  // Similarly the LastcheckpointActor string should be being added as a listener for the
+  // _PlayerPosition object, which would just move pass the listener the instance and
+  // which would then move itself to the new location.
+  //
+  // The old SL save handling will likely require some tweaking, if it uses the decode
+  // pattern it would probably make most sense to just set the filter string as a property
+  // and let the handlers query it.
+
   // Read array data loaded from Suprworld UE5 save file and call any listeners
   // to filter the data and save to settiings
   static _processLoadedArray_sw(arrayData) {
@@ -144,61 +162,32 @@ export class SaveFileSystem {
 
     this.ClearAll();
 
-    // Get string and data views on the buffer
-    let dataview = new DataView(arrayData, arrayData.byteOffset, arrayData.byteLength);
-    let strview = new TextDecoder('latin1').decode(dataview);
+    const outerStrings = [UE5SaveDecoder.INSTANCE_PATTERN, 'LastCheckpointActor'];
+    const saveDecoder = new UE5SaveDecoder(arrayData, outerStrings);
 
-    // We're searching for any strings that start any of our target strings proceeded by a nul
-    const srchStr = ['PersistentLevel.', 'LastCheckpointActor', 'DetainedCharacter'];
-    const re_match = new RegExp(`(\0${srchStr.join('|\0')})`, 'gi');
     let m;
-    let foundStr = [];
-
-    // Process the middle of three strings so we can look back and forward
-    function processFoundStr(foundStr) {
-      const [prevStr, processStr, nextStr] = foundStr;
-
-      // Do nothing for matches that don't star with PersistentLevel.
-      if (processStr.startsWith('PersistentLevel.')) {
-        const name = processStr.slice('PersistentLevel.'.length);
-        const detectiveCase = name.startsWith('DetectiveCase_');
-
-        if (prevStr == 'LastCheckpointActor') {
-          // If it's proceeded by LastCheckpointActor then set the PlayerPosition ala the old save system
-          // It might be better to change the _SWPlayerPosition/SupraworldStartPosition to use
-          // this data more directly
-          const saveObj = MapObject.get('Supraworld:' + name);
-          self._addToSaveData('', 'Player Position', null, {
-            value: { x: saveObj.o.lng, y: saveObj.o.lat, z: saveObj.o.alt },
-          });
-        } else if (!detectiveCase || (detectiveCase && nextStr == 'DetainedCharacter')) {
-          // Filter out detective cases that aren't followed by 'DetainedCharacter'
-          self._addToSaveData('Supraworld', name);
+    while ((m = saveDecoder.nextOuterString()).found) {
+      if (m.isInstance) {
+        const map = 'Supraworld',
+          name = m.found;
+        const type = MapObject.get(MapObject.makeAlt(map, name))?.o.type;
+        if (
+          type &&
+          ((type == 'PuzzleCloud_C' && saveDecoder.nextByteProperty().found != 2) ||
+            (type.startsWith('DetectiveCase_') && saveDecoder.nextFString('DetainedCharacter').found == undefined))
+        ) {
+          continue;
         }
+        self._addToSaveData(map, name);
+      } else {
+        // LastCheckpointActor
+        m = saveDecoder.nextFString(UE5SaveDecoder.INSTANCE_PATTERN, { required: true });
+        const saveObj = MapObject.get('Supraworld:' + m.found);
+        self._addToSaveData('', 'Player Position', null, {
+          value: { x: saveObj.o.lng, y: saveObj.o.lat, z: saveObj.o.alt },
+        });
       }
     }
-
-    // Go through all matching strings
-    while ((m = re_match.exec(strview)) != null) {
-      // FString format is 4 byte length followed by string which may include null terminator
-      const namelen = dataview.getInt32(m.index - 3, true);
-      const nameidx = m.index + 1;
-      let name = strview.slice(nameidx, nameidx + namelen);
-
-      // Remove any trailing nul
-      if (name.slice(-1) == '\0') {
-        name = name.slice(0, -1);
-      }
-
-      // Add it to the queue, once we have 3 start processing them
-      foundStr.push(name);
-      if (foundStr.length >= 3) {
-        processFoundStr(foundStr);
-        foundStr.shift();
-      }
-    }
-    foundStr.push('');
-    processFoundStr(foundStr);
 
     Settings.commit();
     for (const id in Settings.map.saveData) {
