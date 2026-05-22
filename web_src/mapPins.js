@@ -26,7 +26,7 @@ export class MapPins {
 
   // Returns true if we have any pins at the moment
   static hasAny() {
-    return Object.keys(this._markers).length > 0;
+    return Object.keys(MapPins._markers).length > 0;
   }
 
   static getPinTitle = (idx) => {
@@ -43,7 +43,7 @@ export class MapPins {
         return idx;
       }
     }
-    return Settings.map.mapPins.length;
+    return Object.keys(Settings.map.mapPins).length;
   }
 
   // Add a pin or update it if it already exists
@@ -64,7 +64,7 @@ export class MapPins {
     Settings.commit();
 
     const alt = MapPins.getAlt(idx);
-    if (!(alt in this._markers)) {
+    if (!(alt in MapPins._markers)) {
       const marker = leaflet_marker(pos, {
         zIndexOffset: MapLayer.frontZIndexOffset,
         draggable: true,
@@ -94,10 +94,10 @@ export class MapPins {
         )
         .addTo(mapLayer.id == '_map' ? map : mapLayer.layerObj);
 
-      this._markers[alt] = marker;
+      MapPins._markers[alt] = marker;
       mapPinContextMenu(idx, marker, { hidePin: true, deletePin: true });
     } else {
-      this._markers[alt].setLatLng(pos);
+      MapPins._markers[alt].setLatLng(pos);
     }
 
     if (options.activateLayer) {
@@ -107,11 +107,12 @@ export class MapPins {
 
   static deletePin(pinIdx) {
     const alt = this.getAlt(pinIdx);
-    const layerObj = this._markers[alt];
+    const layerObj = MapPins._markers[alt];
     layerObj.remove();
     layerObj.removeFrom(MapLayer.get(layerObj.options.layerId).layerObj);
     Settings.map.mapPins[layerObj.options.pinIdx] = {};
-    delete this._markers[alt];
+    Settings.commit();
+    delete MapPins._markers[alt];
   }
 
   // Copies a string with a list of the current pins to the clipboard
@@ -119,7 +120,9 @@ export class MapPins {
     if (this.hasAny()) {
       let pins = '';
       for (const idx in Settings.map.mapPins) {
-        pins += this.getPinTitle(idx) + '\r\n';
+        if (Settings.map.mapPins[idx].pos) {
+          pins += this.getPinTitle(idx) + '\r\n';
+        }
       }
       browser.copyTextToClipboard(pins);
     }
@@ -127,10 +130,10 @@ export class MapPins {
 
   // Delete all our markers from the map
   static _clearMarkers() {
-    for (const id in this._markers) {
-      this._markers[id].remove();
+    for (const id in MapPins._markers) {
+      MapPins._markers[id].remove();
     }
-    this._markers = {};
+    MapPins._markers = {};
   }
 
   // Recreate all pins in storage and add them to the map
