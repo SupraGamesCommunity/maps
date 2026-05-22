@@ -150,24 +150,54 @@ a GitHub Actions workflow will automatically rebuild and publish the site.
 ### Publishing to your local GitHub Pages
 
 Developers may find it useful to preview changes to their forked repo's GitHub Pages, so that they can (for example)
-share work-in-progress with other developers, or facilitate testing the app with mobile browsers.
+share work-in-progress with other developers, or facilitate testing the app with mobile browsers. After pushing changes
+to a branch on their forked repo:
 
 1. Ensure that you have set up your local repository according to the setup steps in [CONTRIBUTING](./CONTRIBUTING.md).
-   This includes forking the upstream repo, and cloning it locally. **Important:** Your `origin` remote should
-   point to your forked repo. To confirm, run `git remote -v` and check that `origin` points to something like
-   `https://github.com/YOUR_GITHUB_USERNAME/maps.git`.
+   This includes forking the upstream repo, and cloning it locally.  
 
-2. Make a production build of the site locally. This will place the files in the `dist/` directory.
+   **Important:** Your `origin` remote should point to your forked repo. To confirm, run `git remote -v` and check
+   that `origin` points to something like `https://github.com/YOUR_GITHUB_USERNAME/maps.git`.
 
-```
-npm run build
-```
+2. Ensure your branch passes all tests, lint and format checks.
 
-3. Deploy to your GitHub Pages at `https://YOUR_GITHUB_USERNAME.github.io/maps`:
+   ```
+   npm run check-all
+   bpm run test
+   ```
 
-```
-npm run deploy-to-gh-pages
-```
+3. Ensure you have the desired branch checked out, with uncommitted/pushed changes.
 
-The process make take a few minutes. If successful, you should see a "Deployment complete" message. You can
-than view the site at `https://YOUR_GITHUB_USERNAME.github.io/maps`.
+   ```
+   git status -uno
+   ```
+
+4. If you don't already have github pages (`YOUR_GITHUB_USERNAME.github.io`) setup with the maps you may need to create
+it. Instructions can be found here: [Creating a GitHub Pages site](https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site) and here: [Managing environments for deployment](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/managing-a-branch-protection-rule).
+
+  To match the maps project environment conifg set _Allow administrators to bypass configured protection rules_ and
+  adding `main` to the deployment branches and tags, so that by default only deployments from main branch are allowed.
+
+5. On the forked repository, go to `https://github.com/YOUR_GITHUB_USERNAME/maps/settings/environments_Code`
+   (or _Settings=>Code and automation->Environments_) and open the github-pages configuration. Look for
+   _Deployment branches and tags_. The main repository and forks normally have `main` as the only branch allowed.
+   Add your deployment branch to the rules. See [Managing environments for deployment](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/managing-a-branch-protection-rule).
+
+6. Run the deployment script:
+
+   ```
+   npm run deploy-gh-pages
+   ```
+
+   This will do a build, run all the checks and tests and then, if everything passes, deploy the build to
+   your gh-pages site. During the build and deployment it will display progress.
+
+   Alternatively you can trigger the deployment from the Github website. Go to your forked repository then
+   _Actions->Deploy Map to Github Pages (github.io)_, click the `Run workflow` button, change the branch to the one
+   you want to deploy and select `Run workflow`.
+
+   (URL is https://github.com/YOUR_GITHUB_USERNAME/maps/actions/workflows/deploy.yml)
+
+   Once the job starts, you can click on the build or deploy steps to monitor progress.
+
+7. Once the jobs are successful the branch will be live on `https://YOUR_GITHUB_USERNAME.github.io/maps/`

@@ -36,6 +36,7 @@ import { L_supraMap } from './supraMap.js';
 import { initSidepanelDom, renderSidepanel, destroySidepanel } from './sidepanel/renderSidepanel.jsx';
 import { library, icon as fa_icon } from '@fortawesome/fontawesome-svg-core';
 import { faMapPin } from '@fortawesome/free-solid-svg-icons';
+import { mapContextMenu } from './contextmenu/init.js';
 
 library.add(faMapPin);
 
@@ -163,7 +164,10 @@ async function loadMap(mapParam) {
   }
 
   // Create the map
-  map = L_supraMap(mapParam);
+  map = L_supraMap(mapParam, 'map', { contextmenu: true });
+
+  // Add the map level contextmenu to the map
+  mapContextMenu(map, {});
 
   // Add zoom, fullscreen toggle and mousePosition controls to the map
   L.control.zoom({ position: 'bottomright' }).addTo(map);

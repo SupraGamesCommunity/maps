@@ -34,7 +34,9 @@ ignore =
 
 exclude =
   .git,
-  __pycache__
+  __pycache__,
+  .venv*,
+  node_modules
 
 max-complexity = 10
 max-line-length = 120

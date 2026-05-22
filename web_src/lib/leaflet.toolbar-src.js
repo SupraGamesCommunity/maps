@@ -1,5 +1,9 @@
 /* global L */
 
+// JD 18/05/2026 Added DomEvent.disableClickPropagation to prevent ignored mouse interactions
+//               being passed on to other controls or the underlying map. Required to prevent
+//               oncontextmenu behaving inconsistently with different controls.
+
 // L.Layer was introduced in Leaflet 1.0 and is not present in earlier releases.
 L.Toolbar2 = (L.Layer || L.Class).extend({
 	statics: {
@@ -35,8 +39,8 @@ L.Toolbar2 = (L.Layer || L.Class).extend({
 	},
 
 	onRemove: function(map) {
-		/* 
-		 * TODO: Cleanup event listeners. 
+		/*
+		 * TODO: Cleanup event listeners.
 		 * For some reason, this throws:
 		 * "Uncaught TypeError: Cannot read property 'dragging' of null"
 		 * on this._marker when a toolbar icon is clicked.
@@ -197,6 +201,9 @@ L.Toolbar2.Action = L.Handler.extend({
 		this._link.setAttribute('href', '#');
 		this._link.setAttribute('title', iconOptions.tooltip);
 
+		// Customisation: Fix to prevent oncontextmenu behaving unexpectedly on search control
+		L.DomEvent.disableClickPropagation(container);
+
 		L.DomUtil.addClass(this._link, this.constructor.baseClass);
 		if (iconOptions.className) {
 			L.DomUtil.addClass(this._link, iconOptions.className);
@@ -295,7 +302,7 @@ L.Toolbar2.Popup = L.Toolbar2.extend({
 	initialize: function(latlng, options) {
 		L.Toolbar2.prototype.initialize.call(this, options);
 
-		/* 
+		/*
 		 * Developers can't pass a DivIcon in the options for L.Toolbar2.Popup
 		 * (the use of DivIcons is an implementation detail which may change).
 		 */

@@ -364,30 +364,101 @@ dietype2typeprefix = {
 # Lootpool3Money: Inventory_Coin3_C
 
 marker_types = {
-  'PlayerStart', 'Jumppad_C', 'Bones_C', 'Chest_C', 'BarrelColor_C', 'BarrelRed_C', 'Battery_C',
-  'BP_A3_StrengthQuest_C', 'Lift1_C', 'DeadHero_C', 'ExplodingBattery_C', 'GoldBlock_C',
-  'GoldNugget_C', 'Jumppillow_C', 'MoonTake_C', 'Plumbus_C', 'Stone_C', 'ValveCarriable_C',
-  'ValveSlot_C', 'Valve_C', 'MatchBox_C', 'Shell_C', 'BarrelClosed_Blueprint_C', 'MetalBall_C',
-  'Supraball_C', 'Key_C', 'KeyLock_C', 'KeycardColor_C', 'PipeCap_C', 'Sponge_C', 'Juicer_C', 'Seed_C',
-  'Anvil_C', 'Map_C', 'NomNomFlies_C', 'CarrotPhysical_C', 'RingColorer_C', 'RespawnActor_C',
-  'CarryStones_Heavy_C', 'CarryStones_C', 'Crystal_C', 'RingRusty_C', 'SecretFound_C',
-  # slc
-  'Scrap_C', 'TalkingSpeaker_C', 'Sponge_Large_C',
-  # siu
-  'HealingStation_C', 'BP_EngagementCup_Base_C', 'SlumBurningQuest_C', 'Trash_C',
-  'BP_Area2_Uncloged_Quest_C', 'BathGuyVolume_C', 'BP_A3_RobBoss_C', 'BP_Area2_FatGuyQuest_C',
-  'BP_ParanoidQuest_C', 'BP_A3_BBQ_C', 'BP_RebuildSlum_C'
+    'PlayerStart',
+    'Jumppad_C',
+    'Bones_C',
+    'Chest_C',
+    'BarrelColor_C',
+    'BarrelRed_C',
+    'Battery_C',
+    'BP_A3_StrengthQuest_C',
+    'Lift1_C',
+    'DeadHero_C',
+    'ExplodingBattery_C',
+    'GoldBlock_C',
+    'GoldNugget_C',
+    'Jumppillow_C',
+    'MoonTake_C',
+    'Plumbus_C',
+    'Stone_C',
+    'ValveCarriable_C',
+    'ValveSlot_C',
+    'Valve_C',
+    'MatchBox_C',
+    'Shell_C',
+    'BarrelClosed_Blueprint_C',
+    'MetalBall_C',
+    'Supraball_C',
+    'Key_C',
+    'KeyLock_C',
+    'KeycardColor_C',
+    'PipeCap_C',
+    'Sponge_C',
+    'Juicer_C',
+    'Seed_C',
+    'Anvil_C',
+    'Map_C',
+    'NomNomFlies_C',
+    'CarrotPhysical_C',
+    'RingColorer_C',
+    'RespawnActor_C',
+    'CarryStones_Heavy_C',
+    'CarryStones_C',
+    'Crystal_C',
+    'RingRusty_C',
+    'SecretFound_C',
+    # slc
+    'Scrap_C',
+    'TalkingSpeaker_C',
+    'Sponge_Large_C',
+    # siu
+    'HealingStation_C',
+    'BP_EngagementCup_Base_C',
+    'SlumBurningQuest_C',
+    'Trash_C',
+    'BP_Area2_Uncloged_Quest_C',
+    'BathGuyVolume_C',
+    'BP_A3_RobBoss_C',
+    'BP_Area2_FatGuyQuest_C',
+    'BP_ParanoidQuest_C',
+    'BP_A3_BBQ_C',
+    'BP_RebuildSlum_C',
 }
 
 starts_with = {
-    'Pipesystem', 'Buy', 'BP_Buy', 'BP_Purchase', 'BP_Unlock', 'Purchase', 'Upgrade', 'Button', 'Smallbutton', 'Coin',
-    'Lighttrigger', 'LotsOfCoins', 'EnemySpawn', 'Destroyable', 'BP_Pickaxe', 'Door', 'Key', 'ProjectileShooter',
+    'Pipesystem',
+    'Buy',
+    'BP_Buy',
+    'BP_Purchase',
+    'BP_Unlock',
+    'Purchase',
+    'Upgrade',
+    'Button',
+    'Smallbutton',
+    'Coin',
+    'Lighttrigger',
+    'LotsOfCoins',
+    'EnemySpawn',
+    'Destroyable',
+    'BP_Pickaxe',
+    'Door',
+    'Key',
+    'ProjectileShooter',
     'MinecraftBrick',  # can be MinecraftBrick_C and MinecraftBrickRespawnable_C
     'CrashEnemySpawner_C',
 }
 
 ends_with = {
-    'Chest_C', 'Button_C', 'Lever_C', 'Meat_C', 'Loot_C', 'Detector_C', 'Door_C', 'Flower_C', 'Coin_C', 'Guy_C',
+    'Chest_C',
+    'Button_C',
+    'Lever_C',
+    'Meat_C',
+    'Loot_C',
+    'Detector_C',
+    'Door_C',
+    'Flower_C',
+    'Coin_C',
+    'Guy_C',
     'TriggerVolume_C',  # opens pipes in SIU
 }
 
@@ -549,7 +620,9 @@ def get_unreal_version(exepath: Path) -> dict[str, int]:
             value = ns.GetDetailsOf(item, i)
 
             if 'product' in prop.lower():
-                print(f"'{prop}' index={i} ({value}) {'** unexpected index' if i not in product_version_indices else ''}")
+                print(
+                    f"'{prop}' index={i} ({value}) {'** unexpected index' if i not in product_version_indices else ''}"
+                )
 
             if 'file' in prop.lower():
                 print(f"'{prop}' index={i} ({value}) {'** unexpected index' if i not in file_version_indices else ''}")
@@ -818,7 +891,7 @@ def save_assetlist(  # noqa: C901 - disable complexity warning
         idx = len(s)
         for i in range(n):
             idx = s.rfind(ss, 0, idx)
-        return s[idx if idx >= 0 else 0:]
+        return s[idx if idx >= 0 else 0 :]
 
     lines = []
     basedict = filelist['basedict']
@@ -831,10 +904,11 @@ def save_assetlist(  # noqa: C901 - disable complexity warning
                         for i, line in enumerate(matching_lines):
                             if prefer + '/' + item + '.uasset' in line:
                                 match_idx = i
-                    print(f'Warning: {len(matching_lines)} options for {item} '
-                          f'in gamefilelist.txt using #{match_idx} '
-                          f'(...{after_rfind_nth(matching_lines[match_idx], '/', 3)})'
-                        )
+                    print(
+                        f'Warning: {len(matching_lines)} options for {item} '
+                        f'in gamefilelist.txt using #{match_idx} '
+                        f'(...{after_rfind_nth(matching_lines[match_idx], '/', 3)})'
+                    )
                 lines.append(matching_lines[match_idx])
         else:
             names = item.split('.')[0].split('/')
@@ -986,7 +1060,11 @@ def in_earlyaccess(otype, p, pos):  # noqa: C901 - disable complexity warning
         return False
 
     # If it has an area that's not
-    if (swarea := p.get('Area', {}).get('TagName')) and swarea != 'None' and not any(swarea.endswith(s) for s in ea_areas):
+    if (
+        (swarea := p.get('Area', {}).get('TagName'))
+        and swarea != 'None'
+        and not any(swarea.endswith(s) for s in ea_areas)
+    ):
         return False
 
     # Some classes should be rejected if they have no area tag
@@ -1530,11 +1608,14 @@ def export_markers(game: str, datadir: Path, sourcedir: Path) -> None:  # noqa: 
             otype = o['Type']
             oname = o['Name']
 
-            allowed_items = (marker_types and otype in marker_types
+            allowed_items = (
+                marker_types
+                and otype in marker_types
                 or any(otype.startswith(s) for s in starts_with)
                 or any(otype.endswith(s) for s in ends_with)
             )
-            if not allowed_items: continue
+            if not allowed_items:
+                continue
 
             if not o.get('Outer') or not (p := o.get('Properties')):
                 continue
@@ -1566,7 +1647,10 @@ def export_markers(game: str, datadir: Path, sourcedir: Path) -> None:  # noqa: 
                 matrix = area_mtx[area] @ matrix
 
             # some MetalBall_C are Anvils, do the replacement
-            if o['Type'] == 'MetalBall_C' and o.get('Properties', {}).get('Mesh?', {}).get('ObjectName') == "StaticMesh'Anvil'":
+            if (
+                o['Type'] == 'MetalBall_C'
+                and o.get('Properties', {}).get('Mesh?', {}).get('ObjectName') == "StaticMesh'Anvil'"
+            ):
                 o['Type'] = 'Anvil_C'
 
             # some RingRusty_C are pickaxes, cannot be determined by meshes
@@ -1945,9 +2029,11 @@ def cleanup_objects(  # noqa: C901 - disable complexity warning
     game_classes = load_json_file(path=datadir.joinpath('gameClasses.json'))
 
     def is_class_used(item: dict) -> bool:
-        return ((gc := game_classes.get(item['type']))
+        return (
+            (gc := game_classes.get(item['type']))
             and game in gc.get('games', ['sl', 'slc', 'siu'])
-            and (gc.get('layer') or gc.get('nospoiler')))
+            and (gc.get('layer') or gc.get('nospoiler'))
+        )
 
     for item in data[:]:
         if not is_class_used(item):

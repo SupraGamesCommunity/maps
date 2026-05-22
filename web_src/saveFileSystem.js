@@ -112,8 +112,8 @@ export class SaveFileSystem {
     Settings.mapSetDefault('saveData', {});
 
     for (const id in this._listeners) {
-      const data = Settings.map.saveData[id];
-      if (data) {
+      const data = this.getData(id);
+      if (data !== undefined) {
         this._fire(id, data);
       }
     }

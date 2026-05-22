@@ -232,7 +232,7 @@ function renderFAIconToImageURL(
   const pinIconSize = size * 0.5; // Size to draw the FA icon on a pin marker
   const pinCentreYOffset = pinIconSize * -0.25; // Y offset from centre of icon to centre for a pin
   const ptIconSize = size * 0.7; // Size to draw the FA icon on a point marker
-  const ptCentreYOffset = 0; // Y offset from centre of icon to centre for a pin
+  const ptCentreYOffset = pinIconSize * 0; // Y offset from centre of icon to centre for a pin
 
   // We're going to draw the icon to a canvas
   const canvas = createCanvas(size, size);
@@ -267,7 +267,8 @@ function renderFAIconToImageURL(
   function drawImageIcon(iconPath, tgtSize, iconSize, dy = 0) {
     let img = new Image();
     img.src = iconPath;
-    ctx.drawImage(img, (size - iconSize) * 0.5, 0 - dy, iconSize, iconSize);
+    const dx = (size - iconSize) * 0.5;
+    ctx.drawImage(img, dx, dx + dy, iconSize, iconSize);
   }
 
   // We draw FA icons in three layers, a shadow, a slightly smaller background,
