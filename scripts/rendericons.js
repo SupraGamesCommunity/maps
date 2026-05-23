@@ -284,8 +284,9 @@ function renderFAIconToImageURL(
   bgCol // Background colour
 ) {
   // We're going to draw the icon onto a square canvas
-  //const canvas = document.createElement('canvas');
-  //canvas.width = canvas.height = iconSizePx;
+  // Node.js uses createCanvas which is equivalent to:
+  // const canvas = document.createElement('canvas');
+  // canvas.width = canvas.height = iconSizePx;
   const canvas = createCanvas(iconSizePx, iconSizePx);
   const ctx = canvas.getContext('2d');
 
