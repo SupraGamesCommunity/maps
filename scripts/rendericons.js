@@ -216,75 +216,98 @@ function toSupraColor(col) {
   return supraColors[col] || col;
 }
 
+const iconSizePx = 48; // Size in pixels of the rendered icons
+
+const pinConfig = {
+  bgIcon: 'location-pin', // Outline/background FA icon name
+  outlineIconSize: iconSizePx, // Size in pixels to draw the outline icon
+  bgIconSize: iconSizePx * 0.976, // Size in pixels to draw the background icon
+  fgIconSize: iconSizePx * 0.45, // Size in pixels to draw the foreground icon
+  fgIconYOffset: iconSizePx * 0.5 * -0.25, // Y offset to draw the foreground icon compared to background
+};
+
+const circleConfig = {
+  bgIcon: 'circle', // Outline/background FA icon name
+  outlineIconSize: iconSizePx, // Size in pixels to draw the outline icon
+  bgIconSize: iconSizePx * 0.976, // Size in pixels to draw the background icon
+  fgIconSize: iconSizePx * 0.7, // Size in pixels to draw the foreground icon
+  fgIconYOffset: 0, // Y offset to draw the foreground icon compared to background
+};
+
+const faDefault = 'question-circle';
+
+// This function draws one of the icon layers in some colour
+function drawFAIcon(
+  ctx, // Canvas context
+  prefix, // FA icon prefix (fa, fas...)
+  iconName, // FA icon name
+  color, // Colour to draw the icon
+  drawSize, // Size to draw the FA Icon
+  canvasSize, // Size of the target canvas
+  dy // Y offset to apply
+) {
+  // Get a font awesome icon specified by prefix and icon name
+  let icon = fa_icon({ prefix, iconName }) || fa_icon({ prefix: 'fa', iconName: faDefault });
+
+  // Extract the width/height and SVG path data from the icon
+  const [w, h, , , path] = icon.icon;
+
+  // Centre FA icon and scale it to fill the target
+  const scale = drawSize / h; // scale to apply to FA icon to reach desired size vertically
+  const iconWidthPx = w * scale; // Width the icon will be given scale
+  const dxPx = (canvasSize - iconWidthPx) / 2; // Offset to put in the middle
+  const dyPx = (canvasSize - drawSize) / 2 + dy; // Offset to put it in the middle plus delta y passed in
+
+  ctx.setTransform(scale, 0, 0, scale, dxPx, dyPx);
+
+  // Draw the path of the icon in the specified color
+  ctx.fillStyle = toSupraColor(color);
+  const path2d = new Path2D(path);
+  ctx.fill(path2d);
+  ctx.setTransform(1, 0, 0, 1, 0, 0);
+}
+
+// Draw a PNG as the Icon instead of an FA icon
+function drawImageIcon(ctx, iconPath, drawSize, canvasSize, dy) {
+  let img = new Image();
+  img.src = iconPath;
+  const dx = (canvasSize - drawSize) * 0.5;
+  ctx.drawImage(img, dx, dx + dy, drawSize, drawSize);
+}
+
 // Render a Font Awesome Icon and return an Image URL
 function renderFAIconToImageURL(
   isPin, // Boolean true for pin, false for point
   style, // FA prefix (fas=solid, far=regular, fal=light, fat=thin, dad=duotone, fab=brands)
   iconName, // Name of an FA Icon
-  fg, // Foreground colour
-  bg // Background colour
+  fgCol, // Foreground colour
+  bgCol // Background colour
 ) {
-  const faPin = 'location-pin'; // FA icon used for map pin marker background
-  const faPoint = 'circle'; // FA icon used for map point marker background
-  const faDefault = 'question-circle'; // FA icon used if asked for unknown icon
-  const size = 48; // Size to render icons
-  const outlineSize = size * 0.976; // Scale adjustment between shadow and background
-  const pinIconSize = size * 0.5; // Size to draw the FA icon on a pin marker
-  const pinCentreYOffset = pinIconSize * -0.25; // Y offset from centre of icon to centre for a pin
-  const ptIconSize = size * 0.7; // Size to draw the FA icon on a point marker
-  const ptCentreYOffset = pinIconSize * 0; // Y offset from centre of icon to centre for a pin
-
-  // We're going to draw the icon to a canvas
-  const canvas = createCanvas(size, size);
-  //const canvas = document.createElement('canvas');
-
-  canvas.width = canvas.height = size;
+  // We're going to draw the icon onto a square canvas
+  // Node.js uses createCanvas which is equivalent to:
+  // const canvas = document.createElement('canvas');
+  // canvas.width = canvas.height = iconSizePx;
+  const canvas = createCanvas(iconSizePx, iconSizePx);
   const ctx = canvas.getContext('2d');
 
-  // This function draws one of the icon layers in some colour
-  function drawFAIcon(prefix, iconName, color, pixelSize, dy = 0) {
-    // Get a font awesome icon specified by prefix and icon name
-    let icon = fa_icon({ prefix, iconName }) || fa_icon({ prefix: 'fa', iconName: faDefault });
+  const c = isPin ? pinConfig : circleConfig;
 
-    // Extract the width/height and SVG path data from the icon
-    const [w, h, , , path] = icon.icon;
-
-    // Centre FA icon and scale it to fill the target
-    const scale = pixelSize / h;
-    const iconWidthPx = w * scale;
-    const dx = (size - iconWidthPx) / 2;
-    const dyPx = (size - pixelSize) / 2 + dy;
-    ctx.setTransform(scale, 0, 0, scale, dx, dyPx);
-
-    // Draw the path of the icon in the specified color
-    ctx.fillStyle = toSupraColor(color);
-    const path2d = new Path2D(path);
-    ctx.fill(path2d);
-    ctx.setTransform(1, 0, 0, 1, 0, 0);
-  }
-
-  // Draw a PNG as the Icon instead of an FA icon
-  function drawImageIcon(iconPath, tgtSize, iconSize, dy = 0) {
-    let img = new Image();
-    img.src = iconPath;
-    const dx = (size - iconSize) * 0.5;
-    ctx.drawImage(img, dx, dx + dy, iconSize, iconSize);
-  }
-
-  // We draw FA icons in three layers, a shadow, a slightly smaller background,
+  // We draw FA icons in three layers, an outline, a slightly smaller background,
   // and then some centred icon to actually represent it.
-  drawFAIcon('fas', isPin ? faPin : faPoint, 'black', size);
-  drawFAIcon('fas', isPin ? faPin : faPoint, bg, outlineSize);
+  drawFAIcon(ctx, 'fas', c.bgIcon, 'black', c.outlineIconSize, iconSizePx, 0);
+  drawFAIcon(ctx, 'fas', c.bgIcon, bgCol, c.bgIconSize, iconSizePx, 0);
 
+  // Draw an image icon or an FA icon as the foreground icon
   if (style == 'fapng' || style == 'fasvg') {
     drawImageIcon(
+      ctx,
       path.join(iconsPath, iconName + '.' + style.slice(2)),
-      size,
-      isPin ? pinIconSize : ptIconSize,
-      isPin ? pinCentreYOffset : ptCentreYOffset
+      c.fgIconSize,
+      iconSizePx,
+      c.fgIconYOffset
     );
   } else {
-    drawFAIcon(style, iconName, fg, isPin ? pinIconSize : ptIconSize, isPin ? pinCentreYOffset : ptCentreYOffset);
+    drawFAIcon(ctx, style, iconName, fgCol, c.fgIconSize, iconSizePx, c.fgIconYOffset);
   }
 
   return canvas.toBuffer('image/png');
