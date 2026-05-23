@@ -2138,8 +2138,8 @@
     "targets": [
       {
         "x": 13362.152,
-        "y": -25047.094,
-        "z": 1190.6257
+        "y": -25042.535,
+        "z": 1197.9017
       }
     ],
     "linetype": "target"
@@ -16137,6 +16137,15 @@
     "lat": 15052.474609375,
     "lng": 16363.7119140625,
     "alt": 1311.70947265625
+  },
+  {
+    "name": "ShopItemSpawner_C_UAID_ACB480ECFC843FDC02_1403497448",
+    "type": "Inventory_Strength_C",
+    "area": "Supraworld",
+    "lat": -5338.91357421875,
+    "lng": 5851.08837890625,
+    "alt": 466.6298522949219,
+    "cost": 20
   },
   {
     "name": "ShopItemSpawner_C_UAID_ACB480ECFC84908602_1750378842",
