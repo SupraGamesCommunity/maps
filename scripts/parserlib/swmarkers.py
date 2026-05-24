@@ -318,13 +318,7 @@ def export_sw_markers(game: str, datadir: Path, sourcedir: Path):  # noqa: C901 
             spawns = ''
             if v := spawn_props.get('Pickup Class'):
                 spawns = v['ObjectName'].split("'")[-2]
-            elif (
-                (v := spawn_props.get('InventoryItem'))
-                or (
-                    (v := spawn_props.get('Initial Shop Inventory')) and isinstance((v := list(v[0].values())[0]), dict)
-                )
-                or (v := spawn_props.get('CustomShopItem'))
-            ):
+            elif (v := spawn_props.get('InventoryItem')) or (v := spawn_props.get('CustomShopItem')):
                 spawns = v['AssetPathName'].split(".")[-1]
             if spawn_props.get('bFromLootPool'):
                 spawns = '_LootPool_C'
