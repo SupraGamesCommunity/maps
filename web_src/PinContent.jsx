@@ -4,6 +4,8 @@ import { useState } from 'react';
 import { updateBuildModeValue } from './devBuildMode.js';
 import { commitCurrentBuildModeChanges } from './devBuildMode.js';
 
+import './css/PinContent.css';
+
 const StaticRow = ({ title, value }) => {
   return (
     <>

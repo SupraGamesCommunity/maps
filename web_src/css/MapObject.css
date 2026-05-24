@@ -1,0 +1,8 @@
+.found {
+  opacity: 30%;
+  filter: grayscale(75%);
+}
+
+.hidden {
+  visibility: hidden;
+}

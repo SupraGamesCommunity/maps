@@ -11,6 +11,8 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
 
+import '../css/sidebar.css';
+
 library.add(fas, far); // Import all FontAwesome icons
 
 /* The HTML component that renders the entire Sidepanel (including navigation tabs and content) */

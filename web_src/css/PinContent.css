@@ -1,0 +1,101 @@
+.marker-popup-heading {
+  background-color: lightblue;
+  color: black;
+  text-align: center;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.marker-popup-subheading {
+  color: black;
+  text-align: center;
+  font-weight: bold;
+}
+
+.marker-popup-col {
+  text-align: top;
+  display: inline-block;
+  width: 75px;
+  font-weight: bold;
+  vertical-align: top;
+}
+
+.marker-popup-col2 {
+  display: inline-block;
+  width: 225px;
+  word-wrap: break-word;
+  vertical-align: top;
+}
+
+.marker-popup-text {
+}
+
+.marker-popup-found {
+  background-color: lightblue;
+  color: black;
+  font-weight: bold;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.marker-popup-found label {
+  display: flex;
+  gap: 0.3em;
+}
+.marker-popup-found input {
+  margin: 0;
+}
+
+.marker-popup-footnote {
+  font-size: 0.75em;
+}
+
+.marker-popup-debug {
+  font-size: 0.75em;
+  word-wrap: break-word;
+}
+
+.marker-popup-debug-col {
+  text-align: top;
+  display: inline-block;
+  width: 45px;
+  font-weight: bold;
+  vertical-align: top;
+}
+
+.marker-popup-debug-col2 {
+  display: inline-block;
+  width: 255px;
+  word-wrap: break-word;
+  vertical-align: top;
+  -webkit-user-select: all;
+  user-select: all;
+}
+
+.marker-popup-edit {
+  font-size: 1em;
+  word-wrap: break-word;
+}
+
+.marker-popup-edit-col {
+  text-align: top;
+  display: inline-block;
+  width: 70px;
+  font-weight: bold;
+  vertical-align: top;
+}
+
+.marker-popup-edit-col2 {
+  display: inline-block;
+  width: 230px;
+  word-wrap: break-word;
+  vertical-align: top;
+}
+
+.xyz-delta-z-negative {
+  color: red;
+}
+.xyz-delta-z-positive {
+  color: green;
+}
