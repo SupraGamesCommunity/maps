@@ -18,6 +18,7 @@ site-packages/
 # Binary and intermediate files from VS projects amongst others
 bin/
 obj/
+__pycache__/
 
 # Ignore the generated icons
 public/img/rendered/**
