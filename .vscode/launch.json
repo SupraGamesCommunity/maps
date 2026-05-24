@@ -43,6 +43,15 @@
             "args": ["-n", "1", "-l", "trace"]
         },
         {
+            "name": "dumpsavefile.js",
+            "type": "node",
+            "request": "launch",
+            "program": "dumpsavefile.js",
+            "console": "integratedTerminal",
+            "cwd": "${workspaceRoot}\\scripts",
+            "args": ["--game", "siu", "-f", "..\\source\\siu\\SIUComplete.sav"]
+        },
+        {
             "name": "Node: Current File",
             "type": "node",
             "request": "launch",
