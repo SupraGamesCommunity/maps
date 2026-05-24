@@ -172,18 +172,20 @@ to a branch on their forked repo:
    git status -uno
    ```
 
-4. If you don't already have github pages (`YOUR_GITHUB_USERNAME.github.io`) setup with the maps you may need to create
+4. Install GitHub Command Line interface from [cli.github.com](https://cli.github.com/) if not already done
+
+5. If you don't already have github pages (`YOUR_GITHUB_USERNAME.github.io`) setup with the maps you may need to create
 it. Instructions can be found here: [Creating a GitHub Pages site](https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site) and here: [Managing environments for deployment](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/managing-a-branch-protection-rule).
 
   To match the maps project environment conifg set _Allow administrators to bypass configured protection rules_ and
   adding `main` to the deployment branches and tags, so that by default only deployments from main branch are allowed.
 
-5. On the forked repository, go to `https://github.com/YOUR_GITHUB_USERNAME/maps/settings/environments_Code`
+6. On the forked repository, go to `https://github.com/YOUR_GITHUB_USERNAME/maps/settings/environments_Code`
    (or _Settings=>Code and automation->Environments_) and open the github-pages configuration. Look for
    _Deployment branches and tags_. The main repository and forks normally have `main` as the only branch allowed.
    Add your deployment branch to the rules. See [Managing environments for deployment](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/managing-a-branch-protection-rule).
 
-6. Run the deployment script:
+7. Run the deployment script:
 
    ```
    npm run deploy-gh-pages
@@ -200,4 +202,4 @@ it. Instructions can be found here: [Creating a GitHub Pages site](https://docs.
 
    Once the job starts, you can click on the build or deploy steps to monitor progress.
 
-7. Once the jobs are successful the branch will be live on `https://YOUR_GITHUB_USERNAME.github.io/maps/`
+8. Once the jobs are successful the branch will be live on `https://YOUR_GITHUB_USERNAME.github.io/maps/`
