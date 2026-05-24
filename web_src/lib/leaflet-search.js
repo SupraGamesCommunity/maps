@@ -4,6 +4,7 @@
 // JD 18/05/2026 Added DomEvent.disableClickPropagation to prevent ignored mouse interactions
 //               being passed on to other controls or the underlying map. Required to prevent
 //               oncontextmenu behaving inconsistently with different controls.
+// JD 24/05/2026 Added fixes up to v4.0.0 from original repository
 
 /* eslint-disable no-unused-vars */
 /* eslint-disable preserve-caught-error */
@@ -549,7 +550,7 @@ export const Search = Control.extend({
 		return request;
 	},
 
-  _searchInLayer: function(layer, retRecords, propName) {
+  _searchInLayer: function(layer, retRecords, propName, baseprop = 'options') {
     var self = this, loc;
 
     if(layer instanceof Search_Marker) return;
