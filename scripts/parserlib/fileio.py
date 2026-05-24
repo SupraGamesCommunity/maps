@@ -4,7 +4,6 @@ import sys
 from typing import Any, Optional
 from .utils import JsonData
 
-
 # The following load/save functions make a path by joining all the varargs
 # together with '\\' and adding '.txt'
 #
