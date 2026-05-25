@@ -708,7 +708,7 @@ class MapPipesystem extends MapObject {
 
   // For two way pipes where the other end doesn't have a nearest_cap it should match found
   onSaveEvent(id, data) {
-    super.onSaveEvent();
+    super.onSaveEvent(id, data);
     if (this._triggerOtherPipe) {
       MapObject._mapObjects[this.o.other_pipe].onSaveEvent(this.o.other_pipe, data);
     }

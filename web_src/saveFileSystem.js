@@ -219,7 +219,7 @@ export class SaveFileSystem {
       if (o.name == 'ActorSaveData') {
         // This is for SIU PipeCap's
         const actorSaveData = o.value.innerValue;
-        const re_match = new RegExp('([^.:]*):PersistentLevel.([^\\0]*?pipecap[^\\0]*)', 'gi');
+        const re_match = new RegExp('(DLC2_[^\\0.:]*)[\\0][\\s\\S]{4}PersistentLevel.([^\\0]*?pipe[^\\0]*)', 'gi');
         let m;
         while ((m = re_match.exec(actorSaveData)) != null) {
           this._addToSaveData(m[1], m[2], o.name);
