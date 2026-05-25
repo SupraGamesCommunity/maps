@@ -28,7 +28,6 @@ import { marker as leaflet_marker, latLngBounds } from 'leaflet';
 // Optional instance data members that can be set by subclasses:
 //
 //  _saveFileId                - optional id listened to for save listener (not set => alt)
-//  _saveFilter                - optional filter to apply for save listener
 //  _defaultSaveValue          - optonal default value for save listener (normally false)
 //  _foundLockedState          - optional, if set found will be locked to this value
 //
@@ -263,27 +262,47 @@ export class MapObject {
 
     this.createLines(map);
 
+    this.addSaveDecodeHandler();
+
     this.addSaveListeners();
 
-    // If this marker is findable then the context menu will be set up when
-    // the save state is dealt with, so only do it now if it's unfindable
-    if (this._foundLockedState !== undefined) {
-      this.updateContextMenuOptions();
+    // If this marker is findable then the contextmenu and found state will
+    // be set up when the save state is dealt with, so only do it now if it's unfindable
+    if(this._foundLockedState !== undefined){
+      this.markFound();
     }
 
     return this;
   }
 
+  // Add a default decode handler
+  addSaveDecodeHandler() {
+    if(this.saveDecodeHandler) {
+      SaveFileSystem.setDecodeHandler(
+        this._decodeHandlerId || this.o.type,
+        this.saveDecodeHandler,
+        this._saveDecodeHandlerContext,
+        { isOuterHandler: !!this._decodeHandlerIsOuter},
+      );
+    }
+  }
+
+  // Release default save decode handler
+  releaseSaveDecodeHandler() {
+    if(this.saveDecodeHandler) {
+      SaveFileSystem.clearDecodeHandler(this._decodeHandlerId || this.o.type)
+    }
+  }
+
   // Default behaviour is to add a save file listener with 'alt' (or the _saveFileId member if set)
   // This default behaviour can be cancelled by setting _saveFileId to null
-  // _saveFileId, _filter and _defaultSaveData may be set by subclasses
+  // saveDecodeHandler, _saveFileId and _defaultSaveData may be set by subclasses
   addSaveListeners() {
-    if (this._saveFileId !== null /*&& this._foundLockedState === undefined*/) {
+    if (this._saveFileId !== null && this._foundLockedState === undefined) {
       SaveFileSystem.setListener(
         this._saveFileId || this.alt,
         this.onSaveEvent,
         this,
-        this._saveFilter,
         this._defaultSaveData
       );
     }
@@ -291,10 +310,11 @@ export class MapObject {
 
   // Release a listener if we've set one up
   releaseSaveListeners() {
-    if (this._saveFileId !== null) {
+    if (this._saveFileId !== null && this._foundLockedState === undefined) {
       SaveFileSystem.clearListener(this._saveFileId || this.alt);
     }
   }
+
 
   // Callback from saveFileSystem when save data changes
   onSaveEvent(id, data) {
@@ -504,6 +524,21 @@ export class MapObject {
     }
   }
 
+  // Get the instance's type and use that as to find the decoder
+  // Handler for: 'PersistentLevel.'
+  static instanceDecoderHandler(saveDecoder) {
+    const listenerId = MapObject.makeAlt(saveDecoder.area, saveDecoder.postmatch);
+    if(SaveFileSystem.hasListener(listenerId)) {
+      saveDecoder.handlerId = MapObject.get(listenerId)?.o.type;
+      saveDecoder.listenerId = listenerId;
+      if(!SaveFileSystem.callDecoderHandler(saveDecoder)) {
+        // There's no decode handler but there is an instance listener so
+        // just add true to the save data
+        SaveFileSystem.defaultDecodeHandler(saveDecoder, true);
+      }
+    }
+  }
+
   // Called after loadObjects to add all the markers to the map
   static initObjects(map) {
     // Initialise all the objects we've constructed
@@ -511,6 +546,8 @@ export class MapObject {
       // Use values so object can release itself if required
       mapObject.init(map);
     }
+
+    SaveFileSystem.setDecodeHandler('PersistentLevel.', this.instanceDecoderHandler, MapObject, { isOuterHandler: true });
 
     // Allows popup to toggle found state
     window.mapObjectFound = mapObjectFound;
@@ -622,48 +659,97 @@ class MapPlayerPosition extends MapObject {
   _foundLockedState = false;
   _disableMovePlayerPosition = true;
 
-  subclassInit() {
+  subclassInit(map) {
     MapObject._playerStartPosition = { lat: this.o.lat, lng: this.o.lng, alt: this.o.alt };
     this._defaultSaveData = { ...MapObject._playerStartPosition };
+    if(map.mapId == 'sw') {
+      this.saveDecodeHandler = MapPlayerPosition.lastCheckpointDecodeHandler;
+      this._decodeHandlerId = 'LastCheckpointActor';
+      this._decodeHandlerIsOuter = true;
+    }
+    else {
+      this.saveDecodeHandler = MapPlayerPosition.playerPositionDecodeHandler;
+      this._decodeHandlerId = this._saveFileId;
+    }
+  }
+
+  static lastCheckpointDecodeHandler(saveDecoder) {
+    saveDecoder.nextInstance({ require: true });
+    const instanceName = saveDecoder.postmatch;
+    if(instanceName) {
+      const id = MapObject.makeAlt('Supraworld', instanceName);
+      const checkPoint = MapObject.get(id);
+      saveDecoder.listenerId = 'Player Position';
+      saveDecoder.data = { lat: checkPoint.o.lat, lng: checkPoint.o.lng, z: checkPoint.o.alt };
+      SaveFileSystem.defaultDecodeHandler(saveDecoder);
+    }
+    else {
+      console.log("Warning: last checkpoint was not recognised (OOB?)");
+    }
+  }
+
+  static playerPositionDecodeHandler(saveDecoder) {
+    if(saveDecoder.data) {
+      saveDecoder.listenerId = saveDecoder.handlerId;
+      saveDecoder.data = saveDecoder.data.Translation?.value || saveDecoder.data.value || saveDecoder.data;
+      saveDecoder.data = { lat: saveDecoder.data.y, lng: saveDecoder.data.x, alt: saveDecoder.data.z };
+      SaveFileSystem.defaultDecodeHandler(saveDecoder);
+    }
   }
 
   // We're listening for a saveLoadEvent of Player Position. We will be called with a position
   // if one has been loaded, otherwise the save state must be cleared.
   onSaveEvent(id, data) {
-    if (!data) {
-      Object.assign(this.o, MapObject._playerStartPosition);
-      this.setLatLng({ lat: this.o.lat, lng: this.o.lng });
-
-      // Mouse over / search titles which include the relative altitude may have changed
-      MapObject.updateTitles();
-    } else {
-      if (this.primeMarker) {
-        this.primeMarker.closePopup();
-      }
-      if (this.groupMarker) {
-        this.groupMarker.closePopup();
-      }
-
-      let value;
-      if ('Translation' in data) {
-        value = data['Translation'].value;
-      } else {
-        value = data.value;
-      }
-      if (value) {
-        this.o.alt = value.z;
-        this.setLatLng({ lat: value.y, lng: value.x });
-
-        // Mouse over / search titles which include the relative altitude may have changed
-        MapObject.updateTitles();
-      } else {
-        return;
-      }
+    if (data) {
+      Object.assign(this.o, data);
     }
+    else {
+      console.log('MapPlayerPosition.onSaveEvent called with null data');
+      Object.assign(this.o, MapObject._playerStartPosition);
+    }
+    this.setLatLng({lat: this.o.lat, lng: this.o.lng});
+
+    // Contents of popup may change
+    (this.primeMarker || this.groupMarker)?.closePopup();
+
+    // Mouse over / search titles which include the relative altitude may have changed
+    MapObject.updateTitles();
   }
 }
 function mapPlayerPosition(...args) {
   return new MapPlayerPosition(...args);
+}
+
+//-------------------------------------------------------------------------------------------------
+// MapObject subclass for o.type=='DetectiveCase_.*'
+//
+// The detective cases need to check if someone has been arrested to be considered found
+class MapDetectiveCase extends MapObject {
+  saveDecodeHandler(saveDecoder) {
+    if(saveDecoder.nextFString('DetainedCharacter')) {
+      SaveFileSystem.defaultDecodeHandler(saveDecoder, true);
+    }
+  }
+}
+function mapDetectiveCase(...args) {
+  return new MapDetectiveCase(...args);
+}
+
+//-------------------------------------------------------------------------------------------------
+// MapObject subclass for o.type=='PuzzleCloud_C'
+//
+// Puzzle cloud's must have had their state set to post puzzle to be considered found
+class MapPuzzleCloud extends MapObject {
+  saveDecodeHandler(saveDecoder){
+    // Value is from enumeration blueprint EPuzzleCloudState
+    const EPuzzleCloudState_PostPuzzle = 2;
+    if(saveDecoder.nextByteProperty() && saveDecoder.data == EPuzzleCloudState_PostPuzzle){
+      SaveFileSystem.defaultDecodeHandler(saveDecoder, true);
+    }
+  }
+}
+function mapPuzzleCloud(...args) {
+  return new MapPuzzleCloud(...args);
 }
 
 //-------------------------------------------------------------------------------------------------
@@ -708,7 +794,7 @@ class MapPipesystem extends MapObject {
 
   // For two way pipes where the other end doesn't have a nearest_cap it should match found
   onSaveEvent(id, data) {
-    super.onSaveEvent();
+    super.onSaveEvent(id, data);
     if (this._triggerOtherPipe) {
       MapObject._mapObjects[this.o.other_pipe].onSaveEvent(this.o.other_pipe, data);
     }
@@ -745,6 +831,8 @@ class MapJumppad extends MapObject {
 
   // Overloading of markFound to handle special line behaviour
   markFound(found) {
+    if(this.o.name == 'Jumppad16')
+      console.log(this.o.name);
     if (found == undefined) {
       found = this.isFound();
     }
@@ -866,10 +954,15 @@ function mapJuicer(...args) {
 //-------------------------------------------------------------------------------------------------
 // MapObject subclass for type 'EnemySpawn3_C' in SL
 //
-// Only mark found if the alt id is on ThingsToOpenForever
+// Only mark found if the parent array is ThingsToOpenForever
 class MapGraveVolcano extends MapObject {
-  _saveFilter = 'ThingsToOpenForever';
+  saveDecodeHandler(saveDecoder){
+    if (saveDecoder.parent == 'ThingsToOpenForever') {
+      SaveFileSystem.defaultDecodeHandler(saveDecoder, true);
+    }
+  }
 }
+
 function mapGraveVolcano(...args) {
   return new MapGraveVolcano(...args);
 }
@@ -877,9 +970,13 @@ function mapGraveVolcano(...args) {
 //-------------------------------------------------------------------------------------------------
 // MapObject subclass for type 'CrashEnemySpawner_C' in SLC
 //
-// Only mark found if the alt id is on ThingsToRemove
+// Only mark found if the parent array is ThingsToRemove
 class MapBonesSpawner extends MapObject {
-  _saveFilter = 'ThingsToRemove';
+  saveDecodeHandler(saveDecoder){
+    if (saveDecoder.parent == 'ThingsToRemove') {
+      SaveFileSystem.defaultDecodeHandler(saveDecoder, true);
+    }
+  }
 }
 function mapBonesSpawner(...args) {
   return new MapBonesSpawner(...args);
@@ -888,9 +985,13 @@ function mapBonesSpawner(...args) {
 //-------------------------------------------------------------------------------------------------
 // MapObject subclass for dead hero named 'DeadHeroIndy' in SL
 //
-// Only mark found if the alt id is on ThingsToActivate
+// Only mark found if the parent array is ThingsToActivate
 class MapDeadHeroIndy extends MapObject {
-  _saveFilter = 'ThingsToActivate';
+  saveDecodeHandler(saveDecoder) {
+    if (saveDecoder.parent == 'ThingsToActivate') {
+      SaveFileSystem.defaultDecodeHandler(saveDecoder, true);
+    }
+  }
 }
 function mapDeadHeroIndy(...args) {
   return new MapDeadHeroIndy(...args);
@@ -898,7 +999,8 @@ function mapDeadHeroIndy(...args) {
 
 // Returns class to instantiate given
 function objectToSubclass(o) {
-  // Object types that have MapObject subclass
+
+  // Object types that have MapObject an exact match
   const typeMap = {
     _PlayerPosition: mapPlayerPosition,
     _SWPlayerPosition: mapPlayerPosition,
@@ -908,10 +1010,24 @@ function objectToSubclass(o) {
     CrashEnemySpawner_C: mapBonesSpawner,
     _CoinStack_C: mapCoinStack,
     Juicer_C: mapJuicer,
+    PuzzleCloud_C: mapPuzzleCloud,
   };
+
   let cls = typeMap[o.type];
   if (cls) {
     return cls;
+  }
+
+  // Types identified by substring of their type
+  const typeIncludes = {
+    Pipesystem: mapPipesystem,
+    Jumppad: mapJumppad,
+    DetectiveCase_: mapDetectiveCase,
+  };
+  for (const [typeSubStr, cls] of Object.entries(typeIncludes)) {
+    if (o.type.includes(typeSubStr)) {
+      return cls;
+    }
   }
 
   // Object names that have MapObject subclass
@@ -921,17 +1037,6 @@ function objectToSubclass(o) {
   cls = nameMap[o.name];
   if (cls) {
     return cls;
-  }
-
-  // Types identified by substring that have
-  const typeIncludes = [
-    ['Pipesystem', mapPipesystem],
-    ['Jumppad', mapJumppad],
-  ];
-  for (const entry of typeIncludes) {
-    if (o.type.includes(entry[0])) {
-      return entry[1];
-    }
   }
 
   // Every other object type/name
