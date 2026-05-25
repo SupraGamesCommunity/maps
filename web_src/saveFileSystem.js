@@ -15,10 +15,9 @@ export class SaveFileSystem {
   static _decodeHandlers = {};
   static _outerHandlerIds = [];
 
-
   static _falseFn() {
     return false;
-  };
+  }
 
   //-----------------------------------------------------------------------------------------------
   // Save event liseners are called whenever the save data associated with the id
@@ -80,13 +79,13 @@ export class SaveFileSystem {
   }
 
   // Set the decodeHandler for a specific instance type or key string
-  static setDecodeHandler(handlerId, fn, context, { isOuterHandler = false }={}) {
+  static setDecodeHandler(handlerId, fn, context, { isOuterHandler = false } = {}) {
     const decodeHandler = (this._decodeHandlers[handlerId] = { fn });
-    if(context !== undefined) {
+    if (context !== undefined) {
       decodeHandler.ctx = context;
     }
-    if(isOuterHandler){
-      this._outerHandlerIds.push(handlerId)
+    if (isOuterHandler) {
+      this._outerHandlerIds.push(handlerId);
     }
   }
 
@@ -97,7 +96,7 @@ export class SaveFileSystem {
       delete this._decodeHandlers[handlerId];
     }
     const idx = this._outerHandlerIds.indexOf(handlerId);
-    if(idx > -1) {
+    if (idx > -1) {
       this._outerHandlerIds.splice(idx, 1);
     }
   }
@@ -106,7 +105,7 @@ export class SaveFileSystem {
   // file such as LastCheckpointActor)
   static callDecoderHandler(saveDecoder) {
     const decodeHandler = this._decodeHandlers[saveDecoder.handlerId];
-    if(decodeHandler) {
+    if (decodeHandler) {
       decodeHandler.fn.call(decodeHandler.context, saveDecoder);
       return true;
     }
@@ -195,7 +194,6 @@ export class SaveFileSystem {
     }
   }
 
-
   //-----------------------------------------------------------------------------------------------
   // Read array data loaded from Suprworld UE5 save file and call any listeners
   // to filter the data and save to settiings
@@ -205,8 +203,8 @@ export class SaveFileSystem {
     const saveDecoder = new UE5SaveDecoder(arrayData, this._outerHandlerIds);
     saveDecoder.area = 'Supraworld';
     while (saveDecoder.nextOuterString()) {
-        saveDecoder.handlerId = saveDecoder.match;
-        this.callDecoderHandler(saveDecoder);
+      saveDecoder.handlerId = saveDecoder.match;
+      this.callDecoderHandler(saveDecoder);
     }
 
     Settings.commit();
@@ -257,11 +255,11 @@ export class SaveFileSystem {
           }
         }
       } else {
-        if(o.name == 'Player Position') {
+        if (o.name == 'Player Position') {
           console.log(o.name);
         }
         // Mostly Player upgrade and other properties
-        this.callDecoderHandler({ handlerId: o.name, data: o.value})
+        this.callDecoderHandler({ handlerId: o.name, data: o.value });
       }
     }
 

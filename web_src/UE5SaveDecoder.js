@@ -53,7 +53,7 @@ export class UE5SaveDecoder {
     const strIdx = m.index + 4;
     const strLen = this._dataview.getInt8(strIdx + byteLen - 1) != 0 ? byteLen : byteLen - 1;
 
-    if(exact && m.groups.match.length != strLen) {
+    if (exact && m.groups.match.length != strLen) {
       return false;
     }
 
@@ -75,7 +75,7 @@ export class UE5SaveDecoder {
     this.searchFStrings({
       matchStrings: [fstring],
       stopStrings: required ? [] : this._outerPatterns,
-      exact
+      exact,
     });
     if (!this.found && required) {
       throw new Error(`Expecting instance FString:${fstring}`);
@@ -93,10 +93,10 @@ export class UE5SaveDecoder {
     this.searchFStrings({
       matchStrings: ['ByteProperty'],
       stopStrings: required ? [] : this._outerPatterns,
-      exact: true
+      exact: true,
     });
     if (!this.found) {
-      if(required) {
+      if (required) {
         throw new Error('Expecting instance FString:ByteProperty');
       }
       return false;
@@ -105,7 +105,7 @@ export class UE5SaveDecoder {
     // Skip to the byte property value
     // int32 == 0, int8 = flag == 1 (hasArrayIndex), int32 == 0
     const skipBytes = '\0\0\0\0\x01\0\0\0\0';
-    if(this._strview.slice(this._searchOffset, this._searchOffset + skipBytes.length) != skipBytes){
+    if (this._strview.slice(this._searchOffset, this._searchOffset + skipBytes.length) != skipBytes) {
       throw new Error('Unexpected data following FString:ByteProperty');
     }
     this._searchOffset += skipBytes.length;

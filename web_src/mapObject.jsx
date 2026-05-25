@@ -268,7 +268,7 @@ export class MapObject {
 
     // If this marker is findable then the contextmenu and found state will
     // be set up when the save state is dealt with, so only do it now if it's unfindable
-    if(this._foundLockedState !== undefined){
+    if (this._foundLockedState !== undefined) {
       this.markFound();
     }
 
@@ -277,20 +277,20 @@ export class MapObject {
 
   // Add a default decode handler
   addSaveDecodeHandler() {
-    if(this.saveDecodeHandler) {
+    if (this.saveDecodeHandler) {
       SaveFileSystem.setDecodeHandler(
         this._decodeHandlerId || this.o.type,
         this.saveDecodeHandler,
         this._saveDecodeHandlerContext,
-        { isOuterHandler: !!this._decodeHandlerIsOuter},
+        { isOuterHandler: !!this._decodeHandlerIsOuter }
       );
     }
   }
 
   // Release default save decode handler
   releaseSaveDecodeHandler() {
-    if(this.saveDecodeHandler) {
-      SaveFileSystem.clearDecodeHandler(this._decodeHandlerId || this.o.type)
+    if (this.saveDecodeHandler) {
+      SaveFileSystem.clearDecodeHandler(this._decodeHandlerId || this.o.type);
     }
   }
 
@@ -299,12 +299,7 @@ export class MapObject {
   // saveDecodeHandler, _saveFileId and _defaultSaveData may be set by subclasses
   addSaveListeners() {
     if (this._saveFileId !== null && this._foundLockedState === undefined) {
-      SaveFileSystem.setListener(
-        this._saveFileId || this.alt,
-        this.onSaveEvent,
-        this,
-        this._defaultSaveData
-      );
+      SaveFileSystem.setListener(this._saveFileId || this.alt, this.onSaveEvent, this, this._defaultSaveData);
     }
   }
 
@@ -314,7 +309,6 @@ export class MapObject {
       SaveFileSystem.clearListener(this._saveFileId || this.alt);
     }
   }
-
 
   // Callback from saveFileSystem when save data changes
   onSaveEvent(id, data) {
@@ -528,10 +522,10 @@ export class MapObject {
   // Handler for: 'PersistentLevel.'
   static instanceDecoderHandler(saveDecoder) {
     const listenerId = MapObject.makeAlt(saveDecoder.area, saveDecoder.postmatch);
-    if(SaveFileSystem.hasListener(listenerId)) {
+    if (SaveFileSystem.hasListener(listenerId)) {
       saveDecoder.handlerId = MapObject.get(listenerId)?.o.type;
       saveDecoder.listenerId = listenerId;
-      if(!SaveFileSystem.callDecoderHandler(saveDecoder)) {
+      if (!SaveFileSystem.callDecoderHandler(saveDecoder)) {
         // There's no decode handler but there is an instance listener so
         // just add true to the save data
         SaveFileSystem.defaultDecodeHandler(saveDecoder, true);
@@ -547,7 +541,9 @@ export class MapObject {
       mapObject.init(map);
     }
 
-    SaveFileSystem.setDecodeHandler('PersistentLevel.', this.instanceDecoderHandler, MapObject, { isOuterHandler: true });
+    SaveFileSystem.setDecodeHandler('PersistentLevel.', this.instanceDecoderHandler, MapObject, {
+      isOuterHandler: true,
+    });
 
     // Allows popup to toggle found state
     window.mapObjectFound = mapObjectFound;
@@ -662,12 +658,11 @@ class MapPlayerPosition extends MapObject {
   subclassInit(map) {
     MapObject._playerStartPosition = { lat: this.o.lat, lng: this.o.lng, alt: this.o.alt };
     this._defaultSaveData = { ...MapObject._playerStartPosition };
-    if(map.mapId == 'sw') {
+    if (map.mapId == 'sw') {
       this.saveDecodeHandler = MapPlayerPosition.lastCheckpointDecodeHandler;
       this._decodeHandlerId = 'LastCheckpointActor';
       this._decodeHandlerIsOuter = true;
-    }
-    else {
+    } else {
       this.saveDecodeHandler = MapPlayerPosition.playerPositionDecodeHandler;
       this._decodeHandlerId = this._saveFileId;
     }
@@ -676,20 +671,19 @@ class MapPlayerPosition extends MapObject {
   static lastCheckpointDecodeHandler(saveDecoder) {
     saveDecoder.nextInstance({ require: true });
     const instanceName = saveDecoder.postmatch;
-    if(instanceName) {
+    if (instanceName) {
       const id = MapObject.makeAlt('Supraworld', instanceName);
       const checkPoint = MapObject.get(id);
       saveDecoder.listenerId = 'Player Position';
       saveDecoder.data = { lat: checkPoint.o.lat, lng: checkPoint.o.lng, z: checkPoint.o.alt };
       SaveFileSystem.defaultDecodeHandler(saveDecoder);
-    }
-    else {
-      console.log("Warning: last checkpoint was not recognised (OOB?)");
+    } else {
+      console.log('Warning: last checkpoint was not recognised (OOB?)');
     }
   }
 
   static playerPositionDecodeHandler(saveDecoder) {
-    if(saveDecoder.data) {
+    if (saveDecoder.data) {
       saveDecoder.listenerId = saveDecoder.handlerId;
       saveDecoder.data = saveDecoder.data.Translation?.value || saveDecoder.data.value || saveDecoder.data;
       saveDecoder.data = { lat: saveDecoder.data.y, lng: saveDecoder.data.x, alt: saveDecoder.data.z };
@@ -702,12 +696,11 @@ class MapPlayerPosition extends MapObject {
   onSaveEvent(id, data) {
     if (data) {
       Object.assign(this.o, data);
-    }
-    else {
+    } else {
       console.log('MapPlayerPosition.onSaveEvent called with null data');
       Object.assign(this.o, MapObject._playerStartPosition);
     }
-    this.setLatLng({lat: this.o.lat, lng: this.o.lng});
+    this.setLatLng({ lat: this.o.lat, lng: this.o.lng });
 
     // Contents of popup may change
     (this.primeMarker || this.groupMarker)?.closePopup();
@@ -726,7 +719,7 @@ function mapPlayerPosition(...args) {
 // The detective cases need to check if someone has been arrested to be considered found
 class MapDetectiveCase extends MapObject {
   saveDecodeHandler(saveDecoder) {
-    if(saveDecoder.nextFString('DetainedCharacter')) {
+    if (saveDecoder.nextFString('DetainedCharacter')) {
       SaveFileSystem.defaultDecodeHandler(saveDecoder, true);
     }
   }
@@ -740,10 +733,10 @@ function mapDetectiveCase(...args) {
 //
 // Puzzle cloud's must have had their state set to post puzzle to be considered found
 class MapPuzzleCloud extends MapObject {
-  saveDecodeHandler(saveDecoder){
+  saveDecodeHandler(saveDecoder) {
     // Value is from enumeration blueprint EPuzzleCloudState
     const EPuzzleCloudState_PostPuzzle = 2;
-    if(saveDecoder.nextByteProperty() && saveDecoder.data == EPuzzleCloudState_PostPuzzle){
+    if (saveDecoder.nextByteProperty() && saveDecoder.data == EPuzzleCloudState_PostPuzzle) {
       SaveFileSystem.defaultDecodeHandler(saveDecoder, true);
     }
   }
@@ -831,8 +824,7 @@ class MapJumppad extends MapObject {
 
   // Overloading of markFound to handle special line behaviour
   markFound(found) {
-    if(this.o.name == 'Jumppad16')
-      console.log(this.o.name);
+    if (this.o.name == 'Jumppad16') console.log(this.o.name);
     if (found == undefined) {
       found = this.isFound();
     }
@@ -956,7 +948,7 @@ function mapJuicer(...args) {
 //
 // Only mark found if the parent array is ThingsToOpenForever
 class MapGraveVolcano extends MapObject {
-  saveDecodeHandler(saveDecoder){
+  saveDecodeHandler(saveDecoder) {
     if (saveDecoder.parent == 'ThingsToOpenForever') {
       SaveFileSystem.defaultDecodeHandler(saveDecoder, true);
     }
@@ -972,7 +964,7 @@ function mapGraveVolcano(...args) {
 //
 // Only mark found if the parent array is ThingsToRemove
 class MapBonesSpawner extends MapObject {
-  saveDecodeHandler(saveDecoder){
+  saveDecodeHandler(saveDecoder) {
     if (saveDecoder.parent == 'ThingsToRemove') {
       SaveFileSystem.defaultDecodeHandler(saveDecoder, true);
     }
@@ -999,7 +991,6 @@ function mapDeadHeroIndy(...args) {
 
 // Returns class to instantiate given
 function objectToSubclass(o) {
-
   // Object types that have MapObject an exact match
   const typeMap = {
     _PlayerPosition: mapPlayerPosition,
