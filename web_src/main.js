@@ -28,6 +28,7 @@ import { SaveFileSystem } from './saveFileSystem.js';
 import { MapParam } from './mapParam.js';
 import { Icons } from './icons.js';
 import { GameClasses } from './gameClasses.js';
+import * as fmt from './formatter.js';
 import { MapLayer } from './mapLayer.js';
 import { MapObject } from './mapObject.jsx';
 import { MapPins } from './mapPins.js';
@@ -172,7 +173,7 @@ async function loadMap(mapParam) {
   // Add zoom, fullscreen toggle and mousePosition controls to the map
   L.control.zoom({ position: 'bottomright' }).addTo(map);
   map.addControl(new FullScreen({ position: 'bottomright', forceSeparateButton: true }));
-  map.addControl(new MousePosition({ numDigits: 0, lngFirst: true }));
+  map.addControl(new MousePosition({ lngFirst: true, lngFormatter: fmt.coord, latFormatter: fmt.coord }));
 
   // Sort out the layer configuration and create the layers
   MapLayer.setupLayers(map);

@@ -12,6 +12,7 @@ import { createRoot } from 'react-dom/client';
 import { PinContent } from './PinContent.jsx';
 import { markerContextMenu } from './contextmenu/init.js';
 import { marker as leaflet_marker, latLngBounds } from 'leaflet';
+import * as fmt from './formatter.js';
 
 import './css/MapObject.css';
 
@@ -122,7 +123,7 @@ export class MapObject {
     if (!friendly) {
       text += ' of ' + o.type;
     }
-    text += ` (${o.lng.toFixed(0)},${o.lat.toFixed(0)},${playerDeltaZ > 0 ? '+' : ''}${playerDeltaZ.toFixed(0)})`; // Ensures friendly version is unique
+    text += ` (${fmt.coord(o.lng)}, ${fmt.coord(o.lat)}, ${fmt.delta(playerDeltaZ)})`; // Ensures friendly version is unique
 
     return text;
   }

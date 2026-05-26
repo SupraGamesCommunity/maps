@@ -3,6 +3,7 @@ import { Settings } from './settings.js';
 import { MapLayer } from './mapLayer.js';
 import { mapPinContextMenu } from './contextmenu/init.js';
 import { marker as leaflet_marker } from 'leaflet';
+import * as fmt from './formatter.js';
 
 //=================================================================================================
 // MapPins
@@ -32,7 +33,7 @@ export class MapPins {
   static getPinTitle = (idx) => {
     const pin = Settings.map.mapPins[idx];
     if (pin) {
-      return `${pin?.type != undefined ? pin.type + ' ' : ''}${idx}: (${pin.pos.lng.toFixed(0)},${pin.pos.lat.toFixed(0)})`;
+      return `${pin?.type != undefined ? pin.type + ' ' : ''}${idx}: (${fmt.coord(pin.pos.lng)},${fmt.coord(pin.pos.lat)})`;
     }
     return undefined;
   };

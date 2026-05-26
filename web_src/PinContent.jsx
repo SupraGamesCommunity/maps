@@ -3,6 +3,7 @@ import { GameClasses } from './gameClasses.js';
 import { useState } from 'react';
 import { updateBuildModeValue } from './devBuildMode.js';
 import { commitCurrentBuildModeChanges } from './devBuildMode.js';
+import * as fmt from './formatter.js';
 
 import './css/PinContent.css';
 
@@ -24,7 +25,7 @@ const XYZRow = ({ xyz, playerDeltaZ }) => {
       <span className="marker-popup-col2">
         {xyz}
         <span className={playerDeltaZ >= 0 ? 'xyz-delta-z-positive' : 'xyz-delta-z-negative'}>
-          {(playerDeltaZ > 0 ? ' +' : ' ') + playerDeltaZ.toFixed(0)}
+          {fmt.delta(playerDeltaZ)}
         </span>
       </span>
     </>
@@ -169,7 +170,7 @@ export const PinContent = ({ o, mapId, closePopup, hasFoundState, isFound, found
             }
           />
         )}
-        <XYZRow xyz={`(${o.lng.toFixed(0)}, ${o.lat.toFixed(0)}, ${o.alt.toFixed(0)})`} playerDeltaZ={playerDeltaZ} />
+        <XYZRow xyz={`(${fmt.coord(o.lng)}, ${fmt.coord(o.lat)}, ${fmt.coord(o.alt)}) `} playerDeltaZ={playerDeltaZ} />
         <br />
         <br />
       </div>
