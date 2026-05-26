@@ -28,7 +28,7 @@ import { SaveFileSystem } from './saveFileSystem.js';
 import { MapParam } from './mapParam.js';
 import { Icons } from './icons.js';
 import { GameClasses } from './gameClasses.js';
-import * as fmt from './formatter.js'
+import * as fmt from './formatter.js';
 import { MapLayer } from './mapLayer.js';
 import { MapObject } from './mapObject.jsx';
 import { MapPins } from './mapPins.js';
