@@ -19,8 +19,8 @@ import { FullScreen } from 'leaflet.fullscreen';
 import './css/lib/L.Control.MousePosition.css';
 import { MousePosition } from './lib/L.Control.MousePosition.js';
 
-import './css/sidebar.css';
 import './css/main.css';
+
 import { browser } from './utils.js';
 import { Settings } from './settings.js';
 import { locStr } from './locStr.js';

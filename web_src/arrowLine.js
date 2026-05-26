@@ -1,6 +1,8 @@
 import { browser } from './utils.js';
 import { Polygon, Point, setOptions } from 'leaflet';
 
+import './css/arrowLine.css';
+
 const _super = Polygon.prototype;
 
 export const L_ArrowLine = Polygon.extend({

@@ -13,6 +13,8 @@ import { PinContent } from './PinContent.jsx';
 import { markerContextMenu } from './contextmenu/init.js';
 import { marker as leaflet_marker, latLngBounds } from 'leaflet';
 
+import './css/MapObject.css';
+
 //=================================================================================================
 // MapObject class
 //
