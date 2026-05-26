@@ -1,6 +1,6 @@
 'use strict';
 
-import { UESaveObject } from '../js/lib/UE4Reader.js';
+import { UESaveObject } from '../web_src/lib/UE4Reader.js';
 import * as fs from 'fs';
 import * as process from 'process';
 const env = process.env;
@@ -52,7 +52,7 @@ if (args.values.file) {
   saveFileName = `${localAppData}\\${saveFileBaseDirs[game]}\\Saved\\SaveGames\\${saveFileBaseNames[game]}${saveSlot}.sav`;
 }
 
-let markerFileName = `..\\data\\markers.${game}.json`;
+let markerFileName = `..\\public\\data\\markers.${game}.json`;
 const jsonData = JSON.parse(fs.readFileSync(markerFileName));
 let jsonMap = {};
 for (const o of jsonData) {
@@ -225,7 +225,8 @@ function readSavFile(game, file) {
 
   // Write out pads/pipes to json
   console.log(`Writing pads/pipes to savedpadpipes.${game}.json...`);
-  fs.writeFileSync(`savedpadpipes.${game}.json`, JSON.stringify(pj, null, 2));
+  const savedpadspipes_file = `..\\source\\${game != 'slc' ? game : 'sl'}\\savedpadpipes.${game}.json`;
+  fs.writeFileSync(savedpadspipes_file, JSON.stringify(pj, null, 2));
 
   console.log(`Duplicates count: ${dupCount}`);
   console.log(`Entries found in JSON extract: ${inCount} not found: ${outCount}`);

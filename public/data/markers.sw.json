@@ -4754,14 +4754,6 @@
     "variant": "purple"
   },
   {
-    "name": "PuzzleCloud_C_UAID_7085C2B20F0E043C02_1240801058",
-    "type": "PuzzleCloud_C",
-    "area": "Supraworld",
-    "lat": 20995.541015625,
-    "lng": 12251.9130859375,
-    "alt": 1556.9991455078125
-  },
-  {
     "name": "PuzzleCloud_C_UAID_7085C2B20F0E0C6E02_1373417202",
     "type": "PuzzleCloud_C",
     "area": "Supraworld",
@@ -4788,53 +4780,12 @@
     "variant": "purple"
   },
   {
-    "name": "PuzzleCloud_C_UAID_7085C2B20F0E134102_1531762927",
-    "type": "PuzzleCloud_C",
-    "area": "Supraworld",
-    "lat": 744.1950073242188,
-    "lng": 3105.26513671875,
-    "alt": 787.4112548828125
-  },
-  {
     "name": "PuzzleCloud_C_UAID_7085C2B20F0E177E02_1880398085",
     "type": "PuzzleCloud_C",
     "area": "Supraworld",
     "lat": -12212.5283203125,
     "lng": 5915.0498046875,
     "alt": 2820.438720703125
-  },
-  {
-    "name": "PuzzleCloud_C_UAID_7085C2B20F0E212A02_1420832062",
-    "type": "PuzzleCloud_C",
-    "area": "Supraworld",
-    "lat": -5308.95849609375,
-    "lng": 9359.4462890625,
-    "alt": 1799.3487548828125
-  },
-  {
-    "name": "PuzzleCloud_C_UAID_7085C2B20F0E212A02_1498355063",
-    "type": "PuzzleCloud_C",
-    "area": "Supraworld",
-    "lat": 3729.536376953125,
-    "lng": 12716.5732421875,
-    "alt": 1632.5430908203125,
-    "variant": "purple"
-  },
-  {
-    "name": "PuzzleCloud_C_UAID_7085C2B20F0E212A02_1527743064",
-    "type": "PuzzleCloud_C",
-    "area": "Supraworld",
-    "lat": 1516.8543701171875,
-    "lng": 15076.259765625,
-    "alt": 1632.5430908203125
-  },
-  {
-    "name": "PuzzleCloud_C_UAID_7085C2B20F0E212A02_1551033065",
-    "type": "PuzzleCloud_C",
-    "area": "Supraworld",
-    "lat": 11829.74609375,
-    "lng": 6006.046875,
-    "alt": 2202.74462890625
   },
   {
     "name": "PuzzleCloud_C_UAID_7085C2B20F0E237B02_1165438984",
@@ -4872,85 +4823,6 @@
     "variant": "cyan"
   },
   {
-    "name": "PuzzleCloud_C_UAID_7085C2B20F0E312D02_1935269060",
-    "type": "PuzzleCloud_C",
-    "area": "Supraworld",
-    "lat": 21568.419921875,
-    "lng": -1643.82470703125,
-    "alt": 3072.77734375,
-    "variant": "purple"
-  },
-  {
-    "name": "PuzzleCloud_C_UAID_7085C2B20F0E312D02_1978082061",
-    "type": "PuzzleCloud_C",
-    "area": "Supraworld",
-    "lat": 24568.857421875,
-    "lng": -1643.82470703125,
-    "alt": 3072.77734375,
-    "variant": "purple"
-  },
-  {
-    "name": "PuzzleCloud_C_UAID_7085C2B20F0E312D02_1990327062",
-    "type": "PuzzleCloud_C",
-    "area": "Supraworld",
-    "lat": 24568.857421875,
-    "lng": 4627.95703125,
-    "alt": 3072.77734375,
-    "variant": "purple"
-  },
-  {
-    "name": "PuzzleCloud_C_UAID_7085C2B20F0E312D02_2013124063",
-    "type": "PuzzleCloud_C",
-    "area": "Supraworld",
-    "lat": 21470.267578125,
-    "lng": 4627.95703125,
-    "alt": 3072.77734375,
-    "variant": "purple"
-  },
-  {
-    "name": "PuzzleCloud_C_UAID_7085C2B20F0E335B02_2000165978",
-    "type": "PuzzleCloud_C",
-    "area": "Supraworld",
-    "lat": -5478.02783203125,
-    "lng": -2471.223876953125,
-    "alt": 836.2705688476562,
-    "variant": "purple"
-  },
-  {
-    "name": "PuzzleCloud_C_UAID_7085C2B20F0E387702_1886715637",
-    "type": "PuzzleCloud_C",
-    "area": "Supraworld",
-    "lat": -14808.7509765625,
-    "lng": -1301.536376953125,
-    "alt": 3077.088623046875,
-    "variant": "cyan"
-  },
-  {
-    "name": "PuzzleCloud_C_UAID_7085C2B20F0E395E02_1240323483",
-    "type": "PuzzleCloud_C",
-    "area": "Supraworld",
-    "lat": 4725.49267578125,
-    "lng": -11732.2490234375,
-    "alt": 2982.707275390625
-  },
-  {
-    "name": "PuzzleCloud_C_UAID_7085C2B20F0E395E02_1355467488",
-    "type": "PuzzleCloud_C",
-    "area": "Supraworld",
-    "lat": -6574.54541015625,
-    "lng": -6445.5947265625,
-    "alt": 5595.9775390625
-  },
-  {
-    "name": "PuzzleCloud_C_UAID_7085C2B20F0E395E02_1393637490",
-    "type": "PuzzleCloud_C",
-    "area": "Supraworld",
-    "lat": -13353.7666015625,
-    "lng": 12529.4287109375,
-    "alt": 3641.162109375,
-    "variant": "purple"
-  },
-  {
     "name": "PuzzleCloud_C_UAID_7085C2B20F0E395E02_1401941491",
     "type": "PuzzleCloud_C",
     "area": "Supraworld",
@@ -4960,71 +4832,12 @@
     "variant": "purple"
   },
   {
-    "name": "PuzzleCloud_C_UAID_7085C2B20F0E395E02_1409725492",
-    "type": "PuzzleCloud_C",
-    "area": "Supraworld",
-    "lat": -8006.6376953125,
-    "lng": 15942.2470703125,
-    "alt": 3865.844482421875,
-    "variant": "purple"
-  },
-  {
     "name": "PuzzleCloud_C_UAID_7085C2B20F0E395E02_1427785493",
     "type": "PuzzleCloud_C",
     "area": "Supraworld",
     "lat": -22917.94921875,
     "lng": 13483.4931640625,
     "alt": 8236.73828125,
-    "variant": "purple"
-  },
-  {
-    "name": "PuzzleCloud_C_UAID_7085C2B20F0E395E02_1468219494",
-    "type": "PuzzleCloud_C",
-    "area": "Supraworld",
-    "lat": 8931.1025390625,
-    "lng": 13959.806640625,
-    "alt": 13291.517578125,
-    "variant": "purple"
-  },
-  {
-    "name": "PuzzleCloud_C_UAID_7085C2B20F0E395E02_1482156495",
-    "type": "PuzzleCloud_C",
-    "area": "Supraworld",
-    "lat": 7368.765625,
-    "lng": 11024.7099609375,
-    "alt": 8356.9970703125
-  },
-  {
-    "name": "PuzzleCloud_C_UAID_7085C2B20F0E395E02_1510643496",
-    "type": "PuzzleCloud_C",
-    "area": "Supraworld",
-    "lat": -5229.7431640625,
-    "lng": -8568.2939453125,
-    "alt": 9155.9443359375
-  },
-  {
-    "name": "PuzzleCloud_C_UAID_7085C2B20F0E395E02_1665666497",
-    "type": "PuzzleCloud_C",
-    "area": "Supraworld",
-    "lat": 23356.478515625,
-    "lng": -13760.6318359375,
-    "alt": 10642.0166015625
-  },
-  {
-    "name": "PuzzleCloud_C_UAID_7085C2B20F0E395E02_1673019498",
-    "type": "PuzzleCloud_C",
-    "area": "Supraworld",
-    "lat": 25843.90234375,
-    "lng": -13473.275390625,
-    "alt": 10642.0166015625
-  },
-  {
-    "name": "PuzzleCloud_C_UAID_7085C2B20F0E424D02_1497365982",
-    "type": "PuzzleCloud_C",
-    "area": "Supraworld",
-    "lat": -1901.8406982421875,
-    "lng": 5055.7041015625,
-    "alt": 3860.759521484375,
     "variant": "purple"
   },
   {
@@ -5054,15 +4867,6 @@
     "variant": "cyan"
   },
   {
-    "name": "PuzzleCloud_C_UAID_7085C2B20F0E5F5302_1282052246",
-    "type": "PuzzleCloud_C",
-    "area": "Supraworld",
-    "lat": 24664.814453125,
-    "lng": -4485.89208984375,
-    "alt": 10076.060546875,
-    "variant": "purple"
-  },
-  {
     "name": "PuzzleCloud_C_UAID_7085C2B20F0E5F7902_1076434496",
     "type": "PuzzleCloud_C",
     "area": "Supraworld",
@@ -5078,23 +4882,6 @@
     "lng": -16928.48046875,
     "alt": 3113.11181640625,
     "variant": "cyan"
-  },
-  {
-    "name": "PuzzleCloud_C_UAID_7085C2B20F0E697B02_1784259342",
-    "type": "PuzzleCloud_C",
-    "area": "Supraworld",
-    "lat": -17163.783203125,
-    "lng": 1862.6881103515625,
-    "alt": 2229.610107421875,
-    "variant": "cyan"
-  },
-  {
-    "name": "PuzzleCloud_C_UAID_7085C2B20F0E6C7B02_1394792066",
-    "type": "PuzzleCloud_C",
-    "area": "Supraworld",
-    "lat": 30172.015625,
-    "lng": 10826.7099609375,
-    "alt": 3179.8330078125
   },
   {
     "name": "PuzzleCloud_C_UAID_7085C2B20F0E752A02_1091564846",
@@ -5138,15 +4925,6 @@
     "alt": 1613.5423583984375
   },
   {
-    "name": "PuzzleCloud_C_UAID_7085C2B20F0E762A02_1230883032",
-    "type": "PuzzleCloud_C",
-    "area": "Supraworld",
-    "lat": 17770.142578125,
-    "lng": 1341.2781982421875,
-    "alt": 3947.54736328125,
-    "variant": "purple"
-  },
-  {
     "name": "PuzzleCloud_C_UAID_7085C2B20F0E772A02_1115258210",
     "type": "PuzzleCloud_C",
     "area": "Supraworld",
@@ -5154,14 +4932,6 @@
     "lng": 16698.5859375,
     "alt": 2713.638916015625,
     "variant": "purple"
-  },
-  {
-    "name": "PuzzleCloud_C_UAID_7085C2B20F0E772A02_1643414213",
-    "type": "PuzzleCloud_C",
-    "area": "Supraworld",
-    "lat": 6211.0615234375,
-    "lng": -2812.97607421875,
-    "alt": 2734.5146484375
   },
   {
     "name": "PuzzleCloud_C_UAID_7085C2B20F0E772A02_1767659214",
@@ -5178,22 +4948,6 @@
     "lat": 2312.8681640625,
     "lng": 5837.041015625,
     "alt": 4277.7080078125
-  },
-  {
-    "name": "PuzzleCloud_C_UAID_7085C2B20F0E7A2A02_2065768751",
-    "type": "PuzzleCloud_C",
-    "area": "Supraworld",
-    "lat": 11566.4375,
-    "lng": -4950.5810546875,
-    "alt": 3046.397216796875
-  },
-  {
-    "name": "PuzzleCloud_C_UAID_7085C2B20F0E7B2A02_1427403928",
-    "type": "PuzzleCloud_C",
-    "area": "Supraworld",
-    "lat": 2910.48583984375,
-    "lng": 4217.4248046875,
-    "alt": 1338.6021728515625
   },
   {
     "name": "PuzzleCloud_C_UAID_7085C2B20F0E7B2A02_1960000932",
@@ -5296,22 +5050,6 @@
     "lng": 4195.34326171875,
     "alt": 2818.482421875,
     "variant": "purple"
-  },
-  {
-    "name": "PuzzleCloud_C_UAID_7085C2B20F0E907302_1881230002",
-    "type": "PuzzleCloud_C",
-    "area": "Supraworld",
-    "lat": 9156.6201171875,
-    "lng": 13728.365234375,
-    "alt": 1137.5845947265625
-  },
-  {
-    "name": "PuzzleCloud_C_UAID_7085C2B20F0E965A02_1938990393",
-    "type": "PuzzleCloud_C",
-    "area": "Supraworld",
-    "lat": -10100.9736328125,
-    "lng": 2103.97998046875,
-    "alt": 1583.3487548828125
   },
   {
     "name": "PuzzleCloud_C_UAID_7085C2B20F0E967902_2010714115",
@@ -5436,45 +5174,12 @@
     "variant": "purple"
   },
   {
-    "name": "PuzzleCloud_C_UAID_7085C2B20F0EB06802_1621094673",
-    "type": "PuzzleCloud_C",
-    "area": "Supraworld",
-    "lat": -6549.8994140625,
-    "lng": 5499.634765625,
-    "alt": 1345.939697265625
-  },
-  {
-    "name": "PuzzleCloud_C_UAID_7085C2B20F0EB06802_1696090674",
-    "type": "PuzzleCloud_C",
-    "area": "Supraworld",
-    "lat": -2218.16748046875,
-    "lng": -681.4889526367188,
-    "alt": 1541.927978515625,
-    "variant": "purple"
-  },
-  {
-    "name": "PuzzleCloud_C_UAID_7085C2B20F0EB47302_1804957096",
-    "type": "PuzzleCloud_C",
-    "area": "Supraworld",
-    "lat": 22100.349609375,
-    "lng": 2098.476318359375,
-    "alt": 1000.6527709960938
-  },
-  {
     "name": "PuzzleCloud_C_UAID_7085C2B20F0EB47D02_1443571618",
     "type": "PuzzleCloud_C",
     "area": "Supraworld",
     "lat": 6759.2353515625,
     "lng": 13097.3408203125,
     "alt": 2436.445556640625
-  },
-  {
-    "name": "PuzzleCloud_C_UAID_7085C2B20F0EB47D02_1481192619",
-    "type": "PuzzleCloud_C",
-    "area": "Supraworld",
-    "lat": 9943.8017578125,
-    "lng": 12662.1708984375,
-    "alt": 2650.30712890625
   },
   {
     "name": "PuzzleCloud_C_UAID_7085C2B20F0EB57D02_1309741802",
@@ -5517,93 +5222,6 @@
     "alt": 2034.457275390625
   },
   {
-    "name": "PuzzleCloud_C_UAID_7085C2B20F0EC7E101_1628543169",
-    "type": "PuzzleCloud_C",
-    "area": "Supraworld",
-    "lat": -8788.0107421875,
-    "lng": 474.8490295410156,
-    "alt": 993.5615234375,
-    "variant": "purple"
-  },
-  {
-    "name": "PuzzleCloud_C_UAID_7085C2B20F0EC7E101_1703654170",
-    "type": "PuzzleCloud_C",
-    "area": "Supraworld",
-    "lat": -12093.7333984375,
-    "lng": 4720.82421875,
-    "alt": 1446.3558349609375
-  },
-  {
-    "name": "PuzzleCloud_C_UAID_7085C2B20F0EC7E101_1832851171",
-    "type": "PuzzleCloud_C",
-    "area": "Supraworld",
-    "lat": -13549.3935546875,
-    "lng": 4870.4775390625,
-    "alt": 3202.432373046875,
-    "variant": "purple"
-  },
-  {
-    "name": "PuzzleCloud_C_UAID_7085C2B20F0EC7E101_1926738172",
-    "type": "PuzzleCloud_C",
-    "area": "Supraworld",
-    "lat": -8925.3466796875,
-    "lng": 6198.0693359375,
-    "alt": 1175.5482177734375,
-    "variant": "purple"
-  },
-  {
-    "name": "PuzzleCloud_C_UAID_7085C2B20F0EC7E101_2081258173",
-    "type": "PuzzleCloud_C",
-    "area": "Supraworld",
-    "lat": -14948.6494140625,
-    "lng": 498.3712158203125,
-    "alt": 2438.21435546875,
-    "variant": "purple"
-  },
-  {
-    "name": "PuzzleCloud_C_UAID_7085C2B20F0EC8E101_1168677350",
-    "type": "PuzzleCloud_C",
-    "area": "Supraworld",
-    "lat": -7079.39794921875,
-    "lng": -36.10723114013672,
-    "alt": 1532.1075439453125,
-    "variant": "purple"
-  },
-  {
-    "name": "PuzzleCloud_C_UAID_7085C2B20F0EC8E101_1263407351",
-    "type": "PuzzleCloud_C",
-    "area": "Supraworld",
-    "lat": -4049.581298828125,
-    "lng": -2575.39501953125,
-    "alt": 1285.21728515625,
-    "variant": "purple"
-  },
-  {
-    "name": "PuzzleCloud_C_UAID_7085C2B20F0EC8E101_1328001352",
-    "type": "PuzzleCloud_C",
-    "area": "Supraworld",
-    "lat": -4016.634521484375,
-    "lng": -114.41392517089844,
-    "alt": 1161.6075439453125
-  },
-  {
-    "name": "PuzzleCloud_C_UAID_7085C2B20F0EC8E101_1388659353",
-    "type": "PuzzleCloud_C",
-    "area": "Supraworld",
-    "lat": -2158.79345703125,
-    "lng": 1862.0391845703125,
-    "alt": 1619.8863525390625,
-    "variant": "purple"
-  },
-  {
-    "name": "PuzzleCloud_C_UAID_7085C2B20F0EC8E101_1488251354",
-    "type": "PuzzleCloud_C",
-    "area": "Supraworld",
-    "lat": -4124.48046875,
-    "lng": 5240.5048828125,
-    "alt": 1373.5279541015625
-  },
-  {
     "name": "PuzzleCloud_C_UAID_7085C2B20F0ECD4002_1374263651",
     "type": "PuzzleCloud_C",
     "area": "Supraworld",
@@ -5638,14 +5256,6 @@
     "variant": "cyan"
   },
   {
-    "name": "PuzzleCloud_C_UAID_7085C2B20F0EE15402_2008322200",
-    "type": "PuzzleCloud_C",
-    "area": "Supraworld",
-    "lat": 7857.576171875,
-    "lng": 2692.21533203125,
-    "alt": 2288.592041015625
-  },
-  {
     "name": "PuzzleCloud_C_UAID_7085C2B20F0EE17602_1417724112",
     "type": "PuzzleCloud_C",
     "area": "Supraworld",
@@ -5660,33 +5270,6 @@
     "lat": 12987.1806640625,
     "lng": -6135.3603515625,
     "alt": 2047.0386962890625
-  },
-  {
-    "name": "PuzzleCloud_C_UAID_ACB480ECFC8403C702_1455999585",
-    "type": "PuzzleCloud_C",
-    "area": "Supraworld",
-    "lat": -32084.75,
-    "lng": 8190.45458984375,
-    "alt": 13069.5234375,
-    "variant": "purple"
-  },
-  {
-    "name": "PuzzleCloud_C_UAID_ACB480ECFC8407AA02_1940280767",
-    "type": "PuzzleCloud_C",
-    "area": "Supraworld",
-    "lat": -14342.134765625,
-    "lng": 18576.25,
-    "alt": 2974.757080078125,
-    "variant": "purple"
-  },
-  {
-    "name": "PuzzleCloud_C_UAID_ACB480ECFC840D9402_1739848971",
-    "type": "PuzzleCloud_C",
-    "area": "Supraworld",
-    "lat": 25446.849609375,
-    "lng": 10330.265625,
-    "alt": 8793.4892578125,
-    "variant": "purple"
   },
   {
     "name": "PuzzleCloud_C_UAID_ACB480ECFC84118E02_1895199914",
@@ -5723,15 +5306,6 @@
     "variant": "purple"
   },
   {
-    "name": "PuzzleCloud_C_UAID_ACB480ECFC8426B502_1516718019",
-    "type": "PuzzleCloud_C",
-    "area": "Supraworld",
-    "lat": 3220.952880859375,
-    "lng": 1579.802490234375,
-    "alt": 7639.94677734375,
-    "variant": "purple"
-  },
-  {
     "name": "PuzzleCloud_C_UAID_ACB480ECFC842C8D02_1501930023",
     "type": "PuzzleCloud_C",
     "area": "Supraworld",
@@ -5750,37 +5324,12 @@
     "variant": "purple"
   },
   {
-    "name": "PuzzleCloud_C_UAID_ACB480ECFC8434BC02_1672739617",
-    "type": "PuzzleCloud_C",
-    "area": "Supraworld",
-    "lat": -32982.48046875,
-    "lng": 7857.0576171875,
-    "alt": 1984.6435546875,
-    "variant": "purple"
-  },
-  {
-    "name": "PuzzleCloud_C_UAID_ACB480ECFC8435BC02_2043445811",
-    "type": "PuzzleCloud_C",
-    "area": "Supraworld",
-    "lat": -24806.947265625,
-    "lng": 7326.505859375,
-    "alt": 2882.218017578125
-  },
-  {
     "name": "PuzzleCloud_C_UAID_ACB480ECFC8436A702_1711391915",
     "type": "PuzzleCloud_C",
     "area": "Supraworld",
     "lat": -11627.7890625,
     "lng": -5095.232421875,
     "alt": 708.4249877929688
-  },
-  {
-    "name": "PuzzleCloud_C_UAID_ACB480ECFC843B8702_1258665669",
-    "type": "PuzzleCloud_C",
-    "area": "Supraworld",
-    "lat": 8037.19580078125,
-    "lng": 10440.9521484375,
-    "alt": 932.6746215820312
   },
   {
     "name": "PuzzleCloud_C_UAID_ACB480ECFC843C9202_1655949695",
@@ -5797,15 +5346,6 @@
     "area": "Supraworld",
     "lat": -23256.91796875,
     "lng": -1881.9786376953125,
-    "alt": 2572.45751953125,
-    "variant": "cyan"
-  },
-  {
-    "name": "PuzzleCloud_C_UAID_ACB480ECFC84468002_1606493421",
-    "type": "PuzzleCloud_C",
-    "area": "Supraworld",
-    "lat": -16966.095703125,
-    "lng": -1742.6387939453125,
     "alt": 2572.45751953125,
     "variant": "cyan"
   },
@@ -5879,29 +5419,12 @@
     "variant": "cyan"
   },
   {
-    "name": "PuzzleCloud_C_UAID_ACB480ECFC84598B02_1565320078",
-    "type": "PuzzleCloud_C",
-    "area": "Supraworld",
-    "lat": 25978.18359375,
-    "lng": 17204.537109375,
-    "alt": 5707.7978515625
-  },
-  {
     "name": "PuzzleCloud_C_UAID_ACB480ECFC845A8B02_1791905259",
     "type": "PuzzleCloud_C",
     "area": "Supraworld",
     "lat": 23684.0234375,
     "lng": 17056.3515625,
     "alt": 1782.720947265625
-  },
-  {
-    "name": "PuzzleCloud_C_UAID_ACB480ECFC84638A02_1839660438",
-    "type": "PuzzleCloud_C",
-    "area": "Supraworld",
-    "lat": -12331.1865234375,
-    "lng": -1461.67041015625,
-    "alt": 1244.0240478515625,
-    "variant": "blue"
   },
   {
     "name": "PuzzleCloud_C_UAID_ACB480ECFC84698302_1428764764",
@@ -5962,29 +5485,12 @@
     "alt": -222.70901489257812
   },
   {
-    "name": "PuzzleCloud_C_UAID_ACB480ECFC84839202_1695992306",
-    "type": "PuzzleCloud_C",
-    "area": "Supraworld",
-    "lat": 16832.83203125,
-    "lng": -1006.2863159179688,
-    "alt": 3698.1064453125,
-    "variant": "cyan"
-  },
-  {
     "name": "PuzzleCloud_C_UAID_ACB480ECFC8487A802_1145890131",
     "type": "PuzzleCloud_C",
     "area": "Supraworld",
     "lat": -14139.412109375,
     "lng": 2319.712890625,
     "alt": 2002.629150390625
-  },
-  {
-    "name": "PuzzleCloud_C_UAID_ACB480ECFC84958B02_1663592555",
-    "type": "PuzzleCloud_C",
-    "area": "Supraworld",
-    "lat": -6526.75634765625,
-    "lng": -1706.1614990234375,
-    "alt": 1827.6397705078125
   },
   {
     "name": "PuzzleCloud_C_UAID_ACB480ECFC8495D602_1646837183",
@@ -6055,14 +5561,6 @@
     "variant": "blue"
   },
   {
-    "name": "PuzzleCloud_C_UAID_ACB480ECFC84CCBE02_1910250460",
-    "type": "PuzzleCloud_C",
-    "area": "Supraworld",
-    "lat": -198.26625061035156,
-    "lng": 19951.4609375,
-    "alt": 924.6251831054688
-  },
-  {
     "name": "PuzzleCloud_C_UAID_ACB480ECFC84CEC202_2043183037",
     "type": "PuzzleCloud_C",
     "area": "Supraworld",
@@ -6087,14 +5585,6 @@
     "lng": 11155.376953125,
     "alt": 1094.7574462890625,
     "variant": "purple"
-  },
-  {
-    "name": "PuzzleCloud_C_UAID_ACB480ECFC84D48102_1782921597",
-    "type": "PuzzleCloud_C",
-    "area": "Supraworld",
-    "lat": 204.69586181640625,
-    "lng": -3655.609375,
-    "alt": 1539.67529296875
   },
   {
     "name": "PuzzleCloud_C_UAID_ACB480ECFC84DC8C02_1661741484",
@@ -6133,63 +5623,12 @@
     "variant": "cyan"
   },
   {
-    "name": "PuzzleCloud_C_UAID_ACB480ECFC84E29102_1821124338",
-    "type": "PuzzleCloud_C",
-    "area": "Supraworld",
-    "lat": -999.9901123046875,
-    "lng": 19431.384765625,
-    "alt": 1777.254638671875,
-    "variant": "purple"
-  },
-  {
-    "name": "PuzzleCloud_C_UAID_ACB480ECFC84E2D102_1283261555",
-    "type": "PuzzleCloud_C",
-    "area": "Supraworld",
-    "lat": -24841.962890625,
-    "lng": 17199.978515625,
-    "alt": 7.489199638366699,
-    "variant": "cyan"
-  },
-  {
     "name": "PuzzleCloud_C_UAID_ACB480ECFC84F58502_1619941550",
     "type": "PuzzleCloud_C",
     "area": "Supraworld",
     "lat": -3248.40478515625,
     "lng": 9408.451171875,
     "alt": 1687.203125
-  },
-  {
-    "name": "PuzzleCloud_C_UAID_ACB480ECFC84F88502_1975966080",
-    "type": "PuzzleCloud_C",
-    "area": "Supraworld",
-    "lat": 3001.7060546875,
-    "lng": 8564.90234375,
-    "alt": 2939.488525390625,
-    "variant": "purple"
-  },
-  {
-    "name": "PuzzleCloud_C_UAID_D45D6446946DB7F801_1120940651",
-    "type": "PuzzleCloud_C",
-    "area": "Supraworld",
-    "lat": -11045.755859375,
-    "lng": -5063.5498046875,
-    "alt": 6644.86474609375
-  },
-  {
-    "name": "PuzzleCloud_C_UAID_D45D6446946DB7F801_1229995652",
-    "type": "PuzzleCloud_C",
-    "area": "Supraworld",
-    "lat": -12590.2119140625,
-    "lng": 5255.87890625,
-    "alt": 7050.91064453125
-  },
-  {
-    "name": "PuzzleCloud_C_UAID_D45D6446946DB7F801_1257246653",
-    "type": "PuzzleCloud_C",
-    "area": "Supraworld",
-    "lat": -11156.595703125,
-    "lng": 2034.71728515625,
-    "alt": 7017.234375
   },
   {
     "name": "PuzzleCloud_C_UAID_FC3497C3461008C702_2077296684",
@@ -6215,15 +5654,6 @@
     "lat": -22631.119140625,
     "lng": 14455.97265625,
     "alt": 1923.0
-  },
-  {
-    "name": "PuzzleCloud_C_UAID_FC3497C346107FA602_1215932630",
-    "type": "PuzzleCloud_C",
-    "area": "Supraworld",
-    "lat": -20503.224609375,
-    "lng": 7897.068359375,
-    "alt": 4264.64892578125,
-    "variant": "red"
   },
   {
     "name": "PuzzleCloud_C_UAID_FC3497C34610C6BF02_2060495445",
