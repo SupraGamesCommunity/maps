@@ -991,5 +991,5 @@ function objectToSubclass(o) {
   }
 
   // Every other object type/name
-  return mapObject;
+  return (...args) => new MapObject(...args);
 }
