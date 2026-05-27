@@ -12,36 +12,34 @@ import { UE5SaveDecoder } from './UE5SaveDecoder.js';
 
 export class SaveFileSystem {
   static _listeners = {};
+  static _decodeHandlers = {};
+  static _outerHandlerIds = [];
 
-  static _falseFn = () => {
+  static _falseFn() {
     return false;
-  };
+  }
 
+  //-----------------------------------------------------------------------------------------------
+  // Save event liseners are called whenever the save data associated with the id
+  // is changed (set, loaded or cleared). The id is typically instance {area}:{name}
+  // but can be any key string.
+
+  // Return true if there is a listener for the specified id
   static hasListener(id) {
     return id in this._listeners;
   }
 
-  static hasAnyData() {
-    for (const id in Settings.map.saveData) {
-      return true;
-    }
-    return false;
-  }
-
-  // Add function/context to be called when event fired. Overwrites any previous listener
-  // id: string: identifies instance this listener is for '{area}:{name}'
+  // Add function to be called when the save data change event is fired fired. Overwrites
+  // any previous listener.
+  //
+  // id: string: identifies instance this listener (usually instance id '{area}:{name}')
   // fn: function(ctx: any, id: string, data: varies): called when save data for instance changes
-  // filter: string: if string passed in, will be used to filter data
   // context: object: used as this pointer for callbacks
   // defaultValue: any: data specific to listener instance class [false]
-  // decodeData: function(ctx, ?): called to allow custom save data decoding,
-  static setListener(id, fn, context, filter, defaultValue) {
+  static setListener(id, fn, context, defaultValue = false) {
     const listener = (this._listeners[id] = { fn });
     if (context !== undefined) {
       listener.ctx = context;
-    }
-    if (typeof filter === 'string') {
-      listener.flt = filter;
     }
     if (defaultValue !== undefined) {
       listener.def = defaultValue;
@@ -56,29 +54,97 @@ export class SaveFileSystem {
     }
   }
 
-  // Returns true if there is a listener and filter passes
-  static _testFire(id, filter) {
-    const listener = this._listeners[id];
-    return listener && (listener.flt === undefined || listener.flt == filter);
-  }
-
   // Call all functions listening for event
-  static _fire(id, data) {
+  static callListener(id, data) {
     const listener = this._listeners[id];
     if (listener) {
       listener.fn.call(listener.ctx, id, data);
+      return true;
+    }
+    return false;
+  }
+
+  //-----------------------------------------------------------------------------------------------
+  // Decode handlers are called when the save data is read from the file, the default only handles
+  // instances, if they are present in the file then the listener is called with 'true'.
+  //
+  // To customise behaviour for non-instance strings or specific properties within instance data
+  // a decoderHandler is called to provide the opportunity to transform what is done.
+  //
+  // Id is normally a game class, but can be any string.
+
+  // Returns true if there is a decodeHandler associated with this id
+  static hasDecodeHandler(handlerId) {
+    return handlerId in this._decodeHandlers;
+  }
+
+  // Set the decodeHandler for a specific instance type or key string
+  static setDecodeHandler(handlerId, fn, context, { isOuterHandler = false } = {}) {
+    const decodeHandler = (this._decodeHandlers[handlerId] = { fn });
+    if (context !== undefined) {
+      decodeHandler.ctx = context;
+    }
+    if (isOuterHandler) {
+      this._outerHandlerIds.push(handlerId);
     }
   }
 
-  // Clear all listeners (without calling)
+  // Clear the corresponding decode handler
+  static clearDecodeHandler(handlerId) {
+    if (handlerId in this._decodeHandlers) {
+      this._decodeHandlers[handlerId].fn = this._falseFn;
+      delete this._decodeHandlers[handlerId];
+    }
+    const idx = this._outerHandlerIds.indexOf(handlerId);
+    if (idx > -1) {
+      this._outerHandlerIds.splice(idx, 1);
+    }
+  }
+
+  // If there's a decoder then call it (used for global properties in save
+  // file such as LastCheckpointActor)
+  static callDecoderHandler(saveDecoder) {
+    const decodeHandler = this._decodeHandlers[saveDecoder.handlerId];
+    if (decodeHandler) {
+      decodeHandler.fn.call(decodeHandler.context, saveDecoder);
+      return true;
+    }
+    return false;
+  }
+
+  // If there is a listener for this object then add it as found (data)
+  static defaultDecodeHandler(saveDecoder, data) {
+    Settings.map.saveData[saveDecoder.listenerId] = data || saveDecoder.data;
+  }
+
+  //-----------------------------------------------------------------------------------------------
+  // Clear all listeners and handlers (without calling)
   static reset() {
     for (const listener of Object.values(this._listeners)) {
       listener.fn = this._falseFn;
     }
     this._listeners = {};
+
+    for (const decodeHandler of Object.values(this._decodeHandlers)) {
+      decodeHandler.fn = this._falseFn;
+    }
+    this._decodeHandlers = {};
+    this._outerHandlerIds = [];
   }
 
-  // Retrieve current value of property 'name'
+  //-----------------------------------------------------------------------------------------------
+  // The current state of the save data loaded is stored in Settings so that
+  // it persists between sessions.
+
+  // Returns true if there is any save data at the moment
+  static hasAnyData() {
+    for (const id in Settings.map.saveData) {
+      return true;
+    }
+    return false;
+  }
+
+  // Retrieve current value of id
   static getData(id) {
     let data = Settings.map.saveData[id];
     if (data !== undefined) {
@@ -91,19 +157,17 @@ export class SaveFileSystem {
   // Called to set property to a specific value (commits Settings so inefficient for multiple calls)
   static setData(id, data) {
     const listener = this._listeners[id];
-    if (!listener) {
-      return;
-    }
+    if (listener) {
+      const defaultValue = listener.def ?? false;
+      if (data === defaultValue) {
+        delete Settings.map.saveData[id];
+      } else {
+        Settings.map.saveData[id] = data;
+      }
+      Settings.commit();
 
-    const defaultValue = listener.def !== undefined ? listener.def : false;
-    if (data === defaultValue) {
-      delete Settings.map.saveData[id];
-    } else {
-      Settings.map.saveData[id] = data;
+      this.callListener(id, data);
     }
-    Settings.commit();
-
-    this._fire(id, data);
   }
 
   // Should be called after all listeners are established. Listeners are presumed to be
@@ -114,7 +178,7 @@ export class SaveFileSystem {
     for (const id in this._listeners) {
       const data = this.getData(id);
       if (data !== undefined) {
-        this._fire(id, data);
+        this.callListener(id, data);
       }
     }
   }
@@ -126,72 +190,26 @@ export class SaveFileSystem {
 
     for (const id in this._listeners) {
       const defaultValue = this._listeners[id].def;
-      this._fire(id, defaultValue !== undefined ? defaultValue : false);
+      this.callListener(id, defaultValue !== undefined ? defaultValue : false);
     }
   }
 
-  // If there is a listener for this object then add it as found (data)
-  static _addToSaveData = (area, name, filter, data = true) => {
-    const id = MapObject.makeAlt(area, name);
-    if (this._testFire(id, filter)) {
-      Settings.map.saveData[id] = data;
-    }
-  };
-
-  // TODO: Complete Refactor
-  // At the moment the special behaviour for classes is handled by the processLoadedArray but
-  // this can be moved into the MapObject subclasses by adding a decoder callback to the listener,
-  // whose job would be to do any further decoding required to get the state before calling the
-  // add function.
-  //
-  // The decoder callback would be passed the UE5SaveDecoder, the default decode being
-  // just calling with true if the instance is found in the file.
-  //
-  // Similarly the LastcheckpointActor string should be being added as a listener for the
-  // _PlayerPosition object, which would just move pass the listener the instance and
-  // which would then move itself to the new location.
-  //
-  // The old SL save handling will likely require some tweaking, if it uses the decode
-  // pattern it would probably make most sense to just set the filter string as a property
-  // and let the handlers query it.
-
+  //-----------------------------------------------------------------------------------------------
   // Read array data loaded from Suprworld UE5 save file and call any listeners
   // to filter the data and save to settiings
   static _processLoadedArray_sw(arrayData) {
-    const self = this;
-
     this.ClearAll();
 
-    const outerStrings = [UE5SaveDecoder.INSTANCE_PATTERN, 'LastCheckpointActor'];
-    const saveDecoder = new UE5SaveDecoder(arrayData, outerStrings);
-
-    let m;
-    while ((m = saveDecoder.nextOuterString()).found) {
-      if (m.isInstance) {
-        const map = 'Supraworld',
-          name = m.found;
-        const type = MapObject.get(MapObject.makeAlt(map, name))?.o.type;
-        if (
-          type &&
-          ((type == 'PuzzleCloud_C' && saveDecoder.nextByteProperty().found != 2) ||
-            (type.startsWith('DetectiveCase_') && saveDecoder.nextFString('DetainedCharacter').found == undefined))
-        ) {
-          continue;
-        }
-        self._addToSaveData(map, name);
-      } else {
-        // LastCheckpointActor
-        m = saveDecoder.nextFString(UE5SaveDecoder.INSTANCE_PATTERN, { required: true });
-        const saveObj = MapObject.get('Supraworld:' + m.found);
-        self._addToSaveData('', 'Player Position', null, {
-          value: { x: saveObj.o.lng, y: saveObj.o.lat, z: saveObj.o.alt },
-        });
-      }
+    const saveDecoder = new UE5SaveDecoder(arrayData, this._outerHandlerIds);
+    saveDecoder.area = 'Supraworld';
+    while (saveDecoder.nextOuterString()) {
+      saveDecoder.handlerId = saveDecoder.match;
+      this.callDecoderHandler(saveDecoder);
     }
 
     Settings.commit();
     for (const id in Settings.map.saveData) {
-      this._fire(id, Settings.map.saveData[id]);
+      this.callListener(id, Settings.map.saveData[id]);
     }
   }
 
@@ -219,10 +237,10 @@ export class SaveFileSystem {
       if (o.name == 'ActorSaveData') {
         // This is for SIU PipeCap's
         const actorSaveData = o.value.innerValue;
-        const re_match = new RegExp('([^.:]*):PersistentLevel.([^\\0]*?pipecap[^\\0]*)', 'gi');
+        const re_match = new RegExp('(DLC2_[^\\0.:]*)[\\0][\\s\\S]{4}PersistentLevel.([^\\0]*?pipe[^\\0]*)', 'gi');
         let m;
         while ((m = re_match.exec(actorSaveData)) != null) {
-          this._addToSaveData(m[1], m[2], o.name);
+          this.callDecoderHandler({ parent: o.name, area: m[1], handlerId: 'PersistentLevel.', postmatch: m[2] });
         }
       } else if (o.type == 'ArrayProperty') {
         // One of 'ThingsToRemove', 'ThingsToActivate', 'ThingsToOpenForever'
@@ -232,18 +250,22 @@ export class SaveFileSystem {
           let name = x.split('.').pop();
           if (name != 'None') {
             name = name.capitalised(); // Shell2_1957 appears as shell2_1957 in the save file
-            this._addToSaveData(area, name, o.name);
+
+            this.callDecoderHandler({ parent: o.name, area: area, handlerId: 'PersistentLevel.', postmatch: name });
           }
         }
       } else {
+        if (o.name == 'Player Position') {
+          console.log(o.name);
+        }
         // Mostly Player upgrade and other properties
-        this._addToSaveData('', o.name, null, o.value);
+        this.callDecoderHandler({ handlerId: o.name, data: o.value });
       }
     }
 
     Settings.commit();
     for (const id in Settings.map.saveData) {
-      this._fire(id, Settings.map.saveData[id]);
+      this.callListener(id, Settings.map.saveData[id]);
     }
   }
 

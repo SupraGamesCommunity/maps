@@ -180,7 +180,7 @@ echo Data parsing:
 echo  version  update version numbers (versions.json)
 echo  preproc  outputs information about map files and applies enum mappings
 echo  markers  generates marker data from the maps
-echo  doloc    extracts .locres/.locmeta localistation files for the specified game
+echo  doloc    outputs localisation json files to public data directory
 echo.
 echo Notes:
 echo  - Run findslpaks.cmd first to setup paths
