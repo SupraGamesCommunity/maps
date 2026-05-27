@@ -611,10 +611,6 @@ export class MapObject {
   }
 }
 
-function mapObject(...args) {
-  return new MapObject(...args);
-}
-
 // Handler for found checkbox on MapObject popup
 export const mapObjectFound = function (id, found = true) {
   MapObject._mapObjects[id].setFound(found);
@@ -639,10 +635,6 @@ class MapPlayerStart extends MapObject {
       MapObject.addObjectFromJson(objJson).init(map);
     }
   }
-}
-
-function mapPlayerStart(...args) {
-  return new MapPlayerStart(...args);
 }
 
 //-------------------------------------------------------------------------------------------------
@@ -709,9 +701,6 @@ class MapPlayerPosition extends MapObject {
     MapObject.updateTitles();
   }
 }
-function mapPlayerPosition(...args) {
-  return new MapPlayerPosition(...args);
-}
 
 //-------------------------------------------------------------------------------------------------
 // MapObject subclass for o.type=='DetectiveCase_.*'
@@ -723,9 +712,6 @@ class MapDetectiveCase extends MapObject {
       SaveFileSystem.defaultDecodeHandler(saveDecoder, true);
     }
   }
-}
-function mapDetectiveCase(...args) {
-  return new MapDetectiveCase(...args);
 }
 
 //-------------------------------------------------------------------------------------------------
@@ -740,9 +726,6 @@ class MapPuzzleCloud extends MapObject {
       SaveFileSystem.defaultDecodeHandler(saveDecoder, true);
     }
   }
-}
-function mapPuzzleCloud(...args) {
-  return new MapPuzzleCloud(...args);
 }
 
 //-------------------------------------------------------------------------------------------------
@@ -793,9 +776,6 @@ class MapPipesystem extends MapObject {
     }
   }
 }
-function mapPipesystem(...args) {
-  return new MapPipesystem(...args);
-}
 
 //-------------------------------------------------------------------------------------------------
 // MapObject subclass for type 'Jumppad_C'
@@ -845,10 +825,6 @@ class MapJumppad extends MapObject {
     }
     super.markFound(found, lineFound);
   }
-}
-
-function mapJumppad(...args) {
-  return new MapJumppad(...args);
 }
 
 //-------------------------------------------------------------------------------------------------
@@ -917,9 +893,6 @@ class MapCoinStack extends MapObject {
     this.markFound(!this.found());
   }
 }
-function mapCoinStack(...args) {
-  return new MapCoinStack(...args);
-}
 
 //-------------------------------------------------------------------------------------------------
 // MapObject subclass for type 'Juicer_C'
@@ -939,9 +912,6 @@ class MapJuicer extends MapObject {
     }
   }
 }
-function mapJuicer(...args) {
-  return new MapJuicer(...args);
-}
 
 //-------------------------------------------------------------------------------------------------
 // MapObject subclass for type 'EnemySpawn3_C' in SL
@@ -955,10 +925,6 @@ class MapGraveVolcano extends MapObject {
   }
 }
 
-function mapGraveVolcano(...args) {
-  return new MapGraveVolcano(...args);
-}
-
 //-------------------------------------------------------------------------------------------------
 // MapObject subclass for type 'CrashEnemySpawner_C' in SLC
 //
@@ -969,9 +935,6 @@ class MapBonesSpawner extends MapObject {
       SaveFileSystem.defaultDecodeHandler(saveDecoder, true);
     }
   }
-}
-function mapBonesSpawner(...args) {
-  return new MapBonesSpawner(...args);
 }
 
 //-------------------------------------------------------------------------------------------------
@@ -985,23 +948,20 @@ class MapDeadHeroIndy extends MapObject {
     }
   }
 }
-function mapDeadHeroIndy(...args) {
-  return new MapDeadHeroIndy(...args);
-}
 
 // Returns class to instantiate given
 function objectToSubclass(o) {
   // Object types that have MapObject an exact match
   const typeMap = {
-    _PlayerPosition: mapPlayerPosition,
-    _SWPlayerPosition: mapPlayerPosition,
-    PlayerStart: mapPlayerStart,
-    SupraworldPlayerStart_C: mapPlayerStart,
-    EnemySpawn3_C: mapGraveVolcano,
-    CrashEnemySpawner_C: mapBonesSpawner,
-    _CoinStack_C: mapCoinStack,
-    Juicer_C: mapJuicer,
-    PuzzleCloud_C: mapPuzzleCloud,
+    _PlayerPosition: (...args) => new MapPlayerPosition(...args),
+    _SWPlayerPosition: (...args) => new MapPlayerPosition(...args),
+    PlayerStart: (...args) => new MapPlayerStart(...args),
+    SupraworldPlayerStart_C: (...args) => new MapPlayerStart(...args),
+    EnemySpawn3_C: (...args) => new MapGraveVolcano(...args),
+    CrashEnemySpawner_C: (...args) => new MapBonesSpawner(...args),
+    _CoinStack_C: (...args) => new MapCoinStack(...args),
+    Juicer_C: (...args) => new MapJuicer(...args),
+    PuzzleCloud_C: (...args) => new MapPuzzleCloud(...args),
   };
 
   let cls = typeMap[o.type];
@@ -1011,9 +971,9 @@ function objectToSubclass(o) {
 
   // Types identified by substring of their type
   const typeIncludes = {
-    Pipesystem: mapPipesystem,
-    Jumppad: mapJumppad,
-    DetectiveCase_: mapDetectiveCase,
+    Pipesystem: (...args) => new MapPipesystem(...args),
+    Jumppad: (...args) => new MapJumppad(...args),
+    DetectiveCase_: (...args) => new MapDetectiveCase(...args),
   };
   for (const [typeSubStr, cls] of Object.entries(typeIncludes)) {
     if (o.type.includes(typeSubStr)) {
@@ -1023,7 +983,7 @@ function objectToSubclass(o) {
 
   // Object names that have MapObject subclass
   const nameMap = {
-    DeadHeroIndy: mapDeadHeroIndy,
+    DeadHeroIndy: (...args) => new MapDeadHeroIndy(...args),
   };
   cls = nameMap[o.name];
   if (cls) {
