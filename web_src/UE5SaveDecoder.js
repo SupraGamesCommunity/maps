@@ -85,7 +85,7 @@ export class UE5SaveDecoder {
 
   // Returns empty dictionary or the next FString that looks like an instance
   nextInstance({ required = false } = {}) {
-    return this.nextFString(UE5SaveDecoder.INSTANCE_PATTERN, { required, exact: false });
+    return this.nextFString('PersistentLevel.', { required, exact: false });
   }
 
   // Returns next byte property (0-255)

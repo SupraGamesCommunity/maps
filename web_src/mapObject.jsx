@@ -240,8 +240,9 @@ export class MapObject {
       this._defaultSaveData = false;
     }
 
-    // Allow instance to override save id
-    this._saveFileId = this.o.saveid || this._saveFileId;
+    // Allow object or class to override save file id
+    this._saveFileId = this.o.savefileid || c.savefileid || this._saveFileId || this.alt;
+    this._decodeHandlerId = this._decodeHandlerId || this.o.type;
 
     if (
       (!MapLayer.isEnabledFromId(c.layer, map.mapId) && !MapLayer.isEnabledFromId(c.nospoiler, map.mapId)) ||
@@ -279,10 +280,10 @@ export class MapObject {
   addSaveDecodeHandler() {
     if (this.saveDecodeHandler) {
       SaveFileSystem.setDecodeHandler(
-        this._decodeHandlerId || this.o.type,
-        this.saveDecodeHandler,
-        this._saveDecodeHandlerContext,
-        { isOuterHandler: !!this._decodeHandlerIsOuter }
+        this._decodeHandlerId,
+        (id, saveDecoder) => this.saveDecodeHandler(saveDecoder),
+        this,
+        !!this._decodeHandlerIsOuter
       );
     }
   }
@@ -290,7 +291,7 @@ export class MapObject {
   // Release default save decode handler
   releaseSaveDecodeHandler() {
     if (this.saveDecodeHandler) {
-      SaveFileSystem.clearDecodeHandler(this._decodeHandlerId || this.o.type);
+      SaveFileSystem.clearDecodeHandler(this._decodeHandlerId, !!this._decodeHandlerIsOuter);
     }
   }
 
@@ -298,15 +299,23 @@ export class MapObject {
   // This default behaviour can be cancelled by setting _saveFileId to null
   // saveDecodeHandler, _saveFileId and _defaultSaveData may be set by subclasses
   addSaveListeners() {
-    if (this._saveFileId !== null && this._foundLockedState === undefined) {
-      SaveFileSystem.setListener(this._saveFileId || this.alt, this.onSaveEvent, this, this._defaultSaveData);
+    if (this._saveFileId == 'Player Position') {
+      console.log('Adding player position listener');
+    }
+    if (this._saveFileId !== null || this._foundLockedState === undefined) {
+      SaveFileSystem.setListener(
+        this._saveFileId,
+        (id, data) => this.onSaveEvent(id, data),
+        this,
+        this._defaultSaveData
+      );
     }
   }
 
   // Release a listener if we've set one up
   releaseSaveListeners() {
-    if (this._saveFileId !== null && this._foundLockedState === undefined) {
-      SaveFileSystem.clearListener(this._saveFileId || this.alt);
+    if (this._saveFileId !== null || this._foundLockedState === undefined) {
+      SaveFileSystem.clearListener(this._saveFileId, this);
     }
   }
 
@@ -320,7 +329,7 @@ export class MapObject {
     if (this._foundLockedState !== undefined) {
       return this._foundLockedState;
     } else {
-      return Boolean(Settings.map.saveData[this._saveFileId || this.alt]);
+      return Boolean(Settings.map.saveData[this._saveFileId]);
     }
   }
 
@@ -330,10 +339,10 @@ export class MapObject {
       return;
     }
     if (found) {
-      Settings.map.saveData[this._saveFileId || this.alt] = true;
+      Settings.map.saveData[this._saveFileId] = true;
       this.markFound(true);
     } else {
-      delete Settings.map.saveData[this._saveFileId || this.alt];
+      delete Settings.map.saveData[this._saveFileId];
       this.markFound(false);
     }
     Settings.commit();
@@ -520,12 +529,12 @@ export class MapObject {
 
   // Get the instance's type and use that as to find the decoder
   // Handler for: 'PersistentLevel.'
-  static instanceDecoderHandler(saveDecoder) {
+  static instanceDecodeHandler(saveDecoder) {
     const listenerId = MapObject.makeAlt(saveDecoder.area, saveDecoder.postmatch);
     if (SaveFileSystem.hasListener(listenerId)) {
       saveDecoder.handlerId = MapObject.get(listenerId)?.o.type;
       saveDecoder.listenerId = listenerId;
-      if (!SaveFileSystem.callDecoderHandler(saveDecoder)) {
+      if (!SaveFileSystem.callDecodeHandler(saveDecoder)) {
         // There's no decode handler but there is an instance listener so
         // just add true to the save data
         SaveFileSystem.defaultDecodeHandler(saveDecoder, true);
@@ -541,9 +550,15 @@ export class MapObject {
       mapObject.init(map);
     }
 
-    SaveFileSystem.setDecodeHandler('PersistentLevel.', this.instanceDecoderHandler, MapObject, {
-      isOuterHandler: true,
-    });
+    SaveFileSystem.setDecodeHandler(
+      'PersistentLevel.',
+      (id, saveDecoder) => {
+        saveDecoder.listenerId = id;
+        this.instanceDecodeHandler(saveDecoder);
+      },
+      MapObject,
+      true
+    );
 
     // Allows popup to toggle found state
     window.mapObjectFound = mapObjectFound;
@@ -667,7 +682,7 @@ class MapPlayerPosition extends MapObject {
       const id = MapObject.makeAlt('Supraworld', instanceName);
       const checkPoint = MapObject.get(id);
       saveDecoder.listenerId = 'Player Position';
-      saveDecoder.data = { lat: checkPoint.o.lat, lng: checkPoint.o.lng, z: checkPoint.o.alt };
+      saveDecoder.data = { lat: checkPoint.o.lat, lng: checkPoint.o.lng, alt: checkPoint.o.alt };
       SaveFileSystem.defaultDecodeHandler(saveDecoder);
     } else {
       console.log('Warning: last checkpoint was not recognised (OOB?)');
@@ -840,7 +855,7 @@ class MapCoinStack extends MapObject {
   addSaveListeners() {
     for (const coin in this.o.old_coins) {
       const id = MapObject.makeAlt(this.o.area, coin);
-      SaveFileSystem.setListener(id, this.onSaveEvent, this);
+      SaveFileSystem.setListener(id, (id, data) => this.onSaveEvent(id, data), this, false);
     }
   }
 
@@ -848,7 +863,7 @@ class MapCoinStack extends MapObject {
   releaseSaveListeners() {
     for (const coin in this.o.old_coins) {
       const id = MapObject.makeAlt(this.o.area, coin);
-      SaveFileSystem.clearListener(id);
+      SaveFileSystem.clearListener(id, this);
     }
   }
 

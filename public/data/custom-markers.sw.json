@@ -1,5 +1,10 @@
 [
   {
+    "name": "ShopItemSpawner_C_UAID_ACB480ECFC843FDC02_1403497448",
+    "area": "Supraworld",
+    "savefileid": "Supraworld:ChocolateEgg_C_UAID_7085C2B20F0E9C5B01_1163745921"
+  },
+  {
     "name": "Shop_C_UAID_7085C2B20F0E7ED300_1296547414",
     "area": "Supraworld",
     "lat": -3039.952392578125,
@@ -138,26 +143,6 @@
   },
   {
     "name": "RealCoinPickup_C_UAID_7085C2B20F0E96C901_1737488178",
-    "area": "Supraworld",
-    "delete": 0
-  },
-  {
-    "name": "PuzzleCloud_C_UAID_ACB480ECFC84119402_1852823247",
-    "area": "Supraworld",
-    "delete": 0
-  },
-  {
-    "name": "PuzzleCloud_C_UAID_7085C2B20F0E395E02_1355467488",
-    "area": "Supraworld",
-    "delete": 0
-  },
-  {
-    "name": "PuzzleCloud_C_UAID_7085C2B20F0EA04202_1442794838",
-    "area": "Supraworld",
-    "delete": 0
-  },
-  {
-    "name": "PuzzleCloud_C_UAID_7085C2B20F0E395E02_1510643496",
     "area": "Supraworld",
     "delete": 0
   },
