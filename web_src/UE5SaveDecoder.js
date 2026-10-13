@@ -114,4 +114,31 @@ export class UE5SaveDecoder {
 
     return true;
   }
+
+  // Returns next bool property (flag set 0x10)
+  nextBoolProperty({ required = false } = {}) {
+    this.searchFStrings({
+      matchStrings: ['BoolProperty'],
+      stopStrings: required ? [] : this._outerPatterns,
+      exact: true,
+    });
+    if (!this.found) {
+      if (required) {
+        throw new Error('Expecting instance FString:BoolProperty');
+      }
+      return false;
+    }
+
+    // Skip to the bool property value
+    // int32 == 0, int8 = flag == 1 (hasArrayIndex), int32 == 0
+    const skipBytes = '\0\0\0\0\0\0\0\0';
+    if (this._strview.slice(this._searchOffset, this._searchOffset + skipBytes.length) != skipBytes) {
+      throw new Error('Unexpected data following FString:BoolProperty');
+    }
+    this._searchOffset += skipBytes.length;
+    this.data = (this._dataview.getUint8(this._searchOffset) & 0x10) != 0;
+    this._searchOffset++;
+
+    return true;
+  }
 }

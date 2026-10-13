@@ -115,6 +115,10 @@ export class TopicRegistry {
 
   // Call all listeners for the specified topic with the provided payload or default payload if none provided.
   fireEvent(topicName, payload) {
-    this.topics[topicName]?.fireEvent(payload);
+    if(this.topics[topicName]) {
+      this.topics[topicName].fireEvent(payload);
+      return true;
+    }
+    return false;
   }
 }
