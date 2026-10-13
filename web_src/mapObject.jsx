@@ -746,7 +746,7 @@ class MapPuzzleCloud extends MapObject {
 class MapSecretVolume extends MapObject {
   saveDecodeHandler(saveDecoder) {
     // We need to check for the BoolProperty bFound being set to true
-    if (saveDecoder.nextFString("bFound") && saveDecoder.nextBoolProperty() && saveDecoder.data === true) {
+    if (saveDecoder.nextFString('bFound') && saveDecoder.nextBoolProperty() && saveDecoder.data === true) {
       SaveFileSystem.defaultDecodeHandler(saveDecoder, true);
     }
   }
