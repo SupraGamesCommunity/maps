@@ -2559,7 +2559,7 @@
   "Nailscrew_C": {
     "friendly": "Gold Screw",
     "icon": "screw",
-    "layer": "special",
+    "layer": "poi",
     "nospoiler": null,
     "games": [
       "sw"
@@ -2569,7 +2569,7 @@
   "GoldenScrew_C": {
     "friendly": "Gold Screw",
     "icon": "screw",
-    "layer": "special",
+    "layer": "poi",
     "nospoiler": null,
     "games": [
       "sw"

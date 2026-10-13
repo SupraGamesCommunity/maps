@@ -273,8 +273,7 @@ def export_sw_markers(game: str, datadir: Path, sourcedir: Path):  # noqa: C901 
 
             # Handle the Obvious Area secret
             comment = None
-            if o.get('ActorLabel') == "ObviousAreaOuttaTown":
-                # p['Area'] = {'TagName': 'OutskirtsStartTown'}
+            if p.get('SecretType') == "SecretAreas::Obvious Area":
                 comment = 'Obvious Area'
 
             variant = ''

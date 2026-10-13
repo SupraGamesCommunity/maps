@@ -185,7 +185,7 @@
     "area": "Supraworld",
     "lat": 21788.392578125,
     "lng": -28728.6953125,
-    "alt": 5049.24658203125,
+    "alt": 5133.654296875,
     "coins": 5
   },
   {
@@ -1721,7 +1721,7 @@
     "type": "ButtonBattery_C",
     "area": "Supraworld",
     "lat": 11817.98828125,
-    "lng": -11882.068359375,
+    "lng": -10882.1611328125,
     "alt": 591.1982421875
   },
   {
@@ -2304,8 +2304,8 @@
     "name": "FloppyDisk_SavePoint_C_UAID_7085C2B20F0EE6CB01_1218742080",
     "type": "FloppyDisk_SavePoint_C",
     "area": "Supraworld",
-    "lat": -4792.70947265625,
-    "lng": 12123.1435546875,
+    "lat": -2080.631103515625,
+    "lng": 13880.033203125,
     "alt": 321.99395751953125
   },
   {
@@ -2955,7 +2955,7 @@
     "area": "Supraworld",
     "lat": -25277.658203125,
     "lng": 11856.7734375,
-    "alt": 320.5684814453125,
+    "alt": 803.7297973632812,
     "targets": [
       {
         "x": 13362.152,
@@ -3521,6 +3521,42 @@
     "lat": -2581.537841796875,
     "lng": 10867.6220703125,
     "alt": -750.695068359375
+  },
+  {
+    "name": "Jimmy_C_UAID_ACB480ECFC84C00A03_1692500128",
+    "type": "Jimmy_C",
+    "area": "Supraworld",
+    "lat": 16755.41015625,
+    "lng": -5314.07421875,
+    "alt": 446.368896484375,
+    "hidden": "true"
+  },
+  {
+    "name": "Jimmy_C_UAID_ACB480ECFC84C00A03_1963445129",
+    "type": "Jimmy_C",
+    "area": "Supraworld",
+    "lat": 16694.99609375,
+    "lng": -5499.19775390625,
+    "alt": 448.7135314941406,
+    "hidden": "true"
+  },
+  {
+    "name": "Jimmy_C_UAID_ACB480ECFC84C00A03_1969045130",
+    "type": "Jimmy_C",
+    "area": "Supraworld",
+    "lat": 16564.546875,
+    "lng": -5210.41259765625,
+    "alt": 452.1645202636719,
+    "hidden": "true"
+  },
+  {
+    "name": "Jimmy_C_UAID_ACB480ECFC84C00A03_1970849131",
+    "type": "Jimmy_C",
+    "area": "Supraworld",
+    "lat": 16726.205078125,
+    "lng": -5118.2548828125,
+    "alt": 446.368896484375,
+    "hidden": "true"
   },
   {
     "name": "Jimmy_C_UAID_C87F5459CE6297D301_2008484943",
@@ -5210,6 +5246,16 @@
     "card": "A of Diamonds"
   },
   {
+    "name": "Pickup_Card_C_UAID_ACB480ECFC84C50A03_1754248043",
+    "type": "PickupSpawner_C",
+    "area": "Supraworld",
+    "lat": -3591.0419921875,
+    "lng": 2306.723388671875,
+    "alt": 720.5965576171875,
+    "spawns": "Pickup_Card_C",
+    "card": "2 of Eggs"
+  },
+  {
     "name": "Pickup_Card_C_UAID_ACB480ECFC84D00403_1917493637",
     "type": "PickupSpawner_C",
     "area": "Supraworld",
@@ -6189,6 +6235,16 @@
     "spawns": "_LootPool_C"
   },
   {
+    "name": "PresentBox_Lootpools_C_UAID_ACB480ECFC8484A802_1986883662",
+    "type": "PresentBox_Lootpools_C",
+    "area": "Supraworld",
+    "lat": -5816.001953125,
+    "lng": -2986.410888671875,
+    "alt": -823.2731323242188,
+    "variant": "yellow",
+    "spawns": "_LootPool_C"
+  },
+  {
     "name": "PresentBox_Lootpools_C_UAID_ACB480ECFC848E7F02_1755366033",
     "type": "PresentBox_Lootpools_C",
     "area": "Supraworld",
@@ -6949,7 +7005,7 @@
     "name": "PuzzleCloud_C_UAID_ACB480ECFC84100803_1691504353",
     "type": "PuzzleCloud_C",
     "area": "Supraworld",
-    "lat": 10844.208984375,
+    "lat": 10806.77734375,
     "lng": -8759.8857421875,
     "alt": 2167.165771484375,
     "variant": "purple"
@@ -6970,6 +7026,14 @@
     "lng": 13826.8681640625,
     "alt": 1156.6793212890625,
     "variant": "blue"
+  },
+  {
+    "name": "PuzzleCloud_C_UAID_ACB480ECFC84160903_1194489557",
+    "type": "PuzzleCloud_C",
+    "area": "Supraworld",
+    "lat": 1756.318359375,
+    "lng": -7308.380859375,
+    "alt": 949.761474609375
   },
   {
     "name": "PuzzleCloud_C_UAID_ACB480ECFC841A0003_1349151599",
@@ -7291,6 +7355,14 @@
     "alt": 7484.51171875
   },
   {
+    "name": "PuzzleCloud_C_UAID_ACB480ECFC84990803_1528031167",
+    "type": "PuzzleCloud_C",
+    "area": "Supraworld",
+    "lat": 10230.052734375,
+    "lng": -7159.47021484375,
+    "alt": 2384.286376953125
+  },
+  {
     "name": "PuzzleCloud_C_UAID_ACB480ECFC84A0D102_2112826936",
     "type": "PuzzleCloud_C",
     "area": "Supraworld",
@@ -7342,6 +7414,15 @@
     "lng": 11930.9228515625,
     "alt": 1505.0537109375,
     "variant": "purple"
+  },
+  {
+    "name": "PuzzleCloud_C_UAID_ACB480ECFC84C80503_1582968413",
+    "type": "PuzzleCloud_C",
+    "area": "Supraworld",
+    "lat": 7489.09423828125,
+    "lng": 19759.84375,
+    "alt": 17643.408203125,
+    "variant": "cyan"
   },
   {
     "name": "PuzzleCloud_C_UAID_ACB480ECFC84C8BE02_1536302763",
@@ -13361,6 +13442,15 @@
     "coins": 1
   },
   {
+    "name": "RealCoinPickup_C_UAID_ACB480ECFC84A40803_1572421087",
+    "type": "RealCoinPickup_C",
+    "area": "Supraworld",
+    "lat": 28272.638671875,
+    "lng": 19059.435546875,
+    "alt": 18097.90625,
+    "coins": 1
+  },
+  {
     "name": "RealCoinPickup_C_UAID_ACB480ECFC84A58502_1160788472",
     "type": "RealCoinPickup_C",
     "area": "Supraworld",
@@ -17491,7 +17581,8 @@
     "lng": -14936.8291015625,
     "alt": 420.1795654296875,
     "area_tag": "BrickTown",
-    "prog_tag": "Act2:Yellow"
+    "prog_tag": "Act2:Yellow",
+    "comment": "Obvious Area"
   },
   {
     "name": "SecretVolume_C_UAID_ACB480ECFC847AFB02_1572827024",
@@ -17685,6 +17776,16 @@
     "prog_tag": "Act2:Blue"
   },
   {
+    "name": "SecretVolume_C_UAID_ACB480ECFC84C50A03_1921454044",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": -3587.98583984375,
+    "lng": 2299.262451171875,
+    "alt": 752.6220092773438,
+    "area_tag": "StartTown",
+    "prog_tag": "Act1"
+  },
+  {
     "name": "SecretVolume_C_UAID_ACB480ECFC84C6FB02_1121536503",
     "type": "SecretVolume_C",
     "area": "Supraworld",
@@ -17854,6 +17955,17 @@
     "area_tag": "BrickTown",
     "prog_tag": "Act2:Yellow",
     "abilities": "ForceFieldWalk"
+  },
+  {
+    "name": "SecretVolume_C_UAID_ACB480ECFC84FC0803_1434379563",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": 8289.240234375,
+    "lng": 23345.6640625,
+    "alt": 7224.04833984375,
+    "area_tag": "BedKingdom",
+    "prog_tag": "Act2:Blue",
+    "abilities": "Spark"
   },
   {
     "name": "SecretVolume_C_UAID_ACB480ECFC84FD8302_1958451823",
@@ -18601,8 +18713,8 @@
     "name": "YouMissedNSecrets_C_UAID_BCFCE7CCF66EA49E02_1144097651",
     "type": "YouMissedNSecrets_C",
     "area": "Supraworld",
-    "lat": -3116.710693359375,
-    "lng": 17264.84765625,
+    "lat": -4595.9990234375,
+    "lng": 13333.7421875,
     "alt": 466.4130859375,
     "area_tag": "RecyclingArea"
   }
