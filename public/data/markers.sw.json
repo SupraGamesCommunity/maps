@@ -3553,8 +3553,8 @@
     "name": "Jimmy_C_UAID_ACB480ECFC84C00A03_1970849131",
     "type": "Jimmy_C",
     "area": "Supraworld",
-    "lat": 16726.205078125,
-    "lng": -5118.2548828125,
+    "lat": 16851.392578125,
+    "lng": -5081.6181640625,
     "alt": 446.368896484375,
     "hidden": "true"
   },
@@ -7459,6 +7459,14 @@
     "variant": "purple"
   },
   {
+    "name": "PuzzleCloud_C_UAID_ACB480ECFC84D10A03_1840085170",
+    "type": "PuzzleCloud_C",
+    "area": "Supraworld",
+    "lat": 20190.232421875,
+    "lng": 15961.6181640625,
+    "alt": 3621.582275390625
+  },
+  {
     "name": "PuzzleCloud_C_UAID_ACB480ECFC84D28C02_1646552104",
     "type": "PuzzleCloud_C",
     "area": "Supraworld",
@@ -7587,6 +7595,15 @@
     "lat": 8216.15234375,
     "lng": -5688.81787109375,
     "alt": 3623.84228515625
+  },
+  {
+    "name": "PuzzleCloud_C_UAID_FC3497C346101DF102_1543842567",
+    "type": "PuzzleCloud_C",
+    "area": "Supraworld",
+    "lat": 25439.228515625,
+    "lng": -17419.64453125,
+    "alt": 11053.7001953125,
+    "variant": "red"
   },
   {
     "name": "PuzzleCloud_C_UAID_FC3497C3461025CE02_1083898997",
@@ -8139,8 +8156,8 @@
     "name": "RealCoinPickup_C_UAID_7085C2B20F0E0C7A02_1682059948",
     "type": "RealCoinPickup_C",
     "area": "Supraworld",
-    "lat": 17036.154296875,
-    "lng": -3105.552734375,
+    "lat": 17209.8671875,
+    "lng": -1983.2301025390625,
     "alt": 398.6968078613281,
     "coins": 1
   },
