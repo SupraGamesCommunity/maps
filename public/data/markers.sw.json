@@ -2727,11 +2727,11 @@
     "name": "TubeCapHat_C_UAID_7085C2B20F0EF15A01_1356827530",
     "type": "GreenTubeCap_C",
     "area": "Supraworld",
-    "lat": 2606.639404296875,
-    "lng": 14474.91796875,
+    "lat": 3232.160888671875,
+    "lng": 17308.798828125,
     "alt": 414.9776611328125,
     "hidden": "true",
-    "variant": "green"
+    "variant": "custom"
   },
   {
     "name": "GuardVolume_C_UAID_3C7C3FF36121E38601_1631859243",
@@ -2846,7 +2846,7 @@
     "alt": 319.87408447265625,
     "targets": [
       {
-        "x": 1551.0,
+        "x": 1652.7375,
         "y": 2356.0,
         "z": 356.0
       }
@@ -8804,27 +8804,27 @@
     "name": "RealCoinPickup_C_UAID_7085C2B20F0E19CE01_1628597687",
     "type": "RealCoinPickup_C",
     "area": "Supraworld",
-    "lat": 17688.958984375,
-    "lng": 16003.6513671875,
-    "alt": 6053.9140625,
+    "lat": 17800.923828125,
+    "lng": 16088.7470703125,
+    "alt": 6122.00390625,
     "coins": 5
   },
   {
     "name": "RealCoinPickup_C_UAID_7085C2B20F0E19CE01_1644551688",
     "type": "RealCoinPickup_C",
     "area": "Supraworld",
-    "lat": 17536.576171875,
-    "lng": 16003.1005859375,
-    "alt": 6053.9140625,
+    "lat": 19022.5,
+    "lng": 16091.8701171875,
+    "alt": 6159.29638671875,
     "coins": 5
   },
   {
     "name": "RealCoinPickup_C_UAID_7085C2B20F0E19CE01_1662260689",
     "type": "RealCoinPickup_C",
     "area": "Supraworld",
-    "lat": 20424.615234375,
-    "lng": 12453.15625,
-    "alt": 6053.9140625,
+    "lat": 20410.296875,
+    "lng": 12468.7734375,
+    "alt": 6139.91552734375,
     "coins": 5
   },
   {
@@ -11630,7 +11630,7 @@
     "area": "Supraworld",
     "lat": 25764.298828125,
     "lng": -12624.8896484375,
-    "alt": 8104.9833984375,
+    "alt": 8054.2900390625,
     "coins": 5
   },
   {
@@ -12468,7 +12468,7 @@
     "lat": 4837.6123046875,
     "lng": 13308.17578125,
     "alt": 1530.532470703125,
-    "coins": 5
+    "coins": 1
   },
   {
     "name": "RealCoinPickup_C_UAID_7085C2B20F0EF94E01_1851814585",
@@ -14319,15 +14319,6 @@
       }
     ],
     "linetype": "target"
-  },
-  {
-    "name": "StaticMeshActor_UAID_7085C2B20F0E2DCE00_1494016717",
-    "type": "RubberBand_C",
-    "area": "Supraworld",
-    "lat": -6064.43505859375,
-    "lng": 1664.0406494140625,
-    "alt": 650.1184692382812,
-    "variant": "brown"
   },
   {
     "name": "StaticMeshActor_UAID_7085C2B20F0E34CE00_1958799990",
