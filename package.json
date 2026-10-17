@@ -27,6 +27,8 @@
   },
   "dependencies": {
     "@fortawesome/react-fontawesome": "^3.3.1",
+    "@material-design-icons/svg": "^0.14.15",
+    "@material-symbols/svg-400": "^0.47.5",
     "classnames": "^2.5.1",
     "leaflet": "^1.9.4",
     "leaflet.fullscreen": "^5.3.1",

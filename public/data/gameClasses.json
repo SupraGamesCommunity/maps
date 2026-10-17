@@ -2559,7 +2559,7 @@
   "Nailscrew_C": {
     "friendly": "Gold Screw",
     "icon": "screw",
-    "layer": "special",
+    "layer": "poi",
     "nospoiler": null,
     "games": [
       "sw"
@@ -2569,7 +2569,7 @@
   "GoldenScrew_C": {
     "friendly": "Gold Screw",
     "icon": "screw",
-    "layer": "special",
+    "layer": "poi",
     "nospoiler": null,
     "games": [
       "sw"
@@ -2711,6 +2711,15 @@
       "sw"
     ]
   },
+  "Pickup_SolversGuidePage_Combined_C": {
+    "friendly": "Solver's Guide Page",
+    "icon": "guide",
+    "layer": null,
+    "nospoiler": null,
+    "games": [
+      "sw"
+    ]
+  },
   "Inventory_SolversGuidePage_C": {
     "friendly": "Solver's Guide Page",
     "icon": "guide",
@@ -2830,9 +2839,27 @@
       "sw"
     ]
   },
+  "Pickup_Card_C": {
+    "friendly": "Card",
+    "icon": "card",
+    "layer": "swcollectable",
+    "nospoiler": null,
+    "games": [
+      "sw"
+    ]
+  },
   "Inventory_BlowGun_C": {
     "friendly": "Blowgun",
     "icon": "blowgun",
+    "layer": "swupgrade",
+    "nospoiler": null,
+    "games": [
+      "sw"
+    ]
+  },
+  "Inventory_ForceFieldWalk_C": {
+    "friendly": "Force Field Walk",
+    "icon": "forcefield_walk",
     "layer": "swupgrade",
     "nospoiler": null,
     "games": [
@@ -2911,9 +2938,36 @@
       "sw"
     ]
   },
+  "Inventory_Spark_C": {
+    "friendly": "Spark",
+    "icon": "spark",
+    "layer": "swupgrade",
+    "nospoiler": null,
+    "games": [
+      "sw"
+    ]
+  },
   "Inventory_MaxHealth_C": {
     "friendly": "Max Health",
     "icon": "heart",
+    "layer": "swupgrade",
+    "nospoiler": null,
+    "games": [
+      "sw"
+    ]
+  },
+  "Inventory_ToothpickDamage_C": {
+    "friendly": "Toothpick Damage",
+    "icon": "toothpick",
+    "layer": "swupgrade",
+    "nospoiler": null,
+    "games": [
+      "sw"
+    ]
+  },
+  "Inventory_BlowgunBlowTime1_C": {
+    "friendly": "Blowgun Blow Time",
+    "icon": "blowgun",
     "layer": "swupgrade",
     "nospoiler": null,
     "games": [

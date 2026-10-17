@@ -27,8 +27,8 @@ def get_unreal_version(exepath: Path) -> dict[str, int]:
     item = ns.Items()[exepath.name]
 
     print(f"Retrieving UE version from '{exepath}'")
-    file_version_indices = [166, 167]
-    product_version_indices = [301]
+    file_version_indices = [166, 167, 172]
+    product_version_indices = [301, 306, 307]
 
     # Search all commonly used indices. We could probably narrow this range as many are fixed
     for i in range(350):
@@ -42,6 +42,7 @@ def get_unreal_version(exepath: Path) -> dict[str, int]:
                 print(
                     f"'{prop}' index={i} ({value}) {'** unexpected index' if i not in product_version_indices else ''}"
                 )
+                # product_version = value
 
             if 'file' in prop.lower():
                 print(f"'{prop}' index={i} ({value}) {'** unexpected index' if i not in file_version_indices else ''}")
@@ -51,7 +52,7 @@ def get_unreal_version(exepath: Path) -> dict[str, int]:
         print(f'Error: Failed to find file version for {exepath}')
         exit(-1)
 
-    uever['ver'] = ns.GetDetailsOf(item, 167)
+    uever['ver'] = file_version
     vernums = uever['ver'].split('.')
     uever['major'] = int(vernums[0])
     uever['minor'] = int(vernums[1])

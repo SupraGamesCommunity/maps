@@ -5,6 +5,11 @@
     "savefileid": "Supraworld:ChocolateEgg_C_UAID_7085C2B20F0E9C5B01_1163745921"
   },
   {
+    "name": "ShopItemChip_C_UAID_ACB480ECFC84EE0403_1429067938",
+    "area": "Supraworld",
+    "savefileid": "Supraworld:ShopEgg_C_UAID_7085C2B20F0EF6BE01_1236083490"
+  },
+  {
     "name": "Shop_C_UAID_7085C2B20F0E7ED300_1296547414",
     "area": "Supraworld",
     "lat": -3039.952392578125,
@@ -17,7 +22,7 @@
     "lat": -3539.952392578125,
     "lng": 2321.389892578125,
     "alt": 322.61077880859375,
-    "saveid": "Supraworld:FirstEggOpening_C_UAID_FC3497C34610126802_1898191859"
+    "savefileid": "Supraworld:FirstEggOpening_C_UAID_FC3497C34610126802_1898191859"
   },
   {
     "name": "StandardShop_C_UAID_7085C2B20F0EE1CF01_1129516690",
@@ -77,62 +82,17 @@
     "friendly": "Floor Town"
   },
   {
-    "name": "Cork_C_UAID_7085C2B20F0E9ED401_1557792245",
+    "name": "Pickup_Card_C_UAID_ACB480ECFC8419FC02_1105047086",
     "area": "Supraworld",
     "delete": 0
   },
   {
-    "name": "TrafficCone_C_UAID_7085C2B20F0E71D201_1842621201",
+    "name": "PresentBox_Lootpools_C_UAID_ACB480ECFC84D28102_1462167188",
     "area": "Supraworld",
     "delete": 0
   },
   {
-    "name": "TrafficCone_C_UAID_7085C2B20F0E71D201_1845999202",
-    "area": "Supraworld",
-    "delete": 0
-  },
-  {
-    "name": "TrafficCone_C_UAID_7085C2B20F0EBAD301_1958790617",
-    "area": "Supraworld",
-    "delete": 0
-  },
-  {
-    "name": "TrafficCone_C_UAID_7085C2B20F0EBAD301_1962445618",
-    "area": "Supraworld",
-    "delete": 0
-  },
-  {
-    "name": "AluminumBall_C_UAID_7085C2B20F0EC1D201_1570971338",
-    "area": "Supraworld",
-    "delete": 0
-  },
-  {
-    "name": "RealCoinPickup_C_UAID_7085C2B20F0E42D101_1135704887",
-    "area": "Supraworld",
-    "delete": 0
-  },
-  {
-    "name": "RealCoinPickup_C_UAID_7085C2B20F0E42D101_1131364886",
-    "area": "Supraworld",
-    "delete": 0
-  },
-  {
-    "name": "RealCoinPickup_C_UAID_7085C2B20F0E3DD101_1627167981",
-    "area": "Supraworld",
-    "delete": 0
-  },
-  {
-    "name": "RealCoinPickup_C_UAID_7085C2B20F0E3DD101_1608574979",
-    "area": "Supraworld",
-    "delete": 0
-  },
-  {
-    "name": "RealCoinPickup_C_UAID_7085C2B20F0E214801_1468011854",
-    "area": "Supraworld",
-    "delete": 0
-  },
-  {
-    "name": "PuzzleCloud_C_UAID_7085C2B20F0E395E02_1240323483",
+    "name": "5Cent_C_UAID_ACB480ECFC84CEAD02_1804093857",
     "area": "Supraworld",
     "delete": 0
   },
@@ -142,17 +102,62 @@
     "delete": 0
   },
   {
-    "name": "RealCoinPickup_C_UAID_7085C2B20F0E96C901_1737488178",
+    "name": "RealCoinPickup_C_UAID_7085C2B20F0E3DD101_1617031980",
     "area": "Supraworld",
     "delete": 0
   },
   {
-    "name": "RealCoinPickup_C_UAID_7085C2B20F0EC04901_1271213435",
+    "name": "RealCoinPickup_C_UAID_7085C2B20F0E3DD101_1608574979",
     "area": "Supraworld",
     "delete": 0
   },
   {
-    "name": "RealCoinPickup_C_UAID_7085C2B20F0EC04901_1265148433",
+    "name": "RealCoinPickup_C_UAID_7085C2B20F0E42D101_1135704887",
+    "area": "Supraworld",
+    "delete": 0
+  },
+  {
+    "name": "RealCoinPickup_C_UAID_7085C2B20F0E3DD101_1627167981",
+    "area": "Supraworld",
+    "delete": 0
+  },
+  {
+    "name": "RealCoinPickup_C_UAID_7085C2B20F0E42D101_1131364886",
+    "area": "Supraworld",
+    "delete": 0
+  },
+  {
+    "name": "RealCoinPickup_C_UAID_7085C2B20F0E074901_1304855679",
+    "area": "Supraworld",
+    "delete": 0
+  },
+  {
+    "name": "RealCoinPickup_C_UAID_7085C2B20F0E074901_1171026676",
+    "area": "Supraworld",
+    "delete": 0
+  },
+  {
+    "name": "RealCoinPickup_C_UAID_7085C2B20F0EB74901_2065817771",
+    "area": "Supraworld",
+    "delete": 0
+  },
+  {
+    "name": "RealCoinPickup_C_UAID_7085C2B20F0E1F4E01_1952154178",
+    "area": "Supraworld",
+    "delete": 0
+  },
+  {
+    "name": "RealCoinPickup_C_UAID_7085C2B20F0EB74901_2092181773",
+    "area": "Supraworld",
+    "delete": 0
+  },
+  {
+    "name": "RealCoinPickup_C_UAID_7085C2B20F0EB74901_2090418772",
+    "area": "Supraworld",
+    "delete": 0
+  },
+  {
+    "name": "RealCoinPickup_C_UAID_7085C2B20F0E5F9B01_1324049861",
     "area": "Supraworld",
     "delete": 0
   },
@@ -162,192 +167,12 @@
     "delete": 0
   },
   {
-    "name": "PuzzleCloud_C_UAID_7085C2B20F0E395E02_1665666497",
+    "name": "RealCoinPickup_C_UAID_7085C2B20F0EC04901_1265148433",
     "area": "Supraworld",
     "delete": 0
   },
   {
-    "name": "PuzzleCloud_C_UAID_7085C2B20F0E395E02_1673019498",
-    "area": "Supraworld",
-    "delete": 0
-  },
-  {
-    "name": "RealCoinPickup_C_UAID_7085C2B20F0EBDD301_1804173166",
-    "area": "Supraworld",
-    "delete": 0
-  },
-  {
-    "name": "RealCoinPickup_C_UAID_7085C2B20F0EBDD301_1807304167",
-    "area": "Supraworld",
-    "delete": 0
-  },
-  {
-    "name": "RealCoinPickup_C_UAID_7085C2B20F0EBDD301_1815092168",
-    "area": "Supraworld",
-    "delete": 0
-  },
-  {
-    "name": "RealCoinPickup_C_UAID_FC3497C3461040DF01_1122789296",
-    "area": "Supraworld",
-    "delete": 0
-  },
-  {
-    "name": "RealCoinPickup_C_UAID_7085C2B20F0E60D301_1989958104",
-    "area": "Supraworld",
-    "delete": 0
-  },
-  {
-    "name": "RealCoinPickup_C_UAID_7085C2B20F0E60D301_1984114103",
-    "area": "Supraworld",
-    "delete": 0
-  },
-  {
-    "name": "RealCoinPickup_C_UAID_7085C2B20F0E5DD301_1699276515",
-    "area": "Supraworld",
-    "delete": 0
-  },
-  {
-    "name": "RealCoinPickup_C_UAID_7085C2B20F0E3DD101_1617031980",
-    "area": "Supraworld",
-    "delete": 0
-  },
-  {
-    "name": "RealCoinPickup_C_UAID_7085C2B20F0E5FD301_1956827893",
-    "area": "Supraworld",
-    "delete": 0
-  },
-  {
-    "name": "RealCoinPickup_C_UAID_7085C2B20F0E60D301_1759697089",
-    "area": "Supraworld",
-    "delete": 0
-  },
-  {
-    "name": "RealCoinPickup_C_UAID_7085C2B20F0E60D301_1767424090",
-    "area": "Supraworld",
-    "delete": 0
-  },
-  {
-    "name": "RealCoinPickup_C_UAID_7085C2B20F0E60D301_1778594093",
-    "area": "Supraworld",
-    "delete": 0
-  },
-  {
-    "name": "RealCoinPickup_C_UAID_7085C2B20F0E60D301_1771719091",
-    "area": "Supraworld",
-    "delete": 0
-  },
-  {
-    "name": "RealCoinPickup_C_UAID_7085C2B20F0E60D301_1774176092",
-    "area": "Supraworld",
-    "delete": 0
-  },
-  {
-    "name": "RealCoinPickup_C_UAID_7085C2B20F0E5AD301_1314540981",
-    "area": "Supraworld",
-    "delete": 0
-  },
-  {
-    "name": "RealCoinPickup_C_UAID_7085C2B20F0EBAD301_1792794613",
-    "area": "Supraworld",
-    "delete": 0
-  },
-  {
-    "name": "RealCoinPickup_C_UAID_7085C2B20F0E59D301_2044456545",
-    "area": "Supraworld",
-    "delete": 0
-  },
-  {
-    "name": "RealCoinPickup_C_UAID_7085C2B20F0E5FD301_1942103892",
-    "area": "Supraworld",
-    "delete": 0
-  },
-  {
-    "name": "RealCoinPickup_C_UAID_7085C2B20F0E5FD301_1935878891",
-    "area": "Supraworld",
-    "delete": 0
-  },
-  {
-    "name": "RealCoinPickup_C_UAID_7085C2B20F0E5FD301_1969498894",
-    "area": "Supraworld",
-    "delete": 0
-  },
-  {
-    "name": "RealCoinPickup_C_UAID_7085C2B20F0EBBD301_2086670799",
-    "area": "Supraworld",
-    "delete": 0
-  },
-  {
-    "name": "RealCoinPickup_C_UAID_7085C2B20F0EBBD301_2083816798",
-    "area": "Supraworld",
-    "delete": 0
-  },
-  {
-    "name": "RealCoinPickup_C_UAID_7085C2B20F0E6FD301_1433839295",
-    "area": "Supraworld",
-    "delete": 0
-  },
-  {
-    "name": "RealCoinPickup_C_UAID_7085C2B20F0E6FD301_2000335308",
-    "area": "Supraworld",
-    "delete": 0
-  },
-  {
-    "name": "RealCoinPickup_C_UAID_7085C2B20F0E6FD301_2004649309",
-    "area": "Supraworld",
-    "delete": 0
-  },
-  {
-    "name": "RealCoinPickup_C_UAID_7085C2B20F0E6FD301_2010257310",
-    "area": "Supraworld",
-    "delete": 0
-  },
-  {
-    "name": "RealCoinPickup_C_UAID_7085C2B20F0E60D301_1092492077",
-    "area": "Supraworld",
-    "delete": 0
-  },
-  {
-    "name": "RealCoinPickup_C_UAID_7085C2B20F0EBED301_1863432347",
-    "area": "Supraworld",
-    "delete": 0
-  },
-  {
-    "name": "RealCoinPickup_C_UAID_7085C2B20F0E5FD301_2054161896",
-    "area": "Supraworld",
-    "delete": 0
-  },
-  {
-    "name": "RealCoinPickup_C_UAID_7085C2B20F0E5FD301_1979103895",
-    "area": "Supraworld",
-    "delete": 0
-  },
-  {
-    "name": "RealCoinPickup_C_UAID_FC3497C346108F5D01_2120354868",
-    "area": "Supraworld",
-    "delete": 0
-  },
-  {
-    "name": "RealCoinPickup_C_UAID_FC3497C346108F5D01_2114467867",
-    "area": "Supraworld",
-    "delete": 0
-  },
-  {
-    "name": "RealCoinPickup_C_UAID_FC3497C346108F5D01_2070886866",
-    "area": "Supraworld",
-    "delete": 0
-  },
-  {
-    "name": "RealCoinPickup_C_UAID_FC3497C346108F5D01_2129262869",
-    "area": "Supraworld",
-    "delete": 0
-  },
-  {
-    "name": "RealCoinPickup_C_UAID_FC3497C346108F5D01_2133770870",
-    "area": "Supraworld",
-    "delete": 0
-  },
-  {
-    "name": "RealCoinPickup_C_UAID_7085C2B20F0E5F9B01_1324049861",
+    "name": "RealCoinPickup_C_UAID_7085C2B20F0EC04901_1271213435",
     "area": "Supraworld",
     "delete": 0
   },
@@ -362,98 +187,7 @@
     "delete": 0
   },
   {
-    "name": "RealCoinPickup_C_UAID_7085C2B20F0EB74901_2090418772",
-    "area": "Supraworld",
-    "delete": 0
-  },
-  {
-    "name": "RealCoinPickup_C_UAID_7085C2B20F0EB74901_2092181773",
-    "area": "Supraworld",
-    "delete": 0
-  },
-  {
-    "name": "RealCoinPickup_C_UAID_7085C2B20F0EB74901_2065817771",
-    "area": "Supraworld",
-    "delete": 0
-  },
-  {
-    "name": "RealCoinPickup_C_UAID_7085C2B20F0E1F4E01_1952154178",
-    "area": "Supraworld",
-    "delete": 0
-  },
-
-  {
-    "name": "Pickup_Rune_C_UAID_FC3497C34610B64102_2074938602",
-    "area": "Supraworld",
-    "delete": 0
-  },
-  {
-    "name": "Shop_C_UAID_7085C2B20F0EB29C01_1228438637",
-    "area": "Supraworld",
-    "delete": 0
-  },
-  {
-    "name": "StaticMeshActor_UAID_7085C2B20F0EB19C01_1423838431",
-    "area": "Supraworld",
-    "delete": 0
-  },
-  {
-    "name": "StaticMeshActor_UAID_7085C2B20F0EB19C01_1423844435",
-    "area": "Supraworld",
-    "delete": 0
-  },
-  {
-    "name": "StaticMeshActor_UAID_7085C2B20F0EB19C01_1450693446",
-    "area": "Supraworld",
-    "delete": 0
-  },
-  {
-    "name": "StaticMeshActor_UAID_7085C2B20F0EB19C01_1450684440",
-    "area": "Supraworld",
-    "delete": 0
-  },
-  {
-    "name": "StaticMeshActor_UAID_7085C2B20F0EB19C01_1450690444",
-    "area": "Supraworld",
-    "delete": 0
-  },
-  {
-    "name": "StaticMeshActor_UAID_7085C2B20F0EB19C01_1450665438",
-    "area": "Supraworld",
-    "delete": 0
-  },
-  {
-    "name": "StaticMeshActor_UAID_7085C2B20F0EB19C01_1450682439",
-    "area": "Supraworld",
-    "delete": 0
-  },
-  {
-    "name": "StaticMeshActor_UAID_7085C2B20F0EB19C01_1450685441",
-    "area": "Supraworld",
-    "delete": 0
-  },
-  {
-    "name": "StaticMeshActor_UAID_7085C2B20F0EB19C01_1423813429",
-    "area": "Supraworld",
-    "delete": 0
-  },
-  {
-    "name": "StaticMeshActor_UAID_7085C2B20F0EB19C01_1423836430",
-    "area": "Supraworld",
-    "delete": 0
-  },
-  {
-    "name": "GuardVolume_C_UAID_7085C2B20F0E5FD301_1868559889",
-    "area": "Supraworld",
-    "delete": 0
-  },
-  {
-    "name": "StandardFashionStore_C_UAID_7085C2B20F0EB29C01_1667706011",
-    "area": "Supraworld",
-    "delete": 0
-  },
-  {
-    "name": "Key_C_UAID_7085C2B20F0E69D301_2094190944",
+    "name": "PuzzleCloud_C_UAID_ACB480ECFC8487A802_1145890131",
     "area": "Supraworld",
     "delete": 0
   }

@@ -195,8 +195,9 @@
   "mag_glass"         : {"type": "pin",   "style": "fas",   "iconName": "magnifying-glass",         "bg": "green"                           },
 
   "pawn"              : {"type": "pin",   "style": "fas",   "iconName": "chess-pawn",               "bg": "red"                             },
-  "rune"              : {"type": "pin",   "style": "fas",   "iconName": "circle",                   "bg": "white",            "fg": ":v"    },
+  "rune"              : {"type": "pin",   "style": "fas",   "iconName": "circle",                   "bg": "white",         "fg": ":v"       },
   "spool"             : {"type": "pin",   "style": "fas",   "iconName": "database",                 "bg": "dimgrey"                         },
+  "card"              : {"type": "pin",   "style": "gsrf",  "iconName": "playing_cards",            "bg": "white",         "fg": "blue"     },
 
   "blowgun"           : {"type": "pin",   "style": "fas",   "iconName": "gun",                      "bg": "limegreen"                       },
   "crouch"            : {"type": "pin",   "style": "fas",   "iconName": "person-praying",           "bg": "limegreen"                       },
@@ -211,11 +212,13 @@
   "mind_vision"       : {"type": "pin",   "style": "fas",   "iconName": "eye-low-vision",           "bg": "limegreen"                       },
   "playermap"         : {"type": "pin",   "style": "fas",   "iconName": "compass",                  "bg": "deepskyblue"                     },
   "run"               : {"type": "pin",   "style": "fas",   "iconName": "person-running",           "bg": "limegreen"                       },
+  "spark"             : {"type": "pin",   "style": "fas",   "iconName": "bolt",                     "bg": "limegreen"                       },
   "sponge_suit"       : {"type": "pin",   "style": "fas",   "iconName": "shirt",                    "bg": "goldenrod"                       },
   "strength"          : {"type": "pin",   "style": "fas",   "iconName": "dumbbell",                 "bg": "limegreen"                       },
   "ghost"             : {"type": "pin",   "style": "fas",   "iconName": "ghost",                    "bg": "limegreen"                       },
   "toothpick"         : {"type": "pin",   "style": "fas",   "iconName": "slash",                    "bg": "limegreen"                       },
   "toothpin"          : {"type": "pin",   "style": "fas",   "iconName": "map-pin",                  "bg": "grey"                            },
   "toothpin_dart"     : {"type": "pin",   "style": "fas",   "iconName": "syringe",                  "bg": "limegreen"                       },
-  "walk"              : {"type": "pin",   "style": "fas",   "iconName": "person-walking",           "bg": "limegreen"                       }
+  "walk"              : {"type": "pin",   "style": "gsrf",  "iconName": "directions_walk",          "bg": "limegreen"                       },
+  "forcefield_walk"   : {"type": "pin",   "style": "gsrf",  "iconName": "hiking",                   "bg": "limegreen"                       }
 }

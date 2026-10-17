@@ -139,6 +139,9 @@ def export_sw_markers(game: str, datadir: Path, sourcedir: Path):  # noqa: C901 
             oname = o['Name']
             otype = o['Type']
 
+            if not isinstance(outer, str):
+                outer = outer.get('ObjectName').split("'")[-2].split(":")[-1].split('.')[-1]
+
             # Keep list of static meshes by parent/outer
             if otype == 'StaticMeshComponent':
                 if (sm := p.get('StaticMesh', {}).get('ObjectName')) and (
@@ -191,6 +194,9 @@ def export_sw_markers(game: str, datadir: Path, sourcedir: Path):  # noqa: C901 
             oname = o['Name']
             if not (outer := o.get('Outer')) or not (p := o.get('Properties')):
                 continue
+
+            if not isinstance(outer, str):
+                outer = outer.get('ObjectName').split("'")[-2].split(":")[-1].split('.')[-1]
 
             if otype in bp_defaults:
                 p = bp_defaults[otype] | p
@@ -267,8 +273,7 @@ def export_sw_markers(game: str, datadir: Path, sourcedir: Path):  # noqa: C901 
 
             # Handle the Obvious Area secret
             comment = None
-            if o.get('ActorLabel') == "ObviousAreaOuttaTown":
-                # p['Area'] = {'TagName': 'OutskirtsStartTown'}
+            if p.get('SecretType') == "SecretAreas::Obvious Area":
                 comment = 'Obvious Area'
 
             variant = ''
@@ -364,9 +369,18 @@ def export_sw_markers(game: str, datadir: Path, sourcedir: Path):  # noqa: C901 
             if otype in [
                 'Pickup_Thread_C',
                 'Pickup_Rune_C',
+                'Pickup_Card_C',
             ]:
                 data[-1]['spawns'] = otype
                 data[-1]['type'] = 'PickupSpawner_C'
+
+            if otype == 'Pickup_Card_C':
+                data[-1]['card'] = (
+                    p.get('Card', 'A').removeprefix('ECards::')
+                    + ' of '
+                    + p.get('Suit', 'Club').removeprefix('ECardSuits::')
+                    + 's'
+                )
 
             # Coins
             # Anything that spawns Inventory_Coin[nn]_C or RealCoinPickup_C/5Cent_C/Gumball_Machine_C

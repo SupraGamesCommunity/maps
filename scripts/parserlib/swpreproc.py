@@ -50,10 +50,10 @@ def preproc_levels(game: str, datadir: Path, sourcedir: Path) -> None:  # noqa: 
             if p := obj.get('Properties'):
                 for prop in [
                     'RequiredAbilities',
+                    'AdditionalRequirements',
+                    'AdditionalRequirementHints',
                     'Area',
                     'ProgressionGroup',
-                    'AdditionalRequirementHints',
-                    'AdditionalRequirements',
                     'DieType',
                     'Value',
                     'CoinValue',
@@ -67,11 +67,17 @@ def preproc_levels(game: str, datadir: Path, sourcedir: Path) -> None:  # noqa: 
                     'SupraworldLaunchComponent',
                     'FrontSupraworldLaunchComponent',
                     'BackSupraworldLaunchComponent',
+                    'LaunchMode',
                     'AltLaunchComp',
                     'SpawnerTags',
                     'Spawn on Level Start',
                     'DisplayName',
                     'DisplayDescription',
+                    'Card',
+                    'Suit',
+                    'ItemTags',
+                    'SecretType',
+                    'GrantInventoryItems',
                 ]:
                     if prop in p:
                         classprops[otype] = set([*list(classprops.get(otype, set())), prop])

@@ -30,10 +30,13 @@ __"type":__ ["point"] Controls defaults for positioning and background appearanc
 
 __"style":__ ["png"] Specifies whether the icon is rendered or user generated  
 - "png" | "svg" | "ico" icon will be loaded from `public\img\markers\{name}` with corresponding extension  
-- "fa?" Font Awesome icon will be rendered to `public\img\rendered\{name}.png` with * controlling the style  
-    - fas = solid, far = regular, fal = light, fat = thin, dad = duotone, fab = brands  
+- "fa*" Font Awesome icon will be rendered to `public\img\rendered\{name}.png` with * controlling the style  
+    - fas = solid, far = regular, fal = light, fat = thin, dad = duotone, fab = brands
+- "gi*" Google material icons will be rendered to `public\img\rendered\{name}.png` with * controlling the style
+    - gis = sharp, gio = outlined, gir = rounded, gif = filled, gi2 = two-tone
+- "gs*" Google material symbols will be rendered to `public\img\rendered\{name}.png` with * controlling the style
+    - gss = sharp, gssf = sharp-filled, gso = outlined, gsof = outlined-filled, gir = rounded, girf = rounded-filled
 - "fapng" | "fasvg" | "faico" icon will be rendered onto FA icon but with final icon being a user generated icon file  
-
 __"iconName":__ Specifies the name of the font awesome icon or UGC icon to render to the marker  
 __"bg":__ ["grey"] Specifies the colour name (or #{hexcode}) to use for the background when rendering  
 __"fg":__ ["white"] Specifies the colour name (or #(hexcode}) to use for the Font Awesome pin rendering  

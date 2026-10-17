@@ -21,8 +21,11 @@ library.add(fas, far);
 
 //---------------------------------------------------------------------------------------------------------------------
 // Set up default directories
-
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+// Path to Google Icons and Symbols in node_modules
+const googleIconsBasePath = path.join(__dirname, '../node_modules/@material-design-icons/svg');
+const googleSymbolsBasePath = path.join(__dirname, '../node_modules/@material-symbols/svg-400');
 
 let dataPath = path.join(__dirname, '../public/data');
 let iconsPath = path.join(__dirname, '../public/img/markers');
@@ -267,6 +270,54 @@ function drawFAIcon(
   ctx.setTransform(1, 0, 0, 1, 0, 0);
 }
 
+// Function to draw Google Material Icon
+function drawGoogleIcon(ctx, style, iconName, color, drawSize, canvasSize, dy) {
+  const basepath = style[1] === 'i' ? googleIconsBasePath : googleSymbolsBasePath;
+  const subdir = {
+    s: 'sharp', // both
+    o: 'outlined', // both
+    r: 'rounded', // both
+    2: 'two-tone', // icons only
+    f: 'filled', // icons only (symbols uses -fill)
+  }[style[2]];
+  const variant = style[1] === 's' && style[3] === 'f' ? '-fill' : '';
+
+  const svgFilePath = path.join(basepath, subdir, `${iconName}${variant}.svg`);
+
+  if (!fs.existsSync(svgFilePath)) {
+    log_error(`Google Material Icon for "${style}"not found at path: ${svgFilePath}`);
+    return;
+  }
+  const svgContent = fs.readFileSync(svgFilePath, 'utf8');
+
+  // Extract ViewBox to compute scaling accurately (defaults to 24x24)
+  const viewBoxMatch = svgContent.match(/viewBox="([-+]?\d+) ([-+]?\d+) ([-+]?\d+) ([-+]?\d+)"/);
+  const origX = viewBoxMatch ? parseFloat(viewBoxMatch[1]) : 0;
+  const origY = viewBoxMatch ? parseFloat(viewBoxMatch[2]) : 0;
+  const origW = viewBoxMatch ? parseFloat(viewBoxMatch[3]) : 24;
+  const origH = viewBoxMatch ? parseFloat(viewBoxMatch[4]) : 24;
+
+  // Collect all path d attributes
+  const pathMatches = [...svgContent.matchAll(/d="([^"]+)"/g)];
+  if (pathMatches.length === 0) return;
+
+  drawSize = 1.2 * drawSize; // Scale up the icon size to make it more visible
+  const scale = drawSize / origH;
+  const iconWidthPx = origW * scale;
+  const dxPx = (canvasSize - iconWidthPx) / 2 - origX * scale;
+  const dyPx = (canvasSize - drawSize) / 2 + dy - origY * scale;
+
+  ctx.setTransform(scale, 0, 0, scale, dxPx, dyPx);
+  ctx.fillStyle = toSupraColor(color);
+
+  for (const match of pathMatches) {
+    const path2d = new Path2D(match[1]);
+    ctx.fill(path2d);
+  }
+
+  ctx.setTransform(1, 0, 0, 1, 0, 0);
+}
+
 // Draw a PNG as the Icon instead of an FA icon
 function drawImageIcon(ctx, iconPath, drawSize, canvasSize, dy) {
   let img = new Image();
@@ -306,6 +357,8 @@ function renderFAIconToImageURL(
       iconSizePx,
       c.fgIconYOffset
     );
+  } else if (style.startsWith('g')) {
+    drawGoogleIcon(ctx, style, iconName, fgCol, c.fgIconSize, iconSizePx, c.fgIconYOffset);
   } else {
     drawFAIcon(ctx, style, iconName, fgCol, c.fgIconSize, iconSizePx, c.fgIconYOffset);
   }
@@ -320,9 +373,9 @@ if (!fs.existsSync(outPath)) {
 
 let iconCount = 0;
 
-// Go through all the icon configurations that have 'fa' in their style
+// Go through all the icon configurations that need rendering
 for (const [configName, config] of Object.entries(iconConfigs)) {
-  if (config.style?.startsWith('fa')) {
+  if (config.style?.startsWith('fa') || config.style?.startsWith('gi') || config.style?.startsWith('gs')) {
     // Go through all the variants we've found in our instance/class data
     // If we didn't find any variants do the default version anyway
     for (let variantConfigName of config.variants ?? [configName]) {
@@ -345,8 +398,7 @@ for (const [configName, config] of Object.entries(iconConfigs)) {
           config.style,
           config.iconName,
           fgFlag == 'v' && variant ? variant : fg,
-          bgFlag == 'v' && variant ? variant : bg,
-          48
+          bgFlag == 'v' && variant ? variant : bg
         );
         const outPNG = path.join(outPath, variantConfigName + '.png');
         log_trace('Config: ', configName, ' => ', outPNG);

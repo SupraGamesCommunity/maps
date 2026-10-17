@@ -157,6 +157,7 @@ export const PinContent = ({ o, mapId, closePopup, hasFoundState, isFound, found
         {o.prog_tag && <StaticRow title="Act" value={o.prog_tag} />}
         {o.abilities && <StaticRow title="Requires" value={o.abilities} />}
         {o.loop && <StaticRow title="Loop" value={o.loop} />}
+        {o.card && <StaticRow title="Card" value={o.card} />}
         {o.variant && <StaticRow title="Variant" value={o.variant} />}
         {hasDescription && <StaticRow title="Description" value={locStr.description(o, descClass, mapId)} />}
         {o.comment && <StaticRow title="Comment" value={o.comment} />}

@@ -44,16 +44,16 @@
   "sw": {
     "ue": {
       "major": 5,
-      "minor": 6,
-      "ver": "5.6.1.0"
+      "minor": 7,
+      "ver": "5.7.4.0"
     },
     "game": {
       "version": "EarlyAccess",
-      "build": "10958b",
-      "date": "18/05/2026 - 23:52 UTC",
+      "build": "12837",
+      "date": "2026/10/16 - 13:13 UTC",
       "branch": "public",
       "type": "Shipping",
-      "mapver": "V8"
+      "mapver": "V9"
     }
   }
 }

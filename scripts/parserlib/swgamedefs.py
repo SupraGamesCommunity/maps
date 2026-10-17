@@ -3,20 +3,41 @@ ea_filter = True
 ea_fogfile = "swmapfog-ea.png"
 ea_proggroups = [
     'Act1',
+    # 'Act2',
     'Act2.Blue',
     'Act2.Green',
+    'Act2.Yellow',
+    # 'Act2.Red',
+    # 'Act2.Purple',
+    # 'Sandbox',
 ]
+
 ea_areas = [
     'ArmChairTown',
     'BedDrawer',
     'BedKingdom',
+    'BrickTown',
+    'Bricklyn',
+    # 'Canyon',
     'Castle',
+    # 'Desk',
+    # 'KidsRoom',
     'OutskirtsCastle',
     'OutskirtsStartTown',
+    # 'PinkRoom',
     'RecyclingArea',
+    # 'Sandbox',
+    # 'Shake',
     'SnailArea',
+    'SolversGuild',
     'StartTown',
+    'UnderBed',
+    'UnderBed.Snail',
+    'UnderBed.Spider',
+    # 'Underground',
+    # 'Wood',
 ]
+
 ea_abilities = [
     'BlowGun',
     'Crouch',
@@ -24,12 +45,16 @@ ea_abilities = [
     'Jump',
     'JumpHigh',
     'Vision',
+    'Spark',
     'SpongeSuit',
     'Toothpick',
     'Dart',
     'Stake',
     'Strength',
+    'PlayerMap',
+    'ForceFieldWalk',
 ]
+
 ea_fog_bounds = (-116500, -116500, 83500, 83500)
 ea_fog_pixels = None
 ea_fog_width = 0

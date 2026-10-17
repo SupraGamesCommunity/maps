@@ -215,11 +215,11 @@ goto :eof
 
 :setopt_sw
 set "gameroot=%SWROOT%"
-set gamever=GAME_UE5_6
+set gamever=GAME_UE5_7
 set gamename=Supraworld
 set "mappings=%basedir%\%game%\%gamename%.usmap"
 set mapimage=T_SupraworldMapV?Q
-set mappath=Supraworld/Plugins/Supra/PlayerMap/Content/Textures
+set mappath=PlayerMap/Textures
 
 goto :eof
 
@@ -359,7 +359,7 @@ goto :eof
 echo %colGrn%Extracting map images, joining and copying to %gameout%\mapimg\%game%map.png%colDef%
 
 :: Unpack all the map image textures
-%CUE4Parse% %opt% -p %mappath%/%mapimage%?.uasset
+%CUE4Parse% %opt% -p */%mapimage%?.uasset
 
 :: Move the extracted files to local store
 if not exist %gameout%\mapimg md %gameout%\mapimg
@@ -367,6 +367,7 @@ move>nul /Y  "%gameout%\temp\%mappath:/=\%\%mapimage%*.*" "%gameout%\mapimg"
 
 set "hdropt=-auto-level -sigmoidal-contrast 3,0.5 -gamma 2.2"
 if exist "%gameout%\mapimg\%mapimage%*.hdr" set "hdropt=-colorspace RGB %hdropt%"
+set "hdropt="
 
 if not "%game%"=="sw" (
     :: Stitch the PNG images into two rows and two columns

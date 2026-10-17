@@ -38,9 +38,9 @@ export class Icons {
   static _staticImgPath = 'img/markers/';
   static _renderedImgPath = 'img/rendered/';
 
-  // All FA generated icons are png, everything else is given by the style
+  // All FA and Google Material generated icons are png, everything else is given by the style
   static getImgExt(style) {
-    return style.startsWith('fa') ? 'png' : style;
+    return style.startsWith('fa') || style[0] == 'g' ? 'png' : style;
   }
 
   static _defaultIconName = 'question_mark';
@@ -109,7 +109,10 @@ export class Icons {
     opts.iconConfig.bg = isSupraColor(opts.variant) ? opts.variant : opts.iconConfig.bg;
 
     const ext = Icons.getImgExt(opts.iconConfig.style);
-    const imgPath = opts.iconConfig.style?.startsWith('fa') ? Icons._renderedImgPath : Icons._staticImgPath;
+    const imgPath =
+      opts.iconConfig.style?.startsWith('fa') || opts.iconConfig.style?.startsWith('g')
+        ? Icons._renderedImgPath
+        : Icons._staticImgPath;
     opts.iconUrl = `${imgPath}${[baseName, opts.variant, opts.game, ext].filter(Boolean).join('.')}`;
 
     return opts;
