@@ -176,8 +176,9 @@ const gameClasses = readJsonFile(path.join(dataPath, 'gameClasses.json'));
 for (const game of games) {
   const markers = loadMarkers(game, dataPath);
   markers.forEach((marker) => {
-    if (marker.type in gameClasses) {
-      gameClasses[marker.type].variants = (gameClasses[marker.type].variants ?? new Set()).add(marker.variant ?? '');
+    const mtype = marker.spawns || marker.type;
+    if (mtype in gameClasses) {
+      gameClasses[mtype].variants = (gameClasses[mtype].variants ?? new Set()).add(marker.variant ?? '');
     }
   });
 }
