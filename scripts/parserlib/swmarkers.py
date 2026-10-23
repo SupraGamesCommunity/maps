@@ -243,13 +243,12 @@ def export_sw_markers(game: str, datadir: Path, sourcedir: Path):  # noqa: C901 
             if toyeggs.get(area + '.' + str(oidx)):
                 continue
 
-            # Remove Puzzle Cloud's that don't have a ghost or are marked as complete. There
-            # are some clouds that are only used for storm effects. This will get rid of some
-            # completable clouds, or at least clouds that get marked complete in the save file
+            # Remove the graduation storm puzzle clouds and the one that's high above the house
+            # Hopefully later we can filter based on a flag.
             if otype == 'PuzzleCloud_C' and (
-                not p.get('AssociatedGhost')
-                or p.get('PuzzleState') == 'EPuzzleCloudState::PostPuzzle'
-                or p.get('InitialState') == 'EPuzzleCloudState::PostPuzzle'
+                p.get('bPurelyDecorative ') is True
+                or o.get('ActorLabel').startswith('PuzzleCloud_GraduationStorm')
+                or o.get('ActorLabel') == 'PuzzleCloud182'
             ):
                 continue
 

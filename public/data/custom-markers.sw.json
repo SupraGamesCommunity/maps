@@ -187,8 +187,15 @@
     "delete": 0
   },
   {
-    "name": "PuzzleCloud_C_UAID_ACB480ECFC8487A802_1145890131",
+    "name": "PuzzleCloud_C_UAID_7085C2B20F0E395E02_1355467488",
     "area": "Supraworld",
-    "delete": 0
+    "delete": 0,
+    "note": "cloud is part of red"
+  },
+  {
+    "name": "PuzzleCloud_C_UAID_7085C2B20F0E395E02_1510643496",
+    "area": "Supraworld",
+    "delete": 0,
+    "note": "cloud is part of red"
   }
 ]
