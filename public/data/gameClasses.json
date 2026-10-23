@@ -2178,6 +2178,16 @@
     ],
     "setfound": false
   },
+  "Die_SixSides_C": {
+    "friendly": "Die (D6*)",
+    "icon": "die",
+    "layer": "swcarriable",
+    "nospoiler": null,
+    "games": [
+      "sw"
+    ],
+    "setfound": false
+  },
   "D6R:Die_C": {
     "friendly": "Die (D6 Round)",
     "icon": "die",
