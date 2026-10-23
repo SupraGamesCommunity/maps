@@ -2075,6 +2075,14 @@
     "alt": 611.510498046875
   },
   {
+    "name": "Die_C_UAID_7085C2B20F0E8B7201_1084562294",
+    "type": "Die_SixSides_C",
+    "area": "Supraworld",
+    "lat": -9979.3251953125,
+    "lng": -520.2633056640625,
+    "alt": -864.3428344726562
+  },
+  {
     "name": "FloatingRaft_C_UAID_047C16835142C88202_1474694423",
     "type": "FloatingRaft_C",
     "area": "Supraworld",
