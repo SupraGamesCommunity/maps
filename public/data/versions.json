@@ -49,9 +49,9 @@
     },
     "game": {
       "version": "EarlyAccess",
-      "build": "12837",
-      "date": "2026/10/16 - 13:13 UTC",
-      "branch": "public",
+      "build": "12995",
+      "date": "2026/10/29 - 23:01 UTC",
+      "branch": "beta",
       "type": "Shipping",
       "mapver": "V9"
     }

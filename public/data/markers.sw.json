@@ -525,7 +525,7 @@
     "name": "5Cent_C_UAID_ACB480ECFC8449EC02_1846046094",
     "type": "5Cent_C",
     "area": "Supraworld",
-    "lat": 17249.869140625,
+    "lat": 17288.943359375,
     "lng": -17666.876953125,
     "alt": 3729.930419921875,
     "coins": 5
@@ -534,7 +534,7 @@
     "name": "5Cent_C_UAID_ACB480ECFC8449EC02_1849433095",
     "type": "5Cent_C",
     "area": "Supraworld",
-    "lat": 17314.99609375,
+    "lat": 17356.4609375,
     "lng": -17666.876953125,
     "alt": 4241.48681640625,
     "coins": 5
@@ -934,60 +934,6 @@
     "lng": 19468.61328125,
     "alt": 4361.025390625,
     "coins": 5
-  },
-  {
-    "name": "5Cent_C_UAID_ACB480ECFC84C00103_1086869849",
-    "type": "5Cent_C",
-    "area": "Supraworld",
-    "lat": 30983.3046875,
-    "lng": -18957.01953125,
-    "alt": 17262.2890625,
-    "coins": 1
-  },
-  {
-    "name": "5Cent_C_UAID_ACB480ECFC84C00103_1378495858",
-    "type": "5Cent_C",
-    "area": "Supraworld",
-    "lat": 30994.9140625,
-    "lng": -18957.01953125,
-    "alt": 17271.373046875,
-    "coins": 1
-  },
-  {
-    "name": "5Cent_C_UAID_ACB480ECFC84C00103_1381546859",
-    "type": "5Cent_C",
-    "area": "Supraworld",
-    "lat": 30974.595703125,
-    "lng": -18943.66796875,
-    "alt": 17279.189453125,
-    "coins": 1
-  },
-  {
-    "name": "5Cent_C_UAID_ACB480ECFC84C00103_1393890860",
-    "type": "5Cent_C",
-    "area": "Supraworld",
-    "lat": 31007.494140625,
-    "lng": -18954.38671875,
-    "alt": 17302.728515625,
-    "coins": 1
-  },
-  {
-    "name": "5Cent_C_UAID_ACB480ECFC84C00103_1393895861",
-    "type": "5Cent_C",
-    "area": "Supraworld",
-    "lat": 30983.6875,
-    "lng": -18959.3125,
-    "alt": 17294.912109375,
-    "coins": 1
-  },
-  {
-    "name": "5Cent_C_UAID_ACB480ECFC84C00103_1393898862",
-    "type": "5Cent_C",
-    "area": "Supraworld",
-    "lat": 30991.896484375,
-    "lng": -18951.10546875,
-    "alt": 17285.828125,
-    "coins": 1
   },
   {
     "name": "5Cent_C_UAID_ACB480ECFC84C50503_1174832867",
@@ -1528,8 +1474,8 @@
     "name": "AAABattery_C_UAID_ACB480ECFC8481FB02_1431134259",
     "type": "AAABattery_C",
     "area": "Supraworld",
-    "lat": 4566.91552734375,
-    "lng": -8537.03125,
+    "lat": 4697.75732421875,
+    "lng": -8556.9853515625,
     "alt": 376.0069274902344
   },
   {
@@ -1593,8 +1539,8 @@
     "type": "Balloon_C",
     "area": "Supraworld",
     "lat": 18625.73828125,
-    "lng": -8298.7763671875,
-    "alt": 317.76708984375,
+    "lng": -8298.7734375,
+    "alt": 468.47088623046875,
     "targets": [
       {
         "x": -3749.568,
@@ -1759,7 +1705,8 @@
     "area": "Supraworld",
     "lat": -2936.424072265625,
     "lng": 7029.23046875,
-    "alt": 553.0427856445312
+    "alt": 553.0427856445312,
+    "variant": "yellow"
   },
   {
     "name": "Cork_C_UAID_7085C2B20F0E9ED401_1557792245",
@@ -2080,7 +2027,8 @@
     "area": "Supraworld",
     "lat": -9979.3251953125,
     "lng": -520.2633056640625,
-    "alt": -864.3428344726562
+    "alt": -864.3428344726562,
+    "variant": "grey"
   },
   {
     "name": "FloatingRaft_C_UAID_047C16835142C88202_1474694423",
@@ -2694,6 +2642,14 @@
     "lat": 18532.130859375,
     "lng": 9969.91796875,
     "alt": 6021.6884765625
+  },
+  {
+    "name": "Nailscrew_C_UAID_ACB480ECFC84C40C03_1949452058",
+    "type": "GoldenScrew_C",
+    "area": "Supraworld",
+    "lat": -340.5071105957031,
+    "lng": 16165.42578125,
+    "alt": -1148.023193359375
   },
   {
     "name": "Nailscrew_C_UAID_ACB480ECFC84CEBE02_1275581819",
@@ -3520,51 +3476,47 @@
     "area": "Supraworld",
     "lat": 17762.84765625,
     "lng": -3450.158203125,
-    "alt": 1564.2725830078125
+    "alt": 1564.2725830078125,
+    "variant": "red"
   },
   {
-    "name": "Jimmy_C_UAID_ACB480ECFC8491C802_1501280707",
+    "name": "Jimmy_C_UAID_ACB480ECFC84910E03_1417531101",
     "type": "Jimmy_C",
     "area": "Supraworld",
-    "lat": -2581.537841796875,
-    "lng": 10867.6220703125,
-    "alt": -750.695068359375
+    "lat": 2343.3916015625,
+    "lng": 14534.4130859375,
+    "alt": 5839.794921875,
+    "hidden": "true",
+    "variant": "red"
+  },
+  {
+    "name": "Jimmy_C_UAID_ACB480ECFC84910E03_1970360109",
+    "type": "Jimmy_C",
+    "area": "Supraworld",
+    "lat": 18042.82421875,
+    "lng": 13138.6630859375,
+    "alt": 512.2171630859375,
+    "hidden": "true",
+    "variant": "red"
+  },
+  {
+    "name": "Jimmy_C_UAID_ACB480ECFC84950E03_1603365825",
+    "type": "Jimmy_C",
+    "area": "Supraworld",
+    "lat": 3804.845703125,
+    "lng": -2876.857421875,
+    "alt": 413.14227294921875,
+    "variant": "red"
   },
   {
     "name": "Jimmy_C_UAID_ACB480ECFC84C00A03_1692500128",
     "type": "Jimmy_C",
     "area": "Supraworld",
-    "lat": 16755.41015625,
-    "lng": -5314.07421875,
-    "alt": 446.368896484375,
-    "hidden": "true"
-  },
-  {
-    "name": "Jimmy_C_UAID_ACB480ECFC84C00A03_1963445129",
-    "type": "Jimmy_C",
-    "area": "Supraworld",
-    "lat": 16694.99609375,
-    "lng": -5499.19775390625,
-    "alt": 448.7135314941406,
-    "hidden": "true"
-  },
-  {
-    "name": "Jimmy_C_UAID_ACB480ECFC84C00A03_1969045130",
-    "type": "Jimmy_C",
-    "area": "Supraworld",
-    "lat": 16564.546875,
-    "lng": -5210.41259765625,
-    "alt": 452.1645202636719,
-    "hidden": "true"
-  },
-  {
-    "name": "Jimmy_C_UAID_ACB480ECFC84C00A03_1970849131",
-    "type": "Jimmy_C",
-    "area": "Supraworld",
-    "lat": 16851.392578125,
-    "lng": -5081.6181640625,
-    "alt": 446.368896484375,
-    "hidden": "true"
+    "lat": 16755.33984375,
+    "lng": -5314.1689453125,
+    "alt": 444.35650634765625,
+    "hidden": "true",
+    "variant": "red"
   },
   {
     "name": "Jimmy_C_UAID_C87F5459CE6297D301_2008484943",
@@ -3572,7 +3524,8 @@
     "area": "Supraworld",
     "lat": 3209.509521484375,
     "lng": 18889.44921875,
-    "alt": 5920.0
+    "alt": 5920.0,
+    "variant": "red"
   },
   {
     "name": "Jumppad_C_UAID_7085C2B20F0E04BF01_1672954929",
@@ -3603,22 +3556,6 @@
         "x": -5997.543,
         "y": 9876.402,
         "z": 1130.8501
-      }
-    ],
-    "linetype": "target"
-  },
-  {
-    "name": "Jumppad_C_UAID_7085C2B20F0E30D001_1853228362",
-    "type": "SW:Jumppad_C",
-    "area": "Supraworld",
-    "lat": 19050.326171875,
-    "lng": 15530.349609375,
-    "alt": 7453.91455078125,
-    "targets": [
-      {
-        "x": 16671.857,
-        "y": 20371.857,
-        "z": 9467.337
       }
     ],
     "linetype": "target"
@@ -3803,13 +3740,13 @@
     "name": "Jumppad_C_UAID_7085C2B20F0E83A901_1577076303",
     "type": "SW:Jumppad_C",
     "area": "Supraworld",
-    "lat": 17693.7578125,
-    "lng": -7856.8828125,
+    "lat": 18944.10546875,
+    "lng": -7563.56103515625,
     "alt": 406.39031982421875,
     "targets": [
       {
-        "x": -4300.585,
-        "y": 24988.213,
+        "x": -4007.2627,
+        "y": 26238.56,
         "z": 342.61932
       }
     ],
@@ -4253,7 +4190,7 @@
     "area": "Supraworld",
     "lat": -20437.134765625,
     "lng": 9723.982421875,
-    "alt": 864.0144653320312,
+    "alt": 877.896484375,
     "targets": [
       {
         "x": 8647.892,
@@ -4360,6 +4297,22 @@
     "linetype": "target"
   },
   {
+    "name": "Jumppad_C_UAID_7085C2B20F0E30D001_1853228362",
+    "type": "Jumppad_TwoPath_C",
+    "area": "Supraworld",
+    "lat": 19044.359375,
+    "lng": 15526.2490234375,
+    "alt": 7463.08935546875,
+    "targets": [
+      {
+        "x": 16671.857,
+        "y": 20371.857,
+        "z": 9467.337
+      }
+    ],
+    "linetype": "target"
+  },
+  {
     "name": "Jumppad_TwoPath_C_UAID_ACB480ECFC8438F902_1722583108",
     "type": "Jumppad_TwoPath_C",
     "area": "Supraworld",
@@ -4374,6 +4327,14 @@
       }
     ],
     "linetype": "target"
+  },
+  {
+    "name": "Jumppad_TwoPath_C_UAID_ACB480ECFC84C80C03_1304713931",
+    "type": "Jumppad_TwoPath_C",
+    "area": "Supraworld",
+    "lat": -98.39533233642578,
+    "lng": 15823.4560546875,
+    "alt": -2844.390625
   },
   {
     "name": "Jumppad_TwoPath_C_UAID_ACB480ECFC84D00503_1097360887",
@@ -4934,6 +4895,16 @@
     "variant": "gold"
   },
   {
+    "name": "Pickup_Card_C_UAID_ACB480ECFC840A0C03_1091815225",
+    "type": "PickupSpawner_C",
+    "area": "Supraworld",
+    "lat": 20512.46875,
+    "lng": 15318.265625,
+    "alt": 6093.4912109375,
+    "spawns": "Pickup_Card_C",
+    "card": "10 of Clubs"
+  },
+  {
     "name": "Pickup_Card_C_UAID_ACB480ECFC8411FC02_1112649560",
     "type": "PickupSpawner_C",
     "area": "Supraworld",
@@ -5252,6 +5223,26 @@
     "alt": 1298.25830078125,
     "spawns": "Pickup_Card_C",
     "card": "A of Diamonds"
+  },
+  {
+    "name": "Pickup_Card_C_UAID_ACB480ECFC84B80C03_1544075907",
+    "type": "PickupSpawner_C",
+    "area": "Supraworld",
+    "lat": 21508.142578125,
+    "lng": 14877.1064453125,
+    "alt": 21934.677734375,
+    "spawns": "Pickup_Card_C",
+    "card": "J of Hearts"
+  },
+  {
+    "name": "Pickup_Card_C_UAID_ACB480ECFC84C40C03_2004747059",
+    "type": "PickupSpawner_C",
+    "area": "Supraworld",
+    "lat": 6176.5751953125,
+    "lng": 13127.845703125,
+    "alt": -2275.717041015625,
+    "spawns": "Pickup_Card_C",
+    "card": "J of Diamonds"
   },
   {
     "name": "Pickup_Card_C_UAID_ACB480ECFC84C50A03_1754248043",
@@ -5577,8 +5568,8 @@
     "name": "PresentBox_C_UAID_7085C2B20F0EC86602_1577004016",
     "type": "Coin:PresentBox_C",
     "area": "Supraworld",
-    "lat": -3696.3681640625,
-    "lng": 6114.052734375,
+    "lat": -3027.857177734375,
+    "lng": -349.5755920410156,
     "alt": 320.5130615234375,
     "prog_tag": "Act1",
     "coins": 5
@@ -6386,6 +6377,17 @@
     "lng": -6565.03515625,
     "alt": 1555.4205322265625,
     "spawns": "_LootPool_C"
+  },
+  {
+    "name": "PresentBox_Lootpools_C_UAID_ACB480ECFC84DC0F03_1851795346",
+    "type": "PresentBox_Lootpools_C",
+    "area": "Supraworld",
+    "lat": -11474.505859375,
+    "lng": 3336.3115234375,
+    "alt": -419.2247009277344,
+    "variant": "white",
+    "prog_tag": "Act1",
+    "spawns": "Inventory_HealthQuarter_C"
   },
   {
     "name": "PresentBox_Lootpools_C_UAID_ACB480ECFC84DF8C02_1942377273",
@@ -7896,6 +7898,23 @@
     "variant": "cyan"
   },
   {
+    "name": "PuzzleCloud_C_UAID_ACB480ECFC84A50E03_1929613771",
+    "type": "PuzzleCloud_C",
+    "area": "Supraworld",
+    "lat": 14661.8994140625,
+    "lng": -8570.9560546875,
+    "alt": 1380.639404296875,
+    "variant": "blue"
+  },
+  {
+    "name": "PuzzleCloud_C_UAID_ACB480ECFC84A90F03_1610567729",
+    "type": "PuzzleCloud_C",
+    "area": "Supraworld",
+    "lat": -11780.453125,
+    "lng": 3707.491455078125,
+    "alt": 1085.7593994140625
+  },
+  {
     "name": "PuzzleCloud_C_UAID_ACB480ECFC84AB0103_1295115012",
     "type": "PuzzleCloud_C",
     "area": "Supraworld",
@@ -8857,9 +8876,9 @@
     "name": "RealCoinPickup_C_UAID_7085C2B20F0E0C7A02_1727232958",
     "type": "RealCoinPickup_C",
     "area": "Supraworld",
-    "lat": 26663.48046875,
-    "lng": -9251.3359375,
-    "alt": 516.5372924804688,
+    "lat": 24990.990234375,
+    "lng": -7995.90380859375,
+    "alt": 320.60284423828125,
     "coins": 1
   },
   {
@@ -9037,8 +9056,8 @@
     "name": "RealCoinPickup_C_UAID_7085C2B20F0E0C7A02_2130712979",
     "type": "RealCoinPickup_C",
     "area": "Supraworld",
-    "lat": 13617.1689453125,
-    "lng": -5209.85693359375,
+    "lat": 13660.447265625,
+    "lng": -4898.05517578125,
     "alt": 397.3067932128906,
     "coins": 1
   },
@@ -9415,9 +9434,9 @@
     "name": "RealCoinPickup_C_UAID_7085C2B20F0E19CE01_1628597687",
     "type": "RealCoinPickup_C",
     "area": "Supraworld",
-    "lat": 17800.923828125,
-    "lng": 16088.7470703125,
-    "alt": 6122.00390625,
+    "lat": 16930.1015625,
+    "lng": 15254.43359375,
+    "alt": 6053.91455078125,
     "coins": 5
   },
   {
@@ -10745,9 +10764,9 @@
     "name": "RealCoinPickup_C_UAID_7085C2B20F0E754B02_1242634957",
     "type": "RealCoinPickup_C",
     "area": "Supraworld",
-    "lat": -12564.8271484375,
-    "lng": -1638.856201171875,
-    "alt": 343.6335144042969,
+    "lat": -12558.3671875,
+    "lng": -1618.7818603515625,
+    "alt": 494.7610778808594,
     "coins": 1
   },
   {
@@ -10755,8 +10774,8 @@
     "type": "RealCoinPickup_C",
     "area": "Supraworld",
     "lat": -12039.193359375,
-    "lng": -1644.4515380859375,
-    "alt": 343.6335144042969,
+    "lng": -1683.566650390625,
+    "alt": 494.7610778808594,
     "coins": 1
   },
   {
@@ -13728,6 +13747,15 @@
     "coins": 1
   },
   {
+    "name": "RealCoinPickup_C_UAID_ACB480ECFC84630C03_1906586924",
+    "type": "RealCoinPickup_C",
+    "area": "Supraworld",
+    "lat": 23140.203125,
+    "lng": -29456.841796875,
+    "alt": 1687.435302734375,
+    "coins": 1
+  },
+  {
     "name": "RealCoinPickup_C_UAID_ACB480ECFC8468A302_1837658455",
     "type": "RealCoinPickup_C",
     "area": "Supraworld",
@@ -14520,6 +14548,24 @@
     "coins": 1
   },
   {
+    "name": "RealCoinPickup_C_UAID_BCFCE7CCF66E9F0C03_1496020430",
+    "type": "RealCoinPickup_C",
+    "area": "Supraworld",
+    "lat": 9126.9033203125,
+    "lng": -7762.18212890625,
+    "alt": 389.70916748046875,
+    "coins": 1
+  },
+  {
+    "name": "RealCoinPickup_C_UAID_BCFCE7CCF66E9F0C03_1536489431",
+    "type": "RealCoinPickup_C",
+    "area": "Supraworld",
+    "lat": 9121.08984375,
+    "lng": -7804.6396484375,
+    "alt": 325.1990051269531,
+    "coins": 1
+  },
+  {
     "name": "RealCoinPickup_C_UAID_FC3497C3461013B302_1784707266",
     "type": "RealCoinPickup_C",
     "area": "Supraworld",
@@ -14731,8 +14777,8 @@
     "type": "RealCoinPickup_C",
     "area": "Supraworld",
     "lat": 22709.0,
-    "lng": -25052.34375,
-    "alt": 2732.255859375,
+    "lng": -25072.755859375,
+    "alt": 2813.13330078125,
     "coins": 5
   },
   {
@@ -17936,6 +17982,16 @@
     "abilities": "Crouch"
   },
   {
+    "name": "SecretVolume_C_UAID_ACB480ECFC84090C03_2125869048",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": 20473.640625,
+    "lng": 15328.8291015625,
+    "alt": 6191.85302734375,
+    "area_tag": "BedKingdom",
+    "prog_tag": "Act2:Blue"
+  },
+  {
     "name": "SecretVolume_C_UAID_ACB480ECFC8418C002_1421647893",
     "type": "SecretVolume_C",
     "area": "Supraworld",
@@ -18490,6 +18546,16 @@
     "area_tag": "BedKingdom",
     "prog_tag": "Act2:Blue",
     "abilities": "Toothpick"
+  },
+  {
+    "name": "SecretVolume_C_UAID_ACB480ECFC84DB0F03_1998589166",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": -11388.5224609375,
+    "lng": 3486.75,
+    "alt": -299.2021789550781,
+    "area_tag": "StartTown",
+    "prog_tag": "Act1"
   },
   {
     "name": "SecretVolume_C_UAID_ACB480ECFC84DF8C02_1792035271",
@@ -19206,6 +19272,14 @@
     "lat": 15301.0966796875,
     "lng": -19278.087890625,
     "alt": 17507.212890625
+  },
+  {
+    "name": "Weight_Draggable_C_UAID_BCFCE7CCF66E990C03_1391013365",
+    "type": "Weight_Draggable_C",
+    "area": "Supraworld",
+    "lat": 22755.9765625,
+    "lng": -18787.271484375,
+    "alt": 4349.12255859375
   },
   {
     "name": "WobbleSpring_C_UAID_7085C2B20F0E0F6802_2090560338",
