@@ -1047,27 +1047,27 @@
     "name": "5Cent_C_UAID_ACB480ECFC84C8B402_1760031243",
     "type": "5Cent_C",
     "area": "Supraworld",
-    "lat": -25136.74609375,
-    "lng": 12008.7041015625,
-    "alt": 3271.928466796875,
+    "lat": -24830.884765625,
+    "lng": 11393.4228515625,
+    "alt": 4208.01611328125,
     "coins": 5
   },
   {
     "name": "5Cent_C_UAID_ACB480ECFC84C8B402_1764082244",
     "type": "5Cent_C",
     "area": "Supraworld",
-    "lat": -25136.74609375,
-    "lng": 11734.48046875,
-    "alt": 3560.762939453125,
+    "lat": -24556.662109375,
+    "lng": 11393.4228515625,
+    "alt": 4254.17529296875,
     "coins": 5
   },
   {
     "name": "5Cent_C_UAID_ACB480ECFC84C8B402_1766608245",
     "type": "5Cent_C",
     "area": "Supraworld",
-    "lat": -25136.74609375,
-    "lng": 11399.0966796875,
-    "alt": 3871.623291015625,
+    "lat": -25281.001953125,
+    "lng": 11937.87109375,
+    "alt": 3034.66064453125,
     "coins": 5
   },
   {
@@ -2695,7 +2695,7 @@
     "lng": 17308.798828125,
     "alt": 414.9776611328125,
     "hidden": "true",
-    "variant": "custom"
+    "variant": "green"
   },
   {
     "name": "GuardVolume_C_UAID_3C7C3FF36121E38601_1631859243",
@@ -7576,6 +7576,15 @@
     "lat": 28036.90625,
     "lng": 10635.3642578125,
     "alt": 14412.1767578125,
+    "variant": "purple"
+  },
+  {
+    "name": "PuzzleCloud_C_UAID_ACB480ECFC843D1003_1847579091",
+    "type": "PuzzleCloud_C",
+    "area": "Supraworld",
+    "lat": -25305.2109375,
+    "lng": 12876.22265625,
+    "alt": 4026.46923828125,
     "variant": "purple"
   },
   {
@@ -13414,6 +13423,15 @@
     "coins": 1
   },
   {
+    "name": "RealCoinPickup_C_UAID_ACB480ECFC84281003_1314863669",
+    "type": "RealCoinPickup_C",
+    "area": "Supraworld",
+    "lat": -10909.6494140625,
+    "lng": 3946.511474609375,
+    "alt": 320.5915222167969,
+    "coins": 1
+  },
+  {
     "name": "RealCoinPickup_C_UAID_ACB480ECFC84288702_1776073571",
     "type": "RealCoinPickup_C",
     "area": "Supraworld",
@@ -14002,8 +14020,8 @@
     "name": "RealCoinPickup_C_UAID_ACB480ECFC84958B02_1931449556",
     "type": "RealCoinPickup_C",
     "area": "Supraworld",
-    "lat": -11570.3056640625,
-    "lng": 7013.86767578125,
+    "lat": -11545.8623046875,
+    "lng": 7050.02880859375,
     "alt": 565.2927856445312,
     "coins": 1
   },
@@ -14011,8 +14029,8 @@
     "name": "RealCoinPickup_C_UAID_ACB480ECFC84958B02_1939601557",
     "type": "RealCoinPickup_C",
     "area": "Supraworld",
-    "lat": -11717.318359375,
-    "lng": 6793.080078125,
+    "lat": -11752.1484375,
+    "lng": 6695.8359375,
     "alt": 565.2927856445312,
     "coins": 1
   },
@@ -16087,7 +16105,7 @@
     "targets": [
       {
         "x": 1831.1705,
-        "y": 9459.952,
+        "y": 9475.746,
         "z": 1125.2297
       }
     ],
@@ -16097,14 +16115,14 @@
     "name": "StaticMeshActor_UAID_7085C2B20F0EF06902_1801567995",
     "type": "RubberBand_C",
     "area": "Supraworld",
-    "lat": -379.8618469238281,
-    "lng": 4721.66796875,
-    "alt": 457.1900329589844,
+    "lat": -379.83087158203125,
+    "lng": 4722.32421875,
+    "alt": 457.19219970703125,
     "variant": "orange",
     "targets": [
       {
         "x": 1831.1705,
-        "y": 9459.952,
+        "y": 9475.746,
         "z": 1125.2297
       }
     ],
@@ -18055,6 +18073,16 @@
     "prog_tag": "Act1"
   },
   {
+    "name": "SecretVolume_C_UAID_ACB480ECFC84271003_2123596491",
+    "type": "SecretVolume_C",
+    "area": "Supraworld",
+    "lat": -10920.38671875,
+    "lng": 3796.13671875,
+    "alt": 378.72711181640625,
+    "area_tag": "StartTown",
+    "prog_tag": "Act1"
+  },
+  {
     "name": "SecretVolume_C_UAID_ACB480ECFC8429A302_1374914359",
     "type": "SecretVolume_C",
     "area": "Supraworld",
@@ -19272,14 +19300,6 @@
     "lat": 15301.0966796875,
     "lng": -19278.087890625,
     "alt": 17507.212890625
-  },
-  {
-    "name": "Weight_Draggable_C_UAID_BCFCE7CCF66E990C03_1391013365",
-    "type": "Weight_Draggable_C",
-    "area": "Supraworld",
-    "lat": 22755.9765625,
-    "lng": -18787.271484375,
-    "alt": 4349.12255859375
   },
   {
     "name": "WobbleSpring_C_UAID_7085C2B20F0E0F6802_2090560338",
