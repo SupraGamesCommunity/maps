@@ -33,6 +33,7 @@
     "classnames": "^2.5.1",
     "leaflet": "^1.9.4",
     "leaflet.fullscreen": "^5.3.1",
+    "playwright": "^1.64.1",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "readline-sync": "^1.4.10"
@@ -43,7 +44,7 @@
     "@fortawesome/fontawesome-svg-core": "^7.2.0",
     "@fortawesome/free-regular-svg-icons": "^7.2.0",
     "@fortawesome/free-solid-svg-icons": "^7.2.0",
-    "@playwright/test": "^1.60.0",
+    "@playwright/test": "^1.64.1",
     "@rolldown/plugin-babel": "^0.2.2",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
@@ -56,7 +57,6 @@
     "eslint-plugin-react-refresh": "^0.5.2",
     "globals": "^17.4.0",
     "path2d": "^0.3.1",
-    "playwright": "^1.64.1",
     "prettier": "3.8.3",
     "vite": "^8.0.4"
   }
