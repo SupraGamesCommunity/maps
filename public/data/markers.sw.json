@@ -4898,8 +4898,8 @@
     "name": "Pickup_Card_C_UAID_ACB480ECFC840A0C03_1091815225",
     "type": "PickupSpawner_C",
     "area": "Supraworld",
-    "lat": 20512.46875,
-    "lng": 15318.265625,
+    "lat": 20447.416015625,
+    "lng": 15220.9453125,
     "alt": 6093.4912109375,
     "spawns": "Pickup_Card_C",
     "card": "10 of Clubs"
@@ -5173,6 +5173,16 @@
     "alt": -188.26841735839844,
     "spawns": "Pickup_Card_C",
     "card": "2 of Clubs"
+  },
+  {
+    "name": "Pickup_Card_C_UAID_ACB480ECFC84211103_1371060470",
+    "type": "PickupSpawner_C",
+    "area": "Supraworld",
+    "lat": 21220.326171875,
+    "lng": 20169.484375,
+    "alt": 13196.130859375,
+    "spawns": "Pickup_Card_C",
+    "card": "K of Clubs"
   },
   {
     "name": "Pickup_Card_C_UAID_ACB480ECFC842E0003_1676659523",
@@ -13630,15 +13640,6 @@
     "coins": 1
   },
   {
-    "name": "RealCoinPickup_C_UAID_ACB480ECFC84500803_1099497627",
-    "type": "RealCoinPickup_C",
-    "area": "Supraworld",
-    "lat": 21379.609375,
-    "lng": 20321.357421875,
-    "alt": 12680.69921875,
-    "coins": 1
-  },
-  {
     "name": "RealCoinPickup_C_UAID_ACB480ECFC84500803_1130309628",
     "type": "RealCoinPickup_C",
     "area": "Supraworld",
@@ -15133,9 +15134,9 @@
     "variant": "red",
     "targets": [
       {
-        "x": 7320.806,
-        "y": -7383.4277,
-        "z": 3355.018
+        "x": 7529.0845,
+        "y": -7613.3354,
+        "z": 3362.3906
       },
       {
         "x": 7137.576,
@@ -15155,9 +15156,9 @@
     "variant": "red",
     "targets": [
       {
-        "x": 7323.7065,
-        "y": -7643.9194,
-        "z": 3362.3677
+        "x": 7529.0845,
+        "y": -7613.3354,
+        "z": 3362.3906
       },
       {
         "x": 7137.576,
