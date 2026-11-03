@@ -1,4 +1,5 @@
 import { MapLayer } from '../mapLayer.js';
+import { MapVersion } from '../mapVersion.js';
 
 export class LayerSelect_Data {
   constructor(map) {
@@ -30,6 +31,10 @@ export class LayerSelect_Data {
       leafletLayer: leafletLayer,
       isOverlay: isOverlay,
     });
+  }
+
+  getVersion() {
+    return MapVersion.getBuild(this.map.mapId);
   }
 
   getMapSelectorProps() {

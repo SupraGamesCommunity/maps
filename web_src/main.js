@@ -34,6 +34,7 @@ import { MapObject } from './mapObject.jsx';
 import { MapPins } from './mapPins.js';
 import { SupraSearch } from './supraSearch.js';
 import { L_supraMap } from './supraMap.js';
+import { MapVersion } from './mapVersion.js';
 import { initSidepanelDom, renderSidepanel, destroySidepanel } from './sidepanel/renderSidepanel.jsx';
 import { library, icon as fa_icon } from '@fortawesome/fontawesome-svg-core';
 import { faMapPin } from '@fortawesome/free-solid-svg-icons';
@@ -315,6 +316,7 @@ window.onload = async function () {
   // Initialise all the modules that load config from Json but are indepedent of map selection
   await Promise.all([
     locStr.loadStrings(Settings.global.language),
+    MapVersion.load(),
     GameClasses.loadClasses(),
     Icons.loadIconConfigs(),
     MapLayer.loadConfigs(),
