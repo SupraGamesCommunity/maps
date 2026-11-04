@@ -29,11 +29,11 @@ export const MapSelectorRadioButtons = ({ options, onChange }) => {
 };
 
 /* Renders the map / layer selection UI: letting the user pick a game map, and the layers within it. */
-export const MapsTab = ({ leafletMap, mapSelections, overlaySelections, onMapChange, onOverlayChange }) => {
+export const MapsTab = ({ leafletMap, mapVersion, mapSelections, overlaySelections, onMapChange, onOverlayChange }) => {
   return (
     <div>
       <div className="sidepanel-info-block">
-        <h2>Game map</h2>
+        <h2>Game map ({mapVersion})</h2>
         <MapSelectorRadioButtons
           options={mapSelections.options}
           selectedValue={mapSelections.selectedValue}
