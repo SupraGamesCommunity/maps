@@ -11,11 +11,11 @@ export class MapVersion {
 
   static getBuild(mapId) {
     const gamever = this._data?.[mapId].game;
-    return `${gamever.build}${gamever.branch == 'beta' ? ' β' : ''}`;
+    return gamever ? `${gamever.build}${gamever.branch == 'beta' ? ' b' : ''}` : '';
   }
 
   static getString(mapId) {
     const gamever = this._data?.[mapId].game;
-    return `${gamever.build} ${gamever.date} (${gamever.branch})`;
+    return gamever ? `${gamever.build} ${gamever.date} (${gamever.branch})` : '';
   }
 }
