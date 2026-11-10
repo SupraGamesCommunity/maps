@@ -5245,16 +5245,6 @@
     "card": "J of Hearts"
   },
   {
-    "name": "Pickup_Card_C_UAID_ACB480ECFC84C40C03_2004747059",
-    "type": "PickupSpawner_C",
-    "area": "Supraworld",
-    "lat": 6176.5751953125,
-    "lng": 13127.845703125,
-    "alt": -2275.717041015625,
-    "spawns": "Pickup_Card_C",
-    "card": "J of Diamonds"
-  },
-  {
     "name": "Pickup_Card_C_UAID_ACB480ECFC84C50A03_1754248043",
     "type": "PickupSpawner_C",
     "area": "Supraworld",
@@ -7961,9 +7951,9 @@
     "name": "PuzzleCloud_C_UAID_ACB480ECFC84B9FD02_1533389219",
     "type": "PuzzleCloud_C",
     "area": "Supraworld",
-    "lat": 7970.7880859375,
+    "lat": 7970.78857421875,
     "lng": 12646.2666015625,
-    "alt": -702.0291748046875,
+    "alt": -366.7609558105469,
     "variant": "cyan"
   },
   {
@@ -17398,9 +17388,9 @@
     "name": "SecretVolume_C_UAID_7085C2B20F0E69BD01_2091684645",
     "type": "SecretVolume_C",
     "area": "Supraworld",
-    "lat": -15154.69140625,
+    "lat": -15046.0927734375,
     "lng": 2380.793212890625,
-    "alt": 661.1992797851562,
+    "alt": 727.339111328125,
     "area_tag": "StartTown",
     "prog_tag": "Act1",
     "abilities": "Jump"
@@ -18860,7 +18850,7 @@
     "name": "ShopEgg_C_UAID_7085C2B20F0EF6BE01_1236083490",
     "type": "ShopEgg_C",
     "area": "Supraworld",
-    "lat": -7293.033203125,
+    "lat": -7338.556640625,
     "lng": -3775.897216796875,
     "alt": 452.1122131347656,
     "cost": 25,
